@@ -118,7 +118,7 @@
       "sections": {
         "general": {
           "whatIs": {
-            "question": "What is PDFCraft?",
+            "question": "What is Hello-PDF?",
             "answer": "Hello-PDFis a free, privacy-focused PDF toolkit that runs entirely in your browser. It offers 67+ professional tools for editing, converting, merging, splitting, and securing PDF files without uploading them to any server."
           },
           "isFree": {
@@ -127,7 +127,7 @@
           },
           "account": {
             "question": "Do I need to create an account?",
-            "answer": "No, you don't need to create an account or register to use PDFCraft. Simply visit the website and start using any tool immediately."
+            "answer": "No, you don't need to create an account or register to use Hello-PDF. Simply visit the website and start using any tool immediately."
           }
         },
         "privacy": {
@@ -260,7 +260,7 @@
         "email": {
           "title": "E-mail",
           "description": "Envoyez-nous un e-mail et nous vous répondrons dans les 24-48 heures.",
-          "action": "contact@pdfcraft.app"
+          "action": "contact@Hello-PDF.app"
         },
         "github": {
           "title": "GitHub",
@@ -270,7 +270,7 @@
         "twitter": {
           "title": "Twitter",
           "description": "Suivez-nous pour les mises à jour et les annonces.",
-          "action": "@pdfcraft"
+          "action": "@Hello-PDF"
         }
       },
       "form": {

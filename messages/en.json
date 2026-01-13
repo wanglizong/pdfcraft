@@ -91,7 +91,7 @@
       "finish": "Finish",
       "skip": "Skip",
       "stepOf": "of",
-      "welcomeTitle": "Welcome to PDFCraft!",
+      "welcomeTitle": "Welcome to Hello-PDF!",
       "welcomeMessage": "Would you like a quick tour to learn how to use our PDF tools? It only takes a minute.",
       "helpButton": "Help Tour"
     },
@@ -156,7 +156,7 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "What is PDFCraft?",
+          "question": "What is Hello-PDF?",
           "answer": "Hello-PDFis a free, privacy-focused PDF toolkit that runs entirely in your browser. It offers 80+ professional tools for editing, converting, merging, splitting, and securing PDF files without uploading them to any server."
         },
         "isFree": {
@@ -165,7 +165,7 @@
         },
         "account": {
           "question": "Do I need to create an account?",
-          "answer": "No, you don't need to create an account or register to use PDFCraft. Simply visit the website and start using any tool immediately."
+          "answer": "No, you don't need to create an account or register to use Hello-PDF. Simply visit the website and start using any tool immediately."
         }
       },
       "privacy": {
@@ -298,7 +298,7 @@
       "email": {
         "title": "Email",
         "description": "Send us an email and we'll respond within 24-48 hours.",
-        "action": "contact@pdfcraft.app"
+        "action": "contact@Hello-PDF.app"
       },
       "github": {
         "title": "GitHub",
@@ -308,7 +308,7 @@
       "twitter": {
         "title": "Twitter",
         "description": "Follow us for updates and announcements.",
-        "action": "@pdfcraft"
+        "action": "@Hello-PDF"
       }
     },
     "form": {

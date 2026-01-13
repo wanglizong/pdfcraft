@@ -91,7 +91,7 @@
       "finish": "完成",
       "skip": "跳過",
       "stepOf": "/",
-      "welcomeTitle": "歡迎使用PDFCraft！",
+      "welcomeTitle": "歡迎使用Hello-PDF！",
       "welcomeMessage": "想要快速瞭解如何使用我們的PDF工具嗎？只需一分鐘。",
       "helpButton": "幫助導覽"
     },
@@ -165,7 +165,7 @@
         },
         "account": {
           "question": "我需要建立賬戶嗎？",
-          "answer": "不需要，您無需建立賬戶或註冊即可使用 PDFCraft。只需訪問網站即可立即開始使用任何工具。"
+          "answer": "不需要，您無需建立賬戶或註冊即可使用 Hello-PDF。只需訪問網站即可立即開始使用任何工具。"
         }
       },
       "privacy": {
@@ -298,7 +298,7 @@
       "email": {
         "title": "電子郵件",
         "description": "傳送電子郵件給我們，我們將在 24-48 小時內回覆。",
-        "action": "contact@pdfcraft.app"
+        "action": "contact@Hello-PDF.app"
       },
       "github": {
         "title": "GitHub",
@@ -308,7 +308,7 @@
       "twitter": {
         "title": "推特",
         "description": "關注我們要獲取更新和公告。",
-        "action": "@pdfcraft"
+        "action": "@Hello-PDF"
       }
     },
     "form": {

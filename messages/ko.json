@@ -91,7 +91,7 @@
       "finish": "완료",
       "skip": "건너뛰기",
       "stepOf": "/",
-      "welcomeTitle": "PDFCraft에 오신 것을 환영합니다!",
+      "welcomeTitle": "Hello-PDF에 오신 것을 환영합니다!",
       "welcomeMessage": "PDF 도구 사용법을 배우는 빠른 투어를 원하시나요? 1분 정도 소요됩니다.",
       "helpButton": "도움말 투어"
     },
@@ -118,7 +118,7 @@
       "sections": {
         "general": {
           "whatIs": {
-            "question": "What is PDFCraft?",
+            "question": "What is Hello-PDF?",
             "answer": "Hello-PDFis a free, privacy-focused PDF toolkit that runs entirely in your browser. It offers 67+ professional tools for editing, converting, merging, splitting, and securing PDF files without uploading them to any server."
           },
           "isFree": {
@@ -127,7 +127,7 @@
           },
           "account": {
             "question": "Do I need to create an account?",
-            "answer": "No, you don't need to create an account or register to use PDFCraft. Simply visit the website and start using any tool immediately."
+            "answer": "No, you don't need to create an account or register to use Hello-PDF. Simply visit the website and start using any tool immediately."
           }
         },
         "privacy": {
@@ -260,7 +260,7 @@
         "email": {
           "title": "이메일",
           "description": "이메일을 보내주시면 24-48시간 이내에 답변해 드립니다.",
-          "action": "contact@pdfcraft.app"
+          "action": "contact@Hello-PDF.app"
         },
         "github": {
           "title": "GitHub",
@@ -270,7 +270,7 @@
         "twitter": {
           "title": "Twitter",
           "description": "업데이트 및 공지 사항 팔로우.",
-          "action": "@pdfcraft"
+          "action": "@Hello-PDF"
         }
       },
       "form": {
