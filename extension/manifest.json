@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "PDFCraft - PDF Tools",
+    "name": "Hello-PDF -PDF Tools",
     "version": "1.0.0",
     "description": "Quick access to 72+ free online PDF tools. Merge, split, compress, convert PDFs - all in your browser.",
     "author": "PDFCraft Team",
@@ -17,7 +17,7 @@
             "48": "icons/icon48.png",
             "128": "icons/icon128.png"
         },
-        "default_title": "PDFCraft - PDF Tools"
+        "default_title": "Hello-PDF -PDF Tools"
     },
     "background": {
         "service_worker": "background.js"

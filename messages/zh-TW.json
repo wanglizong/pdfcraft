@@ -45,8 +45,8 @@
       "loading": "載入中..."
     },
     "footer": {
-      "footer": "© 2025 PDFCraft. 保留所有權利。",
-      "copyright": "© {year} PDFCraft. 保留所有權利。",
+      "footer": "© 2025 Hello-PDF. 保留所有權利。",
+      "copyright": "© {year} Hello-PDF. 保留所有權利。",
       "privacyBadge": "100% 私密 - 檔案永不離開您的裝置",
       "madeWith": "Made with <Heart /> and <Nextjs />"
     },

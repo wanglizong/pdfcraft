@@ -45,9 +45,9 @@
       "loading": "Cargando..."
     },
     "footer": {
-      "copyright": "© {year} PDFCraft. Todos los derechos reservados.",
+      "copyright": "© {year} Hello-PDF. Todos los derechos reservados.",
       "privacyBadge": "100% Privado - Los archivos nunca salen de tu dispositivo",
-      "footer": "© 2025 PDFCraft. All rights reserved.",
+      "footer": "© 2025 Hello-PDF. All rights reserved.",
       "madeWith": "Made with <Heart /> and <Nextjs />"
     },
     "recentFiles": {

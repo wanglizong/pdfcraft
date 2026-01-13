@@ -45,9 +45,9 @@
       "loading": "로딩 중..."
     },
     "footer": {
-      "copyright": "© {year} PDFCraft. All rights reserved.",
+      "copyright": "© {year} Hello-PDF. All rights reserved.",
       "privacyBadge": "100% 프라이빗 - 파일이 기기를 떠나지 않습니다",
-      "footer": "© 2025 PDFCraft. All rights reserved.",
+      "footer": "© 2025 Hello-PDF. All rights reserved.",
       "madeWith": "Made with <Heart /> and <Nextjs />"
     },
     "recentFiles": {

@@ -45,8 +45,8 @@
       "loading": "Loading..."
     },
     "footer": {
-      "footer": "© 2025 PDFCraft. All rights reserved.",
-      "copyright": "© {year} PDFCraft. All rights reserved.",
+      "footer": "© 2025 Hello-PDF. All rights reserved.",
+      "copyright": "© {year} Hello-PDF. All rights reserved.",
       "privacyBadge": "100% Private - Files never leave your device",
       "madeWith": "Made with <Heart /> and <Nextjs />"
     },
