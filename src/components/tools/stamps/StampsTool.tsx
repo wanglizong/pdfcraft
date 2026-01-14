@@ -91,7 +91,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
   }, [stampState.blobUrl]);
 
   const viewerUrl = stampState.blobUrl
-    ? `/pdfjs-annotation-viewer/web/viewer.html?file=${encodeURIComponent(stampState.blobUrl)}`
+    ? `/pdfjs-annotation-viewer/web/viewer?file=${encodeURIComponent(stampState.blobUrl)}`
     : null;
 
   return (

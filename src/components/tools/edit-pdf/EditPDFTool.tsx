@@ -137,7 +137,7 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
           <div className="relative border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] overflow-hidden bg-gray-100">
             <iframe
               ref={iframeRef}
-              src={`/pdfjs-annotation-viewer/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`}
+              src={`/pdfjs-annotation-viewer/web/viewer?file=${encodeURIComponent(pdfUrl)}`}
               className="w-full h-[700px] border-0"
               title="PDF Editor"
               sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
