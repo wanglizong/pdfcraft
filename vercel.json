@@ -1,7 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "cleanUrls": false,
+  "cleanUrls": true,
   "trailingSlash": false,
+  "rewrites": [
+    {
+      "source": "/pdfjs-annotation-viewer/web/viewer.html",
+      "destination": "/pdfjs-annotation-viewer/web/viewer.html"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
@@ -74,15 +80,11 @@
       ]
     },
     {
-      "source": "/(pdfjs-viewer|pdfjs-annotation-viewer)/(.*)",
+      "source": "/pdfjs-viewer/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
         }
       ]
     }
