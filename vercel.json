@@ -3,10 +3,18 @@
 
   "routes": [
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "^/pdfjs-annotation-viewer/.*",
       "dest": "$0"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ],
+
 
   "headers": [
     {
