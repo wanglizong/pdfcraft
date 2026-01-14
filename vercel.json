@@ -79,6 +79,20 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "cleanUrls": false,
+      "headers": [
+        {
+          "source": "/(pdfjs-annotation-viewer|pdfjs-viewer)/(.*)",
+          "headers": [
+            { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+            { "key": "Content-Type", "value": "text/html; charset=utf-8" },
+            { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
+            { "key": "Cross-Origin-Embedder-Policy", "value": "require-corp" }
+          ]
+        }
+      ]
     }
   ]
 }
