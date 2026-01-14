@@ -1,6 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "trailingSlash": false,
   "routes": [
     {
       "src": "/pdfjs-annotation-viewer/web/viewer",
@@ -15,38 +14,22 @@
       "dest": "/$1"
     },
     {
-      "src": "/(.*)",
-      "headers": {
-        "X-Content-Type-Options": "nosniff",
-        "X-Frame-Options": "SAMEORIGIN",
-        "X-XSS-Protection": "1; mode=block",
-        "Referrer-Policy": "strict-origin-when-cross-origin"
-      },
-      "continue": true
-    },
-    {
       "src": "/(.*)\\.(js|css)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      },
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
       "continue": true
     },
     {
       "src": "/(.*)\\.(png|jpg|jpeg|gif|svg|webp|avif|ico)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      },
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
       "continue": true
     },
     {
       "src": "/(.*)\\.(woff|woff2|ttf|eot)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      },
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
       "continue": true
     },
     {
-      "src": "/(.*)\\.(wasm)",
+      "src": "/(.*)\\.wasm",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable",
         "Content-Type": "application/wasm"
@@ -54,16 +37,17 @@
       "continue": true
     },
     {
-      "src": "/workers/(.*)",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      },
+      "src": "/(workers|pdfjs-annotation-viewer)/(.*)",
+      "headers": { "Cache-Control": "public, max-age=31536000, immutable" },
       "continue": true
     },
     {
-      "src": "/pdfjs-annotation-viewer/(.*)",
+      "src": "/(.*)",
       "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "X-XSS-Protection": "1; mode=block",
+        "Referrer-Policy": "strict-origin-when-cross-origin"
       },
       "continue": true
     }
