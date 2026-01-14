@@ -29,6 +29,7 @@ export function EditPDFTool({ className = '' }: EditPDFToolProps) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
   const handleFilesSelected = useCallback((files: File[]) => {
+      debugger
     if (files.length > 0) {
       const selectedFile = files[0];
       setFile(selectedFile);
