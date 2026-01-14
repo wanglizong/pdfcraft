@@ -1,21 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-
-  "routes": [
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
     {
-      "handle": "filesystem"
-    },
-    {
-      "src": "^/pdfjs-annotation-viewer/.*",
-      "dest": "$0"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/pdfjs-annotation-viewer/(.*)",
+      "destination": "/$1"
     }
   ],
-
-
   "headers": [
     {
       "source": "/(.*)",
