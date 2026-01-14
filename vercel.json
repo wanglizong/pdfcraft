@@ -1,25 +1,21 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+
+  "routes": [
+    {
+      "src": "^/pdfjs-annotation-viewer/.*",
+      "dest": "$0"
+    }
+  ],
+
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        }
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-XSS-Protection", "value": "1; mode=block" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
       ]
     },
     {
@@ -72,7 +68,7 @@
       ]
     },
     {
-      "source": "/pdfjs-viewer/(.*)",
+      "source": "/pdfjs-annotation-viewer/(.*)",
       "headers": [
         {
           "key": "Cache-Control",
