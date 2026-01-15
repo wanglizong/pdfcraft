@@ -19,15 +19,6 @@ export function JsonLd({ data }: JsonLdProps) {
   
   return (
     <>
-      {schemas.map((schema, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: serializeStructuredData(schema),
-          }}
-        />
-      ))}
     </>
   );
 }
