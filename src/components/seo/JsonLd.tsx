@@ -51,9 +51,9 @@ export function ToolPageJsonLd({
 }: ToolPageJsonLdProps) {
   const schemas: object[] = [softwareApplication];
   
-  if (faqPage) {
-    schemas.push(faqPage);
-  }
+//   if (faqPage) {
+//     schemas.push(faqPage);
+//   }
   
   if (breadcrumb) {
     schemas.push(breadcrumb);
