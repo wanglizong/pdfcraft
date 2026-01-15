@@ -1,6 +1,6 @@
 [build]
 command = "next build"
-publish = ".next" # Next.js 的标准输出路径
+publish = "out" # Next.js 的标准输出路径
 
 # 1. 路径重写 (相当于 Vercel 的 Rewrites)
 # 解决 /pdfjs-annotation-viewer/ 访问 404 的问题
