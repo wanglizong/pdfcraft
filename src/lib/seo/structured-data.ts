@@ -356,10 +356,10 @@ export function generateToolPageStructuredData(
   const webPage = generateWebPageSchema(tool, content, locale);
 
   // Only generate FAQ schema if there are FAQs
-  const faqPage = content.faq && content.faq.length > 0
-    ? generateFAQPageSchema(content.faq)
-    : null;
-
+//   const faqPage = content.faq && content.faq.length > 0
+//     ? generateFAQPageSchema(content.faq)
+//     : null;
+  const faqPage = null;
   const breadcrumb = generateBreadcrumbSchema(
     [
       { name: 'Home', path: '' },
