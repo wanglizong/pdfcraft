@@ -6,11 +6,7 @@ export const siteConfig = {
   description: 'Professional PDF Tools - Free, Private & Browser-Based. Merge, split, compress, convert, and edit PDF files online without uploading to servers.',
   url: 'https://hello-pdf.com',
   ogImage: '/images/og-image.png',
-  links: {
-    github: 'https://github.com/PDFCraftTool/pdfcraft',
-    twitter: 'https://twitter.com/pdfcraft',
-  },
-  creator: 'PDFCraft Team',
+  creator: 'Hello-PDF',
   keywords: [
     'PDF tools',
     'PDF editor',
