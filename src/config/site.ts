@@ -7,6 +7,8 @@ export const siteConfig = {
   url: 'https://hello-pdf.com',
   ogImage: '/images/og-image.png',
   links: {
+    github: '',
+    twitter: '',
   },
   creator: 'Hello-PDF',
   keywords: [
