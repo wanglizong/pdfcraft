@@ -5,6 +5,7 @@
     "navigation": {
       "home": "首页",
       "tools": "工具",
+      "workflow": "工作流",
       "about": "关于",
       "faq": "常见问题",
       "privacy": "隐私",
@@ -34,7 +35,9 @@
       "insertAtBeginning": "在开头插入",
       "insertAtEnd": "在末尾插入",
       "rotateAllLeft": "全部左旋",
-      "rotateAllRight": "全部右旋"
+      "rotateAllRight": "全部右旋",
+      "confirm": "确认",
+      "add": "添加"
     },
     "status": {
       "idle": "就绪",
@@ -156,7 +159,7 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "Hello-PDF是什么？",
+          "question": "Hello-PDF 是什么？",
           "answer": "Hello-PDF 是一个免费、注重隐私的 PDF 工具包，完全在您的浏览器中运行。它提供 67+ 个专业工具，用于编辑、转换、合并、分割和加密 PDF 文件，而无需将其上传到任何服务器。"
         },
         "isFree": {
@@ -431,6 +434,172 @@
       "securePdf": "PDF安全"
     }
   },
+  "workflow": {
+    "title": "PDF 工作流编辑器",
+    "subtitle": "通过连接工具创建自定义 PDF 处理管道",
+    "metaTitle": "PDF 工作流编辑器 - Hello-PDF",
+    "metaDescription": "通过可视化连接工具创建自定义 PDF 处理管道。构建、保存和重用您的工作流。",
+    "toolbox": "工具箱",
+    "dragToAdd": "拖拽工具添加到工作流",
+    "searchTools": "搜索工具...",
+    "toolsAvailable": "个可用工具",
+    "templates": "模板",
+    "saved": "已保存",
+    "favorites": "收藏",
+    "allCategories": "全部",
+    "common": "常用",
+    "conversion": "转换",
+    "optimization": "优化",
+    "security": "安全",
+    "noSavedWorkflows": "暂无已保存的工作流",
+    "saveWorkflowHint": "创建并保存您的第一个工作流",
+    "noFavorites": "暂无收藏的工作流",
+    "favoriteHint": "为工作流标记收藏以添加到这里",
+    "selectFiles": "选择文件",
+    "filesSelected": "个文件已选择",
+    "execute": "执行",
+    "running": "运行中",
+    "complete": "完成",
+    "error": "错误",
+    "issues": "个问题",
+    "stop": "停止",
+    "nodes": "个节点",
+    "import": "导入",
+    "clear": "清空",
+    "saveWorkflow": "保存工作流",
+    "workflowName": "工作流名称",
+    "enterName": "输入工作流名称...",
+    "description": "描述",
+    "optional": "可选",
+    "enterDescription": "输入描述...",
+    "workflowComplete": "工作流执行成功！",
+    "downloadResults": "下载结果",
+    "emptyTitle": "创建您的工作流",
+    "emptyDescription": "从侧边栏拖拽工具来构建您的 PDF 处理管道。连接节点以定义处理顺序。",
+    "clickHint": "点击节点以配置其设置",
+    "undo": "撤销",
+    "redo": "重做",
+    "noSettings": "此工具没有可配置的设置",
+    "reset": "重置",
+    "cancel": "取消",
+    "apply": "应用",
+    "preview": "预览",
+    "showPreview": "显示预览",
+    "noFilesForPreview": "选择文件以查看预览",
+    "generatingPreview": "正在生成预览...",
+    "noPreviewAvailable": "暂无可用预览",
+    "selectedFiles": "已选择的文件",
+    "filesCount": "个文件",
+    "viewEditFiles": "查看/编辑文件",
+    "moveUp": "上移",
+    "moveDown": "下移",
+    "removeFile": "移除",
+    "clearAll": "清空全部",
+    "previewNotAvailable": "该文件类型暂不支持预览",
+    "confirm": "确认",
+    "collapseSidebar": "收起侧边栏",
+    "expandSidebar": "展开侧边栏",
+    "library": "模板库",
+    "connections": "个连接",
+    "workflowTemplates": {
+      "mergeCompress": {
+        "name": "合并并压缩",
+        "description": "合并多个PDF文件并压缩以减小文件大小"
+      },
+      "imagesToWatermarkedPdf": {
+        "name": "图片转带水印PDF",
+        "description": "将图片转换为PDF并添加自定义水印"
+      },
+      "pdfToImages": {
+        "name": "PDF转压缩图片",
+        "description": "将PDF页面转换为JPG图片"
+      },
+      "securePdf": {
+        "name": "创建安全PDF",
+        "description": "合并PDF、添加水印并加密保护"
+      },
+      "documentPrep": {
+        "name": "文档准备",
+        "description": "合并PDF、添加页码和页眉页脚"
+      },
+      "optimizeForWeb": {
+        "name": "网页优化",
+        "description": "压缩并线性化PDF以实现快速网页浏览"
+      },
+      "splitAndWatermark": {
+        "name": "拆分并添加水印",
+        "description": "将PDF拆分为单页并为每页添加水印"
+      },
+      "officeToMergedPdf": {
+        "name": "Office转合并PDF",
+        "description": "将Word文档转换为PDF并合并"
+      },
+      "rotateAndNumber": {
+        "name": "旋转并添加页码",
+        "description": "旋转PDF页面并添加页码"
+      },
+      "printReady": {
+        "name": "打印就绪文档",
+        "description": "添加页码并扁平化以准备打印"
+      },
+      "grayscaleCompress": {
+        "name": "灰度并压缩",
+        "description": "转换为灰度并压缩以减小文件大小"
+      },
+      "extractAndMerge": {
+        "name": "提取并合并页面",
+        "description": "提取特定页面并合并为新文档"
+      },
+      "confidentialDocument": {
+        "name": "机密文档",
+        "description": "添加机密水印并加密PDF"
+      },
+      "pdfToEditableDoc": {
+        "name": "PDF转可编辑文档",
+        "description": "将PDF转换为Word文档以便编辑"
+      },
+      "fullOptimization": {
+        "name": "完整文档优化",
+        "description": "压缩、扁平化并线性化以获得最佳性能"
+      },
+      "pdfToPresentation": {
+        "name": "PDF转PPT",
+        "description": "将PDF转换为可编辑的PowerPoint演示文稿"
+      },
+      "unlockAndEdit": {
+        "name": "解锁并编辑PDF",
+        "description": "解密受保护的PDF以便编辑"
+      },
+      "ebookConvert": {
+        "name": "电子书转PDF",
+        "description": "将EPUB电子书转换为PDF格式"
+      },
+      "batchWatermark": {
+        "name": "批量添加水印",
+        "description": "一次为多个PDF文件添加水印"
+      },
+      "archivePrep": {
+        "name": "归档准备",
+        "description": "删除元数据、扁平化并压缩以便长期存储"
+      },
+      "reportAssembly": {
+        "name": "报告组装",
+        "description": "合并文档、添加页码、页眉页脚和目录"
+      },
+      "invoiceProcessing": {
+        "name": "发票处理",
+        "description": "提取页面、添加水印并压缩以便邮件发送"
+      },
+      "photoAlbum": {
+        "name": "照片相册创建器",
+        "description": "将图片转换为带页码的PDF"
+      },
+      "cropAndResize": {
+        "name": "裁剪并调整大小",
+        "description": "裁剪PDF页面并调整页面尺寸"
+      }
+    }
+  },
   "tools": {
     "search": {
       "placeholder": "搜索工具...",
@@ -530,6 +699,7 @@
     "splitPdf": {
       "uploadLabel": "上传PDF文件",
       "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
+      "optionsTitle": "拆分选项",
       "splitModeTitle": "拆分方式",
       "modeRanges": "按页面范围",
       "modeEveryPage": "每页拆分",
@@ -541,7 +711,10 @@
       "pagePreviewTitle": "选择页面",
       "splitButton": "拆分PDF",
       "resultsTitle": "拆分结果",
-      "successMessage": "PDF拆分成功！点击下载按钮保存文件。"
+      "successMessage": "PDF拆分成功！点击下载按钮保存文件。",
+      "splitModeLabel": "拆分模式",
+      "modeEveryNPages": "每 N 页",
+      "pagesPerFile": "每文件页数"
     },
     "deletePages": {
       "uploadLabel": "上传PDF文件",
@@ -551,6 +724,8 @@
       "warning": "警告",
       "warningText": "选中的页面将从PDF中永久删除。至少需要保留一页。",
       "deleteButton": "删除页面",
+      "pageRange": "页面范围",
+      "pageRangePlaceholder": "例如：1, 3-5, 8",
       "successMessage": "页面删除成功！点击下载按钮保存文件。"
     },
     "extractPages": {
@@ -558,6 +733,8 @@
       "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
       "selectTitle": "选择要提取的页面",
       "selectHint": "点击页面选择，或在上方输入页码/范围。",
+      "pageRange": "页面范围",
+      "pageRangePlaceholder": "例如：1-5, 8, 10-12",
       "extractButton": "提取页面",
       "successMessage": "页面提取成功！点击下载按钮保存文件。"
     },
@@ -680,6 +857,7 @@
       "convertButton": "转换为PDF",
       "optionsTitle": "PDF选项",
       "pageSize": "页面大小",
+      "fitToImage": "适应图片大小",
       "orientation": "方向",
       "orientationAuto": "自动（匹配图片）",
       "orientationPortrait": "纵向",
@@ -757,11 +935,26 @@
       "resetZoom": "重置缩放",
       "reset": "重置",
       "fullscreen": "全屏",
-      "exitFullscreen": "退出全屏"
+      "exitFullscreen": "退出全屏",
+      "marginTop": "上边距",
+      "marginBottom": "下边距",
+      "marginLeft": "左边距",
+      "marginRight": "右边距",
+      "optionsTitle": "裁剪选项"
     },
     "organizePdf": {
       "uploadLabel": "上传PDF文件",
-      "uploadDescription": "拖放PDF文件到此处以整理页面。"
+      "uploadDescription": "拖放PDF文件到此处以整理页面。",
+      "reorderTitle": "拖动重新排序页面",
+      "reverseOrder": "反转顺序",
+      "resetOrder": "重置顺序",
+      "reorderHint": "拖放页面以重新排序。使用箭头向上或向下移动页面。",
+      "orderChanged": "页面顺序已更改。点击「应用更改」保存。",
+      "applyButton": "应用更改",
+      "successMessage": "PDF页面重新整理成功！点击下载按钮保存文件。",
+      "duplicatePage": "复制",
+      "deletePage": "删除",
+      "cannotDeleteLast": "无法删除最后一页"
     },
     "repairPdf": {
       "uploadLabel": "上传PDF文件",
@@ -806,7 +999,10 @@
       "downloadAll": "全部下载",
       "downloadZip": "下载为ZIP",
       "page": "页面",
-      "successMessage": "图片提取成功！点击下载单个图片或使用\"下载为ZIP\"。"
+      "successMessage": "图片提取成功！点击下载单个图片或使用\"下载为ZIP\"。",
+      "optionsTitle": "设置",
+      "format": "输出格式",
+      "minSize": "最小尺寸 (px)"
     },
     "encryptPdf": {
       "uploadLabel": "上传PDF文件",
@@ -839,7 +1035,15 @@
       "hint": "点击每页上的旋转按钮单独旋转，或使用上方按钮旋转所有页面。",
       "rotateAll": "旋转所有页面",
       "rotateButton": "旋转PDF",
-      "successMessage": "PDF页面旋转成功！点击下载按钮保存文件。"
+      "successMessage": "PDF页面旋转成功！点击下载按钮保存文件。",
+      "angle": "旋转角度",
+      "rotateRight": "向右旋转 90°",
+      "rotateLeft": "向左旋转 90°",
+      "rotate180": "旋转 180°",
+      "applyTo": "应用于",
+      "allPages": "所有页面",
+      "oddPages": "奇数页",
+      "evenPages": "偶数页"
     },
     "rotateCustom": {
       "title": "自定义旋转",
@@ -1022,6 +1226,9 @@
       "optionsTitle": "页码选项",
       "positionTitle": "位置",
       "formatTitle": "格式",
+      "formatNumber": "数字 (1, 2, 3)",
+      "formatRoman": "罗马数字 (I, II, III)",
+      "formatPageOfTotal": "第 X / Y 页",
       "styleTitle": "样式",
       "style": "样式",
       "startNumber": "起始页码",
@@ -1064,6 +1271,7 @@
       "uploadLabel": "上传PDF文件",
       "uploadDescription": "拖放PDF文件到此处。",
       "optionsTitle": "水印选项",
+      "type": "类型",
       "textWatermark": "文字水印",
       "imageWatermark": "图片水印",
       "watermarkText": "水印文字",
@@ -1073,6 +1281,7 @@
       "opacity": "透明度",
       "angle": "角度",
       "enterText": "请输入水印文字。",
+      "textPlaceholder": "例如：CONFIDENTIAL",
       "selectImage": "请选择水印图片。",
       "unsupportedImage": "不支持的图片格式，请使用 PNG 或 JPG。",
       "failed": "添加水印失败。",
@@ -1159,7 +1368,85 @@
       "noFieldsYet": "尚未添加字段。点击PDF添加表单字段。",
       "page": "第 {number} 页",
       "createButton": "创建表单",
-      "successMessage": "表单创建成功！"
+      "successMessage": "表单创建成功！",
+      "formOptions": "表单选项",
+      "flattenForm": "扁平化表单",
+      "flattenFormHint": "使表单字段不可编辑（转换为静态内容）",
+      "projectManagement": "项目管理",
+      "saveProject": "保存项目",
+      "savedProjects": "已保存的项目",
+      "loadProject": "加载",
+      "deleteProject": "删除",
+      "saveProjectTitle": "保存项目",
+      "projectName": "项目名称",
+      "projectNamePlaceholder": "输入项目名称...",
+      "saveInfo": "将保存 {fields} 个表单字段。",
+      "saveNote": "项目保存在浏览器本地存储中。",
+      "undo": "撤销 (Ctrl+Z)",
+      "redo": "重做 (Ctrl+Y)",
+      "duplicate": "复制 (Ctrl+D)",
+      "align": "对齐",
+      "alignLeft": "左对齐",
+      "alignCenter": "水平居中",
+      "alignRight": "右对齐",
+      "alignTop": "顶部对齐",
+      "alignMiddle": "垂直居中",
+      "alignBottom": "底部对齐",
+      "defaultValue": "默认值",
+      "defaultValuePlaceholder": "输入默认文本...",
+      "defaultChecked": "默认选中",
+      "defaultSelection": "默认选择",
+      "noDefault": "-- 无 --",
+      "required": "必填字段",
+      "shortcutsHint": "快捷键: Ctrl+Z (撤销) | Ctrl+Y (重做) | Ctrl+D (复制) | Ctrl+A (全选) | Delete (删除)",
+      "buttonTool": "按钮",
+      "signatureTool": "签名",
+      "dateTool": "日期",
+      "listboxTool": "列表框",
+      "buttonLabel": "按钮文本",
+      "buttonLabelPlaceholder": "提交",
+      "signatureLabel": "签名提示",
+      "signatureLabelPlaceholder": "在此签名",
+      "dateFormat": "日期格式",
+      "defaultDate": "默认日期",
+      "multiSelect": "允许多选",
+      "basicTools": "基础",
+      "advancedTools": "更多",
+      "properties": "属性",
+      "fieldsTab": "字段",
+      "optionsTab": "选项",
+      "addField": "添加",
+      "clickToAdd": "点击PDF添加字段",
+      "pages": "页",
+      "processingButton": "处理中...",
+      "cancelButton": "取消",
+      "saveButton": "保存",
+      "orCreateBlank": "或",
+      "createBlankPdf": "创建空白PDF",
+      "createBlankPdfTitle": "创建空白PDF",
+      "pageSize": "纸张大小",
+      "pageCount": "页数",
+      "blankPdfNote": "将创建一个空白PDF，您可以在其中添加表单字段。",
+      "addBlankPage": "添加空白页",
+      "addPageBefore": "在当前页之前",
+      "addPageAfter": "在当前页之后",
+      "addPageEnd": "在末尾",
+      "templateHint": "或选择一个模板快速开始",
+      "templates": "模板",
+      "selectTemplate": "选择...",
+      "template": {
+        "contact": "联系表单",
+        "registration": "注册表单",
+        "feedback": "反馈表单",
+        "order": "订单表单",
+        "consent": "同意书",
+        "invoice": "发票"
+      },
+      "fieldLabel": "标签",
+      "fieldLabelPlaceholder": "输入标签文本...",
+      "labelPosition": "位置",
+      "labelAbove": "上方",
+      "labelLeft": "左侧"
     },
     "removeBlankPages": {
       "uploadLabel": "上传PDF文件",
@@ -1176,6 +1463,7 @@
       "successMessage": "目录生成成功！",
       "options": "目录选项",
       "tocTitle": "目录标题",
+      "tocTitlePlaceholder": "输入目录标题...",
       "fontSize": "字体大小",
       "fontFamily": "字体",
       "addBookmark": "将目录添加到书签",
@@ -1259,8 +1547,14 @@
       "uploadLabel": "上传PDF文件",
       "uploadDescription": "拖放PDF文件到此处。",
       "headerTitle": "页眉",
+      "headerText": "页眉文字",
+      "headerTextPlaceholder": "输入页眉内容...",
       "footerTitle": "页脚",
+      "footerText": "页脚文字",
+      "footerTextPlaceholder": "输入页脚内容...",
       "styleTitle": "样式",
+      "fontSize": "字体大小",
+      "fontColor": "字体颜色",
       "preview": "预览",
       "previewHint": "输入页眉或页脚文本以查看预览",
       "addButton": "添加页眉页脚",
@@ -1434,6 +1728,7 @@
       "privacyNotice": "🔒 您的密码在本地处理，永远不会发送到任何服务器。",
       "passwordLabel": "PDF密码",
       "passwordPlaceholder": "输入PDF密码",
+      "password": "密码",
       "passwordHint": "如果PDF仅有所有者密码限制，可留空。",
       "decryptButton": "解密PDF",
       "successMessage": "PDF解密成功！",

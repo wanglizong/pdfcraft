@@ -34,7 +34,9 @@
       "insertAtBeginning": "在開頭插入",
       "insertAtEnd": "在末尾插入",
       "rotateAllLeft": "全部左旋",
-      "rotateAllRight": "全部右旋"
+      "rotateAllRight": "全部右旋",
+      "confirm": "確認",
+      "add": "新增"
     },
     "status": {
       "idle": "就緒",
@@ -156,12 +158,12 @@
     "sections": {
       "general": {
         "whatIs": {
-          "question": "Hello-PDF是什麼？",
-          "answer": "Hello-PDF是一個免費、注重隱私的 PDF 工具包，完全在您的瀏覽器中執行。它提供 67+ 個專業工具，用於編輯、轉換、合併、分割和加密 PDF 檔案，而無需將其上傳到任何伺服器。"
+          "question": "Hello-PDF 是什麼？",
+          "answer": "Hello-PDF 是一個免費、注重隱私的 PDF 工具包，完全在您的瀏覽器中執行。它提供 67+ 個專業工具，用於編輯、轉換、合併、分割和加密 PDF 檔案，而無需將其上傳到任何伺服器。"
         },
         "isFree": {
-          "question": "Hello-PDF真的免費嗎？",
-          "answer": "是的，Hello-PDF完全免費使用。沒有隱藏費用，沒有高階會員，也無需註冊。所有功能對每個人開放。"
+          "question": "Hello-PDF 真的免費嗎？",
+          "answer": "是的，Hello-PDF 完全免費使用。沒有隱藏費用，沒有高階會員，也無需註冊。所有功能對每個人開放。"
         },
         "account": {
           "question": "我需要建立賬戶嗎？",
@@ -174,8 +176,8 @@
           "answer": "不會，您的檔案從未上傳到任何伺服器。所有 PDF 處理都使用 JavaScript 和 WebAssembly 在瀏覽器本地進行。您的檔案從未離開您的裝置。"
         },
         "safe": {
-          "question": "使用 Hello-PDF處理敏感文件安全嗎？",
-          "answer": "是的，Hello-PDF的設計以隱私為重。由於所有處理都在瀏覽器本地進行，您的敏感文件保留在您的裝置上，從未透過網際網路傳輸。"
+          "question": "使用 Hello-PDF 處理敏感文件安全嗎？",
+          "answer": "是的，Hello-PDF 的設計以隱私為重。由於所有處理都在瀏覽器本地進行，您的敏感文件保留在您的裝置上，從未透過網際網路傳輸。"
         },
         "storage": {
           "question": "處理後我的檔案會怎樣？",
@@ -185,7 +187,7 @@
       "features": {
         "operations": {
           "question": "我可以執行哪些 PDF 操作？",
-          "answer": "Hello-PDF提供 67+ 個工具，包括：合併、分割、壓縮、轉換（轉為/來自影象、文字、JSON）、編輯、註釋、簽名、新增水印、加密/解密、OCR 等等。"
+          "answer": "Hello-PDF 提供 67+ 個工具，包括：合併、分割、壓縮、轉換（轉為/來自影象、文字、JSON）、編輯、註釋、簽名、新增水印、加密/解密、OCR 等等。"
         },
         "merge": {
           "question": "我可以合併多個 PDF 檔案嗎？",
@@ -193,17 +195,17 @@
         },
         "images": {
           "question": "我可以將影象轉換為 PDF 嗎？",
-          "answer": "是的，Hello-PDF支援將各種影象格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）轉換為 PDF。您可以一次轉換單個或多個影象。"
+          "answer": "是的，Hello-PDF 支援將各種影象格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）轉換為 PDF。您可以一次轉換單個或多個影象。"
         },
         "edit": {
           "question": "我可以編輯 PDF 中的文字嗎？",
-          "answer": "Hello-PDF提供註釋和編輯工具，包括高亮、新增文字、形狀、影象和簽名。如需全文編輯，PDF 編輯器工具提供全面的註釋功能。"
+          "answer": "Hello-PDF 提供註釋和編輯工具，包括高亮、新增文字、形狀、影象和簽名。如需全文編輯，PDF 編輯器工具提供全面的註釋功能。"
         }
       },
       "technical": {
         "browsers": {
           "question": "支援哪些瀏覽器？",
-          "answer": "Hello-PDF適用於所有現代瀏覽器，包括 Chrome、Firefox、Safari 和 Edge。我們建議使用最新版本的瀏覽器以獲得最佳體驗。"
+          "answer": "Hello-PDF 適用於所有現代瀏覽器，包括 Chrome、Firefox、Safari 和 Edge。我們建議使用最新版本的瀏覽器以獲得最佳體驗。"
         },
         "sizeLimit": {
           "question": "有檔案大小限制嗎？",
@@ -214,14 +216,14 @@
           "answer": "由於所有處理都在瀏覽器中進行，效能取決於您裝置的能力。大檔案需要更多的記憶體和處理能力。為了獲得最佳結果，請關閉其他瀏覽器標籤頁和應用程式。"
         },
         "offline": {
-          "question": "Hello-PDF可以離線工作嗎？",
-          "answer": "目前，Hello-PDF需要網際網路連線才能載入應用程式。但是，一旦載入，PDF 處理本身在本地進行，不需要連線。"
+          "question": "Hello-PDF 可以離線工作嗎？",
+          "answer": "目前，Hello-PDF 需要網際網路連線才能載入應用程式。但是，一旦載入，PDF 處理本身在本地進行，不需要連線。"
         }
       },
       "languages": {
         "supported": {
           "question": "支援哪些語言？",
-          "answer": "Hello-PDF提供 9 種語言版本：英語、日語、韓語、西班牙語、法語、德語、中文、葡萄牙語和阿拉伯語（支援從右到左）。"
+          "answer": "Hello-PDF 提供 9 種語言版本：英語、日語、韓語、西班牙語、法語、德語、中文、葡萄牙語和阿拉伯語（支援從右到左）。"
         },
         "change": {
           "question": "如何更改語言？",
@@ -252,7 +254,7 @@
       },
       "fast": {
         "title": "快速高效",
-        "description": "由現代 Web 技術驅動，Hello-PDF提供閃電般的 PDF 處理速度，無需上傳或下載。"
+        "description": "由現代 Web 技術驅動，Hello-PDF 提供閃電般的 PDF 處理速度，無需上傳或下載。"
       },
       "accessible": {
         "title": "隨處可用",
@@ -260,7 +262,7 @@
       },
       "free": {
         "title": "永久免費",
-        "description": "Hello-PDF完全免費使用，沒有隱藏費用，無需註冊，也不限制使用次數。"
+        "description": "Hello-PDF 完全免費使用，沒有隱藏費用，無需註冊，也不限制使用次數。"
       },
       "openSource": {
         "title": "開源透明",
@@ -431,6 +433,73 @@
       "securePdf": "PDF安全"
     }
   },
+  "workflow": {
+    "title": "PDF 工作流程編輯器",
+    "subtitle": "透過連接工具建立自訂 PDF 處理管道",
+    "metaTitle": "PDF 工作流程編輯器 - Hello-PDF",
+    "metaDescription": "透過視覺化連接工具建立自訂 PDF 處理管道。建構、儲存和重複使用您的工作流程。",
+    "toolbox": "工具箱",
+    "dragToAdd": "拖曳工具新增到工作流程",
+    "searchTools": "搜尋工具...",
+    "toolsAvailable": "個可用工具",
+    "templates": "範本",
+    "saved": "已儲存",
+    "favorites": "收藏",
+    "allCategories": "全部",
+    "common": "常用",
+    "conversion": "轉換",
+    "optimization": "最佳化",
+    "security": "安全",
+    "noSavedWorkflows": "暫無已儲存的工作流程",
+    "saveWorkflowHint": "建立並儲存您的第一個工作流程",
+    "noFavorites": "暫無收藏的工作流程",
+    "favoriteHint": "為工作流程標記收藏以新增到這裡",
+    "selectFiles": "選擇檔案",
+    "filesSelected": "個檔案已選擇",
+    "execute": "執行",
+    "running": "執行中",
+    "complete": "完成",
+    "error": "錯誤",
+    "issues": "個問題",
+    "stop": "停止",
+    "nodes": "個節點",
+    "import": "匯入",
+    "clear": "清空",
+    "saveWorkflow": "儲存工作流程",
+    "workflowName": "工作流程名稱",
+    "enterName": "輸入工作流程名稱...",
+    "description": "描述",
+    "optional": "可選",
+    "enterDescription": "輸入描述...",
+    "workflowComplete": "工作流程執行成功！",
+    "downloadResults": "下載結果",
+    "emptyTitle": "建立您的工作流程",
+    "emptyDescription": "從側邊欄拖曳工具來建構您的 PDF 處理管道。連接節點以定義處理順序。",
+    "clickHint": "點選節點以設定其設定",
+    "undo": "復原",
+    "redo": "重做",
+    "noSettings": "此工具沒有可設定的設定",
+    "reset": "重設",
+    "cancel": "取消",
+    "apply": "套用",
+    "preview": "預覽",
+    "showPreview": "顯示預覽",
+    "noFilesForPreview": "選擇檔案以檢視預覽",
+    "generatingPreview": "正在產生預覽...",
+    "noPreviewAvailable": "暫無可用預覽",
+    "selectedFiles": "已選擇的檔案",
+    "filesCount": "個檔案",
+    "viewEditFiles": "檢視/編輯檔案",
+    "moveUp": "上移",
+    "moveDown": "下移",
+    "removeFile": "移除",
+    "clearAll": "清空全部",
+    "previewNotAvailable": "此檔案類型暫不支援預覽",
+    "confirm": "確認",
+    "collapseSidebar": "收起側邊欄",
+    "expandSidebar": "展開側邊欄",
+    "library": "範本庫"
+  },
   "tools": {
     "search": {
       "placeholder": "搜尋工具...",
@@ -541,7 +610,10 @@
       "pagePreviewTitle": "選擇頁面",
       "splitButton": "拆分PDF",
       "resultsTitle": "拆分結果",
-      "successMessage": "PDF拆分成功！點選下載按鈕儲存檔案。"
+      "successMessage": "PDF拆分成功！點選下載按鈕儲存檔案。",
+      "splitModeLabel": "拆分模式",
+      "modeEveryNPages": "每 N 页",
+      "pagesPerFile": "每文件页数"
     },
     "deletePages": {
       "uploadLabel": "上傳PDF檔案",
@@ -757,11 +829,26 @@
       "resetZoom": "重置縮放",
       "reset": "重置",
       "fullscreen": "全屏",
-      "exitFullscreen": "退出全屏"
+      "exitFullscreen": "退出全屏",
+      "marginTop": "上边距",
+      "marginBottom": "下边距",
+      "marginLeft": "左边距",
+      "marginRight": "右边距",
+      "optionsTitle": "裁剪选项"
     },
     "organizePdf": {
       "uploadLabel": "上傳PDF檔案",
-      "uploadDescription": "拖放PDF檔案到此處以整理頁面。"
+      "uploadDescription": "拖放PDF檔案到此處以整理頁面。",
+      "reorderTitle": "拖動重新排序頁面",
+      "reverseOrder": "反轉順序",
+      "resetOrder": "重置順序",
+      "reorderHint": "拖放頁面以重新排序。使用箭頭向上或向下移動頁面。",
+      "orderChanged": "頁面順序已更改。點選「套用變更」儲存。",
+      "applyButton": "套用變更",
+      "successMessage": "PDF頁面重新整理成功！點選下載按鈕儲存檔案。",
+      "duplicatePage": "複製",
+      "deletePage": "刪除",
+      "cannotDeleteLast": "無法刪除最後一頁"
     },
     "repairPdf": {
       "uploadLabel": "上傳PDF檔案",
@@ -839,7 +926,15 @@
       "hint": "點選每頁上的旋轉按鈕單獨旋轉，或使用上方按鈕旋轉所有頁面。",
       "rotateAll": "旋轉所有頁面",
       "rotateButton": "旋轉PDF",
-      "successMessage": "PDF頁面旋轉成功！點選下載按鈕儲存檔案。"
+      "successMessage": "PDF頁面旋轉成功！點選下載按鈕儲存檔案。",
+      "angle": "旋转角度",
+      "rotateRight": "向右旋转 90°",
+      "rotateLeft": "向左旋转 90°",
+      "rotate180": "旋转 180°",
+      "applyTo": "应用于",
+      "allPages": "所有页面",
+      "oddPages": "奇数页",
+      "evenPages": "偶数页"
     },
     "rotateCustom": {
       "title": "自定義旋轉",
@@ -1022,6 +1117,9 @@
       "optionsTitle": "頁碼選項",
       "positionTitle": "位置",
       "formatTitle": "格式",
+      "formatNumber": "數字 (1, 2, 3)",
+      "formatRoman": "羅馬數字 (I, II, III)",
+      "formatPageOfTotal": "第 X / Y 頁",
       "styleTitle": "樣式",
       "style": "樣式",
       "startNumber": "起始頁碼",
@@ -1134,19 +1232,19 @@
     "formCreator": {
       "uploadLabel": "上傳PDF檔案",
       "uploadDescription": "拖放PDF檔案到此處。",
-      "toolbarTitle": "工具欄",
+      "toolbarTitle": "工具列",
       "selectTool": "選擇",
-      "textFieldTool": "文字框",
+      "textFieldTool": "文字欄位",
       "checkboxTool": "核取方塊",
-      "dropdownTool": "下拉框",
-      "radioTool": "單選框",
+      "dropdownTool": "下拉選單",
+      "radioTool": "選項按鈕",
       "deleteTool": "刪除",
       "pageNavigation": "第 {current} / {total} 頁",
-      "selectHint": "點選選擇欄位，拖動移動，拖動角落調整大小",
+      "selectHint": "點選欄位選取，拖曳移動，拖曳角落調整大小",
       "addFieldHint": "點選PDF新增{type}欄位",
       "fieldProperties": "欄位屬性",
       "fieldName": "名稱",
-      "fieldType": "型別",
+      "fieldType": "類型",
       "fieldX": "X座標",
       "fieldY": "Y座標",
       "fieldWidth": "寬度",
@@ -1154,12 +1252,36 @@
       "multiline": "多行",
       "options": "選項（每行一個）",
       "deleteField": "刪除欄位",
-      "noFieldSelected": "選擇一個欄位以編輯其屬性，或使用工具欄新增新欄位。",
+      "noFieldSelected": "選擇一個欄位以編輯其屬性，或使用工具列新增新欄位。",
       "allFields": "所有欄位（{count}）",
       "noFieldsYet": "尚未新增欄位。點選PDF新增表單欄位。",
       "page": "第 {number} 頁",
       "createButton": "建立表單",
-      "successMessage": "表單建立成功！"
+      "successMessage": "表單建立成功！",
+      "createBlankPdfTitle": "建立空白PDF",
+      "pageSize": "頁面大小",
+      "pageCount": "頁數",
+      "blankPdfNote": "將建立空白PDF以新增表單欄位。",
+      "addBlankPage": "新增空白頁",
+      "addPageBefore": "在當前頁之前",
+      "addPageAfter": "在當前頁之後",
+      "addPageEnd": "在末尾",
+      "templateHint": "或選擇範本快速開始",
+      "templates": "範本",
+      "selectTemplate": "選擇...",
+      "template": {
+        "contact": "聯絡表單",
+        "registration": "註冊表單",
+        "feedback": "回饋表單",
+        "order": "訂單表單",
+        "consent": "同意書",
+        "invoice": "發票"
+      },
+      "fieldLabel": "標籤",
+      "fieldLabelPlaceholder": "輸入標籤文字...",
+      "labelPosition": "位置",
+      "labelAbove": "上方",
+      "labelLeft": "左側"
     },
     "removeBlankPages": {
       "uploadLabel": "上傳PDF檔案",

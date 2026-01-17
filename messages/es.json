@@ -34,7 +34,9 @@
       "insertAtBeginning": "Insert at Beginning",
       "insertAtEnd": "Insert at End",
       "rotateAllLeft": "Rotate All Left",
-      "rotateAllRight": "Rotate All Right"
+      "rotateAllRight": "Rotate All Right",
+      "confirm": "Confirmar",
+      "add": "Añadir"
     },
     "status": {
       "idle": "Listo",
@@ -144,11 +146,11 @@
       "general": {
         "whatIs": {
           "question": "What is Hello-PDF?",
-          "answer": "Hello-PDFis a free, privacy-focused PDF toolkit that runs entirely in your browser. It offers 67+ professional tools for editing, converting, merging, splitting, and securing PDF files without uploading them to any server."
+          "answer": "Hello-PDF is a free, privacy-focused PDF toolkit that runs entirely in your browser. It offers 67+ professional tools for editing, converting, merging, splitting, and securing PDF files without uploading them to any server."
         },
         "isFree": {
-          "question": "Is Hello-PDFreally free?",
-          "answer": "Yes, Hello-PDFis completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone."
+          "question": "Is Hello-PDF really free?",
+          "answer": "Yes, Hello-PDF is completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone."
         },
         "account": {
           "question": "Do I need to create an account?",
@@ -161,8 +163,8 @@
           "answer": "No, your files are never uploaded to any server. All PDF processing happens locally in your browser using JavaScript and WebAssembly. Your files never leave your device."
         },
         "safe": {
-          "question": "Is it safe to use Hello-PDFwith sensitive documents?",
-          "answer": "Yes, Hello-PDFis designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet."
+          "question": "Is it safe to use Hello-PDF with sensitive documents?",
+          "answer": "Yes, Hello-PDF is designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet."
         },
         "storage": {
           "question": "What happens to my files after processing?",
@@ -172,7 +174,7 @@
       "features": {
         "operations": {
           "question": "What PDF operations can I perform?",
-          "answer": "Hello-PDFoffers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more."
+          "answer": "Hello-PDF offers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more."
         },
         "merge": {
           "question": "Can I merge multiple PDF files?",
@@ -180,17 +182,17 @@
         },
         "images": {
           "question": "Can I convert images to PDF?",
-          "answer": "Yes, Hello-PDFsupports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once."
+          "answer": "Yes, Hello-PDF supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once."
         },
         "edit": {
           "question": "Can I edit text in a PDF?",
-          "answer": "Hello-PDFprovides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities."
+          "answer": "Hello-PDF provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities."
         }
       },
       "technical": {
         "browsers": {
           "question": "What browsers are supported?",
-          "answer": "Hello-PDFworks on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience."
+          "answer": "Hello-PDF works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience."
         },
         "sizeLimit": {
           "question": "Is there a file size limit?",
@@ -201,14 +203,14 @@
           "answer": "Since all processing happens in your browser, performance depends on your device's capabilities. Large files require more memory and processing power. For best results, close other browser tabs and applications."
         },
         "offline": {
-          "question": "Does Hello-PDFwork offline?",
-          "answer": "Currently, Hello-PDFrequires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection."
+          "question": "Does Hello-PDF work offline?",
+          "answer": "Currently, Hello-PDF requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection."
         }
       },
       "languages": {
         "supported": {
           "question": "What languages are supported?",
-          "answer": "Hello-PDFis available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support)."
+          "answer": "Hello-PDF is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support)."
         },
         "change": {
           "question": "How do I change the language?",
@@ -239,7 +241,7 @@
       },
       "fast": {
         "title": "Fast & Efficient",
-        "description": "Powered by modern web technologies, Hello-PDFdelivers lightning-fast PDF processing without the need for uploads or downloads."
+        "description": "Powered by modern web technologies, Hello-PDF delivers lightning-fast PDF processing without the need for uploads or downloads."
       },
       "accessible": {
         "title": "Accessible Everywhere",
@@ -247,7 +249,7 @@
       },
       "free": {
         "title": "Free Forever",
-        "description": "Hello-PDFis completely free to use with no hidden costs, no registration required, and no limits on usage."
+        "description": "Hello-PDF is completely free to use with no hidden costs, no registration required, and no limits on usage."
       },
       "openSource": {
         "title": "Open Source",
@@ -418,6 +420,73 @@
       "securePdf": "PDF Seguro"
     }
   },
+  "workflow": {
+    "title": "Editor de Flujo de Trabajo PDF",
+    "subtitle": "Cree pipelines de procesamiento PDF personalizados conectando herramientas",
+    "metaTitle": "Editor de Flujo de Trabajo PDF - Hello-PDF",
+    "metaDescription": "Cree pipelines de procesamiento PDF personalizados conectando herramientas visualmente. Construya, guarde y reutilice sus flujos de trabajo.",
+    "toolbox": "Caja de Herramientas",
+    "dragToAdd": "Arrastre herramientas para agregar al flujo de trabajo",
+    "searchTools": "Buscar herramientas...",
+    "toolsAvailable": "herramientas disponibles",
+    "templates": "Plantillas",
+    "saved": "Guardados",
+    "favorites": "Favoritos",
+    "allCategories": "Todos",
+    "common": "Comunes",
+    "conversion": "Conversión",
+    "optimization": "Optimización",
+    "security": "Seguridad",
+    "noSavedWorkflows": "No hay flujos de trabajo guardados",
+    "saveWorkflowHint": "Cree y guarde su primer flujo de trabajo",
+    "noFavorites": "No hay flujos de trabajo favoritos",
+    "favoriteHint": "Marque flujos de trabajo con estrella para agregarlos aquí",
+    "selectFiles": "Seleccionar Archivos",
+    "filesSelected": "archivos seleccionados",
+    "execute": "Ejecutar",
+    "running": "Ejecutando",
+    "complete": "Completado",
+    "error": "Error",
+    "issues": "problemas",
+    "stop": "Detener",
+    "nodes": "nodos",
+    "import": "Importar",
+    "clear": "Limpiar",
+    "saveWorkflow": "Guardar Flujo de Trabajo",
+    "workflowName": "Nombre del Flujo de Trabajo",
+    "enterName": "Ingrese nombre del flujo de trabajo...",
+    "description": "Descripción",
+    "optional": "opcional",
+    "enterDescription": "Ingrese descripción...",
+    "workflowComplete": "¡Flujo de trabajo completado exitosamente!",
+    "downloadResults": "Descargar Resultados",
+    "emptyTitle": "Cree Su Flujo de Trabajo",
+    "emptyDescription": "Arrastre herramientas desde la barra lateral para construir su pipeline de procesamiento PDF. Conecte nodos para definir el orden de procesamiento.",
+    "clickHint": "Haga clic en un nodo para configurar sus ajustes",
+    "undo": "Deshacer",
+    "redo": "Rehacer",
+    "noSettings": "No hay ajustes configurables para esta herramienta",
+    "reset": "Restablecer",
+    "cancel": "Cancelar",
+    "apply": "Aplicar",
+    "preview": "Vista Previa",
+    "showPreview": "Mostrar Vista Previa",
+    "noFilesForPreview": "Seleccione archivos para ver la vista previa",
+    "generatingPreview": "Generando vista previa...",
+    "noPreviewAvailable": "Vista previa no disponible",
+    "selectedFiles": "Archivos seleccionados",
+    "filesCount": "archivos",
+    "viewEditFiles": "Ver/Editar archivos",
+    "moveUp": "Subir",
+    "moveDown": "Bajar",
+    "removeFile": "Eliminar",
+    "clearAll": "Borrar todo",
+    "previewNotAvailable": "Vista previa no disponible para este tipo de archivo",
+    "confirm": "Confirmar",
+    "collapseSidebar": "Contraer barra lateral",
+    "expandSidebar": "Expandir barra lateral",
+    "library": "Biblioteca"
+  },
   "toolsPage": {
     "title": "Professional PDF Tools",
     "subtitle": "{count}+ free, secure, and easy-to-use tools for all your PDF needs.",
@@ -473,7 +542,10 @@
       "pagePreviewTitle": "Select Pages",
       "splitButton": "Split PDF",
       "resultsTitle": "Split Results",
-      "successMessage": "PDF split successfully! Click the download buttons to save your files."
+      "successMessage": "PDF split successfully! Click the download buttons to save your files.",
+      "splitModeLabel": "Split Mode",
+      "modeEveryNPages": "Every N Pages",
+      "pagesPerFile": "Pages per File"
     },
     "deletePages": {
       "uploadLabel": "Upload PDF File",
@@ -689,11 +761,26 @@
       "resetZoom": "Reset Zoom",
       "reset": "Reset",
       "fullscreen": "Fullscreen",
-      "exitFullscreen": "Exit Fullscreen"
+      "exitFullscreen": "Exit Fullscreen",
+      "marginTop": "Margin Top",
+      "marginBottom": "Margin Bottom",
+      "marginLeft": "Margin Left",
+      "marginRight": "Margin Right",
+      "optionsTitle": "Crop Options"
     },
     "organizePdf": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file to organize pages."
+      "uploadLabel": "Subir archivo PDF",
+      "uploadDescription": "Arrastra y suelta un archivo PDF para organizar páginas.",
+      "reorderTitle": "Arrastra para reordenar páginas",
+      "reverseOrder": "Invertir orden",
+      "resetOrder": "Restablecer orden",
+      "reorderHint": "Arrastra y suelta las páginas para reordenarlas. Usa las flechas para mover páginas arriba o abajo.",
+      "orderChanged": "El orden de las páginas ha cambiado. Haz clic en \"Aplicar cambios\" para guardar.",
+      "applyButton": "Aplicar cambios",
+      "successMessage": "¡Páginas PDF reorganizadas con éxito! Haz clic en el botón de descarga para guardar tu archivo.",
+      "duplicatePage": "Duplicar",
+      "deletePage": "Eliminar",
+      "cannotDeleteLast": "No se puede eliminar la última página"
     },
     "repairPdf": {
       "uploadLabel": "Upload PDF Files",
@@ -784,7 +871,15 @@
       "hint": "Click the rotation buttons on each page to rotate individually, or use the buttons above to rotate all pages.",
       "rotateAll": "Rotate All Pages",
       "rotateButton": "Rotate PDF",
-      "successMessage": "PDF pages rotated successfully! Click the download button to save your file."
+      "successMessage": "PDF pages rotated successfully! Click the download button to save your file.",
+      "angle": "Angle",
+      "rotateRight": "Rotate Right 90°",
+      "rotateLeft": "Rotate Left 90°",
+      "rotate180": "Rotate 180°",
+      "applyTo": "Apply to",
+      "allPages": "All Pages",
+      "oddPages": "Odd Pages",
+      "evenPages": "Even Pages"
     },
     "rotateCustom": {
       "title": "Custom Rotation",
@@ -1300,6 +1395,9 @@
       "optionsTitle": "Opciones de número de página",
       "positionTitle": "Posición",
       "formatTitle": "Formato",
+      "formatNumber": "Número (1, 2, 3)",
+      "formatRoman": "Romano (I, II, III)",
+      "formatPageOfTotal": "Página X de Y",
       "styleTitle": "Estilo",
       "style": "Estilo",
       "startNumber": "Número inicial",
@@ -1421,34 +1519,58 @@
       "successMessage": "Form saved successfully!"
     },
     "formCreator": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here.",
-      "toolbarTitle": "Toolbar",
-      "selectTool": "Select",
-      "textFieldTool": "Text Field",
-      "checkboxTool": "Checkbox",
-      "dropdownTool": "Dropdown",
-      "radioTool": "Radio",
-      "deleteTool": "Delete",
-      "pageNavigation": "Page {current} / {total}",
-      "selectHint": "Click a field to select, drag to move, use corner to resize",
-      "addFieldHint": "Click on the PDF to add a {type} field",
-      "fieldProperties": "Field Properties",
-      "fieldName": "Name",
-      "fieldType": "Type",
+      "uploadLabel": "Subir archivo PDF",
+      "uploadDescription": "Arrastra y suelta un archivo PDF aquí.",
+      "toolbarTitle": "Barra de herramientas",
+      "selectTool": "Seleccionar",
+      "textFieldTool": "Campo de texto",
+      "checkboxTool": "Casilla",
+      "dropdownTool": "Menú desplegable",
+      "radioTool": "Botón de opción",
+      "deleteTool": "Eliminar",
+      "pageNavigation": "Página {current} / {total}",
+      "selectHint": "Haz clic en un campo para seleccionar, arrastra para mover, usa la esquina para redimensionar",
+      "addFieldHint": "Haz clic en el PDF para agregar un campo {type}",
+      "fieldProperties": "Propiedades del campo",
+      "fieldName": "Nombre",
+      "fieldType": "Tipo",
       "fieldX": "X",
       "fieldY": "Y",
-      "fieldWidth": "Width",
-      "fieldHeight": "Height",
-      "multiline": "Multiline",
-      "options": "Options (one per line)",
-      "deleteField": "Delete Field",
-      "noFieldSelected": "Select a field to edit its properties, or use the toolbar to add new fields.",
-      "allFields": "All Fields ({count})",
-      "noFieldsYet": "No fields added yet. Click on the PDF to add form fields.",
-      "page": "Page {number}",
-      "createButton": "Create Form",
-      "successMessage": "Form created successfully!"
+      "fieldWidth": "Ancho",
+      "fieldHeight": "Alto",
+      "multiline": "Multilínea",
+      "options": "Opciones (una por línea)",
+      "deleteField": "Eliminar campo",
+      "noFieldSelected": "Selecciona un campo para editar sus propiedades, o usa la barra de herramientas para agregar nuevos campos.",
+      "allFields": "Todos los campos ({count})",
+      "noFieldsYet": "Aún no hay campos. Haz clic en el PDF para agregar campos de formulario.",
+      "page": "Página {number}",
+      "createButton": "Crear formulario",
+      "successMessage": "¡Formulario creado con éxito!",
+      "createBlankPdfTitle": "Crear PDF en blanco",
+      "pageSize": "Tamaño de página",
+      "pageCount": "Número de páginas",
+      "blankPdfNote": "Se creará un PDF en blanco para agregar campos de formulario.",
+      "addBlankPage": "Agregar página en blanco",
+      "addPageBefore": "Antes de la actual",
+      "addPageAfter": "Después de la actual",
+      "addPageEnd": "Al final",
+      "templateHint": "O elige una plantilla para comenzar rápidamente",
+      "templates": "Plantilla",
+      "selectTemplate": "Seleccionar...",
+      "template": {
+        "contact": "Formulario de contacto",
+        "registration": "Registro",
+        "feedback": "Comentarios",
+        "order": "Formulario de pedido",
+        "consent": "Formulario de consentimiento",
+        "invoice": "Factura"
+      },
+      "fieldLabel": "Etiqueta",
+      "fieldLabelPlaceholder": "Ingresa el texto de la etiqueta...",
+      "labelPosition": "Posición",
+      "labelAbove": "Arriba",
+      "labelLeft": "Izquierda"
     },
     "removeBlankPages": {
       "uploadLabel": "Upload PDF File",

@@ -5,6 +5,7 @@
     "navigation": {
       "home": "Home",
       "tools": "Tools",
+      "workflow": "Workflow",
       "about": "About",
       "faq": "FAQ",
       "privacy": "Privacy",
@@ -34,7 +35,9 @@
       "insertAtBeginning": "Insert at Beginning",
       "insertAtEnd": "Insert at End",
       "rotateAllLeft": "Rotate All Left",
-      "rotateAllRight": "Rotate All Right"
+      "rotateAllRight": "Rotate All Right",
+      "confirm": "Confirm",
+      "add": "Add"
     },
     "status": {
       "idle": "Ready",
@@ -157,11 +160,11 @@
       "general": {
         "whatIs": {
           "question": "What is Hello-PDF?",
-          "answer": "Hello-PDFis a free, privacy-focused PDF toolkit that runs entirely in your browser. It offers 80+ professional tools for editing, converting, merging, splitting, and securing PDF files without uploading them to any server."
+          "answer": "Hello-PDF is a free, privacy-focused PDF toolkit that runs entirely in your browser. It offers 80+ professional tools for editing, converting, merging, splitting, and securing PDF files without uploading them to any server."
         },
         "isFree": {
-          "question": "Is Hello-PDFreally free?",
-          "answer": "Yes, Hello-PDFis completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone."
+          "question": "Is Hello-PDF really free?",
+          "answer": "Yes, Hello-PDF is completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone."
         },
         "account": {
           "question": "Do I need to create an account?",
@@ -174,8 +177,8 @@
           "answer": "No, your files are never uploaded to any server. All PDF processing happens locally in your browser using JavaScript and WebAssembly. Your files never leave your device."
         },
         "safe": {
-          "question": "Is it safe to use Hello-PDFwith sensitive documents?",
-          "answer": "Yes, Hello-PDFis designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet."
+          "question": "Is it safe to use Hello-PDF with sensitive documents?",
+          "answer": "Yes, Hello-PDF is designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet."
         },
         "storage": {
           "question": "What happens to my files after processing?",
@@ -185,7 +188,7 @@
       "features": {
         "operations": {
           "question": "What PDF operations can I perform?",
-          "answer": "Hello-PDFoffers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more."
+          "answer": "Hello-PDF offers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more."
         },
         "merge": {
           "question": "Can I merge multiple PDF files?",
@@ -193,17 +196,17 @@
         },
         "images": {
           "question": "Can I convert images to PDF?",
-          "answer": "Yes, Hello-PDFsupports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once."
+          "answer": "Yes, Hello-PDF supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once."
         },
         "edit": {
           "question": "Can I edit text in a PDF?",
-          "answer": "Hello-PDFprovides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities."
+          "answer": "Hello-PDF provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities."
         }
       },
       "technical": {
         "browsers": {
           "question": "What browsers are supported?",
-          "answer": "Hello-PDFworks on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience."
+          "answer": "Hello-PDF works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience."
         },
         "sizeLimit": {
           "question": "Is there a file size limit?",
@@ -214,14 +217,14 @@
           "answer": "Since all processing happens in your browser, performance depends on your device's capabilities. Large files require more memory and processing power. For best results, close other browser tabs and applications."
         },
         "offline": {
-          "question": "Does Hello-PDFwork offline?",
-          "answer": "Currently, Hello-PDFrequires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection."
+          "question": "Does Hello-PDF work offline?",
+          "answer": "Currently, Hello-PDF requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection."
         }
       },
       "languages": {
         "supported": {
           "question": "What languages are supported?",
-          "answer": "Hello-PDFis available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support)."
+          "answer": "Hello-PDF is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support)."
         },
         "change": {
           "question": "How do I change the language?",
@@ -252,7 +255,7 @@
       },
       "fast": {
         "title": "Fast & Efficient",
-        "description": "Powered by modern web technologies, Hello-PDFdelivers lightning-fast PDF processing without the need for uploads or downloads."
+        "description": "Powered by modern web technologies, Hello-PDF delivers lightning-fast PDF processing without the need for uploads or downloads."
       },
       "accessible": {
         "title": "Accessible Everywhere",
@@ -260,7 +263,7 @@
       },
       "free": {
         "title": "Free Forever",
-        "description": "Hello-PDFis completely free to use with no hidden costs, no registration required, and no limits on usage."
+        "description": "Hello-PDF is completely free to use with no hidden costs, no registration required, and no limits on usage."
       },
       "openSource": {
         "title": "Open Source",
@@ -431,6 +434,172 @@
       "securePdf": "Secure PDF"
     }
   },
+  "workflow": {
+    "title": "PDF Workflow Builder",
+    "subtitle": "Create custom PDF processing pipelines by connecting tools",
+    "metaTitle": "PDF Workflow Builder - Hello-PDF",
+    "metaDescription": "Create custom PDF processing pipelines by visually connecting tools. Build, save, and reuse your workflows.",
+    "toolbox": "Tool Box",
+    "dragToAdd": "Drag tools to add to workflow",
+    "searchTools": "Search tools...",
+    "toolsAvailable": "tools available",
+    "templates": "Templates",
+    "saved": "Saved",
+    "favorites": "Favorites",
+    "allCategories": "All",
+    "common": "Common",
+    "conversion": "Conversion",
+    "optimization": "Optimization",
+    "security": "Security",
+    "noSavedWorkflows": "No saved workflows yet",
+    "saveWorkflowHint": "Create and save your first workflow",
+    "noFavorites": "No favorite workflows",
+    "favoriteHint": "Star workflows to add them here",
+    "selectFiles": "Select Files",
+    "filesSelected": "files selected",
+    "execute": "Execute",
+    "running": "Running",
+    "complete": "Complete",
+    "error": "Error",
+    "issues": "issues",
+    "stop": "Stop",
+    "nodes": "nodes",
+    "import": "Import",
+    "clear": "Clear",
+    "saveWorkflow": "Save Workflow",
+    "workflowName": "Workflow Name",
+    "enterName": "Enter workflow name...",
+    "description": "Description",
+    "optional": "optional",
+    "enterDescription": "Enter description...",
+    "workflowComplete": "Workflow completed successfully!",
+    "downloadResults": "Download Results",
+    "emptyTitle": "Create Your Workflow",
+    "emptyDescription": "Drag tools from the sidebar to build your PDF processing pipeline. Connect nodes to define the processing order.",
+    "clickHint": "Click a node to configure its settings",
+    "undo": "Undo",
+    "redo": "Redo",
+    "noSettings": "No configurable settings for this tool",
+    "reset": "Reset",
+    "cancel": "Cancel",
+    "apply": "Apply",
+    "preview": "Preview",
+    "showPreview": "Show Preview",
+    "noFilesForPreview": "Select files to see preview",
+    "generatingPreview": "Generating preview...",
+    "noPreviewAvailable": "No preview available",
+    "selectedFiles": "Selected Files",
+    "filesCount": "files",
+    "viewEditFiles": "View/Edit Files",
+    "moveUp": "Move Up",
+    "moveDown": "Move Down",
+    "removeFile": "Remove",
+    "clearAll": "Clear All",
+    "previewNotAvailable": "Preview not available for this file type",
+    "confirm": "Confirm",
+    "collapseSidebar": "Collapse sidebar",
+    "expandSidebar": "Expand sidebar",
+    "library": "Library",
+    "connections": "connections",
+    "workflowTemplates": {
+      "mergeCompress": {
+        "name": "Merge & Compress",
+        "description": "Merge multiple PDFs and compress the result for smaller file size"
+      },
+      "imagesToWatermarkedPdf": {
+        "name": "Images to Watermarked PDF",
+        "description": "Convert images to PDF and add a custom watermark"
+      },
+      "pdfToImages": {
+        "name": "PDF to Compressed Images",
+        "description": "Convert PDF pages to JPG images"
+      },
+      "securePdf": {
+        "name": "Create Secure PDF",
+        "description": "Merge PDFs, add watermark, and encrypt with password"
+      },
+      "documentPrep": {
+        "name": "Document Preparation",
+        "description": "Merge PDFs, add page numbers, and add header/footer"
+      },
+      "optimizeForWeb": {
+        "name": "Optimize for Web",
+        "description": "Compress and linearize PDF for fast web viewing"
+      },
+      "splitAndWatermark": {
+        "name": "Split & Watermark",
+        "description": "Split PDF into pages and add watermark to each"
+      },
+      "officeToMergedPdf": {
+        "name": "Office Files to Single PDF",
+        "description": "Convert Word documents to PDF and merge them"
+      },
+      "rotateAndNumber": {
+        "name": "Rotate & Add Page Numbers",
+        "description": "Rotate PDF pages and add page numbers"
+      },
+      "printReady": {
+        "name": "Print Ready Document",
+        "description": "Prepare PDF for printing with page numbers and flatten"
+      },
+      "grayscaleCompress": {
+        "name": "Grayscale & Compress",
+        "description": "Convert to grayscale and compress for smaller size"
+      },
+      "extractAndMerge": {
+        "name": "Extract & Merge Pages",
+        "description": "Extract specific pages and merge them into a new document"
+      },
+      "confidentialDocument": {
+        "name": "Confidential Document",
+        "description": "Add confidential watermark and encrypt PDF"
+      },
+      "pdfToEditableDoc": {
+        "name": "PDF to Editable Document",
+        "description": "Convert PDF to Word document for editing"
+      },
+      "fullOptimization": {
+        "name": "Full Document Optimization",
+        "description": "Compress, flatten, and linearize for optimal performance"
+      },
+      "pdfToPresentation": {
+        "name": "PDF to PowerPoint",
+        "description": "Convert PDF to editable PowerPoint presentation"
+      },
+      "unlockAndEdit": {
+        "name": "Unlock & Edit PDF",
+        "description": "Decrypt protected PDF for editing"
+      },
+      "ebookConvert": {
+        "name": "eBook to PDF",
+        "description": "Convert EPUB eBooks to PDF format"
+      },
+      "batchWatermark": {
+        "name": "Batch Watermark",
+        "description": "Add watermark to multiple PDF files at once"
+      },
+      "archivePrep": {
+        "name": "Archive Preparation",
+        "description": "Remove metadata, flatten, and compress for long-term storage"
+      },
+      "reportAssembly": {
+        "name": "Report Assembly",
+        "description": "Merge documents, add page numbers, header/footer and table of contents"
+      },
+      "invoiceProcessing": {
+        "name": "Invoice Processing",
+        "description": "Extract pages, add watermark, and compress for email"
+      },
+      "photoAlbum": {
+        "name": "Photo Album Creator",
+        "description": "Convert images to PDF with page numbers"
+      },
+      "cropAndResize": {
+        "name": "Crop & Resize Pages",
+        "description": "Crop PDF pages and adjust page dimensions"
+      }
+    }
+  },
   "tools": {
     "search": {
       "placeholder": "Search tools...",
@@ -541,7 +710,10 @@
       "pagePreviewTitle": "Select Pages",
       "splitButton": "Split PDF",
       "resultsTitle": "Split Results",
-      "successMessage": "PDF split successfully! Click the download buttons to save your files."
+      "successMessage": "PDF split successfully! Click the download buttons to save your files.",
+      "splitModeLabel": "Split Mode",
+      "modeEveryNPages": "Every N Pages",
+      "pagesPerFile": "Pages per File"
     },
     "deletePages": {
       "uploadLabel": "Upload PDF File",
@@ -551,6 +723,8 @@
       "warning": "Warning",
       "warningText": "Selected pages will be permanently removed from the PDF. At least one page must remain.",
       "deleteButton": "Delete Pages",
+      "pageRange": "Page Range",
+      "pageRangePlaceholder": "e.g., 1, 3-5, 8",
       "successMessage": "Pages deleted successfully! Click the download button to save your file."
     },
     "extractPages": {
@@ -558,6 +732,8 @@
       "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
       "selectTitle": "Select Pages to Extract",
       "selectHint": "Click pages to select them, or enter page numbers/ranges above.",
+      "pageRange": "Page Range",
+      "pageRangePlaceholder": "e.g., 1-5, 8, 10-12",
       "extractButton": "Extract Pages",
       "successMessage": "Pages extracted successfully! Click the download button to save your file."
     },
@@ -680,6 +856,7 @@
       "convertButton": "Convert to PDF",
       "optionsTitle": "PDF Options",
       "pageSize": "Page Size",
+      "fitToImage": "Fit to Image",
       "orientation": "Orientation",
       "orientationAuto": "Auto (match image)",
       "orientationPortrait": "Portrait",
@@ -757,11 +934,26 @@
       "resetZoom": "Reset Zoom",
       "reset": "Reset",
       "fullscreen": "Fullscreen",
-      "exitFullscreen": "Exit Fullscreen"
+      "exitFullscreen": "Exit Fullscreen",
+      "marginTop": "Margin Top",
+      "marginBottom": "Margin Bottom",
+      "marginLeft": "Margin Left",
+      "marginRight": "Margin Right",
+      "optionsTitle": "Crop Options"
     },
     "organizePdf": {
       "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file to organize pages."
+      "uploadDescription": "Drag and drop a PDF file to organize pages.",
+      "reorderTitle": "Drag to Reorder Pages",
+      "reverseOrder": "Reverse Order",
+      "resetOrder": "Reset Order",
+      "reorderHint": "Drag and drop pages to reorder them. Use the arrows to move pages up or down.",
+      "orderChanged": "Page order has been changed. Click \"Apply Changes\" to save.",
+      "applyButton": "Apply Changes",
+      "successMessage": "PDF pages reorganized successfully! Click the download button to save your file.",
+      "duplicatePage": "Duplicate",
+      "deletePage": "Delete",
+      "cannotDeleteLast": "Cannot delete the last page"
     },
     "repairPdf": {
       "uploadLabel": "Upload PDF Files",
@@ -806,7 +998,10 @@
       "downloadAll": "Download All",
       "downloadZip": "Download as ZIP",
       "page": "Page",
-      "successMessage": "Images extracted successfully! Click to download individual images or use \"Download as ZIP\"."
+      "successMessage": "Images extracted successfully! Click to download individual images or use \"Download as ZIP\".",
+      "optionsTitle": "Settings",
+      "format": "Output Format",
+      "minSize": "Minimum Size (px)"
     },
     "encryptPdf": {
       "uploadLabel": "Upload PDF File",
@@ -852,7 +1047,15 @@
       "hint": "Click the rotation buttons on each page to rotate individually, or use the buttons above to rotate all pages.",
       "rotateAll": "Rotate All Pages",
       "rotateButton": "Rotate PDF",
-      "successMessage": "PDF pages rotated successfully! Click the download button to save your file."
+      "successMessage": "PDF pages rotated successfully! Click the download button to save your file.",
+      "angle": "Angle",
+      "rotateRight": "Rotate Right 90°",
+      "rotateLeft": "Rotate Left 90°",
+      "rotate180": "Rotate 180°",
+      "applyTo": "Apply to",
+      "allPages": "All Pages",
+      "oddPages": "Odd Pages",
+      "evenPages": "Even Pages"
     },
     "rotateCustom": {
       "title": "Custom Rotation",
@@ -1299,6 +1502,9 @@
       "optionsTitle": "Page Number Options",
       "positionTitle": "Position",
       "formatTitle": "Format",
+      "formatNumber": "Number (1, 2, 3)",
+      "formatRoman": "Roman (I, II, III)",
+      "formatPageOfTotal": "Page X of Y",
       "styleTitle": "Style",
       "style": "Style",
       "startNumber": "Start Number",
@@ -1341,6 +1547,7 @@
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Watermark Options",
+      "type": "Type",
       "textWatermark": "Text Watermark",
       "imageWatermark": "Image Watermark",
       "watermarkText": "Watermark Text",
@@ -1350,6 +1557,7 @@
       "opacity": "Opacity",
       "angle": "Angle",
       "enterText": "Please enter text for the watermark.",
+      "textPlaceholder": "e.g., CONFIDENTIAL",
       "selectImage": "Please select an image file for the watermark.",
       "unsupportedImage": "Unsupported image format. Please use PNG or JPG.",
       "failed": "Failed to add watermark.",
@@ -1360,8 +1568,14 @@
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file here.",
       "headerTitle": "Header",
+      "headerText": "Header Text",
+      "headerTextPlaceholder": "Enter header text...",
       "footerTitle": "Footer",
+      "footerText": "Footer Text",
+      "footerTextPlaceholder": "Enter footer text...",
       "styleTitle": "Style",
+      "fontSize": "Font Size",
+      "fontColor": "Font Color",
       "preview": "Preview",
       "previewHint": "Enter header or footer text to see preview",
       "addButton": "Add Header & Footer",
@@ -1447,7 +1661,85 @@
       "noFieldsYet": "No fields added yet. Click on the PDF to add form fields.",
       "page": "Page {number}",
       "createButton": "Create Form",
-      "successMessage": "Form created successfully!"
+      "successMessage": "Form created successfully!",
+      "formOptions": "Form Options",
+      "flattenForm": "Flatten Form",
+      "flattenFormHint": "Make form fields non-editable (converts to static content)",
+      "projectManagement": "Project Management",
+      "saveProject": "Save Project",
+      "savedProjects": "Saved Projects",
+      "loadProject": "Load",
+      "deleteProject": "Delete",
+      "saveProjectTitle": "Save Project",
+      "projectName": "Project Name",
+      "projectNamePlaceholder": "Enter project name...",
+      "saveInfo": "{fields} form field(s) will be saved.",
+      "saveNote": "Projects are saved locally in your browser.",
+      "undo": "Undo (Ctrl+Z)",
+      "redo": "Redo (Ctrl+Y)",
+      "duplicate": "Duplicate (Ctrl+D)",
+      "align": "Align",
+      "alignLeft": "Align Left",
+      "alignCenter": "Align Center",
+      "alignRight": "Align Right",
+      "alignTop": "Align Top",
+      "alignMiddle": "Align Middle",
+      "alignBottom": "Align Bottom",
+      "defaultValue": "Default Value",
+      "defaultValuePlaceholder": "Enter default text...",
+      "defaultChecked": "Checked by default",
+      "defaultSelection": "Default Selection",
+      "noDefault": "-- None --",
+      "required": "Required field",
+      "shortcutsHint": "Shortcuts: Ctrl+Z (Undo) | Ctrl+Y (Redo) | Ctrl+D (Duplicate) | Ctrl+A (Select All) | Delete (Remove)",
+      "buttonTool": "Button",
+      "signatureTool": "Signature",
+      "dateTool": "Date",
+      "listboxTool": "List Box",
+      "buttonLabel": "Button Label",
+      "buttonLabelPlaceholder": "Submit",
+      "signatureLabel": "Signature Label",
+      "signatureLabelPlaceholder": "Sign here",
+      "dateFormat": "Date Format",
+      "defaultDate": "Default Date",
+      "multiSelect": "Allow multiple selection",
+      "basicTools": "Basic",
+      "advancedTools": "More",
+      "properties": "Properties",
+      "fieldsTab": "Fields",
+      "optionsTab": "Options",
+      "addField": "Add",
+      "clickToAdd": "Click on PDF to add field",
+      "pages": "pages",
+      "processingButton": "Processing...",
+      "cancelButton": "Cancel",
+      "saveButton": "Save",
+      "orCreateBlank": "Or",
+      "createBlankPdf": "Create Blank PDF",
+      "createBlankPdfTitle": "Create Blank PDF",
+      "pageSize": "Page Size",
+      "pageCount": "Number of Pages",
+      "blankPdfNote": "A blank PDF will be created for you to add form fields.",
+      "addBlankPage": "Add Blank Page",
+      "addPageBefore": "Before current",
+      "addPageAfter": "After current",
+      "addPageEnd": "At end",
+      "templateHint": "Or choose a template to get started quickly",
+      "templates": "Template",
+      "selectTemplate": "Select...",
+      "template": {
+        "contact": "Contact Form",
+        "registration": "Registration",
+        "feedback": "Feedback",
+        "order": "Order Form",
+        "consent": "Consent Form",
+        "invoice": "Invoice"
+      },
+      "fieldLabel": "Label",
+      "fieldLabelPlaceholder": "Enter label text...",
+      "labelPosition": "Position",
+      "labelAbove": "Above",
+      "labelLeft": "Left"
     },
     "removeBlankPages": {
       "uploadLabel": "Upload PDF File",
@@ -1464,6 +1756,7 @@
       "successMessage": "Table of contents generated successfully!",
       "options": "TOC Options",
       "tocTitle": "TOC Title",
+      "tocTitlePlaceholder": "Enter TOC title...",
       "fontSize": "Font Size",
       "fontFamily": "Font Family",
       "addBookmark": "Add TOC entry to bookmarks",
