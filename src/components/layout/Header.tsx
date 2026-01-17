@@ -341,7 +341,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
         {isMobileMenuOpen && (
           <nav
             id="mobile-menu"
-            className="md:hidden py-4 border-t border-[hsl(var(--color-border))]"
+            className="md:hidden py-4 border-t border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] backdrop-blur-xl shadow-lg"
             role="navigation"
             aria-label="Mobile navigation"
           >

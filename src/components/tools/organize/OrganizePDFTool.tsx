@@ -30,7 +30,7 @@ interface PagePreview {
 export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<File | null>(null);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -39,16 +39,16 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Page previews and order
   const [pagePreviews, setPagePreviews] = useState<PagePreview[]>([]);
   const [pageOrder, setPageOrder] = useState<number[]>([]);
   const [isLoadingPreviews, setIsLoadingPreviews] = useState(false);
-  
+
   // Drag state
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
-  
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -58,52 +58,52 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
   const loadPdfPreviews = useCallback(async (pdfFile: File) => {
     setIsLoadingPreviews(true);
     setPagePreviews([]);
-    
+
     try {
       const pdfjsLib = await import('pdfjs-dist');
       configurePdfjsWorker(pdfjsLib);
-      
+
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
+
       setTotalPages(pdf.numPages);
-      
+
       // Initialize page order
       const initialOrder = Array.from({ length: pdf.numPages }, (_, i) => i + 1);
       setPageOrder(initialOrder);
-      
+
       // Generate thumbnails for each page
       const previews: PagePreview[] = [];
       const maxPreviewPages = Math.min(pdf.numPages, 100);
-      
+
       for (let i = 1; i <= maxPreviewPages; i++) {
         const page = await pdf.getPage(i);
-        const viewport = page.getViewport({ scale: 0.15 });
-        
+        const viewport = page.getViewport({ scale: 0.3 });
+
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
-        
+
         if (context) {
           canvas.height = viewport.height;
           canvas.width = viewport.width;
-          
+
           await page.render({
             canvasContext: context,
             viewport: viewport,
           }).promise;
-          
+
           previews.push({
             pageNumber: i,
-            thumbnail: canvas.toDataURL('image/jpeg', 0.6),
+            thumbnail: canvas.toDataURL('image/jpeg', 0.85),
           });
         }
       }
-      
+
       // Add remaining pages without thumbnails
       for (let i = maxPreviewPages + 1; i <= pdf.numPages; i++) {
         previews.push({ pageNumber: i });
       }
-      
+
       setPagePreviews(previews);
     } catch (err) {
       console.error('Failed to load PDF previews:', err);
@@ -208,6 +208,32 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
     setPageOrder(prev => [...prev].reverse());
     setResult(null);
   }, []);
+
+  /**
+   * Duplicate a page at the given index
+   */
+  const handleDuplicatePage = useCallback((index: number) => {
+    setPageOrder(prev => {
+      const newOrder = [...prev];
+      const pageToDuplicate = newOrder[index];
+      newOrder.splice(index + 1, 0, pageToDuplicate);
+      return newOrder;
+    });
+    setResult(null);
+  }, []);
+
+  /**
+   * Delete a page at the given index
+   */
+  const handleDeletePage = useCallback((index: number) => {
+    if (pageOrder.length <= 1) return; // Prevent deleting the last page
+    setPageOrder(prev => {
+      const newOrder = [...prev];
+      newOrder.splice(index, 1);
+      return newOrder;
+    });
+    setResult(null);
+  }, [pageOrder.length]);
 
   /**
    * Check if order has changed
@@ -315,7 +341,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -360,18 +386,18 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
               {tTools('organizePdf.reorderTitle') || 'Drag to Reorder Pages'}
             </h3>
             <div className="flex gap-2">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={handleReverseOrder} 
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleReverseOrder}
                 disabled={isProcessing}
               >
                 {tTools('organizePdf.reverseOrder') || 'Reverse Order'}
               </Button>
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={handleResetOrder} 
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleResetOrder}
                 disabled={isProcessing || !hasOrderChanged()}
               >
                 {tTools('organizePdf.resetOrder') || 'Reset Order'}
@@ -424,12 +450,12 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                         </span>
                       </div>
                     )}
-                    
+
                     {/* Page number badge */}
                     <div className="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-xs py-1 text-center font-medium">
                       {pageNum}
                     </div>
-                    
+
                     {/* Position indicator */}
                     <div className="absolute top-1 left-1 w-5 h-5 bg-[hsl(var(--color-primary))] rounded-full flex items-center justify-center text-[10px] font-bold text-white">
                       {index + 1}
@@ -457,6 +483,38 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                       >
                         <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                           <path d="M6 9l6 6 6-6" />
+                        </svg>
+                      </button>
+                    </div>
+
+                    {/* Duplicate and Delete buttons */}
+                    <div className="absolute bottom-6 right-1 flex gap-0.5">
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); handleDuplicatePage(index); }}
+                        disabled={isProcessing}
+                        className="w-5 h-5 bg-blue-500/90 rounded flex items-center justify-center hover:bg-blue-600 text-white disabled:opacity-30 disabled:cursor-not-allowed"
+                        aria-label="Duplicate page"
+                        title="Duplicate"
+                      >
+                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); handleDeletePage(index); }}
+                        disabled={pageOrder.length <= 1 || isProcessing}
+                        className="w-5 h-5 bg-red-500/90 rounded flex items-center justify-center hover:bg-red-600 text-white disabled:opacity-30 disabled:cursor-not-allowed"
+                        aria-label="Delete page"
+                        title="Delete"
+                      >
+                        <svg className="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <polyline points="3,6 5,6 21,6" />
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                          <line x1="10" y1="11" x2="10" y2="17" />
+                          <line x1="14" y1="11" x2="14" y2="17" />
                         </svg>
                       </button>
                     </div>
@@ -497,8 +555,8 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
             disabled={!canOrganize}
             loading={isProcessing}
           >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
+            {isProcessing
+              ? (t('status.processing') || 'Processing...')
               : (tTools('organizePdf.applyButton') || 'Apply Changes')
             }
           </Button>
@@ -517,7 +575,7 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
           role="status"
         >

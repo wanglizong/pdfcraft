@@ -98,9 +98,13 @@ export class PDFToZipProcessor implements PDFProcessor {
       this.progress = 100;
       onProgress?.(100, 'Complete');
 
+      // Determine output filename
+      const outputFilename = zipOptions.outputFilename || 'pdfs.zip';
+
       return {
         success: true,
         result: zipBlob,
+        filename: outputFilename,
         metadata: {
           fileCount: files.length,
           totalSize: zipBlob.size,

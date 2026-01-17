@@ -117,13 +117,13 @@ export default function ToolsPageClient({ locale, localizedToolContent }: ToolsP
               {/* Search Bar */}
               <div className="relative max-w-2xl mx-auto">
                 <div className="relative group">
-                  <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--color-muted-foreground))] group-focus-within:text-[hsl(var(--color-primary))] transition-colors" aria-hidden="true" />
+                  <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-[hsl(var(--color-primary))] group-focus-within:text-[hsl(var(--color-primary))] transition-colors z-10" aria-hidden="true" />
                   <input
                     type="search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder={t('tools.search.placeholder')}
-                    className="w-full pl-14 pr-12 py-4 text-lg rounded-2xl border border-[hsl(var(--color-border))] bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm shadow-sm focus:outline-none focus:ring-4 focus:ring-[hsl(var(--color-primary)/0.1)] focus:border-[hsl(var(--color-primary))] transition-all"
+                    className="w-full pl-14 pr-12 py-4 text-lg rounded-2xl border border-[hsl(var(--color-border))] bg-[hsl(var(--color-card))] dark:bg-[hsl(var(--color-card))] text-[hsl(var(--color-foreground))] placeholder:text-[hsl(var(--color-muted-foreground))] shadow-md focus:outline-none focus:ring-4 focus:ring-[hsl(var(--color-primary)/0.15)] focus:border-[hsl(var(--color-primary))] transition-all"
                     aria-label="Search tools"
                   />
                   {searchQuery && (
