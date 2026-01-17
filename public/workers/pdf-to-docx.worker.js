@@ -61,7 +61,7 @@ async function init() {
   await install(basePath + 'typing_extensions-4.12.2-py3-none-any.whl');
   // Packaging is missing locally but required by fonttools. Try fetching from CDN.
   try {
-    await install('https://cdn.jsdelivr.net/pyodide/v0.26.1/full/packaging-24.1-py3-none-any.whl');
+    await install('./pymupdf-wasm/packaging-24.1-py3-none-any.whl');
   } catch (e) {
     console.warn("Failed to load packaging from CDN, fonttools might fail:", e);
   }
