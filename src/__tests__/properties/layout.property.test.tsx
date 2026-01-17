@@ -22,7 +22,7 @@ vi.mock('next-intl', () => ({
       'navigation.contact': 'Contact',
       'buttons.selectLanguage': 'Select Language',
       'buttons.close': 'Close',
-      'footer.copyright': '© {year} Hello-PDF. All rights reserved.',
+      'footer.copyright': '© {year} PDFCraft. All rights reserved.',
       'footer.privacyBadge': '100% Private - Files never leave your device',
     };
     return translations[key] || key;
