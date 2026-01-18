@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '@/app/globals.css';
 
 export const metadata: Metadata = {
-  title: 'hello-PDF - Professional PDF Tools',
+  title: 'Hello PDF - Professional PDF Tools',
   description: 'Free online PDF tools for merging, splitting, compressing, and converting PDF files. All processing happens in your browser for maximum privacy.',
   icons: {
     icon: '/favicon.svg',
