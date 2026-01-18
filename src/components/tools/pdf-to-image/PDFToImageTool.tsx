@@ -7,7 +7,7 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { pdfToImages, type ImageFormat, type PDFToImageOptions } from '@/lib/pdf/processors/pdf-to-image';
+import { pdfToImages, type ImageFormat, type PDFToImageOptions, type PageLayoutPreset, type PageLayoutOptions } from '@/lib/pdf/processors/pdf-to-image';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
 
@@ -34,7 +34,7 @@ export interface PDFToImageToolProps {
 export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
-  
+
   // State
   const [file, setFile] = useState<UploadedFile | null>(null);
   const [status, setStatus] = useState<ProcessingStatus>('idle');
@@ -42,13 +42,19 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | Blob[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Options state
   const [format, setFormat] = useState<ImageFormat>(outputFormat || 'png');
   const [quality, setQuality] = useState(0.92);
   const [scale, setScale] = useState(2);
   const [pageRange, setPageRange] = useState('');
-  
+
+  // Page layout state
+  const [layoutPreset, setLayoutPreset] = useState<PageLayoutPreset>('1x1');
+  const [customColumns, setCustomColumns] = useState(2);
+  const [customRows, setCustomRows] = useState(2);
+  const [skipFirstPage, setSkipFirstPage] = useState(false);
+
   // Ref for cancellation
   const cancelledRef = useRef(false);
 
@@ -92,10 +98,10 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
    */
   const parsePageRange = (rangeStr: string): number[] => {
     if (!rangeStr.trim()) return [];
-    
+
     const pages: number[] = [];
     const parts = rangeStr.split(',');
-    
+
     for (const part of parts) {
       const trimmed = part.trim();
       if (trimmed.includes('-')) {
@@ -112,7 +118,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
         }
       }
     }
-    
+
     return pages.sort((a, b) => a - b);
   };
 
@@ -131,11 +137,32 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
     setError(null);
     setResult(null);
 
+    // Calculate actual columns and rows from preset
+    const getGridDimensions = (): [number, number] => {
+      switch (layoutPreset) {
+        case '1x1': return [1, 1];
+        case '2x1': return [2, 1];
+        case '1x2': return [1, 2];
+        case '2x2': return [2, 2];
+        case '3x3': return [3, 3];
+        case 'custom': return [customColumns, customRows];
+        default: return [1, 1];
+      }
+    };
+
+    const [cols, rows] = getGridDimensions();
+
     const options: Partial<PDFToImageOptions> = {
       format,
       quality,
       scale,
       pages: parsePageRange(pageRange),
+      pageLayout: {
+        preset: layoutPreset,
+        columns: cols,
+        rows: rows,
+        skipFirstPage,
+      },
     };
 
     try {
@@ -168,7 +195,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
         setStatus('error');
       }
     }
-  }, [file, format, quality, scale, pageRange]);
+  }, [file, format, quality, scale, pageRange, layoutPreset, customColumns, customRows, skipFirstPage]);
 
   /**
    * Handle cancel operation
@@ -184,15 +211,15 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
    */
   const handleDownloadZip = useCallback(async () => {
     if (!result || !Array.isArray(result) || !file) return;
-    
+
     const zip = new JSZip();
     const baseName = file.file.name.replace(/\.pdf$/i, '');
     const ext = format === 'jpeg' ? 'jpg' : format;
-    
+
     result.forEach((blob, index) => {
       zip.file(`${baseName}_page_${index + 1}.${ext}`, blob);
     });
-    
+
     const zipBlob = await zip.generateAsync({ type: 'blob' });
     const url = URL.createObjectURL(zipBlob);
     const a = document.createElement('a');
@@ -231,7 +258,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
       {/* Error Message */}
       {error && (
-        <div 
+        <div
           className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
           role="alert"
         >
@@ -274,7 +301,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
           <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
             {tTools('pdfToImage.optionsTitle') || 'Conversion Options'}
           </h3>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Output Format */}
             {!outputFormat && (
@@ -352,6 +379,173 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
               </p>
             </div>
           </div>
+
+          {/* Page Layout Section */}
+          <div className="mt-4 pt-4 border-t border-[hsl(var(--color-border))]">
+            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-3">
+              {tTools('pdfToImage.layoutTitle') || 'Page Layout'}
+            </label>
+
+            {/* Layout Preset Selection */}
+            <div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
+              {([
+                { value: '1x1', label: '1×1', cols: 1, rows: 1 },
+                { value: '2x1', label: '2×1', cols: 2, rows: 1 },
+                { value: '1x2', label: '1×2', cols: 1, rows: 2 },
+                { value: '2x2', label: '2×2', cols: 2, rows: 2 },
+                { value: '3x3', label: '3×3', cols: 3, rows: 3 },
+                { value: 'custom', label: tTools('pdfToImage.customLayout') || 'Custom', cols: customColumns, rows: customRows },
+              ] as const).map((preset) => (
+                <button
+                  key={preset.value}
+                  type="button"
+                  onClick={() => setLayoutPreset(preset.value)}
+                  disabled={isProcessing}
+                  className={`
+                    p-3 rounded-lg border-2 transition-all flex flex-col items-center gap-1.5
+                    ${layoutPreset === preset.value
+                      ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.05)]'
+                      : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
+                    }
+                    disabled:opacity-50 disabled:cursor-not-allowed
+                  `}
+                >
+                  {/* Mini grid preview */}
+                  <div
+                    className="grid gap-0.5"
+                    style={{
+                      gridTemplateColumns: `repeat(${preset.cols}, 1fr)`,
+                      gridTemplateRows: `repeat(${preset.rows}, 1fr)`,
+                      width: '32px',
+                      height: '24px',
+                    }}
+                  >
+                    {Array.from({ length: preset.cols * preset.rows }).map((_, idx) => (
+                      <div
+                        key={idx}
+                        className={`rounded-sm ${layoutPreset === preset.value
+                          ? 'bg-[hsl(var(--color-primary))]'
+                          : 'bg-[hsl(var(--color-muted-foreground)/0.3)]'
+                          }`}
+                      />
+                    ))}
+                  </div>
+                  <span className={`text-xs font-medium ${layoutPreset === preset.value
+                    ? 'text-[hsl(var(--color-primary))]'
+                    : 'text-[hsl(var(--color-muted-foreground))]'
+                    }`}>
+                    {preset.label}
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            {/* Custom Layout Inputs */}
+            {layoutPreset === 'custom' && (
+              <div className="flex gap-4 mb-4 p-3 rounded-lg bg-[hsl(var(--color-muted)/0.3)]">
+                <div className="flex-1">
+                  <label className="block text-xs font-medium text-[hsl(var(--color-foreground))] mb-1">
+                    {tTools('pdfToImage.columns') || 'Columns'}
+                  </label>
+                  <input
+                    type="number"
+                    min={1}
+                    max={10}
+                    value={customColumns}
+                    onChange={(e) => setCustomColumns(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
+                    disabled={isProcessing}
+                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-xs font-medium text-[hsl(var(--color-foreground))] mb-1">
+                    {tTools('pdfToImage.rows') || 'Rows'}
+                  </label>
+                  <input
+                    type="number"
+                    min={1}
+                    max={10}
+                    value={customRows}
+                    onChange={(e) => setCustomRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
+                    disabled={isProcessing}
+                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Skip First Page Option - only show when layout is not 1x1 */}
+            {layoutPreset !== '1x1' && (
+              <label className="flex items-center gap-3 cursor-pointer mb-4">
+                <input
+                  type="checkbox"
+                  checked={skipFirstPage}
+                  onChange={(e) => setSkipFirstPage(e.target.checked)}
+                  disabled={isProcessing}
+                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                />
+                <span className="text-sm text-[hsl(var(--color-foreground))]">
+                  {tTools('pdfToImage.skipFirstPage') || 'Without first/cover page'}
+                </span>
+              </label>
+            )}
+
+            {/* Layout Preview */}
+            {layoutPreset !== '1x1' && (
+              <div className="p-4 rounded-xl bg-gradient-to-br from-[hsl(var(--color-muted))] to-[hsl(var(--color-background))] border border-[hsl(var(--color-border))]">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-2 h-2 rounded-full bg-[hsl(var(--color-primary))]"></div>
+                  <h4 className="text-sm font-semibold text-[hsl(var(--color-foreground))]">
+                    {tTools('pdfToImage.layoutPreview') || 'Layout Preview'}
+                  </h4>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 items-center">
+                  {/* Grid visualization */}
+                  <div
+                    className="border-2 border-[hsl(var(--color-primary)/0.3)] rounded-lg p-3 bg-white"
+                    style={{ width: '140px', height: '100px' }}
+                  >
+                    <div
+                      className="w-full h-full grid gap-1"
+                      style={{
+                        gridTemplateColumns: `repeat(${layoutPreset === 'custom' ? customColumns : parseInt(layoutPreset.split('x')[0])}, 1fr)`,
+                        gridTemplateRows: `repeat(${layoutPreset === 'custom' ? customRows : parseInt(layoutPreset.split('x')[1])}, 1fr)`,
+                      }}
+                    >
+                      {Array.from({ length: (layoutPreset === 'custom' ? customColumns * customRows : parseInt(layoutPreset.split('x')[0]) * parseInt(layoutPreset.split('x')[1])) }).map((_, idx) => (
+                        <div
+                          key={idx}
+                          className="bg-gradient-to-br from-[hsl(var(--color-primary)/0.15)] to-[hsl(var(--color-primary)/0.05)] border border-[hsl(var(--color-primary)/0.2)] rounded flex items-center justify-center text-xs font-bold text-[hsl(var(--color-primary))]"
+                        >
+                          {idx + 1}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Info */}
+                  <div className="flex-1 text-sm text-[hsl(var(--color-muted-foreground))]">
+                    <p>
+                      <span className="font-medium text-[hsl(var(--color-foreground))]">
+                        {layoutPreset === 'custom' ? `${customColumns}×${customRows}` : layoutPreset.replace('x', '×')}
+                      </span>
+                      {' '}{tTools('pdfToImage.pagesPerImage') || 'pages per image'}
+                    </p>
+                    {skipFirstPage && (
+                      <p className="mt-1 text-xs">
+                        ℹ️ {tTools('pdfToImage.skipFirstPageHint') || 'The first page (cover) will be rendered as a separate image'}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-3">
+              {tTools('pdfToImage.layoutHint') || 'Combine multiple PDF pages into a single image with the selected grid layout.'}
+            </p>
+          </div>
         </Card>
       )}
 
@@ -375,8 +569,8 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
           disabled={!canConvert}
           loading={isProcessing}
         >
-          {isProcessing 
-            ? (t('status.processing') || 'Processing...') 
+          {isProcessing
+            ? (t('status.processing') || 'Processing...')
             : (tTools('pdfToImage.convertButton') || 'Convert to Images')
           }
         </Button>
@@ -436,7 +630,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
 
       {/* Success Message */}
       {status === 'complete' && result && (
-        <div 
+        <div
           className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
           role="status"
         >
