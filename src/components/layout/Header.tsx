@@ -157,6 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
   const navItems = [
     { href: `/${locale}`, label: t('navigation.home') },
     { href: `/${locale}/tools`, label: t('navigation.tools') },
+    { href: `/${locale}/workflow`, label: t('navigation.workflow') || 'Workflow' },
     { href: `/${locale}/about`, label: t('navigation.about') },
     { href: `/${locale}/faq`, label: t('navigation.faq') },
   ];
@@ -222,8 +223,8 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
             {showSearch && (
               <div className="relative" ref={searchContainerRef}>
                 {isSearchOpen ? (
-                  <div className="absolute right-0 top-1/2 -translate-y-1/2 z-50 origin-right animate-in fade-in slide-in-from-right-4 duration-200">
-                    <div className="relative w-72 md:w-96">
+                  <div className="fixed md:absolute left-4 right-4 md:left-auto md:right-0 top-[22px] md:top-1/2 md:-translate-y-1/2 z-50 md:origin-right animate-in fade-in slide-in-from-right-4 duration-200">
+                    <div className="relative w-full md:w-96">
                       <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[hsl(var(--color-muted-foreground))]" />
                       <input
                         ref={searchInputRef}
@@ -248,7 +249,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
 
                       {/* Search Results Dropdown */}
                       {searchResults.length > 0 && (
-                        <div className="absolute top-full left-0 right-0 mt-2 bg-[hsl(var(--color-background))] border border-[hsl(var(--color-border))] rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+                        <div className="absolute top-full left-0 right-0 mt-2 bg-[hsl(var(--color-background))] border border-[hsl(var(--color-border))] rounded-xl shadow-xl overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200 max-h-[60vh] overflow-y-auto">
                           <ul className="py-2" role="listbox">
                             {searchResults.map((result, index) => {
                               const localized = localizedTools[result.tool.id];
@@ -314,6 +315,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
               }}
             />
 
+          
 
             {/* Language Selector placeholder */}
             <div id="language-selector-slot" />

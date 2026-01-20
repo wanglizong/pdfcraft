@@ -1,4 +1,39 @@
 {
+  "metadata": {
+    "home": {
+      "title": "Hello PDF - Professionelle PDF-Werkzeuge",
+      "description": "Kostenlos, privat und browserbasiert. PDF-Dateien online zusammenführen und bearbeiten, ohne sie auf Server hochzuladen."
+    },
+    "tools": {
+      "title": "Alle PDF-Werkzeuge",
+      "description": "Durchsuchen Sie 67+ professionelle PDF-Werkzeuge. PDF-Dateien kostenlos zusammenführen, teilen, komprimieren, konvertieren, bearbeiten und schützen."
+    },
+    "about": {
+      "title": "Über uns",
+      "description": "Erfahren Sie mehr über Hello PDF - Ihr kostenloses, privates und leistungsstarkes PDF-Toolkit. Alle Verarbeitung erfolgt in Ihrem Browser."
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "description": "Finden Sie Antworten auf häufige Fragen zu Hello PDF. Erfahren Sie, wie Sie unsere PDF-Werkzeuge effektiv nutzen können."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "description": "Hello PDF Datenschutzrichtlinie. Ihre Dateien verlassen Ihr Gerät nie - alle Verarbeitung erfolgt lokal in Ihrem Browser."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Kontaktieren Sie das Hello PDF-Team. Wir freuen uns auf Ihre Nachricht."
+    },
+    "keywords": {
+      "pdfTools": "PDF-Werkzeuge",
+      "mergePdf": "PDF zusammenführen",
+      "splitPdf": "PDF teilen",
+      "compressPdf": "PDF komprimieren",
+      "convertPdf": "PDF konvertieren",
+      "freePdfTools": "kostenlose PDF-Werkzeuge",
+      "onlinePdfEditor": "Online-PDF-Editor"
+    }
+  },
   "common": {
     "brand": "Hello PDF",
     "tagline": "Professionelle PDF-Werkzeuge - Kostenlos & Privat",
@@ -511,6 +546,14 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "favorite": {
+      "add": "Zu Favoriten hinzufügen",
+      "remove": "Aus Favoriten entfernen",
+      "saved": "Gespeichert",
+      "title": "Favoriten-Werkzeuge",
+      "empty": "Noch keine Favoriten-Werkzeuge",
+      "hint": "Klicken Sie auf das Stern-Symbol bei einem Werkzeug, um es hier für schnellen Zugriff zu speichern."
+    },
     "quality": {
       "title": "Ausgabequalität",
       "low": "Niedrig",
@@ -584,20 +627,33 @@
       "successMessage": "PDF posterized successfully! Click the download button to save your file."
     },
     "pdfMultiTool": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "organize": "Organize",
-      "delete": "Delete",
-      "rotate": "Rotate",
-      "duplicate": "Duplicate",
-      "addBlank": "Add Blank",
-      "organizeHint": "Drag and drop pages to reorder them.",
-      "deleteHint": "Click pages to mark them for deletion.",
-      "rotateHint": "Click rotation buttons on pages, or rotate all:",
-      "duplicateHint": "Click the duplicate button on pages to copy them.",
-      "reset": "Reset to Original",
-      "processButton": "Apply Changes",
-      "successMessage": "PDF processed successfully! Click the download button to save your file."
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF-Dateien hierher ziehen oder klicken zum Durchsuchen. Mehrere Dateien können hochgeladen werden.",
+      "addMoreFiles": "Weitere PDF-Dateien hinzufügen",
+      "organize": "Organisieren",
+      "delete": "Löschen",
+      "rotate": "Drehen",
+      "duplicate": "Duplizieren",
+      "addBlank": "Leerseite hinzufügen",
+      "organizeHint": "Seiten per Drag & Drop neu anordnen.",
+      "deleteHint": "Klicken Sie auf Seiten, um sie zum Löschen zu markieren.",
+      "rotateHint": "Klicken Sie auf die Drehschaltflächen auf Seiten, oder drehen Sie alle:",
+      "duplicateHint": "Klicken Sie auf die Duplizieren-Schaltfläche, um Seiten zu kopieren.",
+      "reset": "Zurücksetzen",
+      "undo": "Rückgängig",
+      "redo": "Wiederholen",
+      "selectAll": "Alle auswählen",
+      "deselectAll": "Auswahl aufheben",
+      "rotateLeft": "Links drehen",
+      "rotateRight": "Rechts drehen",
+      "exportPDF": "PDF exportieren",
+      "downloadSelected": "Auswahl herunterladen",
+      "clearAll": "Alle löschen",
+      "addBlankPageTitle": "Leerseiten hinzufügen",
+      "numberOfPages": "Anzahl der Seiten",
+      "insertPosition": "Einfügeposition",
+      "processButton": "Änderungen übernehmen",
+      "successMessage": "PDF erfolgreich verarbeitet! Klicken Sie auf den Download-Button, um die Datei zu speichern."
     },
     "viewMetadata": {
       "uploadLabel": "Upload PDF File",
@@ -1662,6 +1718,93 @@
       "uploadDescription": "FB2-E-Book-Dateien hierher ziehen oder klicken zum Auswählen. Unterstützt mehrere Dateien.",
       "convertButton": "In PDF konvertieren",
       "successMessage": "Ihre FB2-Datei(en) wurde(n) erfolgreich in PDF konvertiert!"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "DJVU-Datei hochladen",
+      "uploadDescription": "DJVU-Datei hierher ziehen oder klicken.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "dpiLabel": "Ausgabe-DPI",
+      "dpiHint": "Höhere DPI = größere Datei, bessere Qualität",
+      "qualityLabel": "Bildqualität",
+      "qualityHint": "JPEG-Komprimierungsqualität für Seiten",
+      "convertButton": "In PDF konvertieren",
+      "successTitle": "Konvertierung erfolgreich!",
+      "successMessage": "Ihre DJVU-Datei wurde erfolgreich in PDF konvertiert!"
+    },
+    "deskewPdf": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF-Dateien zum Begradigen hierher ziehen.",
+      "optionsTitle": "Begradigen-Optionen",
+      "processButton": "PDF begradigen",
+      "successMessage": "PDF erfolgreich begradigt!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "PDF für Broschüren-Layout hochladen.",
+      "optionsTitle": "Broschüren-Optionen",
+      "createButton": "Broschüre erstellen",
+      "successMessage": "Broschüre erfolgreich erstellt!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF zum Rastern hochladen.",
+      "optionsTitle": "Raster-Optionen",
+      "rasterizeButton": "PDF rastern",
+      "successMessage": "PDF erfolgreich gerastert!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Markdown-Datei hochladen",
+      "uploadDescription": "Markdown-Datei für PDF-Konvertierung hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "In PDF konvertieren",
+      "successMessage": "Markdown erfolgreich in PDF konvertiert!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "E-Mail-Datei hochladen",
+      "uploadDescription": "EML-Datei für PDF-Konvertierung hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "In PDF konvertieren",
+      "successMessage": "E-Mail erfolgreich in PDF konvertiert!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "CBZ-Datei hochladen",
+      "uploadDescription": "CBZ-Comic-Archiv hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "In PDF konvertieren",
+      "successMessage": "CBZ erfolgreich in PDF konvertiert!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF für PDF/A-Konvertierung hochladen.",
+      "optionsTitle": "PDF/A-Optionen",
+      "convertButton": "In PDF/A konvertieren",
+      "successMessage": "PDF/A erfolgreich erstellt!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "PDF-Dateien hochladen",
+      "uploadDescription": "PDF zum Konvertieren von Schriften in Pfade hochladen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "convertButton": "Schriften konvertieren",
+      "successMessage": "Schriften erfolgreich in Pfade konvertiert!"
+    },
+    "extractTables": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "PDF für Tabellenextraktion hochladen.",
+      "optionsTitle": "Extraktionsoptionen",
+      "extractButton": "Tabellen extrahieren",
+      "successMessage": "Tabellen erfolgreich extrahiert!"
+    },
+    "ocgManager": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "PDF zum Verwalten von Ebenen hochladen.",
+      "layersTitle": "PDF-Ebenen",
+      "noLayers": "Dieses PDF hat keine Ebenen.",
+      "addLayerLabel": "Neue Ebene hinzufügen",
+      "successMessage": "Ebenenänderungen gespeichert!"
+    },
+    "pdfReader": {
+      "uploadLabel": "PDF-Datei öffnen",
+      "uploadDescription": "PDF zum Lesen öffnen."
     }
   }
 }

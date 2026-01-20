@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { localeConfig, type Locale, locales } from '@/lib/i18n/config';
 import { generateHomeMetadata } from '@/lib/seo';
@@ -35,8 +35,14 @@ export async function generateMetadata({
   // Validate locale
   const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : 'en';
 
-  // Generate metadata using the SEO module
-  return generateHomeMetadata(validLocale);
+  // Get localized SEO translations
+  const t = await getTranslations({ locale: validLocale, namespace: 'metadata' });
+
+  // Generate metadata using the SEO module with translations
+  return generateHomeMetadata(validLocale, {
+    title: t('home.title'),
+    description: t('home.description'),
+  });
 }
 
 export default async function LocaleLayout({

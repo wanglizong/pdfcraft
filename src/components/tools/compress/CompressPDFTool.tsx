@@ -7,7 +7,7 @@ import { ProcessingProgress } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { compressPDF, type CompressPDFOptions, type CompressionQuality } from '@/lib/pdf/processors/compress';
+import { compressPDF, type CompressionQuality, type CompressionAlgorithm } from '@/lib/pdf/processors/compress';
 import { useBatchProcessing, type BatchFile } from '@/lib/hooks/useBatchProcessing';
 import { Trash2, FileArchive, Check, AlertCircle, Loader2, X } from 'lucide-react';
 
@@ -28,9 +28,11 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
   const tTools = useTranslations('tools');
 
   // Options
+  const [algorithm, setAlgorithm] = useState<CompressionAlgorithm>('standard');
   const [quality, setQuality] = useState<CompressionQuality>('medium');
   const [removeMetadata, setRemoveMetadata] = useState(false);
   const [optimizeImages, setOptimizeImages] = useState(true);
+  const [photonDpi, setPhotonDpi] = useState(150);
   const [error, setError] = useState<string | null>(null);
 
   // Batch processing hook
@@ -74,11 +76,15 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
     file: File,
     onProgress: (progress: number) => void
   ): Promise<Blob> => {
-    const options: CompressPDFOptions = {
+    const options = {
+      algorithm,
       quality,
       removeMetadata,
       optimizeImages,
       removeUnusedObjects: true,
+      photonDpi,
+      photonFormat: 'jpeg' as const,
+      photonQuality: quality === 'low' ? 60 : quality === 'medium' ? 75 : 85,
     };
 
     const output = await compressPDF(
@@ -92,7 +98,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
     }
 
     throw new Error(output.error?.message || 'Failed to compress PDF file.');
-  }, [quality, removeMetadata, optimizeImages]);
+  }, [algorithm, quality, removeMetadata, optimizeImages, photonDpi]);
 
   /**
    * Handle compress operation
@@ -254,6 +260,65 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
           </h3>
 
           <div className="space-y-4">
+            {/* Algorithm Selection */}
+            <div>
+              <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                {tTools('compressPdf.algorithmLabel') || 'Compression Algorithm'}
+              </label>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+                {([
+                  { id: 'standard', label: 'Standard', desc: 'General-purpose compression' },
+                  { id: 'condense', label: 'Condense', desc: 'Preserves interactivity' },
+                  { id: 'photon', label: 'Photon', desc: 'Best for image-heavy PDFs' },
+                ] as { id: CompressionAlgorithm; label: string; desc: string }[]).map((alg) => (
+                  <button
+                    key={alg.id}
+                    type="button"
+                    onClick={() => setAlgorithm(alg.id)}
+                    disabled={isProcessing}
+                    className={`
+                      px-4 py-3 rounded-[var(--radius-md)] border text-left
+                      transition-colors duration-200
+                      ${algorithm === alg.id
+                        ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.1)]'
+                        : 'border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.5)]'
+                      }
+                      disabled:opacity-50 disabled:cursor-not-allowed
+                    `}
+                  >
+                    <span className="font-medium text-sm">{tTools(`compressPdf.algorithm${alg.id.charAt(0).toUpperCase() + alg.id.slice(1)}`) || alg.label}</span>
+                    <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-0.5">{alg.desc}</p>
+                  </button>
+                ))}
+              </div>
+              {algorithm === 'photon' && (
+                <div className="mt-2 p-3 rounded-[var(--radius-md)] bg-yellow-50 border border-yellow-200 text-yellow-800">
+                  <p className="text-xs">{tTools('compressPdf.photonWarning') || 'Note: Photon converts pages to images, which may reduce text quality and lose interactivity.'}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Photon DPI (only shown for Photon algorithm) */}
+            {algorithm === 'photon' && (
+              <div>
+                <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                  {tTools('compressPdf.photonDpiLabel') || 'Output DPI'}: {photonDpi}
+                </label>
+                <input
+                  type="range"
+                  min="72"
+                  max="300"
+                  value={photonDpi}
+                  onChange={(e) => setPhotonDpi(Number(e.target.value))}
+                  disabled={isProcessing}
+                  className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[hsl(var(--color-muted))]"
+                />
+                <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                  {tTools('compressPdf.photonDpiDesc') || 'Higher DPI = better quality, larger file size'}
+                </p>
+              </div>
+            )}
+
             {/* Quality Selection */}
             <div>
               <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">

@@ -6,6 +6,7 @@ import { Tool, ToolCategory } from '@/types/tool';
 import { Card } from '@/components/ui/Card';
 import { ArrowUpRight } from 'lucide-react';
 import { getToolIcon } from '@/config/icons';
+import { FavoriteButton } from '@/components/ui/FavoriteButton';
 
 export interface ToolCardProps {
   /** Tool data to display */
@@ -63,7 +64,10 @@ export function ToolCard({ tool, locale, className = '', localizedContent }: Too
         className="h-full glass-card hover:bg-[hsl(var(--color-card))/0.8] transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative overflow-hidden border-[hsl(var(--color-border))/0.6]"
         data-testid="tool-card-container"
       >
-        <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-0 right-0 p-3 z-10">
+          <FavoriteButton toolId={tool.id} size="sm" />
+        </div>
+        <div className="absolute top-0 right-10 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <ArrowUpRight className="w-5 h-5 text-[hsl(var(--color-primary))]" />
         </div>
 

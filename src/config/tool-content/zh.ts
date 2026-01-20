@@ -1110,6 +1110,32 @@ export const toolContentZh: Record<string, ToolContent> = {
     ],
   },
 
+  'djvu-to-pdf': {
+    title: 'DJVU转PDF',
+    metaDescription: '将DJVU文档文件转换为PDF。扫描文档和书籍的高质量渲染。',
+    keywords: ['djvu转pdf', '转换djvu', 'djvu转换器', 'djvu pdf', 'djv转pdf'],
+    description: `
+      <p>DJVU转PDF将DjVu文档文件转换为高质量的PDF文档。DjVu是一种计算机文件格式，主要用于存储扫描文档，特别是包含文本、线条图和照片组合的文档。</p>
+      <p>此工具以您选择的DPI（每英寸点数）渲染DJVU文件的每一页，并将它们合并为PDF文档。非常适合转换扫描书籍、技术手册和档案文档。</p>
+      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传DJVU文件', description: '拖放您的.djvu或.djv文件，或点击从设备中选择。' },
+      { step: 2, title: '配置选项', description: '选择输出DPI（72、150或300）和PDF的图像质量。' },
+      { step: 3, title: '转换并下载', description: '点击转换为PDF并下载转换后的文档。' },
+    ],
+    useCases: [
+      { title: '存档文档', description: '将DJVU档案转换为通用PDF格式。', icon: 'archive' },
+      { title: '分享扫描书籍', description: '以PDF格式分享扫描书籍以获得更广泛的兼容性。', icon: 'share-2' },
+      { title: '打印文档', description: '将DJVU转换为高质量PDF以进行打印。', icon: 'printer' },
+    ],
+    faq: [
+      { question: '什么是DJVU格式？', answer: 'DjVu是一种文件格式，设计用于存储扫描文档，特别是包含文本、图形和图像的文档。它为扫描内容提供比PDF更好的压缩。' },
+      { question: '我应该选择多少DPI？', answer: '72 DPI适合网页浏览，150 DPI适合标准文档，300 DPI适合高质量打印。' },
+      { question: '文字是否可搜索？', answer: '文字将渲染为图像。如果您需要可搜索的文字，请在转换后使用我们的OCR PDF工具。' },
+    ],
+  },
+
   'fb2-to-pdf': {
     title: 'FB2转PDF',
     metaDescription: '将FictionBook (FB2)电子书转换为PDF。支持多个文件的高质量渲染。',
@@ -2284,4 +2310,49 @@ export const toolContentZh: Record<string, ToolContent> = {
       { question: '可以从扫描的PDF中提取图片吗？', answer: '扫描的PDF通常每页包含一张大图片。如需逐页转换，请使用"PDF转图片"工具。' },
     ],
   },
+
+  'ocg-manager': {
+    title: 'PDF图层管理器',
+    metaDescription: '管理PDF图层。查看、切换、添加、删除和重命名图层。',
+    keywords: ['pdf图层', 'ocg管理器'],
+    description: '<p>管理PDF文档中的可选内容组（OCG）。</p>',
+    howToUse: [
+      { step: 1, title: '上传PDF', description: '上传包含图层的PDF文件。' },
+      { step: 2, title: '查看图层', description: '工具自动列出所有图层。' },
+      { step: 3, title: '管理图层', description: '切换、添加或删除图层。' },
+    ],
+    useCases: [
+      { title: '技术图纸', description: '管理CAD导出中的图层。', icon: 'ruler' },
+      { title: '地图编辑', description: '切换地图图层。', icon: 'map' },
+      { title: '印刷准备', description: '准备分层PDF进行打印。', icon: 'printer' },
+    ],
+    faq: [
+      { question: '什么是PDF图层？', answer: 'OCG是PDF中可以显示或隐藏的图层。' },
+      { question: '为什么没有图层？', answer: '并非所有PDF都包含图层。' },
+      { question: '会影响原始内容吗？', answer: '图层可见性更改仅影响显示。' },
+    ],
+  },
+
+  'pdf-reader': {
+    title: 'PDF阅读器',
+    metaDescription: '免费在线PDF阅读器。在浏览器中查看PDF。',
+    keywords: ['pdf阅读器', 'pdf查看器'],
+    description: '<p>在浏览器中查看PDF文档。</p>',
+    howToUse: [
+      { step: 1, title: '打开PDF', description: '上传PDF文件。' },
+      { step: 2, title: '导航页面', description: '使用页面控制导航。' },
+      { step: 3, title: '调整视图', description: '放大、缩小或旋转。' },
+    ],
+    useCases: [
+      { title: '文档审阅', description: '快速审阅PDF文档。', icon: 'book-open' },
+      { title: '移动阅读', description: '在任何设备上阅读PDF。', icon: 'smartphone' },
+      { title: '快速预览', description: '预览PDF。', icon: 'eye' },
+    ],
+    faq: [
+      { question: '文档安全吗？', answer: '是的，完全在浏览器中处理。' },
+      { question: '可以编辑吗？', answer: '此工具仅用于查看。' },
+      { question: '支持移动设备吗？', answer: '是的。' },
+    ],
+  },
 };
+

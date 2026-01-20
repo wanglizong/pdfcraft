@@ -13,6 +13,7 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
+import { loadPyMuPDF } from '../pymupdf-loader';
 
 /**
  * Compression quality levels
@@ -20,9 +21,19 @@ import { BasePDFProcessor } from '../processor';
 export type CompressionQuality = 'low' | 'medium' | 'high' | 'maximum';
 
 /**
+ * Compression algorithm types
+ * - standard: Uses coherentpdf for general-purpose compression
+ * - condense: Uses PyMuPDF clean/garbage collection (preserves interactivity)
+ * - photon: Rasterizes pages to images (best for image-heavy PDFs, loses interactivity)
+ */
+export type CompressionAlgorithm = 'standard' | 'condense' | 'photon';
+
+/**
  * Compress PDF options
  */
 export interface CompressPDFOptions {
+  /** Compression algorithm to use */
+  algorithm: CompressionAlgorithm;
   /** Compression quality level */
   quality: CompressionQuality;
   /** Remove metadata to reduce size */
@@ -31,16 +42,26 @@ export interface CompressPDFOptions {
   optimizeImages: boolean;
   /** Remove unused objects */
   removeUnusedObjects: boolean;
+  /** DPI for Photon algorithm (default: 150) */
+  photonDpi?: number;
+  /** Image format for Photon algorithm */
+  photonFormat?: 'jpeg' | 'png';
+  /** JPEG quality for Photon algorithm (0-100) */
+  photonQuality?: number;
 }
 
 /**
  * Default compress options
  */
 const DEFAULT_COMPRESS_OPTIONS: CompressPDFOptions = {
+  algorithm: 'standard',
   quality: 'medium',
   removeMetadata: false,
   optimizeImages: true,
   removeUnusedObjects: true,
+  photonDpi: 150,
+  photonFormat: 'jpeg',
+  photonQuality: 85,
 };
 
 /**
@@ -115,8 +136,21 @@ export class CompressPDFProcessor extends BasePDFProcessor {
 
       this.updateProgress(10, 'Starting compression...');
 
-      // Process using worker
-      const result = await this.compressWithWorker(arrayBuffer, compressOptions);
+      let result: { pdfBytes: ArrayBuffer; compressedSize: number };
+
+      // Choose compression method based on algorithm
+      switch (compressOptions.algorithm) {
+        case 'condense':
+          result = await this.compressWithCondense(arrayBuffer, compressOptions);
+          break;
+        case 'photon':
+          result = await this.compressWithPhoton(file, compressOptions);
+          break;
+        case 'standard':
+        default:
+          result = await this.compressWithWorker(arrayBuffer, compressOptions);
+          break;
+      }
 
       if (this.checkCancelled()) {
         return this.createErrorOutput(
@@ -140,13 +174,14 @@ export class CompressPDFProcessor extends BasePDFProcessor {
         originalSize,
         compressedSize,
         compressionRatio: `${compressionRatio}%`,
+        algorithm: compressOptions.algorithm,
         quality: compressOptions.quality,
       });
 
     } catch (error) {
       // Clean up worker on error
       this.terminateWorker();
-      
+
       if (error instanceof Error && error.message.includes('encrypt')) {
         return this.createErrorOutput(
           PDFErrorCode.PDF_ENCRYPTED,
@@ -154,7 +189,7 @@ export class CompressPDFProcessor extends BasePDFProcessor {
           'Please decrypt the file before compressing.'
         );
       }
-      
+
       return this.createErrorOutput(
         PDFErrorCode.PROCESSING_FAILED,
         'Failed to compress PDF file.',
@@ -215,6 +250,78 @@ export class CompressPDFProcessor extends BasePDFProcessor {
         reject(error);
       }
     });
+  }
+
+  /**
+   * Compress PDF using Condense algorithm (PyMuPDF clean)
+   * Preserves interactivity while optimizing structure
+   */
+  private async compressWithCondense(
+    pdfData: ArrayBuffer,
+    options: CompressPDFOptions
+  ): Promise<{ pdfBytes: ArrayBuffer; compressedSize: number }> {
+    this.updateProgress(20, 'Loading PyMuPDF...');
+
+    const pymupdf = await loadPyMuPDF();
+
+    this.updateProgress(40, 'Optimizing PDF structure...');
+
+    // Convert ArrayBuffer to File for PyMuPDF
+    const blob = new Blob([pdfData], { type: 'application/pdf' });
+    const file = new File([blob], 'input.pdf', { type: 'application/pdf' });
+
+    // Use PyMuPDF's condense/clean functionality
+    const result = await pymupdf.compress(file, {
+      quality: options.quality,
+      removeMetadata: options.removeMetadata,
+      garbage: 4, // Maximum garbage collection
+      clean: true, // Clean content streams
+      deflate: true, // Compress streams
+    });
+
+    this.updateProgress(90, 'Finalizing...');
+
+    const outputBytes = await result.arrayBuffer();
+
+    return {
+      pdfBytes: outputBytes,
+      compressedSize: outputBytes.byteLength,
+    };
+  }
+
+  /**
+   * Compress PDF using Photon algorithm (rasterize pages)
+   * Best for image-heavy PDFs, but loses interactivity
+   */
+  private async compressWithPhoton(
+    file: File,
+    options: CompressPDFOptions
+  ): Promise<{ pdfBytes: ArrayBuffer; compressedSize: number }> {
+    this.updateProgress(20, 'Loading PyMuPDF...');
+
+    const pymupdf = await loadPyMuPDF();
+
+    this.updateProgress(30, 'Rasterizing pages...');
+
+    const dpi = options.photonDpi || 150;
+    const format = options.photonFormat || 'jpeg';
+    const quality = options.photonQuality || 85;
+
+    // Use PyMuPDF's photon compression
+    const result = await pymupdf.photonCompress(file, {
+      dpi,
+      format,
+      quality,
+    });
+
+    this.updateProgress(90, 'Finalizing...');
+
+    const outputBytes = await result.arrayBuffer();
+
+    return {
+      pdfBytes: outputBytes,
+      compressedSize: outputBytes.byteLength,
+    };
   }
 
   /**

@@ -1,4 +1,39 @@
 {
+  "metadata": {
+    "home": {
+      "title": "Hello PDF - 专业 PDF 工具",
+      "description": "免费、私密、基于浏览器。在线合并、编辑 PDF 文件，无需上传到服务器。"
+    },
+    "tools": {
+      "title": "所有 PDF 工具",
+      "description": "浏览 67+ 款专业 PDF 工具。免费合并、拆分、压缩、转换、编辑和保护您的 PDF 文件。"
+    },
+    "about": {
+      "title": "关于我们",
+      "description": "了解 Hello PDF - 您免费、私密且强大的 PDF 工具箱。所有处理都在您的浏览器中进行。"
+    },
+    "faq": {
+      "title": "常见问题",
+      "description": "查找有关 Hello PDF 的常见问题解答。了解如何有效使用我们的 PDF 工具。"
+    },
+    "privacy": {
+      "title": "隐私政策",
+      "description": "Hello PDF 隐私政策。您的文件永远不会离开您的设备 - 所有处理都在本地浏览器中进行。"
+    },
+    "contact": {
+      "title": "联系我们",
+      "description": "联系 Hello PDF 团队。我们很乐意听取您的意见。"
+    },
+    "keywords": {
+      "pdfTools": "PDF 工具",
+      "mergePdf": "合并 PDF",
+      "splitPdf": "拆分 PDF",
+      "compressPdf": "压缩 PDF",
+      "convertPdf": "转换 PDF",
+      "freePdfTools": "免费 PDF 工具",
+      "onlinePdfEditor": "在线 PDF 编辑器"
+    }
+  },
   "common": {
     "brand": "Hello PDF",
     "tagline": "专业PDF工具 - 免费且私密",
@@ -611,6 +646,14 @@
     "useCases": "使用场景",
     "faq": "常见问题",
     "comingSoon": "此工具即将推出。",
+    "favorite": {
+      "add": "添加收藏",
+      "remove": "取消收藏",
+      "saved": "已收藏",
+      "title": "收藏工具",
+      "empty": "暂无收藏的工具",
+      "hint": "点击任意工具上的星形图标可将其添加到收藏，方便快速访问。"
+    },
     "quality": {
       "title": "输出质量",
       "low": "低",
@@ -758,7 +801,8 @@
     },
     "pdfMultiTool": {
       "uploadLabel": "上传PDF文件",
-      "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
+      "uploadDescription": "拖放PDF文件到此处，或点击浏览。可以上传多个文件。",
+      "addMoreFiles": "添加更多PDF文件",
       "organize": "整理",
       "delete": "删除",
       "rotate": "旋转",
@@ -768,7 +812,19 @@
       "deleteHint": "点击页面标记为删除。",
       "rotateHint": "点击页面上的旋转按钮，或旋转全部：",
       "duplicateHint": "点击页面上的复制按钮以复制页面。",
-      "reset": "重置为原始",
+      "reset": "重置",
+      "undo": "撤销",
+      "redo": "重做",
+      "selectAll": "全选",
+      "deselectAll": "取消选择",
+      "rotateLeft": "左旋",
+      "rotateRight": "右旋",
+      "exportPDF": "导出PDF",
+      "downloadSelected": "下载选中",
+      "clearAll": "清空全部",
+      "addBlankPageTitle": "添加空白页",
+      "numberOfPages": "页面数量",
+      "insertPosition": "插入位置",
       "processButton": "应用更改",
       "successMessage": "PDF处理成功！点击下载按钮保存文件。"
     },
@@ -1775,6 +1831,23 @@
       "successMessage": "PDF清理成功！",
       "removedItems": "已移除："
     },
+    "markdownToPdf": {
+      "uploadLabel": "上传 Markdown 文件",
+      "uploadDescription": "拖放 .md 或 .markdown 文件以转换为 PDF。",
+      "manualInput": "编写 Markdown",
+      "uploadFile": "上传文件",
+      "editorLabel": "Markdown 编辑器",
+      "previewLabel": "预览",
+      "showPreview": "显示预览",
+      "hidePreview": "隐藏预览",
+      "optionsTitle": "转换选项",
+      "themeLabel": "主题",
+      "pageSizeLabel": "页面大小",
+      "gfmLabel": "启用 GitHub 风格 Markdown（表格、任务列表等）",
+      "syntaxHighlightLabel": "启用代码块语法高亮",
+      "convertButton": "转换为 PDF",
+      "successMessage": "PDF 创建成功！点击下载保存。"
+    },
     "pdfToDocx": {
       "uploadLabel": "上传PDF文件",
       "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
@@ -1834,6 +1907,126 @@
       "uploadDescription": "拖放FB2电子书文件到此处，或点击浏览。支持多个文件。",
       "convertButton": "转换为PDF",
       "successMessage": "您的FB2文件已成功转换为PDF！"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "上传DJVU文件",
+      "uploadDescription": "拖放DJVU文件到此处，或点击浏览。",
+      "optionsTitle": "转换选项",
+      "dpiLabel": "输出DPI",
+      "dpiHint": "DPI越高，文件越大，质量越好",
+      "qualityLabel": "图像质量",
+      "qualityHint": "页面的JPEG压缩质量",
+      "convertButton": "转换为PDF",
+      "successTitle": "转换成功！",
+      "successMessage": "您的DJVU文件已成功转换为PDF！"
+    },
+    "deskewPdf": {
+      "uploadLabel": "上传扫描的PDF文件",
+      "uploadDescription": "拖放PDF文件到此处，最多可同时处理10个文件。",
+      "filesTitle": "待校正的文件",
+      "optionsTitle": "校正选项",
+      "thresholdLabel": "检测阈值",
+      "thresholdDesc": "值越高越能检测到细微的倾斜。默认值：10",
+      "dpiLabel": "分析DPI",
+      "dpiDesc": "DPI越高检测越准确，但处理时间更长。",
+      "processButton": "校正PDF",
+      "downloadAllZip": "全部下载为ZIP",
+      "successMessage": "PDF文件校正成功！"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件以创建小册子布局。",
+      "optionsTitle": "小册子选项",
+      "gridModeLabel": "网格模式",
+      "gridModeDesc": "1x2是标准小册子格式，使用更大网格可节省纸张。",
+      "paperSizeLabel": "纸张大小",
+      "orientationLabel": "方向",
+      "rotationLabel": "页面旋转",
+      "paddingLabel": "边距",
+      "previewLabel": "布局预览",
+      "previewDesc": "此预览显示页面在每张纸上的排列方式。",
+      "createButton": "创建小册子",
+      "successMessage": "小册子创建成功！点击下载保存。"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件以转换为图片。",
+      "optionsTitle": "输出选项",
+      "dpiLabel": "分辨率 (DPI)",
+      "formatLabel": "输出格式",
+      "qualityLabel": "质量",
+      "pageRangeLabel": "页面范围（可选）",
+      "pageRangeDesc": "留空转换所有页面。",
+      "bgColorLabel": "背景颜色",
+      "convertButton": "转换为图片",
+      "successMessage": "图片创建成功！点击下载保存。"
+    },
+    "emailToPdf": {
+      "uploadLabel": "上传邮件文件",
+      "uploadDescription": "拖放邮件文件（.eml）以转换为PDF。",
+      "optionsTitle": "转换选项",
+      "pageSizeLabel": "页面大小",
+      "includeCcBccLabel": "包含抄送/密送字段",
+      "includeAttachmentsLabel": "包含附件列表",
+      "timezoneLabel": "时区",
+      "convertButton": "转换为PDF",
+      "successMessage": "邮件转换成功！"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "上传CBZ文件",
+      "uploadDescription": "拖放漫画归档文件（.cbz）以转换为PDF。",
+      "optionsTitle": "转换选项",
+      "pageSizeLabel": "页面大小",
+      "qualityLabel": "图片质量",
+      "preserveAspectLabel": "保持宽高比",
+      "convertButton": "转换为PDF",
+      "successMessage": "漫画转换成功！"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件以转换为PDF/A归档格式。",
+      "filesTitle": "待转换的文件",
+      "optionsTitle": "PDF/A选项",
+      "levelLabel": "PDF/A级别",
+      "embedFontsLabel": "嵌入所有字体",
+      "flattenTransparencyLabel": "扁平化透明度（PDF/A-1b必需）",
+      "convertButton": "转换为PDF/A",
+      "downloadAllZip": "全部下载为ZIP",
+      "successMessage": "PDF/A转换成功！"
+    },
+    "fontToOutline": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件以将字体转换为轮廓。",
+      "filesTitle": "文件",
+      "optionsTitle": "选项",
+      "dpiLabel": "光栅化DPI",
+      "convertButton": "将字体转换为轮廓",
+      "downloadAllZip": "全部下载为ZIP",
+      "successMessage": "转换成功！"
+    },
+    "extractTables": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件以提取表格。",
+      "optionsTitle": "提取选项",
+      "formatLabel": "输出格式",
+      "pageRangeLabel": "页面范围（可选）",
+      "minColumnsLabel": "最少列数",
+      "minRowsLabel": "最少行数",
+      "includePageNumbersLabel": "在输出中包含页码",
+      "extractButton": "提取表格",
+      "successMessage": "表格提取成功！点击下载保存。"
+    },
+    "ocgManager": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件以管理其图层（OCG）。",
+      "layersTitle": "PDF图层",
+      "noLayers": "此PDF没有图层（OCG）。",
+      "addLayerLabel": "添加新图层",
+      "successMessage": "图层更改保存成功！"
+    },
+    "pdfReader": {
+      "uploadLabel": "打开PDF文件",
+      "uploadDescription": "打开PDF文件进行阅读和查看。"
     }
   }
 }

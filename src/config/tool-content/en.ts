@@ -1139,6 +1139,32 @@ export const toolContentEn: Record<string, ToolContent> = {
     ],
   },
 
+  'djvu-to-pdf': {
+    title: 'DJVU to PDF',
+    metaDescription: 'Convert DJVU document files to PDF. High-quality rendering for scanned documents and books.',
+    keywords: ['djvu to pdf', 'convert djvu', 'djvu converter', 'djvu pdf', 'djv to pdf'],
+    description: `
+      <p>DJVU to PDF converts DjVu document files into high-quality PDF documents. DjVu is a computer file format designed primarily to store scanned documents, especially those containing a combination of text, line drawings, and photographs.</p>
+      <p>This tool renders each page of your DJVU file at your chosen DPI (dots per inch) and combines them into a searchable PDF document. Perfect for converting scanned books, technical manuals, and archival documents.</p>
+      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload DJVU File', description: 'Drag and drop your .djvu or .djv file, or click to select from your device.' },
+      { step: 2, title: 'Configure Options', description: 'Choose output DPI (72, 150, or 300) and image quality for the PDF.' },
+      { step: 3, title: 'Convert & Download', description: 'Click Convert to PDF and download your converted document.' },
+    ],
+    useCases: [
+      { title: 'Archive Documents', description: 'Convert DJVU archives to universal PDF format.', icon: 'archive' },
+      { title: 'Share Scanned Books', description: 'Share scanned books in PDF format for wider compatibility.', icon: 'share-2' },
+      { title: 'Print Documents', description: 'Convert DJVU to high-quality PDF for printing.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'What is DJVU format?', answer: 'DjVu is a file format designed for storing scanned documents, especially those with text, drawings, and images. It offers better compression than PDF for scanned content.' },
+      { question: 'What DPI should I choose?', answer: '72 DPI is suitable for web viewing, 150 DPI for standard documents, and 300 DPI for high-quality printing.' },
+      { question: 'Will the text be searchable?', answer: 'The text will be rendered as images. If you need searchable text, consider using our OCR PDF tool after conversion.' },
+    ],
+  },
+
   'fb2-to-pdf': {
     title: 'FB2 to PDF',
     metaDescription: 'Convert FictionBook (FB2) e-books to PDF. Supports multiple files with high-quality rendering.',
@@ -2187,4 +2213,294 @@ export const toolContentEn: Record<string, ToolContent> = {
       { question: 'Is it compatible with Word?', answer: 'Yes, the output is a standard .docx file compatible with Microsoft Word and Google Docs.' },
     ],
   },
+
+  // ==================== NEW TOOLS ====================
+  'deskew-pdf': {
+    title: 'Deskew PDF',
+    metaDescription: 'Automatically straighten scanned or tilted PDF pages. Fix skewed documents with precision angle detection.',
+    keywords: ['deskew pdf', 'straighten pdf', 'fix tilted scan', 'auto rotate pdf', 'correct pdf angle'],
+    description: `
+      <p>Deskew PDF automatically detects and corrects tilted or skewed pages in your PDF documents. This is essential for scanned documents that were fed into the scanner at an angle.</p>
+      <p>The tool uses advanced image analysis to detect the exact rotation angle of each page and corrects it to vertical alignment. You can adjust the sensitivity threshold and DPI settings for optimal results.</p>
+      <p>All processing happens locally in your browser using WebAssembly technology, ensuring your documents remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your scanned PDF file or click to select.' },
+      { step: 2, title: 'Configure Settings', description: 'Adjust threshold sensitivity and DPI if needed for better detection.' },
+      { step: 3, title: 'Process and Download', description: 'Click Deskew to straighten pages and download the corrected PDF.' },
+    ],
+    useCases: [
+      { title: 'Scanned Documents', description: 'Fix pages that were scanned at an angle from document feeders.', icon: 'scan' },
+      { title: 'Mobile Scans', description: 'Correct tilted photos of documents taken with smartphones.', icon: 'smartphone' },
+      { title: 'Archive Restoration', description: 'Straighten old scanned archives for better readability.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'How accurate is the angle detection?', answer: 'The tool can detect and correct angles as small as 0.1 degrees for precise alignment.' },
+      { question: 'Will text quality be affected?', answer: 'The deskewing process maintains text quality while rotating the page content.' },
+      { question: 'Can I deskew specific pages only?', answer: 'The tool processes all pages but only corrects those detected as skewed.' },
+    ],
+  },
+
+  'pdf-booklet': {
+    title: 'PDF Booklet Creator',
+    metaDescription: 'Create booklet layouts from PDF for printing. Arrange pages for saddle-stitch binding with multiple grid options.',
+    keywords: ['pdf booklet', 'booklet creator', 'print booklet', 'saddle stitch', 'imposition'],
+    description: `
+      <p>PDF Booklet Creator arranges your PDF pages into booklet layouts ready for print-and-fold production. Perfect for creating brochures, zines, booklets, and saddle-stitched publications.</p>
+      <p>Choose from various grid modes (1x2, 2x2, 2x4, 4x4), paper sizes, and orientation options. The tool automatically handles page imposition for proper folding sequence.</p>
+      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Upload the PDF document you want to convert to a booklet.' },
+      { step: 2, title: 'Choose Layout', description: 'Select grid mode, paper size, orientation, and rotation options.' },
+      { step: 3, title: 'Create and Download', description: 'Generate the booklet layout and download for printing.' },
+    ],
+    useCases: [
+      { title: 'Brochures', description: 'Create fold-ready brochures from standard PDF documents.', icon: 'book-open' },
+      { title: 'Zines', description: 'Produce self-published zines with proper page imposition.', icon: 'book' },
+      { title: 'Event Programs', description: 'Create professional program booklets for events.', icon: 'calendar' },
+    ],
+    faq: [
+      { question: 'What is saddle-stitch binding?', answer: 'Saddle-stitch is a binding method where folded sheets are nested and stapled through the fold.' },
+      { question: 'Which grid mode should I use?', answer: '1x2 is standard for booklets. Use 2x2 or larger for multi-up printing to save paper.' },
+      { question: 'Can I preview the layout?', answer: 'Yes, the tool provides a visual preview before generating the final booklet.' },
+    ],
+  },
+
+  'rasterize-pdf': {
+    title: 'Rasterize PDF',
+    metaDescription: 'Convert PDF pages to high-quality images. Export as PNG, JPEG, or WebP with custom DPI settings.',
+    keywords: ['rasterize pdf', 'pdf to image', 'pdf to png', 'pdf to jpeg', 'convert pdf pages'],
+    description: `
+      <p>Rasterize PDF converts your PDF pages into high-quality raster images. Choose from PNG, JPEG, or WebP output formats with full control over DPI and quality settings.</p>
+      <p>Perfect for creating thumbnails, social media graphics, or archiving PDF content as images. Supports page range selection and batch processing.</p>
+      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your PDF file or click to select.' },
+      { step: 2, title: 'Configure Output', description: 'Select DPI, output format (PNG/JPEG/WebP), quality, and page range.' },
+      { step: 3, title: 'Convert and Download', description: 'Process pages and download images individually or as a ZIP archive.' },
+    ],
+    useCases: [
+      { title: 'Social Media', description: 'Convert PDF slides to images for social media posting.', icon: 'share-2' },
+      { title: 'Thumbnails', description: 'Generate preview thumbnails for PDF documents.', icon: 'image' },
+      { title: 'Web Publishing', description: 'Convert PDF content to web-friendly image formats.', icon: 'globe' },
+    ],
+    faq: [
+      { question: 'What DPI should I use?', answer: '72 DPI for screen, 150 DPI for general use, 300 DPI for print quality.' },
+      { question: 'Which format is best?', answer: 'PNG for quality/transparency, JPEG for small size, WebP for modern web use.' },
+      { question: 'Can I convert specific pages?', answer: 'Yes, specify page ranges like "1-5, 8, 10-15" to convert only those pages.' },
+    ],
+  },
+
+  'markdown-to-pdf': {
+    title: 'Markdown to PDF',
+    metaDescription: 'Convert Markdown files to beautifully formatted PDF documents. Support for GitHub Flavored Markdown and syntax highlighting.',
+    keywords: ['markdown to pdf', 'md to pdf', 'convert markdown', 'gfm to pdf', 'markdown converter'],
+    description: `
+      <p>Markdown to PDF converts your Markdown files into professionally styled PDF documents. Support for CommonMark and GitHub Flavored Markdown (GFM) including tables, task lists, and code blocks.</p>
+      <p>Choose from multiple themes (light, dark, GitHub) and customize page size and margins. Code blocks are syntax-highlighted for better readability.</p>
+      <p>All conversion happens locally in your browser, ensuring your content remains private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Markdown File', description: 'Upload your .md or .markdown file.' },
+      { step: 2, title: 'Choose Theme', description: 'Select a visual theme and configure page settings.' },
+      { step: 3, title: 'Convert and Download', description: 'Generate the styled PDF and download.' },
+    ],
+    useCases: [
+      { title: 'Documentation', description: 'Convert README files and docs to shareable PDFs.', icon: 'file-text' },
+      { title: 'Notes Export', description: 'Export Markdown notes to PDF for printing or sharing.', icon: 'edit-3' },
+      { title: 'Reports', description: 'Create reports from Markdown with professional styling.', icon: 'bar-chart' },
+    ],
+    faq: [
+      { question: 'Is GitHub Flavored Markdown supported?', answer: 'Yes, tables, task lists, strikethrough, and other GFM features are supported.' },
+      { question: 'Can I customize the styling?', answer: 'Choose from preset themes or add custom CSS for full control.' },
+      { question: 'Are code blocks highlighted?', answer: 'Yes, code blocks include syntax highlighting for common languages.' },
+    ],
+  },
+
+  'email-to-pdf': {
+    title: 'Email to PDF',
+    metaDescription: 'Convert email files (.eml) to PDF documents. Preserve formatting, inline images, and attachments.',
+    keywords: ['email to pdf', 'eml to pdf', 'convert email', 'email converter', 'save email as pdf'],
+    description: `
+      <p>Email to PDF converts your email files (.eml format) into well-formatted PDF documents. The tool preserves the email header information, body content, inline images, and attachment listings.</p>
+      <p>Customize output options including page size, date formatting, and whether to include CC/BCC fields and attachment information.</p>
+      <p>All conversion happens locally in your browser, ensuring your emails remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Email File', description: 'Upload your .eml email file.' },
+      { step: 2, title: 'Configure Options', description: 'Set page size and choose which fields to include.' },
+      { step: 3, title: 'Convert and Download', description: 'Convert to PDF and download the result.' },
+    ],
+    useCases: [
+      { title: 'Legal Records', description: 'Archive important emails as PDF for legal documentation.', icon: 'scale' },
+      { title: 'Business Archives', description: 'Convert business correspondence to PDF for record keeping.', icon: 'briefcase' },
+      { title: 'Evidence Preservation', description: 'Save email evidence in a non-editable PDF format.', icon: 'shield' },
+    ],
+    faq: [
+      { question: 'What email formats are supported?', answer: 'Currently .eml files are fully supported. MSG file support is coming soon.' },
+      { question: 'Are attachments included?', answer: 'Attachment names are listed in the PDF. The actual files are not embedded.' },
+      { question: 'Is the email formatting preserved?', answer: 'Yes, HTML emails maintain their formatting as closely as possible.' },
+    ],
+  },
+
+  'cbz-to-pdf': {
+    title: 'CBZ to PDF',
+    metaDescription: 'Convert comic book archives (CBZ) to PDF. Preserve image order and quality for digital comics.',
+    keywords: ['cbz to pdf', 'comic to pdf', 'convert cbz', 'comic book converter', 'cbz converter'],
+    description: `
+      <p>CBZ to PDF converts Comic Book Archive files into PDF documents. The tool extracts all images from the CBZ archive and compiles them into a PDF while maintaining the correct reading order.</p>
+      <p>Choose from various page size options including original image dimensions or standardized comic book sizes. Perfect for reading comics on devices that support PDF but not CBZ.</p>
+      <p>All conversion happens locally in your browser, ensuring your comics remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload CBZ File', description: 'Upload your .cbz comic book archive file.' },
+      { step: 2, title: 'Select Options', description: 'Choose page size and image quality settings.' },
+      { step: 3, title: 'Convert and Download', description: 'Convert to PDF and download your comic.' },
+    ],
+    useCases: [
+      { title: 'E-Reader Compatibility', description: 'Convert CBZ to PDF for e-readers that only support PDF.', icon: 'book' },
+      { title: 'Comic Archives', description: 'Create PDF archives of your digital comic collection.', icon: 'archive' },
+      { title: 'Print Preparation', description: 'Convert digital comics to PDF for printing.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'What is CBZ format?', answer: 'CBZ is a ZIP archive containing comic book pages as image files, renamed with .cbz extension.' },
+      { question: 'Is image quality preserved?', answer: 'Yes, images are embedded at their original quality in the PDF.' },
+      { question: 'Are nested folders supported?', answer: 'Yes, images from all folders within the archive are extracted and sorted.' },
+    ],
+  },
+
+  'pdf-to-pdfa': {
+    title: 'PDF to PDF/A',
+    metaDescription: 'Convert PDF to PDF/A archival format. Ensure long-term document preservation with ISO standards.',
+    keywords: ['pdf to pdfa', 'pdfa converter', 'archive pdf', 'pdf archival', 'long term preservation'],
+    description: `
+      <p>PDF to PDF/A converts your PDF documents to PDF/A format, the ISO standard for long-term document archiving. PDF/A ensures that documents will be viewable and reproducible for decades.</p>
+      <p>Choose from PDF/A-1b (basic conformance), PDF/A-2b (recommended, supports transparency), or PDF/A-3b (allows embedded files). The tool embeds fonts and flattens transparency as needed.</p>
+      <p>All conversion happens locally in your browser, ensuring your documents remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Upload the PDF you want to convert to PDF/A.' },
+      { step: 2, title: 'Select PDF/A Level', description: 'Choose PDF/A-1b, PDF/A-2b, or PDF/A-3b conformance level.' },
+      { step: 3, title: 'Convert and Download', description: 'Convert to PDF/A and download the archival document.' },
+    ],
+    useCases: [
+      { title: 'Legal Archives', description: 'Convert legal documents to PDF/A for court-admissible long-term storage.', icon: 'scale' },
+      { title: 'Government Records', description: 'Comply with government archival requirements using PDF/A.', icon: 'building' },
+      { title: 'Business Archives', description: 'Preserve important business documents for future accessibility.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Which PDF/A level should I use?', answer: 'PDF/A-2b is recommended for most uses. Use 1b for maximum compatibility or 3b if you need embedded files.' },
+      { question: 'What makes PDF/A different?', answer: 'PDF/A embeds fonts, disables encryption, and ensures all elements are self-contained for future viewing.' },
+      { question: 'Can I convert back from PDF/A?', answer: 'PDF/A files are standard PDFs and can be opened normally. The archival features add restrictions, not limitations.' },
+    ],
+  },
+
+  'font-to-outline': {
+    title: 'Font to Outline',
+    metaDescription: 'Convert PDF fonts to vector outlines. Ensure compatibility when fonts may be unavailable.',
+    keywords: ['font to outline', 'outline fonts', 'convert fonts', 'vector text', 'font compatibility'],
+    description: `
+      <p>Font to Outline converts all text in your PDF to vector paths (outlines). This ensures your document looks exactly the same on any system, even if the original fonts are not installed.</p>
+      <p>This is essential for print preparation, ensuring graphics display correctly, and avoiding font licensing issues when sharing documents.</p>
+      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Upload the PDF containing fonts you want to convert.' },
+      { step: 2, title: 'Configure Options', description: 'Set DPI for rasterization if needed for complex fonts.' },
+      { step: 3, title: 'Convert and Download', description: 'Convert fonts to outlines and download the result.' },
+    ],
+    useCases: [
+      { title: 'Print Preparation', description: 'Ensure fonts display correctly at commercial printers.', icon: 'printer' },
+      { title: 'Cross-Platform Sharing', description: 'Share documents that look identical on any device.', icon: 'share-2' },
+      { title: 'Font Licensing', description: 'Remove font embedding to avoid licensing concerns.', icon: 'shield' },
+    ],
+    faq: [
+      { question: 'Can I still select text after conversion?', answer: 'No, outlined text becomes vector graphics and is no longer searchable or selectable.' },
+      { question: 'Will file size increase?', answer: 'File size may increase as vectors can be larger than font data, especially for complex fonts.' },
+      { question: 'Is this reversible?', answer: 'No, keep a backup of the original if you need editable text.' },
+    ],
+  },
+
+  'extract-tables': {
+    title: 'Extract Tables from PDF',
+    metaDescription: 'Detect and extract tables from PDF documents. Export to JSON, Markdown, or CSV formats.',
+    keywords: ['extract tables', 'pdf table extraction', 'pdf to csv', 'pdf to excel', 'table detection'],
+    description: `
+      <p>Extract Tables from PDF detects tabular data within your PDF documents and exports it in structured formats. Choose JSON for data integration, Markdown for documentation, or CSV for spreadsheets.</p>
+      <p>The tool uses intelligent detection algorithms to identify table structures even in complex documents. Specify page ranges and adjust detection parameters for optimal results.</p>
+      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Upload the PDF containing tables you want to extract.' },
+      { step: 2, title: 'Configure Detection', description: 'Set page range and minimum column/row thresholds.' },
+      { step: 3, title: 'Export and Download', description: 'Choose output format (JSON/Markdown/CSV) and download.' },
+    ],
+    useCases: [
+      { title: 'Data Analysis', description: 'Extract table data for analysis in spreadsheets or databases.', icon: 'bar-chart' },
+      { title: 'Report Processing', description: 'Pull tables from PDF reports for further processing.', icon: 'file-text' },
+      { title: 'Documentation', description: 'Convert PDF tables to Markdown for technical documentation.', icon: 'book' },
+    ],
+    faq: [
+      { question: 'Can it detect complex tables?', answer: 'The tool works best with simple grid tables. Complex merged cells may require manual adjustment.' },
+      { question: 'What if no tables are found?', answer: 'Try adjusting the minimum columns/rows threshold or check if the PDF contains actual table structures.' },
+      { question: 'Can I extract from specific pages?', answer: 'Yes, specify a page range to limit extraction to certain pages.' },
+    ],
+  },
+
+  'ocg-manager': {
+    title: 'PDF Layer Manager (OCG)',
+    metaDescription: 'Manage PDF layers (Optional Content Groups). View, toggle, add, delete, and rename layers in your PDF documents.',
+    keywords: ['pdf layers', 'ocg manager', 'optional content groups', 'pdf layer visibility', 'manage pdf layers'],
+    description: `
+      <p>PDF Layer Manager allows you to view and manage Optional Content Groups (OCG) in your PDF documents. OCG layers are used in technical drawings, maps, and complex documents to organize content into toggleable layers.</p>
+      <p>View all layers in your PDF, toggle their visibility, add new layers, delete unwanted ones, or rename existing layers. This tool is essential for working with layered PDFs like architectural plans, CAD exports, and print-ready documents.</p>
+      <p>All processing happens locally in your browser, ensuring your documents remain private and secure.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Upload a PDF file that contains layers (OCG) or one you want to add layers to.' },
+      { step: 2, title: 'View Layers', description: 'The tool automatically lists all layers found in the document with their visibility status.' },
+      { step: 3, title: 'Manage Layers', description: 'Toggle layer visibility, rename layers, add new ones, or delete unwanted layers.' },
+      { step: 4, title: 'Save and Download', description: 'Download your modified PDF with the layer changes applied.' },
+    ],
+    useCases: [
+      { title: 'Technical Drawings', description: 'Manage layers in CAD exports to show/hide dimensions, annotations, or different views.', icon: 'ruler' },
+      { title: 'Map Editing', description: 'Toggle different map layers like topography, roads, and labels for custom map prints.', icon: 'map' },
+      { title: 'Print Preparation', description: 'Prepare layered PDFs for printing by toggling appropriate layers for different versions.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'What are PDF layers (OCG)?', answer: 'Optional Content Groups (OCG) are layers in a PDF that can be shown or hidden. They are commonly used in CAD drawings, maps, and complex documents.' },
+      { question: 'Why does my PDF show no layers?', answer: 'Not all PDFs contain layers. Layers are typically added during PDF creation from design software or CAD applications.' },
+      { question: 'Will layer changes affect the original content?', answer: 'Layer visibility changes only affect what is displayed or printed. The actual content remains in the document.' },
+    ],
+  },
+
+  'pdf-reader': {
+    title: 'PDF Reader',
+    metaDescription: 'Free online PDF reader. View, navigate, zoom, rotate, and print PDF documents directly in your browser.',
+    keywords: ['pdf reader', 'pdf viewer', 'view pdf online', 'read pdf', 'pdf browser viewer'],
+    description: `
+      <p>PDF Reader is a full-featured PDF viewer that lets you read and navigate PDF documents directly in your browser. No software installation required - just upload your PDF and start reading.</p>
+      <p>Navigate between pages, zoom in and out, rotate the view, and use fullscreen mode for distraction-free reading. You can also print documents or download them for offline access.</p>
+      <p>All viewing happens locally in your browser. Your documents are never uploaded to any server, ensuring complete privacy.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Open Your PDF', description: 'Click to upload or drag and drop a PDF file to open it in the reader.' },
+      { step: 2, title: 'Navigate Pages', description: 'Use the page controls to go to the previous or next page, or jump to a specific page number.' },
+      { step: 3, title: 'Adjust View', description: 'Zoom in or out, rotate the view, or enter fullscreen mode for comfortable reading.' },
+      { step: 4, title: 'Print or Download', description: 'Print the document or download it for offline access when needed.' },
+    ],
+    useCases: [
+      { title: 'Document Review', description: 'Quickly review PDF documents without installing any software.', icon: 'book-open' },
+      { title: 'Mobile Reading', description: 'Read PDF documents on any device with a web browser.', icon: 'smartphone' },
+      { title: 'Quick Preview', description: 'Preview PDFs before deciding to download or print them.', icon: 'eye' },
+    ],
+    faq: [
+      { question: 'Is my document secure?', answer: 'Yes, your document is processed entirely in your browser and is never uploaded to any server.' },
+      { question: 'Can I annotate or edit the PDF?', answer: 'This tool is for viewing only. Use our Sign PDF or Annotate PDF tools for editing.' },
+      { question: 'Does it work on mobile devices?', answer: 'Yes, the PDF Reader works on all devices with a modern web browser.' },
+    ],
+  },
 };
+

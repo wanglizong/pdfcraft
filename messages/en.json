@@ -1,4 +1,39 @@
 {
+  "metadata": {
+    "home": {
+      "title": "Hello PDF - Professional PDF Tools",
+      "description": "Free, Private & Browser-Based. Merge, edit, and edit PDF files online without uploading to servers."
+    },
+    "tools": {
+      "title": "All PDF Tools",
+      "description": "Browse all 67+ professional PDF tools. Merge, split, compress, convert, edit, and secure your PDF files for free."
+    },
+    "about": {
+      "title": "About",
+      "description": "Learn about Hello PDF - your free, private, and powerful PDF toolkit. All processing happens in your browser."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Find answers to common questions about Hello PDF. Learn how to use our PDF tools effectively."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "Hello PDF privacy policy. Your files never leave your device - all processing happens locally in your browser."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Get in touch with Hello PDF team. We'd love to hear from you."
+    },
+    "keywords": {
+      "pdfTools": "PDF tools",
+      "mergePdf": "merge PDF",
+      "splitPdf": "split PDF",
+      "compressPdf": "compress PDF",
+      "convertPdf": "convert PDF",
+      "freePdfTools": "free PDF tools",
+      "onlinePdfEditor": "online PDF editor"
+    }
+  },
   "common": {
     "brand": "Hello PDF",
     "tagline": "Professional PDF Tools - Free & Private",
@@ -611,6 +646,14 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "favorite": {
+      "add": "Add to Favorites",
+      "remove": "Remove from Favorites",
+      "saved": "Saved",
+      "title": "Favorite Tools",
+      "empty": "No favorite tools yet",
+      "hint": "Click the star icon on any tool to save it here for quick access."
+    },
     "quality": {
       "title": "Output Quality",
       "low": "Low",
@@ -756,8 +799,9 @@
       "successMessage": "PDF posterized successfully! Click the download button to save your file."
     },
     "pdfMultiTool": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Drag and drop PDF files here, or click to browse. You can upload multiple files.",
+      "addMoreFiles": "Add More PDF Files",
       "organize": "Organize",
       "delete": "Delete",
       "rotate": "Rotate",
@@ -767,7 +811,19 @@
       "deleteHint": "Click pages to mark them for deletion.",
       "rotateHint": "Click rotation buttons on pages, or rotate all:",
       "duplicateHint": "Click the duplicate button on pages to copy them.",
-      "reset": "Reset to Original",
+      "reset": "Reset",
+      "undo": "Undo",
+      "redo": "Redo",
+      "selectAll": "Select All",
+      "deselectAll": "Deselect",
+      "rotateLeft": "Left",
+      "rotateRight": "Right",
+      "exportPDF": "Export PDF",
+      "downloadSelected": "Download Selected",
+      "clearAll": "Clear All",
+      "addBlankPageTitle": "Add Blank Pages",
+      "numberOfPages": "Number of pages",
+      "insertPosition": "Insert at position",
       "processButton": "Apply Changes",
       "successMessage": "PDF processed successfully! Click the download button to save your file."
     },
@@ -891,6 +947,16 @@
       "batchUploadDescription": "Drag and drop PDF files here. You can compress up to 10 files at once.",
       "filesTitle": "Files to Compress",
       "optionsTitle": "Compression Options",
+      "algorithmLabel": "Compression Algorithm",
+      "algorithmStandard": "Standard",
+      "algorithmCondense": "Condense",
+      "algorithmPhoton": "Photon",
+      "algorithmStandardDesc": "General-purpose compression using object streams",
+      "algorithmCondenseDesc": "Optimizes structure while preserving interactivity",
+      "algorithmPhotonDesc": "Rasterizes pages — best for image-heavy PDFs",
+      "photonWarning": "Note: Photon converts pages to images, which may reduce text quality and lose interactivity (links, forms).",
+      "photonDpiLabel": "Output DPI",
+      "photonDpiDesc": "Higher DPI = better quality, larger file size",
       "qualityLabel": "Compression Quality",
       "qualityLow": "Low",
       "qualityLowDesc": "Maximum compression with object stream optimization",
@@ -1773,6 +1839,23 @@
       "generate": "Generate Table of Contents",
       "success": "Table of contents generated successfully!"
     },
+    "markdownToPdf": {
+      "uploadLabel": "Upload Markdown File",
+      "uploadDescription": "Drag and drop a .md or .markdown file to convert to PDF.",
+      "manualInput": "Write Markdown",
+      "uploadFile": "Upload File",
+      "editorLabel": "Markdown Editor",
+      "previewLabel": "Preview",
+      "showPreview": "Show Preview",
+      "hidePreview": "Hide Preview",
+      "optionsTitle": "Conversion Options",
+      "themeLabel": "Theme",
+      "pageSizeLabel": "Page Size",
+      "gfmLabel": "Enable GitHub Flavored Markdown (tables, task lists, etc.)",
+      "syntaxHighlightLabel": "Enable syntax highlighting for code blocks",
+      "convertButton": "Convert to PDF",
+      "successMessage": "PDF created successfully! Click download to save."
+    },
     "pdfToDocx": {
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
@@ -1832,6 +1915,126 @@
       "uploadDescription": "Drag and drop FB2 e-book files here, or click to browse. Supports multiple files.",
       "convertButton": "Convert to PDF",
       "successMessage": "Your FB2 file(s) have been successfully converted to PDF!"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "Upload DJVU File",
+      "uploadDescription": "Drag and drop a DJVU file here, or click to browse.",
+      "optionsTitle": "Conversion Options",
+      "dpiLabel": "Output DPI",
+      "dpiHint": "Higher DPI = larger file size, better quality",
+      "qualityLabel": "Image Quality",
+      "qualityHint": "JPEG compression quality for pages",
+      "convertButton": "Convert to PDF",
+      "successTitle": "Conversion Successful!",
+      "successMessage": "Your DJVU file has been successfully converted to PDF!"
+    },
+    "deskewPdf": {
+      "uploadLabel": "Upload Scanned PDF Files",
+      "uploadDescription": "Drag and drop PDF files here. You can process up to 10 files at once.",
+      "filesTitle": "Files to Deskew",
+      "optionsTitle": "Deskew Options",
+      "thresholdLabel": "Detection Threshold",
+      "thresholdDesc": "Higher values detect more subtle skew angles. Default: 10",
+      "dpiLabel": "Analysis DPI",
+      "dpiDesc": "Higher DPI provides more accurate detection but takes longer.",
+      "processButton": "Deskew PDFs",
+      "downloadAllZip": "Download All as ZIP",
+      "successMessage": "Successfully deskewed PDF file(s)!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file to create a booklet layout.",
+      "optionsTitle": "Booklet Options",
+      "gridModeLabel": "Grid Mode",
+      "gridModeDesc": "1x2 is standard for booklets. Use larger grids to save paper.",
+      "paperSizeLabel": "Paper Size",
+      "orientationLabel": "Orientation",
+      "rotationLabel": "Page Rotation",
+      "paddingLabel": "Padding",
+      "previewLabel": "Layout Preview",
+      "previewDesc": "This preview shows how pages will be arranged on each sheet.",
+      "createButton": "Create Booklet",
+      "successMessage": "Booklet created successfully! Click download to save."
+    },
+    "rasterizePdf": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file to convert to images.",
+      "optionsTitle": "Output Options",
+      "dpiLabel": "Resolution (DPI)",
+      "formatLabel": "Output Format",
+      "qualityLabel": "Quality",
+      "pageRangeLabel": "Page Range (optional)",
+      "pageRangeDesc": "Leave empty to convert all pages.",
+      "bgColorLabel": "Background Color",
+      "convertButton": "Convert to Images",
+      "successMessage": "Images created successfully! Click download to save."
+    },
+    "emailToPdf": {
+      "uploadLabel": "Upload Email File",
+      "uploadDescription": "Drag and drop an email file (.eml) to convert to PDF.",
+      "optionsTitle": "Conversion Options",
+      "pageSizeLabel": "Page Size",
+      "includeCcBccLabel": "Include CC/BCC fields",
+      "includeAttachmentsLabel": "Include attachment list",
+      "timezoneLabel": "Timezone",
+      "convertButton": "Convert to PDF",
+      "successMessage": "Email converted successfully!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "Upload CBZ File",
+      "uploadDescription": "Drag and drop a comic book archive (.cbz) to convert to PDF.",
+      "optionsTitle": "Conversion Options",
+      "pageSizeLabel": "Page Size",
+      "qualityLabel": "Image Quality",
+      "preserveAspectLabel": "Preserve aspect ratio",
+      "convertButton": "Convert to PDF",
+      "successMessage": "Comic converted successfully!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Drag and drop PDF files to convert to PDF/A format.",
+      "filesTitle": "Files to Convert",
+      "optionsTitle": "PDF/A Options",
+      "levelLabel": "PDF/A Level",
+      "embedFontsLabel": "Embed all fonts",
+      "flattenTransparencyLabel": "Flatten transparency (required for PDF/A-1b)",
+      "convertButton": "Convert to PDF/A",
+      "downloadAllZip": "Download All as ZIP",
+      "successMessage": "Successfully converted file(s) to PDF/A!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Drag and drop PDF files to convert fonts to outlines.",
+      "filesTitle": "Files",
+      "optionsTitle": "Options",
+      "dpiLabel": "Rasterization DPI",
+      "convertButton": "Convert Fonts to Outlines",
+      "downloadAllZip": "Download All as ZIP",
+      "successMessage": "Successfully converted file(s)!"
+    },
+    "extractTables": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file to extract tables from.",
+      "optionsTitle": "Extraction Options",
+      "formatLabel": "Output Format",
+      "pageRangeLabel": "Page Range (optional)",
+      "minColumnsLabel": "Min Columns",
+      "minRowsLabel": "Min Rows",
+      "includePageNumbersLabel": "Include page numbers in output",
+      "extractButton": "Extract Tables",
+      "successMessage": "Tables extracted successfully! Click download to save."
+    },
+    "ocgManager": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF to manage its layers (OCG).",
+      "layersTitle": "PDF Layers",
+      "noLayers": "This PDF has no layers (OCG).",
+      "addLayerLabel": "Add New Layer",
+      "successMessage": "Layer changes saved successfully!"
+    },
+    "pdfReader": {
+      "uploadLabel": "Open PDF File",
+      "uploadDescription": "Open a PDF file to read and view."
     }
   }
 }

@@ -1,4 +1,39 @@
 {
+  "metadata": {
+    "home": {
+      "title": "Hello PDF - Herramientas PDF Profesionales",
+      "description": "Gratis, privado y basado en navegador. Combina y edita archivos PDF en línea sin subirlos a servidores."
+    },
+    "tools": {
+      "title": "Todas las Herramientas PDF",
+      "description": "Explora más de 67 herramientas PDF profesionales. Combina, divide, comprime, convierte, edita y protege tus archivos PDF gratis."
+    },
+    "about": {
+      "title": "Acerca de Nosotros",
+      "description": "Conoce Hello PDF - tu kit de herramientas PDF gratuito, privado y potente. Todo el procesamiento ocurre en tu navegador."
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "description": "Encuentra respuestas a preguntas comunes sobre Hello PDF. Aprende a usar nuestras herramientas PDF de manera efectiva."
+    },
+    "privacy": {
+      "title": "Política de Privacidad",
+      "description": "Política de privacidad de Hello PDF. Tus archivos nunca salen de tu dispositivo - todo el procesamiento ocurre localmente en tu navegador."
+    },
+    "contact": {
+      "title": "Contáctanos",
+      "description": "Ponte en contacto con el equipo de Hello PDF. Nos encantaría saber de ti."
+    },
+    "keywords": {
+      "pdfTools": "herramientas PDF",
+      "mergePdf": "combinar PDF",
+      "splitPdf": "dividir PDF",
+      "compressPdf": "comprimir PDF",
+      "convertPdf": "convertir PDF",
+      "freePdfTools": "herramientas PDF gratis",
+      "onlinePdfEditor": "editor PDF en línea"
+    }
+  },
   "common": {
     "brand": "Hello PDF",
     "tagline": "Herramientas PDF Profesionales - Gratis y Privadas",
@@ -511,6 +546,14 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "favorite": {
+      "add": "Añadir a favoritos",
+      "remove": "Eliminar de favoritos",
+      "saved": "Guardado",
+      "title": "Herramientas favoritas",
+      "empty": "Aún no hay herramientas favoritas",
+      "hint": "Haz clic en el icono de estrella en cualquier herramienta para guardarla aquí y acceder rápidamente."
+    },
     "quality": {
       "title": "Calidad de salida",
       "low": "Baja",
@@ -584,20 +627,33 @@
       "successMessage": "PDF posterized successfully! Click the download button to save your file."
     },
     "pdfMultiTool": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "organize": "Organize",
-      "delete": "Delete",
-      "rotate": "Rotate",
-      "duplicate": "Duplicate",
-      "addBlank": "Add Blank",
-      "organizeHint": "Drag and drop pages to reorder them.",
-      "deleteHint": "Click pages to mark them for deletion.",
-      "rotateHint": "Click rotation buttons on pages, or rotate all:",
-      "duplicateHint": "Click the duplicate button on pages to copy them.",
-      "reset": "Reset to Original",
-      "processButton": "Apply Changes",
-      "successMessage": "PDF processed successfully! Click the download button to save your file."
+      "uploadLabel": "Subir archivos PDF",
+      "uploadDescription": "Arrastra y suelta archivos PDF aquí, o haz clic para buscar. Puedes subir varios archivos.",
+      "addMoreFiles": "Agregar más archivos PDF",
+      "organize": "Organizar",
+      "delete": "Eliminar",
+      "rotate": "Rotar",
+      "duplicate": "Duplicar",
+      "addBlank": "Agregar página en blanco",
+      "organizeHint": "Arrastra y suelta páginas para reordenarlas.",
+      "deleteHint": "Haz clic en las páginas para marcarlas para eliminar.",
+      "rotateHint": "Haz clic en los botones de rotación en las páginas, o rota todas:",
+      "duplicateHint": "Haz clic en el botón duplicar para copiar páginas.",
+      "reset": "Restablecer",
+      "undo": "Deshacer",
+      "redo": "Rehacer",
+      "selectAll": "Seleccionar todo",
+      "deselectAll": "Deseleccionar",
+      "rotateLeft": "Rotar izquierda",
+      "rotateRight": "Rotar derecha",
+      "exportPDF": "Exportar PDF",
+      "downloadSelected": "Descargar selección",
+      "clearAll": "Borrar todo",
+      "addBlankPageTitle": "Agregar páginas en blanco",
+      "numberOfPages": "Número de páginas",
+      "insertPosition": "Posición de inserción",
+      "processButton": "Aplicar cambios",
+      "successMessage": "¡PDF procesado con éxito! Haz clic en el botón de descarga para guardar tu archivo."
     },
     "viewMetadata": {
       "uploadLabel": "Upload PDF File",
@@ -1662,6 +1718,93 @@
       "uploadDescription": "Arrastra archivos FB2 de libros electrónicos aquí o haz clic para seleccionar. Admite múltiples archivos.",
       "convertButton": "Convertir a PDF",
       "successMessage": "¡Tu(s) archivo(s) FB2 se ha(n) convertido a PDF con éxito!"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "Subir archivo DJVU",
+      "uploadDescription": "Arrastra un archivo DJVU aquí o haz clic.",
+      "optionsTitle": "Opciones de conversión",
+      "dpiLabel": "DPI de salida",
+      "dpiHint": "Mayor DPI = archivo más grande, mejor calidad",
+      "qualityLabel": "Calidad de imagen",
+      "qualityHint": "Calidad de compresión JPEG para páginas",
+      "convertButton": "Convertir a PDF",
+      "successTitle": "¡Conversión exitosa!",
+      "successMessage": "¡Tu archivo DJVU se ha convertido a PDF con éxito!"
+    },
+    "deskewPdf": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Upload PDFs to straighten.",
+      "optionsTitle": "Options",
+      "processButton": "Deskew PDF",
+      "successMessage": "PDF deskewed!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload PDF for booklet.",
+      "optionsTitle": "Options",
+      "createButton": "Create",
+      "successMessage": "Booklet created!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to rasterize.",
+      "optionsTitle": "Options",
+      "rasterizeButton": "Rasterize",
+      "successMessage": "Rasterized!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Upload Markdown",
+      "uploadDescription": "Upload .md file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "Upload Email",
+      "uploadDescription": "Upload .eml file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "Upload CBZ",
+      "uploadDescription": "Upload comic.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload for PDF/A.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "PDF/A created!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to outline fonts.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Fonts outlined!"
+    },
+    "extractTables": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to extract tables.",
+      "optionsTitle": "Options",
+      "extractButton": "Extract",
+      "successMessage": "Extracted!"
+    },
+    "ocgManager": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to manage layers.",
+      "layersTitle": "Layers",
+      "noLayers": "No layers.",
+      "addLayerLabel": "Add Layer",
+      "successMessage": "Saved!"
+    },
+    "pdfReader": {
+      "uploadLabel": "Open PDF",
+      "uploadDescription": "Open PDF to read."
     }
   }
 }

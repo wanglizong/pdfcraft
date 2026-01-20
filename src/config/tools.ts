@@ -521,6 +521,18 @@ export const tools: Tool[] = [
     relatedTools: ['epub-to-pdf', 'fb2-to-pdf', 'txt-to-pdf'],
   },
   {
+    id: 'djvu-to-pdf',
+    slug: 'djvu-to-pdf',
+    icon: 'file-scan',
+    category: 'convert-to-pdf',
+    acceptedFormats: ['.djvu', '.djv'],
+    outputFormat: 'pdf',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['preserve-formatting', 'dpi-setting', 'quality-setting'],
+    relatedTools: ['image-to-pdf', 'scan-to-pdf', 'ocr-pdf'],
+  },
+  {
     id: 'fb2-to-pdf',
     slug: 'fb2-to-pdf',
     icon: 'book-text',
@@ -1035,12 +1047,153 @@ export const tools: Tool[] = [
     features: ['print-permission', 'copy-permission', 'edit-permission', 'annotation-permission'],
     relatedTools: ['encrypt-pdf', 'decrypt-pdf', 'remove-restrictions'],
   },
+
+  // ==================== NEW TOOLS ====================
+  {
+    id: 'deskew-pdf',
+    slug: 'deskew-pdf',
+    icon: 'scan-line',
+    category: 'optimize-repair',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'pdf',
+    maxFileSize: LARGE_FILE_SIZE,
+    maxFiles: 10,
+    features: ['auto-straighten', 'scanned-documents', 'angle-detection', 'batch-processing'],
+    relatedTools: ['compress-pdf', 'ocr', 'repair-pdf'],
+  },
+  {
+    id: 'pdf-booklet',
+    slug: 'pdf-booklet',
+    icon: 'book-open',
+    category: 'organize-manage',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'pdf',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['booklet-layout', 'saddle-stitch', 'grid-modes', 'paper-sizes', 'preview'],
+    relatedTools: ['n-up', 'posterize-pdf', 'print-pdf'],
+  },
+  {
+    id: 'rasterize-pdf',
+    slug: 'rasterize-pdf',
+    icon: 'grid-2x2',
+    category: 'convert-from-pdf',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'image',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 10,
+    features: ['dpi-control', 'png-jpeg-webp', 'page-range', 'batch-export'],
+    relatedTools: ['pdf-to-jpg', 'pdf-to-png', 'extract-images'],
+  },
+  {
+    id: 'markdown-to-pdf',
+    slug: 'markdown-to-pdf',
+    icon: 'file-type',
+    category: 'convert-to-pdf',
+    acceptedFormats: ['.md', '.markdown', '.txt'],
+    outputFormat: 'pdf',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 10,
+    features: ['commonmark', 'gfm', 'code-highlighting', 'themes', 'tables'],
+    relatedTools: ['text-to-pdf', 'html-to-pdf', 'word-to-pdf'],
+  },
+  {
+    id: 'email-to-pdf',
+    slug: 'email-to-pdf',
+    icon: 'mail',
+    category: 'convert-to-pdf',
+    acceptedFormats: ['.eml', '.msg'],
+    outputFormat: 'pdf',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 10,
+    features: ['inline-images', 'attachments', 'cc-bcc', 'date-formatting'],
+    relatedTools: ['html-to-pdf', 'word-to-pdf', 'attachments'],
+  },
+  {
+    id: 'cbz-to-pdf',
+    slug: 'cbz-to-pdf',
+    icon: 'book-image',
+    category: 'convert-to-pdf',
+    acceptedFormats: ['.cbz', '.zip'],
+    outputFormat: 'pdf',
+    maxFileSize: LARGE_FILE_SIZE,
+    maxFiles: 10,
+    features: ['comic-archive', 'image-extraction', 'page-order', 'page-sizes'],
+    relatedTools: ['jpg-to-pdf', 'image-to-pdf', 'epub-to-pdf'],
+  },
+  {
+    id: 'pdf-to-pdfa',
+    slug: 'pdf-to-pdfa',
+    icon: 'archive',
+    category: 'optimize-repair',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'pdf',
+    maxFileSize: LARGE_FILE_SIZE,
+    maxFiles: 10,
+    features: ['pdfa-1b', 'pdfa-2b', 'pdfa-3b', 'long-term-archival', 'font-embedding'],
+    relatedTools: ['compress-pdf', 'linearize-pdf', 'repair-pdf'],
+  },
+  {
+    id: 'font-to-outline',
+    slug: 'font-to-outline',
+    icon: 'type',
+    category: 'optimize-repair',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'pdf',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 10,
+    features: ['convert-fonts', 'vector-paths', 'compatibility', 'preserve-appearance'],
+    relatedTools: ['compress-pdf', 'flatten-pdf', 'pdf-to-pdfa'],
+  },
+  {
+    id: 'extract-tables',
+    slug: 'extract-tables',
+    icon: 'table',
+    category: 'convert-from-pdf',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'data',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['json-export', 'markdown-export', 'csv-export', 'table-detection'],
+    relatedTools: ['pdf-to-excel', 'pdf-to-json', 'ocr'],
+  },
+  {
+    id: 'ocg-manager',
+    slug: 'ocg-manager',
+    icon: 'layers',
+    category: 'optimize-repair',
+    acceptedFormats: ['.pdf'],
+    outputFormat: '.pdf',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['view-layers', 'toggle-layers', 'add-layers', 'delete-layers', 'rename-layers'],
+    relatedTools: ['flatten', 'compress-pdf'],
+  },
+  {
+    id: 'pdf-reader',
+    slug: 'pdf-reader',
+    icon: 'book-open',
+    category: 'edit-annotate',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'view',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['page-navigation', 'zoom', 'rotate', 'fullscreen', 'print', 'download'],
+    relatedTools: ['sign-pdf', 'annotate-pdf'],
+  },
 ];
 
 /**
- * Get all tools
+ * Get all tools (excluding disabled tools)
  */
 export function getAllTools(): Tool[] {
+  return tools.filter(tool => !tool.disabled);
+}
+
+/**
+ * Get all tools including disabled ones (for admin)
+ */
+export function getAllToolsIncludingDisabled(): Tool[] {
   return tools;
 }
 
@@ -1048,21 +1201,21 @@ export function getAllTools(): Tool[] {
  * Get tool by ID
  */
 export function getToolById(id: string): Tool | undefined {
-  return tools.find((tool) => tool.id === id);
+  return tools.find((tool) => tool.id === id && !tool.disabled);
 }
 
 /**
  * Get tool by slug
  */
 export function getToolBySlug(slug: string): Tool | undefined {
-  return tools.find((tool) => tool.slug === slug);
+  return tools.find((tool) => tool.slug === slug && !tool.disabled);
 }
 
 /**
- * Get tools by category
+ * Get tools by category (excluding disabled tools)
  */
 export function getToolsByCategory(category: ToolCategory): Tool[] {
-  return tools.filter((tool) => tool.category === category);
+  return tools.filter((tool) => tool.category === category && !tool.disabled);
 }
 
 /**

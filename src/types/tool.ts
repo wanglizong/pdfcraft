@@ -97,6 +97,8 @@ export interface Tool {
   features: string[];
   /** Related tool IDs (minimum 2 required per Requirements 6.5) */
   relatedTools: string[];
+  /** Whether the tool is disabled (hidden from UI) */
+  disabled?: boolean;
 }
 
 /**

@@ -20,13 +20,13 @@ import { PDFErrorCode } from '@/types/pdf';
 async function createRealPDFFile(name: string, pageCount: number = 1): Promise<File> {
   const { PDFDocument } = await import('pdf-lib');
   const pdfDoc = await PDFDocument.create();
-  
+
   for (let i = 0; i < pageCount; i++) {
     pdfDoc.addPage([612, 792]); // Letter size
   }
-  
+
   const pdfBytes = await pdfDoc.save();
-  const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+  const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: 'application/pdf' });
   return new File([blob], name, { type: 'application/pdf' });
 }
 

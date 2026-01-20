@@ -1,10 +1,27 @@
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import { setRequestLocale } from 'next-intl/server';
+import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { locales, type Locale } from '@/lib/i18n/config';
+import { generateToolsListMetadata } from '@/lib/seo';
 import ToolsPageClient from './ToolsPageClient';
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : 'en';
+  const t = await getTranslations({ locale: validLocale, namespace: 'metadata' });
+
+  return generateToolsListMetadata(validLocale, {
+    title: t('tools.title'),
+    description: t('tools.description'),
+  });
 }
 
 interface ToolsPageProps {

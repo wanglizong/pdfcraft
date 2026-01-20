@@ -1,4 +1,39 @@
 {
+  "metadata": {
+    "home": {
+      "title": "Hello PDF - プロフェッショナルPDFツール",
+      "description": "無料、プライベート、ブラウザベース。サーバーにアップロードせずにPDFファイルをオンラインで結合・編集。"
+    },
+    "tools": {
+      "title": "すべてのPDFツール",
+      "description": "67以上のプロフェッショナルPDFツールを閲覧。PDFファイルの結合、分割、圧縮、変換、編集、保護が無料で可能。"
+    },
+    "about": {
+      "title": "私たちについて",
+      "description": "Hello PDFについて - 無料でプライベートな強力なPDFツールキット。すべての処理はブラウザ内で行われます。"
+    },
+    "faq": {
+      "title": "よくある質問",
+      "description": "Hello PDFに関するよくある質問の回答。PDFツールを効果的に使用する方法をご覧ください。"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー",
+      "description": "Hello PDFプライバシーポリシー。ファイルはデバイスから離れることはありません - すべての処理はローカルブラウザで行われます。"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "description": "Hello PDFチームにお問い合わせください。ご意見をお待ちしております。"
+    },
+    "keywords": {
+      "pdfTools": "PDFツール",
+      "mergePdf": "PDF結合",
+      "splitPdf": "PDF分割",
+      "compressPdf": "PDF圧縮",
+      "convertPdf": "PDF変換",
+      "freePdfTools": "無料PDFツール",
+      "onlinePdfEditor": "オンラインPDFエディター"
+    }
+  },
   "common": {
     "brand": "Hello PDF",
     "tagline": "プロフェッショナルPDFツール - 無料＆プライベート",
@@ -511,6 +546,14 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "favorite": {
+      "add": "お気に入りに追加",
+      "remove": "お気に入りから削除",
+      "saved": "保存済み",
+      "title": "お気に入りツール",
+      "empty": "お気に入りのツールはまだありません",
+      "hint": "ツールの星アイコンをクリックすると、ここに保存してすぐにアクセスできます。"
+    },
     "quality": {
       "title": "出力品質",
       "low": "低",
@@ -584,20 +627,33 @@
       "successMessage": "PDF posterized successfully! Click the download button to save your file."
     },
     "pdfMultiTool": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "organize": "Organize",
-      "delete": "Delete",
-      "rotate": "Rotate",
-      "duplicate": "Duplicate",
-      "addBlank": "Add Blank",
-      "organizeHint": "Drag and drop pages to reorder them.",
-      "deleteHint": "Click pages to mark them for deletion.",
-      "rotateHint": "Click rotation buttons on pages, or rotate all:",
-      "duplicateHint": "Click the duplicate button on pages to copy them.",
-      "reset": "Reset to Original",
-      "processButton": "Apply Changes",
-      "successMessage": "PDF processed successfully! Click the download button to save your file."
+      "uploadLabel": "PDFファイルをアップロード",
+      "uploadDescription": "PDFファイルをドラッグ＆ドロップするか、クリックして参照。複数ファイルをアップロードできます。",
+      "addMoreFiles": "PDFファイルを追加",
+      "organize": "整理",
+      "delete": "削除",
+      "rotate": "回転",
+      "duplicate": "複製",
+      "addBlank": "空白ページを追加",
+      "organizeHint": "ページをドラッグ＆ドロップして並べ替え。",
+      "deleteHint": "削除するページをクリック。",
+      "rotateHint": "ページの回転ボタンをクリックするか、すべて回転：",
+      "duplicateHint": "ページの複製ボタンをクリック。",
+      "reset": "リセット",
+      "undo": "元に戻す",
+      "redo": "やり直し",
+      "selectAll": "すべて選択",
+      "deselectAll": "選択解除",
+      "rotateLeft": "左回転",
+      "rotateRight": "右回転",
+      "exportPDF": "PDFをエクスポート",
+      "downloadSelected": "選択をダウンロード",
+      "clearAll": "すべてクリア",
+      "addBlankPageTitle": "空白ページを追加",
+      "numberOfPages": "ページ数",
+      "insertPosition": "挿入位置",
+      "processButton": "変更を適用",
+      "successMessage": "PDF処理完了！ダウンロードボタンをクリックして保存。"
     },
     "viewMetadata": {
       "uploadLabel": "Upload PDF File",
@@ -1662,6 +1718,93 @@
       "uploadDescription": "FB2電子書籍ファイルをここにドラッグ＆ドロップするか、クリックして選択してください。複数ファイル対応。",
       "convertButton": "PDFに変換",
       "successMessage": "FB2ファイルがPDFに正常に変換されました！"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "DJVUファイルをアップロード",
+      "uploadDescription": "DJVUファイルをここにドラッグ＆ドロップしてください。",
+      "optionsTitle": "変換オプション",
+      "dpiLabel": "出力DPI",
+      "dpiHint": "高DPI = ファイルサイズ大、品質向上",
+      "qualityLabel": "画像品質",
+      "qualityHint": "ページのJPEG圧縮品質",
+      "convertButton": "PDFに変換",
+      "successTitle": "変換成功！",
+      "successMessage": "DJVUファイルがPDFに正常に変換されました！"
+    },
+    "deskewPdf": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Upload PDFs to straighten.",
+      "optionsTitle": "Options",
+      "processButton": "Deskew PDF",
+      "successMessage": "PDF deskewed!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload PDF for booklet.",
+      "optionsTitle": "Options",
+      "createButton": "Create",
+      "successMessage": "Booklet created!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to rasterize.",
+      "optionsTitle": "Options",
+      "rasterizeButton": "Rasterize",
+      "successMessage": "Rasterized!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Upload Markdown",
+      "uploadDescription": "Upload .md file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "Upload Email",
+      "uploadDescription": "Upload .eml file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "Upload CBZ",
+      "uploadDescription": "Upload comic.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload for PDF/A.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "PDF/A created!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to outline fonts.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Fonts outlined!"
+    },
+    "extractTables": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to extract tables.",
+      "optionsTitle": "Options",
+      "extractButton": "Extract",
+      "successMessage": "Extracted!"
+    },
+    "ocgManager": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to manage layers.",
+      "layersTitle": "Layers",
+      "noLayers": "No layers.",
+      "addLayerLabel": "Add Layer",
+      "successMessage": "Saved!"
+    },
+    "pdfReader": {
+      "uploadLabel": "Open PDF",
+      "uploadDescription": "Open PDF to read."
     }
   }
 }

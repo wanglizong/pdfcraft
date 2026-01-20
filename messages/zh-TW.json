@@ -1,4 +1,39 @@
 {
+  "metadata": {
+    "home": {
+      "title": "Hello PDF - 專業 PDF 工具",
+      "description": "免費、私密、基於瀏覽器。線上合併、編輯 PDF 檔案，無需上傳到伺服器。"
+    },
+    "tools": {
+      "title": "所有 PDF 工具",
+      "description": "瀏覽 67+ 款專業 PDF 工具。免費合併、分割、壓縮、轉換、編輯和保護您的 PDF 檔案。"
+    },
+    "about": {
+      "title": "關於我們",
+      "description": "瞭解 Hello PDF - 您免費、私密且強大的 PDF 工具箱。所有處理都在您的瀏覽器中進行。"
+    },
+    "faq": {
+      "title": "常見問題",
+      "description": "查找有關 Hello PDF 的常見問題解答。瞭解如何有效使用我們的 PDF 工具。"
+    },
+    "privacy": {
+      "title": "隱私政策",
+      "description": "Hello PDF 隱私政策。您的檔案永遠不會離開您的裝置 - 所有處理都在本地瀏覽器中進行。"
+    },
+    "contact": {
+      "title": "聯絡我們",
+      "description": "聯繫 Hello PDF 團隊。我們很樂意聽取您的意見。"
+    },
+    "keywords": {
+      "pdfTools": "PDF 工具",
+      "mergePdf": "合併 PDF",
+      "splitPdf": "分割 PDF",
+      "compressPdf": "壓縮 PDF",
+      "convertPdf": "轉換 PDF",
+      "freePdfTools": "免費 PDF 工具",
+      "onlinePdfEditor": "線上 PDF 編輯器"
+    }
+  },
   "common": {
     "brand": "Hello PDF",
     "tagline": "專業PDF工具 - 免費且私密",
@@ -511,6 +546,14 @@
     "useCases": "使用場景",
     "faq": "常見問題",
     "comingSoon": "此工具即將推出。",
+    "favorite": {
+      "add": "加入收藏",
+      "remove": "取消收藏",
+      "saved": "已收藏",
+      "title": "收藏工具",
+      "empty": "尚未收藏任何工具",
+      "hint": "點擊任意工具上的星形圖示可將其加入收藏，方便快速存取。"
+    },
     "quality": {
       "title": "輸出質量",
       "low": "低",
@@ -653,7 +696,8 @@
     },
     "pdfMultiTool": {
       "uploadLabel": "上傳PDF檔案",
-      "uploadDescription": "拖放PDF檔案到此處，或點選瀏覽。",
+      "uploadDescription": "拖放PDF檔案到此處，或點選瀏覽。可以上傳多個檔案。",
+      "addMoreFiles": "新增更多PDF檔案",
       "organize": "整理",
       "delete": "刪除",
       "rotate": "旋轉",
@@ -663,8 +707,20 @@
       "deleteHint": "點選頁面標記為刪除。",
       "rotateHint": "點選頁面上的旋轉按鈕，或旋轉全部：",
       "duplicateHint": "點選頁面上的複製按鈕以複製頁面。",
-      "reset": "重置為原始",
-      "processButton": "應用更改",
+      "reset": "重設",
+      "undo": "復原",
+      "redo": "重做",
+      "selectAll": "全選",
+      "deselectAll": "取消選擇",
+      "rotateLeft": "左旋",
+      "rotateRight": "右旋",
+      "exportPDF": "匯出PDF",
+      "downloadSelected": "下載選取",
+      "clearAll": "清空全部",
+      "addBlankPageTitle": "新增空白頁",
+      "numberOfPages": "頁面數量",
+      "insertPosition": "插入位置",
+      "processButton": "套用變更",
       "successMessage": "PDF處理成功！點選下載按鈕儲存檔案。"
     },
     "viewMetadata": {
@@ -1661,6 +1717,93 @@
       "uploadDescription": "拖放FB2電子書檔案到此處，或點選瀏覽。支援多個檔案。",
       "convertButton": "轉換為PDF",
       "successMessage": "您的FB2檔案已成功轉換為PDF！"
+    },
+    "djvuToPdf": {
+      "uploadLabel": "上傳DJVU檔案",
+      "uploadDescription": "拖放DJVU檔案到此處，或點選瀏覽。",
+      "optionsTitle": "轉換選項",
+      "dpiLabel": "輸出DPI",
+      "dpiHint": "DPI越高，檔案越大，品質越好",
+      "qualityLabel": "影像品質",
+      "qualityHint": "頁面的JPEG壓縮品質",
+      "convertButton": "轉換為PDF",
+      "successTitle": "轉換成功！",
+      "successMessage": "您的DJVU檔案已成功轉換為PDF！"
+    },
+    "deskewPdf": {
+      "uploadLabel": "Upload PDF Files",
+      "uploadDescription": "Upload PDFs to straighten.",
+      "optionsTitle": "Options",
+      "processButton": "Deskew PDF",
+      "successMessage": "PDF deskewed!"
+    },
+    "pdfBooklet": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload PDF for booklet.",
+      "optionsTitle": "Options",
+      "createButton": "Create",
+      "successMessage": "Booklet created!"
+    },
+    "rasterizePdf": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to rasterize.",
+      "optionsTitle": "Options",
+      "rasterizeButton": "Rasterize",
+      "successMessage": "Rasterized!"
+    },
+    "markdownToPdf": {
+      "uploadLabel": "Upload Markdown",
+      "uploadDescription": "Upload .md file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "emailToPdf": {
+      "uploadLabel": "Upload Email",
+      "uploadDescription": "Upload .eml file.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "cbzToPdf": {
+      "uploadLabel": "Upload CBZ",
+      "uploadDescription": "Upload comic.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Converted!"
+    },
+    "pdfToPdfa": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload for PDF/A.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "PDF/A created!"
+    },
+    "fontToOutline": {
+      "uploadLabel": "Upload PDFs",
+      "uploadDescription": "Upload to outline fonts.",
+      "optionsTitle": "Options",
+      "convertButton": "Convert",
+      "successMessage": "Fonts outlined!"
+    },
+    "extractTables": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to extract tables.",
+      "optionsTitle": "Options",
+      "extractButton": "Extract",
+      "successMessage": "Extracted!"
+    },
+    "ocgManager": {
+      "uploadLabel": "Upload PDF",
+      "uploadDescription": "Upload to manage layers.",
+      "layersTitle": "Layers",
+      "noLayers": "No layers.",
+      "addLayerLabel": "Add Layer",
+      "successMessage": "Saved!"
+    },
+    "pdfReader": {
+      "uploadLabel": "Open PDF",
+      "uploadDescription": "Open PDF to read."
     }
   }
 }
