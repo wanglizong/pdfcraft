@@ -76,3 +76,13 @@
 /*.wasm
   Cache-Control: public, max-age=31536000, immutable
   Content-Type: application/wasm
+
+# MJS files (ES Modules) - must have correct MIME type
+/*.mjs
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/javascript
+
+# PDF.js viewer MJS files
+/pdfjs-viewer/*.mjs
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Type: application/javascript

@@ -318,6 +318,114 @@ export function createSplitEveryPage(totalPages: number): PageRange[] {
 }
 
 /**
+ * Create ranges for even and odd pages
+ * Returns two ranges: one for odd pages, one for even pages
+ */
+export function createSplitByEvenOdd(totalPages: number): { odd: PageRange[], even: PageRange[] } {
+  const oddRanges: PageRange[] = [];
+  const evenRanges: PageRange[] = [];
+
+  for (let i = 1; i <= totalPages; i++) {
+    if (i % 2 === 1) {
+      oddRanges.push({ start: i, end: i });
+    } else {
+      evenRanges.push({ start: i, end: i });
+    }
+  }
+
+  return { odd: oddRanges, even: evenRanges };
+}
+
+/**
+ * Create ranges to split PDF into N equal parts
+ */
+export function createSplitNTimes(totalPages: number, n: number): PageRange[] {
+  if (n <= 0 || n > totalPages) {
+    return [{ start: 1, end: totalPages }];
+  }
+
+  const ranges: PageRange[] = [];
+  const pagesPerPart = Math.floor(totalPages / n);
+  const remainder = totalPages % n;
+
+  let currentPage = 1;
+  for (let i = 0; i < n; i++) {
+    // Distribute remainder pages across the first parts
+    const extraPage = i < remainder ? 1 : 0;
+    const endPage = currentPage + pagesPerPart - 1 + extraPage;
+    ranges.push({ start: currentPage, end: Math.min(endPage, totalPages) });
+    currentPage = endPage + 1;
+  }
+
+  return ranges;
+}
+
+/**
+ * Bookmark information extracted from PDF
+ */
+export interface BookmarkInfo {
+  title: string;
+  pageNumber: number;
+  children?: BookmarkInfo[];
+}
+
+/**
+ * Create ranges based on PDF bookmarks
+ * Each top-level bookmark becomes a split point
+ * @param bookmarks - Array of bookmark info with page numbers
+ * @param totalPages - Total number of pages in the PDF
+ * @returns Array of page ranges for splitting
+ */
+export function createSplitByBookmarks(
+  bookmarks: BookmarkInfo[],
+  totalPages: number
+): { ranges: PageRange[], labels: string[] } {
+  if (!bookmarks || bookmarks.length === 0) {
+    return {
+      ranges: [{ start: 1, end: totalPages }],
+      labels: ['Complete Document']
+    };
+  }
+
+  // Get unique sorted page numbers from top-level bookmarks
+  const sortedBookmarks = [...bookmarks]
+    .filter(b => b.pageNumber >= 1 && b.pageNumber <= totalPages)
+    .sort((a, b) => a.pageNumber - b.pageNumber);
+
+  if (sortedBookmarks.length === 0) {
+    return {
+      ranges: [{ start: 1, end: totalPages }],
+      labels: ['Complete Document']
+    };
+  }
+
+  const ranges: PageRange[] = [];
+  const labels: string[] = [];
+
+  for (let i = 0; i < sortedBookmarks.length; i++) {
+    const current = sortedBookmarks[i];
+    const next = sortedBookmarks[i + 1];
+
+    const start = current.pageNumber;
+    const end = next ? next.pageNumber - 1 : totalPages;
+
+    // Only add if range is valid (at least 1 page)
+    if (end >= start) {
+      ranges.push({ start, end });
+      labels.push(current.title);
+    }
+  }
+
+  // Handle case where first bookmark doesn't start at page 1
+  if (sortedBookmarks[0].pageNumber > 1) {
+    ranges.unshift({ start: 1, end: sortedBookmarks[0].pageNumber - 1 });
+    labels.unshift('Introduction');
+  }
+
+  return { ranges, labels };
+}
+
+/**
  * Create a new instance of the split processor
  */
 export function createSplitProcessor(): SplitPDFProcessor {

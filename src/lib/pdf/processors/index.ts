@@ -20,6 +20,10 @@ export {
   parsePageRanges,
   createSplitEveryNPages,
   createSplitEveryPage,
+  createSplitByEvenOdd,
+  createSplitNTimes,
+  createSplitByBookmarks,
+  type BookmarkInfo,
 } from './split';
 
 // Organize processor
