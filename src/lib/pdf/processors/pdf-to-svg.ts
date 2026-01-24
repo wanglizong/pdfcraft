@@ -12,7 +12,7 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
-import { loadPdfjs } from '../loader';
+import { loadPdfjsLegacy, loadSVGGraphics } from '../loader-legacy';
 
 /**
  * PDF to SVG options
@@ -93,7 +93,8 @@ export class PDFToSVGProcessor extends BasePDFProcessor {
         try {
             this.updateProgress(5, 'Loading PDF library...');
 
-            const pdfjs = await loadPdfjs();
+            // Use legacy pdfjs-dist (v2.16.105) for SVGGraphics support
+            const pdfjs = await loadPdfjsLegacy();
 
             if (this.checkCancelled()) {
                 return this.createErrorOutput(
@@ -104,7 +105,7 @@ export class PDFToSVGProcessor extends BasePDFProcessor {
 
             this.updateProgress(10, 'Loading PDF document...');
 
-            // Load the PDF document
+            // Load the PDF document using legacy pdfjs
             const arrayBuffer = await file.arrayBuffer();
             const pdf = await pdfjs.getDocument({ data: arrayBuffer }).promise;
             const totalPages = pdf.numPages;
@@ -201,17 +202,92 @@ export class PDFToSVGProcessor extends BasePDFProcessor {
     }
 
     /**
-     * Render a single PDF page to SVG
+     * Render a single PDF page to SVG using true vector rendering
      */
     private async renderPageToSVG(
-        pdf: Awaited<ReturnType<Awaited<ReturnType<typeof loadPdfjs>>['getDocument']>['promise']>,
+        pdf: any, // PDF document from legacy pdfjs-dist
         pageNum: number,
         options: PDFToSVGOptions
     ): Promise<SVGResult> {
         const page = await pdf.getPage(pageNum);
         const viewport = page.getViewport({ scale: options.scale });
 
-        // Create canvas
+        // Try to use SVGGraphics for true vector rendering
+        try {
+            const svgString = await this.renderPageToVectorSVG(page, viewport, options);
+            const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
+
+            return {
+                svg: svgString,
+                blob: svgBlob,
+                pageNumber: pageNum,
+                width: viewport.width,
+                height: viewport.height,
+            };
+        } catch (vectorError) {
+            console.warn('Vector SVG rendering failed, falling back to canvas:', vectorError);
+            // Fallback to canvas-based rendering
+            return this.renderPageToRasterSVG(page, viewport, options, pageNum);
+        }
+    }
+
+    /**
+     * Render page to true vector SVG using legacy PDF.js SVGGraphics
+     * Uses pdfjs-dist v2.16.105 which includes the SVGGraphics module
+     */
+    private async renderPageToVectorSVG(
+        page: any,
+        viewport: any,
+        options: PDFToSVGOptions
+    ): Promise<string> {
+        // Load SVGGraphics from legacy pdfjs-dist
+        const SVGGraphics = await loadSVGGraphics();
+
+        // Get operator list for vector rendering
+        const operatorList = await page.getOperatorList();
+
+        // Create SVGGraphics instance
+        const svgGfx = new SVGGraphics(page.commonObjs, page.objs);
+
+        // Enable embedding fonts if requested
+        if (options.embedFonts) {
+            svgGfx.embedFonts = true;
+        }
+
+        // Generate SVG element
+        const svgElement = await svgGfx.getSVG(operatorList, viewport);
+
+        // Add background if not white/transparent
+        if (options.backgroundColor && options.backgroundColor !== '#ffffff') {
+            const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+            rect.setAttribute('width', '100%');
+            rect.setAttribute('height', '100%');
+            rect.setAttribute('fill', options.backgroundColor);
+            svgElement.insertBefore(rect, svgElement.firstChild);
+        }
+
+        // Add XML declaration and serialize
+        const serializer = new XMLSerializer();
+        let svgString = serializer.serializeToString(svgElement);
+
+        // Add XML declaration if not present
+        if (!svgString.startsWith('<?xml')) {
+            svgString = '<?xml version="1.0" encoding="UTF-8"?>\n' + svgString;
+        }
+
+        return svgString;
+    }
+
+    /**
+     * Fallback: Render page to SVG with embedded raster image and vector text layer
+     */
+    private async renderPageToRasterSVG(
+        page: any,
+        viewport: any,
+        options: PDFToSVGOptions,
+        pageNum: number
+    ): Promise<SVGResult> {
+        // Create canvas with higher resolution for better quality
         const canvas = document.createElement('canvas');
         canvas.width = viewport.width;
         canvas.height = viewport.height;
@@ -231,10 +307,70 @@ export class PDFToSVGProcessor extends BasePDFProcessor {
             viewport: viewport,
         }).promise;
 
-        // Convert canvas to SVG
-        const svgString = this.canvasToSVG(canvas, viewport.width, viewport.height);
+        // Get text content for vector text layer
+        const textContent = await page.getTextContent();
 
-        // Create blob
+        // Build text layer SVG elements
+        let textLayerSVG = '';
+        if (textContent && textContent.items && textContent.items.length > 0) {
+            for (const item of textContent.items) {
+                if (!item.str || item.str.trim() === '') continue;
+
+                const tx = viewport.transform;
+                // Apply viewport transform to get screen coordinates
+                const x = tx[0] * item.transform[4] + tx[2] * item.transform[5] + tx[4];
+                const y = tx[1] * item.transform[4] + tx[3] * item.transform[5] + tx[5];
+
+                // Calculate font size based on transform
+                const fontSize = Math.sqrt(item.transform[0] * item.transform[0] + item.transform[1] * item.transform[1]) * options.scale;
+
+                // Escape special XML characters
+                const escapedText = item.str
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&apos;');
+
+                // Add text element (invisible by default, but selectable and searchable)
+                textLayerSVG += `
+    <text x="${x.toFixed(2)}" y="${y.toFixed(2)}" 
+          font-size="${fontSize.toFixed(1)}" 
+          font-family="${item.fontName || 'sans-serif'}"
+          fill="transparent" fill-opacity="0">${escapedText}</text>`;
+            }
+        }
+
+        // Convert canvas to data URL
+        const dataUrl = canvas.toDataURL('image/png');
+
+        // Create SVG with image and text layer
+        const svgString = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+     width="${viewport.width}" height="${viewport.height}" viewBox="0 0 ${viewport.width} ${viewport.height}">
+  <title>PDF Page ${pageNum}</title>
+  <defs>
+    <style>
+      .text-layer text {
+        fill: transparent;
+        fill-opacity: 0;
+        pointer-events: all;
+        user-select: text;
+        -webkit-user-select: text;
+      }
+      .text-layer text::selection {
+        background: #0078d4;
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <!-- Raster layer -->
+  <image width="${viewport.width}" height="${viewport.height}" xlink:href="${dataUrl}" />
+  <!-- Vector text layer (selectable) -->
+  <g class="text-layer">${textLayerSVG}
+  </g>
+</svg>`;
+
         const svgBlob = new Blob([svgString], { type: 'image/svg+xml' });
 
         return {
@@ -244,23 +380,6 @@ export class PDFToSVGProcessor extends BasePDFProcessor {
             width: viewport.width,
             height: viewport.height,
         };
-    }
-
-    /**
-     * Convert canvas to SVG string
-     * This creates an SVG with an embedded image from the canvas
-     */
-    private canvasToSVG(canvas: HTMLCanvasElement, width: number, height: number): string {
-        const dataUrl = canvas.toDataURL('image/png');
-
-        const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
-     width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-  <title>PDF Page</title>
-  <image width="${width}" height="${height}" xlink:href="${dataUrl}" />
-</svg>`;
-
-        return svg;
     }
 }
 
