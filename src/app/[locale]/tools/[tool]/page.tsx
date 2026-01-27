@@ -136,7 +136,7 @@ export async function generateMetadata({ params }: ToolPageParams): Promise<Meta
     };
   }
 
-  const content = getToolContent(locale, tool.id);
+  const content = getToolContent(locale, tool.id) || getToolContent('en', tool.id);
 
   if (!content) {
     return {
