@@ -1,23 +1,28 @@
 # Netlify Configuration for PDFCraft
-# Next.js App Router – minimal change version
+# Static export deployment
 
 [build]
+  # Build command
   command = "npm run build"
-  publish = ".next"
+  # Output directory (Next.js static export)
+  publish = "out"
 
 [build.environment]
-  NODE_VERSION = "18"
+  # Node.js version
+  NODE_VERSION = "20"
+  # NPM version
+  NPM_VERSION = "10"
 
-# ---------------------------------------------------------
-# Next.js runtime support (REQUIRED)
-# ---------------------------------------------------------
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+# Redirects for SPA-style routing with trailing slashes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
 
-# ---------------------------------------------------------
-# Security headers (unchanged)
-# ---------------------------------------------------------
+# Headers configuration
 [[headers]]
+  # Security headers for all routes
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
@@ -26,20 +31,20 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
-# ---------------------------------------------------------
-# Static assets – long cache (unchanged)
-# ---------------------------------------------------------
 [[headers]]
+  # JavaScript files - long cache
   for = "/*.js"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  # CSS files - long cache
   for = "/*.css"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  # Images - long cache
   for = "/*.png"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
@@ -79,10 +84,8 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ---------------------------------------------------------
-# Fonts (unchanged)
-# ---------------------------------------------------------
 [[headers]]
+  # Fonts - long cache
   for = "/*.woff"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
@@ -102,59 +105,60 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ---------------------------------------------------------
-# WebAssembly (unchanged)
-# ---------------------------------------------------------
 [[headers]]
+  # WebAssembly files - correct MIME type and long cache
   for = "/*.wasm"
   [headers.values]
     Content-Type = "application/wasm"
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ---------------------------------------------------------
-# ES Modules
-# ---------------------------------------------------------
 [[headers]]
+  # ES Modules - correct MIME type
   for = "/*.mjs"
   [headers.values]
     Content-Type = "application/javascript"
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ---------------------------------------------------------
-# Next.js static assets
-# ---------------------------------------------------------
 [[headers]]
+  # Next.js static assets
   for = "/_next/static/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ---------------------------------------------------------
-# Workers / pdf viewer assets
-# ---------------------------------------------------------
 [[headers]]
+  # Workers directory
   for = "/workers/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
+  # PDF.js viewer assets
   for = "/pdfjs-viewer/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# ---------------------------------------------------------
-# HTML / SW / Manifest (unchanged)
-# ---------------------------------------------------------
 [[headers]]
+  # HTML pages - no cache
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
+  # Service worker - no cache
   for = "/sw.js"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
 [[headers]]
+  # Manifest - short cache
   for = "/manifest.json"
   [headers.values]
     Cache-Control = "public, max-age=3600"
+
+# Edge functions (optional, for advanced features)
+# [functions]
+#   directory = "netlify/functions"
+
+# Plugins (optional)
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"
