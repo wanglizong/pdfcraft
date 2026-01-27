@@ -1,65 +1,164 @@
+# Netlify Configuration for PDFCraft
+# Static export deployment
+
 [build]
-command = "next build"
-publish = "out" # Next.js 的标准输出路径
+  # Build command
+  command = "npm run build"
+  # Output directory (Next.js static export)
+  publish = "out"
 
-# 1. 路径重写 (相当于 Vercel 的 Rewrites)
-# 解决 /pdfjs-annotation-viewer/ 访问 404 的问题
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "20"
+  # NPM version
+  NPM_VERSION = "10"
+
+# Redirects for SPA-style routing with trailing slashes
 [[redirects]]
-from = "/pdfjs-annotation-viewer/web/viewer"
-to = "/web/viewer.html"
-status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
 
-[[redirects]]
-from = "/pdfjs-annotation-viewer/*"
-to = "/:splat"
-status = 200
-
-# 2. 全局安全请求头
+# Headers configuration
 [[headers]]
-for = "/*"
-[headers.values]
-X-Content-Type-Options = "nosniff"
-X-Frame-Options = "SAMEORIGIN"
-X-XSS-Protection = "1; mode=block"
-Referrer-Policy = "strict-origin-when-cross-origin"
-
-# 3. 静态资源长时间缓存 (JS/CSS)
-[[headers]]
-for = "/*.js"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
+  # Security headers for all routes
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
 [[headers]]
-for = "/*.css"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-# 4. 图片及媒体文件缓存
-[[headers]]
-for = "/*.(png|jpg|jpeg|gif|svg|webp|avif|ico)"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-# 5. 字体文件缓存
-[[headers]]
-for = "/*.(woff|woff2|ttf|eot)"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-
-# 6. WASM 特殊处理
-[[headers]]
-for = "/*.wasm"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
-Content-Type = "application/wasm"
-
-# 7. 针对特定路径的缓存规则
-[[headers]]
-for = "/workers/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
+  # JavaScript files - long cache
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
-for = "/pdfjs-annotation-viewer/*"
-[headers.values]
-Cache-Control = "public, max-age=31536000, immutable"
+  # CSS files - long cache
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Images - long cache
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.gif"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.avif"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Fonts - long cache
+  for = "/*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.ttf"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.eot"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # WebAssembly files - correct MIME type and long cache
+  for = "/*.wasm"
+  [headers.values]
+    Content-Type = "application/wasm"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # ES Modules - correct MIME type
+  for = "/*.mjs"
+  [headers.values]
+    Content-Type = "application/javascript"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Next.js static assets
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Workers directory
+  for = "/workers/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # PDF.js viewer assets
+  for = "/pdfjs-viewer/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # HTML pages - no cache
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  # Service worker - no cache
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  # Manifest - short cache
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Edge functions (optional, for advanced features)
+# [functions]
+#   directory = "netlify/functions"
+
+# Plugins (optional)
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"

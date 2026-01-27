@@ -35,9 +35,42 @@ This project is built with modern web technologies to provide a slick, app-like 
 - **🎨 Modern UI**: Clean, accessible, and responsive design built with Tailwind CSS.
 - **🌐 Multi-language**: Supports English, Spanish, French, German, Portuguese, Japanese, Korean, and Chinese.
 
-## 🧰 Complete Tool List (80+ Tools)
+## 🔄 Workflow Editor (Beta)
 
-### 📁 Organize & Manage (24 tools)
+> ⚠️ **Early Development Notice**: This feature is currently in early development stage. You may encounter bugs or incomplete functionality. We appreciate your feedback and patience!
+
+PDFCraft includes a powerful **visual workflow editor** that allows you to chain multiple PDF operations together, creating automated processing pipelines.
+
+<div align="center">
+  <img src="public/images/workflow-editor-screenshot.png" alt="Workflow Editor Screenshot" width="800" />
+  <p><em>Visual workflow editor with drag-and-drop interface</em></p>
+</div>
+
+### Key Capabilities
+
+- **🔗 Visual Node-Based Editor**: Drag and drop tools onto a canvas and connect them to create processing pipelines
+- **📋 23+ Pre-built Templates**: Common workflows like "Merge & Compress", "Secure PDF", "Document Preparation", etc.
+- **💾 Save & Reuse**: Save your custom workflows for future use
+- **🎯 Real-time Validation**: Automatic format compatibility checking between connected tools
+- **📁 Batch Processing**: Process multiple files through the same workflow
+- **↔️ Collapsible Panels**: Maximize canvas workspace with collapsible tool and library sidebars
+
+### Available Templates
+
+| Category | Templates |
+|----------|-----------|
+| **Common** | Merge & Compress, Document Preparation, Split & Watermark, Batch Watermark, Report Assembly, Invoice Processing |
+| **Conversion** | Images to PDF, PDF to Images, Office to PDF, eBook to PDF, Photo Album Creator |
+| **Optimization** | Optimize for Web, Full Optimization, Grayscale & Compress, Archive Preparation |
+| **Security** | Create Secure PDF, Confidential Document, Unlock & Edit |
+
+### How to Access
+
+Navigate to `/workflow` or click on "Workflow Editor" in the navigation menu.
+
+## 🧰 Complete Tool List (90+ Tools)
+
+### 📁 Organize & Manage (27 tools)
 | Tool | Description |
 |------|-------------|
 | **PDF Multi Tool** | All-in-one PDF editor for merge, split, organize, delete, rotate, and extract |
@@ -64,8 +97,10 @@ This project is built with modern web technologies to provide a slick, app-like 
 | **Compare PDFs** | Compare two PDFs side-by-side with difference highlighting |
 | **Posterize PDF** | Split large pages into multiple printable sheets |
 | **Grid Combine** | Combine multiple PDFs into a grid layout with custom spacing |
+| **PDF Booklet** | Arrange pages for booklet printing (saddle stitch) |
+| **PDF Reader** | Read and view PDF documents in a clean interface |
 
-### ✏️ Edit & Annotate (16 tools)
+### ✏️ Edit & Annotate (19 tools)
 | Tool | Description |
 |------|-------------|
 | **Edit PDF** | Add text, images, annotations, highlights, and shapes |
@@ -84,8 +119,10 @@ This project is built with modern web technologies to provide a slick, app-like 
 | **Form Filler** | Complete interactive PDF forms |
 | **Form Creator** | Add text fields, checkboxes, and dropdowns to create forms |
 | **Remove Blank Pages** | Auto-detect and remove empty pages |
+| **Deskew PDF** | Automatically straighten skewed scanned pages |
+| **OCG Manager** | Manage Optional Content Groups (layers) in PDFs |
 
-### 📤 Convert to PDF (18 tools)
+### 📤 Convert to PDF (22 tools)
 | Tool | Description |
 |------|-------------|
 | **Image to PDF** | Convert any image format to PDF |
@@ -106,8 +143,12 @@ This project is built with modern web technologies to provide a slick, app-like 
 | **RTF to PDF** | Convert Rich Text Format files to PDF |
 | **EPUB to PDF** | Convert EPUB ebooks to PDF |
 | **MOBI to PDF** | Convert MOBI ebooks to PDF |
+| **Markdown to PDF** | Convert Markdown files to PDF with styling |
+| **Email to PDF** | Convert email files (EML/MSG) to PDF |
+| **CBZ to PDF** | Convert comic book archives to PDF |
+| **DjVu to PDF** | Convert DjVu documents to PDF |
 
-### 📥 Convert from PDF (11 tools)
+### 📥 Convert from PDF (13 tools)
 | Tool | Description |
 |------|-------------|
 | **PDF to JPG** | Extract pages as JPEG images |
@@ -121,8 +162,10 @@ This project is built with modern web technologies to provide a slick, app-like 
 | **PDF to PowerPoint** | Convert PDF to editable slides |
 | **PDF to Excel** | Extract tables to spreadsheet format |
 | **Extract Images** | Extract all images embedded in a PDF file |
+| **PDF to PDF/A** | Convert PDF to archival PDF/A format |
+| **Extract Tables** | Extract tables from PDF as structured data |
 
-### ⚡ Optimize & Repair (6 tools)
+### ⚡ Optimize & Repair (8 tools)
 | Tool | Description |
 |------|-------------|
 | **Compress PDF** | Reduce file size while maintaining quality |
@@ -131,6 +174,8 @@ This project is built with modern web technologies to provide a slick, app-like 
 | **Linearize PDF** | Optimize for fast web viewing |
 | **Repair PDF** | Fix corrupted or damaged PDF files |
 | **Remove Restrictions** | Remove editing/printing restrictions |
+| **Rasterize PDF** | Convert vector elements to images for compatibility |
+| **Font to Outline** | Convert text fonts to vector outlines |
 
 ### 🔒 Secure PDF (6 tools)
 | Tool | Description |
@@ -231,63 +276,40 @@ docker compose down
 
 PDFCraft is configured for static export (`output: 'export'`), which means it can be deployed to any service that supports static website hosting without requiring a Node.js server.
 
-### 1. Build Project
+> 📖 **For comprehensive deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)**
 
-Before deploying, build the project to generate static files using the following command:
+### Quick Start
 
-```bash
-npm run build
-```
+1. **Build the project:**
+   ```bash
+   npm run build
+   ```
+   All static files will be generated in the `out` directory.
 
-After the build is complete, all static files will be located in the `out` directory.
+2. **Deploy to your preferred platform:**
+   - **Vercel** (Recommended): `vercel --prod`
+   - **Netlify**: `netlify deploy --prod --dir=out`
+   - **GitHub Pages**: Push to `main` branch (uses GitHub Actions)
+   - **Cloudflare Pages**: `wrangler pages deploy out`
+   - **Docker + Nginx**: `docker compose --profile prod up --build`
 
-### 2. Deployment Options
+### Deployment Files Included
 
-You can deploy the contents of the `out` directory to any of the following platforms:
+| File | Platform |
+|------|----------|
+| `vercel.json` | Vercel |
+| `netlify.toml` | Netlify |
+| `.github/workflows/deploy.yml` | GitHub Pages |
+| `public/_headers` | Cloudflare Pages / Netlify |
+| `docker-compose.yml` + `nginx.conf` | Docker / Self-hosted |
+| `.htaccess` | Apache |
 
-#### A. Vercel (Recommended)
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run the `vercel` command.
-3. Follow the prompts to set the build command to `npm run build` and the output directory to `out`.
-4. Alternatively, connect directly to your GitHub repository, and Vercel will automatically detect Next.js and configure it.
+### Important Notes
+- **Headers Configuration**: Security and caching headers are pre-configured in all deployment files.
+- **Image Optimization**: Static export uses `images: { unoptimized: true }`.
+- **WASM Support**: All deployment configs include proper MIME types for WebAssembly.
 
-#### B. Nginx / Apache
-Copy the contents of the `out` directory to the root directory of your web server.
-
-**Nginx Configuration Example:**
-```nginx
-server {
-    listen 80;
-    server_name example.com;
-    root /path/to/your/pdfcraft/out;
-    index index.html;
-
-    # Handle static files
-    location / {
-        try_files $uri $uri.html $uri/ =404;
-    }
-
-    # Enable gzip compression
-    gzip on;
-    gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
-}
-```
-
-#### C. GitHub Pages
-1. Push the `out` directory to the `gh-pages` branch of your repository.
-2. Enable GitHub Pages in your repository settings.
-3. Note: If you are not using a custom domain, you might need to modify `basePath` in `next.config.js`.
-
-#### D. Netlify
-1. Connect your repository to Netlify.
-2. Set build command: `npm run build`
-3. Set publish directory: `out`
-
-### 3. Important Notes
-- **Headers Configuration**: The `headers` configuration in `next.config.js` does not automatically take effect in static export mode. You need to configure HTTP headers separately depending on your hosting platform (e.g., `vercel.json` for Vercel or Nginx configuration).
-- **Image Optimization**: Since static export does not support Next.js's default image optimization server, the project is configured with `images: { unoptimized: true }`.
-
-### 4. Verify Deployment
+### Verify Deployment
 After deployment, please check the following features to ensure everything is working correctly:
 - Multi-language routing (e.g., `/en`, `/zh`)
 - Tool page loading
@@ -303,9 +325,15 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4.  Push to the branch (`git push origin feature/AmazingFeature`)
 5.  Open a Pull Request
 
+## 🤝 Acknowledgements
+
+PDFCraft stands on the shoulders of giants. We gratefully acknowledge [BentoPDF](https://github.com/alam00000/bentopdf) for their pioneering work in privacy-first, client-side PDF tools.
+
+Their project served as a significant inspiration and reference for our core logic. While PDFCraft has been re-engineered for the Next.js ecosystem and extends functionality with unique features like the *Workflow Editor*, we deeply respect the foundation laid by the BentoPDF team.
+
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the AGPL-3.0 License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
