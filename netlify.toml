@@ -160,5 +160,5 @@
 #   directory = "netlify/functions"
 
 # Plugins (optional)
-# [[plugins]]
-#   package = "@netlify/plugin-lighthouse"
+ [[plugins]]
+   package = "@netlify/plugin-nextjs"
