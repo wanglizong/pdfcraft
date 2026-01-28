@@ -136,7 +136,7 @@ export async function generateMetadata({ params }: ToolPageParams): Promise<Meta
     };
   }
 
-  const content = getToolContent(locale, tool.id) || getToolContent('en', tool.id);
+  const content = getToolContent(locale, tool.id);
 
   if (!content) {
     return {
@@ -173,7 +173,7 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
   }
 
   // Get tool content for the locale (falls back to English)
-  const content = getToolContent(locale, tool.id) || getToolContent('en', tool.id);
+  const content = getToolContent(locale, tool.id);
 
   if (!content) {
     notFound();
