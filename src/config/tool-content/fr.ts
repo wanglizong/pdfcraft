@@ -1915,4 +1915,138 @@ export const toolContentFr: Record<string, ToolContent> = {
       { question: 'Puis-je modifier le design ?', answer: 'Une fois converti, vous pouvez utiliser tous les outils de PowerPoint pour changer les couleurs, les polices et la disposition.' },
     ],
   },
+
+  'email-to-pdf': {
+    title: 'Email vers PDF',
+    metaDescription: 'Convertissez des fichiers email (.eml, .msg) en documents PDF. Préserve le formatage, les images intégrées, les liens cliquables et les pièces jointes.',
+    keywords: ['email vers pdf', 'eml vers pdf', 'msg vers pdf', 'convertir email', 'outlook vers pdf'],
+    description: `
+      <p>Email vers PDF convertit vos fichiers email (formats .eml et .msg) en documents PDF bien formatés. L'outil préserve les informations d'en-tête de l'email, le contenu du corps, les images intégrées avec remplacement CID, les liens cliquables et intègre les pièces jointes directement dans le PDF.</p>
+      <p>Personnalisez les options de sortie incluant la taille de page (A4, Letter, Legal), le format de date avec support de fuseau horaire, et si vous souhaitez inclure les champs CC/BCC et les informations de pièces jointes.</p>
+      <p>Toute la conversion se fait localement dans votre navigateur, garantissant que vos emails restent privés et sécurisés.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Télécharger le Fichier Email', description: 'Téléchargez votre fichier email .eml ou .msg.' },
+      { step: 2, title: 'Configurer les Options', description: 'Définissez la taille de page, le format de date, le fuseau horaire et choisissez les champs à inclure.' },
+      { step: 3, title: 'Convertir et Télécharger', description: 'Convertissez en PDF avec pièces jointes intégrées et téléchargez le résultat.' },
+    ],
+    useCases: [
+      { title: 'Dossiers Juridiques', description: 'Archivez des emails importants en PDF avec pièces jointes intégrées pour documentation légale.', icon: 'scale' },
+      { title: 'Archives Professionnelles', description: 'Convertissez la correspondance professionnelle en PDF pour conservation à long terme.', icon: 'briefcase' },
+      { title: 'Préservation de Preuves', description: 'Sauvegardez des preuves email avec images intégrées et pièces jointes dans un format PDF non modifiable.', icon: 'shield' },
+    ],
+    faq: [
+      { question: 'Quels formats d\'email sont supportés ?', answer: 'Les fichiers .eml (RFC 822) et .msg (Microsoft Outlook) sont tous deux entièrement supportés.' },
+      { question: 'Les pièces jointes sont-elles incluses ?', answer: 'Oui ! Les pièces jointes sont intégrées directement dans le fichier PDF. Vous pouvez les extraire du PDF en utilisant un lecteur PDF compatible.' },
+      { question: 'Les images intégrées sont-elles affichées ?', answer: 'Oui, les images intégrées référencées via CID (Content-ID) sont automatiquement converties en URIs de données base64 et affichées dans le PDF.' },
+      { question: 'Les liens sont-ils cliquables ?', answer: 'Oui, tous les liens HTML (balises <a>) et URLs dans les emails en texte brut sont convertis en liens cliquables dans le PDF.' },
+      { question: 'Le formatage de l\'email est-il préservé ?', answer: 'Oui, les emails HTML maintiennent leur formatage autant que possible, incluant les styles, images et liens.' },
+    ],
+  },
+
+  'djvu-to-pdf': {
+    title: 'DJVU vers PDF',
+    metaDescription: 'Convertissez les fichiers de documents DJVU en PDF. Rendu haute qualité pour documents scannés et livres.',
+    keywords: ['djvu vers pdf', 'convertir djvu', 'convertisseur djvu', 'djvu pdf', 'djv vers pdf'],
+    description: `
+      <p>DJVU vers PDF convertit les fichiers de documents DjVu en documents PDF haute qualité. DjVu est un format de fichier informatique conçu principalement pour stocker des documents scannés, en particulier ceux contenant une combinaison de texte, dessins au trait et photographies.</p>
+      <p>Cet outil rend chaque page de votre fichier DJVU à votre DPI choisi (points par pouce) et les combine en un document PDF consultable. Parfait pour convertir des livres scannés, manuels techniques et documents d'archives.</p>
+      <p>Toute la conversion se produit localement dans votre navigateur, garantissant que vos documents restent privés et sécurisés.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Télécharger le Fichier DJVU', description: 'Glissez-déposez votre fichier .djvu ou .djv, ou cliquez pour sélectionner depuis votre appareil.' },
+      { step: 2, title: 'Configurer les Options', description: 'Choisissez le DPI de sortie (72, 150 ou 300) et la qualité d\'image pour le PDF.' },
+      { step: 3, title: 'Convertir et Télécharger', description: 'Cliquez sur Convertir en PDF et téléchargez votre document converti.' },
+    ],
+    useCases: [
+      { title: 'Documents d\'Archives', description: 'Convertissez les archives DJVU au format PDF universel.', icon: 'archive' },
+      { title: 'Partager des Livres Scannés', description: 'Partagez des livres scannés au format PDF pour une compatibilité plus large.', icon: 'share-2' },
+      { title: 'Imprimer des Documents', description: 'Convertissez DJVU en PDF haute qualité pour l\'impression.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'Qu\'est-ce que le format DJVU ?', answer: 'DjVu est un format de fichier conçu pour stocker des documents scannés, en particulier ceux avec texte, dessins et images. Il offre une meilleure compression que PDF pour le contenu scanné.' },
+      { question: 'Quel DPI dois-je choisir ?', answer: '72 DPI convient à la visualisation web, 150 DPI pour les documents standard et 300 DPI pour l\'impression haute qualité.' },
+      { question: 'Le texte sera-t-il consultable ?', answer: 'Le texte sera rendu comme images. Si vous avez besoin de texte consultable, envisagez d\'utiliser notre outil OCR PDF après la conversion.' },
+    ],
+  },
+
+  'fb2-to-pdf': {
+    title: 'FB2 vers PDF',
+    metaDescription: 'Convertissez les livres électroniques FictionBook (FB2) en PDF. Prend en charge plusieurs fichiers avec rendu haute qualité.',
+    keywords: ['fb2 vers pdf', 'convertir fb2', 'fictionbook vers pdf', 'convertisseur fb2', 'fb2.zip vers pdf'],
+    description: `
+      <p>FB2 vers PDF convertit les fichiers de livres électroniques FictionBook (FB2) en documents PDF haute qualité. FB2 est un format de livre électronique basé sur XML très populaire largement utilisé en Russie et en Europe de l'Est.</p>
+      <p>Cet outil prend en charge à la fois les fichiers .fb2 et .fb2.zip, et peut traiter plusieurs fichiers à la fois. Il préserve le formatage du texte, les images et la structure des chapitres de vos livres électroniques.</p>
+      <p>Toute la conversion se produit localement dans votre navigateur en utilisant une technologie de rendu avancée, garantissant que vos livres restent privés et la conversion est rapide.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Télécharger les Fichiers FB2', description: 'Glissez-déposez un ou plusieurs fichiers .fb2 ou .fb2.zip, ou cliquez pour sélectionner depuis votre appareil.' },
+      { step: 2, title: 'Sélectionner la Qualité', description: 'Choisissez la qualité de sortie : Faible (72 DPI), Moyenne (150 DPI) ou Haute (300 DPI).' },
+      { step: 3, title: 'Convertir et Télécharger', description: 'Cliquez sur Convertir en PDF et téléchargez votre/vos document(s) converti(s).' },
+    ],
+    useCases: [
+      { title: 'Imprimer des Livres Électroniques', description: 'Convertissez les livres électroniques FB2 en PDF pour impression physique.', icon: 'printer' },
+      { title: 'Conversion par Lots', description: 'Convertissez plusieurs fichiers FB2 en PDF à la fois.', icon: 'layers' },
+      { title: 'Format Universel', description: 'Partagez des livres électroniques au format PDF qui fonctionne sur n\'importe quel appareil.', icon: 'share-2' },
+    ],
+    faq: [
+      { question: 'Puis-je convertir plusieurs fichiers FB2 à la fois ?', answer: 'Oui ! Cet outil prend en charge la conversion par lots de jusqu\'à 20 fichiers FB2 simultanément.' },
+      { question: 'Les fichiers .fb2.zip sont-ils pris en charge ?', answer: 'Oui, l\'outil extrait et convertit automatiquement les fichiers FB2 depuis les archives .fb2.zip.' },
+      { question: 'Le formatage est-il préservé ?', answer: 'Oui ! L\'outil utilise le rendu FB2 natif, préservant le formatage du texte, les images et la structure des chapitres avec une haute fidélité.' },
+    ],
+  },
+
+  'deskew-pdf': {
+    title: 'Redresser PDF',
+    metaDescription: 'Redressez automatiquement les pages PDF scannées ou inclinées. Corrigez les documents déformés avec détection précise d\'angle.',
+    keywords: ['redresser pdf', 'corriger pdf incliné', 'corriger scan incliné', 'rotation pdf automatique', 'corriger angle pdf'],
+    description: `
+      <p>Redresser PDF détecte et corrige automatiquement les pages inclinées ou déformées dans vos documents PDF en utilisant une analyse avancée de variance de profil de projection. Ceci est essentiel pour les documents scannés qui ont été introduits dans le scanner à un angle.</p>
+      <p>L'outil analyse l'alignement du texte et du contenu à différents angles pour trouver la rotation optimale, puis applique la correction. Vous pouvez ajuster le seuil de sensibilité (1-30) et les paramètres DPI (72-300) pour des résultats optimaux.</p>
+      <p>Tout le traitement se produit localement dans votre navigateur en utilisant la technologie WebAssembly, garantissant que vos documents restent privés et sécurisés.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Télécharger votre PDF', description: 'Glissez-déposez votre fichier PDF scanné ou cliquez pour sélectionner.' },
+      { step: 2, title: 'Configurer les Paramètres', description: 'Ajustez la sensibilité du seuil et DPI si nécessaire pour une meilleure détection.' },
+      { step: 3, title: 'Traiter et Télécharger', description: 'Cliquez sur Redresser pour redresser les pages et télécharger le PDF corrigé.' },
+    ],
+    useCases: [
+      { title: 'Documents Scannés', description: 'Corrigez les pages qui ont été scannées à un angle depuis les chargeurs de documents.', icon: 'scan' },
+      { title: 'Scans Mobiles', description: 'Corrigez les photos inclinées de documents prises avec des smartphones.', icon: 'smartphone' },
+      { title: 'Restauration d\'Archives', description: 'Redressez les anciennes archives scannées pour une meilleure lisibilité.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Quelle est la précision de la détection d\'angle ?', answer: 'L\'outil utilise l\'analyse de variance de profil de projection pour détecter les angles de déformation jusqu\'à ±10 degrés avec une grande précision. Il ignore automatiquement les pages avec des angles inférieurs à 0,3 degré.' },
+      { question: 'La qualité du texte sera-t-elle affectée ?', answer: 'Pour les rotations à des multiples de 90 degrés, aucune perte de qualité ne se produit. Pour d\'autres angles, l\'outil arrondit au degré le plus proche et maintient une bonne qualité.' },
+      { question: 'Puis-je redresser uniquement des pages spécifiques ?', answer: 'L\'outil analyse toutes les pages mais ne corrige que celles avec une déformation détectée au-dessus du seuil de sensibilité. Les pages avec une déformation minimale sont laissées inchangées.' },
+      { question: 'Qu\'est-ce que le seuil de sensibilité ?', answer: 'Les valeurs 1-10 corrigent uniquement les inclinaisons évidentes, 11-20 détectent une déformation modérée, et 21-30 capturent des angles subtils. La valeur par défaut est 10 pour une détection équilibrée.' },
+      { question: 'Combien de temps prend le traitement ?', answer: 'Le temps de traitement dépend de la taille du fichier et du DPI. 150 DPI (par défaut) offre un bon équilibre entre vitesse et précision. Un DPI plus élevé est plus précis mais plus lent.' },
+    ],
+  },
+
+  'pdf-to-pdfa': {
+    title: 'PDF vers PDF/A',
+    metaDescription: 'Convertissez PDF au format d\'archivage PDF/A. Assurez la préservation à long terme des documents avec les normes ISO.',
+    keywords: ['pdf vers pdfa', 'convertisseur pdfa', 'archiver pdf', 'archivage pdf', 'préservation à long terme'],
+    description: `
+      <p>PDF vers PDF/A convertit vos documents PDF au format PDF/A, la norme ISO pour l'archivage de documents à long terme. PDF/A garantit que les documents seront visualisables et reproductibles pendant des décennies.</p>
+      <p>Choisissez parmi PDF/A-1b (conformité de base), PDF/A-2b (recommandé, prend en charge la transparence) ou PDF/A-3b (permet les fichiers intégrés). L'outil intègre les polices et aplatit la transparence selon les besoins.</p>
+      <p>Toute la conversion se produit localement dans votre navigateur, garantissant que vos documents restent privés.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Télécharger votre PDF', description: 'Téléchargez le PDF que vous souhaitez convertir en PDF/A.' },
+      { step: 2, title: 'Sélectionner le Niveau PDF/A', description: 'Choisissez le niveau de conformité PDF/A-1b, PDF/A-2b ou PDF/A-3b.' },
+      { step: 3, title: 'Convertir et Télécharger', description: 'Convertissez en PDF/A et téléchargez le document d\'archives.' },
+    ],
+    useCases: [
+      { title: 'Archives Légales', description: 'Convertissez les documents légaux en PDF/A pour un stockage à long terme admissible en cour.', icon: 'scale' },
+      { title: 'Registres Gouvernementaux', description: 'Conformez-vous aux exigences d\'archivage gouvernemental en utilisant PDF/A.', icon: 'building' },
+      { title: 'Archives d\'Entreprise', description: 'Préservez les documents d\'entreprise importants pour l\'accessibilité future.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Quel niveau PDF/A dois-je utiliser ?', answer: 'PDF/A-2b est recommandé pour la plupart des utilisations. Utilisez 1b pour une compatibilité maximale ou 3b si vous avez besoin de fichiers intégrés.' },
+      { question: 'Qu\'est-ce qui rend PDF/A différent ?', answer: 'PDF/A intègre les polices, désactive le chiffrement et garantit que tous les éléments sont autonomes pour la visualisation future.' },
+      { question: 'Puis-je reconvertir depuis PDF/A ?', answer: 'Les fichiers PDF/A sont des PDF standard et peuvent être ouverts normalement. Les fonctionnalités d\'archivage ajoutent des restrictions, pas des limitations.' },
+    ],
+  },
 };

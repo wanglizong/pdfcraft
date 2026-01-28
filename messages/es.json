@@ -484,6 +484,10 @@
     "error": "Error",
     "issues": "problemas",
     "stop": "Detener",
+    "validationErrors": "Errores de Validación",
+    "warnings": "Advertencias",
+    "executionFailed": "Error en la ejecución del flujo de trabajo",
+    "retry": "Reintentar",
     "nodes": "nodos",
     "import": "Importar",
     "clear": "Limpiar",
@@ -1588,7 +1592,10 @@
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Removal Options",
       "removeButton": "Remove Annotations",
-      "successMessage": "Annotations removed successfully!"
+      "successMessage": "Annotations removed successfully!",
+      "removeComments": "Eliminar Comentarios",
+      "removeHighlights": "Eliminar Resaltados",
+      "removeLinks": "Eliminar Enlaces"
     },
     "formFiller": {
       "uploadLabel": "Upload PDF File",

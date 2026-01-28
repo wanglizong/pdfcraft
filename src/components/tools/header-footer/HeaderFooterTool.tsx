@@ -2,20 +2,31 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import * as pdfjsLib from 'pdfjs-dist';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { addHeaderFooter, HeaderFooterOptions } from '@/lib/pdf/processors/header-footer';
-import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import type { ProcessOutput } from '@/types/pdf';
 
-// Set worker source
-if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
-  configurePdfjsWorker(pdfjsLib);
-}
+// Store pdfjs module reference
+let pdfjsModule: typeof import('pdfjs-dist') | null = null;
+
+// Load pdfjs module dynamically
+const loadPdfjsLib = async () => {
+  if (pdfjsModule) return pdfjsModule;
+
+  const pdfjsLib = await import('pdfjs-dist');
+  const { configurePdfjsWorker } = await import('@/lib/pdf/loader');
+
+  if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
+    configurePdfjsWorker(pdfjsLib);
+  }
+
+  pdfjsModule = pdfjsLib;
+  return pdfjsLib;
+};
 
 export interface HeaderFooterToolProps {
   className?: string;
@@ -55,6 +66,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
   // Load PDF and generate preview
   const loadPdfPreview = useCallback(async (pdfFile: File) => {
     try {
+      const pdfjsLib = await loadPdfjsLib();
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       setTotalPages(pdf.numPages);
@@ -65,7 +77,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
   }, []);
 
   // Render page preview with header/footer overlay
-  const renderPagePreview = async (pdf: pdfjsLib.PDFDocumentProxy, pageNum: number) => {
+  const renderPagePreview = async (pdf: any, pageNum: number) => {
     if (!previewCanvasRef.current) return;
 
     try {
@@ -171,6 +183,7 @@ export function HeaderFooterTool({ className = '' }: HeaderFooterToolProps) {
   useEffect(() => {
     if (file && totalPages > 0) {
       const loadAndRender = async () => {
+        const pdfjsLib = await loadPdfjsLib();
         const arrayBuffer = await file.arrayBuffer();
         const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
         renderPagePreview(pdf, currentPreviewPage);

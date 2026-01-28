@@ -1,4 +1,9 @@
 import createNextIntlPlugin from 'next-intl/plugin';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
@@ -29,11 +34,10 @@ const nextConfig = {
       });
     }
 
-    // Also add module to alias for some packages that use it
+    // Also add module and canvas to alias for some packages that use it
     config.resolve.alias = {
       ...config.resolve.alias,
       'module': false,
-      'canvas': false,  // Ignore canvas for pdfjs-dist-legacy
     };
 
     // Ignore problematic modules that are not needed in browser
@@ -68,6 +72,12 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Minimum cache TTL for optimized images (in seconds)
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+  },
+
+  turbopack: {
+    resolveAlias: {
+      canvas: './src/lib/mocks/canvas.js',
+    },
   },
 
   // Trailing slash for static hosting compatibility

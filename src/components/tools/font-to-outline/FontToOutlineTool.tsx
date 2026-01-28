@@ -150,27 +150,52 @@ export function FontToOutlineTool({ className = '' }: FontToOutlineToolProps) {
             {hasFiles && (
                 <Card variant="outlined">
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
-                        {tTools('fontToOutline.optionsTitle') || 'Options'}
+                        {tTools('fontToOutline.optionsTitle') || 'Conversion Options'}
                     </h3>
-                    <div>
-                        <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
-                            {tTools('fontToOutline.dpiLabel') || 'Rasterization DPI'}: {dpi}
-                        </label>
-                        <div className="grid grid-cols-3 gap-2">
-                            {[150, 300, 600].map((d) => (
-                                <button
-                                    key={d}
-                                    type="button"
-                                    onClick={() => setDpi(d)}
-                                    disabled={isProcessing}
-                                    className={`px-4 py-2 rounded-[var(--radius-md)] border text-sm font-medium transition-colors duration-200
-                    ${dpi === d ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))]' : 'border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.5)]'}
-                    disabled:opacity-50 disabled:cursor-not-allowed`}
-                                >
-                                    {d} DPI
-                                </button>
-                            ))}
+                    <div className="space-y-4">
+                        {/* DPI Setting */}
+                        <div>
+                            <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
+                                {tTools('fontToOutline.dpiLabel') || 'Output Quality (DPI)'}: {dpi}
+                            </label>
+                            <div className="grid grid-cols-3 gap-2">
+                                {[150, 300, 600].map((d) => (
+                                    <button
+                                        key={d}
+                                        type="button"
+                                        onClick={() => setDpi(d)}
+                                        disabled={isProcessing}
+                                        className={`px-4 py-2 rounded-[var(--radius-md)] border text-sm font-medium transition-colors duration-200
+                        ${dpi === d ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))]' : 'border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted)/0.5)]'}
+                        disabled:opacity-50 disabled:cursor-not-allowed`}
+                                    >
+                                        {d} DPI
+                                    </button>
+                                ))}
+                            </div>
+                            <p className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
+                                {tTools('fontToOutline.dpiDesc') || 'Higher DPI produces better quality but larger files. 300 DPI recommended for print.'}
+                            </p>
                         </div>
+
+                        {/* Preserve Text Option */}
+                        <label className="flex items-center gap-3 cursor-pointer">
+                            <input
+                                type="checkbox"
+                                checked={preserveSelectableText}
+                                onChange={(e) => setPreserveSelectableText(e.target.checked)}
+                                disabled={isProcessing}
+                                className="w-4 h-4 rounded"
+                            />
+                            <div className="flex-1">
+                                <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">
+                                    {tTools('fontToOutline.preserveTextLabel') || 'Preserve searchable text (experimental)'}
+                                </span>
+                                <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-0.5">
+                                    {tTools('fontToOutline.preserveTextDesc') || 'Adds invisible text layer for search. May increase file size.'}
+                                </p>
+                            </div>
+                        </label>
                     </div>
                 </Card>
             )}

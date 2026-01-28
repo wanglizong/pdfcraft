@@ -18,7 +18,7 @@ import { loadPyMuPDF } from '../pymupdf-loader';
  * Deskew options interface
  */
 export interface DeskewPDFOptions {
-    /** Threshold for detecting skew (0.1-2.0, default 0.5) - lower values are more sensitive */
+    /** Threshold for detecting skew (1-30, default 10) - higher values detect more subtle skew angles */
     threshold: number;
     /** DPI for analysis (72-300, default 150) - higher values are more accurate but slower */
     dpi: number;
@@ -48,7 +48,7 @@ export interface DeskewResult {
  * Default deskew options
  */
 const DEFAULT_DESKEW_OPTIONS: DeskewPDFOptions = {
-    threshold: 0.5,
+    threshold: 10,
     dpi: 150,
 };
 

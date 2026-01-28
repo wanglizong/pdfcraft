@@ -3,7 +3,6 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Save, FolderOpen, Trash2, Copy, Undo2, Redo2, AlignLeft, AlignCenterHorizontal, AlignRight, AlignStartVertical, AlignCenterVertical, AlignEndVertical, FilePlus2 } from 'lucide-react';
-import * as pdfjsLib from 'pdfjs-dist';
 import { PDFDocument, PageSizes } from 'pdf-lib';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
@@ -11,13 +10,25 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { createForm, FormField } from '@/lib/pdf/processors/form-creator';
-import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import type { ProcessOutput } from '@/types/pdf';
 
-// Set worker source
-if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
-  configurePdfjsWorker(pdfjsLib);
-}
+// Store pdfjs module reference
+let pdfjsModule: typeof import('pdfjs-dist') | null = null;
+
+// Load pdfjs module dynamically
+const loadPdfjsLib = async () => {
+  if (pdfjsModule) return pdfjsModule;
+
+  const pdfjsLib = await import('pdfjs-dist');
+  const { configurePdfjsWorker } = await import('@/lib/pdf/loader');
+
+  if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
+    configurePdfjsWorker(pdfjsLib);
+  }
+
+  pdfjsModule = pdfjsLib;
+  return pdfjsLib;
+};
 
 export interface FormCreatorToolProps {
   className?: string;
@@ -227,7 +238,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const cancelledRef = useRef(false);
-  const pdfDocRef = useRef<pdfjsLib.PDFDocumentProxy | null>(null);
+  const pdfDocRef = useRef<any>(null);
 
   // Generate unique ID
   const generateId = () => `field_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
@@ -235,6 +246,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   // Load PDF
   const loadPdf = useCallback(async (pdfFile: File) => {
     try {
+      const pdfjsLib = await loadPdfjsLib();
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       pdfDocRef.current = pdf;
@@ -387,6 +399,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
       }
 
       // Load and render the new PDF without resetting currentPage
+      const pdfjsLib = await loadPdfjsLib();
       const newArrayBuffer = await newFile.arrayBuffer();
       const newPdf = await pdfjsLib.getDocument({ data: newArrayBuffer }).promise;
       pdfDocRef.current = newPdf;
@@ -402,7 +415,7 @@ export function FormCreatorTool({ className = '' }: FormCreatorToolProps) {
   }, [file, currentPage, fields, isAddingPage]);
 
   // Render page
-  const renderPage = async (pdf: pdfjsLib.PDFDocumentProxy, pageNum: number) => {
+  const renderPage = async (pdf: any, pageNum: number) => {
     if (!canvasRef.current) return;
 
     try {

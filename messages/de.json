@@ -484,6 +484,10 @@
     "error": "Fehler",
     "issues": "Probleme",
     "stop": "Stoppen",
+    "validationErrors": "Validierungsfehler",
+    "warnings": "Warnungen",
+    "executionFailed": "Workflow-Ausführung fehlgeschlagen",
+    "retry": "Wiederholen",
     "nodes": "Knoten",
     "import": "Importieren",
     "clear": "Leeren",
@@ -1588,7 +1592,10 @@
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Removal Options",
       "removeButton": "Remove Annotations",
-      "successMessage": "Annotations removed successfully!"
+      "successMessage": "Annotations removed successfully!",
+      "removeComments": "Kommentare entfernen",
+      "removeHighlights": "Hervorhebungen entfernen",
+      "removeLinks": "Links entfernen"
     },
     "formFiller": {
       "uploadLabel": "Upload PDF File",

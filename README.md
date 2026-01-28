@@ -236,29 +236,53 @@ To run this project locally, follow these steps:
 4.  **Open your browser**
     Navigate to [http://localhost:3000](http://localhost:3000) to see the application running.
 
-### Docker Compose
+### 🐳 Docker
 
-If you prefer running PDFCraft in containers, you can use the provided `docker-compose.yml`.
+PDFCraft provides both pre-built Docker images and Docker Compose for flexible deployment options.
 
-#### Development (Next.js dev server)
+#### Option 1: Use Pre-built Image (Recommended)
+
+The easiest way to run PDFCraft is using our pre-built image from GitHub Container Registry:
 
 ```bash
-docker compose --profile dev up
+# Pull the latest image
+docker pull ghcr.io/pdfcrafttool/pdfcraft:latest
+
+# Run the container
+docker run -d -p 8080:80 --name pdfcraft ghcr.io/pdfcrafttool/pdfcraft:latest
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:8080](http://localhost:8080) to access PDFCraft.
 
-#### Static export + Nginx (production-like)
+**Available tags:**
+| Tag | Description |
+|-----|-------------|
+| `latest` | Latest stable release from main branch |
+| `v1.0.0` | Specific version (semantic versioning) |
+| `sha-abc1234` | Specific commit |
 
-This runs `next build` to generate the static export (`out/`), then serves it via Nginx using `nginx.conf`.
+#### Option 2: Build from Source with Docker Compose
+
+If you want to build from source or need to modify the code:
+
+> ⚠️ **Note**: This method requires cloning the repository first.
 
 ```bash
+# Clone the repository
+git clone https://github.com/PDFCraftTool/pdfcraft.git
+cd pdfcraft
+
+# Development mode (with hot reload)
+docker compose --profile dev up
+
+# Production mode (static build + Nginx)
 docker compose --profile prod up --build
 ```
 
-Open [http://localhost:8080](http://localhost:8080).
+- Development: [http://localhost:3000](http://localhost:3000)
+- Production: [http://localhost:8080](http://localhost:8080)
 
-To stop and remove containers:
+To stop containers:
 
 ```bash
 docker compose down

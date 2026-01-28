@@ -1100,4 +1100,138 @@ export const toolContentKo: Record<string, ToolContent> = {
       { question: '테두리를 추가할 수 있나요?', answer: '네, 각 PDF 파일 주위에 테두리를 추가하고 테두리 색상을 사용자 지정할 수 있습니다.' },
     ],
   },
+
+  'email-to-pdf': {
+    title: '이메일을 PDF로',
+    metaDescription: '이메일 파일(.eml, .msg)을 PDF 문서로 변환합니다. 서식, 인라인 이미지, 클릭 가능한 링크 및 첨부 파일을 보존합니다.',
+    keywords: ['이메일 pdf 변환', 'eml pdf', 'msg pdf', '이메일 변환', '아웃룩 pdf'],
+    description: `
+      <p>이메일을 PDF로는 이메일 파일(.eml 및 .msg 형식)을 잘 포맷된 PDF 문서로 변환합니다. 이 도구는 이메일 헤더 정보, 본문 내용, CID 교체를 통한 인라인 이미지, 클릭 가능한 링크를 보존하고 첨부 파일을 PDF에 직접 포함합니다.</p>
+      <p>페이지 크기(A4, Letter, Legal), 시간대 지원이 포함된 날짜 형식, CC/BCC 필드 및 첨부 파일 정보 포함 여부 등 출력 옵션을 사용자 지정할 수 있습니다.</p>
+      <p>모든 변환은 브라우저에서 로컬로 수행되므로 이메일의 개인 정보와 보안이 보장됩니다.</p>
+    `,
+    howToUse: [
+      { step: 1, title: '이메일 파일 업로드', description: '.eml 또는 .msg 이메일 파일을 업로드합니다.' },
+      { step: 2, title: '옵션 구성', description: '페이지 크기, 날짜 형식, 시간대를 설정하고 포함할 필드를 선택합니다.' },
+      { step: 3, title: '변환 및 다운로드', description: '첨부 파일이 포함된 PDF로 변환하고 결과를 다운로드합니다.' },
+    ],
+    useCases: [
+      { title: '법적 기록', description: '법적 문서를 위해 첨부 파일이 포함된 PDF로 중요한 이메일을 보관합니다.', icon: 'scale' },
+      { title: '비즈니스 아카이브', description: '장기 보관을 위해 비즈니스 서신을 PDF로 변환합니다.', icon: 'briefcase' },
+      { title: '증거 보존', description: '인라인 이미지와 첨부 파일이 포함된 이메일 증거를 편집 불가능한 PDF 형식으로 저장합니다.', icon: 'shield' },
+    ],
+    faq: [
+      { question: '어떤 이메일 형식이 지원되나요?', answer: '.eml(RFC 822) 및 .msg(Microsoft Outlook) 파일이 모두 완전히 지원됩니다.' },
+      { question: '첨부 파일이 포함되나요?', answer: '네! 첨부 파일은 PDF 파일에 직접 포함됩니다. 호환되는 PDF 리더를 사용하여 PDF에서 추출할 수 있습니다.' },
+      { question: '인라인 이미지가 표시되나요?', answer: '네, CID(Content-ID)를 통해 참조되는 인라인 이미지는 자동으로 base64 데이터 URI로 변환되어 PDF에 표시됩니다.' },
+      { question: '링크를 클릭할 수 있나요?', answer: '네, 모든 HTML 링크(<a> 태그)와 일반 텍스트 이메일의 URL은 PDF에서 클릭 가능한 링크로 변환됩니다.' },
+      { question: '이메일 서식이 보존되나요?', answer: '네, HTML 이메일은 스타일, 이미지 및 링크를 포함하여 가능한 한 서식을 유지합니다.' },
+    ],
+  },
+
+  'djvu-to-pdf': {
+    title: 'DJVU를 PDF로 변환',
+    metaDescription: 'DJVU 문서 파일을 PDF로 변환합니다. 스캔된 문서와 책을 위한 고품질 렌더링.',
+    keywords: ['djvu pdf 변환', 'djvu 변환', 'djvu 변환기', 'djvu pdf', 'djv pdf'],
+    description: `
+      <p>DJVU를 PDF로 변환은 DjVu 문서 파일을 고품질 PDF 문서로 변환합니다. DjVu는 주로 스캔된 문서, 특히 텍스트, 선화 및 사진의 조합을 포함하는 문서를 저장하도록 설계된 컴퓨터 파일 형식입니다.</p>
+      <p>이 도구는 선택한 DPI(인치당 도트 수)로 DJVU 파일의 각 페이지를 렌더링하고 검색 가능한 PDF 문서로 결합합니다. 스캔된 책, 기술 매뉴얼 및 아카이브 문서를 변환하는 데 완벽합니다.</p>
+      <p>모든 변환은 브라우저에서 로컬로 수행되므로 문서의 개인 정보와 보안이 보장됩니다.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'DJVU 파일 업로드', description: '.djvu 또는 .djv 파일을 드래그 앤 드롭하거나 클릭하여 장치에서 선택합니다.' },
+      { step: 2, title: '옵션 구성', description: '출력 DPI(72, 150 또는 300) 및 PDF의 이미지 품질을 선택합니다.' },
+      { step: 3, title: '변환 및 다운로드', description: 'PDF로 변환을 클릭하고 변환된 문서를 다운로드합니다.' },
+    ],
+    useCases: [
+      { title: '아카이브 문서', description: 'DJVU 아카이브를 범용 PDF 형식으로 변환합니다.', icon: 'archive' },
+      { title: '스캔된 책 공유', description: '더 넓은 호환성을 위해 PDF 형식으로 스캔된 책을 공유합니다.', icon: 'share-2' },
+      { title: '문서 인쇄', description: '인쇄를 위해 DJVU를 고품질 PDF로 변환합니다.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'DJVU 형식이란 무엇인가요?', answer: 'DjVu는 스캔된 문서, 특히 텍스트, 그림 및 이미지가 있는 문서를 저장하도록 설계된 파일 형식입니다. 스캔된 콘텐츠에 대해 PDF보다 더 나은 압축을 제공합니다.' },
+      { question: '어떤 DPI를 선택해야 하나요?', answer: '72 DPI는 웹 보기에 적합하고, 150 DPI는 표준 문서에, 300 DPI는 고품질 인쇄에 적합합니다.' },
+      { question: '텍스트가 검색 가능한가요?', answer: '텍스트는 이미지로 렌더링됩니다. 검색 가능한 텍스트가 필요한 경우 변환 후 OCR PDF 도구를 사용하는 것을 고려하세요.' },
+    ],
+  },
+
+  'fb2-to-pdf': {
+    title: 'FB2를 PDF로 변환',
+    metaDescription: 'FictionBook (FB2) 전자책을 PDF로 변환합니다. 여러 파일의 고품질 렌더링을 지원합니다.',
+    keywords: ['fb2 pdf 변환', 'fb2 변환', 'fictionbook pdf', 'fb2 변환기', 'fb2.zip pdf'],
+    description: `
+      <p>FB2를 PDF로 변환은 FictionBook (FB2) 전자책 파일을 고품질 PDF 문서로 변환합니다. FB2는 러시아와 동유럽에서 널리 사용되는 인기 있는 XML 기반 전자책 형식입니다.</p>
+      <p>이 도구는 .fb2 및 .fb2.zip 파일을 모두 지원하며 한 번에 여러 파일을 처리할 수 있습니다. 전자책의 텍스트 서식, 이미지 및 장 구조를 보존합니다.</p>
+      <p>모든 변환은 고급 렌더링 기술을 사용하여 브라우저에서 로컬로 수행되므로 책의 개인 정보가 보장되고 변환이 빠릅니다.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'FB2 파일 업로드', description: '하나 이상의 .fb2 또는 .fb2.zip 파일을 드래그 앤 드롭하거나 클릭하여 장치에서 선택합니다.' },
+      { step: 2, title: '품질 선택', description: '출력 품질 선택: 낮음(72 DPI), 중간(150 DPI) 또는 높음(300 DPI).' },
+      { step: 3, title: '변환 및 다운로드', description: 'PDF로 변환을 클릭하고 변환된 문서를 다운로드합니다.' },
+    ],
+    useCases: [
+      { title: '전자책 인쇄', description: '물리적 인쇄를 위해 FB2 전자책을 PDF로 변환합니다.', icon: 'printer' },
+      { title: '일괄 변환', description: '한 번에 여러 FB2 파일을 PDF로 변환합니다.', icon: 'layers' },
+      { title: '범용 형식', description: '모든 장치에서 작동하는 PDF 형식으로 전자책을 공유합니다.', icon: 'share-2' },
+    ],
+    faq: [
+      { question: '한 번에 여러 FB2 파일을 변환할 수 있나요?', answer: '네! 이 도구는 최대 20개의 FB2 파일을 동시에 일괄 변환하는 것을 지원합니다.' },
+      { question: '.fb2.zip 파일이 지원되나요?', answer: '네, 도구는 .fb2.zip 아카이브에서 FB2 파일을 자동으로 추출하고 변환합니다.' },
+      { question: '서식이 보존되나요?', answer: '네! 도구는 네이티브 FB2 렌더링을 사용하여 높은 충실도로 텍스트 서식, 이미지 및 장 구조를 보존합니다.' },
+    ],
+  },
+
+  'deskew-pdf': {
+    title: 'PDF 기울기 보정',
+    metaDescription: '스캔되거나 기울어진 PDF 페이지를 자동으로 똑바로 만듭니다. 정밀한 각도 감지로 기울어진 문서를 수정합니다.',
+    keywords: ['pdf 기울기 보정', 'pdf 똑바로', '기울어진 스캔 수정', '자동 pdf 회전', 'pdf 각도 보정'],
+    description: `
+      <p>PDF 기울기 보정은 고급 투영 프로파일 분산 분석을 사용하여 PDF 문서의 기울어진 또는 왜곡된 페이지를 자동으로 감지하고 보정합니다. 스캐너에 일정한 각도로 공급된 스캔 문서에 필수적입니다.</p>
+      <p>도구는 다른 각도에서 텍스트와 콘텐츠 정렬을 분석하여 최적의 회전을 찾은 다음 보정을 적용합니다. 최적의 결과를 위해 감도 임계값(1-30)과 DPI 설정(72-300)을 조정할 수 있습니다.</p>
+      <p>모든 처리는 WebAssembly 기술을 사용하여 브라우저에서 로컬로 수행되므로 문서의 개인 정보와 보안이 보장됩니다.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF 업로드', description: '스캔된 PDF 파일을 드래그 앤 드롭하거나 클릭하여 선택합니다.' },
+      { step: 2, title: '설정 구성', description: '필요한 경우 더 나은 감지를 위해 임계값 감도와 DPI를 조정합니다.' },
+      { step: 3, title: '처리 및 다운로드', description: '보정을 클릭하여 페이지를 똑바로 만들고 보정된 PDF를 다운로드합니다.' },
+    ],
+    useCases: [
+      { title: '스캔 문서', description: '문서 공급 장치에서 일정한 각도로 스캔된 페이지를 수정합니다.', icon: 'scan' },
+      { title: '모바일 스캔', description: '스마트폰으로 촬영한 기울어진 문서 사진을 보정합니다.', icon: 'smartphone' },
+      { title: '아카이브 복원', description: '가독성을 향상시키기 위해 오래된 스캔 아카이브를 똑바로 만듭니다.', icon: 'archive' },
+    ],
+    faq: [
+      { question: '각도 감지는 얼마나 정확한가요?', answer: '도구는 투영 프로파일 분산 분석을 사용하여 ±10도까지의 기울기 각도를 높은 정확도로 감지합니다. 0.3도 미만의 각도를 가진 페이지는 자동으로 건너뜁니다.' },
+      { question: '텍스트 품질이 영향을 받나요?', answer: '90도의 배수 회전의 경우 품질 손실이 발생하지 않습니다. 다른 각도의 경우 도구는 가장 가까운 도수로 반올림하고 좋은 품질을 유지합니다.' },
+      { question: '특정 페이지만 보정할 수 있나요?', answer: '도구는 모든 페이지를 분석하지만 감지된 기울기가 감도 임계값을 초과하는 페이지만 보정합니다. 최소 기울기를 가진 페이지는 변경되지 않습니다.' },
+      { question: '감도 임계값이란 무엇인가요?', answer: '값 1-10은 명백한 기울기만 보정하고, 11-20은 중간 기울기를 감지하며, 21-30은 미묘한 각도를 포착합니다. 기본값은 균형 잡힌 감지를 위해 10입니다.' },
+      { question: '처리에는 얼마나 걸리나요?', answer: '처리 시간은 파일 크기와 DPI에 따라 다릅니다. 150 DPI(기본값)는 속도와 정확도 사이의 좋은 균형을 제공합니다. 더 높은 DPI는 더 정확하지만 더 느립니다.' },
+    ],
+  },
+
+  'pdf-to-pdfa': {
+    title: 'PDF를 PDF/A로 변환',
+    metaDescription: 'PDF를 PDF/A 아카이브 형식으로 변환합니다. ISO 표준으로 장기 문서 보존을 보장합니다.',
+    keywords: ['pdf pdfa 변환', 'pdfa 변환기', 'pdf 아카이브', 'pdf 장기 보존', '장기 보존'],
+    description: `
+      <p>PDF를 PDF/A로 변환은 PDF 문서를 PDF/A 형식으로 변환합니다. PDF/A는 장기 문서 아카이빙을 위한 ISO 표준입니다. PDF/A는 문서가 수십 년 동안 볼 수 있고 재현 가능하도록 보장합니다.</p>
+      <p>PDF/A-1b(기본 준수), PDF/A-2b(권장, 투명도 지원) 또는 PDF/A-3b(임베드된 파일 허용) 중에서 선택할 수 있습니다. 도구는 필요에 따라 폰트를 임베드하고 투명도를 평탄화합니다.</p>
+      <p>모든 변환은 브라우저에서 로컬로 수행되므로 문서의 개인 정보가 보장됩니다.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF 업로드', description: 'PDF/A로 변환하려는 PDF를 업로드합니다.' },
+      { step: 2, title: 'PDF/A 레벨 선택', description: 'PDF/A-1b, PDF/A-2b 또는 PDF/A-3b 준수 레벨을 선택합니다.' },
+      { step: 3, title: '변환 및 다운로드', description: 'PDF/A로 변환하고 아카이브 문서를 다운로드합니다.' },
+    ],
+    useCases: [
+      { title: '법적 아카이브', description: '법정에서 허용 가능한 장기 저장을 위해 법적 문서를 PDF/A로 변환합니다.', icon: 'scale' },
+      { title: '정부 기록', description: 'PDF/A를 사용하여 정부 아카이브 요구 사항을 준수합니다.', icon: 'building' },
+      { title: '비즈니스 아카이브', description: '미래의 접근성을 위해 중요한 비즈니스 문서를 보존합니다.', icon: 'archive' },
+    ],
+    faq: [
+      { question: '어떤 PDF/A 레벨을 사용해야 하나요?', answer: 'PDF/A-2b는 대부분의 용도에 권장됩니다. 최대 호환성을 위해 1b를 사용하거나 임베드된 파일이 필요한 경우 3b를 사용하세요.' },
+      { question: 'PDF/A를 특별하게 만드는 것은 무엇인가요?', answer: 'PDF/A는 폰트를 임베드하고 암호화를 비활성화하며 미래의 보기를 위해 모든 요소가 자체 포함되도록 보장합니다.' },
+      { question: 'PDF/A에서 다시 변환할 수 있나요?', answer: 'PDF/A 파일은 표준 PDF이며 정상적으로 열 수 있습니다. 아카이브 기능은 제한을 추가하지만 제약은 아닙니다.' },
+    ],
+  },
 };

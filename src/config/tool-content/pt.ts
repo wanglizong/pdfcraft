@@ -984,4 +984,138 @@ export const toolContentPt: Record<string, ToolContent> = {
       { question: 'É compatível com Google Docs?', answer: 'Sim, o arquivo DOCX gerado funciona perfeitamente no Microsoft Word, Google Docs e LibreOffice.' },
     ],
   },
+
+  'email-to-pdf': {
+    title: 'Email para PDF',
+    metaDescription: 'Converta arquivos de email (.eml, .msg) em documentos PDF. Preserva formatação, imagens inline, links clicáveis e anexos.',
+    keywords: ['email para pdf', 'eml para pdf', 'msg para pdf', 'converter email', 'outlook para pdf'],
+    description: `
+      <p>Email para PDF converte seus arquivos de email (formatos .eml e .msg) em documentos PDF bem formatados. A ferramenta preserva as informações do cabeçalho do email, conteúdo do corpo, imagens inline com substituição CID, links clicáveis e incorpora anexos diretamente no PDF.</p>
+      <p>Personalize as opções de saída incluindo tamanho de página (A4, Letter, Legal), formato de data com suporte a fuso horário, e se deseja incluir campos CC/BCC e informações de anexos.</p>
+      <p>Toda a conversão acontece localmente no seu navegador, garantindo que seus emails permaneçam privados e seguros.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Enviar Arquivo de Email', description: 'Envie seu arquivo de email .eml ou .msg.' },
+      { step: 2, title: 'Configurar Opções', description: 'Defina o tamanho da página, formato de data, fuso horário e escolha quais campos incluir.' },
+      { step: 3, title: 'Converter e Baixar', description: 'Converta para PDF com anexos incorporados e baixe o resultado.' },
+    ],
+    useCases: [
+      { title: 'Registros Legais', description: 'Arquive emails importantes como PDF com anexos incorporados para documentação legal.', icon: 'scale' },
+      { title: 'Arquivos Empresariais', description: 'Converta correspondência empresarial para PDF para conservação a longo prazo.', icon: 'briefcase' },
+      { title: 'Preservação de Evidências', description: 'Salve evidências de email com imagens inline e anexos em formato PDF não editável.', icon: 'shield' },
+    ],
+    faq: [
+      { question: 'Quais formatos de email são suportados?', answer: 'Tanto arquivos .eml (RFC 822) quanto .msg (Microsoft Outlook) são totalmente suportados.' },
+      { question: 'Os anexos são incluídos?', answer: 'Sim! Os anexos são incorporados diretamente no arquivo PDF. Você pode extraí-los do PDF usando um leitor PDF compatível.' },
+      { question: 'As imagens inline são exibidas?', answer: 'Sim, imagens inline referenciadas via CID (Content-ID) são automaticamente convertidas para URIs de dados base64 e exibidas no PDF.' },
+      { question: 'Os links são clicáveis?', answer: 'Sim, todos os links HTML (tags <a>) e URLs em emails de texto simples são convertidos em links clicáveis no PDF.' },
+      { question: 'A formatação do email é preservada?', answer: 'Sim, emails HTML mantêm sua formatação o máximo possível, incluindo estilos, imagens e links.' },
+    ],
+  },
+
+  'djvu-to-pdf': {
+    title: 'DJVU para PDF',
+    metaDescription: 'Converta arquivos de documentos DJVU para PDF. Renderização de alta qualidade para documentos e livros digitalizados.',
+    keywords: ['djvu para pdf', 'converter djvu', 'conversor djvu', 'djvu pdf', 'djv para pdf'],
+    description: `
+      <p>DJVU para PDF converte arquivos de documentos DjVu em documentos PDF de alta qualidade. DjVu é um formato de arquivo de computador projetado principalmente para armazenar documentos digitalizados, especialmente aqueles que contêm uma combinação de texto, desenhos em linha e fotografias.</p>
+      <p>Esta ferramenta renderiza cada página do seu arquivo DJVU no DPI escolhido (pontos por polegada) e os combina em um documento PDF pesquisável. Perfeito para converter livros digitalizados, manuais técnicos e documentos de arquivo.</p>
+      <p>Toda a conversão acontece localmente no seu navegador, garantindo que seus documentos permaneçam privados e seguros.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Enviar Arquivo DJVU', description: 'Arraste e solte seu arquivo .djvu ou .djv, ou clique para selecionar do seu dispositivo.' },
+      { step: 2, title: 'Configurar Opções', description: 'Escolha o DPI de saída (72, 150 ou 300) e a qualidade da imagem para o PDF.' },
+      { step: 3, title: 'Converter e Baixar', description: 'Clique em Converter para PDF e baixe seu documento convertido.' },
+    ],
+    useCases: [
+      { title: 'Documentos de Arquivo', description: 'Converta arquivos DJVU para formato PDF universal.', icon: 'archive' },
+      { title: 'Compartilhar Livros Digitalizados', description: 'Compartilhe livros digitalizados em formato PDF para maior compatibilidade.', icon: 'share-2' },
+      { title: 'Imprimir Documentos', description: 'Converta DJVU para PDF de alta qualidade para impressão.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'O que é o formato DJVU?', answer: 'DjVu é um formato de arquivo projetado para armazenar documentos digitalizados, especialmente aqueles com texto, desenhos e imagens. Oferece melhor compressão que PDF para conteúdo digitalizado.' },
+      { question: 'Qual DPI devo escolher?', answer: '72 DPI é adequado para visualização na web, 150 DPI para documentos padrão e 300 DPI para impressão de alta qualidade.' },
+      { question: 'O texto será pesquisável?', answer: 'O texto será renderizado como imagens. Se você precisar de texto pesquisável, considere usar nossa ferramenta OCR PDF após a conversão.' },
+    ],
+  },
+
+  'fb2-to-pdf': {
+    title: 'FB2 para PDF',
+    metaDescription: 'Converta livros eletrônicos FictionBook (FB2) para PDF. Suporta vários arquivos com renderização de alta qualidade.',
+    keywords: ['fb2 para pdf', 'converter fb2', 'fictionbook para pdf', 'conversor fb2', 'fb2.zip para pdf'],
+    description: `
+      <p>FB2 para PDF converte arquivos de livros eletrônicos FictionBook (FB2) em documentos PDF de alta qualidade. FB2 é um formato popular de livro eletrônico baseado em XML amplamente usado na Rússia e no Leste Europeu.</p>
+      <p>Esta ferramenta suporta tanto arquivos .fb2 quanto .fb2.zip, e pode processar vários arquivos de uma vez. Preserva a formatação de texto, imagens e a estrutura de capítulos dos seus livros eletrônicos.</p>
+      <p>Toda a conversão acontece localmente no seu navegador usando tecnologia de renderização avançada, garantindo que seus livros permaneçam privados e a conversão seja rápida.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Enviar Arquivos FB2', description: 'Arraste e solte um ou mais arquivos .fb2 ou .fb2.zip, ou clique para selecionar do seu dispositivo.' },
+      { step: 2, title: 'Selecionar Qualidade', description: 'Escolha a qualidade de saída: Baixa (72 DPI), Média (150 DPI) ou Alta (300 DPI).' },
+      { step: 3, title: 'Converter e Baixar', description: 'Clique em Converter para PDF e baixe seu(s) documento(s) convertido(s).' },
+    ],
+    useCases: [
+      { title: 'Imprimir Livros Eletrônicos', description: 'Converta livros eletrônicos FB2 para PDF para impressão física.', icon: 'printer' },
+      { title: 'Conversão em Lote', description: 'Converta vários arquivos FB2 para PDF de uma vez.', icon: 'layers' },
+      { title: 'Formato Universal', description: 'Compartilhe livros eletrônicos em formato PDF que funciona em qualquer dispositivo.', icon: 'share-2' },
+    ],
+    faq: [
+      { question: 'Posso converter vários arquivos FB2 de uma vez?', answer: 'Sim! Esta ferramenta suporta conversão em lote de até 20 arquivos FB2 simultaneamente.' },
+      { question: 'Arquivos .fb2.zip são suportados?', answer: 'Sim, a ferramenta extrai e converte automaticamente arquivos FB2 de arquivos .fb2.zip.' },
+      { question: 'A formatação é preservada?', answer: 'Sim! A ferramenta usa renderização nativa FB2, preservando formatação de texto, imagens e estrutura de capítulos com alta fidelidade.' },
+    ],
+  },
+
+  'deskew-pdf': {
+    title: 'Endireitar PDF',
+    metaDescription: 'Endireite automaticamente páginas PDF digitalizadas ou inclinadas. Corrija documentos distorcidos com detecção precisa de ângulo.',
+    keywords: ['endireitar pdf', 'corrigir pdf inclinado', 'corrigir digitalização inclinada', 'rotacionar pdf automático', 'corrigir ângulo pdf'],
+    description: `
+      <p>Endireitar PDF detecta e corrige automaticamente páginas inclinadas ou distorcidas nos seus documentos PDF usando análise avançada de variância de perfil de projeção. Isso é essencial para documentos digitalizados que foram inseridos no scanner em um ângulo.</p>
+      <p>A ferramenta analisa o alinhamento de texto e conteúdo em diferentes ângulos para encontrar a rotação ótima, depois aplica a correção. Você pode ajustar o limite de sensibilidade (1-30) e as configurações DPI (72-300) para resultados ótimos.</p>
+      <p>Todo o processamento acontece localmente no seu navegador usando tecnologia WebAssembly, garantindo que seus documentos permaneçam privados e seguros.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Enviar seu PDF', description: 'Arraste e solte seu arquivo PDF digitalizado ou clique para selecionar.' },
+      { step: 2, title: 'Configurar Ajustes', description: 'Ajuste a sensibilidade do limite e DPI se necessário para melhor detecção.' },
+      { step: 3, title: 'Processar e Baixar', description: 'Clique em Endireitar para endireitar as páginas e baixar o PDF corrigido.' },
+    ],
+    useCases: [
+      { title: 'Documentos Digitalizados', description: 'Corrija páginas que foram digitalizadas em um ângulo de alimentadores de documentos.', icon: 'scan' },
+      { title: 'Digitalizações Móveis', description: 'Corrija fotos inclinadas de documentos tiradas com smartphones.', icon: 'smartphone' },
+      { title: 'Restauração de Arquivo', description: 'Endireite arquivos digitalizados antigos para melhor legibilidade.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Quão precisa é a detecção de ângulo?', answer: 'A ferramenta usa análise de variância de perfil de projeção para detectar ângulos de distorção de até ±10 graus com alta precisão. Ignora automaticamente páginas com ângulos menores que 0,3 graus.' },
+      { question: 'A qualidade do texto será afetada?', answer: 'Para rotações em múltiplos de 90 graus, não ocorre perda de qualidade. Para outros ângulos, a ferramenta arredonda para o grau mais próximo e mantém boa qualidade.' },
+      { question: 'Posso endireitar apenas páginas específicas?', answer: 'A ferramenta analisa todas as páginas, mas corrige apenas aquelas com distorção detectada acima do limite de sensibilidade. Páginas com distorção mínima são deixadas inalteradas.' },
+      { question: 'O que é o limite de sensibilidade?', answer: 'Valores 1-10 corrigem apenas inclinações óbvias, 11-20 detectam distorção moderada e 21-30 capturam ângulos sutis. O padrão é 10 para detecção equilibrada.' },
+      { question: 'Quanto tempo leva o processamento?', answer: 'O tempo de processamento depende do tamanho do arquivo e DPI. 150 DPI (padrão) fornece um bom equilíbrio entre velocidade e precisão. DPI mais alto é mais preciso, mas mais lento.' },
+    ],
+  },
+
+  'pdf-to-pdfa': {
+    title: 'PDF para PDF/A',
+    metaDescription: 'Converta PDF para formato de arquivo PDF/A. Garanta preservação de documentos de longo prazo com padrões ISO.',
+    keywords: ['pdf para pdfa', 'conversor pdfa', 'arquivar pdf', 'arquivo pdf', 'preservação de longo prazo'],
+    description: `
+      <p>PDF para PDF/A converte seus documentos PDF para o formato PDF/A, o padrão ISO para arquivamento de documentos de longo prazo. PDF/A garante que os documentos serão visualizáveis e reproduzíveis por décadas.</p>
+      <p>Escolha entre PDF/A-1b (conformidade básica), PDF/A-2b (recomendado, suporta transparência) ou PDF/A-3b (permite arquivos incorporados). A ferramenta incorpora fontes e achata transparência conforme necessário.</p>
+      <p>Toda a conversão acontece localmente no seu navegador, garantindo que seus documentos permaneçam privados.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Enviar seu PDF', description: 'Envie o PDF que deseja converter para PDF/A.' },
+      { step: 2, title: 'Selecionar Nível PDF/A', description: 'Escolha o nível de conformidade PDF/A-1b, PDF/A-2b ou PDF/A-3b.' },
+      { step: 3, title: 'Converter e Baixar', description: 'Converta para PDF/A e baixe o documento de arquivo.' },
+    ],
+    useCases: [
+      { title: 'Arquivos Legais', description: 'Converta documentos legais para PDF/A para armazenamento de longo prazo admissível em tribunal.', icon: 'scale' },
+      { title: 'Registros Governamentais', description: 'Cumpra requisitos de arquivo governamental usando PDF/A.', icon: 'building' },
+      { title: 'Arquivos Empresariais', description: 'Preserve documentos empresariais importantes para acessibilidade futura.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Qual nível PDF/A devo usar?', answer: 'PDF/A-2b é recomendado para a maioria dos usos. Use 1b para máxima compatibilidade ou 3b se precisar de arquivos incorporados.' },
+      { question: 'O que torna PDF/A diferente?', answer: 'PDF/A incorpora fontes, desabilita criptografia e garante que todos os elementos sejam autocontidos para visualização futura.' },
+      { question: 'Posso converter de volta de PDF/A?', answer: 'Arquivos PDF/A são PDFs padrão e podem ser abertos normalmente. As características de arquivo adicionam restrições, não limitações.' },
+    ],
+  },
 };

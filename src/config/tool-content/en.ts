@@ -2220,9 +2220,9 @@ export const toolContentEn: Record<string, ToolContent> = {
     metaDescription: 'Automatically straighten scanned or tilted PDF pages. Fix skewed documents with precision angle detection.',
     keywords: ['deskew pdf', 'straighten pdf', 'fix tilted scan', 'auto rotate pdf', 'correct pdf angle'],
     description: `
-      <p>Deskew PDF automatically detects and corrects tilted or skewed pages in your PDF documents. This is essential for scanned documents that were fed into the scanner at an angle.</p>
-      <p>The tool uses advanced image analysis to detect the exact rotation angle of each page and corrects it to vertical alignment. You can adjust the sensitivity threshold and DPI settings for optimal results.</p>
-      <p>All processing happens locally in your browser using WebAssembly technology, ensuring your documents remain private.</p>
+      <p>Deskew PDF automatically detects and corrects tilted or skewed pages in your PDF documents using advanced projection profile variance analysis. This is essential for scanned documents that were fed into the scanner at an angle.</p>
+      <p>The tool analyzes the text and content alignment at different angles to find the optimal rotation, then applies the correction. You can adjust the sensitivity threshold (1-30) and DPI settings (72-300) for optimal results.</p>
+      <p>All processing happens locally in your browser using WebAssembly technology, ensuring your documents remain private and secure.</p>
     `,
     howToUse: [
       { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your scanned PDF file or click to select.' },
@@ -2235,9 +2235,11 @@ export const toolContentEn: Record<string, ToolContent> = {
       { title: 'Archive Restoration', description: 'Straighten old scanned archives for better readability.', icon: 'archive' },
     ],
     faq: [
-      { question: 'How accurate is the angle detection?', answer: 'The tool can detect and correct angles as small as 0.1 degrees for precise alignment.' },
-      { question: 'Will text quality be affected?', answer: 'The deskewing process maintains text quality while rotating the page content.' },
-      { question: 'Can I deskew specific pages only?', answer: 'The tool processes all pages but only corrects those detected as skewed.' },
+      { question: 'How accurate is the angle detection?', answer: 'The tool uses projection profile variance analysis to detect skew angles up to ±10 degrees with high accuracy. It automatically skips pages with angles less than 0.3 degrees.' },
+      { question: 'Will text quality be affected?', answer: 'For rotations at multiples of 90 degrees, no quality loss occurs. For other angles, the tool rounds to the nearest degree and maintains good quality.' },
+      { question: 'Can I deskew specific pages only?', answer: 'The tool analyzes all pages but only corrects those with detected skew above the sensitivity threshold. Pages with minimal skew are left unchanged.' },
+      { question: 'What is the sensitivity threshold?', answer: 'Values 1-10 correct obvious tilts only, 11-20 detect moderate skew, and 21-30 catch subtle angles. Default is 10 for balanced detection.' },
+      { question: 'How long does processing take?', answer: 'Processing time depends on file size and DPI. 150 DPI (default) provides good balance between speed and accuracy. Higher DPI is more accurate but slower.' },
     ],
   },
 
@@ -2321,27 +2323,29 @@ export const toolContentEn: Record<string, ToolContent> = {
 
   'email-to-pdf': {
     title: 'Email to PDF',
-    metaDescription: 'Convert email files (.eml) to PDF documents. Preserve formatting, inline images, and attachments.',
-    keywords: ['email to pdf', 'eml to pdf', 'convert email', 'email converter', 'save email as pdf'],
+    metaDescription: 'Convert email files (.eml, .msg) to PDF documents. Preserve formatting, inline images, clickable links, and embed attachments.',
+    keywords: ['email to pdf', 'eml to pdf', 'msg to pdf', 'convert email', 'email converter', 'save email as pdf', 'outlook to pdf'],
     description: `
-      <p>Email to PDF converts your email files (.eml format) into well-formatted PDF documents. The tool preserves the email header information, body content, inline images, and attachment listings.</p>
-      <p>Customize output options including page size, date formatting, and whether to include CC/BCC fields and attachment information.</p>
-      <p>All conversion happens locally in your browser, ensuring your emails remain private.</p>
+      <p>Email to PDF converts your email files (.eml and .msg formats) into well-formatted PDF documents. The tool preserves the email header information, body content, inline images with CID replacement, clickable links, and embeds attachments directly into the PDF.</p>
+      <p>Customize output options including page size (A4, Letter, Legal), date formatting with timezone support, and whether to include CC/BCC fields and attachment information.</p>
+      <p>All conversion happens locally in your browser, ensuring your emails remain private and secure.</p>
     `,
     howToUse: [
-      { step: 1, title: 'Upload Email File', description: 'Upload your .eml email file.' },
-      { step: 2, title: 'Configure Options', description: 'Set page size and choose which fields to include.' },
-      { step: 3, title: 'Convert and Download', description: 'Convert to PDF and download the result.' },
+      { step: 1, title: 'Upload Email File', description: 'Upload your .eml or .msg email file.' },
+      { step: 2, title: 'Configure Options', description: 'Set page size, date format, timezone, and choose which fields to include.' },
+      { step: 3, title: 'Convert and Download', description: 'Convert to PDF with embedded attachments and download the result.' },
     ],
     useCases: [
-      { title: 'Legal Records', description: 'Archive important emails as PDF for legal documentation.', icon: 'scale' },
-      { title: 'Business Archives', description: 'Convert business correspondence to PDF for record keeping.', icon: 'briefcase' },
-      { title: 'Evidence Preservation', description: 'Save email evidence in a non-editable PDF format.', icon: 'shield' },
+      { title: 'Legal Records', description: 'Archive important emails as PDF with embedded attachments for legal documentation.', icon: 'scale' },
+      { title: 'Business Archives', description: 'Convert business correspondence to PDF for long-term record keeping.', icon: 'briefcase' },
+      { title: 'Evidence Preservation', description: 'Save email evidence with inline images and attachments in a non-editable PDF format.', icon: 'shield' },
     ],
     faq: [
-      { question: 'What email formats are supported?', answer: 'Currently .eml files are fully supported. MSG file support is coming soon.' },
-      { question: 'Are attachments included?', answer: 'Attachment names are listed in the PDF. The actual files are not embedded.' },
-      { question: 'Is the email formatting preserved?', answer: 'Yes, HTML emails maintain their formatting as closely as possible.' },
+      { question: 'What email formats are supported?', answer: 'Both .eml (RFC 822) and .msg (Microsoft Outlook) files are fully supported.' },
+      { question: 'Are attachments included?', answer: 'Yes! Attachments are embedded directly into the PDF file. You can extract them from the PDF using a compatible PDF reader.' },
+      { question: 'Are inline images displayed?', answer: 'Yes, inline images referenced via CID (Content-ID) are automatically converted to base64 data URIs and displayed in the PDF.' },
+      { question: 'Are links clickable?', answer: 'Yes, all HTML links (<a> tags) and URLs in plain text emails are converted to clickable links in the PDF.' },
+      { question: 'Is the email formatting preserved?', answer: 'Yes, HTML emails maintain their formatting as closely as possible, including styles, images, and links.' },
     ],
   },
 
@@ -2399,27 +2403,30 @@ export const toolContentEn: Record<string, ToolContent> = {
 
   'font-to-outline': {
     title: 'Font to Outline',
-    metaDescription: 'Convert PDF fonts to vector outlines. Ensure compatibility when fonts may be unavailable.',
-    keywords: ['font to outline', 'outline fonts', 'convert fonts', 'vector text', 'font compatibility'],
+    metaDescription: 'Remove font dependencies from PDF documents by converting pages to high-quality images. Ensures compatibility across all systems.',
+    keywords: ['font to outline', 'outline fonts', 'remove fonts', 'font compatibility', 'flatten pdf fonts', 'pdf font removal'],
     description: `
-      <p>Font to Outline converts all text in your PDF to vector paths (outlines). This ensures your document looks exactly the same on any system, even if the original fonts are not installed.</p>
-      <p>This is essential for print preparation, ensuring graphics display correctly, and avoiding font licensing issues when sharing documents.</p>
-      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>
+      <p>Font to Outline removes all font dependencies from your PDF by converting each page into high-quality rasterized content. This ensures your document looks exactly the same on any system, even if the original fonts are not installed.</p>
+      <p>The tool renders each page at your chosen DPI (150-600), removing embedded fonts while preserving the exact visual appearance. Optionally, you can add an invisible text layer to maintain searchability.</p>
+      <p>This is essential for print preparation, cross-platform compatibility, and avoiding font licensing issues when sharing documents. All processing happens locally in your browser.</p>
     `,
     howToUse: [
-      { step: 1, title: 'Upload Your PDF', description: 'Upload the PDF containing fonts you want to convert.' },
-      { step: 2, title: 'Configure Options', description: 'Set DPI for rasterization if needed for complex fonts.' },
-      { step: 3, title: 'Convert and Download', description: 'Convert fonts to outlines and download the result.' },
+      { step: 1, title: 'Upload Your PDF', description: 'Upload the PDF containing fonts you want to remove.' },
+      { step: 2, title: 'Configure Quality', description: 'Choose DPI (300 recommended for print, 150 for screen). Enable searchable text if needed.' },
+      { step: 3, title: 'Convert and Download', description: 'Process the file and download the font-independent PDF.' },
     ],
     useCases: [
-      { title: 'Print Preparation', description: 'Ensure fonts display correctly at commercial printers.', icon: 'printer' },
-      { title: 'Cross-Platform Sharing', description: 'Share documents that look identical on any device.', icon: 'share-2' },
-      { title: 'Font Licensing', description: 'Remove font embedding to avoid licensing concerns.', icon: 'shield' },
+      { title: 'Print Preparation', description: 'Eliminate font issues at commercial printers by removing all font dependencies.', icon: 'printer' },
+      { title: 'Cross-Platform Sharing', description: 'Share documents that look identical on any device, regardless of installed fonts.', icon: 'share-2' },
+      { title: 'Font Licensing', description: 'Remove embedded fonts to avoid licensing concerns when distributing documents.', icon: 'shield' },
     ],
     faq: [
-      { question: 'Can I still select text after conversion?', answer: 'No, outlined text becomes vector graphics and is no longer searchable or selectable.' },
-      { question: 'Will file size increase?', answer: 'File size may increase as vectors can be larger than font data, especially for complex fonts.' },
-      { question: 'Is this reversible?', answer: 'No, keep a backup of the original if you need editable text.' },
+      { question: 'How does this work?', answer: 'The tool renders each page at high resolution (your chosen DPI) and recreates the PDF from these images, removing all font dependencies while preserving visual appearance.' },
+      { question: 'Can I still select text after conversion?', answer: 'By default, no. Text becomes part of the image. However, you can enable "Preserve searchable text" to add an invisible text layer for search and copy functionality.' },
+      { question: 'What DPI should I use?', answer: '300 DPI is recommended for print-quality output. 150 DPI is sufficient for screen viewing and produces smaller files. 600 DPI is for highest quality but creates large files.' },
+      { question: 'Will file size increase?', answer: 'File size depends on DPI and content. 150 DPI usually produces smaller files, 300 DPI may increase size, 600 DPI significantly increases size. Compression is automatically applied.' },
+      { question: 'Is this reversible?', answer: 'No, font data is permanently removed. Keep a backup of the original if you need editable text with the original fonts.' },
+      { question: 'What about vector graphics?', answer: 'Vector graphics (shapes, lines) in the original PDF will be converted to raster along with text. The visual quality is preserved at your chosen DPI.' },
     ],
   },
 

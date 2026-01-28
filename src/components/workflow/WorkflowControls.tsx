@@ -18,6 +18,8 @@ import {
     XCircle,
     Loader2,
     Edit2,
+    RefreshCcw,
+    RotateCcw,
 } from 'lucide-react';
 
 interface WorkflowControlsProps {
@@ -29,6 +31,8 @@ interface WorkflowControlsProps {
     onStop: () => void;
     onSave: (name: string, description?: string) => void;
     onClear: () => void;
+    onClearState?: () => void;
+    onRetry?: () => void;
     onImport: (file: File) => void;
     onFilesChange?: (files: File[]) => void;
 }
@@ -46,6 +50,8 @@ export function WorkflowControls({
     onStop,
     onSave,
     onClear,
+    onClearState,
+    onRetry,
     onImport,
     onFilesChange,
 }: WorkflowControlsProps) {
@@ -285,12 +291,17 @@ export function WorkflowControls({
                                         filename = item.filename || `output_${index + 1}.pdf`;
                                     }
 
+                                    // Create URL for download
                                     const url = URL.createObjectURL(blob);
                                     const a = document.createElement('a');
                                     a.href = url;
                                     a.download = filename;
+                                    document.body.appendChild(a);
                                     a.click();
-                                    URL.revokeObjectURL(url);
+                                    document.body.removeChild(a);
+                                    
+                                    // Cleanup URL immediately after download
+                                    setTimeout(() => URL.revokeObjectURL(url), 100);
                                 });
                             }}
                         >
@@ -301,14 +312,73 @@ export function WorkflowControls({
                 </div>
             )}
 
+            {/* Execution error with retry option */}
+            {executionState.status === 'error' && executionState.error && (
+                <div className="px-4 py-3 bg-red-50 border-b border-red-200">
+                    <div className="flex items-start justify-between gap-3">
+                        <div className="flex items-start gap-2 flex-1">
+                            <XCircle className="w-5 h-5 text-red-500 mt-0.5 flex-shrink-0" />
+                            <div className="flex-1">
+                                <p className="text-sm font-semibold text-red-700 mb-1">
+                                    {tWorkflow('executionFailed') || 'Workflow execution failed'}
+                                </p>
+                                <p className="text-sm text-red-600 whitespace-pre-wrap">
+                                    {executionState.error.message}
+                                </p>
+                            </div>
+                        </div>
+                        <div className="flex items-center gap-2 flex-shrink-0">
+                            {onRetry && (
+                                <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={onRetry}
+                                    className="text-red-600 border-red-300 hover:bg-red-100"
+                                >
+                                    <RefreshCcw className="w-4 h-4 mr-2" />
+                                    {tWorkflow('retry') || 'Retry'}
+                                </Button>
+                            )}
+                            {onClearState && (
+                                <Button
+                                    variant="ghost"
+                                    size="sm"
+                                    onClick={onClearState}
+                                    className="text-red-600 hover:bg-red-100"
+                                >
+                                    <RotateCcw className="w-4 h-4 mr-2" />
+                                    {tWorkflow('reset') || 'Reset'}
+                                </Button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {/* Validation errors */}
-            {validation.errors.length > 0 && !isRunning && (
-                <div className="px-4 py-2 bg-red-50 border-b border-red-200">
+            {validation.errors.length > 0 && !isRunning && executionState.status !== 'error' && (
+                <div className="px-4 py-2 bg-yellow-50 border-b border-yellow-200">
                     <div className="flex items-start gap-2">
-                        <AlertCircle className="w-4 h-4 text-red-500 mt-0.5 flex-shrink-0" />
-                        <div className="text-sm text-red-700">
+                        <AlertCircle className="w-4 h-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                        <div className="text-sm text-yellow-700">
+                            <p className="font-semibold mb-1">{tWorkflow('validationErrors') || 'Validation Errors'}</p>
                             {validation.errors.map((error, index) => (
-                                <p key={index}>{error.message}</p>
+                                <p key={index} className="ml-2">• {error.message}</p>
+                            ))}
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Validation warnings */}
+            {validation.warnings.length > 0 && !isRunning && executionState.status !== 'error' && (
+                <div className="px-4 py-2 bg-yellow-50 border-b border-yellow-100">
+                    <div className="flex items-start gap-2">
+                        <AlertCircle className="w-4 h-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+                        <div className="text-sm text-yellow-600">
+                            <p className="font-semibold mb-1">{tWorkflow('warnings') || 'Warnings'}</p>
+                            {validation.warnings.map((warning, index) => (
+                                <p key={index} className="ml-2">• {warning.message}</p>
                             ))}
                         </div>
                     </div>

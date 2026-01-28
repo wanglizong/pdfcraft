@@ -2234,6 +2234,34 @@ export const toolContentZh: Record<string, ToolContent> = {
     ],
   },
 
+  'deskew-pdf': {
+    title: '校正PDF倾斜',
+    metaDescription: '自动校正扫描或倾斜的PDF页面。使用精确的角度检测修复倾斜文档。',
+    keywords: ['校正pdf倾斜', '修正pdf', '修复倾斜扫描', '自动旋转pdf', '校正pdf角度'],
+    description: `
+      <p>校正PDF倾斜使用先进的投影轮廓方差分析自动检测并校正PDF文档中的倾斜或歪斜页面。这对于以一定角度送入扫描仪的扫描文档至关重要。</p>
+      <p>该工具分析不同角度下的文本和内容对齐情况，找到最佳旋转角度，然后应用校正。您可以调整敏感度阈值（1-30）和DPI设置（72-300）以获得最佳结果。</p>
+      <p>所有处理都在您的浏览器中使用WebAssembly技术本地进行，确保您的文档保持私密和安全。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传PDF文件', description: '拖放您的扫描PDF文件或点击选择。' },
+      { step: 2, title: '配置设置', description: '如需要，调整阈值敏感度和DPI以获得更好的检测效果。' },
+      { step: 3, title: '处理并下载', description: '点击校正以拉直页面并下载校正后的PDF。' },
+    ],
+    useCases: [
+      { title: '扫描文档', description: '修复从文档进纸器以一定角度扫描的页面。', icon: 'scan' },
+      { title: '手机扫描', description: '校正使用智能手机拍摄的倾斜文档照片。', icon: 'smartphone' },
+      { title: '档案修复', description: '拉直旧扫描档案以提高可读性。', icon: 'archive' },
+    ],
+    faq: [
+      { question: '角度检测有多准确？', answer: '该工具使用投影轮廓方差分析来检测高达±10度的倾斜角度，具有高精度。它会自动跳过角度小于0.3度的页面。' },
+      { question: '文本质量会受到影响吗？', answer: '对于90度的倍数旋转，不会发生质量损失。对于其他角度，工具会四舍五入到最近的度数并保持良好的质量。' },
+      { question: '我可以只校正特定页面吗？', answer: '该工具会分析所有页面，但只校正检测到的倾斜超过敏感度阈值的页面。倾斜最小的页面保持不变。' },
+      { question: '什么是敏感度阈值？', answer: '值1-10仅校正明显的倾斜，11-20检测中等倾斜，21-30捕获细微角度。默认值为10，用于平衡检测。' },
+      { question: '处理需要多长时间？', answer: '处理时间取决于文件大小和DPI。150 DPI（默认值）在速度和准确性之间提供了良好的平衡。更高的DPI更准确但更慢。' },
+    ],
+  },
+
   'pdf-to-pdfa': {
     title: 'PDF转PDF/A',
     metaDescription: '将普通PDF转换为适合长期存档的PDF/A格式。符合ISO标准。',
@@ -2352,6 +2380,193 @@ export const toolContentZh: Record<string, ToolContent> = {
       { question: '文档安全吗？', answer: '是的，完全在浏览器中处理。' },
       { question: '可以编辑吗？', answer: '此工具仅用于查看。' },
       { question: '支持移动设备吗？', answer: '是的。' },
+    ],
+  },
+
+  'email-to-pdf': {
+    title: '邮件转PDF',
+    metaDescription: '将邮件文件（.eml、.msg）转换为PDF文档。保留格式、内联图像、可点击链接和嵌入附件。',
+    keywords: ['邮件转pdf', 'eml转pdf', 'msg转pdf', '转换邮件', '邮件转换器', '保存邮件为pdf', 'outlook转pdf'],
+    description: `
+      <p>邮件转PDF将您的邮件文件（.eml和.msg格式）转换为格式良好的PDF文档。该工具保留邮件头信息、正文内容、内联图像（CID替换）、可点击链接，并将附件直接嵌入PDF中。</p>
+      <p>自定义输出选项，包括页面大小（A4、Letter、Legal）、带时区支持的日期格式，以及是否包含抄送/密送字段和附件信息。</p>
+      <p>所有转换都在您的浏览器本地进行，确保您的邮件保持私密和安全。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传邮件文件', description: '上传您的.eml或.msg邮件文件。' },
+      { step: 2, title: '配置选项', description: '设置页面大小、日期格式、时区，并选择要包含的字段。' },
+      { step: 3, title: '转换并下载', description: '转换为PDF并下载包含嵌入附件的结果。' },
+    ],
+    useCases: [
+      { title: '法律记录', description: '将重要邮件存档为PDF，并嵌入附件用于法律文档。', icon: 'scale' },
+      { title: '商业档案', description: '将商业往来转换为PDF以进行长期记录保存。', icon: 'briefcase' },
+      { title: '证据保存', description: '以不可编辑的PDF格式保存包含内联图像和附件的邮件证据。', icon: 'shield' },
+    ],
+    faq: [
+      { question: '支持哪些邮件格式？', answer: '.eml（RFC 822）和.msg（Microsoft Outlook）文件都完全支持。' },
+      { question: '是否包含附件？', answer: '是的！附件直接嵌入到PDF文件中。您可以使用兼容的PDF阅读器从PDF中提取它们。' },
+      { question: '内联图像是否显示？', answer: '是的，通过CID（Content-ID）引用的内联图像会自动转换为base64数据URI并在PDF中显示。' },
+      { question: '链接是否可点击？', answer: '是的，所有HTML链接（<a>标签）和纯文本邮件中的URL都会转换为PDF中的可点击链接。' },
+      { question: '邮件格式是否保留？', answer: '是的，HTML邮件尽可能保留其格式，包括样式、图像和链接。' },
+    ],
+  },
+
+  'cbz-to-pdf': {
+    title: 'CBZ转PDF',
+    metaDescription: '将漫画书归档文件（CBZ）转换为PDF。保留图像顺序和质量，适用于数字漫画。',
+    keywords: ['cbz转pdf', '漫画转pdf', '转换cbz', '漫画书转换器', 'cbz转换器'],
+    description: `
+      <p>CBZ转PDF将漫画书归档文件转换为PDF文档。该工具从CBZ归档中提取所有图像，并将它们编译成PDF，同时保持正确的阅读顺序。</p>
+      <p>从各种页面大小选项中选择，包括原始图像尺寸或标准化的漫画书尺寸。非常适合在支持PDF但不支持CBZ的设备上阅读漫画。</p>
+      <p>所有转换都在您的浏览器本地进行，确保您的漫画保持私密。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传CBZ文件', description: '上传您的.cbz漫画书归档文件。' },
+      { step: 2, title: '选择选项', description: '选择页面大小和图像质量设置。' },
+      { step: 3, title: '转换并下载', description: '转换为PDF并下载您的漫画。' },
+    ],
+    useCases: [
+      { title: '电子阅读器兼容性', description: '将CBZ转换为PDF，适用于仅支持PDF的电子阅读器。', icon: 'book' },
+      { title: '漫画归档', description: '为您的数字漫画收藏创建PDF归档。', icon: 'archive' },
+      { title: '打印准备', description: '将数字漫画转换为PDF以供打印。', icon: 'printer' },
+    ],
+    faq: [
+      { question: '什么是CBZ格式？', answer: 'CBZ是一个包含漫画书页面图像文件的ZIP归档，重命名为.cbz扩展名。' },
+      { question: '图像质量是否保留？', answer: '是的，图像以原始质量嵌入到PDF中。' },
+      { question: '是否支持嵌套文件夹？', answer: '是的，归档中所有文件夹的图像都会被提取和排序。' },
+    ],
+  },
+
+  'pdf-booklet': {
+    title: 'PDF小册子制作',
+    metaDescription: '从PDF创建小册子布局以供打印。为骑马钉装订排列页面，支持多种网格选项。',
+    keywords: ['pdf小册子', '小册子制作', '打印小册子', '骑马钉', '拼版'],
+    description: `
+      <p>PDF小册子制作将您的PDF页面排列成适合打印和折叠制作的小册子布局。非常适合创建宣传册、杂志、小册子和骑马钉装订出版物。</p>
+      <p>从各种网格模式（1x2、2x2、2x4、4x4）、纸张尺寸和方向选项中选择。该工具自动处理页面拼版以实现正确的折叠顺序。</p>
+      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传PDF文件', description: '上传您想要转换为小册子的PDF文档。' },
+      { step: 2, title: '选择布局', description: '选择网格模式、纸张大小、方向和旋转选项。' },
+      { step: 3, title: '创建并下载', description: '生成小册子布局并下载以供打印。' },
+    ],
+    useCases: [
+      { title: '宣传册', description: '从标准PDF文档创建可折叠的宣传册。', icon: 'book-open' },
+      { title: '杂志', description: '制作具有正确页面拼版的自出版杂志。', icon: 'book' },
+      { title: '活动手册', description: '为活动创建专业的手册小册子。', icon: 'calendar' },
+    ],
+    faq: [
+      { question: '什么是骑马钉装订？', answer: '骑马钉是一种装订方法，将折叠的纸张嵌套并通过折痕钉合。' },
+      { question: '我应该使用哪种网格模式？', answer: '1x2是小册子的标准模式。使用2x2或更大的模式进行多页打印以节省纸张。' },
+      { question: '可以预览布局吗？', answer: '是的，该工具在生成最终小册子之前提供可视预览。' },
+    ],
+  },
+
+  'rasterize-pdf': {
+    title: '光栅化PDF',
+    metaDescription: '将PDF页面转换为高质量图像。导出为PNG、JPEG或WebP，支持自定义DPI设置。',
+    keywords: ['光栅化pdf', 'pdf转图像', 'pdf转png', 'pdf转jpeg', '转换pdf页面'],
+    description: `
+      <p>光栅化PDF将您的PDF页面转换为高质量的光栅图像。从PNG、JPEG或WebP输出格式中选择，完全控制DPI和质量设置。</p>
+      <p>非常适合创建缩略图、社交媒体图形或将PDF内容归档为图像。支持页面范围选择和批量处理。</p>
+      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传PDF文件', description: '拖放您的PDF文件或点击选择。' },
+      { step: 2, title: '配置输出', description: '选择DPI、输出格式（PNG/JPEG/WebP）、质量和页面范围。' },
+      { step: 3, title: '转换并下载', description: '处理页面并单独下载图像或作为ZIP归档下载。' },
+    ],
+    useCases: [
+      { title: '社交媒体', description: '将PDF幻灯片转换为图像以在社交媒体上发布。', icon: 'share-2' },
+      { title: '缩略图', description: '为PDF文档生成预览缩略图。', icon: 'image' },
+      { title: '网络发布', description: '将PDF内容转换为网络友好的图像格式。', icon: 'globe' },
+    ],
+    faq: [
+      { question: '我应该使用什么DPI？', answer: '屏幕使用72 DPI，一般使用150 DPI，打印质量使用300 DPI。' },
+      { question: '哪种格式最好？', answer: 'PNG用于质量/透明度，JPEG用于小尺寸，WebP用于现代网络使用。' },
+      { question: '可以转换特定页面吗？', answer: '是的，指定页面范围如"1-5, 8, 10-15"以仅转换这些页面。' },
+    ],
+  },
+
+  'markdown-to-pdf': {
+    title: 'Markdown转PDF',
+    metaDescription: '将Markdown文件转换为格式精美的PDF文档。支持GitHub风格Markdown和语法高亮。',
+    keywords: ['markdown转pdf', 'md转pdf', '转换markdown', 'gfm转pdf', 'markdown转换器'],
+    description: `
+      <p>Markdown转PDF将您的Markdown文件转换为专业样式的PDF文档。支持CommonMark和GitHub风格Markdown（GFM），包括表格、任务列表和代码块。</p>
+      <p>从多个主题（浅色、深色、GitHub）中选择，并自定义页面大小和边距。代码块具有语法高亮以提高可读性。</p>
+      <p>所有转换都在您的浏览器本地进行，确保您的内容保持私密。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传Markdown文件', description: '上传您的.md或.markdown文件。' },
+      { step: 2, title: '选择主题', description: '选择视觉主题并配置页面设置。' },
+      { step: 3, title: '转换并下载', description: '生成样式化的PDF并下载。' },
+    ],
+    useCases: [
+      { title: '文档', description: '将README文件和文档转换为可共享的PDF。', icon: 'file-text' },
+      { title: '笔记导出', description: '将Markdown笔记导出为PDF以供打印或共享。', icon: 'edit-3' },
+      { title: '报告', description: '从Markdown创建具有专业样式的报告。', icon: 'bar-chart' },
+    ],
+    faq: [
+      { question: '是否支持GitHub风格Markdown？', answer: '是的，支持表格、任务列表、删除线和其他GFM功能。' },
+      { question: '可以自定义样式吗？', answer: '从预设主题中选择或添加自定义CSS以完全控制。' },
+      { question: '代码块是否高亮？', answer: '是的，代码块包含常见语言的语法高亮。' },
+    ],
+  },
+
+  'font-to-outline': {
+    title: '字体转轮廓',
+    metaDescription: '通过将页面转换为高质量图像来删除PDF文档的字体依赖。确保在所有系统上的兼容性。',
+    keywords: ['字体转轮廓', '轮廓字体', '删除字体', '字体兼容性', '扁平化pdf字体', 'pdf字体删除'],
+    description: `
+      <p>字体转轮廓通过将每个页面转换为高质量的光栅化内容来删除PDF中的所有字体依赖。这确保您的文档在任何系统上看起来完全相同，即使未安装原始字体。</p>
+      <p>该工具以您选择的DPI（150-600）渲染每个页面，删除嵌入的字体同时保留确切的视觉外观。可选地，您可以添加不可见的文本层以保持可搜索性。</p>
+      <p>这对于打印准备、跨平台兼容性以及在共享文档时避免字体许可问题至关重要。所有处理都在您的浏览器本地进行。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传PDF文件', description: '上传包含要删除字体的PDF。' },
+      { step: 2, title: '配置质量', description: '选择DPI（打印推荐300，屏幕推荐150）。如需要，启用可搜索文本。' },
+      { step: 3, title: '转换并下载', description: '处理文件并下载独立于字体的PDF。' },
+    ],
+    useCases: [
+      { title: '打印准备', description: '通过删除所有字体依赖来消除商业打印机的字体问题。', icon: 'printer' },
+      { title: '跨平台共享', description: '共享在任何设备上看起来相同的文档，无论安装了什么字体。', icon: 'share-2' },
+      { title: '字体许可', description: '删除嵌入的字体以避免分发文档时的许可问题。', icon: 'shield' },
+    ],
+    faq: [
+      { question: '这是如何工作的？', answer: '该工具以高分辨率（您选择的DPI）渲染每个页面，并从这些图像重新创建PDF，删除所有字体依赖同时保留视觉外观。' },
+      { question: '转换后还能选择文本吗？', answer: '默认情况下不能。文本成为图像的一部分。但是，您可以启用"保留可搜索文本"以添加不可见的文本层用于搜索和复制功能。' },
+      { question: '我应该使用什么DPI？', answer: '打印质量输出推荐300 DPI。屏幕查看150 DPI就足够了，并产生较小的文件。600 DPI用于最高质量但会创建大文件。' },
+      { question: '文件大小会增加吗？', answer: '文件大小取决于DPI和内容。150 DPI通常产生较小的文件，300 DPI可能增加大小，600 DPI显著增加大小。会自动应用压缩。' },
+      { question: '这是可逆的吗？', answer: '不，字体数据被永久删除。如果需要使用原始字体的可编辑文本，请保留原始文件的备份。' },
+      { question: '矢量图形怎么办？', answer: '原始PDF中的矢量图形（形状、线条）将与文本一起转换为光栅。视觉质量在您选择的DPI下得以保留。' },
+    ],
+  },
+
+  'extract-tables': {
+    title: '从PDF提取表格',
+    metaDescription: '检测并从PDF文档中提取表格。导出为JSON、Markdown或CSV格式。',
+    keywords: ['提取表格', 'pdf表格提取', 'pdf转csv', 'pdf转excel', '表格检测'],
+    description: `
+      <p>从PDF提取表格检测PDF文档中的表格数据并以结构化格式导出。选择JSON用于数据集成，Markdown用于文档，或CSV用于电子表格。</p>
+      <p>该工具使用智能检测算法来识别表格结构，即使在复杂文档中也是如此。指定页面范围并调整检测参数以获得最佳结果。</p>
+      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>
+    `,
+    howToUse: [
+      { step: 1, title: '上传PDF文件', description: '上传包含要提取表格的PDF。' },
+      { step: 2, title: '配置检测', description: '设置页面范围和最小列/行阈值。' },
+      { step: 3, title: '导出并下载', description: '选择输出格式（JSON/Markdown/CSV）并下载。' },
+    ],
+    useCases: [
+      { title: '数据分析', description: '提取表格数据以在电子表格或数据库中进行分析。', icon: 'bar-chart' },
+      { title: '报告处理', description: '从PDF报告中提取表格以进行进一步处理。', icon: 'file-text' },
+      { title: '文档', description: '将PDF表格转换为Markdown用于技术文档。', icon: 'book' },
+    ],
+    faq: [
+      { question: '可以检测复杂表格吗？', answer: '该工具最适合简单的网格表格。复杂的合并单元格可能需要手动调整。' },
+      { question: '如果找不到表格怎么办？', answer: '尝试调整最小列/行阈值或检查PDF是否包含实际的表格结构。' },
+      { question: '可以从特定页面提取吗？', answer: '是的，指定页面范围以将提取限制在某些页面。' },
     ],
   },
 };

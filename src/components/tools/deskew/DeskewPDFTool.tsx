@@ -253,7 +253,7 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
                         {/* Threshold Setting */}
                         <div>
                             <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
-                                {tTools('deskewPdf.thresholdLabel') || 'Detection Threshold'}: {threshold}
+                                {tTools('deskewPdf.thresholdLabel') || 'Sensitivity Level'}: {threshold}
                             </label>
                             <input
                                 type="range"
@@ -265,7 +265,7 @@ export function DeskewPDFTool({ className = '' }: DeskewPDFToolProps) {
                                 className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-[hsl(var(--color-muted))]"
                             />
                             <p className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
-                                {tTools('deskewPdf.thresholdDesc') || 'Higher values detect more subtle skew angles. Default: 10'}
+                                {tTools('deskewPdf.thresholdDesc') || 'Higher values detect more subtle skew angles. Lower values only correct obvious tilts. Default: 10'}
                             </p>
                         </div>
 

@@ -88,14 +88,14 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
     return (
         <div className={`space-y-6 ${className}`.trim()}>
             <FileUploader
-                accept={['.eml', 'message/rfc822']}
+                accept={['.eml', '.msg', 'message/rfc822', 'application/vnd.ms-outlook']}
                 multiple={false}
                 maxFiles={1}
                 onFilesSelected={handleFilesSelected}
                 onError={handleUploadError}
                 disabled={isProcessing}
                 label={tTools('emailToPdf.uploadLabel') || 'Upload Email File'}
-                description={tTools('emailToPdf.uploadDescription') || 'Drag and drop an email file (.eml) to convert to PDF.'}
+                description={tTools('emailToPdf.uploadDescription') || 'Drag and drop an email file (.eml or .msg) to convert to PDF.'}
             />
 
             {error && (
@@ -201,7 +201,7 @@ export function EmailToPDFTool({ className = '' }: EmailToPDFToolProps) {
                 {resultBlob && (
                     <DownloadButton
                         file={resultBlob}
-                        filename={file ? `${file.name.replace(/\.eml$/i, '')}.pdf` : 'email.pdf'}
+                        filename={file ? `${file.name.replace(/\.(eml|msg)$/i, '')}.pdf` : 'email.pdf'}
                         variant="secondary"
                         size="lg"
                     />

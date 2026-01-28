@@ -8,7 +8,7 @@
   publish = "out"
 
 [build.environment]
-  # Node.js version
+  # Node.js version - Using 22 for Promise.withResolvers support (required by pdfjs-dist v4.x)
   NODE_VERSION = "22"
   # NPM version
   NPM_VERSION = "10"

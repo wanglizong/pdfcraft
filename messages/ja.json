@@ -484,6 +484,10 @@
     "error": "エラー",
     "issues": "件の問題",
     "stop": "停止",
+    "validationErrors": "検証エラー",
+    "warnings": "警告",
+    "executionFailed": "ワークフロー実行失敗",
+    "retry": "再試行",
     "nodes": "個のノード",
     "import": "インポート",
     "clear": "クリア",
@@ -1588,7 +1592,10 @@
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Removal Options",
       "removeButton": "Remove Annotations",
-      "successMessage": "Annotations removed successfully!"
+      "successMessage": "Annotations removed successfully!",
+      "removeComments": "コメントを削除",
+      "removeHighlights": "ハイライトを削除",
+      "removeLinks": "リンクを削除"
     },
     "formFiller": {
       "uploadLabel": "Upload PDF File",

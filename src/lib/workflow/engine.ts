@@ -198,8 +198,17 @@ export function validateWorkflow(
 
     // Warn if there are multiple input nodes
     if (inputNodes.length > 1) {
+        const nodeNames = inputNodes.map(n => `"${n.data.label}"`).join(', ');
         warnings.push({
-            message: `Workflow has ${inputNodes.length} input nodes. Files will be processed by each independently.`,
+            message: `Workflow has ${inputNodes.length} input nodes (${nodeNames}). All selected files will be sent to each input node. Each input node will process all files independently before passing results to downstream nodes.`,
+        });
+    }
+
+    // Warn if there are no input nodes
+    if (inputNodes.length === 0 && nodes.length > 0) {
+        errors.push({
+            message: 'Workflow has no input nodes. All nodes are connected in a cycle or isolated.',
+            type: 'missing-input',
         });
     }
 

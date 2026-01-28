@@ -2,20 +2,31 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import * as pdfjsLib from 'pdfjs-dist';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { processBookmarks, BookmarkItem, BookmarkOptions } from '@/lib/pdf/processors/bookmark';
-import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import type { ProcessOutput } from '@/types/pdf';
 
-// Set worker source
-if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
-  configurePdfjsWorker(pdfjsLib);
-}
+// Store pdfjs module reference
+let pdfjsModule: typeof import('pdfjs-dist') | null = null;
+
+// Load pdfjs module dynamically
+const loadPdfjsLib = async () => {
+  if (pdfjsModule) return pdfjsModule;
+
+  const pdfjsLib = await import('pdfjs-dist');
+  const { configurePdfjsWorker } = await import('@/lib/pdf/loader');
+
+  if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
+    configurePdfjsWorker(pdfjsLib);
+  }
+
+  pdfjsModule = pdfjsLib;
+  return pdfjsLib;
+};
 
 export interface BookmarkToolProps {
   className?: string;
@@ -41,7 +52,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
   // File state
   const [file, setFile] = useState<File | null>(null);
-  const [pdfDoc, setPdfDoc] = useState<pdfjsLib.PDFDocumentProxy | null>(null);
+  const [pdfDoc, setPdfDoc] = useState<any>(null);
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -65,6 +76,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   // Load PDF and extract existing bookmarks
   const loadPdf = useCallback(async (pdfFile: File) => {
     try {
+      const pdfjsLib = await loadPdfjsLib();
       const arrayBuffer = await pdfFile.arrayBuffer();
       const loadingTask = pdfjsLib.getDocument({ data: arrayBuffer });
       const doc = await loadingTask.promise;
@@ -95,7 +107,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
   // Parse PDF outline to bookmark nodes
   const parseOutline = async (
     outline: any[], // PDF.js outline structure
-    doc: pdfjsLib.PDFDocumentProxy
+    doc: any
   ): Promise<BookmarkNode[]> => {
     const result: BookmarkNode[] = [];
 

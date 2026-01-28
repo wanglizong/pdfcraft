@@ -1,8 +1,12 @@
 /**
  * Font to Outline Processor
  * 
- * Converts all fonts in a PDF to vector outlines/paths.
- * Useful for compatibility when fonts may not be available on the target system.
+ * Removes font dependencies from PDF documents by rendering pages as high-quality images.
+ * This ensures documents display identically on any system, regardless of font availability.
+ * 
+ * The process converts each page to a rasterized image at the specified DPI, removing all
+ * embedded fonts while preserving the exact visual appearance. Optionally adds an invisible
+ * text layer to maintain searchability.
  */
 
 import type {
@@ -18,11 +22,15 @@ import { loadPyMuPDF } from '../pymupdf-loader';
  * Font to Outline options
  */
 export interface FontToOutlineOptions {
-    /** DPI for rasterization when needed (default: 300) */
+    /** DPI for page rendering (default: 300). Higher values produce better quality but larger files.
+     * 150 DPI: Good for screen viewing, smaller files
+     * 300 DPI: Print quality (recommended)
+     * 600 DPI: Highest quality, large files */
     dpi: number;
-    /** Whether to preserve text as selectable (default: false - converts to paths) */
+    /** Whether to add invisible text layer for searchability (default: false).
+     * If true, adds an invisible text overlay to maintain search and copy functionality. */
     preserveSelectableText: boolean;
-    /** Specific pages to process (empty for all) */
+    /** Specific pages to process (e.g., "1-3,5,7-9"). Empty or undefined processes all pages. */
     pageRange?: string;
 }
 

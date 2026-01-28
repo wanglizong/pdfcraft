@@ -2,20 +2,16 @@
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import * as pdfjsLib from 'pdfjs-dist';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { addPageNumbers, PageNumberOptions } from '@/lib/pdf/processors/page-numbers';
-import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import type { ProcessOutput } from '@/types/pdf';
 
-// Set worker source
-if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
-  configurePdfjsWorker(pdfjsLib);
-}
+// Store pdfjs module reference
+let pdfjsModule: typeof import('pdfjs-dist') | null = null;
 
 export interface PageNumbersToolProps {
   className?: string;
@@ -60,9 +56,25 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
   const cancelledRef = useRef(false);
   const renderTaskRef = useRef<{ cancel: () => void } | null>(null);
 
+  // Load pdfjs module dynamically
+  const loadPdfjsLib = async () => {
+    if (pdfjsModule) return pdfjsModule;
+
+    const pdfjsLib = await import('pdfjs-dist');
+    const { configurePdfjsWorker } = await import('@/lib/pdf/loader');
+
+    if (typeof window !== 'undefined' && !pdfjsLib.GlobalWorkerOptions.workerSrc) {
+      configurePdfjsWorker(pdfjsLib);
+    }
+
+    pdfjsModule = pdfjsLib;
+    return pdfjsLib;
+  };
+
   // Load PDF preview
   const loadPdfPreview = useCallback(async (pdfFile: File) => {
     try {
+      const pdfjsLib = await loadPdfjsLib();
       const arrayBuffer = await pdfFile.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
       setTotalPages(pdf.numPages);
@@ -73,7 +85,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
   }, []);
 
   // Render page with page number overlay
-  const renderPagePreview = async (pdf: pdfjsLib.PDFDocumentProxy, pageNum: number) => {
+  const renderPagePreview = async (pdf: any, pageNum: number) => {
     if (!previewCanvasRef.current) return;
 
     // Cancel any ongoing render task
@@ -250,6 +262,7 @@ export function PageNumbersTool({ className = '' }: PageNumbersToolProps) {
   useEffect(() => {
     if (file && totalPages > 0) {
       const loadAndRender = async () => {
+        const pdfjsLib = await loadPdfjsLib();
         const arrayBuffer = await file.arrayBuffer();
         const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
         renderPagePreview(pdf, currentPreviewPage);

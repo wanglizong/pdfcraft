@@ -497,6 +497,10 @@
     "error": "錯誤",
     "issues": "個問題",
     "stop": "停止",
+    "validationErrors": "驗證錯誤",
+    "warnings": "警告",
+    "executionFailed": "工作流執行失敗",
+    "retry": "重試",
     "nodes": "個節點",
     "import": "匯入",
     "clear": "清空",
@@ -1299,7 +1303,10 @@
       "uploadDescription": "拖放PDF檔案到此處。",
       "optionsTitle": "移除選項",
       "removeButton": "移除註釋",
-      "successMessage": "註釋移除成功！"
+      "successMessage": "註釋移除成功！",
+      "removeComments": "移除評論",
+      "removeHighlights": "移除高亮",
+      "removeLinks": "移除連結"
     },
     "formFiller": {
       "uploadLabel": "上傳PDF檔案",

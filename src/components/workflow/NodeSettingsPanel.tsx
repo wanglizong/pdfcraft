@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { useTranslations, useLocale } from 'next-intl';
+import { useTranslations, useLocale, useMessages } from 'next-intl';
 import { WorkflowNode } from '@/types/workflow';
 import { getToolContent } from '@/config/tool-content';
 import { Locale } from '@/lib/i18n/config';
@@ -90,10 +90,24 @@ const getToolSettingsConfig = (): Record<string, ToolSettingsConfig> => ({
                 placeholderKey: 'watermark.textPlaceholder',
             },
             {
+                key: 'position',
+                labelKey: 'watermark.position',
+                type: 'select',
+                defaultValue: 'center',
+                options: [
+                    { value: 'center', labelKey: 'watermark.posCenter' },
+                    { value: 'diagonal', labelKey: 'watermark.posDiagonal' },
+                    { value: 'top-left', labelKey: 'watermark.posTopLeft' },
+                    { value: 'top-right', labelKey: 'watermark.posTopRight' },
+                    { value: 'bottom-left', labelKey: 'watermark.posBottomLeft' },
+                    { value: 'bottom-right', labelKey: 'watermark.posBottomRight' },
+                ],
+            },
+            {
                 key: 'fontSize',
                 labelKey: 'watermark.fontSize',
                 type: 'number',
-                defaultValue: 72,
+                defaultValue: 48,
                 min: 10,
                 max: 200,
             },
@@ -321,7 +335,7 @@ const getToolSettingsConfig = (): Record<string, ToolSettingsConfig> => ({
 
     // ==================== Encrypt PDF ====================
     'encrypt-pdf': {
-        titleKey: 'encryptPdf.optionsTitle',
+        titleKey: 'encryptPdf.permissionsTitle',
         fields: [
             {
                 key: 'userPassword',
@@ -339,25 +353,25 @@ const getToolSettingsConfig = (): Record<string, ToolSettingsConfig> => ({
             },
             {
                 key: 'allowPrinting',
-                labelKey: 'encryptPdf.allowPrinting',
+                labelKey: 'encryptPdf.permPrinting',
                 type: 'checkbox',
                 defaultValue: true,
             },
             {
                 key: 'allowModifying',
-                labelKey: 'encryptPdf.allowModifying',
+                labelKey: 'encryptPdf.permModifying',
                 type: 'checkbox',
                 defaultValue: false,
             },
             {
                 key: 'allowCopying',
-                labelKey: 'encryptPdf.allowCopying',
+                labelKey: 'encryptPdf.permCopying',
                 type: 'checkbox',
                 defaultValue: false,
             },
             {
                 key: 'allowAnnotating',
-                labelKey: 'encryptPdf.allowAnnotating',
+                labelKey: 'encryptPdf.permAnnotating',
                 type: 'checkbox',
                 defaultValue: true,
             },
@@ -665,7 +679,7 @@ const getToolSettingsConfig = (): Record<string, ToolSettingsConfig> => ({
 
     // ==================== Header Footer ====================
     'header-footer': {
-        titleKey: 'headerFooter.optionsTitle',
+        titleKey: 'headerFooter.headerTitle',
         fields: [
             {
                 key: 'headerText',
@@ -1692,25 +1706,25 @@ const getToolSettingsConfig = (): Record<string, ToolSettingsConfig> => ({
         fields: [
             {
                 key: 'allowPrinting',
-                labelKey: 'encryptPdf.allowPrinting',
+                labelKey: 'changePermissions.allowPrinting',
                 type: 'checkbox',
                 defaultValue: true,
             },
             {
                 key: 'allowCopying',
-                labelKey: 'encryptPdf.allowCopying',
+                labelKey: 'changePermissions.allowCopying',
                 type: 'checkbox',
                 defaultValue: false,
             },
             {
                 key: 'allowModifying',
-                labelKey: 'encryptPdf.allowModifying',
+                labelKey: 'changePermissions.allowModifying',
                 type: 'checkbox',
                 defaultValue: false,
             },
             {
                 key: 'allowAnnotating',
-                labelKey: 'encryptPdf.allowAnnotating',
+                labelKey: 'changePermissions.allowAnnotating',
                 type: 'checkbox',
                 defaultValue: true,
             },
@@ -1929,6 +1943,8 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
     const t = useTranslations('tools');
     const tWorkflow = useTranslations('workflow');
     const tCommon = useTranslations('common');
+    const tRoot = useTranslations(); // Root level translations for tool-specific settings
+    const messages = useMessages(); // Get raw messages for nested key lookup
     const locale = useLocale() as Locale;
 
     const [settings, setSettings] = useState<Record<string, unknown>>({});
@@ -1946,27 +1962,112 @@ export function NodeSettingsPanel({ node, onClose, onUpdateSettings }: NodeSetti
     };
 
     const getTranslation = (key: string, fallback?: string): string => {
-        try {
-            // Handle common namespace keys
-            if (key.startsWith('common.')) {
-                const commonKey = key.replace('common.', '');
-                // tCommon uses 'common' namespace, so we just need the sub-key
+        // If the key doesn't contain a dot, it might be a literal value (like 'A4', 'PNG', 'Letter')
+        // These are not translation keys, just direct values to display
+        if (!key.includes('.')) {
+            // Return the key directly as it's likely a literal value
+            return fallback || key;
+        }
+
+        // Handle common namespace keys
+        if (key.startsWith('common.')) {
+            const commonKey = key.replace('common.', '');
+            try {
                 const result = tCommon(commonKey);
-                if (result && typeof result === 'string' && !result.includes('MISSING') && result !== commonKey) {
+                if (result && typeof result === 'string' && !result.startsWith('MISSING') && result !== commonKey) {
                     return result;
+                }
+            } catch {
+                // Continue
+            }
+        }
+
+        // Try tools namespace with explicit path navigation for nested keys
+        try {
+            // For keys like "watermark.optionsTitle", try to access nested structure
+            const parts = key.split('.');
+            if (parts.length > 1) {
+                // Try to get the raw object and navigate using messages from useMessages()
+                try {
+                    // Access the tools namespace from messages
+                    const toolsMessages = messages?.tools as Record<string, unknown> | undefined;
+                    if (toolsMessages && typeof toolsMessages === 'object') {
+                        let value: unknown = toolsMessages;
+                        for (const part of parts) {
+                            value = (value as Record<string, unknown>)?.[part];
+                        }
+                        if (value && typeof value === 'string') {
+                            return value;
+                        }
+                    }
+                } catch {
+                    // Continue to simple lookup
                 }
             }
 
-            // Try tools namespace
-            const result = t.has(key) ? t(key) : null;
-            if (result && typeof result === 'string' && !result.includes('MISSING')) {
-                return result;
+            // Try simple lookup - with existence check to avoid console errors
+            try {
+                // Check if the key exists in the current namespace (tools)
+                const toolsMessages = messages?.tools as Record<string, unknown> | undefined;
+                let exists = false;
+                if (toolsMessages && typeof toolsMessages === 'object') {
+                    let current: any = toolsMessages;
+                    const parts = key.split('.');
+                    for (const part of parts) {
+                        if (current && typeof current === 'object' && part in current) {
+                            current = current[part];
+                            exists = true;
+                        } else {
+                            exists = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (exists) {
+                    const result = t(key);
+                    if (result && typeof result === 'string' && result !== key && !result.startsWith('MISSING')) {
+                        return result;
+                    }
+                }
+            } catch {
+                // Continue to root level
             }
-            // Return fallback or extract last part of key as readable label
-            return fallback || key.split('.').pop()?.replace(/([A-Z])/g, ' $1').trim() || key;
         } catch {
-            return fallback || key.split('.').pop()?.replace(/([A-Z])/g, ' $1').trim() || key;
+            // Continue to root level
         }
+
+        // Try root level translations
+        try {
+            // Existence check for rootResult
+            let exists = false;
+            if (messages && typeof messages === 'object') {
+                let current: any = messages;
+                const parts = key.split('.');
+                for (const part of parts) {
+                    if (current && typeof current === 'object' && part in current) {
+                        current = current[part];
+                        exists = true;
+                    } else {
+                        exists = false;
+                        break;
+                    }
+                }
+            }
+
+            if (exists) {
+                const rootResult = tRoot(key);
+                if (rootResult && typeof rootResult === 'string' && rootResult !== key && !rootResult.startsWith('MISSING')) {
+                    return rootResult;
+                }
+            }
+        } catch {
+            // Continue to fallback
+        }
+
+        // Return fallback or extract last part of key as readable label
+        const extracted = key.split('.').pop()?.replace(/([A-Z])/g, ' $1').trim() || key;
+        return fallback || extracted;
     };
 
     useEffect(() => {

@@ -12,7 +12,18 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
-import { loadPdfjsLegacy, loadSVGGraphics } from '../loader-legacy';
+import type { SVGGraphicsConstructor } from '../loader-legacy';
+
+// Dynamic imports to avoid SSR issues with pdfjs-dist-legacy (which requires 'canvas' module)
+async function loadPdfjsLegacy() {
+    const module = await import('../loader-legacy');
+    return module.loadPdfjsLegacy();
+}
+
+async function loadSVGGraphics(): Promise<SVGGraphicsConstructor> {
+    const module = await import('../loader-legacy');
+    return module.loadSVGGraphics();
+}
 
 /**
  * PDF to SVG options

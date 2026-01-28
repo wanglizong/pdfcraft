@@ -484,6 +484,10 @@
     "error": "오류",
     "issues": "개의 문제",
     "stop": "중지",
+    "validationErrors": "검증 오류",
+    "warnings": "경고",
+    "executionFailed": "워크플로 실행 실패",
+    "retry": "재시도",
     "nodes": "개 노드",
     "import": "가져오기",
     "clear": "지우기",
@@ -1588,7 +1592,10 @@
       "uploadDescription": "Drag and drop a PDF file.",
       "optionsTitle": "Removal Options",
       "removeButton": "Remove Annotations",
-      "successMessage": "Annotations removed successfully!"
+      "successMessage": "Annotations removed successfully!",
+      "removeComments": "댓글 제거",
+      "removeHighlights": "하이라이트 제거",
+      "removeLinks": "링크 제거"
     },
     "formFiller": {
       "uploadLabel": "Upload PDF File",

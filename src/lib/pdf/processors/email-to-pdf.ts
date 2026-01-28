@@ -53,6 +53,8 @@ interface EmailAttachment {
     contentType: string;
     content?: ArrayBuffer;
     contentId?: string;
+    base64Data?: string; // Base64 encoded content for inline images
+    isInline?: boolean; // Whether this is an inline image
 }
 
 /**
@@ -146,19 +148,41 @@ async function parseEmlFile(file: File): Promise<ParsedEmail> {
 
                 const partContent = partLines.slice(j).join('\n');
                 const partContentType = partHeaders['content-type'] || 'text/plain';
+                const transferEncoding = partHeaders['content-transfer-encoding'];
+                const contentDisposition = partHeaders['content-disposition'];
+                const contentId = partHeaders['content-id']?.replace(/[<>]/g, '');
 
                 if (partContentType.includes('text/html')) {
-                    htmlBody = decodeQuotedPrintable(partContent, partHeaders['content-transfer-encoding']);
+                    htmlBody = decodeQuotedPrintable(partContent, transferEncoding);
                 } else if (partContentType.includes('text/plain')) {
-                    textBody = decodeQuotedPrintable(partContent, partHeaders['content-transfer-encoding']);
-                } else if (partHeaders['content-disposition']?.includes('attachment')) {
-                    // Attachment
-                    const filenameMatch = partHeaders['content-disposition']?.match(/filename="?([^";\s]+)"?/i);
-                    attachments.push({
+                    textBody = decodeQuotedPrintable(partContent, transferEncoding);
+                } else if (partContentType.includes('image/') || contentDisposition || contentId) {
+                    // This is an attachment or inline image
+                    const isInline = !!(contentDisposition?.includes('inline') || (contentId && !contentDisposition?.includes('attachment')));
+                    const filenameMatch = contentDisposition?.match(/filename="?([^";\s]+)"?/i) || 
+                                         partContentType.match(/name="?([^";\s]+)"?/i);
+                    
+                    const attachment: EmailAttachment = {
                         filename: filenameMatch ? filenameMatch[1] : 'attachment',
                         contentType: partContentType,
-                        contentId: partHeaders['content-id']?.replace(/[<>]/g, ''),
-                    });
+                        contentId: contentId,
+                        isInline: isInline,
+                    };
+
+                    // Extract base64 content for inline images and attachments
+                    if (transferEncoding?.toLowerCase().includes('base64')) {
+                        const cleanedBase64 = partContent.replace(/\s/g, '');
+                        attachment.base64Data = cleanedBase64;
+                        
+                        // Also store as ArrayBuffer for potential embedding
+                        try {
+                            attachment.content = decodeBase64ToArrayBuffer(cleanedBase64);
+                        } catch (e) {
+                            console.warn('Failed to decode base64 content:', e);
+                        }
+                    }
+
+                    attachments.push(attachment);
                 }
             }
         }
@@ -279,6 +303,37 @@ async function parseMsgFile(file: File): Promise<ParsedEmail> {
 }
 
 /**
+ * Decode base64 content
+ */
+function decodeBase64(text: string, encoding?: string): string {
+    if (!encoding || !encoding.toLowerCase().includes('base64')) {
+        return text;
+    }
+    
+    try {
+        // Remove whitespace and newlines
+        const cleanedBase64 = text.replace(/\s/g, '');
+        return atob(cleanedBase64);
+    } catch {
+        return text;
+    }
+}
+
+/**
+ * Decode base64 to ArrayBuffer
+ */
+function decodeBase64ToArrayBuffer(base64: string): ArrayBuffer {
+    // Remove whitespace and newlines
+    const cleanedBase64 = base64.replace(/\s/g, '');
+    const binaryString = atob(cleanedBase64);
+    const bytes = new Uint8Array(binaryString.length);
+    for (let i = 0; i < binaryString.length; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes.buffer;
+}
+
+/**
  * Decode quoted-printable content
  */
 function decodeQuotedPrintable(text: string, encoding?: string): string {
@@ -343,6 +398,57 @@ function formatDate(date: Date | null, format: string, timezone?: string): strin
 }
 
 /**
+ * Replace CID references with base64 data URIs in HTML content
+ */
+function replaceCidReferences(htmlContent: string, attachments: EmailAttachment[]): string {
+    let processedHtml = htmlContent;
+
+    // Build a map of contentId -> base64 data
+    const cidMap = new Map<string, string>();
+    for (const att of attachments) {
+        if (att.contentId && att.base64Data && att.isInline) {
+            cidMap.set(att.contentId, `data:${att.contentType};base64,${att.base64Data}`);
+        }
+    }
+
+    // Replace cid: references in src attributes
+    // Matches: src="cid:xxxxx" or src='cid:xxxxx'
+    processedHtml = processedHtml.replace(
+        /src=["']cid:([^"']+)["']/gi,
+        (match, cid) => {
+            const dataUri = cidMap.get(cid);
+            if (dataUri) {
+                return `src="${dataUri}"`;
+            }
+            return match; // Keep original if not found
+        }
+    );
+
+    // Also replace in background-image CSS
+    processedHtml = processedHtml.replace(
+        /url\(["']?cid:([^"')]+)["']?\)/gi,
+        (match, cid) => {
+            const dataUri = cidMap.get(cid);
+            if (dataUri) {
+                return `url("${dataUri}")`;
+            }
+            return match;
+        }
+    );
+
+    return processedHtml;
+}
+
+/**
+ * Extract and make links clickable in text content
+ */
+function makeLinksClickable(text: string): string {
+    // URL regex pattern
+    const urlPattern = /(https?:\/\/[^\s<>"]+)/gi;
+    return text.replace(urlPattern, '<a href="$1">$1</a>');
+}
+
+/**
  * Render email to HTML
  */
 function renderEmailToHtml(
@@ -350,6 +456,12 @@ function renderEmailToHtml(
     options: EmailToPDFOptions
 ): string {
     const dateStr = formatDate(email.date, options.dateFormat, options.timezone);
+
+    // Process HTML body to replace CID references with base64 data URIs
+    let processedHtmlBody = email.htmlBody;
+    if (processedHtmlBody) {
+        processedHtmlBody = replaceCidReferences(processedHtmlBody, email.attachments);
+    }
 
     let html = `
 <!DOCTYPE html>
@@ -446,18 +558,21 @@ function renderEmailToHtml(
   </div>
   
   <div class="email-body">
-    ${email.htmlBody || escapeHtml(email.textBody || '').replace(/\n/g, '<br>')}
+    ${processedHtmlBody || makeLinksClickable(escapeHtml(email.textBody || '')).replace(/\n/g, '<br>')}
   </div>`;
 
-    if (options.includeAttachments && email.attachments.length > 0) {
+    // Show non-inline attachments in the list
+    const nonInlineAttachments = email.attachments.filter(att => !att.isInline);
+    if (options.includeAttachments && nonInlineAttachments.length > 0) {
         html += `
   <div class="attachments">
-    <strong>Attachments (${email.attachments.length}):</strong>`;
+    <strong>Attachments (${nonInlineAttachments.length}):</strong>`;
 
-        for (const att of email.attachments) {
+        for (const att of nonInlineAttachments) {
+            const fileSize = att.content ? ` (${(att.content.byteLength / 1024).toFixed(1)} KB)` : '';
             html += `
     <div class="attachment-item">
-      📎 ${escapeHtml(att.filename)}
+      📎 ${escapeHtml(att.filename)}${fileSize}
     </div>`;
         }
 
@@ -556,10 +671,20 @@ export class EmailToPDFProcessor extends BasePDFProcessor {
 
             this.updateProgress(70, 'Converting to PDF...');
 
-            // Convert HTML to PDF
+            // Prepare attachments for embedding (only non-inline attachments)
+            const attachmentsToEmbed = email.attachments
+                .filter(att => !att.isInline && att.content)
+                .map(att => ({
+                    filename: att.filename,
+                    contentType: att.contentType,
+                    content: att.content,
+                }));
+
+            // Convert HTML to PDF with embedded attachments
             const pdfBlob = await pymupdf.htmlToPdf(htmlContent, {
                 pageSize: emailOptions.pageSize,
                 margins: { top: 50, right: 50, bottom: 50, left: 50 },
+                attachments: emailOptions.includeAttachments ? attachmentsToEmbed : [],
             });
 
             this.updateProgress(100, 'Complete!');

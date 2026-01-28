@@ -25,9 +25,12 @@ import { WorkflowNode, WorkflowEdge, ToolNodeData, WorkflowExecutionState, Saved
 import { validateWorkflow, validateConnection, topologicalSort, findInputNodes } from '@/lib/workflow/engine';
 import { executeNode, collectInputFiles } from '@/lib/workflow/executor';
 import { saveWorkflow, getSavedWorkflows, deleteWorkflow, duplicateWorkflow, exportWorkflow, importWorkflow } from '@/lib/workflow/storage';
+import { createExecutionRecord, addExecutionRecord, completeExecutionRecord } from '@/lib/workflow/history';
+import type { WorkflowExecutionRecord } from '@/types/workflow-history';
 import { useUndoRedo } from '@/hooks/useUndoRedo';
 
 import ToolNode from './ToolNode';
+import CustomEdge from './CustomEdge';
 import { ToolSidebar } from './ToolSidebar';
 import { WorkflowLibrary } from './WorkflowLibrary';
 import { WorkflowControls } from './WorkflowControls';
@@ -40,15 +43,30 @@ const nodeTypes = {
     toolNode: ToolNode,
 };
 
+// Edge types for ReactFlow
+const edgeTypes = {
+    custom: CustomEdge,
+};
+
 // Edge styles
 const defaultEdgeOptions = {
-    type: 'smoothstep',
+    type: 'custom',
     animated: false,
+    selectable: true,
+    focusable: true,
     style: { strokeWidth: 2, stroke: '#6366f1' },
 };
 
-let nodeId = 0;
-const getNodeId = () => `node_${nodeId++}`;
+/**
+ * Generate a unique node ID using timestamp and random string
+ * Format: node_<timestamp>_<random>
+ * This ensures uniqueness across page refreshes and multiple instances
+ */
+const getNodeId = (): string => {
+    const timestamp = Date.now().toString(36); // Base36 encoding for shorter string
+    const random = Math.random().toString(36).substring(2, 9); // 7 random chars
+    return `node_${timestamp}_${random}`;
+};
 
 /**
  * Main Workflow Editor Component
@@ -77,6 +95,38 @@ function WorkflowEditorContent() {
     const [isLeftSidebarCollapsed, setIsLeftSidebarCollapsed] = useState(false);
     const [isRightSidebarCollapsed, setIsRightSidebarCollapsed] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+
+    // Track created Blob URLs for cleanup
+    const createdBlobUrls = useRef<Set<string>>(new Set());
+
+    /**
+     * Register a Blob URL for cleanup
+     */
+    const registerBlobUrl = useCallback((url: string) => {
+        createdBlobUrls.current.add(url);
+    }, []);
+
+    /**
+     * Cleanup all registered Blob URLs
+     */
+    const cleanupBlobUrls = useCallback(() => {
+        createdBlobUrls.current.forEach(url => {
+            try {
+                URL.revokeObjectURL(url);
+            } catch (error) {
+                console.warn('[Workflow] Failed to revoke Blob URL:', error);
+            }
+        });
+        createdBlobUrls.current.clear();
+    }, []);
+
+    // Cleanup on component unmount
+    useEffect(() => {
+        return () => {
+            console.log('[Workflow] Component unmounting, cleaning up resources');
+            cleanupBlobUrls();
+        };
+    }, [cleanupBlobUrls]);
 
     // Undo/Redo
     const { canUndo, canRedo, pushHistory, undo, redo, clearHistory } = useUndoRedo();
@@ -272,6 +322,14 @@ function WorkflowEditorContent() {
             return;
         }
 
+        // Create execution history record
+        const executionRecord = createExecutionRecord(
+            nodes as WorkflowNode[],
+            edges as WorkflowEdge[],
+            inputFiles.length
+        );
+        addExecutionRecord(executionRecord);
+
         setExecutionState({
             status: 'running',
             currentNodeId: null,
@@ -291,6 +349,17 @@ function WorkflowEditorContent() {
             // Find input nodes and assign files to them
             const inputNodes = findInputNodes(nodes as WorkflowNode[], edges as WorkflowEdge[]);
 
+            if (inputNodes.length === 0) {
+                throw new Error('No input nodes found in workflow. Cannot execute.');
+            }
+
+            console.log(
+                `[Workflow] Starting execution with ${inputFiles.length} file(s) ` +
+                `for ${inputNodes.length} input node(s): ${inputNodes.map(n => n.data.label).join(', ')}`
+            );
+
+            // Assign input files to all input nodes
+            // Note: All input nodes receive ALL files
             setNodes((nds) => nds.map(node => {
                 if (inputNodes.some(n => n.id === node.id)) {
                     return {
@@ -348,30 +417,82 @@ function WorkflowEditorContent() {
                 );
 
                 if (!result.success) {
-                    // Node failed
+                    // Node execution failed - provide detailed error information
+                    const errorMessage = result.error?.message || 'Processing failed';
+                    const errorDetails = result.error?.details;
+                    const errorCode = result.error?.code;
+                    const suggestedAction = result.error?.suggestedAction;
+                    
+                    // Build comprehensive error message
+                    let fullErrorMessage = errorMessage;
+                    if (errorCode) {
+                        fullErrorMessage = `[${errorCode}] ${fullErrorMessage}`;
+                    }
+                    if (errorDetails) {
+                        fullErrorMessage += `\n\nDetails: ${errorDetails}`;
+                    }
+                    if (suggestedAction) {
+                        fullErrorMessage += `\n\nSuggested Action: ${suggestedAction}`;
+                    }
+                    
+                    // Update node with detailed error information
                     setNodes((nds) => nds.map(node =>
                         node.id === nodeId
-                            ? { ...node, data: { ...node.data, status: 'error' as const, error: result.error?.message } }
+                            ? { 
+                                ...node, 
+                                data: { 
+                                    ...node.data, 
+                                    status: 'error' as const, 
+                                    error: fullErrorMessage,
+                                    progress: 0,
+                                } 
+                              }
                             : node
                     ));
-                    throw new Error(result.error?.message || 'Processing failed');
+                    
+                    // Throw with node context for better error tracking
+                    const error = new Error(`Node "${currentNode.data.label}" failed: ${errorMessage}`);
+                    (error as Error & { nodeId?: string; code?: string }).nodeId = nodeId;
+                    (error as Error & { nodeId?: string; code?: string }).code = errorCode;
+                    throw error;
                 }
 
-                // Store output for downstream nodes
+                // Store output for downstream nodes with proper filename metadata
                 let outputs: (Blob | WorkflowOutputFile)[] = [];
 
                 if (result.result) {
                     if (Array.isArray(result.result)) {
-                        outputs = result.result;
+                        // Handle array results - ensure each has proper metadata
+                        const resultArray = result.result;
+                        outputs = resultArray.map((item, index) => {
+                            if (item instanceof Blob) {
+                                // Plain Blob - wrap with metadata
+                                const baseFilename = result.filename || `${currentNode.data.label}_output`;
+                                const filename = resultArray.length > 1 
+                                    ? `${baseFilename}_${index + 1}.pdf`
+                                    : `${baseFilename}.pdf`;
+                                return {
+                                    blob: item,
+                                    filename: filename
+                                };
+                            }
+                            // Already a WorkflowOutputFile
+                            return item as WorkflowOutputFile;
+                        });
                     } else {
-                        // Check if we have a filename in the result metadata or direct property
+                        // Single result
                         if (result.filename) {
                             outputs = [{
                                 blob: result.result,
                                 filename: result.filename
                             }];
                         } else {
-                            outputs = [result.result];
+                            // Generate default filename from node label
+                            const filename = `${currentNode.data.label.replace(/\s+/g, '_')}_output.pdf`;
+                            outputs = [{
+                                blob: result.result,
+                                filename: filename
+                            }];
                         }
                     }
                 }
@@ -404,17 +525,67 @@ function WorkflowEditorContent() {
                 outputFiles: finalOutputs,
             }));
 
+            // Update execution history record as completed
+            completeExecutionRecord(
+                executionRecord.id,
+                'completed',
+                executionOrder.length
+            );
+
         } catch (error) {
+            console.error('[Workflow Execution] Workflow execution failed:', error);
+            
+            // Extract detailed error information
+            const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+            const failedNodeId = (error as Error & { nodeId?: string })?.nodeId || executionState.currentNodeId || '';
+            const errorCode = (error as Error & { code?: string })?.code;
+            
+            // Find the failed node name for better error reporting
+            const failedNode = nodes.find(n => n.id === failedNodeId);
+            const failedNodeName = failedNode?.data.label || 'Unknown node';
+            
+            // Build user-friendly error message
+            let userMessage = `Workflow failed at "${failedNodeName}": ${errorMessage}`;
+            
+            // Update execution state with detailed error
             setExecutionState(prev => ({
                 ...prev,
                 status: 'error',
+                currentNodeId: null,
+                endTime: new Date(),
                 error: {
-                    nodeId: prev.currentNodeId || '',
-                    message: error instanceof Error ? error.message : 'Unknown error',
+                    nodeId: failedNodeId,
+                    message: userMessage,
                 },
             }));
+            
+            // Update execution history record as failed
+            const successfulCount = executionState.executedNodes.length;
+            completeExecutionRecord(
+                executionRecord.id,
+                'failed',
+                successfulCount,
+                userMessage,
+                failedNodeId
+            );
+            
+            // Ensure the failed node shows error status
+            if (failedNodeId) {
+                setNodes((nds) => nds.map(node =>
+                    node.id === failedNodeId && node.data.status !== 'error'
+                        ? { 
+                            ...node, 
+                            data: { 
+                                ...node.data, 
+                                status: 'error' as const,
+                                error: node.data.error || errorMessage,
+                            } 
+                          }
+                        : node
+                ));
+            }
         }
-    }, [nodes, edges, setNodes]);
+    }, [nodes, edges, setNodes, executionState]);
 
     /**
      * Stop workflow execution
@@ -424,13 +595,79 @@ function WorkflowEditorContent() {
             ...prev,
             status: 'idle',
             currentNodeId: null,
+            endTime: new Date(),
         }));
 
+        // Reset processing and pending nodes, but keep completed and error states
         setNodes((nds) => nds.map(node => ({
             ...node,
-            data: { ...node.data, status: 'idle' as const, progress: 0 },
+            data: { 
+                ...node.data, 
+                status: node.data.status === 'processing' ? 'idle' as const : node.data.status,
+                progress: node.data.status === 'processing' ? 0 : node.data.progress,
+            },
         })));
     }, [setNodes]);
+
+    /**
+     * Retry workflow from failed node
+     */
+    const retryFromFailedNode = useCallback(async () => {
+        if (executionState.status !== 'error' || !executionState.error?.nodeId) {
+            console.warn('[Workflow] No failed node to retry from');
+            return;
+        }
+
+        const failedNodeId = executionState.error.nodeId;
+        
+        // Clear error state on the failed node and subsequent nodes
+        setNodes((nds) => nds.map(node => ({
+            ...node,
+            data: {
+                ...node.data,
+                status: node.id === failedNodeId ? 'idle' as const : node.data.status,
+                error: node.id === failedNodeId ? undefined : node.data.error,
+                progress: node.id === failedNodeId ? 0 : node.data.progress,
+            },
+        })));
+
+        // Restart execution with the original input files
+        if (selectedFiles.length > 0) {
+            await executeWorkflow(selectedFiles);
+        }
+    }, [executionState, selectedFiles, executeWorkflow, setNodes]);
+
+    /**
+     * Clear all workflow state (reset all nodes)
+     */
+    const clearWorkflowState = useCallback(() => {
+        console.log('[Workflow] Clearing workflow state and cleaning up resources');
+        
+        // Cleanup Blob URLs
+        cleanupBlobUrls();
+        
+        // Reset execution state
+        setExecutionState({
+            status: 'idle',
+            currentNodeId: null,
+            executedNodes: [],
+            pendingNodes: [],
+            progress: 0,
+        });
+
+        // Reset all node states and clear outputs
+        setNodes((nds) => nds.map(node => ({
+            ...node,
+            data: { 
+                ...node.data, 
+                status: 'idle' as const, 
+                progress: 0,
+                error: undefined,
+                outputFiles: undefined,
+                inputFiles: undefined,
+            },
+        })));
+    }, [setNodes, cleanupBlobUrls]);
 
     /**
      * Save current workflow
@@ -448,6 +685,23 @@ function WorkflowEditorContent() {
         setEdges(workflow.edges as Edge[]);
         clearHistory();
     }, [setNodes, setEdges, clearHistory]);
+
+    /**
+     * Load workflow from execution history
+     */
+    const loadFromHistory = useCallback((record: WorkflowExecutionRecord) => {
+        // Restore nodes and edges from history snapshot
+        setNodes(record.nodes as Node[]);
+        setEdges(record.edges as Edge[]);
+        
+        // Clear execution state
+        clearWorkflowState();
+        
+        // Clear undo/redo history
+        clearHistory();
+        
+        console.log('[Workflow] Loaded from history:', record.workflowName || 'Unnamed');
+    }, [clearHistory, clearWorkflowState, setNodes, setEdges]);
 
     /**
      * Load a template
@@ -533,6 +787,8 @@ function WorkflowEditorContent() {
                             onStop={stopExecution}
                             onSave={handleSaveWorkflow}
                             onClear={clearWorkflow}
+                            onClearState={clearWorkflowState}
+                            onRetry={retryFromFailedNode}
                             onImport={handleImportWorkflow}
                             onFilesChange={setSelectedFiles}
                         />
@@ -584,8 +840,10 @@ function WorkflowEditorContent() {
                         onDragOver={onDragOver}
                         onNodeClick={onNodeClick}
                         nodeTypes={nodeTypes}
+                        edgeTypes={edgeTypes}
                         defaultEdgeOptions={defaultEdgeOptions}
                         connectionMode={ConnectionMode.Loose}
+                        deleteKeyCode={['Backspace', 'Delete']}
                         fitView
                         snapToGrid
                         snapGrid={[15, 15]}
@@ -632,6 +890,7 @@ function WorkflowEditorContent() {
                 onDeleteWorkflow={handleDeleteWorkflow}
                 onDuplicateWorkflow={handleDuplicateWorkflow}
                 onExportWorkflow={handleExportWorkflow}
+                onLoadFromHistory={loadFromHistory}
                 isCollapsed={isRightSidebarCollapsed}
                 onToggleCollapse={() => setIsRightSidebarCollapsed(!isRightSidebarCollapsed)}
             />

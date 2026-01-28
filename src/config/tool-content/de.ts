@@ -1403,4 +1403,297 @@ export const toolContentDe: Record<string, ToolContent> = {
       { question: 'Bleibt die Formatierung erhalten?', answer: 'Die Daten bleiben erhalten, aber komplexe Formatierungen werden für die Tabelle vereinfacht.' },
     ],
   },
+
+  'email-to-pdf': {
+    title: 'E-Mail zu PDF',
+    metaDescription: 'Konvertieren Sie E-Mail-Dateien (.eml, .msg) in PDF-Dokumente. Formatierung, Inline-Bilder, anklickbare Links und eingebettete Anhänge bleiben erhalten.',
+    keywords: ['email zu pdf', 'eml zu pdf', 'msg zu pdf', 'email konvertieren', 'email konverter', 'email als pdf speichern', 'outlook zu pdf'],
+    description: `
+      <p>E-Mail zu PDF konvertiert Ihre E-Mail-Dateien (.eml und .msg Formate) in gut formatierte PDF-Dokumente. Das Tool bewahrt die E-Mail-Header-Informationen, den Nachrichtentext, Inline-Bilder mit CID-Ersetzung, anklickbare Links und bettet Anhänge direkt in das PDF ein.</p>
+      <p>Passen Sie die Ausgabeoptionen an, einschließlich Seitengröße (A4, Letter, Legal), Datumsformatierung mit Zeitzonenunterstützung und ob CC/BCC-Felder und Anhangsinformationen einbezogen werden sollen.</p>
+      <p>Die gesamte Konvertierung erfolgt lokal in Ihrem Browser, sodass Ihre E-Mails privat und sicher bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'E-Mail-Datei hochladen', description: 'Laden Sie Ihre .eml oder .msg E-Mail-Datei hoch.' },
+      { step: 2, title: 'Optionen konfigurieren', description: 'Legen Sie Seitengröße, Datumsformat, Zeitzone fest und wählen Sie, welche Felder einbezogen werden sollen.' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Konvertieren Sie in PDF mit eingebetteten Anhängen und laden Sie das Ergebnis herunter.' },
+    ],
+    useCases: [
+      { title: 'Rechtliche Aufzeichnungen', description: 'Archivieren Sie wichtige E-Mails als PDF mit eingebetteten Anhängen für rechtliche Dokumentation.', icon: 'scale' },
+      { title: 'Geschäftsarchive', description: 'Konvertieren Sie Geschäftskorrespondenz in PDF für langfristige Aufbewahrung.', icon: 'briefcase' },
+      { title: 'Beweissicherung', description: 'Speichern Sie E-Mail-Beweise mit Inline-Bildern und Anhängen in einem nicht bearbeitbaren PDF-Format.', icon: 'shield' },
+    ],
+    faq: [
+      { question: 'Welche E-Mail-Formate werden unterstützt?', answer: 'Sowohl .eml (RFC 822) als auch .msg (Microsoft Outlook) Dateien werden vollständig unterstützt.' },
+      { question: 'Sind Anhänge enthalten?', answer: 'Ja! Anhänge werden direkt in die PDF-Datei eingebettet. Sie können sie mit einem kompatiblen PDF-Reader aus dem PDF extrahieren.' },
+      { question: 'Werden Inline-Bilder angezeigt?', answer: 'Ja, Inline-Bilder, die über CID (Content-ID) referenziert werden, werden automatisch in base64-Daten-URIs konvertiert und im PDF angezeigt.' },
+      { question: 'Sind Links anklickbar?', answer: 'Ja, alle HTML-Links (<a>-Tags) und URLs in Klartext-E-Mails werden in anklickbare Links im PDF konvertiert.' },
+      { question: 'Bleibt die E-Mail-Formatierung erhalten?', answer: 'Ja, HTML-E-Mails behalten ihre Formatierung so weit wie möglich bei, einschließlich Stile, Bilder und Links.' },
+    ],
+  },
+
+  'djvu-to-pdf': {
+    title: 'DJVU zu PDF',
+    metaDescription: 'Konvertieren Sie DJVU-Dokumentdateien in PDF. Hochwertiges Rendering für gescannte Dokumente und Bücher.',
+    keywords: ['djvu zu pdf', 'djvu konvertieren', 'djvu konverter', 'djvu pdf', 'djv zu pdf'],
+    description: `
+      <p>DJVU zu PDF konvertiert DjVu-Dokumentdateien in hochwertige PDF-Dokumente. DjVu ist ein Computerdateiformat, das hauptsächlich zum Speichern gescannter Dokumente entwickelt wurde, insbesondere solcher, die eine Kombination aus Text, Strichzeichnungen und Fotografien enthalten.</p>
+      <p>Dieses Tool rendert jede Seite Ihrer DJVU-Datei in Ihrer gewählten DPI (Punkte pro Zoll) und kombiniert sie zu einem durchsuchbaren PDF-Dokument. Perfekt zum Konvertieren gescannter Bücher, technischer Handbücher und Archivdokumente.</p>
+      <p>Die gesamte Konvertierung erfolgt lokal in Ihrem Browser, sodass Ihre Dokumente privat und sicher bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'DJVU-Datei hochladen', description: 'Ziehen Sie Ihre .djvu- oder .djv-Datei per Drag & Drop oder klicken Sie, um von Ihrem Gerät auszuwählen.' },
+      { step: 2, title: 'Optionen konfigurieren', description: 'Wählen Sie Ausgabe-DPI (72, 150 oder 300) und Bildqualität für das PDF.' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Klicken Sie auf In PDF konvertieren und laden Sie Ihr konvertiertes Dokument herunter.' },
+    ],
+    useCases: [
+      { title: 'Archivdokumente', description: 'Konvertieren Sie DJVU-Archive in universelles PDF-Format.', icon: 'archive' },
+      { title: 'Gescannte Bücher teilen', description: 'Teilen Sie gescannte Bücher im PDF-Format für breitere Kompatibilität.', icon: 'share-2' },
+      { title: 'Dokumente drucken', description: 'Konvertieren Sie DJVU in hochwertiges PDF zum Drucken.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'Was ist das DJVU-Format?', answer: 'DjVu ist ein Dateiformat, das zum Speichern gescannter Dokumente entwickelt wurde, insbesondere solcher mit Text, Zeichnungen und Bildern. Es bietet eine bessere Kompression als PDF für gescannte Inhalte.' },
+      { question: 'Welche DPI soll ich wählen?', answer: '72 DPI eignet sich für die Webansicht, 150 DPI für Standarddokumente und 300 DPI für hochwertigen Druck.' },
+      { question: 'Wird der Text durchsuchbar sein?', answer: 'Der Text wird als Bilder gerendert. Wenn Sie durchsuchbaren Text benötigen, sollten Sie unser OCR-PDF-Tool nach der Konvertierung verwenden.' },
+    ],
+  },
+
+  'fb2-to-pdf': {
+    title: 'FB2 zu PDF',
+    metaDescription: 'Konvertieren Sie FictionBook (FB2) E-Books in PDF. Unterstützt mehrere Dateien mit hochwertigem Rendering.',
+    keywords: ['fb2 zu pdf', 'fb2 konvertieren', 'fictionbook zu pdf', 'fb2 konverter', 'fb2.zip zu pdf'],
+    description: `
+      <p>FB2 zu PDF konvertiert FictionBook (FB2) E-Book-Dateien in hochwertige PDF-Dokumente. FB2 ist ein beliebtes XML-basiertes E-Book-Format, das in Russland und Osteuropa weit verbreitet ist.</p>
+      <p>Dieses Tool unterstützt sowohl .fb2- als auch .fb2.zip-Dateien und kann mehrere Dateien gleichzeitig verarbeiten. Es bewahrt die Textformatierung, Bilder und die Kapitelstruktur Ihrer E-Books.</p>
+      <p>Die gesamte Konvertierung erfolgt lokal in Ihrem Browser mit fortschrittlicher Rendering-Technologie, sodass Ihre Bücher privat bleiben und die Konvertierung schnell ist.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'FB2-Dateien hochladen', description: 'Ziehen Sie eine oder mehrere .fb2- oder .fb2.zip-Dateien per Drag & Drop oder klicken Sie, um von Ihrem Gerät auszuwählen.' },
+      { step: 2, title: 'Qualität auswählen', description: 'Wählen Sie Ausgabequalität: Niedrig (72 DPI), Mittel (150 DPI) oder Hoch (300 DPI).' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Klicken Sie auf In PDF konvertieren und laden Sie Ihr(e) konvertierte(s) Dokument(e) herunter.' },
+    ],
+    useCases: [
+      { title: 'E-Books drucken', description: 'Konvertieren Sie FB2-E-Books in PDF für physischen Druck.', icon: 'printer' },
+      { title: 'Stapelkonvertierung', description: 'Konvertieren Sie mehrere FB2-Dateien gleichzeitig in PDF.', icon: 'layers' },
+      { title: 'Universelles Format', description: 'Teilen Sie E-Books im PDF-Format, das auf jedem Gerät funktioniert.', icon: 'share-2' },
+    ],
+    faq: [
+      { question: 'Kann ich mehrere FB2-Dateien gleichzeitig konvertieren?', answer: 'Ja! Dieses Tool unterstützt die Stapelkonvertierung von bis zu 20 FB2-Dateien gleichzeitig.' },
+      { question: 'Werden .fb2.zip-Dateien unterstützt?', answer: 'Ja, das Tool extrahiert und konvertiert automatisch FB2-Dateien aus .fb2.zip-Archiven.' },
+      { question: 'Bleibt die Formatierung erhalten?', answer: 'Ja! Das Tool verwendet natives FB2-Rendering und bewahrt Textformatierung, Bilder und Kapitelstruktur mit hoher Wiedergabetreue.' },
+    ],
+  },
+
+  'cbz-to-pdf': {
+    title: 'CBZ zu PDF',
+    metaDescription: 'Konvertieren Sie Comic-Archive (CBZ) in PDF. Bewahren Sie Bildreihenfolge und Qualität für digitale Comics.',
+    keywords: ['cbz zu pdf', 'comic zu pdf', 'cbz konvertieren', 'comic konverter', 'cbz konverter'],
+    description: `
+      <p>CBZ zu PDF konvertiert Comic-Archivdateien in PDF-Dokumente. Das Tool extrahiert alle Bilder aus dem CBZ-Archiv und kompiliert sie in ein PDF, wobei die korrekte Lesereihenfolge beibehalten wird.</p>
+      <p>Wählen Sie aus verschiedenen Seitengrößenoptionen, einschließlich Originalbildabmessungen oder standardisierten Comic-Größen. Perfekt zum Lesen von Comics auf Geräten, die PDF, aber nicht CBZ unterstützen.</p>
+      <p>Die gesamte Konvertierung erfolgt lokal in Ihrem Browser, sodass Ihre Comics privat bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'CBZ-Datei hochladen', description: 'Laden Sie Ihre .cbz Comic-Archivdatei hoch.' },
+      { step: 2, title: 'Optionen wählen', description: 'Wählen Sie Seitengröße und Bildqualitätseinstellungen.' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Konvertieren Sie in PDF und laden Sie Ihren Comic herunter.' },
+    ],
+    useCases: [
+      { title: 'E-Reader-Kompatibilität', description: 'Konvertieren Sie CBZ in PDF für E-Reader, die nur PDF unterstützen.', icon: 'book' },
+      { title: 'Comic-Archive', description: 'Erstellen Sie PDF-Archive Ihrer digitalen Comic-Sammlung.', icon: 'archive' },
+      { title: 'Druckvorbereitung', description: 'Konvertieren Sie digitale Comics in PDF zum Drucken.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'Was ist das CBZ-Format?', answer: 'CBZ ist ein ZIP-Archiv mit Comic-Seiten als Bilddateien, umbenannt mit .cbz-Erweiterung.' },
+      { question: 'Bleibt die Bildqualität erhalten?', answer: 'Ja, Bilder werden in ihrer Originalqualität in das PDF eingebettet.' },
+      { question: 'Werden verschachtelte Ordner unterstützt?', answer: 'Ja, Bilder aus allen Ordnern im Archiv werden extrahiert und sortiert.' },
+    ],
+  },
+
+  'pdf-booklet': {
+    title: 'PDF-Broschüren-Ersteller',
+    metaDescription: 'Erstellen Sie Broschürenlayouts aus PDF zum Drucken. Ordnen Sie Seiten für Rückstich-Bindung mit mehreren Rasteroptionen an.',
+    keywords: ['pdf broschüre', 'broschüren ersteller', 'broschüre drucken', 'rückstich', 'ausschießen'],
+    description: `
+      <p>Der PDF-Broschüren-Ersteller ordnet Ihre PDF-Seiten in druckfertige Broschürenlayouts an. Perfekt zum Erstellen von Broschüren, Zines, Heften und rückstichgebundenen Publikationen.</p>
+      <p>Wählen Sie aus verschiedenen Rastermodi (1x2, 2x2, 2x4, 4x4), Papiergrößen und Ausrichtungsoptionen. Das Tool verarbeitet automatisch das Seitenausschießen für die richtige Falzreihenfolge.</p>
+      <p>Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre Dokumente privat bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF hochladen', description: 'Laden Sie das PDF-Dokument hoch, das Sie in eine Broschüre umwandeln möchten.' },
+      { step: 2, title: 'Layout wählen', description: 'Wählen Sie Rastermodus, Papiergröße, Ausrichtung und Rotationsoptionen.' },
+      { step: 3, title: 'Erstellen und Herunterladen', description: 'Generieren Sie das Broschürenlayout und laden Sie es zum Drucken herunter.' },
+    ],
+    useCases: [
+      { title: 'Broschüren', description: 'Erstellen Sie faltfertige Broschüren aus Standard-PDF-Dokumenten.', icon: 'book-open' },
+      { title: 'Zines', description: 'Produzieren Sie selbstverlegte Zines mit korrektem Seitenausschießen.', icon: 'book' },
+      { title: 'Veranstaltungsprogramme', description: 'Erstellen Sie professionelle Programmhefte für Veranstaltungen.', icon: 'calendar' },
+    ],
+    faq: [
+      { question: 'Was ist Rückstich-Bindung?', answer: 'Rückstich ist eine Bindemethode, bei der gefaltete Bögen ineinander gelegt und durch die Falz geheftet werden.' },
+      { question: 'Welchen Rastermodus sollte ich verwenden?', answer: '1x2 ist Standard für Broschüren. Verwenden Sie 2x2 oder größer für Mehrfachdruck, um Papier zu sparen.' },
+      { question: 'Kann ich das Layout vorab ansehen?', answer: 'Ja, das Tool bietet eine visuelle Vorschau vor der Generierung der finalen Broschüre.' },
+    ],
+  },
+
+  'rasterize-pdf': {
+    title: 'PDF rastern',
+    metaDescription: 'Konvertieren Sie PDF-Seiten in hochwertige Bilder. Exportieren Sie als PNG, JPEG oder WebP mit benutzerdefinierten DPI-Einstellungen.',
+    keywords: ['pdf rastern', 'pdf zu bild', 'pdf zu png', 'pdf zu jpeg', 'pdf seiten konvertieren'],
+    description: `
+      <p>PDF rastern konvertiert Ihre PDF-Seiten in hochwertige Rasterbilder. Wählen Sie aus PNG-, JPEG- oder WebP-Ausgabeformaten mit voller Kontrolle über DPI- und Qualitätseinstellungen.</p>
+      <p>Perfekt zum Erstellen von Miniaturansichten, Social-Media-Grafiken oder zum Archivieren von PDF-Inhalten als Bilder. Unterstützt Seitenbereichsauswahl und Stapelverarbeitung.</p>
+      <p>Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre Dokumente privat bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF hochladen', description: 'Ziehen Sie Ihre PDF-Datei per Drag & Drop oder klicken Sie zum Auswählen.' },
+      { step: 2, title: 'Ausgabe konfigurieren', description: 'Wählen Sie DPI, Ausgabeformat (PNG/JPEG/WebP), Qualität und Seitenbereich.' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Verarbeiten Sie Seiten und laden Sie Bilder einzeln oder als ZIP-Archiv herunter.' },
+    ],
+    useCases: [
+      { title: 'Social Media', description: 'Konvertieren Sie PDF-Folien in Bilder für Social-Media-Posts.', icon: 'share-2' },
+      { title: 'Miniaturansichten', description: 'Generieren Sie Vorschau-Miniaturansichten für PDF-Dokumente.', icon: 'image' },
+      { title: 'Web-Publishing', description: 'Konvertieren Sie PDF-Inhalte in webfreundliche Bildformate.', icon: 'globe' },
+    ],
+    faq: [
+      { question: 'Welche DPI sollte ich verwenden?', answer: '72 DPI für Bildschirm, 150 DPI für allgemeine Nutzung, 300 DPI für Druckqualität.' },
+      { question: 'Welches Format ist am besten?', answer: 'PNG für Qualität/Transparenz, JPEG für kleine Größe, WebP für moderne Webnutzung.' },
+      { question: 'Kann ich bestimmte Seiten konvertieren?', answer: 'Ja, geben Sie Seitenbereiche wie "1-5, 8, 10-15" an, um nur diese Seiten zu konvertieren.' },
+    ],
+  },
+
+  'markdown-to-pdf': {
+    title: 'Markdown zu PDF',
+    metaDescription: 'Konvertieren Sie Markdown-Dateien in schön formatierte PDF-Dokumente. Unterstützung für GitHub Flavored Markdown und Syntax-Highlighting.',
+    keywords: ['markdown zu pdf', 'md zu pdf', 'markdown konvertieren', 'gfm zu pdf', 'markdown konverter'],
+    description: `
+      <p>Markdown zu PDF konvertiert Ihre Markdown-Dateien in professionell gestaltete PDF-Dokumente. Unterstützung für CommonMark und GitHub Flavored Markdown (GFM) einschließlich Tabellen, Aufgabenlisten und Codeblöcken.</p>
+      <p>Wählen Sie aus mehreren Themes (hell, dunkel, GitHub) und passen Sie Seitengröße und Ränder an. Codeblöcke werden mit Syntax-Highlighting für bessere Lesbarkeit versehen.</p>
+      <p>Die gesamte Konvertierung erfolgt lokal in Ihrem Browser, sodass Ihre Inhalte privat bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Markdown-Datei hochladen', description: 'Laden Sie Ihre .md oder .markdown Datei hoch.' },
+      { step: 2, title: 'Theme wählen', description: 'Wählen Sie ein visuelles Theme und konfigurieren Sie Seiteneinstellungen.' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Generieren Sie das gestaltete PDF und laden Sie es herunter.' },
+    ],
+    useCases: [
+      { title: 'Dokumentation', description: 'Konvertieren Sie README-Dateien und Docs in teilbare PDFs.', icon: 'file-text' },
+      { title: 'Notizen-Export', description: 'Exportieren Sie Markdown-Notizen als PDF zum Drucken oder Teilen.', icon: 'edit-3' },
+      { title: 'Berichte', description: 'Erstellen Sie Berichte aus Markdown mit professionellem Styling.', icon: 'bar-chart' },
+    ],
+    faq: [
+      { question: 'Wird GitHub Flavored Markdown unterstützt?', answer: 'Ja, Tabellen, Aufgabenlisten, Durchstreichungen und andere GFM-Funktionen werden unterstützt.' },
+      { question: 'Kann ich das Styling anpassen?', answer: 'Wählen Sie aus voreingestellten Themes oder fügen Sie benutzerdefiniertes CSS für volle Kontrolle hinzu.' },
+      { question: 'Werden Codeblöcke hervorgehoben?', answer: 'Ja, Codeblöcke enthalten Syntax-Highlighting für gängige Sprachen.' },
+    ],
+  },
+
+  'font-to-outline': {
+    title: 'Schrift zu Kontur',
+    metaDescription: 'Entfernen Sie Schriftabhängigkeiten aus PDF-Dokumenten durch Konvertierung in hochwertige Bilder. Gewährleistet Kompatibilität auf allen Systemen.',
+    keywords: ['schrift zu kontur', 'kontur schriften', 'schriften entfernen', 'schrift kompatibilität', 'pdf schriften glätten', 'pdf schrift entfernung'],
+    description: `
+      <p>Schrift zu Kontur entfernt alle Schriftabhängigkeiten aus Ihrem PDF, indem jede Seite in hochwertige gerasterte Inhalte konvertiert wird. Dies stellt sicher, dass Ihr Dokument auf jedem System genau gleich aussieht, auch wenn die Originalschriften nicht installiert sind.</p>
+      <p>Das Tool rendert jede Seite mit Ihrer gewählten DPI (150-600), entfernt eingebettete Schriften und bewahrt dabei das exakte visuelle Erscheinungsbild. Optional können Sie eine unsichtbare Textebene hinzufügen, um die Durchsuchbarkeit zu erhalten.</p>
+      <p>Dies ist wichtig für Druckvorbereitung, plattformübergreifende Kompatibilität und zur Vermeidung von Schriftlizenzproblemen beim Teilen von Dokumenten. Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF hochladen', description: 'Laden Sie das PDF mit Schriften hoch, die Sie entfernen möchten.' },
+      { step: 2, title: 'Qualität konfigurieren', description: 'Wählen Sie DPI (300 empfohlen für Druck, 150 für Bildschirm). Aktivieren Sie bei Bedarf durchsuchbaren Text.' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Verarbeiten Sie die Datei und laden Sie das schriftunabhängige PDF herunter.' },
+    ],
+    useCases: [
+      { title: 'Druckvorbereitung', description: 'Beseitigen Sie Schriftprobleme bei kommerziellen Druckereien durch Entfernung aller Schriftabhängigkeiten.', icon: 'printer' },
+      { title: 'Plattformübergreifendes Teilen', description: 'Teilen Sie Dokumente, die auf jedem Gerät identisch aussehen, unabhängig von installierten Schriften.', icon: 'share-2' },
+      { title: 'Schriftlizenzierung', description: 'Entfernen Sie eingebettete Schriften, um Lizenzbedenken beim Verteilen von Dokumenten zu vermeiden.', icon: 'shield' },
+    ],
+    faq: [
+      { question: 'Wie funktioniert das?', answer: 'Das Tool rendert jede Seite in hoher Auflösung (Ihre gewählte DPI) und erstellt das PDF aus diesen Bildern neu, entfernt alle Schriftabhängigkeiten und bewahrt dabei das visuelle Erscheinungsbild.' },
+      { question: 'Kann ich nach der Konvertierung noch Text auswählen?', answer: 'Standardmäßig nein. Text wird Teil des Bildes. Sie können jedoch "Durchsuchbaren Text bewahren" aktivieren, um eine unsichtbare Textebene für Such- und Kopierfunktionen hinzuzufügen.' },
+      { question: 'Welche DPI sollte ich verwenden?', answer: '300 DPI wird für Druckqualität empfohlen. 150 DPI ist für Bildschirmansicht ausreichend und erzeugt kleinere Dateien. 600 DPI für höchste Qualität, erzeugt aber große Dateien.' },
+      { question: 'Wird die Dateigröße zunehmen?', answer: 'Die Dateigröße hängt von DPI und Inhalt ab. 150 DPI erzeugt normalerweise kleinere Dateien, 300 DPI kann die Größe erhöhen, 600 DPI erhöht die Größe erheblich. Kompression wird automatisch angewendet.' },
+      { question: 'Ist dies umkehrbar?', answer: 'Nein, Schriftdaten werden dauerhaft entfernt. Bewahren Sie ein Backup des Originals auf, wenn Sie bearbeitbaren Text mit den Originalschriften benötigen.' },
+      { question: 'Was ist mit Vektorgrafiken?', answer: 'Vektorgrafiken (Formen, Linien) im Original-PDF werden zusammen mit Text in Raster konvertiert. Die visuelle Qualität wird bei Ihrer gewählten DPI bewahrt.' },
+    ],
+  },
+
+  'extract-tables': {
+    title: 'Tabellen aus PDF extrahieren',
+    metaDescription: 'Erkennen und extrahieren Sie Tabellen aus PDF-Dokumenten. Exportieren Sie in JSON-, Markdown- oder CSV-Formate.',
+    keywords: ['tabellen extrahieren', 'pdf tabellen extraktion', 'pdf zu csv', 'pdf zu excel', 'tabellen erkennung'],
+    description: `
+      <p>Tabellen aus PDF extrahieren erkennt tabellarische Daten in Ihren PDF-Dokumenten und exportiert sie in strukturierten Formaten. Wählen Sie JSON für Datenintegration, Markdown für Dokumentation oder CSV für Tabellenkalkulationen.</p>
+      <p>Das Tool verwendet intelligente Erkennungsalgorithmen, um Tabellenstrukturen auch in komplexen Dokumenten zu identifizieren. Geben Sie Seitenbereiche an und passen Sie Erkennungsparameter für optimale Ergebnisse an.</p>
+      <p>Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser, sodass Ihre Dokumente privat bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF hochladen', description: 'Laden Sie das PDF mit Tabellen hoch, die Sie extrahieren möchten.' },
+      { step: 2, title: 'Erkennung konfigurieren', description: 'Legen Sie Seitenbereich und Mindest-Spalten-/Zeilenschwellenwerte fest.' },
+      { step: 3, title: 'Exportieren und Herunterladen', description: 'Wählen Sie Ausgabeformat (JSON/Markdown/CSV) und laden Sie herunter.' },
+    ],
+    useCases: [
+      { title: 'Datenanalyse', description: 'Extrahieren Sie Tabellendaten zur Analyse in Tabellenkalkulationen oder Datenbanken.', icon: 'bar-chart' },
+      { title: 'Berichtsverarbeitung', description: 'Ziehen Sie Tabellen aus PDF-Berichten zur weiteren Verarbeitung.', icon: 'file-text' },
+      { title: 'Dokumentation', description: 'Konvertieren Sie PDF-Tabellen in Markdown für technische Dokumentation.', icon: 'book' },
+    ],
+    faq: [
+      { question: 'Können komplexe Tabellen erkannt werden?', answer: 'Das Tool funktioniert am besten mit einfachen Rastertabellen. Komplexe verbundene Zellen erfordern möglicherweise manuelle Anpassung.' },
+      { question: 'Was wenn keine Tabellen gefunden werden?', answer: 'Versuchen Sie, den Mindest-Spalten-/Zeilenschwellenwert anzupassen oder prüfen Sie, ob das PDF tatsächliche Tabellenstrukturen enthält.' },
+      { question: 'Kann ich von bestimmten Seiten extrahieren?', answer: 'Ja, geben Sie einen Seitenbereich an, um die Extraktion auf bestimmte Seiten zu beschränken.' },
+    ],
+  },
+
+  'deskew-pdf': {
+    title: 'PDF begradigen',
+    metaDescription: 'Begradigen Sie automatisch gescannte oder geneigte PDF-Seiten. Korrigieren Sie schiefe Dokumente mit präziser Winkelerkennung.',
+    keywords: ['pdf begradigen', 'pdf gerade machen', 'geneigten scan korrigieren', 'pdf automatisch drehen', 'pdf winkel korrigieren'],
+    description: `
+      <p>PDF begradigen erkennt und korrigiert automatisch geneigte oder schiefe Seiten in Ihren PDF-Dokumenten mithilfe einer erweiterten Varianzanalyse des Projektionsprofils. Dies ist wichtig für gescannte Dokumente, die in einem Winkel in den Scanner eingelegt wurden.</p>
+      <p>Das Tool analysiert die Text- und Inhaltsausrichtung in verschiedenen Winkeln, um die optimale Rotation zu finden, und wendet dann die Korrektur an. Sie können den Empfindlichkeitsschwellenwert (1-30) und die DPI-Einstellungen (72-300) für optimale Ergebnisse anpassen.</p>
+      <p>Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser mit WebAssembly-Technologie, sodass Ihre Dokumente privat und sicher bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF hochladen', description: 'Ziehen Sie Ihre gescannte PDF-Datei per Drag & Drop oder klicken Sie, um auszuwählen.' },
+      { step: 2, title: 'Einstellungen konfigurieren', description: 'Passen Sie bei Bedarf den Empfindlichkeitsschwellenwert und DPI für eine bessere Erkennung an.' },
+      { step: 3, title: 'Verarbeiten und Herunterladen', description: 'Klicken Sie auf Begradigen, um Seiten zu begradigen und das korrigierte PDF herunterzuladen.' },
+    ],
+    useCases: [
+      { title: 'Gescannte Dokumente', description: 'Korrigieren Sie Seiten, die in einem Winkel von Dokumenteneinzügen gescannt wurden.', icon: 'scan' },
+      { title: 'Mobile Scans', description: 'Korrigieren Sie geneigte Fotos von Dokumenten, die mit Smartphones aufgenommen wurden.', icon: 'smartphone' },
+      { title: 'Archivwiederherstellung', description: 'Begradigen Sie alte gescannte Archive für bessere Lesbarkeit.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Wie genau ist die Winkelerkennung?', answer: 'Das Tool verwendet Varianzanalyse des Projektionsprofils, um Schräglagenwinkel von bis zu ±10 Grad mit hoher Genauigkeit zu erkennen. Es überspringt automatisch Seiten mit Winkeln unter 0,3 Grad.' },
+      { question: 'Wird die Textqualität beeinträchtigt?', answer: 'Bei Rotationen in Vielfachen von 90 Grad tritt kein Qualitätsverlust auf. Bei anderen Winkeln rundet das Tool auf den nächsten Grad und behält eine gute Qualität bei.' },
+      { question: 'Kann ich nur bestimmte Seiten begradigen?', answer: 'Das Tool analysiert alle Seiten, korrigiert aber nur solche mit erkannten Schräglagen über dem Empfindlichkeitsschwellenwert. Seiten mit minimaler Schräglage bleiben unverändert.' },
+      { question: 'Was ist der Empfindlichkeitsschwellenwert?', answer: 'Werte 1-10 korrigieren nur offensichtliche Neigungen, 11-20 erkennen moderate Schräglagen und 21-30 erfassen subtile Winkel. Der Standardwert ist 10 für ausgewogene Erkennung.' },
+      { question: 'Wie lange dauert die Verarbeitung?', answer: 'Die Verarbeitungszeit hängt von der Dateigröße und DPI ab. 150 DPI (Standard) bietet ein gutes Gleichgewicht zwischen Geschwindigkeit und Genauigkeit. Höhere DPI ist genauer, aber langsamer.' },
+    ],
+  },
+
+  'pdf-to-pdfa': {
+    title: 'PDF zu PDF/A',
+    metaDescription: 'Konvertieren Sie PDF in das PDF/A-Archivformat. Gewährleisten Sie langfristige Dokumentenerhaltung mit ISO-Standards.',
+    keywords: ['pdf zu pdfa', 'pdfa konverter', 'pdf archivieren', 'pdf archivierung', 'langfristige erhaltung'],
+    description: `
+      <p>PDF zu PDF/A konvertiert Ihre PDF-Dokumente in das PDF/A-Format, den ISO-Standard für langfristige Dokumentenarchivierung. PDF/A stellt sicher, dass Dokumente jahrzehntelang sichtbar und reproduzierbar bleiben.</p>
+      <p>Wählen Sie zwischen PDF/A-1b (grundlegende Konformität), PDF/A-2b (empfohlen, unterstützt Transparenz) oder PDF/A-3b (ermöglicht eingebettete Dateien). Das Tool bettet Schriftarten ein und glättet Transparenz nach Bedarf.</p>
+      <p>Die gesamte Konvertierung erfolgt lokal in Ihrem Browser, sodass Ihre Dokumente privat bleiben.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'PDF hochladen', description: 'Laden Sie das PDF hoch, das Sie in PDF/A konvertieren möchten.' },
+      { step: 2, title: 'PDF/A-Level auswählen', description: 'Wählen Sie das Konformitätsniveau PDF/A-1b, PDF/A-2b oder PDF/A-3b.' },
+      { step: 3, title: 'Konvertieren und Herunterladen', description: 'Konvertieren Sie in PDF/A und laden Sie das Archivdokument herunter.' },
+    ],
+    useCases: [
+      { title: 'Rechtsarchive', description: 'Konvertieren Sie Rechtsdokumente in PDF/A für gerichtlich zulässige langfristige Speicherung.', icon: 'scale' },
+      { title: 'Regierungsaufzeichnungen', description: 'Erfüllen Sie Regierungsarchivanforderungen mit PDF/A.', icon: 'building' },
+      { title: 'Geschäftsarchive', description: 'Bewahren Sie wichtige Geschäftsdokumente für zukünftige Zugänglichkeit auf.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Welches PDF/A-Level soll ich verwenden?', answer: 'PDF/A-2b wird für die meisten Anwendungen empfohlen. Verwenden Sie 1b für maximale Kompatibilität oder 3b, wenn Sie eingebettete Dateien benötigen.' },
+      { question: 'Was macht PDF/A anders?', answer: 'PDF/A bettet Schriftarten ein, deaktiviert Verschlüsselung und stellt sicher, dass alle Elemente für zukünftige Betrachtung eigenständig sind.' },
+      { question: 'Kann ich von PDF/A zurückkonvertieren?', answer: 'PDF/A-Dateien sind Standard-PDFs und können normal geöffnet werden. Die Archivfunktionen fügen Einschränkungen hinzu, keine Limitierungen.' },
+    ],
+  },
 };
