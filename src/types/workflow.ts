@@ -41,6 +41,21 @@ export interface ToolNodeData {
     outputFiles?: (Blob | WorkflowOutputFile)[];
     /** Tool-specific settings */
     settings?: Record<string, unknown>;
+    /** Conditional branching configuration (optional, for future use) */
+    conditional?: {
+        enabled: boolean;
+        logic: 'any' | 'all';
+        branches: Array<{
+            id: string;
+            label: string;
+            targetNodeId: string;
+            conditions: Array<{
+                type: string;
+                operator: string;
+                value: unknown;
+            }>;
+        }>;
+    };
 }
 
 /**
