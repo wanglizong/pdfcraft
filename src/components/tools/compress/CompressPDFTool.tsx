@@ -28,7 +28,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
   const tTools = useTranslations('tools');
 
   // Options
-  const [algorithm, setAlgorithm] = useState<CompressionAlgorithm>('standard');
+  const [algorithm, setAlgorithm] = useState<CompressionAlgorithm>('condense');
   const [quality, setQuality] = useState<CompressionQuality>('medium');
   const [removeMetadata, setRemoveMetadata] = useState(false);
   const [optimizeImages, setOptimizeImages] = useState(true);

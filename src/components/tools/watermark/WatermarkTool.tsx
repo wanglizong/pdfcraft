@@ -14,6 +14,53 @@ export interface WatermarkToolProps {
   className?: string;
 }
 
+/**
+ * Convert any image file to PNG format using Canvas
+ * This ensures compatibility with pdf-lib which doesn't support
+ * progressive JPEG, CMYK color space, and some other formats
+ */
+async function convertImageToPng(file: File): Promise<ArrayBuffer> {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+
+    img.onload = () => {
+      try {
+        // Create canvas with image dimensions
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+
+        // Draw image to canvas
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          reject(new Error('Failed to get canvas context'));
+          return;
+        }
+        ctx.drawImage(img, 0, 0);
+
+        // Convert to PNG blob
+        canvas.toBlob((blob) => {
+          if (blob) {
+            blob.arrayBuffer().then(resolve).catch(reject);
+          } else {
+            reject(new Error('Failed to convert image to PNG'));
+          }
+        }, 'image/png');
+      } finally {
+        URL.revokeObjectURL(url);
+      }
+    };
+
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('Failed to load image'));
+    };
+
+    img.src = url;
+  });
+}
+
 type WatermarkType = 'text' | 'image';
 
 export function WatermarkTool({ className = '' }: WatermarkToolProps) {
@@ -26,17 +73,17 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
   const [progressMessage, setProgressMessage] = useState('');
   const [result, setResult] = useState<Blob | null>(null);
   const [error, setError] = useState<string | null>(null);
-  
+
   // Watermark type
   const [watermarkType, setWatermarkType] = useState<WatermarkType>('text');
-  
+
   // Text watermark options
   const [watermarkText, setWatermarkText] = useState('CONFIDENTIAL');
   const [fontSize, setFontSize] = useState(72);
   const [textColor, setTextColor] = useState('#888888');
   const [textOpacity, setTextOpacity] = useState(0.3);
   const [textAngle, setTextAngle] = useState(-45);
-  
+
   // Image watermark options
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imageOpacity, setImageOpacity] = useState(0.3);
@@ -98,7 +145,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
       };
 
       let options: WatermarkOptions;
-      
+
       if (watermarkType === 'text') {
         options = {
           type: 'text',
@@ -110,11 +157,13 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
           pages: 'all',
         };
       } else {
-        const imageData = await imageFile!.arrayBuffer();
+        // Convert image to PNG for better pdf-lib compatibility
+        // (pdf-lib doesn't support progressive JPEG, CMYK JPEG, etc.)
+        const imageData = await convertImageToPng(imageFile!);
         options = {
           type: 'image',
           imageData,
-          imageType: imageFile!.type === 'image/png' ? 'png' : 'jpg',
+          imageType: 'png',  // Always use PNG for maximum compatibility
           opacity: imageOpacity,
           rotation: imageAngle,
           pages: 'all',
@@ -200,7 +249,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
             <h3 className="text-lg font-medium mb-4 text-gray-900 dark:text-gray-100">
               {tTools('optionsTitle')}
             </h3>
-            
+
             {/* Watermark Type Selection */}
             <div className="flex gap-6 mb-6">
               <label className="flex items-center gap-2 cursor-pointer">
@@ -249,7 +298,7 @@ export function WatermarkTool({ className = '' }: WatermarkToolProps) {
                     disabled={isProcessing}
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">

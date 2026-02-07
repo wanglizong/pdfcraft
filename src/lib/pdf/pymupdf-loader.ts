@@ -925,21 +925,106 @@ base64.b64encode(pdf_bytes).decode('ascii')
           return { pdf: new Blob([bytes], { type: 'application/pdf' }) };
         },
 
-        async compress(file: File, options: any): Promise<{ pdf: Blob; compressedSize: number; savings: number }> {
+        async compress(file: File, options: any): Promise<Blob> {
           const arrayBuffer = await file.arrayBuffer();
           const pdfData = new Uint8Array(arrayBuffer);
-          const originalSize = pdfData.length;
+          const { quality = 'medium', removeMetadata = false } = options || {};
+
+          // Map quality to image compression settings
+          const qualitySettings: Record<string, { imageQuality: number; maxDpi: number }> = {
+            'low': { imageQuality: 40, maxDpi: 72 },
+            'medium': { imageQuality: 65, maxDpi: 120 },
+            'high': { imageQuality: 85, maxDpi: 200 },
+            'maximum': { imageQuality: 95, maxDpi: 300 },
+          };
+          const settings = qualitySettings[quality] || qualitySettings['medium'];
 
           pyodide.FS.writeFile('/input.pdf', pdfData);
 
           const result = await pyodide.runPythonAsync(`
 import pymupdf
 import base64
+import io
 
 doc = pymupdf.open("/input.pdf")
+image_quality = ${settings.imageQuality}
+max_dpi = ${settings.maxDpi}
+remove_metadata = ${removeMetadata ? 'True' : 'False'}
 
-# Compress with garbage collection
-pdf_bytes = doc.tobytes(garbage=4, deflate=True)
+# Process each page to compress images
+for page_num in range(len(doc)):
+    page = doc[page_num]
+    
+    # Get all images on the page
+    image_list = page.get_images(full=True)
+    
+    for img_info in image_list:
+        xref = img_info[0]
+        
+        try:
+            # Extract image
+            base_image = doc.extract_image(xref)
+            if not base_image:
+                continue
+            
+            image_bytes = base_image["image"]
+            image_ext = base_image["ext"]
+            width = base_image.get("width", 0)
+            height = base_image.get("height", 0)
+            
+            # Skip small images (likely icons)
+            if width < 50 or height < 50:
+                continue
+            
+            # Calculate current DPI (approximate)
+            # Skip if already low quality
+            if len(image_bytes) < 10000:
+                continue
+            
+            # Create pixmap from image data
+            pix = pymupdf.Pixmap(image_bytes)
+            
+            # Check if we need to reduce quality
+            if pix.width > 100 and pix.height > 100:
+                # Calculate scale factor if image is too large
+                scale = 1.0
+                if pix.width > max_dpi * 10 or pix.height > max_dpi * 10:
+                    scale = max(max_dpi * 10 / pix.width, max_dpi * 10 / pix.height)
+                    if scale < 1.0:
+                        # Resize the pixmap
+                        new_width = int(pix.width * scale)
+                        new_height = int(pix.height * scale)
+                        if new_width > 50 and new_height > 50:
+                            # Create new smaller pixmap by sampling
+                            pix2 = pymupdf.Pixmap(pix, new_width, new_height, None)
+                            pix = pix2
+                
+                # Convert to RGB if needed (JPEG doesn't support alpha)
+                if pix.alpha:
+                    pix = pymupdf.Pixmap(pymupdf.csRGB, pix)
+                
+                # Re-encode as JPEG with quality setting
+                new_image_bytes = pix.tobytes(output="jpeg", jpg_quality=image_quality)
+                
+                # Only replace if we actually reduced size
+                if len(new_image_bytes) < len(image_bytes) * 0.9:
+                    # Update the image in the PDF
+                    doc.update_stream(xref, new_image_bytes)
+        except Exception as e:
+            # Skip images that can't be processed
+            pass
+
+# Remove metadata if requested
+if remove_metadata:
+    doc.set_metadata({})
+    doc.del_xml_metadata()
+
+# Save with maximum compression
+pdf_bytes = doc.tobytes(
+    garbage=4,  # Remove unused objects, merge duplicate objects
+    deflate=True,  # Compress streams
+    clean=True,  # Clean content streams
+)
 doc.close()
 
 base64.b64encode(pdf_bytes).decode('ascii')
@@ -957,19 +1042,73 @@ base64.b64encode(pdf_bytes).decode('ascii')
             bytes[i] = binary.charCodeAt(i);
           }
 
-          const compressedSize = bytes.length;
-          const savings = originalSize - compressedSize;
-
-          return {
-            pdf: new Blob([bytes], { type: 'application/pdf' }),
-            compressedSize,
-            savings
-          };
+          return new Blob([bytes], { type: 'application/pdf' });
         },
 
-        async photonCompress(file: File, options: any): Promise<{ pdf: Blob; compressedSize: number }> {
-          // PhotonCompress is an alias for compress with specific settings
-          return this.compress(file, { ...options, aggressive: true });
+        async photonCompress(file: File, options: any): Promise<Blob> {
+          const arrayBuffer = await file.arrayBuffer();
+          const pdfData = new Uint8Array(arrayBuffer);
+          const { dpi = 150, format = 'jpeg', quality = 85 } = options || {};
+
+          pyodide.FS.writeFile('/input.pdf', pdfData);
+
+          const result = await pyodide.runPythonAsync(`
+import pymupdf
+import base64
+
+doc = pymupdf.open("/input.pdf")
+
+# Create a new document
+new_doc = pymupdf.open()
+
+target_dpi = ${dpi}
+jpeg_quality = ${quality}
+
+# Process each page - render to image and create new PDF
+for page_num in range(len(doc)):
+    page = doc[page_num]
+    
+    # Get page dimensions
+    rect = page.rect
+    
+    # Calculate zoom factor for target DPI (72 is base PDF DPI)
+    zoom = target_dpi / 72
+    mat = pymupdf.Matrix(zoom, zoom)
+    
+    # Render page to pixmap
+    pix = page.get_pixmap(matrix=mat, alpha=False)
+    
+    # Convert to JPEG bytes
+    img_bytes = pix.tobytes(output="jpeg", jpg_quality=jpeg_quality)
+    
+    # Create new page with same dimensions
+    new_page = new_doc.new_page(width=rect.width, height=rect.height)
+    
+    # Insert the rendered image
+    new_page.insert_image(new_page.rect, stream=img_bytes)
+
+# Save compressed document
+pdf_bytes = new_doc.tobytes(garbage=4, deflate=True)
+
+doc.close()
+new_doc.close()
+
+base64.b64encode(pdf_bytes).decode('ascii')
+`);
+
+          try {
+            pyodide.FS.unlink('/input.pdf');
+          } catch {
+            // Ignore cleanup errors
+          }
+
+          const binary = atob(result);
+          const bytes = new Uint8Array(binary.length);
+          for (let i = 0; i < binary.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+          }
+
+          return new Blob([bytes], { type: 'application/pdf' });
         },
       };
 

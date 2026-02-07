@@ -30,6 +30,7 @@ export interface PDFToExcelToolProps {
  */
 export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
     const t = useTranslations('common');
+    const tTools = useTranslations('tools');
 
     // State
     const [file, setFile] = useState<UploadedFile | null>(null);
@@ -114,12 +115,12 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
                 setResult(output.result);
                 setStatus('complete');
             } else {
-                setError(output.error?.message || 'Failed to convert PDF to Excel.');
+                setError(output.error?.message || t('errors.conversionFailed') || 'Failed to convert PDF to Excel.');
                 setStatus('error');
             }
         } catch (err) {
             if (!cancelledRef.current) {
-                setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+                setError(err instanceof Error ? err.message : t('errors.unexpectedError') || 'An unexpected error occurred.');
                 setStatus('error');
             }
         }
@@ -156,8 +157,8 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
                 onFilesSelected={handleFilesSelected}
                 onError={handleUploadError}
                 disabled={isProcessing}
-                label="Upload PDF"
-                description="Drag and drop a PDF file here, or click to browse."
+                label={tTools('pdfToExcel.uploadLabel') || 'Upload PDF'}
+                description={tTools('pdfToExcel.uploadDescription') || 'Drag and drop a PDF file here, or click to browse.'}
             />
 
             {/* Error Message */}
@@ -203,7 +204,7 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
                 <div className="bg-blue-100 text-blue-800 text-sm p-4 rounded-xl border border-blue-200 dark:bg-blue-900/40 dark:text-blue-100 dark:border-blue-700">
                     <p className="flex items-center gap-2">
                         <AlertCircle className="w-4 h-4" />
-                        <span>Each page's tables will be extracted to separate sheets in the Excel file.</span>
+                        <span>{tTools('pdfToExcel.extractNote') || 'Each page\'s tables will be extracted to separate sheets in the Excel file.'}</span>
                     </p>
                 </div>
             )}
@@ -232,7 +233,7 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
                     {!isProcessing && <RefreshCw className="w-5 h-5 mr-2" />}
                     {isProcessing
                         ? (t('status.processing') || 'Converting...')
-                        : 'Convert to Excel'
+                        : (tTools('pdfToExcel.convertButton') || 'Convert to Excel')
                     }
                 </Button>
 
@@ -257,9 +258,9 @@ export function PDFToExcelTool({ className = '' }: PDFToExcelToolProps) {
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
                         <CheckCircle2 className="w-6 h-6 text-green-600" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">Conversion Successful!</h3>
+                    <h3 className="text-lg font-semibold mb-2">{tTools('successTitle') || 'Conversion Successful!'}</h3>
                     <p className="text-green-800/80 max-w-md mx-auto">
-                        Your PDF tables have been extracted to Excel.
+                        {tTools('pdfToExcel.successMessage') || 'Your PDF tables have been extracted to Excel.'}
                     </p>
                 </div>
             )}

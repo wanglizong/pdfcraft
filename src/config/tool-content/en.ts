@@ -2084,6 +2084,35 @@ export const toolContentEn: Record<string, ToolContent> = {
     ],
   },
 
+  'find-and-redact': {
+    title: 'Find and Redact',
+    metaDescription: 'Search and redact text across all pages of a PDF. Batch redact sensitive information like account numbers, names, and more.',
+    keywords: ['redact pdf', 'find and redact', 'batch redact', 'remove text', 'pdf censorship', 'hide sensitive data'],
+    description: `
+      <p>Find and Redact allows you to search for specific text, numbers, or patterns across all pages of your PDF and redact all matching occurrences at once. Perfect for removing sensitive information like account numbers, names, addresses, or any confidential data.</p>
+      <p>Preview all matches before applying redactions, and selectively choose which occurrences to redact. Supports case-sensitive search, whole word matching, and regular expressions for advanced pattern matching.</p>
+      <p>All processing happens in your browser, ensuring your documents remain private and secure.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your PDF file or click to select.' },
+      { step: 2, title: 'Search for Text', description: 'Enter the text, number, or regex pattern you want to find and redact.' },
+      { step: 3, title: 'Review and Select', description: 'Preview all matches and select which ones to redact.' },
+      { step: 4, title: 'Apply Redaction', description: 'Customize redaction appearance and apply to selected matches.' },
+    ],
+    useCases: [
+      { title: 'Privacy Compliance', description: 'Redact personal information to comply with GDPR, HIPAA, or other regulations.', icon: 'shield' },
+      { title: 'Legal Documents', description: 'Remove confidential data from legal documents before sharing.', icon: 'scale' },
+      { title: 'Financial Records', description: 'Redact account numbers, SSNs, or financial data from statements.', icon: 'credit-card' },
+    ],
+    faq: [
+      { question: 'Is redaction permanent?', answer: 'Yes, redaction permanently removes the underlying text. The original content cannot be recovered. Always keep a backup of the original file.' },
+      { question: 'Can I redact images or scanned text?', answer: 'This tool works with text-based PDFs. For scanned documents, you would need to use manual area-based redaction.' },
+      { question: 'Can I customize the redaction appearance?', answer: 'Yes, you can set the redaction color, add borders, and optionally include replacement text like "[REDACTED]".' },
+      { question: 'How does regex search work?', answer: 'Enable "Use Regular Expression" to search using regex patterns. For example, \\d{4}-\\d{4}-\\d{4}-\\d{4} to find credit card numbers.' },
+    ],
+  },
+
+
   'decrypt-pdf': {
     title: 'Decrypt PDF',
     metaDescription: 'Remove password from PDF files. Unlock password-protected documents.',
@@ -2211,6 +2240,32 @@ export const toolContentEn: Record<string, ToolContent> = {
       { question: 'Is formatting preserved?', answer: 'Yes, the tool aims to preserve layout, fonts, and images as closely as possible.' },
       { question: 'Can I convert scanned PDFs?', answer: 'Scanned PDFs will be converted as images in Word unless you use OCR first.' },
       { question: 'Is it compatible with Word?', answer: 'Yes, the output is a standard .docx file compatible with Microsoft Word and Google Docs.' },
+    ],
+  },
+
+  'pdf-to-markdown': {
+    title: 'PDF to Markdown',
+    metaDescription: 'Convert PDF to Markdown format. Extract text and preserve formatting like headings and lists.',
+    keywords: ['pdf to markdown', 'convert pdf to md', 'pdf text extraction', 'markdown converter', 'pdf to text'],
+    description: `
+      <p>PDF to Markdown converts your PDF documents into clean, well-structured Markdown files. The tool intelligently extracts text content and attempts to preserve formatting like headings, lists, and paragraphs.</p>
+      <p>Perfect for converting PDF documents to editable formats for documentation, note-taking, or content management systems that support Markdown.</p>
+      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your PDF file or click to select.' },
+      { step: 2, title: 'Configure Options', description: 'Set page range, choose to include page numbers, and adjust line break settings.' },
+      { step: 3, title: 'Convert and Download', description: 'Click Convert to generate your Markdown file and download.' },
+    ],
+    useCases: [
+      { title: 'Documentation', description: 'Convert PDF manuals and guides to Markdown for version-controlled documentation.', icon: 'file-text' },
+      { title: 'Note Taking', description: 'Extract content from PDF articles and books for your note-taking system.', icon: 'edit-3' },
+      { title: 'Content Migration', description: 'Migrate PDF content to CMS platforms that support Markdown.', icon: 'copy' },
+    ],
+    faq: [
+      { question: 'Is formatting preserved?', answer: 'The tool attempts to detect headings based on font size and bullet points/numbered lists. Complex layouts may require manual adjustment.' },
+      { question: 'Can I convert specific pages?', answer: 'Yes, you can specify a page range like "1-3, 5, 7" to convert only those pages.' },
+      { question: 'Does it work with scanned PDFs?', answer: 'Scanned PDFs contain images, not text. Use our OCR tool first to extract text before converting to Markdown.' },
     ],
   },
 

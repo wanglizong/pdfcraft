@@ -91,12 +91,12 @@ export function XPSToPDFTool({ className = '' }: XPSToPDFToolProps) {
                 setResult(output.result);
                 setStatus('complete');
             } else {
-                setError(output.error?.message || 'Failed to convert XPS to PDF.');
+                setError(output.error?.message || t('errors.conversionFailed') || 'Failed to convert XPS to PDF.');
                 setStatus('error');
             }
         } catch (err) {
             if (!cancelledRef.current) {
-                setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+                setError(err instanceof Error ? err.message : t('errors.unexpectedError') || 'An unexpected error occurred.');
                 setStatus('error');
             }
         }
@@ -176,7 +176,7 @@ export function XPSToPDFTool({ className = '' }: XPSToPDFToolProps) {
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
                         <CheckCircle2 className="w-6 h-6 text-green-600" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">Conversion Successful!</h3>
+                    <h3 className="text-lg font-semibold mb-2">{tTools('successTitle') || 'Conversion Successful!'}</h3>
                     <p className="text-green-800/80 max-w-md mx-auto">
                         {tTools('xpsToPdf.successMessage') || 'Your XPS file has been converted to PDF.'}
                     </p>

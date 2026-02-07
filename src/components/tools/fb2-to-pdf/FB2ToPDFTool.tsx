@@ -163,10 +163,10 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
                                             <p className="text-xs text-[hsl(var(--color-muted-foreground))]">{formatSize(file.file.size)}</p>
                                         </div>
                                     </div>
-                                    <Button 
-                                        variant="ghost" 
-                                        size="sm" 
-                                        onClick={() => handleRemoveFile(file.id)} 
+                                    <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        onClick={() => handleRemoveFile(file.id)}
                                         disabled={isProcessing}
                                         className="text-[hsl(var(--color-muted-foreground))] hover:text-red-500 hover:bg-red-50 flex-shrink-0"
                                     >
@@ -184,12 +184,12 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
             )}
 
             <div className="flex flex-wrap items-center justify-center gap-4">
-                <Button 
-                    variant="primary" 
-                    size="lg" 
-                    onClick={handleConvert} 
-                    disabled={!canConvert} 
-                    loading={isProcessing} 
+                <Button
+                    variant="primary"
+                    size="lg"
+                    onClick={handleConvert}
+                    disabled={!canConvert}
+                    loading={isProcessing}
                     className="min-w-[200px] shadow-lg hover:shadow-primary/25 transition-all hover:-translate-y-0.5"
                 >
                     {!isProcessing && <RefreshCw className="w-5 h-5 mr-2" />}
@@ -197,24 +197,24 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
                 </Button>
 
                 {result && !Array.isArray(result) && (
-                    <DownloadButton 
-                        file={result as Blob} 
-                        filename={getOutputFilename()} 
-                        variant="secondary" 
-                        size="lg" 
-                        showFileSize 
-                        className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5" 
+                    <DownloadButton
+                        file={result as Blob}
+                        filename={getOutputFilename()}
+                        variant="secondary"
+                        size="lg"
+                        showFileSize
+                        className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5"
                     />
                 )}
                 {result && Array.isArray(result) && result.map((blob, index) => (
-                    <DownloadButton 
+                    <DownloadButton
                         key={index}
-                        file={blob} 
-                        filename={`${files[index]?.file.name.replace(/\.fb2(\.zip)?$/i, '')}.pdf`} 
-                        variant="secondary" 
-                        size="lg" 
-                        showFileSize 
-                        className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5" 
+                        file={blob}
+                        filename={`${files[index]?.file.name.replace(/\.fb2(\.zip)?$/i, '')}.pdf`}
+                        variant="secondary"
+                        size="lg"
+                        showFileSize
+                        className="min-w-[200px] shadow-lg transition-all hover:-translate-y-0.5"
                     />
                 ))}
             </div>
@@ -224,7 +224,7 @@ export function FB2ToPDFTool({ className = '' }: FB2ToPDFToolProps) {
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
                         <CheckCircle2 className="w-6 h-6 text-green-600" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">Conversion Successful!</h3>
+                    <h3 className="text-lg font-semibold mb-2">{tTools('successTitle') || 'Conversion Successful!'}</h3>
                     <p className="text-green-800/80 max-w-md mx-auto">
                         {tTools('fb2ToPdf.successMessage') || 'Your FB2 file(s) have been converted to PDF.'}
                     </p>

@@ -43,7 +43,8 @@
       "about": "Über uns",
       "faq": "FAQ",
       "privacy": "Datenschutz",
-      "contact": "Kontakt"
+      "contact": "Kontakt",
+      "workflow": "Workflow"
     },
     "buttons": {
       "upload": "Dateien hochladen",
@@ -524,7 +525,121 @@
     "confirm": "Bestätigen",
     "collapseSidebar": "Seitenleiste einklappen",
     "expandSidebar": "Seitenleiste ausklappen",
-    "library": "Bibliothek"
+    "library": "Bibliothek",
+    "connections": "Verbindungen",
+    "history": "Verlauf",
+    "executionHistory": "Ausführungsverlauf",
+    "totalExecutions": "Gesamtanzahl Ausführungen",
+    "successRate": "Erfolgsrate",
+    "avgDuration": "Durchschn. Dauer",
+    "noHistory": "Noch kein Ausführungsverlauf",
+    "noHistoryHint": "Führen Sie einen Workflow aus, um den Verlauf hier zu sehen",
+    "confirmDelete": "Sind Sie sicher, dass Sie diesen Verlaufsdatensatz löschen möchten?",
+    "confirmClearAllHistory": "Sind Sie sicher, dass Sie den gesamten Verlauf löschen möchten? Dies kann nicht rückgängig gemacht werden.",
+    "unnamedWorkflow": "Unbenannter Workflow",
+    "nodesSuccess": "Knoten erfolgreich",
+    "nodesFailed": "fehlgeschlagen",
+    "loadWorkflow": "Workflow laden",
+    "viewDetails": "Details anzeigen",
+    "detailsInConsole": "Details in der Konsole protokolliert (F12)",
+    "workflowTemplates": {
+      "mergeCompress": {
+        "name": "Zusammenführen & Komprimieren",
+        "description": "Mehrere PDFs zusammenführen und das Ergebnis für eine kleinere Dateigröße komprimieren"
+      },
+      "imagesToWatermarkedPdf": {
+        "name": "Bilder zu PDF mit Wasserzeichen",
+        "description": "Bilder in PDF konvertieren und ein benutzerdefiniertes Wasserzeichen hinzufügen"
+      },
+      "pdfToImages": {
+        "name": "PDF zu komprimierten Bildern",
+        "description": "PDF-Seiten in JPG-Bilder konvertieren"
+      },
+      "securePdf": {
+        "name": "Sicheres PDF erstellen",
+        "description": "PDFs zusammenführen, Wasserzeichen hinzufügen und mit Passwort verschlüsseln"
+      },
+      "documentPrep": {
+        "name": "Dokumentenvorbereitung",
+        "description": "PDFs zusammenführen, Seitenzahlen hinzufügen und Kopf-/Fußzeile hinzufügen"
+      },
+      "optimizeForWeb": {
+        "name": "Für das Web optimieren",
+        "description": "PDF komprimieren und linearisieren für schnelles Web-Viewing"
+      },
+      "splitAndWatermark": {
+        "name": "Teilen & Wasserzeichen",
+        "description": "PDF in Seiten teilen und Wasserzeichen zu jeder Seite hinzufügen"
+      },
+      "officeToMergedPdf": {
+        "name": "Office-Dateien zu einzelnem PDF",
+        "description": "Word-Dokumente in PDF konvertieren und zusammenführen"
+      },
+      "rotateAndNumber": {
+        "name": "Drehen & Seitenzahlen hinzufügen",
+        "description": "PDF-Seiten drehen und Seitenzahlen hinzufügen"
+      },
+      "printReady": {
+        "name": "Druckreifes Dokument",
+        "description": "PDF für den Druck vorbereiten mit Seitenzahlen und flachlegen"
+      },
+      "grayscaleCompress": {
+        "name": "Graustufen & Komprimieren",
+        "description": "In Graustufen konvertieren und für eine kleinere Größe komprimieren"
+      },
+      "extractAndMerge": {
+        "name": "Seiten extrahieren & zusammenführen",
+        "description": "Bestimmte Seiten extrahieren und in ein neues Dokument zusammenführen"
+      },
+      "confidentialDocument": {
+        "name": "Vertrauliches Dokument",
+        "description": "Vertraulich-Wasserzeichen hinzufügen und PDF verschlüsseln"
+      },
+      "pdfToEditableDoc": {
+        "name": "PDF zu editierbarem Dokument",
+        "description": "PDF zur Bearbeitung in Word-Dokument konvertieren"
+      },
+      "fullOptimization": {
+        "name": "Vollständige Dokumentenoptimierung",
+        "description": "Komprimieren, flachlegen und linearisieren für optimale Leistung"
+      },
+      "pdfToPresentation": {
+        "name": "PDF zu PowerPoint",
+        "description": "PDF in editierbare PowerPoint-Präsentation konvertieren"
+      },
+      "unlockAndEdit": {
+        "name": "PDF entsperren & bearbeiten",
+        "description": "Geschütztes PDF zur Bearbeitung entschlüsseln"
+      },
+      "ebookConvert": {
+        "name": "eBook zu PDF",
+        "description": "EPUB-eBooks in das PDF-Format konvertieren"
+      },
+      "batchWatermark": {
+        "name": "Batch-Wasserzeichen",
+        "description": "Wasserzeichen zu mehreren PDF-Dateien gleichzeitig hinzufügen"
+      },
+      "archivePrep": {
+        "name": "Archivvorbereitung",
+        "description": "Metadaten entfernen, flachlegen und für Langzeitarchivierung komprimieren"
+      },
+      "reportAssembly": {
+        "name": "Berichtserstellung",
+        "description": "Dokumente zusammenführen, Seitenzahlen, Kopf-/Fußzeile und Inhaltsverzeichnis hinzufügen"
+      },
+      "invoiceProcessing": {
+        "name": "Rechnungsverarbeitung",
+        "description": "Seiten extrahieren, Wasserzeichen hinzufügen und für E-Mail komprimieren"
+      },
+      "photoAlbum": {
+        "name": "Fotoalbum-Ersteller",
+        "description": "Bilder in PDF mit Seitenzahlen konvertieren"
+      },
+      "cropAndResize": {
+        "name": "Zuschneiden & Skalieren",
+        "description": "PDF-Seiten zuschneiden und Seitenabmessungen anpassen"
+      }
+    }
   },
   "toolsPage": {
     "title": "Professional PDF Tools",
@@ -544,12 +659,13 @@
       "placeholder": "Werkzeuge suchen...",
       "noResults": "Keine Werkzeuge für \"{query}\" gefunden"
     },
-    "relatedTools": "Das könnte Ihnen auch gefallen",
-    "about": "About This Tool",
-    "howToUse": "How to Use",
-    "useCases": "Use Cases",
-    "faq": "Frequently Asked Questions",
-    "comingSoon": "This tool is coming soon.",
+    "relatedTools": "Passende Tools",
+    "about": "Über dieses Tool",
+    "howToUse": "Bedienungsanleitung",
+    "useCases": "Anwendungsfälle",
+    "faq": "Häufig gestellte Fragen",
+    "comingSoon": "Dieses Tool wird bald verfügbar sein.",
+    "successTitle": "Konvertierung erfolgreich!",
     "favorite": {
       "add": "Zu Favoriten hinzufügen",
       "remove": "Aus Favoriten entfernen",
@@ -615,7 +731,9 @@
       "warning": "Warning",
       "warningText": "Selected pages will be permanently removed from the PDF. At least one page must remain.",
       "deleteButton": "Delete Pages",
-      "successMessage": "Pages deleted successfully! Click the download button to save your file."
+      "successMessage": "Pages deleted successfully! Click the download button to save your file.",
+      "pageRange": "Seitenbereich",
+      "pageRangePlaceholder": "z.B. 1, 3-5, 8"
     },
     "extractPages": {
       "uploadLabel": "Upload PDF File",
@@ -623,7 +741,9 @@
       "selectTitle": "Select Pages to Extract",
       "selectHint": "Click pages to select them, or enter page numbers/ranges above.",
       "extractButton": "Extract Pages",
-      "successMessage": "Pages extracted successfully! Click the download button to save your file."
+      "successMessage": "Pages extracted successfully! Click the download button to save your file.",
+      "pageRange": "Seitenbereich",
+      "pageRangePlaceholder": "z.B. 1-5, 8, 10-12"
     },
     "posterizePdf": {
       "uploadLabel": "Upload PDF File",
@@ -783,7 +903,8 @@
       "imagesPerPdf": "Bilder pro PDF",
       "batchModeHint": "Es werden {pdfCount} PDF-Datei(en) erstellt, als ZIP-Archiv verpackt.",
       "batchSuccessMessage": "Erfolgreich {pdfCount} PDF-Dateien aus {imageCount} Bildern erstellt! Klicken Sie auf die Download-Schaltfläche, um Ihr ZIP-Archiv zu speichern.",
-      "successMessage": "Images converted to PDF successfully! Click the download button to save your file."
+      "successMessage": "Images converted to PDF successfully! Click the download button to save your file.",
+      "fitToImage": "An Bild anpassen"
     },
     "compressPdf": {
       "uploadLabel": "Upload PDF Files",
@@ -808,7 +929,17 @@
       "downloadAllZip": "Download All as ZIP",
       "originalSize": "Original:",
       "compressedSize": "Compressed:",
-      "saved": "Saved:"
+      "saved": "Saved:",
+      "algorithmLabel": "Komprimierungsalgorithmus",
+      "algorithmStandard": "Standard",
+      "algorithmCondense": "Kondensieren",
+      "algorithmPhoton": "Photon",
+      "algorithmStandardDesc": "Allgemeine Komprimierung mit Objekt-Streams",
+      "algorithmCondenseDesc": "Optimiert die Struktur unter Beibehaltung der Interaktivität",
+      "algorithmPhotonDesc": "Rastert Seiten — am besten für bildlastige PDFs",
+      "photonWarning": "Hinweis: Photon konvertiert Seiten in Bilder, was die Textqualität verringern und die Interaktivität (Links, Formulare) verlieren kann.",
+      "photonDpiLabel": "Ausgabe-DPI",
+      "photonDpiDesc": "Höhere DPI = bessere Qualität, größere Dateigröße"
     },
     "signPdf": {
       "uploadLabel": "Upload PDF File",
@@ -898,7 +1029,10 @@
       "downloadAll": "Alle herunterladen",
       "downloadZip": "Als ZIP herunterladen",
       "page": "Seite",
-      "successMessage": "Bilder wurden erfolgreich extrahiert! Klicken Sie auf einzelne Bilder zum Herunterladen oder verwenden Sie Als ZIP herunterladen."
+      "successMessage": "Bilder wurden erfolgreich extrahiert! Klicken Sie auf einzelne Bilder zum Herunterladen oder verwenden Sie Als ZIP herunterladen.",
+      "optionsTitle": "Einstellungen",
+      "format": "Ausgabeformat",
+      "minSize": "Mindestgröße (px)"
     },
     "encryptPdf": {
       "uploadLabel": "Upload PDF File",
@@ -974,7 +1108,11 @@
       "position": "Position",
       "pageSize": "Page Size",
       "addButton": "Add Blank Pages",
-      "successMessage": "Blank pages added successfully! Click the download button to save your file."
+      "successMessage": "Blank pages added successfully! Click the download button to save your file.",
+      "positionStart": "Dokumentenanfang",
+      "positionEnd": "Dokumentenende",
+      "positionAfterEach": "Nach jeder Seite",
+      "matchSource": "Quelldatei anpassen"
     },
     "reversePages": {
       "uploadLabel": "Upload PDF File",
@@ -1374,7 +1512,10 @@
       "uploadLabel": "Upload PDF File",
       "uploadDescription": "Drag and drop a PDF file to flatten.",
       "flattenButton": "Flatten PDF",
-      "successMessage": "PDF flattened successfully!"
+      "successMessage": "PDF flattened successfully!",
+      "optionsTitle": "Flachlegen-Optionen",
+      "flattenForms": "Formularfelder flachlegen",
+      "flattenAnnotations": "Anmerkungen flachlegen"
     },
     "removeMetadata": {
       "uploadLabel": "Upload PDF File",
@@ -1535,7 +1676,16 @@
       "unsupportedImage": "Unsupported image format. Please use PNG or JPG.",
       "failed": "Failed to add watermark.",
       "addButton": "Add Watermark",
-      "successMessage": "Watermark added successfully!"
+      "successMessage": "Watermark added successfully!",
+      "type": "Typ",
+      "position": "Position",
+      "posCenter": "Zentriert",
+      "posDiagonal": "Diagonal",
+      "posTopLeft": "Oben links",
+      "posTopRight": "Oben rechts",
+      "posBottomLeft": "Unten links",
+      "posBottomRight": "Unten rechts",
+      "textPlaceholder": "z.B. VERTRAULICH"
     },
     "headerFooter": {
       "uploadLabel": "Upload PDF File",
@@ -1546,7 +1696,13 @@
       "preview": "Preview",
       "previewHint": "Enter header or footer text to see preview",
       "addButton": "Add Header & Footer",
-      "successMessage": "Header & footer added successfully!"
+      "successMessage": "Header & footer added successfully!",
+      "headerText": "Kopfzeilentext",
+      "headerTextPlaceholder": "Kopfzeilentext eingeben...",
+      "footerText": "Fußzeilentext",
+      "footerTextPlaceholder": "Fußzeilentext eingeben...",
+      "fontSize": "Schriftgröße",
+      "fontColor": "Schriftfarbe"
     },
     "invertColors": {
       "uploadLabel": "Upload PDF File",
@@ -1655,7 +1811,61 @@
       "fieldLabelPlaceholder": "Beschriftungstext eingeben...",
       "labelPosition": "Position",
       "labelAbove": "Oben",
-      "labelLeft": "Links"
+      "labelLeft": "Links",
+      "formOptions": "Formularoptionen",
+      "flattenForm": "Formular flachlegen",
+      "flattenFormHint": "Formularfelder nicht editierbar machen (konvertiert in statischen Inhalt)",
+      "projectManagement": "Projektverwaltung",
+      "saveProject": "Projekt speichern",
+      "savedProjects": "Gespeicherte Projekte",
+      "loadProject": "Laden",
+      "deleteProject": "Löschen",
+      "saveProjectTitle": "Projekt speichern",
+      "projectName": "Projektname",
+      "projectNamePlaceholder": "Projektname eingeben...",
+      "saveInfo": "{fields} Formularfelder werden gespeichert.",
+      "saveNote": "Projekte werden lokal in Ihrem Browser gespeichert.",
+      "undo": "Rückgängig (Strg+Z)",
+      "redo": "Wiederholen (Strg+Y)",
+      "duplicate": "Duplizieren (Strg+D)",
+      "align": "Ausrichten",
+      "alignLeft": "Linksbündig",
+      "alignCenter": "Zentriert",
+      "alignRight": "Rechtsbündig",
+      "alignTop": "Oben ausrichten",
+      "alignMiddle": "Mittig ausrichten",
+      "alignBottom": "Unten ausrichten",
+      "defaultValue": "Standardwert",
+      "defaultValuePlaceholder": "Standardtext eingeben...",
+      "defaultChecked": "Standardmäßig aktiviert",
+      "defaultSelection": "Standardauswahl",
+      "noDefault": "-- Keine --",
+      "required": "Pflichtfeld",
+      "shortcutsHint": "Tastenkombinationen: Strg+Z (Zurück) | Strg+Y (Vor) | Strg+D (Duplizieren) | Strg+A (Alle auswählen) | Entf (Entfernen)",
+      "buttonTool": "Schaltfläche",
+      "signatureTool": "Signatur",
+      "dateTool": "Datum",
+      "listboxTool": "Listenfeld",
+      "buttonLabel": "Schaltflächenbeschriftung",
+      "buttonLabelPlaceholder": "Senden",
+      "signatureLabel": "Signaturbeschriftung",
+      "signatureLabelPlaceholder": "Hier unterschreiben",
+      "dateFormat": "Datumsformat",
+      "defaultDate": "Standarddatum",
+      "multiSelect": "Mehrfachauswahl erlauben",
+      "basicTools": "Basis",
+      "advancedTools": "Mehr",
+      "properties": "Eigenschaften",
+      "fieldsTab": "Felder",
+      "optionsTab": "Optionen",
+      "addField": "Hinzufügen",
+      "clickToAdd": "Klicken Sie auf das PDF, um ein Feld hinzuzufügen",
+      "pages": "Seiten",
+      "processingButton": "Verarbeitung...",
+      "cancelButton": "Abbrechen",
+      "saveButton": "Speichern",
+      "orCreateBlank": "Oder",
+      "createBlankPdf": "Leeres PDF erstellen"
     },
     "removeBlankPages": {
       "uploadLabel": "Upload PDF File",
@@ -1677,13 +1887,36 @@
       "addBookmark": "Add TOC entry to bookmarks",
       "bookmarkRequired": "This tool generates a clickable table of contents from existing PDF bookmarks. Please ensure your PDF has bookmarks before using this tool. You can add bookmarks using the Edit Bookmarks tool.",
       "generate": "Generate Table of Contents",
-      "success": "Table of contents generated successfully!"
+      "success": "Table of contents generated successfully!",
+      "tocTitlePlaceholder": "Titel für Inhaltsverzeichnis eingeben..."
     },
     "pdfToDocx": {
-      "uploadLabel": "Upload PDF File",
-      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
-      "convertButton": "Convert to DOCX",
-      "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Suchen.",
+      "convertButton": "In DOCX umwandeln",
+      "successMessage": "Ihr PDF wurde erfolgreich in DOCX umgewandelt! Klicken Sie auf die Schaltfläche Download, um Ihre Datei zu speichern."
+    },
+    "pdfToExcel": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Suchen.",
+      "extractNote": "Die Tabellen auf jeder Seite werden in separate Blätter der Excel-Datei extrahiert.",
+      "convertButton": "In Excel umwandeln",
+      "successTitle": "Konvertierung erfolgreich!",
+      "successMessage": "Die Tabellen in Ihrem PDF wurden nach Excel extrahiert."
+    },
+    "pdfToPptx": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Suchen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "dpiLabel": "Bildqualität (DPI)",
+      "dpiHint": "Höhere DPI bedeuten bessere Qualität, aber größere Dateigröße.",
+      "lowSet": "Niedrig (72 DPI - kleine Datei)",
+      "mediumSet": "Mittel (150 DPI - Standard)",
+      "highSet": "Hoch (200 DPI - hohe Qualität)",
+      "veryHighSet": "Sehr hoch (300 DPI - Druckqualität)",
+      "convertButton": "In PowerPoint umwandeln",
+      "successTitle": "Konvertierung erfolgreich!",
+      "successMessage": "Ihr PDF wurde in eine PowerPoint-Präsentation umgewandelt."
     },
     "wordToPdf": {
       "uploadLabel": "Word-Dokument hochladen",
@@ -1752,79 +1985,184 @@
       "successMessage": "Ihre DJVU-Datei wurde erfolgreich in PDF konvertiert!"
     },
     "deskewPdf": {
-      "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF-Dateien zum Begradigen hierher ziehen.",
-      "optionsTitle": "Begradigen-Optionen",
-      "processButton": "PDF begradigen",
-      "successMessage": "PDF erfolgreich begradigt!"
+      "uploadLabel": "Gescannte PDF-Dateien hochladen",
+      "uploadDescription": "Ziehen Sie PDF-Dateien hierher. Sie können bis zu 10 Dateien gleichzeitig verarbeiten.",
+      "filesTitle": "Zu begradigende Dateien",
+      "optionsTitle": "Begradigungsoptionen",
+      "thresholdLabel": "Erkennungsschwelle",
+      "thresholdDesc": "Höhere Werte erkennen subtilere Schräglagen. Standard: 10",
+      "dpiLabel": "Analyse-DPI",
+      "dpiDesc": "Höhere DPI ermöglichen eine genauere Erkennung, dauern aber länger.",
+      "processButton": "PDFs begradigen",
+      "downloadAllZip": "Alle als ZIP herunterladen",
+      "successMessage": "PDF-Datei(en) erfolgreich begradigt!"
     },
     "pdfBooklet": {
       "uploadLabel": "PDF-Datei hochladen",
-      "uploadDescription": "PDF für Broschüren-Layout hochladen.",
-      "optionsTitle": "Broschüren-Optionen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um ein Broschüren-Layout zu erstellen.",
+      "optionsTitle": "Broschürenoptionen",
+      "gridModeLabel": "Gittermodus",
+      "gridModeDesc": "1x2 ist der Standard für Broschüren. Verwenden Sie größere Gitter, um Papier zu sparen.",
+      "paperSizeLabel": "Papierformat",
+      "orientationLabel": "Ausrichtung",
+      "rotationLabel": "Seitenrotation",
+      "paddingLabel": "Polsterung",
+      "previewLabel": "Layout-Vorschau",
+      "previewDesc": "Diese Vorschau zeigt, wie die Seiten auf jedem Blatt angeordnet werden.",
       "createButton": "Broschüre erstellen",
-      "successMessage": "Broschüre erfolgreich erstellt!"
+      "successMessage": "Broschüre erfolgreich erstellt! Klicken Sie auf Download zum Speichern."
     },
     "rasterizePdf": {
-      "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF zum Rastern hochladen.",
-      "optionsTitle": "Raster-Optionen",
-      "rasterizeButton": "PDF rastern",
-      "successMessage": "PDF erfolgreich gerastert!"
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um sie in Bilder umzuwandeln.",
+      "optionsTitle": "Ausgabeoptionen",
+      "dpiLabel": "Auflösung (DPI)",
+      "formatLabel": "Ausgabeformat",
+      "qualityLabel": "Qualität",
+      "pageRangeLabel": "Seitenbereich (optional)",
+      "pageRangeDesc": "Leer lassen, um alle Seiten zu konvertieren.",
+      "bgColorLabel": "Hintergrundfarbe",
+      "convertButton": "In Bilder konvertieren",
+      "successMessage": "Bilder erfolgreich erstellt! Klicken Sie auf Download zum Speichern."
     },
     "markdownToPdf": {
       "uploadLabel": "Markdown-Datei hochladen",
-      "uploadDescription": "Markdown-Datei für PDF-Konvertierung hochladen.",
+      "uploadDescription": "Ziehen Sie eine .md- oder .markdown-Datei hierher, um sie in PDF umzuwandeln.",
+      "manualInput": "Markdown schreiben",
+      "uploadFile": "Datei hochladen",
+      "editorLabel": "Markdown-Editor",
+      "previewLabel": "Vorschau",
+      "showPreview": "Vorschau anzeigen",
+      "hidePreview": "Vorschau ausblenden",
       "optionsTitle": "Konvertierungsoptionen",
+      "themeLabel": "Thema",
+      "pageSizeLabel": "Seitenformat",
+      "gfmLabel": "GitHub Flavored Markdown aktivieren (Tabellen, Aufgabenlisten usw.)",
+      "syntaxHighlightLabel": "Syntax-Highlighting für Codeblöcke aktivieren",
       "convertButton": "In PDF konvertieren",
-      "successMessage": "Markdown erfolgreich in PDF konvertiert!"
+      "successMessage": "PDF erfolgreich erstellt! Klicken Sie auf Download zum Speichern."
     },
     "emailToPdf": {
       "uploadLabel": "E-Mail-Datei hochladen",
-      "uploadDescription": "EML-Datei für PDF-Konvertierung hochladen.",
+      "uploadDescription": "Ziehen Sie eine E-Mail-Datei (.eml) hierher, um sie in PDF umzuwandeln.",
       "optionsTitle": "Konvertierungsoptionen",
+      "pageSizeLabel": "Seitenformat",
+      "includeCcBccLabel": "CC/BCC-Felder einschließen",
+      "includeAttachmentsLabel": "Anhangsliste einschließen",
+      "timezoneLabel": "Zeitzone",
       "convertButton": "In PDF konvertieren",
-      "successMessage": "E-Mail erfolgreich in PDF konvertiert!"
+      "successMessage": "E-Mail erfolgreich konvertiert!"
     },
     "cbzToPdf": {
       "uploadLabel": "CBZ-Datei hochladen",
-      "uploadDescription": "CBZ-Comic-Archiv hochladen.",
+      "uploadDescription": "Ziehen Sie ein Comic-Archiv (.cbz) hierher, um es in PDF umzuwandeln.",
       "optionsTitle": "Konvertierungsoptionen",
+      "pageSizeLabel": "Seitenformat",
+      "qualityLabel": "Bildqualität",
+      "preserveAspectLabel": "Seitenverhältnis beibehalten",
       "convertButton": "In PDF konvertieren",
-      "successMessage": "CBZ erfolgreich in PDF konvertiert!"
+      "successMessage": "Comic erfolgreich konvertiert!"
     },
     "pdfToPdfa": {
       "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF für PDF/A-Konvertierung hochladen.",
+      "uploadDescription": "Ziehen Sie PDF-Dateien hierher, um sie in das PDF/A-Format zu konvertieren.",
+      "filesTitle": "Zu konvertierende Dateien",
       "optionsTitle": "PDF/A-Optionen",
+      "levelLabel": "PDF/A-Level",
+      "embedFontsLabel": "Alle Schriftarten einbetten",
+      "flattenTransparencyLabel": "Transparenz reduzieren (für PDF/A-1b erforderlich)",
       "convertButton": "In PDF/A konvertieren",
-      "successMessage": "PDF/A erfolgreich erstellt!"
+      "downloadAllZip": "Alle als ZIP herunterladen",
+      "successMessage": "Datei(en) erfolgreich in PDF/A konvertiert!"
     },
     "fontToOutline": {
       "uploadLabel": "PDF-Dateien hochladen",
-      "uploadDescription": "PDF zum Konvertieren von Schriften in Pfade hochladen.",
-      "optionsTitle": "Konvertierungsoptionen",
-      "convertButton": "Schriften konvertieren",
-      "successMessage": "Schriften erfolgreich in Pfade konvertiert!"
+      "uploadDescription": "Ziehen Sie PDF-Dateien hierher, um Schriftarten in Pfade umzuwandeln.",
+      "filesTitle": "Dateien",
+      "optionsTitle": "Optionen",
+      "dpiLabel": "Rasterisierungs-DPI",
+      "convertButton": "Schriftarten in Pfade umwandeln",
+      "downloadAllZip": "Alle als ZIP herunterladen",
+      "successMessage": "Datei(en) erfolgreich konvertiert!"
     },
     "extractTables": {
       "uploadLabel": "PDF-Datei hochladen",
-      "uploadDescription": "PDF für Tabellenextraktion hochladen.",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um Tabellen zu extrahieren.",
       "optionsTitle": "Extraktionsoptionen",
+      "formatLabel": "Ausgabeformat",
+      "pageRangeLabel": "Seitenbereich (optional)",
+      "minColumnsLabel": "Min. Spalten",
+      "minRowsLabel": "Min. Zeilen",
+      "includePageNumbersLabel": "Seitenzahlen in Ausgabe einschließen",
       "extractButton": "Tabellen extrahieren",
-      "successMessage": "Tabellen erfolgreich extrahiert!"
+      "successMessage": "Tabellen erfolgreich extrahiert! Klicken Sie auf Download zum Speichern."
     },
     "ocgManager": {
       "uploadLabel": "PDF-Datei hochladen",
-      "uploadDescription": "PDF zum Verwalten von Ebenen hochladen.",
-      "layersTitle": "PDF-Ebenen",
-      "noLayers": "Dieses PDF hat keine Ebenen.",
-      "addLayerLabel": "Neue Ebene hinzufügen",
-      "successMessage": "Ebenenänderungen gespeichert!"
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um Layer (OCG) zu verwalten.",
+      "layersTitle": "PDF-Layer",
+      "noLayers": "Dieses PDF hat keine Layer (OCG).",
+      "addLayerLabel": "Neuen Layer hinzufügen",
+      "successMessage": "Layer-Änderungen erfolgreich gespeichert!"
     },
     "pdfReader": {
       "uploadLabel": "PDF-Datei öffnen",
-      "uploadDescription": "PDF zum Lesen öffnen."
+      "uploadDescription": "Öffnen Sie eine PDF-Datei zum Lesen und Anzeigen."
+    },
+    "pdfToMarkdown": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher oder klicken Sie zum Durchsuchen.",
+      "optionsTitle": "Konvertierungsoptionen",
+      "pageRange": "Seitenbereich",
+      "pageRangePlaceholder": "z.B. 1-3, 5, 7",
+      "pageRangeHint": "Leer lassen für alle Seiten",
+      "includePageNumbers": "Seitenzahlen als Überschriften einschließen",
+      "preserveLineBreaks": "Zeilenumbrüche beibehalten",
+      "convertButton": "In Markdown konvertieren",
+      "previewTab": "Vorschau",
+      "sourceTab": "Markdown-Quelle",
+      "successMessage": "Ihr PDF wurde erfolgreich in Markdown konvertiert! Klicken Sie auf die Download-Schaltfläche, um Ihre Datei zu speichern.",
+      "failed": "Konvertierung von PDF in Markdown fehlgeschlagen."
+    },
+    "findAndRedact": {
+      "uploadLabel": "PDF-Datei hochladen",
+      "uploadDescription": "Ziehen Sie eine PDF-Datei hierher, um Text zu suchen und zu schwärzen.",
+      "searchTitle": "Text suchen",
+      "searchTermLabel": "Suchbegriffe",
+      "searchTermPlaceholder": "Suchtext eingeben (z. B. Kontonummer, Name)...",
+      "searchInputPlaceholder": "Suchbegriffe eingeben, durch Kommas trennen...",
+      "searchInputHelp": "Tipp: Trennen Sie mehrere Begriffe mit Kommas (,)",
+      "multipleTermsPlaceholder": "Suchbegriffe eingeben (einer pro Zeile oder durch Kommas getrennt)...\nBeispiel:\nMax Mustermann\nkonto123\n555-1234",
+      "termsCount": "{count} Suchbegriff(e)",
+      "searchButton": "Suchen",
+      "searching": "Suche läuft...",
+      "caseSensitive": "Groß-/Kleinschreibung beachten",
+      "wholeWord": "Nur ganzes Wort",
+      "useRegex": "Reguläre Ausdrücke verwenden",
+      "enterSearchTerm": "Bitte geben Sie mindestens einen Suchbegriff ein.",
+      "noMatchesFound": "Keine Übereinstimmungen für die Suchbegriffe gefunden.",
+      "searchFailed": "Fehler beim Durchsuchen des PDFs.",
+      "matchesFound": "{count} Übereinstimmungen gefunden",
+      "filterByPage": "Nach Seite filtern",
+      "allPages": "Alle Seiten",
+      "pageNumber": "Seite {page}",
+      "pageInfo": "Seite {page}",
+      "selectedCount": "{selected} von {total} ausgewählt",
+      "selectMatchesToRedact": "Bitte wählen Sie mindestens eine Übereinstimmung zum Schwärzen aus.",
+      "redactionOptions": "Schwärzungsoptionen",
+      "redactionColor": "Schwärzungsfarbe",
+      "replacementText": "Ersatztext (optional)",
+      "replacementTextPlaceholder": "z.B., [GESCHWÄRZT]",
+      "addBorder": "Rahmen um geschwärzte Bereiche hinzufügen",
+      "warningTitle": "Warnung",
+      "warningText": "Das Schwärzen ist dauerhaft. Einmal angewendet, kann der ursprüngliche Inhalt nicht wiederhergestellt werden.",
+      "redactButton": "{count} Ausgewählte schwärzen",
+      "redactFailed": "Fehler beim Anwenden der Schwärzungen.",
+      "successMessage": "Ausgewählter Text erfolgreich geschwärzt! Klicken Sie auf Download zum Speichern.",
+      "previewTitle": "Vorschau",
+      "pagesWithMatches": "Seiten mit Übereinstimmungen:",
+      "selectedMatch": "Ausgewählt",
+      "unselectedMatch": "Nicht ausgewählt"
     }
   }
 }

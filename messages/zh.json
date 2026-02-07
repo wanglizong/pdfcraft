@@ -665,6 +665,7 @@
     "useCases": "使用场景",
     "faq": "常见问题",
     "comingSoon": "此工具即将推出。",
+    "successTitle": "转换成功！",
     "favorite": {
       "add": "添加收藏",
       "remove": "取消收藏",
@@ -996,7 +997,17 @@
       "downloadAllZip": "全部下载为ZIP",
       "originalSize": "原始：",
       "compressedSize": "压缩后：",
-      "saved": "节省："
+      "saved": "节省：",
+      "algorithmLabel": "压缩算法",
+      "algorithmStandard": "标准",
+      "algorithmCondense": "深度压缩",
+      "algorithmPhoton": "Photon 极速",
+      "algorithmStandardDesc": "通用压缩。平衡文件大小和质量。",
+      "algorithmCondenseDesc": "强力压缩。可能会显著降低图像质量。",
+      "algorithmPhotonDesc": "将页面转换为高质量图像。最适合减小超大文件。",
+      "photonWarning": "注意：Photon 压缩会将页面转换为图像，这可能会降低文字质量并丢失交互性（如链接、表单）。",
+      "photonDpiLabel": "输出 DPI",
+      "photonDpiDesc": "DPI 越高，质量越好，文件越大"
     },
     "signPdf": {
       "uploadLabel": "上传PDF文件",
@@ -1902,6 +1913,43 @@
       "convertButton": "转换为DOCX",
       "successMessage": "您的PDF已成功转换为DOCX！点击下载按钮保存文件。"
     },
+    "pdfToMarkdown": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件到此处，或点击浏览。",
+      "optionsTitle": "转换选项",
+      "pageRange": "页面范围",
+      "pageRangePlaceholder": "例如：1-3, 5, 7",
+      "pageRangeHint": "留空表示所有页面",
+      "includePageNumbers": "将页码作为标题包含",
+      "preserveLineBreaks": "保留换行符",
+      "convertButton": "转换为Markdown",
+      "previewTab": "预览",
+      "sourceTab": "Markdown 源码",
+      "successMessage": "您的PDF已成功转换为Markdown！点击下载按钮保存文件。",
+      "failed": "PDF转换为Markdown失败。"
+    },
+    "pdfToExcel": {
+      "uploadLabel": "上传 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到这里，或点击浏览选择文件。",
+      "extractNote": "每一页的表格都将提取到 Excel 文件中的独立工作表中。",
+      "convertButton": "转换为 Excel",
+      "successTitle": "转换成功！",
+      "successMessage": "您的 PDF 表格已提取到 Excel。"
+    },
+    "pdfToPptx": {
+      "uploadLabel": "上传 PDF 文件",
+      "uploadDescription": "拖放 PDF 文件到这里，或点击浏览选择文件。",
+      "optionsTitle": "转换选项",
+      "dpiLabel": "图像质量 (DPI)",
+      "dpiHint": "较高的 DPI 会产生质量更好的幻灯片，但文件体积也会更大。",
+      "lowSet": "低 (72 DPI - 文件较小)",
+      "mediumSet": "中 (150 DPI - 平衡)",
+      "highSet": "高 (200 DPI - 质量更好)",
+      "veryHighSet": "极高 (300 DPI - 最佳质量)",
+      "convertButton": "转换为 PowerPoint",
+      "successTitle": "转换成功！",
+      "successMessage": "您的 PDF 已成功转换为 PowerPoint。每一页现在都是具有高质量图像的幻灯片。"
+    },
     "wordToPdf": {
       "uploadLabel": "上传Word文档",
       "uploadDescription": "拖放Word文档（.docx）到此处，或点击浏览。",
@@ -2075,6 +2123,46 @@
     "pdfReader": {
       "uploadLabel": "打开PDF文件",
       "uploadDescription": "打开PDF文件进行阅读和查看。"
+    },
+    "findAndRedact": {
+      "uploadLabel": "上传PDF文件",
+      "uploadDescription": "拖放PDF文件到此处以搜索并遮盖文本。",
+      "searchTitle": "搜索文本",
+      "searchTermLabel": "搜索词",
+      "searchTermPlaceholder": "输入要搜索的文本（如账号、姓名等）...",
+      "searchInputPlaceholder": "输入搜索词，用逗号分隔多个词...",
+      "searchInputHelp": "提示：用逗号分隔多个搜索词（支持中英文逗号）",
+      "multipleTermsPlaceholder": "输入搜索词（每行一个或用逗号分隔）...\n示例：\n张三\naccount123\n555-1234",
+      "termsCount": "{count} 个搜索词",
+      "searchButton": "搜索",
+      "searching": "搜索中...",
+      "caseSensitive": "区分大小写",
+      "wholeWord": "全词匹配",
+      "useRegex": "使用正则表达式",
+      "enterSearchTerm": "请输入至少一个搜索词。",
+      "noMatchesFound": "未找到匹配的内容。",
+      "searchFailed": "PDF搜索失败。",
+      "matchesFound": "找到 {count} 处匹配",
+      "filterByPage": "按页面筛选",
+      "allPages": "所有页面",
+      "pageNumber": "第 {page} 页",
+      "pageInfo": "第 {page} 页",
+      "selectedCount": "已选择 {selected} / {total}",
+      "selectMatchesToRedact": "请至少选择一处匹配进行遮盖。",
+      "redactionOptions": "遮盖选项",
+      "redactionColor": "遮盖颜色",
+      "replacementText": "替换文本（可选）",
+      "replacementTextPlaceholder": "例如：[已遮盖]",
+      "addBorder": "在遮盖区域添加边框",
+      "warningTitle": "警告",
+      "warningText": "遮盖是永久性的。一旦应用，原始内容将无法恢复。",
+      "redactButton": "遮盖 {count} 处选中内容",
+      "redactFailed": "遮盖应用失败。",
+      "successMessage": "选中的文本已成功遮盖！点击下载保存。",
+      "previewTitle": "预览",
+      "pagesWithMatches": "包含匹配的页面：",
+      "selectedMatch": "已选中",
+      "unselectedMatch": "未选中"
     }
   }
 }

@@ -227,7 +227,7 @@ export function DJVUToPDFTool({ className = '' }: DJVUToPDFToolProps) {
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
                         <CheckCircle2 className="w-6 h-6 text-green-600" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">{tTools('djvuToPdf.successTitle') || 'Conversion Successful!'}</h3>
+                    <h3 className="text-lg font-semibold mb-2">{tTools('successTitle') || 'Conversion Successful!'}</h3>
                     <p className="text-green-800/80 max-w-md mx-auto">
                         {tTools('djvuToPdf.successMessage') || 'Your DJVU file has been converted to PDF.'}
                     </p>

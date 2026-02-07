@@ -665,6 +665,7 @@
     "useCases": "Use Cases",
     "faq": "Frequently Asked Questions",
     "comingSoon": "This tool is coming soon.",
+    "successTitle": "Conversion Successful!",
     "favorite": {
       "add": "Add to Favorites",
       "remove": "Remove from Favorites",
@@ -1911,6 +1912,43 @@
       "convertButton": "Convert to DOCX",
       "successMessage": "Your PDF has been successfully converted to DOCX! Click the download button to save your file."
     },
+    "pdfToMarkdown": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
+      "optionsTitle": "Conversion Options",
+      "pageRange": "Page Range",
+      "pageRangePlaceholder": "e.g., 1-3, 5, 7",
+      "pageRangeHint": "Leave empty for all pages",
+      "includePageNumbers": "Include page numbers as headers",
+      "preserveLineBreaks": "Preserve line breaks",
+      "convertButton": "Convert to Markdown",
+      "previewTab": "Preview",
+      "sourceTab": "Markdown Source",
+      "successMessage": "Your PDF has been successfully converted to Markdown! Click the download button to save your file.",
+      "failed": "Failed to convert PDF to Markdown."
+    },
+    "pdfToExcel": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
+      "extractNote": "Each page's tables will be extracted to separate sheets in the Excel file.",
+      "convertButton": "Convert to Excel",
+      "successTitle": "Conversion Successful!",
+      "successMessage": "Your PDF tables have been extracted to Excel."
+    },
+    "pdfToPptx": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file here, or click to browse.",
+      "optionsTitle": "Conversion Options",
+      "dpiLabel": "Image Quality (DPI)",
+      "dpiHint": "Higher DPI produces better quality slides but larger file sizes.",
+      "lowSet": "Low (72 DPI - smaller file)",
+      "mediumSet": "Medium (150 DPI - balanced)",
+      "highSet": "High (200 DPI - better quality)",
+      "veryHighSet": "Very High (300 DPI - best quality)",
+      "convertButton": "Convert to PowerPoint",
+      "successTitle": "Conversion Successful!",
+      "successMessage": "Your PDF has been converted to PowerPoint. Each page is now a slide with full-quality images."
+    },
     "wordToPdf": {
       "uploadLabel": "Upload Word Document",
       "uploadDescription": "Drag and drop a Word document (.docx) here, or click to browse.",
@@ -2084,6 +2122,46 @@
     "pdfReader": {
       "uploadLabel": "Open PDF File",
       "uploadDescription": "Open a PDF file to read and view."
+    },
+    "findAndRedact": {
+      "uploadLabel": "Upload PDF File",
+      "uploadDescription": "Drag and drop a PDF file to search and redact text.",
+      "searchTitle": "Search for Text",
+      "searchTermLabel": "Search Terms",
+      "searchTermPlaceholder": "Enter text to search (e.g., account number, name)...",
+      "searchInputPlaceholder": "Enter search terms, separated by commas...",
+      "searchInputHelp": "Tip: Separate multiple terms with commas (,)",
+      "multipleTermsPlaceholder": "Enter search terms (one per line or comma-separated)...\nExample:\nJohn Doe\naccount123\n555-1234",
+      "termsCount": "{count} search term(s)",
+      "searchButton": "Search",
+      "searching": "Searching...",
+      "caseSensitive": "Case Sensitive",
+      "wholeWord": "Whole Words Only",
+      "useRegex": "Use Regular Expression",
+      "enterSearchTerm": "Please enter at least one search term.",
+      "noMatchesFound": "No matches found for the search terms.",
+      "searchFailed": "Failed to search the PDF.",
+      "matchesFound": "{count} matches found",
+      "filterByPage": "Filter by Page",
+      "allPages": "All Pages",
+      "pageNumber": "Page {page}",
+      "pageInfo": "Page {page}",
+      "selectedCount": "{selected} of {total} selected",
+      "selectMatchesToRedact": "Please select at least one match to redact.",
+      "redactionOptions": "Redaction Options",
+      "redactionColor": "Redaction Color",
+      "replacementText": "Replacement Text (optional)",
+      "replacementTextPlaceholder": "e.g., [REDACTED]",
+      "addBorder": "Add border around redacted areas",
+      "warningTitle": "Warning",
+      "warningText": "Redaction is permanent. Once applied, the original content cannot be recovered.",
+      "redactButton": "Redact {count} Selected",
+      "redactFailed": "Failed to apply redactions.",
+      "successMessage": "Successfully redacted the selected text! Click download to save.",
+      "previewTitle": "Preview",
+      "pagesWithMatches": "Pages with matches:",
+      "selectedMatch": "Selected",
+      "unselectedMatch": "Not selected"
     }
   }
 }

@@ -25,16 +25,15 @@ let workerConfigured = false;
 
 /**
  * Configure PDF.js worker source
- * Uses the worker bundled with pdfjs-dist package to ensure version compatibility
+ * Uses the worker bundled locally for offline support
  */
 export function configurePdfjsWorker(pdfjsLib: PDFJSModule): void {
   if (workerConfigured) return;
-  
+
   if (typeof window !== 'undefined') {
-    // Use the worker from pdfjs-dist package via CDN to ensure version match
-    // This avoids version mismatch between API and worker
-    const version = pdfjsLib.version;
-    pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${version}/pdf.worker.min.mjs`;
+    // Use the local worker file for offline support
+    // The worker file is located in public/workers/pdf.worker.min.mjs
+    pdfjsLib.GlobalWorkerOptions.workerSrc = '/workers/pdf.worker.min.mjs';
     workerConfigured = true;
   }
 }

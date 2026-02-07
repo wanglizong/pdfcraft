@@ -56,6 +56,7 @@ import { RemoveRestrictionsTool } from '@/components/tools/remove-restrictions';
 import { EncryptPDFTool } from '@/components/tools/encrypt';
 import { DecryptPDFTool } from '@/components/tools/decrypt';
 import { SanitizePDFTool } from '@/components/tools/sanitize';
+import { FindAndRedactTool } from '@/components/tools/find-and-redact';
 import { FlattenPDFTool } from '@/components/tools/flatten';
 import { RemoveMetadataTool } from '@/components/tools/remove-metadata';
 import { ChangePermissionsTool } from '@/components/tools/change-permissions';
@@ -76,6 +77,7 @@ import { MOBIToPDFTool } from '@/components/tools/mobi-to-pdf';
 import { FB2ToPDFTool } from '@/components/tools/fb2-to-pdf';
 import { DJVUToPDFTool } from '@/components/tools/djvu-to-pdf';
 import { PDFToSVGTool } from '@/components/tools/pdf-to-svg';
+import { PDFToMarkdownTool } from '@/components/tools/pdf-to-markdown';
 import { DeskewPDFTool } from '@/components/tools/deskew';
 import { PDFBookletTool } from '@/components/tools/pdf-booklet';
 import { RasterizePDFTool } from '@/components/tools/rasterize';
@@ -98,7 +100,7 @@ import {
 } from '@/lib/seo/structured-data';
 import type { Metadata } from 'next';
 
-const SUPPORTED_LOCALES: Locale[] = ['en', 'ja', 'ko', 'es', 'fr', 'de', 'zh', 'pt', 'ar'];
+const SUPPORTED_LOCALES: Locale[] = ['en', 'ja', 'ko', 'es', 'fr', 'de', 'zh', 'zh-TW', 'pt', 'ar', 'it'];
 
 interface ToolPageParams {
   params: Promise<{
@@ -340,6 +342,8 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <PDFToPptxTool />;
       case 'pdf-to-excel':
         return <PDFToExcelTool />;
+      case 'pdf-to-markdown':
+        return <PDFToMarkdownTool />;
       case 'ocr-pdf':
         return <OCRPDFTool />;
       case 'linearize-pdf':
@@ -356,6 +360,8 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <DecryptPDFTool />;
       case 'sanitize-pdf':
         return <SanitizePDFTool />;
+      case 'find-and-redact':
+        return <FindAndRedactTool />;
       case 'flatten-pdf':
         return <FlattenPDFTool />;
       case 'remove-metadata':

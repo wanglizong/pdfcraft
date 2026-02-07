@@ -118,12 +118,12 @@ export function PDFToPptxTool({ className = '' }: PDFToPptxToolProps) {
                 setResult(output.result);
                 setStatus('complete');
             } else {
-                setError(output.error?.message || 'Failed to convert PDF to PowerPoint.');
+                setError(output.error?.message || t('errors.conversionFailed') || 'Failed to convert PDF to PowerPoint.');
                 setStatus('error');
             }
         } catch (err) {
             if (!cancelledRef.current) {
-                setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
+                setError(err instanceof Error ? err.message : t('errors.unexpectedError') || 'An unexpected error occurred.');
                 setStatus('error');
             }
         }
@@ -160,8 +160,8 @@ export function PDFToPptxTool({ className = '' }: PDFToPptxToolProps) {
                 onFilesSelected={handleFilesSelected}
                 onError={handleUploadError}
                 disabled={isProcessing}
-                label="Upload PDF"
-                description="Drag and drop a PDF file here, or click to browse."
+                label={tTools('pdfToPptx.uploadLabel') || 'Upload PDF'}
+                description={tTools('pdfToPptx.uploadDescription') || 'Drag and drop a PDF file here, or click to browse.'}
             />
 
             {/* Error Message */}
@@ -206,13 +206,13 @@ export function PDFToPptxTool({ className = '' }: PDFToPptxToolProps) {
             {file && (
                 <Card variant="outlined">
                     <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))] mb-4">
-                        Conversion Options
+                        {tTools('pdfToPptx.optionsTitle') || 'Conversion Options'}
                     </h3>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
-                                Image Quality (DPI)
+                                {tTools('pdfToPptx.dpiLabel') || 'Image Quality (DPI)'}
                             </label>
                             <select
                                 value={dpi}
@@ -220,13 +220,13 @@ export function PDFToPptxTool({ className = '' }: PDFToPptxToolProps) {
                                 disabled={isProcessing}
                                 className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
                             >
-                                <option value="72">Low (72 DPI - smaller file)</option>
-                                <option value="150">Medium (150 DPI - balanced)</option>
-                                <option value="200">High (200 DPI - better quality)</option>
-                                <option value="300">Very High (300 DPI - best quality)</option>
+                                <option value="72">{tTools('pdfToPptx.lowSet') || 'Low (72 DPI - smaller file)'}</option>
+                                <option value="150">{tTools('pdfToPptx.mediumSet') || 'Medium (150 DPI - balanced)'}</option>
+                                <option value="200">{tTools('pdfToPptx.highSet') || 'High (200 DPI - better quality)'}</option>
+                                <option value="300">{tTools('pdfToPptx.veryHighSet') || 'Very High (300 DPI - best quality)'}</option>
                             </select>
                             <p className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
-                                Higher DPI produces better quality slides but larger file sizes.
+                                {tTools('pdfToPptx.dpiHint') || 'Higher DPI produces better quality slides but larger file sizes.'}
                             </p>
                         </div>
                     </div>
@@ -257,7 +257,7 @@ export function PDFToPptxTool({ className = '' }: PDFToPptxToolProps) {
                     {!isProcessing && <RefreshCw className="w-5 h-5 mr-2" />}
                     {isProcessing
                         ? (t('status.processing') || 'Converting...')
-                        : 'Convert to PowerPoint'
+                        : (tTools('pdfToPptx.convertButton') || 'Convert to PowerPoint')
                     }
                 </Button>
 
@@ -282,9 +282,9 @@ export function PDFToPptxTool({ className = '' }: PDFToPptxToolProps) {
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-100 mb-4">
                         <CheckCircle2 className="w-6 h-6 text-green-600" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">Conversion Successful!</h3>
+                    <h3 className="text-lg font-semibold mb-2">{tTools('successTitle') || 'Conversion Successful!'}</h3>
                     <p className="text-green-800/80 max-w-md mx-auto">
-                        Your PDF has been converted to PowerPoint. Each page is now a slide with full-quality images.
+                        {tTools('pdfToPptx.successMessage') || 'Your PDF has been converted to PowerPoint. Each page is now a slide with full-quality images.'}
                     </p>
                 </div>
             )}

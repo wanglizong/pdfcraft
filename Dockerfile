@@ -1,7 +1,10 @@
 # =============================================================================
 # PDFCraft Production Dockerfile
 # Multi-stage build for optimized image size
+# Optimized with BuildKit cache mounts for faster builds
 # =============================================================================
+
+# syntax=docker/dockerfile:1
 
 # -----------------------------------------------------------------------------
 # Stage 1: Build the Next.js static export
@@ -11,14 +14,19 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Install dependencies first (better layer caching)
+# Use BuildKit cache mount to persist npm cache across builds
 COPY package.json package-lock.json ./
-RUN npm ci --ignore-scripts
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --ignore-scripts
 
 # Copy source code
 COPY . .
 
 # Build the static export
-RUN npm run build
+# Use BuildKit cache mount for Next.js cache to speed up rebuilds
+RUN --mount=type=cache,target=/root/.npm \
+    --mount=type=cache,target=/app/.next/cache \
+    npm run build
 
 # -----------------------------------------------------------------------------
 # Stage 2: Serve with Nginx
@@ -40,10 +48,6 @@ COPY --from=builder /app/out /website/pdfcraft
 
 # Expose port 80
 EXPOSE 80
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-    CMD wget -q --spider http://localhost/en/ || exit 1
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]

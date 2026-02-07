@@ -679,6 +679,18 @@ export const tools: Tool[] = [
     features: ['extract-tables', 'multiple-sheets', 'preserve-data'],
     relatedTools: ['pdf-to-json', 'pdf-to-docx', 'ocr-pdf'],
   },
+  {
+    id: 'pdf-to-markdown',
+    slug: 'pdf-to-markdown',
+    icon: 'file-code-2',
+    category: 'convert-from-pdf',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'md',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['extract-text', 'preserve-headings', 'detect-lists', 'page-range'],
+    relatedTools: ['pdf-to-json', 'pdf-to-docx', 'ocr-pdf'],
+  },
 
 
   // ==================== ORGANIZE & MANAGE ====================
@@ -997,7 +1009,19 @@ export const tools: Tool[] = [
     maxFileSize: DEFAULT_MAX_FILE_SIZE,
     maxFiles: 1,
     features: ['remove-metadata', 'remove-annotations', 'remove-scripts', 'remove-attachments'],
-    relatedTools: ['remove-metadata', 'flatten-pdf', 'remove-annotations'],
+    relatedTools: ['remove-metadata', 'flatten-pdf', 'find-and-redact'],
+  },
+  {
+    id: 'find-and-redact',
+    slug: 'find-and-redact',
+    icon: 'search-x',
+    category: 'secure-pdf',
+    acceptedFormats: ['.pdf'],
+    outputFormat: 'pdf',
+    maxFileSize: DEFAULT_MAX_FILE_SIZE,
+    maxFiles: 1,
+    features: ['search-text', 'batch-redact', 'regex-search', 'selective-redact', 'preview-matches'],
+    relatedTools: ['sanitize-pdf', 'edit-pdf', 'remove-metadata'],
   },
   {
     id: 'decrypt-pdf',

@@ -1,6 +1,8 @@
 /**
  * PDF Watermark Processor
  * Requirements: 5.1
+ * 
+ * Supports text and image watermarks with CJK character support via fontkit.
  */
 
 import type { ProcessInput, ProcessOutput, ProgressCallback } from '@/types/pdf';
@@ -19,6 +21,97 @@ export interface WatermarkOptions {
   fontSize?: number;
   color?: { r: number; g: number; b: number };
   pages?: number[] | 'all' | 'odd' | 'even';
+}
+
+// Noto fonts for CJK support
+const CJK_FONT_URL = 'https://raw.githack.com/googlefonts/noto-cjk/main/Sans/OTF/SimplifiedChinese/NotoSansCJKsc-Regular.otf';
+
+// Font cache
+const fontCache: Map<string, ArrayBuffer> = new Map();
+const DB_NAME = 'pdfcraft-fonts';
+const DB_VERSION = 1;
+const STORE_NAME = 'fonts';
+
+async function openFontDB(): Promise<IDBDatabase> {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => resolve(request.result);
+    request.onupgradeneeded = (event) => {
+      const db = (event.target as IDBOpenDBRequest).result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME);
+      }
+    };
+  });
+}
+
+async function getCachedFontFromDB(fontId: string): Promise<ArrayBuffer | null> {
+  try {
+    const db = await openFontDB();
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(STORE_NAME, 'readonly');
+      const store = transaction.objectStore(STORE_NAME);
+      const request = store.get(fontId);
+      request.onsuccess = () => resolve(request.result || null);
+      request.onerror = () => reject(request.error);
+    });
+  } catch {
+    return null;
+  }
+}
+
+async function saveFontToDB(fontId: string, fontBuffer: ArrayBuffer): Promise<void> {
+  try {
+    const db = await openFontDB();
+    return new Promise((resolve, reject) => {
+      const transaction = db.transaction(STORE_NAME, 'readwrite');
+      const store = transaction.objectStore(STORE_NAME);
+      const request = store.put(fontBuffer, fontId);
+      request.onsuccess = () => resolve();
+      request.onerror = () => reject(request.error);
+    });
+  } catch {
+    // Ignore IndexedDB errors
+  }
+}
+
+async function loadCJKFont(): Promise<ArrayBuffer> {
+  const fontId = 'noto-sans-sc';
+
+  // Check memory cache first
+  if (fontCache.has(fontId)) {
+    return fontCache.get(fontId)!;
+  }
+
+  // Check IndexedDB cache
+  const cachedFont = await getCachedFontFromDB(fontId);
+  if (cachedFont) {
+    fontCache.set(fontId, cachedFont);
+    return cachedFont;
+  }
+
+  // Fetch from URL
+  const response = await fetch(CJK_FONT_URL);
+  if (!response.ok) {
+    throw new Error(`Failed to load CJK font`);
+  }
+
+  const buffer = await response.arrayBuffer();
+
+  // Cache in memory and IndexedDB
+  fontCache.set(fontId, buffer);
+  await saveFontToDB(fontId, buffer);
+
+  return buffer;
+}
+
+/**
+ * Check if text contains non-ASCII characters (CJK, etc.)
+ */
+function containsNonAscii(text: string): boolean {
+  // eslint-disable-next-line no-control-regex
+  return /[^\x00-\x7F]/.test(text);
 }
 
 export class WatermarkProcessor extends BasePDFProcessor {
@@ -53,12 +146,43 @@ export class WatermarkProcessor extends BasePDFProcessor {
       const arrayBuffer = await file.arrayBuffer();
       const pdf = await pdfLib.PDFDocument.load(arrayBuffer, { ignoreEncryption: true });
 
-      const font = await pdf.embedFont(pdfLib.StandardFonts.HelveticaBold);
+      // Check if we need CJK font support
+      const needsCJKFont = wmOptions.type === 'text' && wmOptions.text && containsNonAscii(wmOptions.text);
+
+      let font: Awaited<ReturnType<typeof pdf.embedFont>>;
+
+      if (needsCJKFont) {
+        this.updateProgress(25, 'Loading CJK font...');
+        const fontkit = await import('@pdf-lib/fontkit');
+        pdf.registerFontkit(fontkit.default || fontkit);
+
+        const fontBytes = await loadCJKFont();
+        this.updateProgress(28, 'Embedding font...');
+        font = await pdf.embedFont(fontBytes, { subset: false });
+      } else {
+        font = await pdf.embedFont(pdfLib.StandardFonts.HelveticaBold);
+      }
+
       const totalPages = pdf.getPageCount();
 
       this.updateProgress(30, 'Adding watermark...');
 
       const pagesToProcess = getPageIndices(wmOptions.pages, totalPages);
+
+      // Pre-embed image if using image watermark (do this once, outside the loop)
+      let embeddedImage: Awaited<ReturnType<typeof pdf.embedPng>> | null = null;
+      if (wmOptions.type === 'image' && wmOptions.imageData) {
+        try {
+          if (wmOptions.imageType === 'jpg') {
+            embeddedImage = await pdf.embedJpg(wmOptions.imageData);
+          } else {
+            embeddedImage = await pdf.embedPng(wmOptions.imageData);
+          }
+        } catch (embedError) {
+          const errorMessage = embedError instanceof Error ? embedError.message : 'Unknown error';
+          return this.createErrorOutput(PDFErrorCode.PROCESSING_FAILED, `Failed to embed image: ${errorMessage}`);
+        }
+      }
 
       for (let i = 0; i < pagesToProcess.length; i++) {
         if (this.checkCancelled()) {
@@ -73,6 +197,7 @@ export class WatermarkProcessor extends BasePDFProcessor {
           const text = wmOptions.text;
           const fontSize = wmOptions.fontSize || 48;
           const textWidth = font.widthOfTextAtSize(text, fontSize);
+          const textHeight = font.heightAtSize(fontSize);
 
           let x = 0, y = 0;
           const rotation = wmOptions.position === 'diagonal' ? -45 : (wmOptions.rotation || 0);
@@ -90,8 +215,12 @@ export class WatermarkProcessor extends BasePDFProcessor {
             case 'bottom-right':
               x = width - textWidth - 50; y = 50;
               break;
-            case 'diagonal':
             case 'center':
+              const position = computeTextWatermarkPosition(width, height, textWidth, textHeight, rotation)
+              x = position.x;
+              y = position.y;
+              break;
+            case 'diagonal':
             default:
               x = width / 2; y = height / 2;
           }
@@ -105,21 +234,15 @@ export class WatermarkProcessor extends BasePDFProcessor {
             opacity: wmOptions.opacity || 0.3,
             rotate: pdfLib.degrees(rotation),
           });
-        } else if (wmOptions.type === 'image' && wmOptions.imageData) {
-          let image;
-          if (wmOptions.imageType === 'jpg') {
-            image = await pdf.embedJpg(wmOptions.imageData);
-          } else {
-            image = await pdf.embedPng(wmOptions.imageData);
-          }
+        } else if (wmOptions.type === 'image' && embeddedImage) {
           const scale = 0.5;
-          const imgWidth = image.width * scale;
-          const imgHeight = image.height * scale;
+          const imgWidth = embeddedImage.width * scale;
+          const imgHeight = embeddedImage.height * scale;
 
           const x = (width - imgWidth) / 2;
           const y = (height - imgHeight) / 2;
 
-          page.drawImage(image, {
+          page.drawImage(embeddedImage, {
             x,
             y,
             width: imgWidth,
@@ -161,6 +284,44 @@ function getPageIndices(pages: WatermarkOptions['pages'], totalPages: number): n
     default:
       return Array.from({ length: totalPages }, (_, i) => i);
   }
+}
+
+function computeTextWatermarkPosition(
+  pageWidth: number,
+  pageHeight: number,
+  textWidth: number,
+  textHeight: number,
+  rotation: number
+): { x: number; y: number } {
+
+  // Calculate the center coordinates of the PDF page
+  const centerX = pageWidth / 2;
+  const centerY = pageHeight / 2;
+
+  // Half of text width/height, baseline offset for text drawing
+  const textWidthHalf = textWidth / 2;
+  const textHeightHalf = textHeight / 2;
+  const baselineOffset = textHeight * 0.25; // 基线向下调整的偏移值
+
+  // Basic unrotated coordinates for text center alignment (with baseline offset)
+  const baseX = centerX - textWidthHalf;
+  const baseY = centerY - (textHeightHalf + baselineOffset);
+
+  // Convert rotation angle from degrees to radians (take absolute value for calculation)
+  const rotationRad = (Math.abs(rotation) * Math.PI) / 180;
+  const cosRad = Math.cos(rotationRad);
+  const sinRad = Math.sin(rotationRad);
+
+  // Get rotation direction sign: 1=counterclockwise, -1=clockwise, 0=no rotation
+  const rotationSign = Math.sign(rotation);
+  // Calculate final rotated origin coordinates for text
+  let rotatedOriginX = baseX + textWidthHalf * (1 - cosRad) + rotationSign * baselineOffset;
+  let rotatedOriginY = baseY - rotationSign * (textWidthHalf * sinRad) + baselineOffset * Math.abs(rotationSign);
+
+  return {
+    x: rotatedOriginX,
+    y: rotatedOriginY,
+  };
 }
 
 export function createWatermarkProcessor(): WatermarkProcessor {

@@ -644,3 +644,11 @@ export {
   type OCGLayer,
   type OCGAction,
 } from './ocg-manager';
+
+// PDF to Markdown processor
+export {
+  PDFToMarkdownProcessor,
+  createPDFToMarkdownProcessor,
+  pdfToMarkdown,
+  type PDFToMarkdownOptions,
+} from './pdf-to-markdown';
