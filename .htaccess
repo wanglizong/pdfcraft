@@ -1,17 +1,14 @@
 # Apache .htaccess configuration for PDFCraft static export
-# Place this file in the root of your web directory (where out/ contents are copied)
 
 # Enable rewrite engine
 RewriteEngine On
 
 # Handle trailing slash routing (matches Next.js trailingSlash: true config)
-# If the request doesn't end with a slash and is a directory, redirect to add slash
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteCond %{REQUEST_URI} !/$
 RewriteRule ^(.*)$ /$1/ [R=301,L]
 
 # Serve HTML files without extension
-# Try: exact file -> file.html -> directory/index.html -> 404
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
@@ -20,18 +17,10 @@ RewriteRule ^([^\.]+)$ $1.html [NC,L]
 # ==========================================
 # MIME Type Configuration
 # ==========================================
-
-# WebAssembly files (Critical for PDF processing)
 AddType application/wasm .wasm
-
-# ES Modules
 AddType application/javascript .mjs
-
-# Modern image formats
 AddType image/webp .webp
 AddType image/avif .avif
-
-# Fonts
 AddType font/woff .woff
 AddType font/woff2 .woff2
 AddType font/ttf .ttf
@@ -40,46 +29,30 @@ AddType application/vnd.ms-fontobject .eot
 # ==========================================
 # Compression (mod_deflate)
 # ==========================================
-
 <IfModule mod_deflate.c>
-    # Compress text, CSS, JavaScript, XML, fonts, and WASM
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/xml
-    AddOutputFilterByType DEFLATE text/css
-    AddOutputFilterByType DEFLATE text/javascript
-    AddOutputFilterByType DEFLATE application/xml
-    AddOutputFilterByType DEFLATE application/xhtml+xml
-    AddOutputFilterByType DEFLATE application/rss+xml
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE application/json
-    AddOutputFilterByType DEFLATE application/wasm
+    AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css
+    AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+    AddOutputFilterByType DEFLATE application/xml application/xhtml+xml application/rss+xml
+    AddOutputFilterByType DEFLATE application/json application/wasm
     AddOutputFilterByType DEFLATE image/svg+xml
-    AddOutputFilterByType DEFLATE font/woff
-    AddOutputFilterByType DEFLATE font/woff2
-    AddOutputFilterByType DEFLATE font/ttf
+    AddOutputFilterByType DEFLATE font/woff font/woff2 font/ttf
 </IfModule>
 
 # ==========================================
-# Caching Configuration (mod_expires)
+# Caching (mod_expires)
 # ==========================================
-
 <IfModule mod_expires.c>
     ExpiresActive On
-    
-    # Default expiration
     ExpiresDefault "access plus 1 month"
-    
-    # HTML - no cache (always fresh)
+
+    # HTML - no cache
     ExpiresByType text/html "access plus 0 seconds"
-    
-    # Static assets - long cache (1 year)
+
+    # JS/CSS - long cache
     ExpiresByType text/css "access plus 1 year"
     ExpiresByType text/javascript "access plus 1 year"
     ExpiresByType application/javascript "access plus 1 year"
-    ExpiresByType application/x-javascript "access plus 1 year"
-    
+
     # Images - long cache
     ExpiresByType image/jpeg "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
@@ -88,82 +61,61 @@ AddType application/vnd.ms-fontobject .eot
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/avif "access plus 1 year"
     ExpiresByType image/x-icon "access plus 1 year"
-    
+
     # Fonts - long cache
     ExpiresByType font/woff "access plus 1 year"
     ExpiresByType font/woff2 "access plus 1 year"
     ExpiresByType font/ttf "access plus 1 year"
     ExpiresByType application/vnd.ms-fontobject "access plus 1 year"
-    
-    # WebAssembly - long cache
+
+    # WASM - long cache
     ExpiresByType application/wasm "access plus 1 year"
-    
+
     # JSON/XML - short cache
     ExpiresByType application/json "access plus 1 hour"
     ExpiresByType application/xml "access plus 1 hour"
 </IfModule>
 
 # ==========================================
-# Cache-Control Headers (mod_headers)
+# Cache-Control & Security Headers (mod_headers)
 # ==========================================
-
 <IfModule mod_headers.c>
-    # Static assets - immutable cache
-    <FilesMatch "\.(js|css|woff|woff2|ttf|eot|png|jpg|jpeg|gif|ico|svg|webp|avif|wasm)$">
+    # --- Security Headers (all responses) ---
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    # Required for SharedArrayBuffer (LibreOffice WASM)
+    Header always set Cross-Origin-Opener-Policy "same-origin"
+    Header always set Cross-Origin-Embedder-Policy "require-corp"
+    Header always set Cross-Origin-Resource-Policy "cross-origin"
+
+    # --- Cache-Control ---
+    <FilesMatch "\.(js|css|mjs|woff|woff2|ttf|eot|png|jpg|jpeg|gif|ico|svg|webp|avif|wasm)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
-    
-    # HTML - always revalidate
+
     <FilesMatch "\.html$">
         Header set Cache-Control "public, max-age=0, must-revalidate"
     </FilesMatch>
-    
-    # Service worker - no cache
+
     <FilesMatch "sw\.js$">
         Header set Cache-Control "public, max-age=0, must-revalidate"
     </FilesMatch>
-    
-    # Manifest - short cache
+
     <FilesMatch "manifest\.json$">
         Header set Cache-Control "public, max-age=3600"
     </FilesMatch>
-    
-    # ==========================================
-    # Security Headers
-    # ==========================================
-    
-    # Prevent MIME type sniffing
-    Header always set X-Content-Type-Options "nosniff"
-    
-    # Prevent clickjacking
-    Header always set X-Frame-Options "SAMEORIGIN"
-    
-    # XSS Protection
-    Header always set X-XSS-Protection "1; mode=block"
-    
-    # Referrer Policy
-    Header always set Referrer-Policy "strict-origin-when-cross-origin"
-    
-    # Permissions Policy
-    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
-# ==========================================
 # Error Documents
-# ==========================================
-
 ErrorDocument 404 /404.html
 
-# ==========================================
 # Prevent Directory Listing
-# ==========================================
-
 Options -Indexes
 
-# ==========================================
-# Disable ETags (use Cache-Control instead)
-# ==========================================
-
+# Disable ETags
 <IfModule mod_headers.c>
     Header unset ETag
 </IfModule>

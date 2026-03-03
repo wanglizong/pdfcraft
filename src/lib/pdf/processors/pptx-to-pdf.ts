@@ -1,8 +1,7 @@
 /**
  * PowerPoint to PDF Processor
  * 
- * Converts PowerPoint presentations (PPTX) to PDF.
- * Uses Pyodide via a Web Worker with python-pptx and PyMuPDF.
+ * Converts PowerPoint presentations to PDF using LibreOffice WASM.
  */
 
 import type {
@@ -13,83 +12,63 @@ import type {
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
 
-/**
- * PowerPoint to PDF options
- */
+/** Maximum file size: 50 MB */
+const MAX_FILE_SIZE = 50 * 1024 * 1024;
+/** Conversion timeout: 5 minutes */
+const CONVERT_TIMEOUT_MS = 5 * 60 * 1000;
+
 export interface PPTXToPDFOptions {
     /** Reserved for future options */
 }
 
-/**
- * PowerPoint to PDF Processor
- * Converts PowerPoint presentations to PDF using a Web Worker.
- */
-export class PPTXToPDFProcessor extends BasePDFProcessor {
-    private worker: Worker | null = null;
-    private workerReady = false;
+let converterPromise: Promise<any> | null = null;
+let converterInstance: any = null;
 
-    /**
-     * Initialize the worker
-     */
-    private async initWorker(): Promise<void> {
-        if (this.worker) return;
+async function getConverter(onProgress?: (percent: number, message: string) => void): Promise<any> {
+    if (converterInstance?.isReady()) return converterInstance;
 
-        return new Promise((resolve, reject) => {
-            try {
-                this.worker = new Worker('/workers/pptx-to-pdf.worker.js', { type: 'module' });
-
-                const handleMessage = (event: MessageEvent) => {
-                    const { type, error, message } = event.data;
-
-                    if (type === 'init-complete') {
-                        this.workerReady = true;
-                        resolve();
-                    } else if (type === 'status') {
-                        this.updateProgress(0, message);
-                    } else if (type === 'error') {
-                        reject(new Error(error || 'Worker initialization failed'));
-                    }
-                };
-
-                this.worker.addEventListener('message', handleMessage);
-                this.worker.addEventListener('error', (err) => {
-                    reject(new Error('Worker connection failed'));
-                });
-
-                // Send init message
-                this.worker.postMessage({
-                    type: 'init',
-                    id: 'init-' + Date.now(),
-                    data: {}
-                });
-
-            } catch (err) {
-                reject(err);
-            }
-        });
+    if (converterPromise) {
+        await converterPromise;
+        return converterInstance;
     }
 
-    /**
-     * Terminate the worker
-     */
-    private terminateWorker() {
-        if (this.worker) {
-            this.worker.terminate();
-            this.worker = null;
-            this.workerReady = false;
+    converterPromise = (async () => {
+        const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
+        converterInstance = getLibreOfficeConverter();
+        await converterInstance.initialize((progress: any) => {
+            onProgress?.(progress.percent, progress.message);
+        });
+    })();
+
+    await converterPromise;
+    return converterInstance;
+}
+
+export class PPTXToPDFProcessor extends BasePDFProcessor {
+    private conversionProgressTimer: ReturnType<typeof setInterval> | null = null;
+
+    private startConversionProgress(message: string): void {
+        this.stopConversionProgress();
+        // LibreOffice convert() does not expose granular runtime progress.
+        // Keep UI responsive by advancing a bounded pseudo-progress while waiting.
+        this.conversionProgressTimer = setInterval(() => {
+            if (this.progress >= 98) return;
+            this.updateProgress(this.progress + 1, message);
+        }, 800);
+    }
+
+    private stopConversionProgress(): void {
+        if (this.conversionProgressTimer) {
+            clearInterval(this.conversionProgressTimer);
+            this.conversionProgressTimer = null;
         }
     }
 
-    /**
-     * Reset processor state
-     */
     protected reset(): void {
+        this.stopConversionProgress();
         super.reset();
     }
 
-    /**
-     * Process PowerPoint presentation and convert to PDF
-     */
     async process(
         input: ProcessInput,
         onProgress?: ProgressCallback
@@ -99,7 +78,6 @@ export class PPTXToPDFProcessor extends BasePDFProcessor {
 
         const { files } = input;
 
-        // Validate we have exactly 1 PowerPoint file
         if (files.length !== 1) {
             return this.createErrorOutput(
                 PDFErrorCode.INVALID_OPTIONS,
@@ -109,124 +87,63 @@ export class PPTXToPDFProcessor extends BasePDFProcessor {
         }
 
         const file = files[0];
+        const ext = file.name.split('.').pop()?.toLowerCase() || '';
+        const validExts = ['pptx', 'ppt', 'odp'];
 
-        // Validate file type
-        const isPPTX = file.name.toLowerCase().endsWith('.pptx') ||
-            file.name.toLowerCase().endsWith('.ppt') ||
-            file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation' ||
-            file.type === 'application/vnd.ms-powerpoint';
-        if (!isPPTX) {
+        if (!validExts.includes(ext)) {
             return this.createErrorOutput(
                 PDFErrorCode.FILE_TYPE_INVALID,
-                'Invalid file type. Please upload a PowerPoint presentation (.pptx or .ppt).',
+                'Invalid file type. Please upload .pptx, .ppt, or .odp.',
                 `Received: ${file.type || file.name}`
             );
         }
 
-        // Note: .ppt format is not supported by python-pptx
-        if (file.name.toLowerCase().endsWith('.ppt')) {
+        // File size guard
+        if (file.size > MAX_FILE_SIZE) {
             return this.createErrorOutput(
-                PDFErrorCode.FILE_TYPE_INVALID,
-                'Legacy .ppt format is not supported. Please convert to .pptx first.',
-                'Use Microsoft PowerPoint or LibreOffice to save as .pptx'
+                PDFErrorCode.INVALID_OPTIONS,
+                `File is too large (${(file.size / 1024 / 1024).toFixed(1)} MB). Maximum supported size is ${MAX_FILE_SIZE / 1024 / 1024} MB.`,
+                `File size: ${file.size} bytes, limit: ${MAX_FILE_SIZE} bytes`
             );
         }
 
         try {
-            this.updateProgress(10, 'Initializing converter...');
+            this.updateProgress(5, 'Loading conversion engine (first time may take 1-2 minutes)...');
 
-            try {
-                await this.initWorker();
-            } catch (err) {
-                console.error('Failed to initialize worker:', err);
-                return this.createErrorOutput(
-                    PDFErrorCode.WORKER_FAILED,
-                    'Failed to initialize conversion worker.',
-                    err instanceof Error ? err.message : String(err)
-                );
-            }
-
-            if (this.checkCancelled()) {
-                return this.createErrorOutput(
-                    PDFErrorCode.PROCESSING_CANCELLED,
-                    'Processing was cancelled.'
-                );
-            }
-
-            this.updateProgress(30, 'Converting PowerPoint to PDF...');
-
-            // Process conversion via worker
-            const pdfBlob = await new Promise<Blob>((resolve, reject) => {
-                if (!this.worker) {
-                    reject(new Error('Worker not initialized'));
-                    return;
-                }
-
-                const msgId = 'convert-' + Date.now();
-
-                const handleMessage = (event: MessageEvent) => {
-                    const { type, id, result, error, message } = event.data;
-
-                    if (type === 'status') {
-                        this.updateProgress(this.progress, message);
-                        return;
-                    }
-
-                    if (id !== msgId) return;
-
-                    if (type === 'convert-complete') {
-                        cleanup();
-                        resolve(result);
-                    } else if (type === 'error') {
-                        cleanup();
-                        reject(new Error(error || 'Conversion failed'));
-                    }
-                };
-
-                const handleError = (error: ErrorEvent) => {
-                    cleanup();
-                    reject(new Error('Worker error: ' + error.message));
-                };
-
-                const cleanup = () => {
-                    this.worker?.removeEventListener('message', handleMessage);
-                    this.worker?.removeEventListener('error', handleError);
-                };
-
-                this.worker.addEventListener('message', handleMessage);
-                this.worker.addEventListener('error', handleError);
-
-                this.worker.postMessage({
-                    type: 'convert',
-                    id: msgId,
-                    data: {
-                        file: file
-                    }
-                });
+            const converter = await getConverter((percent, message) => {
+                this.updateProgress(Math.min(percent * 0.8, 80), message);
             });
 
             if (this.checkCancelled()) {
-                return this.createErrorOutput(
-                    PDFErrorCode.PROCESSING_CANCELLED,
-                    'Processing was cancelled.'
-                );
+                return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
+            }
+
+            this.updateProgress(85, 'Converting PowerPoint to PDF...');
+            this.startConversionProgress('Converting PowerPoint to PDF...');
+
+            // Convert with timeout protection
+            const pdfBlob = await Promise.race([
+                converter.convertToPdf(file),
+                new Promise<never>((_, reject) =>
+                    setTimeout(() => reject(new Error(
+                        `Conversion timed out after ${CONVERT_TIMEOUT_MS / 60000} minutes. The file may be too complex.`
+                    )), CONVERT_TIMEOUT_MS)
+                ),
+            ]);
+            this.stopConversionProgress();
+
+            if (this.checkCancelled()) {
+                return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
             }
 
             this.updateProgress(100, 'Conversion complete!');
 
-            const baseName = file.name.replace(/\.pptx?$/i, '');
-            const outputName = `${baseName}.pdf`;
-
-            return this.createSuccessOutput(
-                pdfBlob,
-                outputName,
-                { format: 'pdf' }
-            );
+            const baseName = file.name.replace(/\.(pptx?|odp)$/i, '');
+            return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, { format: 'pdf' });
 
         } catch (error) {
+            this.stopConversionProgress();
             console.error('Conversion error:', error);
-            this.terminateWorker();
-
             return this.createErrorOutput(
                 PDFErrorCode.PROCESSING_FAILED,
                 'Failed to convert PowerPoint to PDF.',
@@ -236,27 +153,15 @@ export class PPTXToPDFProcessor extends BasePDFProcessor {
     }
 }
 
-/**
- * Create a new instance of the PowerPoint to PDF processor
- */
 export function createPPTXToPDFProcessor(): PPTXToPDFProcessor {
     return new PPTXToPDFProcessor();
 }
 
-/**
- * Convert PowerPoint to PDF (convenience function)
- */
 export async function pptxToPDF(
     file: File,
     options?: Partial<PPTXToPDFOptions>,
     onProgress?: ProgressCallback
 ): Promise<ProcessOutput> {
     const processor = createPPTXToPDFProcessor();
-    return processor.process(
-        {
-            files: [file],
-            options: options || {},
-        },
-        onProgress
-    );
+    return processor.process({ files: [file], options: options || {} }, onProgress);
 }

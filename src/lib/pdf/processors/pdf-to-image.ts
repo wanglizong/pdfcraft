@@ -165,8 +165,9 @@ export class PDFToImageProcessor extends BasePDFProcessor {
       const totalPages = pdf.numPages;
 
       // Determine which pages to convert
-      const pagesToConvert = imageOptions.pages.length > 0
-        ? imageOptions.pages.filter(p => p >= 1 && p <= totalPages)
+      const requestedPages = imageOptions.pages ?? [];
+      const pagesToConvert = requestedPages.length > 0
+        ? requestedPages.filter(p => p >= 1 && p <= totalPages)
         : Array.from({ length: totalPages }, (_, i) => i + 1);
 
       if (pagesToConvert.length === 0) {
@@ -329,6 +330,7 @@ export class PDFToImageProcessor extends BasePDFProcessor {
       }
 
     } catch (error) {
+      console.error('[PDFToImage] Failed to convert PDF to images:', error);
       return this.createErrorOutput(
         PDFErrorCode.PROCESSING_FAILED,
         'Failed to convert PDF to images.',

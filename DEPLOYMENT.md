@@ -27,6 +27,8 @@ npm run build
 
 The static output will be in the `out/` directory.
 
+> **Note:** The `postbuild` script automatically decompresses LibreOffice WASM `.gz` files in `out/libreoffice-wasm/` (e.g. `soffice.wasm.gz` → `soffice.wasm`). This ensures compatibility across all hosting platforms. See [LibreOffice WASM Architecture](#-libreoffice-wasm-architecture) for details.
+
 ## 🚀 Deployment Options
 
 ### 1. Vercel (Recommended)
@@ -44,6 +46,7 @@ vercel --prod
 
 Configuration is already set in `vercel.json` with:
 - Security headers (X-Content-Type-Options, X-Frame-Options, etc.)
+- Cross-Origin isolation headers (COOP/COEP/CORP) for SharedArrayBuffer support
 - Cache headers for static assets
 - WASM MIME type configuration
 
@@ -66,6 +69,8 @@ netlify deploy --prod --dir=out
 ---
 
 ### 3. GitHub Pages
+
+> ⚠️ **Limitation:** GitHub Pages does **not** support custom response headers. This means `Cross-Origin-Opener-Policy` and `Cross-Origin-Embedder-Policy` headers cannot be set, so `SharedArrayBuffer` will be unavailable. **Document conversion tools (Word/Excel/PPT/RTF to PDF) that rely on LibreOffice WASM will not work on GitHub Pages.** All other PDF tools (merge, split, compress, etc.) work fine. Use Vercel, Netlify, Cloudflare Pages, or Docker+Nginx for full feature support.
 
 **Automatic Deployment:**
 1. Enable GitHub Pages in repository settings
@@ -158,17 +163,51 @@ server {
     add_header X-XSS-Protection "1; mode=block" always;
     add_header Referrer-Policy "strict-origin-when-cross-origin" always;
     add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
+    # Required for SharedArrayBuffer (LibreOffice WASM pthreads)
+    add_header Cross-Origin-Opener-Policy "same-origin" always;
+    add_header Cross-Origin-Embedder-Policy "require-corp" always;
+    add_header Cross-Origin-Resource-Policy "cross-origin" always;
+
+    # IMPORTANT: Nginx's add_header in a location block overrides ALL
+    # server-level add_header directives. Every location block that uses
+    # add_header must re-include all required security/CORS headers.
 
     # Static assets - long cache
     location ~* \.(ico|jpg|jpeg|png|gif|svg|webp|avif|woff|woff2|ttf|eot|js|css)$ {
         expires 1y;
         add_header Cache-Control "public, max-age=31536000, immutable";
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Cross-Origin-Opener-Policy "same-origin" always;
+        add_header Cross-Origin-Embedder-Policy "require-corp" always;
+        add_header Cross-Origin-Resource-Policy "cross-origin" always;
+    }
+
+    # LibreOffice WASM files - gzip_static auto-serves .gz with correct headers
+    # Requires both soffice.wasm and soffice.wasm.gz on disk (postbuild handles this)
+    location /libreoffice-wasm/ {
+        gzip_static on;
+        expires 1y;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+        types {
+            application/wasm wasm;
+            application/javascript js;
+            application/octet-stream data;
+        }
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header Cross-Origin-Opener-Policy "same-origin" always;
+        add_header Cross-Origin-Embedder-Policy "require-corp" always;
+        add_header Cross-Origin-Resource-Policy "cross-origin" always;
     }
 
     # HTML pages - no cache
     location / {
         try_files $uri $uri.html $uri/ =404;
         add_header Cache-Control "public, max-age=0, must-revalidate";
+        add_header X-Content-Type-Options "nosniff" always;
+        add_header X-Frame-Options "SAMEORIGIN" always;
+        add_header Cross-Origin-Opener-Policy "same-origin" always;
+        add_header Cross-Origin-Embedder-Policy "require-corp" always;
+        add_header Cross-Origin-Resource-Policy "cross-origin" always;
     }
 
     # 404 page
@@ -213,6 +252,10 @@ Header set X-Frame-Options "SAMEORIGIN"
 Header set X-XSS-Protection "1; mode=block"
 Header set Referrer-Policy "strict-origin-when-cross-origin"
 Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+# Required for SharedArrayBuffer (LibreOffice WASM pthreads)
+Header set Cross-Origin-Opener-Policy "same-origin"
+Header set Cross-Origin-Embedder-Policy "require-corp"
+Header set Cross-Origin-Resource-Policy "cross-origin"
 ```
 
 ---
@@ -234,6 +277,14 @@ aws cloudfront create-invalidation --distribution-id YOUR_DIST_ID --paths "/*"
 - Enable static website hosting
 - Set index document to `index.html`
 - Set error document to `404.html`
+
+**CloudFront Response Headers Policy:**
+Create a response headers policy with these custom headers to enable SharedArrayBuffer:
+- `Cross-Origin-Opener-Policy: same-origin`
+- `Cross-Origin-Embedder-Policy: require-corp`
+- `Cross-Origin-Resource-Policy: cross-origin`
+
+Attach this policy to your CloudFront distribution's behavior settings.
 
 ---
 
@@ -292,6 +343,18 @@ Configure `firebase.json`:
           {
             "key": "Permissions-Policy",
             "value": "camera=(), microphone=(), geolocation=()"
+          },
+          {
+            "key": "Cross-Origin-Opener-Policy",
+            "value": "same-origin"
+          },
+          {
+            "key": "Cross-Origin-Embedder-Policy",
+            "value": "require-corp"
+          },
+          {
+            "key": "Cross-Origin-Resource-Policy",
+            "value": "cross-origin"
           }
         ]
       }
@@ -409,6 +472,62 @@ The build includes:
 
 ---
 
+## 📦 LibreOffice WASM Architecture
+
+PDFCraft uses [LibreOffice WASM](https://github.com/nichdiekuh/libreoffice-wasm) (`@matbee/libreoffice-converter`) for document conversion (Word, Excel, PowerPoint, RTF to PDF). Understanding the file serving architecture is important for deployment.
+
+### File Layout
+
+The `public/libreoffice-wasm/` directory (Git-tracked):
+```
+soffice.wasm.gz   (~47MB, gzip-compressed WASM binary)
+soffice.data.gz   (~29MB, gzip-compressed data file)
+soffice.js        (Emscripten JS glue code)
+soffice.worker.js (Web Worker for WASM execution)
+browser.worker.global.js (Browser worker communication)
+```
+
+The decompressed files (`.gitignore`-d, generated by scripts):
+```
+soffice.wasm      (~147MB, raw WASM binary)
+soffice.data      (~100MB, raw data file)
+```
+
+### Why `.gz` Only in Git?
+
+The raw WASM binary (`soffice.wasm`, ~147MB) exceeds GitHub's 100MB file size limit. Only `.gz` compressed versions are committed to Git. The decompressed files are generated automatically:
+
+| Environment | Script | Target Directory |
+|---|---|---|
+| Development (`npm run dev`) | `predev` → `scripts/decompress-wasm-dev.mjs` | `public/libreoffice-wasm/` |
+| Production Build (`npm run build`) | `postbuild` → `scripts/decompress-wasm.mjs` | `out/libreoffice-wasm/` |
+| Docker Build | Dockerfile `RUN gunzip -k` | `/website/pdfcraft/libreoffice-wasm/` |
+
+### How Each Platform Serves These Files
+
+The converter requests **uncompressed paths** (`soffice.wasm`, `soffice.data`). Each platform handles them as follows:
+
+| Platform | Mechanism |
+|---|---|
+| **Next.js Dev** | Serves `soffice.wasm` from `public/` with `Content-Type: application/wasm` |
+| **Nginx (Docker)** | `gzip_static on` auto-detects `soffice.wasm.gz` alongside `soffice.wasm`, serves compressed version with `Content-Encoding: gzip` and correct `Content-Type: application/wasm` |
+| **Vercel / Netlify** | Serves the decompressed `soffice.wasm` from `out/`, applies CDN-level compression |
+| **Cloudflare Pages** | Same as Vercel/Netlify, with `_headers` file for COOP/COEP |
+| **Apache** | `mod_deflate` compresses on-the-fly, `AddType application/wasm .wasm` sets MIME type |
+
+### Required Headers
+
+All platforms must return these headers for LibreOffice WASM to work (required for `SharedArrayBuffer`):
+```
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Resource-Policy: cross-origin
+```
+
+These are pre-configured in all deployment files (`vercel.json`, `netlify.toml`, `_headers`, `nginx.conf`, `.htaccess`, `middleware.ts`).
+
+---
+
 ## 🐛 Troubleshooting
 
 ### Issue: 404 errors on page refresh
@@ -426,8 +545,30 @@ The build includes:
 Content-Type: application/wasm
 ```
 
-### Issue: WebAssembly streaming compilation error
-**Solution:** The server must serve WASM files with `application/wasm` MIME type, not `application/octet-stream`.
+### Issue: WebAssembly streaming compilation error / `failed to match magic number`
+**Solution:** This typically means the browser received gzip-compressed data instead of raw WASM bytes. The converter requests uncompressed paths (`soffice.wasm`, not `soffice.wasm.gz`). Make sure:
+1. The decompressed `soffice.wasm` file exists on disk (run `npm run build` which auto-decompresses via `postbuild`)
+2. Your server sends `Content-Type: application/wasm` for `.wasm` files
+3. For Nginx: use `gzip_static on` so Nginx can auto-serve the `.gz` version to gzip-capable clients while keeping the correct MIME type
+
+### Issue: LibreOffice WASM stuck on `wasm-instantiate` / SharedArrayBuffer not available
+**Solution:** LibreOffice WASM uses Emscripten pthreads (multi-threading), which requires `SharedArrayBuffer`. Browsers only enable `SharedArrayBuffer` in [Cross-Origin Isolated](https://web.dev/cross-origin-isolation-guide/) contexts. Your server **must** return these headers on **all** responses (HTML pages, JS, WASM):
+```
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Resource-Policy: cross-origin
+```
+
+> ⚠️ **Nginx pitfall:** `add_header` inside a `location` block **completely overrides** all `add_header` directives from the parent `server` block. If you use `add_header Cache-Control ...` in a location block, you must **re-add** all Cross-Origin headers in that same block.
+
+> ⚠️ **CDN/Proxy pitfall:** If you use Cloudflare or another CDN in front of your server, verify that these headers are not being stripped. You may need to configure response header rules in the CDN dashboard.
+
+### Issue: Document conversion tools not working in development
+**Solution:** The `predev` script automatically decompresses LibreOffice WASM `.gz` files in `public/libreoffice-wasm/` before starting the dev server. If the decompressed files are missing:
+```bash
+node scripts/decompress-wasm-dev.mjs
+```
+Then restart the dev server with `npm run dev`.
 
 ### Issue: ES modules (.mjs) not loading
 **Solution:** Configure your server to serve `.mjs` files with `application/javascript` MIME type.
@@ -485,6 +626,8 @@ Before deploying, verify:
 - [ ] `npm run build` completes without errors
 - [ ] All pages render correctly at `/en`, `/zh`, etc.
 - [ ] PDF tools work (WebAssembly loads correctly)
+- [ ] Cross-Origin headers are present (check DevTools → Network → Response Headers)
+- [ ] `SharedArrayBuffer` is available (run `typeof SharedArrayBuffer` in console — should return `"function"`)
 - [ ] PWA install prompt appears on mobile
 - [ ] Service worker registers (check DevTools → Application)
 - [ ] Static assets load with proper caching headers

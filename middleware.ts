@@ -1,17 +1,23 @@
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-export default createMiddleware(routing);
+const intlMiddleware = createMiddleware(routing);
+
+export default function middleware(request: NextRequest) {
+    const response = intlMiddleware(request);
+
+    // Required for SharedArrayBuffer (LibreOffice WASM)
+    response.headers.set('Cross-Origin-Opener-Policy', 'same-origin');
+    response.headers.set('Cross-Origin-Embedder-Policy', 'require-corp');
+    response.headers.set('Cross-Origin-Resource-Policy', 'cross-origin');
+
+    return response;
+}
 
 export const config = {
-  // Match all pathnames except for
-  // - API routes
-  // - Static files (images, fonts, etc.)
-  // - Next.js internals
-  matcher: [
-    // Match all pathnames except for
-    // - ... if they start with `/api`, `/_next` or `/_vercel`
-    // - ... if they contain a dot (e.g. `favicon.ico`)
-    '/((?!api|_next|_vercel|.*\\..*).*)',
-  ],
+    matcher: [
+        '/((?!api|_next|_vercel|.*\\..*).*)',
+    ],
 };

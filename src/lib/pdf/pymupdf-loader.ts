@@ -7,6 +7,27 @@
 let pymupdfInstance: any = null;
 let loadingPromise: Promise<any> | null = null;
 
+function resolvePublicAssetPath(assetPath: string): string {
+  if (typeof window === 'undefined') return assetPath;
+
+  const normalizedAssetPath = assetPath.startsWith('/') ? assetPath : `/${assetPath}`;
+  const scripts = Array.from(document.querySelectorAll('script[src]')) as HTMLScriptElement[];
+  const nextScript = scripts.find((script) => script.src.includes('/_next/'));
+
+  if (!nextScript) return normalizedAssetPath;
+
+  try {
+    const scriptUrl = new URL(nextScript.src);
+    const nextIndex = scriptUrl.pathname.indexOf('/_next/');
+    if (nextIndex <= 0) return normalizedAssetPath;
+
+    const basePath = scriptUrl.pathname.slice(0, nextIndex).replace(/\/$/, '');
+    return `${basePath}${normalizedAssetPath}`;
+  } catch {
+    return normalizedAssetPath;
+  }
+}
+
 /**
  * Load PyMuPDF using Pyodide directly
  */
@@ -21,7 +42,10 @@ export async function loadPyMuPDF(): Promise<any> {
 
   loadingPromise = (async () => {
     try {
-      const basePath = `${window.location.origin}/pymupdf-wasm/`;
+      const basePath = new URL(
+        resolvePublicAssetPath('/pymupdf-wasm/'),
+        window.location.origin
+      ).toString();
 
       // Dynamically import Pyodide as ES module
       const pyodideModule = await import(/* webpackIgnore: true */ `${basePath}pyodide.js`);
@@ -117,13 +141,18 @@ base64.b64encode(docx_data).decode('ascii')
           // Options are available for future use (level, embedFonts, flattenTransparency)
           const _options = options;
 
-          pyodide.FS.writeFile('/input.pdf', pdfData);
+          // Use unique file names to avoid race conditions during concurrent processing
+          const uid = `${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+          const inputPath = `/input_pdfa_${uid}.pdf`;
+          const outputPath = `/output_pdfa_${uid}.pdf`;
+
+          pyodide.FS.writeFile(inputPath, pdfData);
 
           const result = await pyodide.runPythonAsync(`
 import pymupdf
 import base64
 
-doc = pymupdf.open("/input.pdf")
+doc = pymupdf.open("${inputPath}")
 
 # Attempt to make it PDF/A compliant (Best Effort)
 # In a real scenario, we would need to attach an ICC profile and valid OutputIntent.
@@ -135,18 +164,18 @@ save_options = {
     "deflate": True,
 }
 
-doc.save("/output.pdf", **save_options)
+doc.save("${outputPath}", **save_options)
 doc.close()
 
-with open("/output.pdf", "rb") as f:
+with open("${outputPath}", "rb") as f:
     pdf_data = f.read()
 
 base64.b64encode(pdf_data).decode('ascii')
 `);
 
           try {
-            pyodide.FS.unlink('/input.pdf');
-            pyodide.FS.unlink('/output.pdf');
+            pyodide.FS.unlink(inputPath);
+            pyodide.FS.unlink(outputPath);
           } catch {
             // Ignore cleanup errors
           }
@@ -1008,8 +1037,20 @@ for page_num in range(len(doc)):
                 
                 # Only replace if we actually reduced size
                 if len(new_image_bytes) < len(image_bytes) * 0.9:
-                    # Update the image in the PDF
+                    # Update the image stream and its dictionary to match JPEG format
                     doc.update_stream(xref, new_image_bytes)
+                    # Update the image XObject dictionary to reflect JPEG encoding
+                    doc.xref_set_key(xref, "Filter", "/DCTDecode")
+                    doc.xref_set_key(xref, "ColorSpace", "/DeviceRGB")
+                    doc.xref_set_key(xref, "BitsPerComponent", "8")
+                    # Update dimensions if image was resized
+                    doc.xref_set_key(xref, "Width", str(pix.width))
+                    doc.xref_set_key(xref, "Height", str(pix.height))
+                    # Remove DecodeParms that may be left from PNG/Flate encoding
+                    try:
+                        doc.xref_set_key(xref, "DecodeParms", "null")
+                    except:
+                        pass
         except Exception as e:
             # Skip images that can't be processed
             pass

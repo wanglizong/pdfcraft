@@ -75,7 +75,9 @@ export function WorkflowControls({
 
     const handleExecute = useCallback(() => {
         if (selectedFiles.length > 0) {
-            onExecute(selectedFiles);
+            Promise.resolve(onExecute(selectedFiles)).catch((err) => {
+                console.error('[Workflow] Unhandled execution error:', err);
+            });
         }
     }, [selectedFiles, onExecute]);
 
@@ -155,7 +157,7 @@ export function WorkflowControls({
                             ref={fileInputRef}
                             type="file"
                             multiple
-                            accept=".pdf,.jpg,.jpeg,.png,.webp,.doc,.docx,.xls,.xlsx,.ppt,.pptx"
+                            accept=".pdf,.jpg,.jpeg,.png,.webp,.bmp,.tiff,.tif,.svg,.heic,.heif,.txt,.json,.md,.markdown,.doc,.docx,.odt,.rtf,.xls,.xlsx,.ods,.csv,.ppt,.pptx,.odp,.epub,.mobi,.azw,.azw3,.xps,.djvu,.djv,.fb2,.cbz,.zip,.eml,.msg"
                             onChange={handleFileSelect}
                             className="hidden"
                         />
@@ -363,7 +365,7 @@ export function WorkflowControls({
                         <div className="text-sm text-yellow-700">
                             <p className="font-semibold mb-1">{tWorkflow('validationErrors') || 'Validation Errors'}</p>
                             {validation.errors.map((error, index) => (
-                                <p key={index} className="ml-2">• {error.message}</p>
+                                <p key={index} className="ml-2">- {error.message}</p>
                             ))}
                         </div>
                     </div>
@@ -378,7 +380,7 @@ export function WorkflowControls({
                         <div className="text-sm text-yellow-600">
                             <p className="font-semibold mb-1">{tWorkflow('warnings') || 'Warnings'}</p>
                             {validation.warnings.map((warning, index) => (
-                                <p key={index} className="ml-2">• {warning.message}</p>
+                                <p key={index} className="ml-2">- {warning.message}</p>
                             ))}
                         </div>
                     </div>

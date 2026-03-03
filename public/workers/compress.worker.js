@@ -3,7 +3,7 @@
  * Uses coherentpdf for advanced PDF compression
  */
 
-self.importScripts('/coherentpdf.browser.min.js');
+self.importScripts('../coherentpdf.browser.min.js');
 
 /**
  * Compress PDF with coherentpdf

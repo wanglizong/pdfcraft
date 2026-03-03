@@ -290,8 +290,8 @@ docker compose down
 
 ## 📜 Scripts
 
-- `npm run dev`: Starts the development server with Turbopack.
-- `npm run build`: Builds the application for production.
+- `npm run dev`: Starts the development server with Turbopack. Automatically runs `predev` to decompress LibreOffice WASM files.
+- `npm run build`: Builds the application for production. Automatically runs `postbuild` to decompress WASM files in `out/`.
 - `npm run start`: Starts the production server.
 - `npm run lint`: Lints the code using ESLint.
 - `npm run test`: Runs tests using Vitest.

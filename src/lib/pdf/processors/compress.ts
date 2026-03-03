@@ -12,6 +12,7 @@ import type {
   ProgressCallback,
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
+import { logger } from '@/lib/utils/logger';
 import { BasePDFProcessor } from '../processor';
 import { loadPyMuPDF } from '../pymupdf-loader';
 
@@ -86,6 +87,27 @@ interface WorkerErrorMessage {
 
 type WorkerMessage = WorkerProgressMessage | WorkerSuccessMessage | WorkerErrorMessage;
 
+function resolvePublicAssetPath(assetPath: string): string {
+  if (typeof window === 'undefined') return assetPath;
+
+  const normalizedAssetPath = assetPath.startsWith('/') ? assetPath : `/${assetPath}`;
+  const scripts = Array.from(document.querySelectorAll('script[src]')) as HTMLScriptElement[];
+  const nextScript = scripts.find((script) => script.src.includes('/_next/'));
+
+  if (!nextScript) return normalizedAssetPath;
+
+  try {
+    const scriptUrl = new URL(nextScript.src);
+    const nextIndex = scriptUrl.pathname.indexOf('/_next/');
+    if (nextIndex <= 0) return normalizedAssetPath;
+
+    const basePath = scriptUrl.pathname.slice(0, nextIndex).replace(/\/$/, '');
+    return `${basePath}${normalizedAssetPath}`;
+  } catch {
+    return normalizedAssetPath;
+  }
+}
+
 /**
  * Compress PDF Processor
  * Compresses PDF files to reduce file size using coherentpdf.
@@ -154,7 +176,16 @@ export class CompressPDFProcessor extends BasePDFProcessor {
           // If optimizeImages is enabled, additionally compress images with PyMuPDF
           if (compressOptions.optimizeImages) {
             this.updateProgress(70, 'Optimizing images...');
-            result = await this.optimizeImagesWithPyMuPDF(result.pdfBytes, compressOptions);
+            try {
+              result = await this.optimizeImagesWithPyMuPDF(result.pdfBytes, compressOptions);
+            } catch (optimizationError) {
+              // Degrade gracefully to worker-only output if PyMuPDF is unavailable.
+              logger.warn(
+                '[CompressPDF] Image optimization skipped, using structure-compressed output only',
+                optimizationError
+              );
+              this.updateProgress(95, 'Image optimization unavailable, finalizing...');
+            }
           }
           break;
       }
@@ -214,7 +245,7 @@ export class CompressPDFProcessor extends BasePDFProcessor {
   ): Promise<{ pdfBytes: ArrayBuffer; compressedSize: number }> {
     return new Promise((resolve, reject) => {
       try {
-        this.worker = new Worker('/workers/compress.worker.js');
+        this.worker = new Worker(resolvePublicAssetPath('/workers/compress.worker.js'));
 
         this.worker.onmessage = (e: MessageEvent<WorkerMessage>) => {
           const data = e.data;

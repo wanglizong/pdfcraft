@@ -64,3 +64,9 @@ ehthumbs.db
 bentopdf-main
 # Comparison/debug files
 comparisons.txt
+
+# LibreOffice WASM decompressed files (large, generated from .gz)
+public/libreoffice-wasm/soffice.wasm
+public/libreoffice-wasm/soffice.data
+
+

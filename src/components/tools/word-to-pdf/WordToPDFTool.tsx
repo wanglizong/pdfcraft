@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileText, Trash2, RefreshCw, CheckCircle2, AlertCircle } from 'lucide-react';
 import { FileUploader } from '../FileUploader';
@@ -8,6 +8,7 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { BatchProcessingPanel } from '@/components/common/BatchProcessingPanel';
 import { wordToPDF } from '@/lib/pdf/processors/word-to-pdf';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
@@ -37,11 +38,51 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
     const [status, setStatus] = useState<ProcessingStatus>('idle');
     const [progress, setProgress] = useState(0);
     const [progressMessage, setProgressMessage] = useState('');
+    const [preloadStatus, setPreloadStatus] = useState<ProcessingStatus>('idle');
+    const [preloadProgress, setPreloadProgress] = useState(0);
+    const [preloadMessage, setPreloadMessage] = useState('');
     const [result, setResult] = useState<Blob | Blob[] | null>(null);
     const [error, setError] = useState<string | null>(null);
 
     // Ref for cancellation
     const cancelledRef = useRef(false);
+
+    // Preload LibreOffice WASM when the component mounts
+    useEffect(() => {
+        let cancelled = false;
+        (async () => {
+            try {
+                const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
+                if (cancelled) return;
+                const converter = getLibreOfficeConverter();
+
+                setPreloadStatus('processing');
+                setPreloadProgress(0);
+                setPreloadMessage('Checking environment...');
+
+                await converter.initialize((loadProgress: { percent: number; message: string; phase?: string }) => {
+                    if (cancelled) return;
+                    setPreloadStatus('processing');
+                    setPreloadProgress(loadProgress.percent);
+                    setPreloadMessage(loadProgress.message || 'Loading conversion engine...');
+
+                    if (loadProgress.phase === 'ready' || loadProgress.percent >= 100) {
+                        setPreloadStatus('complete');
+                    }
+                });
+
+                if (cancelled) return;
+                setPreloadStatus('complete');
+                setPreloadProgress(100);
+                setPreloadMessage('Conversion engine ready!');
+            } catch (err) {
+                if (cancelled) return;
+                setPreloadStatus('error');
+                setPreloadMessage(err instanceof Error ? err.message : 'Failed to preload conversion engine.');
+            }
+        })();
+        return () => { cancelled = true; };
+    }, []);
 
     /**
      * Handle file selected from uploader
@@ -135,6 +176,20 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
         setProgress(0);
     }, []);
 
+    const handleBatchProcess = useCallback(async (batchFile: File, onProgress: (progress: number) => void): Promise<Blob> => {
+        const output = await wordToPDF(
+            batchFile,
+            {},
+            (prog) => onProgress(Math.round(prog))
+        );
+
+        if (!output.success || !output.result || Array.isArray(output.result)) {
+            throw new Error(output.error?.message || 'Failed to convert file.');
+        }
+
+        return output.result;
+    }, []);
+
     /**
      * Format file size
      */
@@ -151,7 +206,12 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
         <div className={`space-y-8 ${className}`.trim()}>
             {/* File Upload Area */}
             <FileUploader
-                accept={['.docx', '.doc', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword']}
+                accept={[
+                    '.docx', '.doc', '.odt',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'application/msword',
+                    'application/vnd.oasis.opendocument.text',
+                ]}
                 multiple={false}
                 maxFiles={1}
                 onFilesSelected={handleFilesSelected}
@@ -210,6 +270,16 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
                 />
             )}
 
+            {!isProcessing && preloadStatus !== 'idle' && (
+                <ProcessingProgress
+                    progress={preloadProgress}
+                    status={preloadStatus}
+                    message={preloadMessage}
+                    showPercentage
+                    showEstimatedTime={false}
+                />
+            )}
+
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center justify-center gap-4">
                 <Button
@@ -254,6 +324,28 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
                     </p>
                 </div>
             )}
+
+            <BatchProcessingPanel
+                translations={{
+                    title: 'Batch Word to PDF',
+                    addFiles: 'Click or drop files to add',
+                    clearAll: 'Clear all',
+                    startProcessing: 'Start batch conversion',
+                    cancelProcessing: 'Cancel',
+                    downloadAll: 'Download all',
+                    downloadZip: 'Download ZIP',
+                    pending: 'Pending',
+                    processing: 'Processing',
+                    completed: 'Completed',
+                    error: 'Error',
+                    progress: 'Overall progress',
+                    filesSelected: 'files',
+                    noFiles: 'No files added yet.',
+                }}
+                acceptedTypes=".docx,.doc,.odt"
+                processor={handleBatchProcess}
+                maxConcurrent={1}
+            />
         </div>
     );
 }
