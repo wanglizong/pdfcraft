@@ -1,6 +1,6 @@
 // PDFCraft Chrome Extension - Background Service Worker
 
-const PDFCRAFT_URL = 'https://pdfcraft.devtoolcafe.com/en';
+const PDFCRAFT_URL = 'https://hello-pdf.com/en';
 
 // Create context menu when extension is installed
 chrome.runtime.onInstalled.addListener(() => {
