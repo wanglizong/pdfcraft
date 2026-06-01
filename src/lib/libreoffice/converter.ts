@@ -143,9 +143,6 @@ export class LibreOfficeConverter {
                 sofficeWorkerJs: `${this.basePath}soffice.worker.js?v=${ASSET_VERSION}`,
                 browserWorkerJs: `${this.basePath}browser.worker.global.js?v=${ASSET_VERSION}`,
                 verbose: false,
-                fonts: [
-                    { filename: 'NotoSansSC-Regular.ttf', data: fontArrayBuffer }
-                ],
                 onProgress: (info: { phase: string; percent: number; message: string }) => {
                     // Use this.progressCallback so a late-arriving callback from the UI gets picked up
                     if (this.progressCallback && !this.initialized) {
