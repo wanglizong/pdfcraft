@@ -2,10 +2,10 @@
  * Dev setup script: Decompress LibreOffice WASM .gz files in public/ for local development
  * 
  * Problem: soffice.wasm (~147MB) and soffice.data (~100MB) exceed GitHub's 100MB
- * file size limit, so only .gz versions are committed. However, Next.js dev server
- * serves .gz files with Content-Type: application/gzip, which breaks WASM loading.
+ * file size limit, so only .bin.gz versions are committed. However, Next.js dev server
+ * serves .bin.gz files with Content-Type: application/gzip, which breaks WASM loading.
  * 
- * Solution: Decompress .gz files in public/libreoffice-wasm/ before starting dev.
+ * Solution: Decompress .bin.gz files in public/libreoffice-wasm/ before starting dev.
  * The decompressed files are in .gitignore so they won't be committed.
  * 
  * This runs automatically via the "predev" npm script.
@@ -42,7 +42,12 @@ async function main() {
 
     for (const gzFile of files) {
         const gzPath = join(WASM_DIR, gzFile);
-        const outFile = gzFile.replace(/\.gz$/, '');
+        let outFile = gzFile.replace(/\.gz$/, '');
+        if (outFile === 'soffice.wasm') {
+            outFile = 'soffice.wasm.bin';
+        } else if (outFile === 'soffice.data') {
+            outFile = 'soffice.data.bin';
+        }
         const outPath = join(WASM_DIR, outFile);
 
         // Skip if already decompressed and larger than gz (valid decompression)

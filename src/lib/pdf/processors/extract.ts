@@ -129,49 +129,73 @@ export class ExtractPagesPDFProcessor extends BasePDFProcessor {
 
       this.updateProgress(30, 'Creating new document...');
 
-      // Create a new PDF document
-      const newPdf = await pdfLib.PDFDocument.create();
+      // Try to use PyMuPDF for high-fidelity extraction
+      try {
+        const { loadPyMuPDF } = await import('../pymupdf-loader');
+        const pymupdf = await loadPyMuPDF();
+        
+        if (pymupdf && typeof pymupdf.extractPages === 'function') {
+          this.updateProgress(40, 'Using high-fidelity engine for extraction...');
+          const blob = await pymupdf.extractPages(file, uniquePages);
+          
+          this.updateProgress(100, 'Complete!');
+          const outputFilename = generateExtractedFilename(file.name, uniquePages);
+          
+          return this.createSuccessOutput(blob, outputFilename, {
+            extractedPageCount: uniquePages.length,
+            originalPageCount: totalPages,
+            extractedPages: uniquePages,
+          });
+        } else {
+          throw new Error('PyMuPDF extract not available');
+        }
+      } catch (pymupdfErr) {
+        console.warn('PyMuPDF extract failed or not available, falling back to pdf-lib:', pymupdfErr);
+        
+        // Fallback to pdf-lib (original logic)
+        // Create a new PDF document
+        const newPdf = await pdfLib.PDFDocument.create();
 
-      // Copy pages
-      const progressPerPage = 60 / uniquePages.length;
+        // Copy pages
+        const progressPerPage = 60 / uniquePages.length;
 
-      for (let i = 0; i < uniquePages.length; i++) {
-        if (this.checkCancelled()) {
-          return this.createErrorOutput(
-            PDFErrorCode.PROCESSING_CANCELLED,
-            'Processing was cancelled.'
+        for (let i = 0; i < uniquePages.length; i++) {
+          if (this.checkCancelled()) {
+            return this.createErrorOutput(
+              PDFErrorCode.PROCESSING_CANCELLED,
+              'Processing was cancelled.'
+            );
+          }
+
+          const pageNum = uniquePages[i];
+          const pageIndex = pageNum - 1; // Convert to 0-based index
+
+          this.updateProgress(
+            30 + (i * progressPerPage),
+            `Extracting page ${pageNum}...`
           );
+
+          const [copiedPage] = await newPdf.copyPages(sourcePdf, [pageIndex]);
+          newPdf.addPage(copiedPage);
         }
 
-        const pageNum = uniquePages[i];
-        const pageIndex = pageNum - 1; // Convert to 0-based index
+        this.updateProgress(90, 'Saving extracted pages...');
 
-        this.updateProgress(
-          30 + (i * progressPerPage),
-          `Extracting page ${pageNum}...`
-        );
+        // Save the new PDF
+        const pdfBytes = await newPdf.save({ useObjectStreams: true });
+        const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
 
-        const [copiedPage] = await newPdf.copyPages(sourcePdf, [pageIndex]);
-        newPdf.addPage(copiedPage);
+        this.updateProgress(100, 'Complete!');
+
+        // Generate output filename
+        const outputFilename = generateExtractedFilename(file.name, uniquePages);
+
+        return this.createSuccessOutput(blob, outputFilename, {
+          extractedPageCount: uniquePages.length,
+          originalPageCount: totalPages,
+          extractedPages: uniquePages,
+        });
       }
-
-      this.updateProgress(90, 'Saving extracted pages...');
-
-      // Save the new PDF
-      const pdfBytes = await newPdf.save({ useObjectStreams: true });
-      const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
-
-      this.updateProgress(100, 'Complete!');
-
-      // Generate output filename
-      const outputFilename = generateExtractedFilename(file.name, uniquePages);
-
-      return this.createSuccessOutput(blob, outputFilename, {
-        extractedPageCount: uniquePages.length,
-        originalPageCount: totalPages,
-        extractedPages: uniquePages,
-      });
-
     } catch (error) {
       return this.createErrorOutput(
         PDFErrorCode.PROCESSING_FAILED,

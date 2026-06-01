@@ -1,0 +1,60 @@
+{
+  "title": "Word to PDF",
+  "metaDescription": "Convert Word documents (DOCX) to PDF. Preserve formatting and layout in your converted documents.",
+  "keywords": [
+    "word to pdf",
+    "docx to pdf",
+    "convert word",
+    "word converter",
+    "microsoft word to pdf"
+  ],
+  "description": "\n      <p>Word to PDF converts Microsoft Word documents into PDF format while preserving the original formatting, layout, and content structure.</p>\n      <p>Upload your DOCX files and get high-quality PDF output suitable for sharing, printing, or archiving. The conversion maintains text formatting, paragraph styles, and basic document structure.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Word Document",
+      "description": "Drag and drop your .docx file or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Wait for Processing",
+      "description": "The tool will load the document and prepare it for conversion."
+    },
+    {
+      "step": 3,
+      "title": "Download PDF",
+      "description": "Click Download to save your converted PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Document Sharing",
+      "description": "Convert Word documents to PDF for universal sharing and viewing.",
+      "icon": "share-2"
+    },
+    {
+      "title": "Print Preparation",
+      "description": "Create print-ready PDFs from Word documents.",
+      "icon": "printer"
+    },
+    {
+      "title": "Document Archive",
+      "description": "Archive Word documents in stable PDF format for long-term storage.",
+      "icon": "archive"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is .doc format supported?",
+      "answer": "Currently only .docx format is supported. Please convert .doc files to .docx first using Microsoft Word or LibreOffice."
+    },
+    {
+      "question": "Are images preserved?",
+      "answer": "Text content and basic formatting are preserved. Complex layouts with many images may have simplified rendering."
+    },
+    {
+      "question": "Is the conversion secure?",
+      "answer": "Yes, all processing happens in your browser. Your documents never leave your device."
+    }
+  ]
+}

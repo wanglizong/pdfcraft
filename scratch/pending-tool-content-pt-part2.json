@@ -1,0 +1,3204 @@
+{
+  "pdf-to-excel": {
+    "en": {
+      "title": "PDF to Excel",
+      "metaDescription": "Convert PDF to Excel spreadsheet. Extract tables to XLSX format.",
+      "keywords": [
+        "pdf to excel",
+        "pdf to xlsx",
+        "convert pdf tables",
+        "extract tables"
+      ],
+      "description": "\n      <p>PDF to Excel converts your PDF documents into editable Microsoft Excel spreadsheets (XLSX). The tool automatically detects tables in your PDF and extracts them into separate sheets.</p>\n      <p>This tool is ideal for analyzing financial reports, invoices, or any data presented in tables. Each page's tables are organized into sheets for easy data manipulation.</p>\n      <p>All conversion happens locally in your browser, ensuring your data remains private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Process",
+          "description": "The tool will automatically identify and extract tables."
+        },
+        {
+          "step": 3,
+          "title": "Download Excel",
+          "description": "Download your Excel file with extracted tables."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Financial Analysis",
+          "description": "Convert bank statements or invoices to Excel for analysis.",
+          "icon": "trending-up"
+        },
+        {
+          "title": "Data Extraction",
+          "description": "Pull data tables from research papers or reports.",
+          "icon": "database"
+        },
+        {
+          "title": "Inventory Management",
+          "description": "Convert inventory lists from PDF to spreadsheet.",
+          "icon": "clipboard"
+        }
+      ],
+      "faq": [
+        {
+          "question": "How are tables handled?",
+          "answer": "Tables detected on each page are extracted to corresponding sheets in the Excel file."
+        },
+        {
+          "question": "What if there are no tables?",
+          "answer": "An info sheet will be created indicating no tables were found."
+        },
+        {
+          "question": "Is formatting preserved?",
+          "answer": "Data is preserved, but complex visual formatting may be simplified for spreadsheet use."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF转Excel",
+      "metaDescription": "将PDF转换为Excel表格。将表格提取为XLSX格式。",
+      "keywords": [
+        "pdf转excel",
+        "pdf转xlsx",
+        "提取表格",
+        "pdf数据提取"
+      ],
+      "description": "\n      <p>PDF转Excel将您的PDF文档转换为可编辑的Excel电子表格(XLSX)。工具自动检测并提取表格。</p>\n      <p>非常适合分析财务报告或数据表。每页的表格提取到单独的Sheet中。</p>\n      <p>所有转换都在您的浏览器中进行，确保您的数据隐私安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "处理",
+          "description": "工具将自动识别表格。"
+        },
+        {
+          "step": 3,
+          "title": "下载Excel",
+          "description": "下载包含提取表格的文件。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "财务分析",
+          "description": "转换银行账单或发票。",
+          "icon": "trending-up"
+        },
+        {
+          "title": "数据提取",
+          "description": "从报告中提取数据表。",
+          "icon": "database"
+        },
+        {
+          "title": "清单转换",
+          "description": "将PDF库存清单转换为表格。",
+          "icon": "clipboard"
+        }
+      ],
+      "faq": [
+        {
+          "question": "如何处理表格？",
+          "answer": "每页的表格提取到对应的Excel工作表中。"
+        },
+        {
+          "question": "如果没有表格？",
+          "answer": "将创建一个提示信息工作表。"
+        },
+        {
+          "question": "保留格式吗？",
+          "answer": "数据保留，视觉格式可能简化。"
+        }
+      ]
+    }
+  },
+  "ocr-pdf": {
+    "en": {
+      "title": "OCR PDF",
+      "metaDescription": "Make scanned PDFs searchable with OCR. Extract text from images and scanned documents.",
+      "keywords": [
+        "ocr pdf",
+        "searchable pdf",
+        "text recognition",
+        "scan to text"
+      ],
+      "description": "\n      <p>OCR PDF uses Optical Character Recognition to extract text from scanned documents and images within PDFs. Convert image-based PDFs into searchable, selectable text documents.</p>\n      <p>Support for multiple languages ensures accurate text recognition regardless of the document's language. The original layout is preserved while adding a searchable text layer.</p>\n      <p>All OCR processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Scanned PDF",
+          "description": "Drag and drop your scanned PDF or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Select Language",
+          "description": "Choose the document language for accurate recognition."
+        },
+        {
+          "step": 3,
+          "title": "Process and Download",
+          "description": "Click Process to run OCR and download the searchable PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Digitize Archives",
+          "description": "Make scanned document archives searchable.",
+          "icon": "archive"
+        },
+        {
+          "title": "Document Search",
+          "description": "Enable text search in scanned documents.",
+          "icon": "search"
+        },
+        {
+          "title": "Text Extraction",
+          "description": "Extract text from scanned documents for editing.",
+          "icon": "type"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What languages are supported?",
+          "answer": "Over 100 languages are supported including English, Chinese, Japanese, Korean, and more."
+        },
+        {
+          "question": "Will the original layout be preserved?",
+          "answer": "Yes, the original visual layout is preserved with a searchable text layer added."
+        },
+        {
+          "question": "How accurate is the OCR?",
+          "answer": "Accuracy depends on scan quality but typically exceeds 95% for clear documents."
+        }
+      ]
+    },
+    "zh": {
+      "title": "OCR PDF",
+      "metaDescription": "使用OCR使扫描的PDF可搜索。从图像和扫描文档中提取文本。",
+      "keywords": [
+        "ocr pdf",
+        "可搜索pdf",
+        "文本识别",
+        "扫描转文本"
+      ],
+      "description": "\n      <p>OCR PDF使用光学字符识别从PDF中的扫描文档和图像中提取文本。将基于图像的PDF转换为可搜索、可选择文本的文档。</p>\n      <p>支持多种语言，确保无论文档语言如何都能准确识别文本。在添加可搜索文本层的同时保留原始布局。</p>\n      <p>所有OCR处理都在您的浏览器中进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传扫描的PDF",
+          "description": "拖放您的扫描PDF或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "选择语言",
+          "description": "选择文档语言以获得准确识别。"
+        },
+        {
+          "step": 3,
+          "title": "处理并下载",
+          "description": "点击处理运行OCR并下载可搜索的PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "数字化存档",
+          "description": "使扫描的文档存档可搜索。",
+          "icon": "archive"
+        },
+        {
+          "title": "文档搜索",
+          "description": "在扫描文档中启用文本搜索。",
+          "icon": "search"
+        },
+        {
+          "title": "文本提取",
+          "description": "从扫描文档中提取文本以供编辑。",
+          "icon": "type"
+        }
+      ],
+      "faq": [
+        {
+          "question": "支持哪些语言？",
+          "answer": "支持100多种语言，包括英语、中文、日语、韩语等。"
+        },
+        {
+          "question": "原始布局会保留吗？",
+          "answer": "是的，原始视觉布局会保留，并添加可搜索的文本层。"
+        },
+        {
+          "question": "OCR有多准确？",
+          "answer": "准确性取决于扫描质量，但对于清晰的文档通常超过95%。"
+        }
+      ]
+    }
+  },
+  "extract-images": {
+    "en": {
+      "title": "Extract Images from PDF",
+      "metaDescription": "Extract all embedded images from PDF files. Download individually or as a ZIP archive. Filter small images automatically.",
+      "keywords": [
+        "extract pdf images",
+        "pdf image extraction",
+        "get images from pdf",
+        "download pdf images",
+        "pdf to images"
+      ],
+      "description": "\n      <p>Extract Images from PDF retrieves all embedded images from your PDF documents. Download high-quality images individually or as a convenient ZIP archive.</p>\n      <p>The tool automatically filters out small images like icons and decorations based on customizable size thresholds. Process multiple PDFs at once for efficient batch extraction.</p>\n      <p>All extraction happens in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDFs",
+          "description": "Drag and drop one or more PDF files or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Set Filter Options",
+          "description": "Adjust minimum width, height, and file size to filter out unwanted small images."
+        },
+        {
+          "step": 3,
+          "title": "Extract Images",
+          "description": "Click Extract to find all embedded images in your PDFs."
+        },
+        {
+          "step": 4,
+          "title": "Download",
+          "description": "Download individual images or all images as a ZIP archive."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Photo Recovery",
+          "description": "Extract photos and images embedded in PDF documents for reuse or archiving.",
+          "icon": "image"
+        },
+        {
+          "title": "Asset Collection",
+          "description": "Gather all graphics and images from PDF reports, presentations, or brochures.",
+          "icon": "folder"
+        },
+        {
+          "title": "Content Repurposing",
+          "description": "Extract images from PDFs to use in other documents, websites, or presentations.",
+          "icon": "refresh-cw"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What image formats are extracted?",
+          "answer": "Images are extracted in their native format (JPEG, PNG, etc.) when possible, or converted to PNG for raw image data."
+        },
+        {
+          "question": "Why are some images missing?",
+          "answer": "Small images below the size threshold are filtered out. Adjust the filter settings to extract smaller images."
+        },
+        {
+          "question": "Can I extract from scanned PDFs?",
+          "answer": "Scanned PDFs typically contain the scan as one large image per page. Use PDF to Image tool instead for page-by-page conversion."
+        }
+      ]
+    },
+    "zh": {
+      "title": "从PDF提取图片",
+      "metaDescription": "从PDF文件中提取所有嵌入的图片。支持单独下载或打包成ZIP下载。自动过滤小尺寸图片。",
+      "keywords": [
+        "提取pdf图片",
+        "pdf图片提取",
+        "从pdf获取图片",
+        "下载pdf图片",
+        "pdf转图片"
+      ],
+      "description": "\n      <p>从PDF提取图片工具可以从您的PDF文档中检索所有嵌入的图片。您可以单独下载高质量图片，也可以将所有图片打包成ZIP压缩包一次性下载。</p>\n      <p>该工具会根据可自定义的尺寸阈值自动过滤掉小图片（如图标和装饰图案）。支持批量处理多个PDF文件，高效便捷。</p>\n      <p>所有提取过程都在您的浏览器中进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放一个或多个PDF文件，或点击从设备中选择文件。"
+        },
+        {
+          "step": 2,
+          "title": "设置过滤选项",
+          "description": "调整最小宽度、高度和文件大小，过滤掉不需要的小图片。"
+        },
+        {
+          "step": 3,
+          "title": "提取图片",
+          "description": "点击提取按钮，查找PDF中所有嵌入的图片。"
+        },
+        {
+          "step": 4,
+          "title": "下载",
+          "description": "单独下载每张图片，或将所有图片打包成ZIP压缩包下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "图片恢复",
+          "description": "从PDF文档中提取照片和图片，用于重复使用或存档。",
+          "icon": "image"
+        },
+        {
+          "title": "素材收集",
+          "description": "收集PDF报告、演示文稿或宣传册中的所有图形和图片。",
+          "icon": "folder"
+        },
+        {
+          "title": "内容再利用",
+          "description": "从PDF中提取图片，用于其他文档、网站或演示文稿。",
+          "icon": "refresh-cw"
+        }
+      ],
+      "faq": [
+        {
+          "question": "提取的图片是什么格式？",
+          "answer": "图片会尽可能保持原始格式（JPEG、PNG等）提取，原始像素数据会转换为PNG格式。"
+        },
+        {
+          "question": "为什么有些图片没有提取出来？",
+          "answer": "小于设定尺寸阈值的图片会被过滤掉。调整过滤设置可以提取更小的图片。"
+        },
+        {
+          "question": "可以从扫描的PDF中提取图片吗？",
+          "answer": "扫描的PDF通常每页包含一张大图片。如需逐页转换，请使用\"PDF转图片\"工具。"
+        }
+      ]
+    }
+  },
+  "edit-attachments": {
+    "en": {
+      "title": "Edit Attachments",
+      "metaDescription": "Manage PDF attachments. View, rename, and remove embedded files.",
+      "keywords": [
+        "edit attachments",
+        "manage pdf files",
+        "remove attachments",
+        "rename attachments"
+      ],
+      "description": "\n      <p>Edit Attachments lets you manage embedded files in PDF documents. View all attachments, rename them, or remove unwanted files from the PDF.</p>\n      <p>Perfect for cleaning up PDF packages or updating attachment information before distribution.</p>\n      <p>All editing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Manage Attachments",
+          "description": "View, rename, or delete embedded files."
+        },
+        {
+          "step": 3,
+          "title": "Save and Download",
+          "description": "Click Save to apply changes and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Clean Up PDFs",
+          "description": "Remove unnecessary attachments from PDF packages.",
+          "icon": "trash-2"
+        },
+        {
+          "title": "Rename Files",
+          "description": "Update attachment names for clarity.",
+          "icon": "edit"
+        },
+        {
+          "title": "Review Contents",
+          "description": "Audit embedded files before distribution.",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can I add new attachments here?",
+          "answer": "Use the Add Attachments tool to embed new files."
+        },
+        {
+          "question": "Is removal permanent?",
+          "answer": "Yes, removed attachments cannot be recovered from the output file."
+        },
+        {
+          "question": "Can I preview attachments?",
+          "answer": "You can see file names and sizes; use Extract Attachments to view contents."
+        }
+      ]
+    },
+    "zh": {
+      "title": "编辑附件",
+      "metaDescription": "管理PDF附件。查看、重命名和删除嵌入的文件。",
+      "keywords": [
+        "编辑附件",
+        "管理pdf文件",
+        "删除附件",
+        "重命名附件"
+      ],
+      "description": "\n      <p>编辑附件让您管理PDF文档中的嵌入文件。查看所有附件、重命名它们或从PDF中删除不需要的文件。</p>\n      <p>非常适合在分发前清理PDF包或更新附件信息。</p>\n      <p>所有编辑都在您的浏览器中进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "管理附件",
+          "description": "查看、重命名或删除嵌入的文件。"
+        },
+        {
+          "step": 3,
+          "title": "保存并下载",
+          "description": "点击保存应用更改并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "清理PDF",
+          "description": "从PDF包中删除不必要的附件。",
+          "icon": "trash-2"
+        },
+        {
+          "title": "重命名文件",
+          "description": "更新附件名称以提高清晰度。",
+          "icon": "edit"
+        },
+        {
+          "title": "审阅内容",
+          "description": "在分发前审核嵌入的文件。",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "可以在这里添加新附件吗？",
+          "answer": "使用添加附件工具嵌入新文件。"
+        },
+        {
+          "question": "删除是永久的吗？",
+          "answer": "是的，删除的附件无法从输出文件中恢复。"
+        },
+        {
+          "question": "可以预览附件吗？",
+          "answer": "您可以看到文件名和大小；使用提取附件查看内容。"
+        }
+      ]
+    }
+  },
+  "add-blank-page": {
+    "en": {
+      "title": "Add Blank Page",
+      "metaDescription": "Insert blank pages into PDF documents. Add empty pages at any position.",
+      "keywords": [
+        "add blank page",
+        "insert page",
+        "empty page",
+        "pdf page insertion"
+      ],
+      "description": "\n      <p>Add Blank Page inserts empty pages into your PDF documents at any position. Add pages before, after, or between existing pages with customizable page size.</p>\n      <p>Perfect for adding space for notes, creating section dividers, or preparing documents for printing.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Choose Position",
+          "description": "Select where to insert blank pages and how many."
+        },
+        {
+          "step": 3,
+          "title": "Add and Download",
+          "description": "Click Add to insert pages and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Note Space",
+          "description": "Add blank pages for handwritten notes.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Section Dividers",
+          "description": "Insert blank pages between document sections.",
+          "icon": "minus"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Add pages for duplex printing alignment.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can I choose the page size?",
+          "answer": "Yes, blank pages can match existing pages or use custom dimensions."
+        },
+        {
+          "question": "Can I add multiple blank pages?",
+          "answer": "Yes, you can add any number of blank pages at once."
+        },
+        {
+          "question": "Can I add colored pages?",
+          "answer": "Use Background Color tool after adding blank pages to add color."
+        }
+      ]
+    },
+    "zh": {
+      "title": "添加空白页",
+      "metaDescription": "在PDF文档中插入空白页。在任何位置添加空页。",
+      "keywords": [
+        "添加空白页",
+        "插入页面",
+        "空页",
+        "pdf页面插入"
+      ],
+      "description": "\n      <p>添加空白页在PDF文档的任何位置插入空页。在现有页面之前、之后或之间添加页面，可自定义页面大小。</p>\n      <p>非常适合添加笔记空间、创建章节分隔符或为打印准备文档。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "选择位置",
+          "description": "选择在哪里插入空白页以及插入多少页。"
+        },
+        {
+          "step": 3,
+          "title": "添加并下载",
+          "description": "点击添加插入页面并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "笔记空间",
+          "description": "添加空白页以供手写笔记。",
+          "icon": "edit-3"
+        },
+        {
+          "title": "章节分隔符",
+          "description": "在文档章节之间插入空白页。",
+          "icon": "minus"
+        },
+        {
+          "title": "打印准备",
+          "description": "添加页面以对齐双面打印。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "可以选择页面大小吗？",
+          "answer": "是的，空白页可以匹配现有页面或使用自定义尺寸。"
+        },
+        {
+          "question": "可以添加多个空白页吗？",
+          "answer": "是的，您可以一次添加任意数量的空白页。"
+        },
+        {
+          "question": "可以添加彩色页面吗？",
+          "answer": "添加空白页后使用背景颜色工具添加颜色。"
+        }
+      ]
+    }
+  },
+  "rotate-pdf": {
+    "en": {
+      "title": "Rotate PDF",
+      "metaDescription": "Rotate PDF pages. Turn pages 90, 180, or 270 degrees.",
+      "keywords": [
+        "rotate pdf",
+        "turn pdf pages",
+        "pdf rotation",
+        "fix orientation"
+      ],
+      "description": "\n      <p>Rotate PDF turns pages in your document by 90, 180, or 270 degrees. Fix incorrectly oriented scans, rotate landscape pages, or adjust page orientation for viewing.</p>\n      <p>Rotate all pages uniformly or select specific pages to rotate individually. The tool preserves all content and formatting.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Select Rotation",
+          "description": "Choose rotation angle and which pages to rotate."
+        },
+        {
+          "step": 3,
+          "title": "Rotate and Download",
+          "description": "Click Rotate to apply changes and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Fix Scans",
+          "description": "Correct orientation of scanned documents.",
+          "icon": "rotate-cw"
+        },
+        {
+          "title": "Landscape Pages",
+          "description": "Rotate landscape pages for proper viewing.",
+          "icon": "monitor"
+        },
+        {
+          "title": "Mixed Orientation",
+          "description": "Standardize page orientation in mixed documents.",
+          "icon": "layout"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can I rotate different pages differently?",
+          "answer": "Yes, you can apply different rotations to different pages."
+        },
+        {
+          "question": "Does rotation affect print quality?",
+          "answer": "No, rotation preserves all content quality."
+        },
+        {
+          "question": "Can I rotate by custom angles?",
+          "answer": "Rotation is limited to 90-degree increments (90, 180, 270)."
+        }
+      ]
+    },
+    "zh": {
+      "title": "旋转PDF",
+      "metaDescription": "旋转PDF页面。将页面旋转90、180或270度。",
+      "keywords": [
+        "旋转pdf",
+        "转动pdf页面",
+        "pdf旋转",
+        "修复方向"
+      ],
+      "description": "\n      <p>旋转PDF将文档中的页面旋转90、180或270度。修复方向不正确的扫描、旋转横向页面或调整页面方向以供查看。</p>\n      <p>统一旋转所有页面或选择特定页面单独旋转。该工具保留所有内容和格式。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "选择旋转",
+          "description": "选择旋转角度和要旋转的页面。"
+        },
+        {
+          "step": 3,
+          "title": "旋转并下载",
+          "description": "点击旋转应用更改并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "修复扫描",
+          "description": "纠正扫描文档的方向。",
+          "icon": "rotate-cw"
+        },
+        {
+          "title": "横向页面",
+          "description": "旋转横向页面以正确查看。",
+          "icon": "monitor"
+        },
+        {
+          "title": "混合方向",
+          "description": "标准化混合文档中的页面方向。",
+          "icon": "layout"
+        }
+      ],
+      "faq": [
+        {
+          "question": "可以对不同页面进行不同的旋转吗？",
+          "answer": "是的，您可以对不同页面应用不同的旋转。"
+        },
+        {
+          "question": "旋转会影响打印质量吗？",
+          "answer": "不会，旋转保留所有内容质量。"
+        },
+        {
+          "question": "可以按自定义角度旋转吗？",
+          "answer": "旋转限于90度增量（90、180、270）。"
+        }
+      ]
+    }
+  },
+  "combine-single-page": {
+    "en": {
+      "title": "Combine to Single Page",
+      "metaDescription": "Stitch PDF pages into one continuous page. Create scrollable single-page documents.",
+      "keywords": [
+        "combine pages",
+        "single page pdf",
+        "stitch pages",
+        "continuous scroll"
+      ],
+      "description": "\n      <p>Combine to Single Page stitches all PDF pages into one continuous page. Create scrollable documents perfect for web viewing or continuous reading.</p>\n      <p>Pages are joined vertically with customizable spacing. The result is a single long page containing all content.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Set Spacing",
+          "description": "Choose the gap between stitched pages."
+        },
+        {
+          "step": 3,
+          "title": "Combine and Download",
+          "description": "Click Combine to create the single-page PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Web Documents",
+          "description": "Create scrollable PDFs for web embedding.",
+          "icon": "globe"
+        },
+        {
+          "title": "Continuous Reading",
+          "description": "Convert paginated documents to continuous scroll.",
+          "icon": "scroll"
+        },
+        {
+          "title": "Long-Form Content",
+          "description": "Combine pages for seamless long-form reading.",
+          "icon": "file-text"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is there a page limit?",
+          "answer": "Very long documents may be limited by browser memory."
+        },
+        {
+          "question": "Can I add separators between pages?",
+          "answer": "Yes, you can add spacing or lines between original pages."
+        },
+        {
+          "question": "Will this work for printing?",
+          "answer": "The result is best for screen viewing; use N-Up for print layouts."
+        }
+      ]
+    },
+    "zh": {
+      "title": "合并为单页",
+      "metaDescription": "将PDF页面拼接成一个连续页面。创建可滚动的单页文档。",
+      "keywords": [
+        "合并页面",
+        "单页pdf",
+        "拼接页面",
+        "连续滚动"
+      ],
+      "description": "\n      <p>合并为单页将所有PDF页面拼接成一个连续页面。创建非常适合网络查看或连续阅读的可滚动文档。</p>\n      <p>页面垂直连接，间距可自定义。结果是包含所有内容的单个长页面。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "设置间距",
+          "description": "选择拼接页面之间的间隙。"
+        },
+        {
+          "step": 3,
+          "title": "合并并下载",
+          "description": "点击合并创建单页PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "网络文档",
+          "description": "创建可滚动的PDF以供网页嵌入。",
+          "icon": "globe"
+        },
+        {
+          "title": "连续阅读",
+          "description": "将分页文档转换为连续滚动。",
+          "icon": "scroll"
+        },
+        {
+          "title": "长篇内容",
+          "description": "合并页面以实现无缝的长篇阅读。",
+          "icon": "file-text"
+        }
+      ],
+      "faq": [
+        {
+          "question": "有页数限制吗？",
+          "answer": "非常长的文档可能受浏览器内存限制。"
+        },
+        {
+          "question": "可以在页面之间添加分隔符吗？",
+          "answer": "是的，您可以在原始页面之间添加间距或线条。"
+        },
+        {
+          "question": "这适合打印吗？",
+          "answer": "结果最适合屏幕查看；打印布局请使用N合一。"
+        }
+      ]
+    }
+  },
+  "view-metadata": {
+    "en": {
+      "title": "View Metadata",
+      "metaDescription": "View PDF document properties. See author, title, dates, and other metadata.",
+      "keywords": [
+        "pdf metadata",
+        "document properties",
+        "pdf info",
+        "view pdf details"
+      ],
+      "description": "\n      <p>View Metadata displays all document properties and metadata from your PDF files. See author, title, subject, keywords, creation date, modification date, and more.</p>\n      <p>Useful for auditing documents, checking file information, or verifying document authenticity.</p>\n      <p>All viewing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "View Properties",
+          "description": "See all metadata displayed in an organized format."
+        },
+        {
+          "step": 3,
+          "title": "Export if Needed",
+          "description": "Optionally export metadata as JSON."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Document Audit",
+          "description": "Review document properties for compliance.",
+          "icon": "clipboard-check"
+        },
+        {
+          "title": "Verify Authenticity",
+          "description": "Check creation dates and author information.",
+          "icon": "shield"
+        },
+        {
+          "title": "File Information",
+          "description": "Get detailed information about PDF files.",
+          "icon": "info"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What metadata is shown?",
+          "answer": "Title, author, subject, keywords, creator, producer, dates, and PDF version."
+        },
+        {
+          "question": "Can I edit metadata here?",
+          "answer": "Use the Edit Metadata tool to modify document properties."
+        },
+        {
+          "question": "Is XMP metadata included?",
+          "answer": "Yes, both standard and XMP metadata are displayed."
+        }
+      ]
+    },
+    "zh": {
+      "title": "查看元数据",
+      "metaDescription": "查看PDF文档属性。查看作者、标题、日期和其他元数据。",
+      "keywords": [
+        "pdf元数据",
+        "文档属性",
+        "pdf信息",
+        "查看pdf详情"
+      ],
+      "description": "\n      <p>查看元数据显示PDF文件中的所有文档属性和元数据。查看作者、标题、主题、关键词、创建日期、修改日期等。</p>\n      <p>对于审核文档、检查文件信息或验证文档真实性非常有用。</p>\n      <p>所有查看都在您的浏览器中进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "查看属性",
+          "description": "查看以有组织格式显示的所有元数据。"
+        },
+        {
+          "step": 3,
+          "title": "如需导出",
+          "description": "可选择将元数据导出为JSON。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档审核",
+          "description": "审阅文档属性以确保合规性。",
+          "icon": "clipboard-check"
+        },
+        {
+          "title": "验证真实性",
+          "description": "检查创建日期和作者信息。",
+          "icon": "shield"
+        },
+        {
+          "title": "文件信息",
+          "description": "获取PDF文件的详细信息。",
+          "icon": "info"
+        }
+      ],
+      "faq": [
+        {
+          "question": "显示哪些元数据？",
+          "answer": "标题、作者、主题、关键词、创建者、生产者、日期和PDF版本。"
+        },
+        {
+          "question": "可以在这里编辑元数据吗？",
+          "answer": "使用编辑元数据工具修改文档属性。"
+        },
+        {
+          "question": "包含XMP元数据吗？",
+          "answer": "是的，标准和XMP元数据都会显示。"
+        }
+      ]
+    }
+  },
+  "pdf-to-zip": {
+    "en": {
+      "title": "PDFs to ZIP",
+      "metaDescription": "Package multiple PDFs into a ZIP archive. Compress and bundle PDF files.",
+      "keywords": [
+        "pdf to zip",
+        "compress pdfs",
+        "bundle pdfs",
+        "archive pdfs"
+      ],
+      "description": "\n      <p>PDFs to ZIP packages multiple PDF files into a single ZIP archive. Compress and bundle your PDFs for easier sharing, storage, or backup.</p>\n      <p>The tool creates a compressed archive containing all your PDF files, reducing total size and simplifying file management.</p>\n      <p>All processing happens in your browser, ensuring your files remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload PDFs",
+          "description": "Drag and drop multiple PDF files or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Archive",
+          "description": "Optionally set archive name and compression level."
+        },
+        {
+          "step": 3,
+          "title": "Create and Download",
+          "description": "Click Create to generate the ZIP archive."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "File Sharing",
+          "description": "Bundle multiple PDFs for easier sharing.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Backup Creation",
+          "description": "Create compressed backups of PDF collections.",
+          "icon": "archive"
+        },
+        {
+          "title": "Email Attachments",
+          "description": "Combine PDFs into one attachment for email.",
+          "icon": "mail"
+        }
+      ],
+      "faq": [
+        {
+          "question": "How much compression is applied?",
+          "answer": "ZIP compression typically reduces total size by 10-30%."
+        },
+        {
+          "question": "Is there a file limit?",
+          "answer": "You can include up to 100 PDFs in a single archive."
+        },
+        {
+          "question": "Can I set a password?",
+          "answer": "Password-protected ZIP creation is not currently supported."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF转ZIP",
+      "metaDescription": "将多个PDF打包成ZIP压缩包。压缩和捆绑PDF文件。",
+      "keywords": [
+        "pdf转zip",
+        "压缩pdf",
+        "捆绑pdf",
+        "存档pdf"
+      ],
+      "description": "\n      <p>PDF转ZIP将多个PDF文件打包成一个ZIP压缩包。压缩和捆绑您的PDF以便于共享、存储或备份。</p>\n      <p>该工具创建包含所有PDF文件的压缩存档，减少总大小并简化文件管理。</p>\n      <p>所有处理都在您的浏览器中进行，确保您的文件保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF",
+          "description": "拖放多个PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置存档",
+          "description": "可选设置存档名称和压缩级别。"
+        },
+        {
+          "step": 3,
+          "title": "创建并下载",
+          "description": "点击创建生成ZIP压缩包。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文件共享",
+          "description": "捆绑多个PDF以便于共享。",
+          "icon": "share-2"
+        },
+        {
+          "title": "创建备份",
+          "description": "创建PDF集合的压缩备份。",
+          "icon": "archive"
+        },
+        {
+          "title": "电子邮件附件",
+          "description": "将PDF合并成一个附件以供电子邮件使用。",
+          "icon": "mail"
+        }
+      ],
+      "faq": [
+        {
+          "question": "应用多少压缩？",
+          "answer": "ZIP压缩通常将总大小减少10-30%。"
+        },
+        {
+          "question": "有文件限制吗？",
+          "answer": "您可以在单个存档中包含最多100个PDF。"
+        },
+        {
+          "question": "可以设置密码吗？",
+          "answer": "目前不支持创建受密码保护的ZIP。"
+        }
+      ]
+    }
+  },
+  "posterize-pdf": {
+    "en": {
+      "title": "Posterize PDF",
+      "metaDescription": "Split large PDF pages into printable tiles. Create posters from PDF pages.",
+      "keywords": [
+        "posterize pdf",
+        "tile pdf",
+        "large format printing",
+        "pdf poster"
+      ],
+      "description": "\n      <p>Posterize PDF splits large PDF pages into smaller tiles that can be printed on standard paper and assembled into posters. Perfect for printing large diagrams, maps, or artwork.</p>\n      <p>Configure the grid size and overlap for easy assembly. The tool automatically calculates tile dimensions for your target output size.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your large-format PDF or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Tiles",
+          "description": "Set grid size, overlap, and output paper size."
+        },
+        {
+          "step": 3,
+          "title": "Create and Download",
+          "description": "Click Create to generate printable tiles."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Poster Printing",
+          "description": "Print large posters on standard paper.",
+          "icon": "maximize-2"
+        },
+        {
+          "title": "Map Printing",
+          "description": "Print large maps in sections for assembly.",
+          "icon": "map"
+        },
+        {
+          "title": "Artwork Reproduction",
+          "description": "Create large prints from PDF artwork.",
+          "icon": "image"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What overlap should I use?",
+          "answer": "A 10-20mm overlap is recommended for easy alignment during assembly."
+        },
+        {
+          "question": "Can I add crop marks?",
+          "answer": "Yes, crop marks can be added to help with cutting and alignment."
+        },
+        {
+          "question": "What paper sizes are supported?",
+          "answer": "A4, Letter, A3, and custom sizes are supported."
+        }
+      ]
+    },
+    "zh": {
+      "title": "海报化PDF",
+      "metaDescription": "将大型PDF页面分割成可打印的瓷砖。从PDF页面创建海报。",
+      "keywords": [
+        "海报化pdf",
+        "瓷砖pdf",
+        "大幅面打印",
+        "pdf海报"
+      ],
+      "description": "\n      <p>海报化PDF将大型PDF页面分割成可以在标准纸张上打印并组装成海报的较小瓷砖。非常适合打印大型图表、地图或艺术品。</p>\n      <p>配置网格大小和重叠以便于组装。该工具自动计算目标输出尺寸的瓷砖尺寸。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的大幅面PDF或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置瓷砖",
+          "description": "设置网格大小、重叠和输出纸张尺寸。"
+        },
+        {
+          "step": 3,
+          "title": "创建并下载",
+          "description": "点击创建生成可打印的瓷砖。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "海报打印",
+          "description": "在标准纸张上打印大型海报。",
+          "icon": "maximize-2"
+        },
+        {
+          "title": "地图打印",
+          "description": "分段打印大型地图以供组装。",
+          "icon": "map"
+        },
+        {
+          "title": "艺术品复制",
+          "description": "从PDF艺术品创建大型打印品。",
+          "icon": "image"
+        }
+      ],
+      "faq": [
+        {
+          "question": "应该使用多少重叠？",
+          "answer": "建议10-20mm的重叠以便于组装时对齐。"
+        },
+        {
+          "question": "可以添加裁切标记吗？",
+          "answer": "是的，可以添加裁切标记以帮助切割和对齐。"
+        },
+        {
+          "question": "支持哪些纸张尺寸？",
+          "answer": "支持A4、Letter、A3和自定义尺寸。"
+        }
+      ]
+    }
+  },
+  "page-dimensions": {
+    "en": {
+      "title": "Page Dimensions",
+      "metaDescription": "Analyze PDF page sizes. View dimensions of all pages in your document.",
+      "keywords": [
+        "pdf page size",
+        "page dimensions",
+        "pdf measurements",
+        "document size"
+      ],
+      "description": "\n      <p>Page Dimensions analyzes and displays the size of every page in your PDF document. View dimensions in various units (inches, mm, points) and identify pages with non-standard sizes.</p>\n      <p>Useful for print preparation, document analysis, or identifying inconsistent page sizes.</p>\n      <p>All analysis happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "View Dimensions",
+          "description": "See page sizes displayed for all pages."
+        },
+        {
+          "step": 3,
+          "title": "Export Report",
+          "description": "Optionally export dimensions as JSON."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Print Planning",
+          "description": "Check page sizes before printing.",
+          "icon": "printer"
+        },
+        {
+          "title": "Document Analysis",
+          "description": "Identify pages with unusual dimensions.",
+          "icon": "search"
+        },
+        {
+          "title": "Quality Control",
+          "description": "Verify page sizes meet specifications.",
+          "icon": "check-circle"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What units are available?",
+          "answer": "Inches, millimeters, centimeters, and points."
+        },
+        {
+          "question": "Does it show orientation?",
+          "answer": "Yes, portrait or landscape orientation is indicated."
+        },
+        {
+          "question": "Can I fix inconsistent sizes?",
+          "answer": "Use Fix Page Size tool to standardize dimensions."
+        }
+      ]
+    },
+    "zh": {
+      "title": "页面尺寸",
+      "metaDescription": "分析PDF页面大小。查看文档中所有页面的尺寸。",
+      "keywords": [
+        "pdf页面大小",
+        "页面尺寸",
+        "pdf测量",
+        "文档大小"
+      ],
+      "description": "\n      <p>页面尺寸分析并显示PDF文档中每个页面的大小。以各种单位（英寸、毫米、点）查看尺寸并识别非标准大小的页面。</p>\n      <p>对于打印准备、文档分析或识别不一致的页面大小非常有用。</p>\n      <p>所有分析都在您的浏览器中进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "查看尺寸",
+          "description": "查看所有页面显示的页面大小。"
+        },
+        {
+          "step": 3,
+          "title": "导出报告",
+          "description": "可选择将尺寸导出为JSON。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "打印规划",
+          "description": "打印前检查页面大小。",
+          "icon": "printer"
+        },
+        {
+          "title": "文档分析",
+          "description": "识别尺寸异常的页面。",
+          "icon": "search"
+        },
+        {
+          "title": "质量控制",
+          "description": "验证页面大小符合规格。",
+          "icon": "check-circle"
+        }
+      ],
+      "faq": [
+        {
+          "question": "有哪些单位可用？",
+          "answer": "英寸、毫米、厘米和点。"
+        },
+        {
+          "question": "会显示方向吗？",
+          "answer": "是的，会指示纵向或横向方向。"
+        },
+        {
+          "question": "可以修复不一致的大小吗？",
+          "answer": "使用修复页面大小工具标准化尺寸。"
+        }
+      ]
+    }
+  },
+  "remove-restrictions": {
+    "en": {
+      "title": "Remove Restrictions",
+      "metaDescription": "Remove PDF restrictions. Unlock printing, copying, and editing permissions.",
+      "keywords": [
+        "remove pdf restrictions",
+        "unlock pdf",
+        "pdf permissions",
+        "unrestrict pdf"
+      ],
+      "description": "\n      <p>Remove Restrictions unlocks PDFs that have permission restrictions preventing printing, copying, or editing. This tool removes owner password restrictions while preserving document content.</p>\n      <p>Note: This tool cannot remove user passwords that prevent opening the document. Use Decrypt PDF for password-protected files.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Restricted PDF",
+          "description": "Drag and drop your restricted PDF or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Remove Restrictions",
+          "description": "Click Remove to unlock the document."
+        },
+        {
+          "step": 3,
+          "title": "Download",
+          "description": "Download the unrestricted PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Enable Printing",
+          "description": "Unlock PDFs that prevent printing.",
+          "icon": "printer"
+        },
+        {
+          "title": "Enable Copying",
+          "description": "Allow text selection and copying.",
+          "icon": "copy"
+        },
+        {
+          "title": "Enable Editing",
+          "description": "Remove restrictions on document editing.",
+          "icon": "edit"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is this legal?",
+          "answer": "Removing restrictions from documents you own or have rights to is generally legal."
+        },
+        {
+          "question": "Can it remove open passwords?",
+          "answer": "No, use Decrypt PDF for password-protected documents."
+        },
+        {
+          "question": "Will content be affected?",
+          "answer": "No, only restrictions are removed; content remains unchanged."
+        }
+      ]
+    },
+    "zh": {
+      "title": "删除限制",
+      "metaDescription": "删除PDF限制。解锁打印、复制和编辑权限。",
+      "keywords": [
+        "删除pdf限制",
+        "解锁pdf",
+        "pdf权限",
+        "取消pdf限制"
+      ],
+      "description": "\n      <p>删除限制解锁具有权限限制的PDF，这些限制阻止打印、复制或编辑。此工具在保留文档内容的同时删除所有者密码限制。</p>\n      <p>注意：此工具无法删除阻止打开文档的用户密码。对于受密码保护的文件，请使用解密PDF。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传受限PDF",
+          "description": "拖放您的受限PDF或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "删除限制",
+          "description": "点击删除解锁文档。"
+        },
+        {
+          "step": 3,
+          "title": "下载",
+          "description": "下载不受限制的PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "启用打印",
+          "description": "解锁阻止打印的PDF。",
+          "icon": "printer"
+        },
+        {
+          "title": "启用复制",
+          "description": "允许文本选择和复制。",
+          "icon": "copy"
+        },
+        {
+          "title": "启用编辑",
+          "description": "删除文档编辑限制。",
+          "icon": "edit"
+        }
+      ],
+      "faq": [
+        {
+          "question": "这合法吗？",
+          "answer": "从您拥有或有权使用的文档中删除限制通常是合法的。"
+        },
+        {
+          "question": "可以删除打开密码吗？",
+          "answer": "不能，对于受密码保护的文档请使用解密PDF。"
+        },
+        {
+          "question": "内容会受影响吗？",
+          "answer": "不会，只删除限制；内容保持不变。"
+        }
+      ]
+    }
+  },
+  "sanitize-pdf": {
+    "en": {
+      "title": "Sanitize PDF",
+      "metaDescription": "Remove hidden data from PDFs. Clean metadata, scripts, and sensitive information.",
+      "keywords": [
+        "sanitize pdf",
+        "clean pdf",
+        "remove hidden data",
+        "pdf privacy"
+      ],
+      "description": "\n      <p>Sanitize PDF removes hidden data and potentially sensitive information from your documents. Strip metadata, embedded scripts, attachments, comments, and other hidden content.</p>\n      <p>Essential for preparing documents for public distribution or when privacy is a concern.</p>\n      <p>All sanitization happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Select What to Remove",
+          "description": "Choose which types of hidden data to strip."
+        },
+        {
+          "step": 3,
+          "title": "Sanitize and Download",
+          "description": "Click Sanitize to clean the PDF and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Public Release",
+          "description": "Prepare documents for public distribution.",
+          "icon": "globe"
+        },
+        {
+          "title": "Privacy Protection",
+          "description": "Remove personal information before sharing.",
+          "icon": "shield"
+        },
+        {
+          "title": "Security Compliance",
+          "description": "Meet security requirements for document handling.",
+          "icon": "check-circle"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What hidden data is removed?",
+          "answer": "Metadata, scripts, attachments, comments, form data, and hidden layers."
+        },
+        {
+          "question": "Will visible content be affected?",
+          "answer": "No, only hidden data is removed; visible content remains."
+        },
+        {
+          "question": "Is this reversible?",
+          "answer": "No, removed data cannot be recovered. Keep a backup of the original."
+        }
+      ]
+    },
+    "zh": {
+      "title": "清理PDF",
+      "metaDescription": "从PDF中删除隐藏数据。清除元数据、脚本和敏感信息。",
+      "keywords": [
+        "清理pdf",
+        "清洁pdf",
+        "删除隐藏数据",
+        "pdf隐私"
+      ],
+      "description": "\n      <p>清理PDF从您的文档中删除隐藏数据和潜在敏感信息。去除元数据、嵌入脚本、附件、评论和其他隐藏内容。</p>\n      <p>对于准备公开分发的文档或当隐私是关注点时至关重要。</p>\n      <p>所有清理都在您的浏览器中进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "选择要删除的内容",
+          "description": "选择要去除的隐藏数据类型。"
+        },
+        {
+          "step": 3,
+          "title": "清理并下载",
+          "description": "点击清理清洁PDF并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "公开发布",
+          "description": "准备文档以供公开分发。",
+          "icon": "globe"
+        },
+        {
+          "title": "隐私保护",
+          "description": "在共享前删除个人信息。",
+          "icon": "shield"
+        },
+        {
+          "title": "安全合规",
+          "description": "满足文档处理的安全要求。",
+          "icon": "check-circle"
+        }
+      ],
+      "faq": [
+        {
+          "question": "删除哪些隐藏数据？",
+          "answer": "元数据、脚本、附件、评论、表单数据和隐藏图层。"
+        },
+        {
+          "question": "可见内容会受影响吗？",
+          "answer": "不会，只删除隐藏数据；可见内容保持不变。"
+        },
+        {
+          "question": "这是可逆的吗？",
+          "answer": "不，删除的数据无法恢复。保留原件的备份。"
+        }
+      ]
+    }
+  },
+  "find-and-redact": {
+    "en": {
+      "title": "Find and Redact",
+      "metaDescription": "Search and redact text across all pages of a PDF. Batch redact sensitive information like account numbers, names, and more.",
+      "keywords": [
+        "redact pdf",
+        "find and redact",
+        "batch redact",
+        "remove text",
+        "pdf censorship",
+        "hide sensitive data"
+      ],
+      "description": "\n      <p>Find and Redact allows you to search for specific text, numbers, or patterns across all pages of your PDF and redact all matching occurrences at once. Perfect for removing sensitive information like account numbers, names, addresses, or any confidential data.</p>\n      <p>Preview all matches before applying redactions, and selectively choose which occurrences to redact. Supports case-sensitive search, whole word matching, and regular expressions for advanced pattern matching.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Search for Text",
+          "description": "Enter the text, number, or regex pattern you want to find and redact."
+        },
+        {
+          "step": 3,
+          "title": "Review and Select",
+          "description": "Preview all matches and select which ones to redact."
+        },
+        {
+          "step": 4,
+          "title": "Apply Redaction",
+          "description": "Customize redaction appearance and apply to selected matches."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Privacy Compliance",
+          "description": "Redact personal information to comply with GDPR, HIPAA, or other regulations.",
+          "icon": "shield"
+        },
+        {
+          "title": "Legal Documents",
+          "description": "Remove confidential data from legal documents before sharing.",
+          "icon": "scale"
+        },
+        {
+          "title": "Financial Records",
+          "description": "Redact account numbers, SSNs, or financial data from statements.",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is redaction permanent?",
+          "answer": "Yes, redaction permanently removes the underlying text. The original content cannot be recovered. Always keep a backup of the original file."
+        },
+        {
+          "question": "Can I redact images or scanned text?",
+          "answer": "This tool works with text-based PDFs. For scanned documents, you would need to use manual area-based redaction."
+        },
+        {
+          "question": "Can I customize the redaction appearance?",
+          "answer": "Yes, you can set the redaction color, add borders, and optionally include replacement text like \"[REDACTED]\"."
+        },
+        {
+          "question": "How does regex search work?",
+          "answer": "Enable \"Use Regular Expression\" to search using regex patterns. For example, \\d{4}-\\d{4}-\\d{4}-\\d{4} to find credit card numbers."
+        }
+      ]
+    },
+    "zh": {
+      "title": "查找并遮盖",
+      "metaDescription": "搜索并批量遮盖PDF中的敏感文本。支持正则表达式匹配账号、姓名等敏感信息。",
+      "keywords": [
+        "遮盖pdf",
+        "查找并遮盖",
+        "批量遮盖",
+        "删除文本",
+        "pdf脱敏",
+        "隐藏敏感数据"
+      ],
+      "description": "\n      <p>查找并遮盖允许您在PDF的所有页面中搜索特定文本、数字或模式，并一次性遮盖所有匹配项。非常适合删除敏感信息，如账号、姓名、地址或任何机密数据。</p>\n      <p>在应用遮盖前预览所有匹配项，并选择性地选择要遮盖的出现次数。支持区分大小写搜索、全词匹配和正则表达式以进行高级模式匹配。</p>\n      <p>所有处理都在您的浏览器中进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "搜索文本",
+          "description": "输入要查找和遮盖的文本、数字或正则表达式模式。"
+        },
+        {
+          "step": 3,
+          "title": "审查并选择",
+          "description": "预览所有匹配项并选择要遮盖的项目。"
+        },
+        {
+          "step": 4,
+          "title": "应用遮盖",
+          "description": "自定义遮盖外观并应用于所选匹配项。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "隐私合规",
+          "description": "遮盖个人信息以符合GDPR、HIPAA或其他法规。",
+          "icon": "shield"
+        },
+        {
+          "title": "法律文档",
+          "description": "在共享前从法律文档中删除机密数据。",
+          "icon": "scale"
+        },
+        {
+          "title": "财务记录",
+          "description": "从报表中遮盖账号、社保号或财务数据。",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "遮盖是永久的吗？",
+          "answer": "是的，遮盖会永久删除底层文本。原始内容无法恢复。请始终保留原始文件的备份。"
+        },
+        {
+          "question": "可以遮盖图像或扫描文本吗？",
+          "answer": "此工具适用于基于文本的PDF。对于扫描文档，您需要使用基于区域的手动遮盖。"
+        },
+        {
+          "question": "可以自定义遮盖外观吗？",
+          "answer": "是的，您可以设置遮盖颜色、添加边框，并可选择包含替换文本如\"[已遮盖]\"。"
+        },
+        {
+          "question": "正则表达式搜索如何工作？",
+          "answer": "启用\"使用正则表达式\"以使用正则模式搜索。例如，\\d{4}-\\d{4}-\\d{4}-\\d{4}可查找信用卡号。"
+        }
+      ]
+    }
+  },
+  "flatten-pdf": {
+    "en": {
+      "title": "Flatten PDF",
+      "metaDescription": "Flatten PDF forms and annotations. Make content non-editable.",
+      "keywords": [
+        "flatten pdf",
+        "flatten forms",
+        "flatten annotations",
+        "non-editable pdf"
+      ],
+      "description": "\n      <p>Flatten PDF converts interactive elements like form fields and annotations into static content. The flattened PDF looks the same but can no longer be edited.</p>\n      <p>Perfect for finalizing filled forms, preserving annotations, or creating non-editable document versions.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF with forms or annotations."
+        },
+        {
+          "step": 2,
+          "title": "Select What to Flatten",
+          "description": "Choose to flatten forms, annotations, or both."
+        },
+        {
+          "step": 3,
+          "title": "Flatten and Download",
+          "description": "Click Flatten to create the static PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Finalize Forms",
+          "description": "Lock filled form data to prevent changes.",
+          "icon": "lock"
+        },
+        {
+          "title": "Preserve Annotations",
+          "description": "Make annotations permanent in the document.",
+          "icon": "check-circle"
+        },
+        {
+          "title": "Archive Documents",
+          "description": "Create non-editable versions for archiving.",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is flattening reversible?",
+          "answer": "No, flattening is permanent. Keep a backup of the original."
+        },
+        {
+          "question": "Will the appearance change?",
+          "answer": "No, the document looks the same but is no longer interactive."
+        },
+        {
+          "question": "Does it reduce file size?",
+          "answer": "Sometimes, as interactive elements are converted to simpler content."
+        }
+      ]
+    },
+    "zh": {
+      "title": "扁平化PDF",
+      "metaDescription": "扁平化PDF表单和注释。使内容不可编辑。",
+      "keywords": [
+        "扁平化pdf",
+        "扁平化表单",
+        "扁平化注释",
+        "不可编辑pdf"
+      ],
+      "description": "\n      <p>扁平化PDF将表单字段和注释等交互元素转换为静态内容。扁平化的PDF看起来相同，但不能再编辑。</p>\n      <p>非常适合完成已填写的表单、保留注释或创建不可编辑的文档版本。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您带有表单或注释的PDF。"
+        },
+        {
+          "step": 2,
+          "title": "选择要扁平化的内容",
+          "description": "选择扁平化表单、注释或两者。"
+        },
+        {
+          "step": 3,
+          "title": "扁平化并下载",
+          "description": "点击扁平化创建静态PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "完成表单",
+          "description": "锁定已填写的表单数据以防止更改。",
+          "icon": "lock"
+        },
+        {
+          "title": "保留注释",
+          "description": "使注释在文档中永久化。",
+          "icon": "check-circle"
+        },
+        {
+          "title": "存档文档",
+          "description": "创建不可编辑的版本以供存档。",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "扁平化是可逆的吗？",
+          "answer": "不，扁平化是永久的。保留原件的备份。"
+        },
+        {
+          "question": "外观会改变吗？",
+          "answer": "不会，文档看起来相同，但不再是交互式的。"
+        },
+        {
+          "question": "会减小文件大小吗？",
+          "answer": "有时会，因为交互元素被转换为更简单的内容。"
+        }
+      ]
+    }
+  },
+  "remove-metadata": {
+    "en": {
+      "title": "Remove Metadata",
+      "metaDescription": "Strip metadata from PDF files. Remove author, dates, and document properties.",
+      "keywords": [
+        "remove pdf metadata",
+        "strip metadata",
+        "pdf privacy",
+        "anonymous pdf"
+      ],
+      "description": "\n      <p>Remove Metadata strips all document properties and metadata from your PDF files. Remove author names, creation dates, software information, and other identifying data.</p>\n      <p>Essential for privacy when sharing documents or when metadata could reveal sensitive information.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Remove Metadata",
+          "description": "Click Remove to strip all metadata."
+        },
+        {
+          "step": 3,
+          "title": "Download",
+          "description": "Download the metadata-free PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Privacy Protection",
+          "description": "Remove personal information before sharing.",
+          "icon": "shield"
+        },
+        {
+          "title": "Anonymous Documents",
+          "description": "Create documents without author attribution.",
+          "icon": "user-x"
+        },
+        {
+          "title": "Clean Distribution",
+          "description": "Distribute documents without internal metadata.",
+          "icon": "send"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What metadata is removed?",
+          "answer": "Author, title, subject, keywords, dates, creator, and producer information."
+        },
+        {
+          "question": "Is XMP metadata removed?",
+          "answer": "Yes, both standard and XMP metadata are stripped."
+        },
+        {
+          "question": "Will content be affected?",
+          "answer": "No, only metadata is removed; document content remains unchanged."
+        }
+      ]
+    },
+    "zh": {
+      "title": "删除元数据",
+      "metaDescription": "从PDF文件中去除元数据。删除作者、日期和文档属性。",
+      "keywords": [
+        "删除pdf元数据",
+        "去除元数据",
+        "pdf隐私",
+        "匿名pdf"
+      ],
+      "description": "\n      <p>删除元数据从您的PDF文件中去除所有文档属性和元数据。删除作者姓名、创建日期、软件信息和其他识别数据。</p>\n      <p>在共享文档或当元数据可能泄露敏感信息时，对于隐私至关重要。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "删除元数据",
+          "description": "点击删除去除所有元数据。"
+        },
+        {
+          "step": 3,
+          "title": "下载",
+          "description": "下载无元数据的PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "隐私保护",
+          "description": "在共享前删除个人信息。",
+          "icon": "shield"
+        },
+        {
+          "title": "匿名文档",
+          "description": "创建没有作者归属的文档。",
+          "icon": "user-x"
+        },
+        {
+          "title": "干净分发",
+          "description": "分发没有内部元数据的文档。",
+          "icon": "send"
+        }
+      ],
+      "faq": [
+        {
+          "question": "删除哪些元数据？",
+          "answer": "作者、标题、主题、关键词、日期、创建者和生产者信息。"
+        },
+        {
+          "question": "XMP元数据会删除吗？",
+          "answer": "是的，标准和XMP元数据都会去除。"
+        },
+        {
+          "question": "内容会受影响吗？",
+          "answer": "不会，只删除元数据；文档内容保持不变。"
+        }
+      ]
+    }
+  },
+  "change-permissions": {
+    "en": {
+      "title": "Change Permissions",
+      "metaDescription": "Modify PDF permissions. Control printing, copying, and editing access.",
+      "keywords": [
+        "pdf permissions",
+        "change pdf access",
+        "restrict pdf",
+        "pdf security"
+      ],
+      "description": "\n      <p>Change Permissions modifies the access controls on your PDF documents. Enable or disable printing, copying, editing, and annotation permissions.</p>\n      <p>Set an owner password to enforce these restrictions. Recipients can view the document but are limited in what actions they can perform.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Set Permissions",
+          "description": "Enable or disable printing, copying, editing, and annotations."
+        },
+        {
+          "step": 3,
+          "title": "Apply and Download",
+          "description": "Set owner password and download the restricted PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Prevent Copying",
+          "description": "Disable text copying to protect content.",
+          "icon": "copy"
+        },
+        {
+          "title": "Control Printing",
+          "description": "Restrict or allow document printing.",
+          "icon": "printer"
+        },
+        {
+          "title": "Limit Editing",
+          "description": "Prevent modifications to the document.",
+          "icon": "edit-3"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Do I need a password?",
+          "answer": "An owner password is required to enforce permissions."
+        },
+        {
+          "question": "Can permissions be removed?",
+          "answer": "Yes, with the owner password or using Remove Restrictions tool."
+        },
+        {
+          "question": "Are all PDF readers compatible?",
+          "answer": "Most PDF readers respect permissions, but some may not enforce them."
+        }
+      ]
+    },
+    "zh": {
+      "title": "更改权限",
+      "metaDescription": "修改PDF权限。控制打印、复制和编辑访问。",
+      "keywords": [
+        "pdf权限",
+        "更改pdf访问",
+        "限制pdf",
+        "pdf安全"
+      ],
+      "description": "\n      <p>更改权限修改PDF文档的访问控制。启用或禁用打印、复制、编辑和注释权限。</p>\n      <p>设置所有者密码以强制执行这些限制。收件人可以查看文档，但在可执行的操作上受到限制。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "设置权限",
+          "description": "启用或禁用打印、复制、编辑和注释。"
+        },
+        {
+          "step": 3,
+          "title": "应用并下载",
+          "description": "设置所有者密码并下载受限PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "防止复制",
+          "description": "禁用文本复制以保护内容。",
+          "icon": "copy"
+        },
+        {
+          "title": "控制打印",
+          "description": "限制或允许文档打印。",
+          "icon": "printer"
+        },
+        {
+          "title": "限制编辑",
+          "description": "防止对文档的修改。",
+          "icon": "edit-3"
+        }
+      ],
+      "faq": [
+        {
+          "question": "需要密码吗？",
+          "answer": "需要所有者密码来强制执行权限。"
+        },
+        {
+          "question": "权限可以删除吗？",
+          "answer": "是的，使用所有者密码或删除限制工具。"
+        },
+        {
+          "question": "所有PDF阅读器都兼容吗？",
+          "answer": "大多数PDF阅读器尊重权限，但有些可能不强制执行。"
+        }
+      ]
+    }
+  },
+  "pdf-to-markdown": {
+    "en": {
+      "title": "PDF to Markdown",
+      "metaDescription": "Convert PDF to Markdown format. Extract text and preserve formatting like headings and lists.",
+      "keywords": [
+        "pdf to markdown",
+        "convert pdf to md",
+        "pdf text extraction",
+        "markdown converter",
+        "pdf to text"
+      ],
+      "description": "\n      <p>PDF to Markdown converts your PDF documents into clean, well-structured Markdown files. The tool intelligently extracts text content and attempts to preserve formatting like headings, lists, and paragraphs.</p>\n      <p>Perfect for converting PDF documents to editable formats for documentation, note-taking, or content management systems that support Markdown.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Options",
+          "description": "Set page range, choose to include page numbers, and adjust line break settings."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Click Convert to generate your Markdown file and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentation",
+          "description": "Convert PDF manuals and guides to Markdown for version-controlled documentation.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Note Taking",
+          "description": "Extract content from PDF articles and books for your note-taking system.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Content Migration",
+          "description": "Migrate PDF content to CMS platforms that support Markdown.",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is formatting preserved?",
+          "answer": "The tool attempts to detect headings based on font size and bullet points/numbered lists. Complex layouts may require manual adjustment."
+        },
+        {
+          "question": "Can I convert specific pages?",
+          "answer": "Yes, you can specify a page range like \"1-3, 5, 7\" to convert only those pages."
+        },
+        {
+          "question": "Does it work with scanned PDFs?",
+          "answer": "Scanned PDFs contain images, not text. Use our OCR tool first to extract text before converting to Markdown."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF转Markdown",
+      "metaDescription": "将PDF转换为Markdown格式。提取文本并保留标题和列表等格式。",
+      "keywords": [
+        "pdf转markdown",
+        "pdf转md",
+        "pdf文本提取",
+        "markdown转换器",
+        "pdf转文本"
+      ],
+      "description": "\n      <p>PDF转Markdown将您的PDF文档转换为干净、结构良好的Markdown文件。该工具智能提取文本内容，并尝试保留标题、列表和段落等格式。</p>\n      <p>非常适合将PDF文档转换为可编辑格式，用于文档编写、笔记记录或支持Markdown的内容管理系统。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置选项",
+          "description": "设置页面范围，选择是否包含页码，并调整换行设置。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "点击转换生成Markdown文件并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档编写",
+          "description": "将PDF手册和指南转换为Markdown，用于版本控制的文档。",
+          "icon": "file-text"
+        },
+        {
+          "title": "笔记记录",
+          "description": "从PDF文章和书籍中提取内容到您的笔记系统。",
+          "icon": "edit-3"
+        },
+        {
+          "title": "内容迁移",
+          "description": "将PDF内容迁移到支持Markdown的CMS平台。",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "格式会保留吗？",
+          "answer": "该工具会根据字体大小检测标题，以及项目符号/编号列表。复杂布局可能需要手动调整。"
+        },
+        {
+          "question": "可以转换特定页面吗？",
+          "answer": "是的，您可以指定页面范围如\"1-3, 5, 7\"以仅转换这些页面。"
+        },
+        {
+          "question": "扫描的PDF能用吗？",
+          "answer": "扫描的PDF包含图像而非文本。请先使用我们的OCR工具提取文本，然后再转换为Markdown。"
+        }
+      ]
+    }
+  },
+  "pdf-booklet": {
+    "en": {
+      "title": "PDF Booklet Creator",
+      "metaDescription": "Create booklet layouts from PDF for printing. Arrange pages for saddle-stitch binding with multiple grid options.",
+      "keywords": [
+        "pdf booklet",
+        "booklet creator",
+        "print booklet",
+        "saddle stitch",
+        "imposition"
+      ],
+      "description": "\n      <p>PDF Booklet Creator arranges your PDF pages into booklet layouts ready for print-and-fold production. Perfect for creating brochures, zines, booklets, and saddle-stitched publications.</p>\n      <p>Choose from various grid modes (1x2, 2x2, 2x4, 4x4), paper sizes, and orientation options. The tool automatically handles page imposition for proper folding sequence.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload the PDF document you want to convert to a booklet."
+        },
+        {
+          "step": 2,
+          "title": "Choose Layout",
+          "description": "Select grid mode, paper size, orientation, and rotation options."
+        },
+        {
+          "step": 3,
+          "title": "Create and Download",
+          "description": "Generate the booklet layout and download for printing."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Brochures",
+          "description": "Create fold-ready brochures from standard PDF documents.",
+          "icon": "book-open"
+        },
+        {
+          "title": "Zines",
+          "description": "Produce self-published zines with proper page imposition.",
+          "icon": "book"
+        },
+        {
+          "title": "Event Programs",
+          "description": "Create professional program booklets for events.",
+          "icon": "calendar"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What is saddle-stitch binding?",
+          "answer": "Saddle-stitch is a binding method where folded sheets are nested and stapled through the fold."
+        },
+        {
+          "question": "Which grid mode should I use?",
+          "answer": "1x2 is standard for booklets. Use 2x2 or larger for multi-up printing to save paper."
+        },
+        {
+          "question": "Can I preview the layout?",
+          "answer": "Yes, the tool provides a visual preview before generating the final booklet."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF小册子制作",
+      "metaDescription": "从PDF创建小册子布局以供打印。为骑马钉装订排列页面，支持多种网格选项。",
+      "keywords": [
+        "pdf小册子",
+        "小册子制作",
+        "打印小册子",
+        "骑马钉",
+        "拼版"
+      ],
+      "description": "\n      <p>PDF小册子制作将您的PDF页面排列成适合打印和折叠制作的小册子布局。非常适合创建宣传册、杂志、小册子和骑马钉装订出版物。</p>\n      <p>从各种网格模式（1x2、2x2、2x4、4x4）、纸张尺寸和方向选项中选择。该工具自动处理页面拼版以实现正确的折叠顺序。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "上传您想要转换为小册子的PDF文档。"
+        },
+        {
+          "step": 2,
+          "title": "选择布局",
+          "description": "选择网格模式、纸张大小、方向和旋转选项。"
+        },
+        {
+          "step": 3,
+          "title": "创建并下载",
+          "description": "生成小册子布局并下载以供打印。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "宣传册",
+          "description": "从标准PDF文档创建可折叠的宣传册。",
+          "icon": "book-open"
+        },
+        {
+          "title": "杂志",
+          "description": "制作具有正确页面拼版的自出版杂志。",
+          "icon": "book"
+        },
+        {
+          "title": "活动手册",
+          "description": "为活动创建专业的手册小册子。",
+          "icon": "calendar"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是骑马钉装订？",
+          "answer": "骑马钉是一种装订方法，将折叠的纸张嵌套并通过折痕钉合。"
+        },
+        {
+          "question": "我应该使用哪种网格模式？",
+          "answer": "1x2是小册子的标准模式。使用2x2或更大的模式进行多页打印以节省纸张。"
+        },
+        {
+          "question": "可以预览布局吗？",
+          "answer": "是的，该工具在生成最终小册子之前提供可视预览。"
+        }
+      ]
+    }
+  },
+  "rasterize-pdf": {
+    "en": {
+      "title": "Rasterize PDF",
+      "metaDescription": "Convert PDF pages to high-quality images. Export as PNG, JPEG, or WebP with custom DPI settings.",
+      "keywords": [
+        "rasterize pdf",
+        "pdf to image",
+        "pdf to png",
+        "pdf to jpeg",
+        "convert pdf pages"
+      ],
+      "description": "\n      <p>Rasterize PDF converts your PDF pages into high-quality raster images. Choose from PNG, JPEG, or WebP output formats with full control over DPI and quality settings.</p>\n      <p>Perfect for creating thumbnails, social media graphics, or archiving PDF content as images. Supports page range selection and batch processing.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Output",
+          "description": "Select DPI, output format (PNG/JPEG/WebP), quality, and page range."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Process pages and download images individually or as a ZIP archive."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Social Media",
+          "description": "Convert PDF slides to images for social media posting.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Thumbnails",
+          "description": "Generate preview thumbnails for PDF documents.",
+          "icon": "image"
+        },
+        {
+          "title": "Web Publishing",
+          "description": "Convert PDF content to web-friendly image formats.",
+          "icon": "globe"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What DPI should I use?",
+          "answer": "72 DPI for screen, 150 DPI for general use, 300 DPI for print quality."
+        },
+        {
+          "question": "Which format is best?",
+          "answer": "PNG for quality/transparency, JPEG for small size, WebP for modern web use."
+        },
+        {
+          "question": "Can I convert specific pages?",
+          "answer": "Yes, specify page ranges like \"1-5, 8, 10-15\" to convert only those pages."
+        }
+      ]
+    },
+    "zh": {
+      "title": "光栅化PDF",
+      "metaDescription": "将PDF页面转换为高质量图像。导出为PNG、JPEG或WebP，支持自定义DPI设置。",
+      "keywords": [
+        "光栅化pdf",
+        "pdf转图像",
+        "pdf转png",
+        "pdf转jpeg",
+        "转换pdf页面"
+      ],
+      "description": "\n      <p>光栅化PDF将您的PDF页面转换为高质量的光栅图像。从PNG、JPEG或WebP输出格式中选择，完全控制DPI和质量设置。</p>\n      <p>非常适合创建缩略图、社交媒体图形或将PDF内容归档为图像。支持页面范围选择和批量处理。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置输出",
+          "description": "选择DPI、输出格式（PNG/JPEG/WebP）、质量和页面范围。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "处理页面并单独下载图像或作为ZIP归档下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "社交媒体",
+          "description": "将PDF幻灯片转换为图像以在社交媒体上发布。",
+          "icon": "share-2"
+        },
+        {
+          "title": "缩略图",
+          "description": "为PDF文档生成预览缩略图。",
+          "icon": "image"
+        },
+        {
+          "title": "网络发布",
+          "description": "将PDF内容转换为网络友好的图像格式。",
+          "icon": "globe"
+        }
+      ],
+      "faq": [
+        {
+          "question": "我应该使用什么DPI？",
+          "answer": "屏幕使用72 DPI，一般使用150 DPI，打印质量使用300 DPI。"
+        },
+        {
+          "question": "哪种格式最好？",
+          "answer": "PNG用于质量/透明度，JPEG用于小尺寸，WebP用于现代网络使用。"
+        },
+        {
+          "question": "可以转换特定页面吗？",
+          "answer": "是的，指定页面范围如\"1-5, 8, 10-15\"以仅转换这些页面。"
+        }
+      ]
+    }
+  },
+  "markdown-to-pdf": {
+    "en": {
+      "title": "Markdown to PDF",
+      "metaDescription": "Convert Markdown files to beautifully formatted PDF documents. Support for GitHub Flavored Markdown and syntax highlighting.",
+      "keywords": [
+        "markdown to pdf",
+        "md to pdf",
+        "convert markdown",
+        "gfm to pdf",
+        "markdown converter"
+      ],
+      "description": "\n      <p>Markdown to PDF converts your Markdown files into professionally styled PDF documents. Support for CommonMark and GitHub Flavored Markdown (GFM) including tables, task lists, and code blocks.</p>\n      <p>Choose from multiple themes (light, dark, GitHub) and customize page size and margins. Code blocks are syntax-highlighted for better readability.</p>\n      <p>All conversion happens locally in your browser, ensuring your content remains private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Markdown File",
+          "description": "Upload your .md or .markdown file."
+        },
+        {
+          "step": 2,
+          "title": "Choose Theme",
+          "description": "Select a visual theme and configure page settings."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Generate the styled PDF and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentation",
+          "description": "Convert README files and docs to shareable PDFs.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Notes Export",
+          "description": "Export Markdown notes to PDF for printing or sharing.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Reports",
+          "description": "Create reports from Markdown with professional styling.",
+          "icon": "bar-chart"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is GitHub Flavored Markdown supported?",
+          "answer": "Yes, tables, task lists, strikethrough, and other GFM features are supported."
+        },
+        {
+          "question": "Can I customize the styling?",
+          "answer": "Choose from preset themes or add custom CSS for full control."
+        },
+        {
+          "question": "Are code blocks highlighted?",
+          "answer": "Yes, code blocks include syntax highlighting for common languages."
+        }
+      ]
+    },
+    "zh": {
+      "title": "Markdown转PDF",
+      "metaDescription": "将Markdown文件转换为格式精美的PDF文档。支持GitHub风格Markdown和语法高亮。",
+      "keywords": [
+        "markdown转pdf",
+        "md转pdf",
+        "转换markdown",
+        "gfm转pdf",
+        "markdown转换器"
+      ],
+      "description": "\n      <p>Markdown转PDF将您的Markdown文件转换为专业样式的PDF文档。支持CommonMark和GitHub风格Markdown（GFM），包括表格、任务列表和代码块。</p>\n      <p>从多个主题（浅色、深色、GitHub）中选择，并自定义页面大小和边距。代码块具有语法高亮以提高可读性。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的内容保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传Markdown文件",
+          "description": "上传您的.md或.markdown文件。"
+        },
+        {
+          "step": 2,
+          "title": "选择主题",
+          "description": "选择视觉主题并配置页面设置。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "生成样式化的PDF并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档",
+          "description": "将README文件和文档转换为可共享的PDF。",
+          "icon": "file-text"
+        },
+        {
+          "title": "笔记导出",
+          "description": "将Markdown笔记导出为PDF以供打印或共享。",
+          "icon": "edit-3"
+        },
+        {
+          "title": "报告",
+          "description": "从Markdown创建具有专业样式的报告。",
+          "icon": "bar-chart"
+        }
+      ],
+      "faq": [
+        {
+          "question": "是否支持GitHub风格Markdown？",
+          "answer": "是的，支持表格、任务列表、删除线和其他GFM功能。"
+        },
+        {
+          "question": "可以自定义样式吗？",
+          "answer": "从预设主题中选择或添加自定义CSS以完全控制。"
+        },
+        {
+          "question": "代码块是否高亮？",
+          "answer": "是的，代码块包含常见语言的语法高亮。"
+        }
+      ]
+    }
+  },
+  "cbz-to-pdf": {
+    "en": {
+      "title": "CBZ to PDF",
+      "metaDescription": "Convert comic book archives (CBZ) to PDF. Preserve image order and quality for digital comics.",
+      "keywords": [
+        "cbz to pdf",
+        "comic to pdf",
+        "convert cbz",
+        "comic book converter",
+        "cbz converter"
+      ],
+      "description": "\n      <p>CBZ to PDF converts Comic Book Archive files into PDF documents. The tool extracts all images from the CBZ archive and compiles them into a PDF while maintaining the correct reading order.</p>\n      <p>Choose from various page size options including original image dimensions or standardized comic book sizes. Perfect for reading comics on devices that support PDF but not CBZ.</p>\n      <p>All conversion happens locally in your browser, ensuring your comics remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload CBZ File",
+          "description": "Upload your .cbz comic book archive file."
+        },
+        {
+          "step": 2,
+          "title": "Select Options",
+          "description": "Choose page size and image quality settings."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Convert to PDF and download your comic."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "E-Reader Compatibility",
+          "description": "Convert CBZ to PDF for e-readers that only support PDF.",
+          "icon": "book"
+        },
+        {
+          "title": "Comic Archives",
+          "description": "Create PDF archives of your digital comic collection.",
+          "icon": "archive"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Convert digital comics to PDF for printing.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What is CBZ format?",
+          "answer": "CBZ is a ZIP archive containing comic book pages as image files, renamed with .cbz extension."
+        },
+        {
+          "question": "Is image quality preserved?",
+          "answer": "Yes, images are embedded at their original quality in the PDF."
+        },
+        {
+          "question": "Are nested folders supported?",
+          "answer": "Yes, images from all folders within the archive are extracted and sorted."
+        }
+      ]
+    },
+    "zh": {
+      "title": "CBZ转PDF",
+      "metaDescription": "将漫画书归档文件（CBZ）转换为PDF。保留图像顺序和质量，适用于数字漫画。",
+      "keywords": [
+        "cbz转pdf",
+        "漫画转pdf",
+        "转换cbz",
+        "漫画书转换器",
+        "cbz转换器"
+      ],
+      "description": "\n      <p>CBZ转PDF将漫画书归档文件转换为PDF文档。该工具从CBZ归档中提取所有图像，并将它们编译成PDF，同时保持正确的阅读顺序。</p>\n      <p>从各种页面大小选项中选择，包括原始图像尺寸或标准化的漫画书尺寸。非常适合在支持PDF但不支持CBZ的设备上阅读漫画。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的漫画保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传CBZ文件",
+          "description": "上传您的.cbz漫画书归档文件。"
+        },
+        {
+          "step": 2,
+          "title": "选择选项",
+          "description": "选择页面大小和图像质量设置。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "转换为PDF并下载您的漫画。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "电子阅读器兼容性",
+          "description": "将CBZ转换为PDF，适用于仅支持PDF的电子阅读器。",
+          "icon": "book"
+        },
+        {
+          "title": "漫画归档",
+          "description": "为您的数字漫画收藏创建PDF归档。",
+          "icon": "archive"
+        },
+        {
+          "title": "打印准备",
+          "description": "将数字漫画转换为PDF以供打印。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是CBZ格式？",
+          "answer": "CBZ是一个包含漫画书页面图像文件的ZIP归档，重命名为.cbz扩展名。"
+        },
+        {
+          "question": "图像质量是否保留？",
+          "answer": "是的，图像以原始质量嵌入到PDF中。"
+        },
+        {
+          "question": "是否支持嵌套文件夹？",
+          "answer": "是的，归档中所有文件夹的图像都会被提取和排序。"
+        }
+      ]
+    }
+  },
+  "font-to-outline": {
+    "en": {
+      "title": "Font to Outline",
+      "metaDescription": "Remove font dependencies from PDF documents by converting pages to high-quality images. Ensures compatibility across all systems.",
+      "keywords": [
+        "font to outline",
+        "outline fonts",
+        "remove fonts",
+        "font compatibility",
+        "flatten pdf fonts",
+        "pdf font removal"
+      ],
+      "description": "\n      <p>Font to Outline removes all font dependencies from your PDF by converting each page into high-quality rasterized content. This ensures your document looks exactly the same on any system, even if the original fonts are not installed.</p>\n      <p>The tool renders each page at your chosen DPI (150-600), removing embedded fonts while preserving the exact visual appearance. Optionally, you can add an invisible text layer to maintain searchability.</p>\n      <p>This is essential for print preparation, cross-platform compatibility, and avoiding font licensing issues when sharing documents. All processing happens locally in your browser.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload the PDF containing fonts you want to remove."
+        },
+        {
+          "step": 2,
+          "title": "Configure Quality",
+          "description": "Choose DPI (300 recommended for print, 150 for screen). Enable searchable text if needed."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Process the file and download the font-independent PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Print Preparation",
+          "description": "Eliminate font issues at commercial printers by removing all font dependencies.",
+          "icon": "printer"
+        },
+        {
+          "title": "Cross-Platform Sharing",
+          "description": "Share documents that look identical on any device, regardless of installed fonts.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Font Licensing",
+          "description": "Remove embedded fonts to avoid licensing concerns when distributing documents.",
+          "icon": "shield"
+        }
+      ],
+      "faq": [
+        {
+          "question": "How does this work?",
+          "answer": "The tool renders each page at high resolution (your chosen DPI) and recreates the PDF from these images, removing all font dependencies while preserving visual appearance."
+        },
+        {
+          "question": "Can I still select text after conversion?",
+          "answer": "By default, no. Text becomes part of the image. However, you can enable \"Preserve searchable text\" to add an invisible text layer for search and copy functionality."
+        },
+        {
+          "question": "What DPI should I use?",
+          "answer": "300 DPI is recommended for print-quality output. 150 DPI is sufficient for screen viewing and produces smaller files. 600 DPI is for highest quality but creates large files."
+        },
+        {
+          "question": "Will file size increase?",
+          "answer": "File size depends on DPI and content. 150 DPI usually produces smaller files, 300 DPI may increase size, 600 DPI significantly increases size. Compression is automatically applied."
+        },
+        {
+          "question": "Is this reversible?",
+          "answer": "No, font data is permanently removed. Keep a backup of the original if you need editable text with the original fonts."
+        },
+        {
+          "question": "What about vector graphics?",
+          "answer": "Vector graphics (shapes, lines) in the original PDF will be converted to raster along with text. The visual quality is preserved at your chosen DPI."
+        }
+      ]
+    },
+    "zh": {
+      "title": "字体转轮廓",
+      "metaDescription": "通过将页面转换为高质量图像来删除PDF文档的字体依赖。确保在所有系统上的兼容性。",
+      "keywords": [
+        "字体转轮廓",
+        "轮廓字体",
+        "删除字体",
+        "字体兼容性",
+        "扁平化pdf字体",
+        "pdf字体删除"
+      ],
+      "description": "\n      <p>字体转轮廓通过将每个页面转换为高质量的光栅化内容来删除PDF中的所有字体依赖。这确保您的文档在任何系统上看起来完全相同，即使未安装原始字体。</p>\n      <p>该工具以您选择的DPI（150-600）渲染每个页面，删除嵌入的字体同时保留确切的视觉外观。可选地，您可以添加不可见的文本层以保持可搜索性。</p>\n      <p>这对于打印准备、跨平台兼容性以及在共享文档时避免字体许可问题至关重要。所有处理都在您的浏览器本地进行。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "上传包含要删除字体的PDF。"
+        },
+        {
+          "step": 2,
+          "title": "配置质量",
+          "description": "选择DPI（打印推荐300，屏幕推荐150）。如需要，启用可搜索文本。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "处理文件并下载独立于字体的PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "打印准备",
+          "description": "通过删除所有字体依赖来消除商业打印机的字体问题。",
+          "icon": "printer"
+        },
+        {
+          "title": "跨平台共享",
+          "description": "共享在任何设备上看起来相同的文档，无论安装了什么字体。",
+          "icon": "share-2"
+        },
+        {
+          "title": "字体许可",
+          "description": "删除嵌入的字体以避免分发文档时的许可问题。",
+          "icon": "shield"
+        }
+      ],
+      "faq": [
+        {
+          "question": "这是如何工作的？",
+          "answer": "该工具以高分辨率（您选择的DPI）渲染每个页面，并从这些图像重新创建PDF，删除所有字体依赖同时保留视觉外观。"
+        },
+        {
+          "question": "转换后还能选择文本吗？",
+          "answer": "默认情况下不能。文本成为图像的一部分。但是，您可以启用\"保留可搜索文本\"以添加不可见的文本层用于搜索和复制功能。"
+        },
+        {
+          "question": "我应该使用什么DPI？",
+          "answer": "打印质量输出推荐300 DPI。屏幕查看150 DPI就足够了，并产生较小的文件。600 DPI用于最高质量但会创建大文件。"
+        },
+        {
+          "question": "文件大小会增加吗？",
+          "answer": "文件大小取决于DPI和内容。150 DPI通常产生较小的文件，300 DPI可能增加大小，600 DPI显著增加大小。会自动应用压缩。"
+        },
+        {
+          "question": "这是可逆的吗？",
+          "answer": "不，字体数据被永久删除。如果需要使用原始字体的可编辑文本，请保留原始文件的备份。"
+        },
+        {
+          "question": "矢量图形怎么办？",
+          "answer": "原始PDF中的矢量图形（形状、线条）将与文本一起转换为光栅。视觉质量在您选择的DPI下得以保留。"
+        }
+      ]
+    }
+  },
+  "extract-tables": {
+    "en": {
+      "title": "Extract Tables from PDF",
+      "metaDescription": "Detect and extract tables from PDF documents. Export to JSON, Markdown, or CSV formats.",
+      "keywords": [
+        "extract tables",
+        "pdf table extraction",
+        "pdf to csv",
+        "pdf to excel",
+        "table detection"
+      ],
+      "description": "\n      <p>Extract Tables from PDF detects tabular data within your PDF documents and exports it in structured formats. Choose JSON for data integration, Markdown for documentation, or CSV for spreadsheets.</p>\n      <p>The tool uses intelligent detection algorithms to identify table structures even in complex documents. Specify page ranges and adjust detection parameters for optimal results.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload the PDF containing tables you want to extract."
+        },
+        {
+          "step": 2,
+          "title": "Configure Detection",
+          "description": "Set page range and minimum column/row thresholds."
+        },
+        {
+          "step": 3,
+          "title": "Export and Download",
+          "description": "Choose output format (JSON/Markdown/CSV) and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Data Analysis",
+          "description": "Extract table data for analysis in spreadsheets or databases.",
+          "icon": "bar-chart"
+        },
+        {
+          "title": "Report Processing",
+          "description": "Pull tables from PDF reports for further processing.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Documentation",
+          "description": "Convert PDF tables to Markdown for technical documentation.",
+          "icon": "book"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can it detect complex tables?",
+          "answer": "The tool works best with simple grid tables. Complex merged cells may require manual adjustment."
+        },
+        {
+          "question": "What if no tables are found?",
+          "answer": "Try adjusting the minimum columns/rows threshold or check if the PDF contains actual table structures."
+        },
+        {
+          "question": "Can I extract from specific pages?",
+          "answer": "Yes, specify a page range to limit extraction to certain pages."
+        }
+      ]
+    },
+    "zh": {
+      "title": "从PDF提取表格",
+      "metaDescription": "检测并从PDF文档中提取表格。导出为JSON、Markdown或CSV格式。",
+      "keywords": [
+        "提取表格",
+        "pdf表格提取",
+        "pdf转csv",
+        "pdf转excel",
+        "表格检测"
+      ],
+      "description": "\n      <p>从PDF提取表格检测PDF文档中的表格数据并以结构化格式导出。选择JSON用于数据集成，Markdown用于文档，或CSV用于电子表格。</p>\n      <p>该工具使用智能检测算法来识别表格结构，即使在复杂文档中也是如此。指定页面范围并调整检测参数以获得最佳结果。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "上传包含要提取表格的PDF。"
+        },
+        {
+          "step": 2,
+          "title": "配置检测",
+          "description": "设置页面范围和最小列/行阈值。"
+        },
+        {
+          "step": 3,
+          "title": "导出并下载",
+          "description": "选择输出格式（JSON/Markdown/CSV）并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "数据分析",
+          "description": "提取表格数据以在电子表格或数据库中进行分析。",
+          "icon": "bar-chart"
+        },
+        {
+          "title": "报告处理",
+          "description": "从PDF报告中提取表格以进行进一步处理。",
+          "icon": "file-text"
+        },
+        {
+          "title": "文档",
+          "description": "将PDF表格转换为Markdown用于技术文档。",
+          "icon": "book"
+        }
+      ],
+      "faq": [
+        {
+          "question": "可以检测复杂表格吗？",
+          "answer": "该工具最适合简单的网格表格。复杂的合并单元格可能需要手动调整。"
+        },
+        {
+          "question": "如果找不到表格怎么办？",
+          "answer": "尝试调整最小列/行阈值或检查PDF是否包含实际的表格结构。"
+        },
+        {
+          "question": "可以从特定页面提取吗？",
+          "answer": "是的，指定页面范围以将提取限制在某些页面。"
+        }
+      ]
+    }
+  },
+  "ocg-manager": {
+    "en": {
+      "title": "PDF Layer Manager (OCG)",
+      "metaDescription": "Manage PDF layers (Optional Content Groups). View, toggle, add, delete, and rename layers in your PDF documents.",
+      "keywords": [
+        "pdf layers",
+        "ocg manager",
+        "optional content groups",
+        "pdf layer visibility",
+        "manage pdf layers"
+      ],
+      "description": "\n      <p>PDF Layer Manager allows you to view and manage Optional Content Groups (OCG) in your PDF documents. OCG layers are used in technical drawings, maps, and complex documents to organize content into toggleable layers.</p>\n      <p>View all layers in your PDF, toggle their visibility, add new layers, delete unwanted ones, or rename existing layers. This tool is essential for working with layered PDFs like architectural plans, CAD exports, and print-ready documents.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload a PDF file that contains layers (OCG) or one you want to add layers to."
+        },
+        {
+          "step": 2,
+          "title": "View Layers",
+          "description": "The tool automatically lists all layers found in the document with their visibility status."
+        },
+        {
+          "step": 3,
+          "title": "Manage Layers",
+          "description": "Toggle layer visibility, rename layers, add new ones, or delete unwanted layers."
+        },
+        {
+          "step": 4,
+          "title": "Save and Download",
+          "description": "Download your modified PDF with the layer changes applied."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Technical Drawings",
+          "description": "Manage layers in CAD exports to show/hide dimensions, annotations, or different views.",
+          "icon": "ruler"
+        },
+        {
+          "title": "Map Editing",
+          "description": "Toggle different map layers like topography, roads, and labels for custom map prints.",
+          "icon": "map"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Prepare layered PDFs for printing by toggling appropriate layers for different versions.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What are PDF layers (OCG)?",
+          "answer": "Optional Content Groups (OCG) are layers in a PDF that can be shown or hidden. They are commonly used in CAD drawings, maps, and complex documents."
+        },
+        {
+          "question": "Why does my PDF show no layers?",
+          "answer": "Not all PDFs contain layers. Layers are typically added during PDF creation from design software or CAD applications."
+        },
+        {
+          "question": "Will layer changes affect the original content?",
+          "answer": "Layer visibility changes only affect what is displayed or printed. The actual content remains in the document."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF图层管理器",
+      "metaDescription": "管理PDF图层。查看、切换、添加、删除和重命名图层。",
+      "keywords": [
+        "pdf图层",
+        "ocg管理器"
+      ],
+      "description": "<p>管理PDF文档中的可选内容组（OCG）。</p>",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF",
+          "description": "上传包含图层的PDF文件。"
+        },
+        {
+          "step": 2,
+          "title": "查看图层",
+          "description": "工具自动列出所有图层。"
+        },
+        {
+          "step": 3,
+          "title": "管理图层",
+          "description": "切换、添加或删除图层。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "技术图纸",
+          "description": "管理CAD导出中的图层。",
+          "icon": "ruler"
+        },
+        {
+          "title": "地图编辑",
+          "description": "切换地图图层。",
+          "icon": "map"
+        },
+        {
+          "title": "印刷准备",
+          "description": "准备分层PDF进行打印。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是PDF图层？",
+          "answer": "OCG是PDF中可以显示或隐藏的图层。"
+        },
+        {
+          "question": "为什么没有图层？",
+          "answer": "并非所有PDF都包含图层。"
+        },
+        {
+          "question": "会影响原始内容吗？",
+          "answer": "图层可见性更改仅影响显示。"
+        }
+      ]
+    }
+  },
+  "pdf-reader": {
+    "en": {
+      "title": "PDF Reader",
+      "metaDescription": "Free online PDF reader. View, navigate, zoom, rotate, and print PDF documents directly in your browser.",
+      "keywords": [
+        "pdf reader",
+        "pdf viewer",
+        "view pdf online",
+        "read pdf",
+        "pdf browser viewer"
+      ],
+      "description": "\n      <p>PDF Reader is a full-featured PDF viewer that lets you read and navigate PDF documents directly in your browser. No software installation required - just upload your PDF and start reading.</p>\n      <p>Navigate between pages, zoom in and out, rotate the view, and use fullscreen mode for distraction-free reading. You can also print documents or download them for offline access.</p>\n      <p>All viewing happens locally in your browser. Your documents are never uploaded to any server, ensuring complete privacy.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Open Your PDF",
+          "description": "Click to upload or drag and drop a PDF file to open it in the reader."
+        },
+        {
+          "step": 2,
+          "title": "Navigate Pages",
+          "description": "Use the page controls to go to the previous or next page, or jump to a specific page number."
+        },
+        {
+          "step": 3,
+          "title": "Adjust View",
+          "description": "Zoom in or out, rotate the view, or enter fullscreen mode for comfortable reading."
+        },
+        {
+          "step": 4,
+          "title": "Print or Download",
+          "description": "Print the document or download it for offline access when needed."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Document Review",
+          "description": "Quickly review PDF documents without installing any software.",
+          "icon": "book-open"
+        },
+        {
+          "title": "Mobile Reading",
+          "description": "Read PDF documents on any device with a web browser.",
+          "icon": "smartphone"
+        },
+        {
+          "title": "Quick Preview",
+          "description": "Preview PDFs before deciding to download or print them.",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is my document secure?",
+          "answer": "Yes, your document is processed entirely in your browser and is never uploaded to any server."
+        },
+        {
+          "question": "Can I annotate or edit the PDF?",
+          "answer": "This tool is for viewing only. Use our Sign PDF or Annotate PDF tools for editing."
+        },
+        {
+          "question": "Does it work on mobile devices?",
+          "answer": "Yes, the PDF Reader works on all devices with a modern web browser."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF阅读器",
+      "metaDescription": "免费在线PDF阅读器。在浏览器中查看PDF。",
+      "keywords": [
+        "pdf阅读器",
+        "pdf查看器"
+      ],
+      "description": "<p>在浏览器中查看PDF文档。</p>",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "打开PDF",
+          "description": "上传PDF文件。"
+        },
+        {
+          "step": 2,
+          "title": "导航页面",
+          "description": "使用页面控制导航。"
+        },
+        {
+          "step": 3,
+          "title": "调整视图",
+          "description": "放大、缩小或旋转。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档审阅",
+          "description": "快速审阅PDF文档。",
+          "icon": "book-open"
+        },
+        {
+          "title": "移动阅读",
+          "description": "在任何设备上阅读PDF。",
+          "icon": "smartphone"
+        },
+        {
+          "title": "快速预览",
+          "description": "预览PDF。",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "文档安全吗？",
+          "answer": "是的，完全在浏览器中处理。"
+        },
+        {
+          "question": "可以编辑吗？",
+          "answer": "此工具仅用于查看。"
+        },
+        {
+          "question": "支持移动设备吗？",
+          "answer": "是的。"
+        }
+      ]
+    }
+  }
+}

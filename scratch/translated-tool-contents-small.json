@@ -1,0 +1,730 @@
+{
+  "ja": {
+    "find-and-redact": {
+      "title": "検索と墨消し",
+      "metaDescription": "PDFの全ページからテキストを検索し、一括で墨消し処理します。口座番号や氏名などの機密情報をバッチ処理で黒塗りにして非表示にします。",
+      "keywords": [
+        "PDF 墨消し",
+        "検索して墨消し",
+        "一括 墨消し",
+        "テキスト 削除",
+        "PDF 検閲",
+        "機密データ 非表示"
+      ],
+      "description": "\n      <p>「検索と墨消し」機能を使用すると、PDFの全ページから特定のテキスト、数字、またはパターンを検索し、一致するすべての箇所を一度に墨消し（黒塗り）処理できます。口座番号、氏名、住所などの個人情報や、その他の機密データの削除に最適です。</p>\n      <p>墨消しを適用する前にすべての検索結果をプレビューし、どの箇所を黒塗りにするかを選択できます。大文字・小文字の区別、完全一致検索、および高度なパターンマッチングのための正規表現検索に対応しています。</p>\n      <p>すべての処理はブラウザ内でローカルに実行されるため、アップロードされたドキュメントのプライバシーとセキュリティは完全に保護されます。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "PDFのアップロード",
+          "description": "PDFファイルをドラッグ＆ドロップするか、クリックして選択します。"
+        },
+        {
+          "step": 2,
+          "title": "テキストの検索",
+          "description": "検索して墨消ししたいテキスト、数字、または正規表現パターンを入力します。"
+        },
+        {
+          "step": 3,
+          "title": "プレビューと選択",
+          "description": "すべての一致箇所をプレビューし、墨消しを適用する項目を選択します。"
+        },
+        {
+          "step": 4,
+          "title": "墨消しの適用",
+          "description": "墨消しの外観（色など）をカスタマイズし、選択した箇所に適用します。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "プライバシーコンプライアンス",
+          "description": "GDPR、HIPAA、またはその他の規制を遵守するために、個人情報を墨消しします。",
+          "icon": "shield"
+        },
+        {
+          "title": "法的文書",
+          "description": "共有する前に、法的文書から機密情報を削除します。",
+          "icon": "scale"
+        },
+        {
+          "title": "財務記録",
+          "description": "明細書から口座番号、社会保障番号、または財務データを黒塗りにします。",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "墨消しは永久的なものですか？",
+          "answer": "はい、墨消し処理を行うと、元のテキストデータは完全に削除され、復元することはできません。作業前に必ず元ファイルのバックアップを保存してください。"
+        },
+        {
+          "question": "画像やスキャンされたテキストも墨消しできますか？",
+          "answer": "このツールはテキストベース of PDFに対応しています。スキャンされたドキュメント（画像化された文字など）の場合は、手動でエリアを指定して墨消しを行う必要があります。"
+        },
+        {
+          "question": "墨消しの外観をカスタマイズできますか？",
+          "answer": "はい、墨消しの色を設定したり、枠線を追加したり、オプションで「[墨消し済]」などの代替テキストを挿入したりできます。"
+        },
+        {
+          "question": "正規表現検索はどのように機能しますか？",
+          "answer": "「正規表現を使用する」を有効にすると、正規表現パターンを用いた検索が可能です。たとえば、クレジットカード番号を検索するには \\d{4}-\\d{4}-\\d{4}-\\d{4} と入力します。"
+        }
+      ]
+    },
+    "pdf-to-markdown": {
+      "title": "PDFからMarkdownへの変換",
+      "metaDescription": "PDFをMarkdownフォーマットに変換します。見出しやリストなどの書式を維持しながら、テキストを抽出します。",
+      "keywords": [
+        "pdf markdown 変換",
+        "pdf md 変換",
+        "pdf テキスト抽出",
+        "markdown コンバーター",
+        "pdf テキスト 変換"
+      ],
+      "description": "\n      <p>「PDFからMarkdownへの変換」ツールは、PDFドキュメントをすっきりとした構造化されたMarkdownファイルに変換します。フォントサイズやレイアウトを分析してテキスト内容を抽出し、見出し、リスト、段落などの元の書式をできる限り保持します。</p>\n      <p>PDFドキュメントを、仕様書作成、ノート作成、またはMarkdownをサポートするコンテンツ管理システム（CMS）向けに編集可能なフォーマットへ移行するのに最適です。</p>\n      <p>すべての変換はブラウザ内でローカルに実行されるため、ドキュメントのプライバシーとセキュリティは安全に保たれます。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "PDFのアップロード",
+          "description": "PDFファイルをドラッグ＆ドロップするか、クリックして選択します。"
+        },
+        {
+          "step": 2,
+          "title": "オプションの設定",
+          "description": "変換するページ範囲の設定、ページ番号の追加有無の選択、および改行設定 of 調整を行います。"
+        },
+        {
+          "step": 3,
+          "title": "変換とダウンロード",
+          "description": "「変換」をクリックしてMarkdownファイルを生成し、ダウンロードします。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "ドキュメント作成",
+          "description": "PDFのマニュアルやガイドをMarkdownに変換し、バージョン管理されたドキュメントに組み込みます。",
+          "icon": "file-text"
+        },
+        {
+          "title": "ノート・メモ作成",
+          "description": "PDFの記事や書籍からテキスト情報を抽出し、お使いのノート管理システムに保存します。",
+          "icon": "edit-3"
+        },
+        {
+          "title": "コンテンツ移行",
+          "description": "PDFのコンテンツを、MarkdownをサポートするCMSプラットフォームに移行します。",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "書式は完全に保持されますか？",
+          "answer": "本ツールはフォントサイズに基づいて見出しを、箇条書きや番号付きリストを自動検出して変換を試みますが、複雑なレイアウトのPDFでは変換後に手動での調整が必要になる場合があります。"
+        },
+        {
+          "question": "特定のページのみを変換できますか？",
+          "answer": "はい、「1-3, 5, 7」のようにページ範囲を指定して、該当するページのみを変換することができます。"
+        },
+        {
+          "question": "スキャンされたPDFでも動作しますか？",
+          "answer": "スキャンされたPDFにはテキストデータではなく画像が含まれています。Markdownに変換する前に、まず当サイトのOCRツールを使用してテキストを抽出してください。"
+        }
+      ]
+    },
+    "ocg-manager": {
+      "title": "PDFレイヤー管理 (OCG)",
+      "metaDescription": "PDFのレイヤー（オプションコンテンツグループ/OCG）を管理します。表示・非表示の切り替え、レイヤーの追加、削除、および名前の変更が可能です。",
+      "keywords": [
+        "pdf レイヤー",
+        "ocg 管理",
+        "オプションコンテンツグループ",
+        "pdf レイヤー 表示非表示",
+        "pdf レイヤー 編集"
+      ],
+      "description": "\n      <p>「PDFレイヤー管理」ツールを使用すると、PDFドキュメント内のオプションコンテンツグループ（OCG）レイヤーを視覚的に表示・管理できます。OCGレイヤーは、設計図、地図、または複雑なドキュメントで、コンテンツを切り替え可能なレイヤーに整理するために使用されます。</p>\n      <p>PDF内のすべてのレイヤーを表示し、表示/非表示を切り替えたり、新しいレイヤーを追加したり、不要なレイヤーを削除したり、既存のレイヤーの名前を変更したりできます。建築計画書、CADからの出力ファイル、印刷用データなど、レイヤー構造を持つPDFの編集に不可欠なツールです。</p>\n      <p>すべての処理はブラウザ内でローカルに実行されるため、ドキュメントのプライバシーとセキュリティは完全に守られます。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "PDFのアップロード",
+          "description": "レイヤー（OCG）を含むPDFファイル、または新しくレイヤーを追加したいPDFファイルをアップロードします。"
+        },
+        {
+          "step": 2,
+          "title": "レイヤーの確認",
+          "description": "ドキュメント内に存在するすべてのレイヤーとその表示状態（オン/オフ）が自動的にリスト表示されます。"
+        },
+        {
+          "step": 3,
+          "title": "レイヤーの管理",
+          "description": "レイヤーの表示・非表示の切り替え、名前の変更、新規レイヤーの追加、または不要なレイヤーの削除を行います。"
+        },
+        {
+          "step": 4,
+          "title": "保存とダウンロード",
+          "description": "レイヤーの変更を適用した、更新されたPDFファイルをダウンロードします。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "技術図面",
+          "description": "CADから書き出した図面の寸法線、注記、または異なるビューのレイヤーを表示・非表示にして管理します。",
+          "icon": "ruler"
+        },
+        {
+          "title": "地図の編集",
+          "description": "地形、道路、ラベルなどの様々な地図レイヤーを切り替えて、カスタム地図を作成・印刷します。",
+          "icon": "map"
+        },
+        {
+          "title": "印刷用データの調整",
+          "description": "バージョンごとに適切なレイヤーの表示を切り替えることで、印刷用のマルチレイヤーPDFを準備します。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "PDFレイヤー (OCG) とは何ですか？",
+          "answer": "オプションコンテンツグループ（OCG: Optional Content Groups）とは、PDF内で表示または非表示を切り替えることができるレイヤーのことです。CAD図面、地図、複雑なドキュメントなどでよく使用されます。"
+        },
+        {
+          "question": "アップロードしたPDFにレイヤーが表示されないのはなぜですか？",
+          "answer": "すべてのPDFにレイヤーが含まれているわけではありません。レイヤーは通常、デザインソフトウェアやCADアプリケーションからPDFを作成する際に追加されます。"
+        },
+        {
+          "question": "レイヤーの表示を切り替えると元のコンテンツに影響しますか？",
+          "answer": "レイヤーの表示/非表示の変更は、画面上の表示や印刷結果にのみ影響します。ドキュメント内の実際のコンテンツデータが削除されることはありません。"
+        }
+      ]
+    },
+    "pdf-reader": {
+      "title": "PDFリーダー",
+      "metaDescription": "無料のオンラインPDFリーダー。ブラウザで直接PDFドキュメントの表示、ページ移動、ズーム、回転、印刷が可能です。",
+      "keywords": [
+        "pdf リーダー",
+        "pdf ビューア",
+        "pdf オンライン 表示",
+        "pdf 閲覧",
+        "pdf ブラウザ ビューア"
+      ],
+      "description": "\n      <p>「PDFリーダー」は、ブラウザで直接PDFドキュメントを表示して閲覧できる多機能PDFビューアです。ソフトウェアのインストールは不要で、PDFをアップロードするだけですぐに読み始めることができます。</p>\n      <p>ページの移動、ズームイン・ズームアウト、表示の回転、集中して読書するためのフルスクリーンモードなどの機能を提供しています。また、ドキュメントの印刷やオフライン保存用のダウンロードも可能です。</p>\n      <p>すべての閲覧処理はブラウザ内でローカルに実行されます。ファイルがサーバーにアップロードされることはないため、プライバシーが完全に保護されます。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "PDFを開く",
+          "description": "クリックしてアップロードするか、PDFファイルをドラッグ＆ドロップしてリーダーで開きます。"
+        },
+        {
+          "step": 2,
+          "title": "ページの移動",
+          "description": "ページ操作ボタンを使用して前後のページに移動するか、特定のページ番号を直接入力してジャンプします。"
+        },
+        {
+          "step": 3,
+          "title": "表示の調整",
+          "description": "ズームイン/ズームアウト、表示方向の回転、または快適に読書するためのフルスクリーン表示に切り替えます。"
+        },
+        {
+          "step": 4,
+          "title": "印刷またはダウンロード",
+          "description": "必要に応じて、ドキュメントを印刷するか、オフラインアクセス用にダウンロードします。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "ドキュメントの確認",
+          "description": "専用のソフトウェアをインストールすることなく、PDFドキュメントをすばやく確認します。",
+          "icon": "book-open"
+        },
+        {
+          "title": "モバイルでの読書",
+          "description": "Webブラウザを搭載したあらゆるデバイス（スマートフォンやタブレットなど）でPDFを閲覧します。",
+          "icon": "smartphone"
+        },
+        {
+          "title": "クイックプレビュー",
+          "description": "ダウンロードや印刷を行う前に、PDFの中身をすばやくプレビューします。",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "アップロードしたドキュメントは安全ですか？",
+          "answer": "はい。ドキュメントは完全にブラウザ内で処理され、いかなるサーバーにもアップロードされません。"
+        },
+        {
+          "question": "PDFに注釈を付けたり編集したりできますか？",
+          "answer": "このツールは表示専用です。編集や注釈の追加が必要な場合は、当サイトの「PDF署名」や「PDF注釈」などの編集ツールをご利用ください。"
+        },
+        {
+          "question": "モバイルデバイスでも動作しますか？",
+          "answer": "はい、PDFリーダーはモダンなWebブラウザを搭載したすべてのデバイスで動作します。"
+        }
+      ]
+    }
+  },
+  "it": {
+    "find-and-redact": {
+      "title": "Trova e Oscura",
+      "metaDescription": "Cerca e oscura testo in tutte le pagine di un PDF. Oscura in blocco informazioni sensibili come numeri di conto, nomi e altro.",
+      "keywords": [
+        "oscurare pdf",
+        "trova e oscura",
+        "oscuramento batch pdf",
+        "rimuovere testo pdf",
+        "censura pdf",
+        "nascondere dati sensibili"
+      ],
+      "description": "\n      <p>Trova e Oscura ti consente di cercare testo, numeri o pattern specifici in tutte le pagine del tuo PDF e oscurare tutte le corrispondenze trovate in una sola volta. Perfetto per rimuovere informazioni riservate come numeri di conto, nomi, indirizzi o qualsiasi dato sensibile.</p>\n      <p>Visualizza in anteprima tutte le corrispondenze prima di applicare l'oscuramento e seleziona quali occorrenze oscurare. Supporta la ricerca con distinzione tra maiuscole e minuscole, la corrispondenza di parole intere e le espressioni regolari per il pattern matching avanzato.</p>\n      <p>Tutta l'elaborazione avviene localmente nel tuo browser, garantendo che i tuoi documenti rimangano privati e sicuri.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carica il tuo PDF",
+          "description": "Trascina e rilascia il tuo file PDF o fai clic per selezionarlo."
+        },
+        {
+          "step": 2,
+          "title": "Cerca il testo",
+          "description": "Inserisci il testo, il numero o l'espressione regolare (regex) che desideri trovare e oscurare."
+        },
+        {
+          "step": 3,
+          "title": "Verifica e seleziona",
+          "description": "Visualizza l'anteprima di tutte le corrispondenze e seleziona quali oscurare."
+        },
+        {
+          "step": 4,
+          "title": "Applica l'oscuramento",
+          "description": "Personalizza l'aspetto dell'oscuramento e applicalo alle corrispondenze selezionate."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Conformità alla privacy",
+          "description": "Oscura le informazioni personali per essere conforme al GDPR, HIPAA o ad altre normative.",
+          "icon": "shield"
+        },
+        {
+          "title": "Documenti legali",
+          "description": "Rimuovi i dati riservati dai documenti legali prima di condividerli.",
+          "icon": "scale"
+        },
+        {
+          "title": "Registri finanziari",
+          "description": "Oscura numeri di conto, codici fiscali o dati finanziari dagli estratti conto.",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "L'oscuramento è permanente?",
+          "answer": "Sì, l'oscuramento rimuove in modo permanente il testo sottostante. Il contenuto originale non può essere recuperato. Conserva sempre una copia di backup del file originale."
+        },
+        {
+          "question": "Posso oscurare immagini o testo scansionato?",
+          "answer": "Questo strumento funziona con PDF basati su testo. Per i documenti scansionati, è necessario utilizzare l'oscuramento manuale basato sull'area."
+        },
+        {
+          "question": "Posso personalizzare l'aspetto dell'oscuramento?",
+          "answer": "Sì, puoi impostare il colore dell'oscuramento, aggiungere bordi e facoltativamente includere un testo di sostituzione come \"[CENSURATO]\" o \"[OSCURATO]\"."
+        },
+        {
+          "question": "Come funziona la ricerca con espressioni regolari (regex)?",
+          "answer": "Abilita \"Usa espressione regolare\" per cercare utilizzando pattern regex. Ad esempio, \\d{4}-\\d{4}-\\d{4}-\\d{4} per trovare i numeri di carta di credito."
+        }
+      ]
+    }
+  },
+  "vi": {
+    "find-and-redact": {
+      "title": "Tìm và Che khuất",
+      "metaDescription": "Tìm kiếm và che khuất văn bản trên tất cả các trang của PDF. Che khuất hàng loạt thông tin nhạy cảm như số tài khoản, tên, v.v.",
+      "keywords": [
+        "che khuất pdf",
+        "tìm và che khuất",
+        "che khuất hàng loạt",
+        "xóa văn bản",
+        "kiểm duyệt pdf",
+        "ẩn dữ liệu nhạy cảm"
+      ],
+      "description": "\n      <p>Công cụ Tìm và Che khuất cho phép bạn tìm kiếm văn bản, số hoặc mẫu cụ thể trên tất cả các trang của tài liệu PDF và che khuất tất cả các kết quả trùng khớp cùng một lúc. Rất phù hợp để loại bỏ thông tin nhạy cảm như số tài khoản, tên, địa chỉ hoặc bất kỳ dữ liệu bảo mật nào.</p>\n      <p>Xem trước tất cả các kết quả trùng khớp trước khi áp dụng che khuất và chọn lọc những vị trí cần che khuất. Hỗ trợ tìm kiếm phân biệt chữ hoa chữ thường, khớp toàn bộ từ và biểu thức chính quy (regex) để khớp mẫu nâng cao.</p>\n      <p>Mọi quá trình xử lý đều diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu luôn riêng tư và an toàn.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Tải lên tệp PDF",
+          "description": "Kéo và thả tệp PDF của bạn hoặc nhấp để chọn tệp."
+        },
+        {
+          "step": 2,
+          "title": "Tìm kiếm văn bản",
+          "description": "Nhập văn bản, số hoặc mẫu biểu thức chính quy (regex) mà bạn muốn tìm và che khuất."
+        },
+        {
+          "step": 3,
+          "title": "Xem lại và lựa chọn",
+          "description": "Xem trước tất cả kết quả khớp và chọn các mục bạn muốn che khuất."
+        },
+        {
+          "step": 4,
+          "title": "Áp dụng che khuất",
+          "description": "Tùy chỉnh giao diện che khuất và áp dụng cho các kết quả đã chọn."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Tuân thủ quyền riêng tư",
+          "description": "Che khuất thông tin cá nhân để tuân thủ GDPR, HIPAA hoặc các quy định khác.",
+          "icon": "shield"
+        },
+        {
+          "title": "Tài liệu pháp lý",
+          "description": "Loại bỏ dữ liệu mật khỏi các tài liệu pháp lý trước khi chia sẻ.",
+          "icon": "scale"
+        },
+        {
+          "title": "Bản ghi tài chính",
+          "description": "Che khuất số tài khoản, số định danh cá nhân (SSN) hoặc dữ liệu tài chính khỏi các bản sao kê.",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Việc che khuất có vĩnh viễn không?",
+          "answer": "Có, việc che khuất sẽ xóa vĩnh viễn văn bản nằm bên dưới. Nội dung gốc không thể khôi phục lại được. Hãy luôn sao lưu tệp gốc trước khi thực hiện."
+        },
+        {
+          "question": "Tôi có thể che khuất hình ảnh hoặc văn bản quét (scanned text) không?",
+          "answer": "Công cụ này hoạt động trên các tệp PDF dạng văn bản. Đối với tài liệu quét, bạn cần sử dụng tính năng che khuất vùng thủ công."
+        },
+        {
+          "question": "Tôi có thể tùy chỉnh giao diện của phần che khuất không?",
+          "answer": "Có, bạn có thể thiết lập màu sắc của vùng che khuất, thêm viền và tùy chọn thêm văn bản thay thế như \"[ĐÃ CHE]\" hoặc \"[ĐÃ KIỂM DUYỆT]\"."
+        },
+        {
+          "question": "Tìm kiếm bằng biểu thức chính quy (regex) hoạt động thế nào?",
+          "answer": "Bật \"Sử dụng biểu thức chính quy\" để tìm kiếm bằng các mẫu regex. Ví dụ: sử dụng \\d{4}-\\d{4}-\\d{4}-\\d{4} để tìm số thẻ tín dụng."
+        }
+      ]
+    },
+    "pdf-to-markdown": {
+      "title": "Chuyển PDF sang Markdown",
+      "metaDescription": "Chuyển đổi PDF sang định dạng Markdown. Trích xuất văn bản và giữ nguyên các định dạng như tiêu đề và danh sách.",
+      "keywords": [
+        "chuyển pdf sang markdown",
+        "chuyển pdf sang md",
+        "trích xuất văn bản pdf",
+        "bộ chuyển đổi markdown",
+        "pdf sang văn bản"
+      ],
+      "description": "\n      <p>Công cụ Chuyển PDF sang Markdown giúp chuyển đổi tài liệu PDF của bạn thành các tệp Markdown sạch và có cấu trúc tốt. Công cụ này trích xuất nội dung văn bản một cách thông minh và cố gắng giữ nguyên các định dạng gốc như tiêu đề, danh sách và các đoạn văn.</p>\n      <p>Hoàn hảo để chuyển đổi tài liệu PDF sang các định dạng có thể chỉnh sửa phục vụ cho việc làm tài liệu, ghi chú hoặc nhập vào các hệ thống quản trị nội dung (CMS) hỗ trợ Markdown.</p>\n      <p>Mọi quá trình chuyển đổi đều diễn ra cục bộ trong trình duyệt của bạn, đảm bảo tài liệu luôn riêng tư và an toàn.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Tải lên tệp PDF",
+          "description": "Kéo và thả tệp PDF hoặc nhấp để chọn."
+        },
+        {
+          "step": 2,
+          "title": "Cấu hình tùy chọn",
+          "description": "Đặt phạm vi trang, chọn có bao gồm số trang hay không và điều chỉnh cài đặt ngắt dòng."
+        },
+        {
+          "step": 3,
+          "title": "Chuyển đổi và tải xuống",
+          "description": "Nhấp vào Chuyển đổi để tạo tệp Markdown của bạn và tải xuống."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Làm tài liệu",
+          "description": "Chuyển đổi tài liệu hướng dẫn và cẩm nang PDF sang Markdown để quản lý phiên bản.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Ghi chú",
+          "description": "Trích xuất nội dung từ các bài báo và sách PDF cho hệ thống ghi chú của bạn.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Di trú nội dung",
+          "description": "Chuyển đổi nội dung PDF sang các nền tảng CMS hỗ trợ Markdown.",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Định dạng có được giữ nguyên không?",
+          "answer": "Công cụ cố gắng phát hiện các tiêu đề dựa trên kích thước phông chữ và các danh sách dạng ký tự/số. Các bố cục phức tạp có thể cần điều chỉnh thủ công."
+        },
+        {
+          "question": "Tôi có thể chuyển đổi các trang cụ thể không?",
+          "answer": "Có, bạn có thể chỉ định phạm vi trang như \"1-3, 5, 7\" để chỉ chuyển đổi các trang đó."
+        },
+        {
+          "question": "Công cụ có hoạt động với các tài liệu PDF quét (scanned) không?",
+          "answer": "Các tài liệu PDF quét chứa hình ảnh chứ không phải văn bản. Vui lòng sử dụng công cụ OCR của chúng tôi trước để trích xuất văn bản trước khi chuyển sang Markdown."
+        }
+      ]
+    },
+    "digital-sign-pdf": {
+      "title": "Chữ ký số PDF",
+      "metaDescription": "Thêm chữ ký số X.509 vào tài liệu PDF. Ký PDF bằng chứng thư số PFX, P12 hoặc PEM để đảm bảo tính pháp lý.",
+      "keywords": [
+        "chữ ký số pdf",
+        "chứng thư số x509",
+        "ký pdf bằng pfx",
+        "ký pdf bằng p12",
+        "ký pdf bằng pem",
+        "ký số pdf hợp pháp"
+      ],
+      "description": "\n      <p>Công cụ Chữ ký số cho phép bạn thêm các chữ ký số mã hóa X.509 vào tài liệu PDF. Khác với các chữ ký vẽ tay đơn giản, chữ ký số cung cấp giá trị pháp lý và xác minh tính toàn vẹn của tài liệu.</p>\n      <p>Tải lên tệp chứng thư số của bạn (định dạng PFX, P12 hoặc PEM), nhập mật khẩu và thực hiện ký PDF. Bạn có thể thêm chữ ký hiển thị trực quan với văn bản, hình ảnh và vị trí tùy chỉnh, hoặc chữ ký ẩn chỉ dùng để bảo vệ tính toàn vẹn của tài liệu.</p>\n      <p>Toàn bộ quá trình ký số diễn ra cục bộ trong trình duyệt của bạn. Chứng thư số và tài liệu của bạn không bao giờ bị tải lên bất kỳ máy chủ nào.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Tải lên PDF",
+          "description": "Tải lên tài liệu PDF bạn muốn ký số."
+        },
+        {
+          "step": 2,
+          "title": "Tải lên chứng thư số",
+          "description": "Tải lên tệp chứng thư số X.509 của bạn (.pfx, .p12 hoặc .pem) và nhập mật khẩu tương ứng."
+        },
+        {
+          "step": 3,
+          "title": "Cấu hình chữ ký",
+          "description": "Tùy chọn thêm lý do ký, địa điểm và chữ ký hiển thị với văn bản hoặc hình ảnh tùy chỉnh."
+        },
+        {
+          "step": 4,
+          "title": "Ký và tải xuống",
+          "description": "Nhấp vào Ký PDF để áp dụng chữ ký số và tải xuống tài liệu đã ký."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Tài liệu pháp lý",
+          "description": "Ký kết hợp đồng, thỏa thuận và tài liệu pháp lý bằng chữ ký số có tính ràng buộc pháp lý.",
+          "icon": "scale"
+        },
+        {
+          "title": "Phê duyệt kinh doanh",
+          "description": "Ký số hóa đơn, đơn đặt hàng và tài liệu phê duyệt để phục vụ đối chiếu, kiểm toán.",
+          "icon": "briefcase"
+        },
+        {
+          "title": "Toàn vẹn tài liệu",
+          "description": "Đảm bảo rằng tài liệu không bị thay đổi hoặc giả mạo sau khi đã ký.",
+          "icon": "shield-check"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Những định dạng chứng thư số nào được hỗ trợ?",
+          "answer": "Hỗ trợ các định dạng chứng thư số PFX (.pfx), PKCS#12 (.p12) và PEM (.pem)."
+        },
+        {
+          "question": "Chữ ký số này có giá trị pháp lý không?",
+          "answer": "Có, chữ ký số X.509 được công nhận về mặt pháp lý ở hầu hết các quốc gia và vùng lãnh thổ khi sử dụng chứng thư số hợp lệ."
+        },
+        {
+          "question": "Tôi có thể thêm chữ ký hiển thị trực quan không?",
+          "answer": "Có, bạn có thể thêm hình ảnh chữ ký hoặc văn bản hiển thị kèm theo tùy chỉnh vị trí, kiểu dáng."
+        }
+      ]
+    },
+    "validate-signature": {
+      "title": "Xác minh chữ ký số",
+      "metaDescription": "Kiểm tra và xác minh chữ ký số trong tài liệu PDF. Xem tính hợp lệ của chứng thư số, thông tin người ký và tính toàn vẹn của tài liệu.",
+      "keywords": [
+        "xác minh chữ ký pdf",
+        "kiểm tra chữ ký số",
+        "xác thực chứng thư số pdf",
+        "xác minh chữ ký"
+      ],
+      "description": "\n      <p>Công cụ Xác minh chữ ký số cho phép bạn kiểm tra các chữ ký số trong tài liệu PDF. Kiểm tra xem các chữ ký có hợp lệ hay không, xem thông tin chứng thư số và xác nhận tính toàn vẹn của tài liệu.</p>\n      <p>Tải lên tài liệu PDF đã ký để xem danh sách chữ ký, trạng thái hiệu lực của chúng, thông tin chi tiết về người ký và liệu tài liệu có bị sửa đổi sau khi ký hay không.</p>\n      <p>Mọi quá trình xác minh đều diễn ra cục bộ trong trình duyệt của bạn. Tài liệu của bạn không bao giờ bị tải lên bất kỳ máy chủ nào.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Tải lên PDF đã ký",
+          "description": "Tải lên tài liệu PDF có chứa chữ ký số cần kiểm tra."
+        },
+        {
+          "step": 2,
+          "title": "Xem kết quả",
+          "description": "Xem tất cả chữ ký được tìm thấy trong tài liệu cùng với trạng thái hiệu lực của chúng."
+        },
+        {
+          "step": 3,
+          "title": "Kiểm tra chi tiết",
+          "description": "Xem chi tiết chứng thư số, thông tin người ký và dấu thời gian ký."
+        },
+        {
+          "step": 4,
+          "title": "Xuất báo cáo",
+          "description": "Tùy chọn tải xuống báo cáo kết quả xác minh dưới định dạng JSON."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Xác thực tài liệu",
+          "description": "Xác minh rằng tài liệu đã ký là thật và không bị giả mạo hay chỉnh sửa trái phép.",
+          "icon": "shield-check"
+        },
+        {
+          "title": "Kiểm toán tuân thủ",
+          "description": "Kiểm tra tính hợp lệ của chữ ký phục vụ cho mục đích tuân thủ quy trình và kiểm toán.",
+          "icon": "clipboard-check"
+        },
+        {
+          "title": "Xem xét chứng thư số",
+          "description": "Xem thông tin chi tiết và ngày hết hạn của chứng thư số đã dùng để ký tài liệu.",
+          "icon": "award"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Chữ ký \"hợp lệ\" có nghĩa là gì?",
+          "answer": "Chữ ký hợp lệ nghĩa là tài liệu chưa bị chỉnh sửa kể từ thời điểm ký và chuỗi chứng thư số vẫn nguyên vẹn, đáng tin cậy."
+        },
+        {
+          "question": "Tôi có thể xác minh nhiều tài liệu PDF cùng lúc không?",
+          "answer": "Có, bạn có thể tải lên nhiều tệp PDF và xác minh hàng loạt tất cả các chữ ký."
+        },
+        {
+          "question": "Tại sao chữ ký lại báo không hợp lệ?",
+          "answer": "Chữ ký có thể không hợp lệ nếu tài liệu đã bị sửa đổi sau khi ký, chứng thư số hết hạn hoặc chứng thư số đó không được hệ thống tin cậy."
+        }
+      ]
+    }
+  },
+  "ar": {
+    "find-and-redact": {
+      "title": "البحث والطمس",
+      "metaDescription": "ابحث عن النصوص واطمسها عبر جميع صفحات ملف PDF. طمس جماعي للمعلومات الحساسة مثل أرقام الحسابات والأسماء وغيرها.",
+      "keywords": [
+        "طمس pdf",
+        "البحث والطمس",
+        "طمس جماعي",
+        "إزالة النص",
+        "حجب محتوى pdf",
+        "إخفاء البيانات الحساسة"
+      ],
+      "description": "\n      <p>تتيح لك أداة \"البحث والطمس\" البحث عن نصوص أو أرقام أو أنماط معينة عبر جميع صفحات ملف PDF وطمس جميع النتائج المطابقة دفعة واحدة. وهي مثالية لإزالة المعلومات الحساسة مثل أرقام الحسابات أو الأسماء أو العناوين أو أي بيانات سرية أخرى.</p>\n      <p>يمكنك معاينة جميع التطابقات قبل تطبيق الطمس، واختيار النتائج التي تريد طمسها بشكل انتقائي. وتدعم الأداة البحث الحساس لحالة الأحرف، ومطابقة الكلمات الكاملة، والتعابير النمطية (Regex) للمطابقة المتقدمة.</p>\n      <p>تتم جميع عمليات المعالجة محلياً في متصفحك، مما يضمن بقاء مستنداتك خاصة وآمنة تماماً.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "قم برفع ملف PDF الخاص بك",
+          "description": "اسحب وأسقط ملف PDF أو انقر لاختياره."
+        },
+        {
+          "step": 2,
+          "title": "البحث عن النص",
+          "description": "أدخل النص أو الرقم أو نمط التعبير النمطي (regex) الذي تريد البحث عنه وطمسه."
+        },
+        {
+          "step": 3,
+          "title": "المراجعة والتحديد",
+          "description": "قم بمعاينة كافة التطابقات وحدد العناصر التي تريد طمسها."
+        },
+        {
+          "step": 4,
+          "title": "تطبيق الطمس",
+          "description": "خصص مظهر الطمس وقم بتطبيقه على التطابقات المحددة."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "الامتثال للخصوصية",
+          "description": "طمس المعلومات الشخصية للامتثال للائحة العامة لحماية البيانات (GDPR) أو قانون محاسبة التأمين الصحي والمساءلة (HIPAA) أو اللوائح الأخرى.",
+          "icon": "shield"
+        },
+        {
+          "title": "المستندات القانونية",
+          "description": "إزالة البيانات السرية من المستندات القانونية قبل مشاركتها.",
+          "icon": "scale"
+        },
+        {
+          "title": "السجلات المالية",
+          "description": "طمس أرقام الحسابات أو أرقام الضمان الاجتماعي أو البيانات المالية من الكشوفات.",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل عملية الطمس دائمة؟",
+          "answer": "نعم، يؤدي الطمس إلى إزالة النص الأساسي بشكل نهائي. لا يمكن استرداد المحتوى الأصلي بعد ذلك. احتفظ دائماً بنسخة احتياطية من الملف الأصلي."
+        },
+        {
+          "question": "هل يمكنني طمس الصور أو النصوص الممسوحة ضوئياً؟",
+          "answer": "تعمل هذه الأداة مع ملفات PDF المعتمدة على النصوص الرقمية. بالنسبة للمستندات الممسوحة ضوئياً، ستحتاج إلى استخدام الطمس اليدوي المعتمد على تحديد المنطقة."
+        },
+        {
+          "question": "هل يمكنني تخصيص مظهر الطمس؟",
+          "answer": "نعم، يمكنك تحديد لون الطمس، وإضافة حدود، وإدراج نص بديل اختيارياً مثل \"[مطموس]\" أو \"[محجوب]\"."
+        },
+        {
+          "question": "كيف يعمل البحث باستخدام التعبيرات النمطية (regex)؟",
+          "answer": "قم بتمكين خيار \"استخدام التعبيرات النمطية\" للبحث باستخدام أنماط regex. على سبيل المثال، \\d{4}-\\d{4}-\\d{4}-\\d{4} للبحث عن أرقام بطاقات الائتمان."
+        }
+      ]
+    },
+    "pdf-to-markdown": {
+      "title": "تحويل PDF إلى Markdown",
+      "metaDescription": "تحويل ملفات PDF إلى تنسيق Markdown. استخراج النصوص مع الحفاظ على التنسيقات مثل العناوين والقوائم.",
+      "keywords": [
+        "تحويل pdf الى markdown",
+        "تحويل pdf الى md",
+        "استخراج نصوص pdf",
+        "محول ماركداون",
+        "pdf الى نص"
+      ],
+      "description": "\n      <p>تقوم أداة \"تحويل PDF إلى Markdown\" بتحويل مستندات PDF الخاصة بك إلى ملفات Markdown نظيفة ومنظمة بشكل جيد. تستخرج الأداة محتوى النص بذكاء وتحاول الحفاظ على التنسيقات الأصلية مثل العناوين والقوائم والفقرات.</p>\n      <p>مثالية لتحويل مستندات PDF إلى تنسيقات قابلة للتعديل لكتابة الوثائق، أو تدوين الملاحظات، أو لأنظمة إدارة المحتوى (CMS) التي تدعم تنسيق Markdown.</p>\n      <p>تتم جميع عمليات التحويل محلياً في متصفحك، مما يضمن بقاء مستنداتك خاصة وآمنة تماماً.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "قم برفع ملف PDF",
+          "description": "اسحب وأسقط ملف PDF الخاص بك أو انقر لاختياره."
+        },
+        {
+          "step": 2,
+          "title": "تكوين الخيارات",
+          "description": "حدد نطاق الصفحات، واختر ما إذا كنت تريد تضمين أرقام الصفحات، واضبط إعدادات فواصل الأسطر."
+        },
+        {
+          "step": 3,
+          "title": "التحويل والتنزيل",
+          "description": "انقر فوق تحويل لإنشاء ملف Markdown الخاص بك وتنزيله."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "كتابة الوثائق والتقارير",
+          "description": "تحويل الكتيبات والأدلة بصيغة PDF إلى Markdown لتسهيل توثيقها وإدارتها برمجياً.",
+          "icon": "file-text"
+        },
+        {
+          "title": "تدوين الملاحظات",
+          "description": "استخراج المحتوى من المقالات والكتب بصيغة PDF لاستخدامه في نظام تدوين الملاحظات الخاص بك.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "نقل المحتوى",
+          "description": "نقل محتوى ملفات PDF إلى منصات إدارة المحتوى (CMS) التي تدعم Markdown.",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "هل يتم الحفاظ على التنسيق؟",
+          "answer": "تحاول الأداة الكشف عن العناوين بناءً على حجم الخط، والتعرف على القوائم النقطية أو الرقمية. قد تتطلب التخطيطات المعقدة بعض التعديل اليدوي بعد التحويل."
+        },
+        {
+          "question": "هل يمكنني تحويل صفحات معينة فقط？",
+          "answer": "نعم، يمكنك تحديد نطاق صفحات مثل \"1-3, 5, 7\" لتحويل تلك الصفحات فقط."
+        },
+        {
+          "question": "هل تعمل الأداة مع ملفات PDF الممسوحة ضوئياً؟",
+          "answer": "تحتوي ملفات PDF الممسوحة ضوئياً على صور وليس نصوصاً رقمية. يرجى استخدام أداة التعرف الضوئي على الحروف (OCR) أولاً لاستخراج النص قبل تحويله إلى Markdown."
+        }
+      ]
+    }
+  }
+}

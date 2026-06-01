@@ -1,0 +1,59 @@
+{
+  "title": "Edit Attachments",
+  "metaDescription": "Manage PDF attachments. View, rename, and remove embedded files.",
+  "keywords": [
+    "edit attachments",
+    "manage pdf files",
+    "remove attachments",
+    "rename attachments"
+  ],
+  "description": "\n      <p>Edit Attachments lets you manage embedded files in PDF documents. View all attachments, rename them, or remove unwanted files from the PDF.</p>\n      <p>Perfect for cleaning up PDF packages or updating attachment information before distribution.</p>\n      <p>All editing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Manage Attachments",
+      "description": "View, rename, or delete embedded files."
+    },
+    {
+      "step": 3,
+      "title": "Save and Download",
+      "description": "Click Save to apply changes and download."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Clean Up PDFs",
+      "description": "Remove unnecessary attachments from PDF packages.",
+      "icon": "trash-2"
+    },
+    {
+      "title": "Rename Files",
+      "description": "Update attachment names for clarity.",
+      "icon": "edit"
+    },
+    {
+      "title": "Review Contents",
+      "description": "Audit embedded files before distribution.",
+      "icon": "eye"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can I add new attachments here?",
+      "answer": "Use the Add Attachments tool to embed new files."
+    },
+    {
+      "question": "Is removal permanent?",
+      "answer": "Yes, removed attachments cannot be recovered from the output file."
+    },
+    {
+      "question": "Can I preview attachments?",
+      "answer": "You can see file names and sizes; use Extract Attachments to view contents."
+    }
+  ]
+}

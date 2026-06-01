@@ -16,6 +16,7 @@ import {
   type PageOrientation,
   type FontId
 } from '@/lib/pdf/processors/text-to-pdf';
+import { Select } from '@/components/ui/FormField';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
 function generateId(): string {
@@ -189,7 +190,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
               </div>
               <ul className="space-y-2" role="list">
                 {files.map((file) => (
-                  <li key={file.id} className="flex items-center gap-3 p-3 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white">
+                  <li key={file.id} className="flex items-center gap-3 p-3 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-card))]">
                     <svg className="w-8 h-8 text-blue-500 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
                       <path d="M14 2v6h6" fill="white" />
@@ -222,7 +223,7 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
           <h3 className="text-lg font-medium mb-4">{tTools('txtToPdf.enterText') || 'Enter Text'}</h3>
           <textarea value={directText} onChange={(e) => setDirectText(e.target.value)}
             placeholder={tTools('txtToPdf.textPlaceholder') || 'Type or paste your text here...'} disabled={isProcessing}
-            className="w-full h-64 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] resize-y" />
+            className="w-full h-64 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm font-mono focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] resize-y" />
           <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-2">{directText.length} {tTools('txtToPdf.characters') || 'characters'}</p>
         </Card>
       )}
@@ -236,66 +237,61 @@ export function TextToPDFTool({ className = '' }: TextToPDFToolProps) {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
               <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.pageSize') || 'Page Size'}</label>
-              <select value={pageSize} onChange={(e) => setPageSize(e.target.value as TextPageSizeType)} disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm">
+              <Select value={pageSize} onChange={(e) => setPageSize(e.target.value as TextPageSizeType)} disabled={isProcessing}>
                 <option value="A4">A4</option><option value="LETTER">Letter</option><option value="LEGAL">Legal</option>
                 <option value="A5">A5</option><option value="A3">A3</option><option value="CUSTOM">{tTools('txtToPdf.custom') || 'Custom'}</option>
-              </select>
+              </Select>
             </div>
             {pageSize === 'CUSTOM' && (
               <>
                 <div>
                   <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.width') || 'Width (pt)'}</label>
                   <input type="number" value={customWidth} onChange={(e) => setCustomWidth(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
-                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm" />
+                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.height') || 'Height (pt)'}</label>
                   <input type="number" value={customHeight} onChange={(e) => setCustomHeight(Number(e.target.value))} disabled={isProcessing} min={72} max={2000}
-                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm" />
+                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm" />
                 </div>
               </>
             )}
             <div>
               <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.orientation') || 'Orientation'}</label>
-              <select value={orientation} onChange={(e) => setOrientation(e.target.value as PageOrientation)} disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm">
+              <Select value={orientation} onChange={(e) => setOrientation(e.target.value as PageOrientation)} disabled={isProcessing}>
                 <option value="portrait">{tTools('txtToPdf.portrait') || 'Portrait'}</option>
                 <option value="landscape">{tTools('txtToPdf.landscape') || 'Landscape'}</option>
-              </select>
+              </Select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.fontFamily') || 'Font Family'}</label>
-              <select value={fontId} onChange={(e) => setFontId(e.target.value as FontId)} disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm">
+              <Select value={fontId} onChange={(e) => setFontId(e.target.value as FontId)} disabled={isProcessing}>
                 {AVAILABLE_FONTS.map(font => (
                   <option key={font.id} value={font.id}>{font.name}</option>
                 ))}
-              </select>
+              </Select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.fontSize') || 'Font Size'}</label>
-              <select value={fontSize} onChange={(e) => setFontSize(Number(e.target.value))} disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm">
+              <Select value={fontSize} onChange={(e) => setFontSize(Number(e.target.value))} disabled={isProcessing}>
                 {[8, 10, 11, 12, 14, 16, 18, 20, 24].map(size => <option key={size} value={size}>{size}pt</option>)}
-              </select>
+              </Select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.lineHeight') || 'Line Spacing'}</label>
-              <select value={lineHeight} onChange={(e) => setLineHeight(Number(e.target.value))} disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm">
+              <Select value={lineHeight} onChange={(e) => setLineHeight(Number(e.target.value))} disabled={isProcessing}>
                 <option value="1">{tTools('txtToPdf.single') || 'Single'}</option>
                 <option value="1.15">1.15</option>
                 <option value="1.5">1.5</option>
                 <option value="2">{tTools('txtToPdf.double') || 'Double'}</option>
-              </select>
+              </Select>
             </div>
             <div>
               <label className="block text-sm font-medium mb-2">{tTools('txtToPdf.textColor') || 'Text Color'}</label>
               <div className="flex gap-2">
                 <input type="color" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing} className="w-10 h-10 rounded border cursor-pointer" />
                 <input type="text" value={textColor} onChange={(e) => setTextColor(e.target.value)} disabled={isProcessing}
-                  className="flex-1 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm" />
+                  className="flex-1 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm" />
               </div>
             </div>
           </div>

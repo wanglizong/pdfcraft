@@ -1,0 +1,60 @@
+{
+  "title": "Excel to PDF",
+  "metaDescription": "Convert Excel spreadsheets (XLSX) to PDF. Preserve tables and data in your converted documents.",
+  "keywords": [
+    "excel to pdf",
+    "xlsx to pdf",
+    "convert excel",
+    "spreadsheet to pdf",
+    "microsoft excel to pdf"
+  ],
+  "description": "\n      <p>Excel to PDF converts Microsoft Excel spreadsheets into PDF format while preserving table structure and data organization.</p>\n      <p>Upload your XLSX files and get clean PDF output with properly formatted tables. Each sheet in your workbook becomes a separate section in the PDF.</p>\n      <p>All conversion happens locally in your browser, ensuring your data remains private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Excel File",
+      "description": "Drag and drop your .xlsx file or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Wait for Processing",
+      "description": "The tool will load the spreadsheet and convert all sheets."
+    },
+    {
+      "step": 3,
+      "title": "Download PDF",
+      "description": "Click Download to save your converted PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Report Sharing",
+      "description": "Convert Excel reports to PDF for distribution to stakeholders.",
+      "icon": "file-text"
+    },
+    {
+      "title": "Data Archiving",
+      "description": "Archive spreadsheet data in stable PDF format.",
+      "icon": "archive"
+    },
+    {
+      "title": "Print Preparation",
+      "description": "Create print-ready PDFs from Excel worksheets.",
+      "icon": "printer"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Are multiple sheets supported?",
+      "answer": "Yes, all sheets in the workbook are converted and included in the PDF."
+    },
+    {
+      "question": "Is .xls format supported?",
+      "answer": "Currently only .xlsx format is supported. Please save .xls files as .xlsx first."
+    },
+    {
+      "question": "Are formulas preserved?",
+      "answer": "The PDF shows calculated values. Formulas are not executable in PDF format."
+    }
+  ]
+}

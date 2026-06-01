@@ -1,0 +1,514 @@
+{
+  "find-and-redact": {
+    "en": {
+      "title": "Find and Redact",
+      "metaDescription": "Search and redact text across all pages of a PDF. Batch redact sensitive information like account numbers, names, and more.",
+      "keywords": [
+        "redact pdf",
+        "find and redact",
+        "batch redact",
+        "remove text",
+        "pdf censorship",
+        "hide sensitive data"
+      ],
+      "description": "\n      <p>Find and Redact allows you to search for specific text, numbers, or patterns across all pages of your PDF and redact all matching occurrences at once. Perfect for removing sensitive information like account numbers, names, addresses, or any confidential data.</p>\n      <p>Preview all matches before applying redactions, and selectively choose which occurrences to redact. Supports case-sensitive search, whole word matching, and regular expressions for advanced pattern matching.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Search for Text",
+          "description": "Enter the text, number, or regex pattern you want to find and redact."
+        },
+        {
+          "step": 3,
+          "title": "Review and Select",
+          "description": "Preview all matches and select which ones to redact."
+        },
+        {
+          "step": 4,
+          "title": "Apply Redaction",
+          "description": "Customize redaction appearance and apply to selected matches."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Privacy Compliance",
+          "description": "Redact personal information to comply with GDPR, HIPAA, or other regulations.",
+          "icon": "shield"
+        },
+        {
+          "title": "Legal Documents",
+          "description": "Remove confidential data from legal documents before sharing.",
+          "icon": "scale"
+        },
+        {
+          "title": "Financial Records",
+          "description": "Redact account numbers, SSNs, or financial data from statements.",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is redaction permanent?",
+          "answer": "Yes, redaction permanently removes the underlying text. The original content cannot be recovered. Always keep a backup of the original file."
+        },
+        {
+          "question": "Can I redact images or scanned text?",
+          "answer": "This tool works with text-based PDFs. For scanned documents, you would need to use manual area-based redaction."
+        },
+        {
+          "question": "Can I customize the redaction appearance?",
+          "answer": "Yes, you can set the redaction color, add borders, and optionally include replacement text like \"[REDACTED]\"."
+        },
+        {
+          "question": "How does regex search work?",
+          "answer": "Enable \"Use Regular Expression\" to search using regex patterns. For example, \\d{4}-\\d{4}-\\d{4}-\\d{4} to find credit card numbers."
+        }
+      ]
+    },
+    "zh": {
+      "title": "查找并遮盖",
+      "metaDescription": "搜索并批量遮盖PDF中的敏感文本。支持正则表达式匹配账号、姓名等敏感信息。",
+      "keywords": [
+        "遮盖pdf",
+        "查找并遮盖",
+        "批量遮盖",
+        "删除文本",
+        "pdf脱敏",
+        "隐藏敏感数据"
+      ],
+      "description": "\n      <p>查找并遮盖允许您在PDF的所有页面中搜索特定文本、数字或模式，并一次性遮盖所有匹配项。非常适合删除敏感信息，如账号、姓名、地址或任何机密数据。</p>\n      <p>在应用遮盖前预览所有匹配项，并选择性地选择要遮盖的出现次数。支持区分大小写搜索、全词匹配和正则表达式以进行高级模式匹配。</p>\n      <p>所有处理都在您的浏览器中进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "搜索文本",
+          "description": "输入要查找和遮盖的文本、数字或正则表达式模式。"
+        },
+        {
+          "step": 3,
+          "title": "审查并选择",
+          "description": "预览所有匹配项并选择要遮盖的项目。"
+        },
+        {
+          "step": 4,
+          "title": "应用遮盖",
+          "description": "自定义遮盖外观并应用于所选匹配项。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "隐私合规",
+          "description": "遮盖个人信息以符合GDPR、HIPAA或其他法规。",
+          "icon": "shield"
+        },
+        {
+          "title": "法律文档",
+          "description": "在共享前从法律文档中删除机密数据。",
+          "icon": "scale"
+        },
+        {
+          "title": "财务记录",
+          "description": "从报表中遮盖账号、社保号或财务数据。",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "遮盖是永久的吗？",
+          "answer": "是的，遮盖会永久删除底层文本。原始内容无法恢复。请始终保留原始文件的备份。"
+        },
+        {
+          "question": "可以遮盖图像或扫描文本吗？",
+          "answer": "此工具适用于基于文本的PDF。对于扫描文档，您需要使用基于区域的手动遮盖。"
+        },
+        {
+          "question": "可以自定义遮盖外观吗？",
+          "answer": "是的，您可以设置遮盖颜色、添加边框，并可选择包含替换文本如\"[已遮盖]\"。"
+        },
+        {
+          "question": "正则表达式搜索如何工作？",
+          "answer": "启用\"使用正则表达式\"以使用正则模式搜索。例如，\\d{4}-\\d{4}-\\d{4}-\\d{4}可查找信用卡号。"
+        }
+      ]
+    }
+  },
+  "pdf-to-markdown": {
+    "en": {
+      "title": "PDF to Markdown",
+      "metaDescription": "Convert PDF to Markdown format. Extract text and preserve formatting like headings and lists.",
+      "keywords": [
+        "pdf to markdown",
+        "convert pdf to md",
+        "pdf text extraction",
+        "markdown converter",
+        "pdf to text"
+      ],
+      "description": "\n      <p>PDF to Markdown converts your PDF documents into clean, well-structured Markdown files. The tool intelligently extracts text content and attempts to preserve formatting like headings, lists, and paragraphs.</p>\n      <p>Perfect for converting PDF documents to editable formats for documentation, note-taking, or content management systems that support Markdown.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Options",
+          "description": "Set page range, choose to include page numbers, and adjust line break settings."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Click Convert to generate your Markdown file and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentation",
+          "description": "Convert PDF manuals and guides to Markdown for version-controlled documentation.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Note Taking",
+          "description": "Extract content from PDF articles and books for your note-taking system.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Content Migration",
+          "description": "Migrate PDF content to CMS platforms that support Markdown.",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is formatting preserved?",
+          "answer": "The tool attempts to detect headings based on font size and bullet points/numbered lists. Complex layouts may require manual adjustment."
+        },
+        {
+          "question": "Can I convert specific pages?",
+          "answer": "Yes, you can specify a page range like \"1-3, 5, 7\" to convert only those pages."
+        },
+        {
+          "question": "Does it work with scanned PDFs?",
+          "answer": "Scanned PDFs contain images, not text. Use our OCR tool first to extract text before converting to Markdown."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF转Markdown",
+      "metaDescription": "将PDF转换为Markdown格式。提取文本并保留标题和列表等格式。",
+      "keywords": [
+        "pdf转markdown",
+        "pdf转md",
+        "pdf文本提取",
+        "markdown转换器",
+        "pdf转文本"
+      ],
+      "description": "\n      <p>PDF转Markdown将您的PDF文档转换为干净、结构良好的Markdown文件。该工具智能提取文本内容，并尝试保留标题、列表和段落等格式。</p>\n      <p>非常适合将PDF文档转换为可编辑格式，用于文档编写、笔记记录或支持Markdown的内容管理系统。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置选项",
+          "description": "设置页面范围，选择是否包含页码，并调整换行设置。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "点击转换生成Markdown文件并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档编写",
+          "description": "将PDF手册和指南转换为Markdown，用于版本控制的文档。",
+          "icon": "file-text"
+        },
+        {
+          "title": "笔记记录",
+          "description": "从PDF文章和书籍中提取内容到您的笔记系统。",
+          "icon": "edit-3"
+        },
+        {
+          "title": "内容迁移",
+          "description": "将PDF内容迁移到支持Markdown的CMS平台。",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "格式会保留吗？",
+          "answer": "该工具会根据字体大小检测标题，以及项目符号/编号列表。复杂布局可能需要手动调整。"
+        },
+        {
+          "question": "可以转换特定页面吗？",
+          "answer": "是的，您可以指定页面范围如\"1-3, 5, 7\"以仅转换这些页面。"
+        },
+        {
+          "question": "扫描的PDF能用吗？",
+          "answer": "扫描的PDF包含图像而非文本。请先使用我们的OCR工具提取文本，然后再转换为Markdown。"
+        }
+      ]
+    }
+  },
+  "ocg-manager": {
+    "en": {
+      "title": "PDF Layer Manager (OCG)",
+      "metaDescription": "Manage PDF layers (Optional Content Groups). View, toggle, add, delete, and rename layers in your PDF documents.",
+      "keywords": [
+        "pdf layers",
+        "ocg manager",
+        "optional content groups",
+        "pdf layer visibility",
+        "manage pdf layers"
+      ],
+      "description": "\n      <p>PDF Layer Manager allows you to view and manage Optional Content Groups (OCG) in your PDF documents. OCG layers are used in technical drawings, maps, and complex documents to organize content into toggleable layers.</p>\n      <p>View all layers in your PDF, toggle their visibility, add new layers, delete unwanted ones, or rename existing layers. This tool is essential for working with layered PDFs like architectural plans, CAD exports, and print-ready documents.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload a PDF file that contains layers (OCG) or one you want to add layers to."
+        },
+        {
+          "step": 2,
+          "title": "View Layers",
+          "description": "The tool automatically lists all layers found in the document with their visibility status."
+        },
+        {
+          "step": 3,
+          "title": "Manage Layers",
+          "description": "Toggle layer visibility, rename layers, add new ones, or delete unwanted layers."
+        },
+        {
+          "step": 4,
+          "title": "Save and Download",
+          "description": "Download your modified PDF with the layer changes applied."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Technical Drawings",
+          "description": "Manage layers in CAD exports to show/hide dimensions, annotations, or different views.",
+          "icon": "ruler"
+        },
+        {
+          "title": "Map Editing",
+          "description": "Toggle different map layers like topography, roads, and labels for custom map prints.",
+          "icon": "map"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Prepare layered PDFs for printing by toggling appropriate layers for different versions.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What are PDF layers (OCG)?",
+          "answer": "Optional Content Groups (OCG) are layers in a PDF that can be shown or hidden. They are commonly used in CAD drawings, maps, and complex documents."
+        },
+        {
+          "question": "Why does my PDF show no layers?",
+          "answer": "Not all PDFs contain layers. Layers are typically added during PDF creation from design software or CAD applications."
+        },
+        {
+          "question": "Will layer changes affect the original content?",
+          "answer": "Layer visibility changes only affect what is displayed or printed. The actual content remains in the document."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF图层管理器",
+      "metaDescription": "管理PDF图层。查看、切换、添加、删除和重命名图层。",
+      "keywords": [
+        "pdf图层",
+        "ocg管理器"
+      ],
+      "description": "<p>管理PDF文档中的可选内容组（OCG）。</p>",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF",
+          "description": "上传包含图层的PDF文件。"
+        },
+        {
+          "step": 2,
+          "title": "查看图层",
+          "description": "工具自动列出所有图层。"
+        },
+        {
+          "step": 3,
+          "title": "管理图层",
+          "description": "切换、添加或删除图层。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "技术图纸",
+          "description": "管理CAD导出中的图层。",
+          "icon": "ruler"
+        },
+        {
+          "title": "地图编辑",
+          "description": "切换地图图层。",
+          "icon": "map"
+        },
+        {
+          "title": "印刷准备",
+          "description": "准备分层PDF进行打印。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是PDF图层？",
+          "answer": "OCG是PDF中可以显示或隐藏的图层。"
+        },
+        {
+          "question": "为什么没有图层？",
+          "answer": "并非所有PDF都包含图层。"
+        },
+        {
+          "question": "会影响原始内容吗？",
+          "answer": "图层可见性更改仅影响显示。"
+        }
+      ]
+    }
+  },
+  "pdf-reader": {
+    "en": {
+      "title": "PDF Reader",
+      "metaDescription": "Free online PDF reader. View, navigate, zoom, rotate, and print PDF documents directly in your browser.",
+      "keywords": [
+        "pdf reader",
+        "pdf viewer",
+        "view pdf online",
+        "read pdf",
+        "pdf browser viewer"
+      ],
+      "description": "\n      <p>PDF Reader is a full-featured PDF viewer that lets you read and navigate PDF documents directly in your browser. No software installation required - just upload your PDF and start reading.</p>\n      <p>Navigate between pages, zoom in and out, rotate the view, and use fullscreen mode for distraction-free reading. You can also print documents or download them for offline access.</p>\n      <p>All viewing happens locally in your browser. Your documents are never uploaded to any server, ensuring complete privacy.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Open Your PDF",
+          "description": "Click to upload or drag and drop a PDF file to open it in the reader."
+        },
+        {
+          "step": 2,
+          "title": "Navigate Pages",
+          "description": "Use the page controls to go to the previous or next page, or jump to a specific page number."
+        },
+        {
+          "step": 3,
+          "title": "Adjust View",
+          "description": "Zoom in or out, rotate the view, or enter fullscreen mode for comfortable reading."
+        },
+        {
+          "step": 4,
+          "title": "Print or Download",
+          "description": "Print the document or download it for offline access when needed."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Document Review",
+          "description": "Quickly review PDF documents without installing any software.",
+          "icon": "book-open"
+        },
+        {
+          "title": "Mobile Reading",
+          "description": "Read PDF documents on any device with a web browser.",
+          "icon": "smartphone"
+        },
+        {
+          "title": "Quick Preview",
+          "description": "Preview PDFs before deciding to download or print them.",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is my document secure?",
+          "answer": "Yes, your document is processed entirely in your browser and is never uploaded to any server."
+        },
+        {
+          "question": "Can I annotate or edit the PDF?",
+          "answer": "This tool is for viewing only. Use our Sign PDF or Annotate PDF tools for editing."
+        },
+        {
+          "question": "Does it work on mobile devices?",
+          "answer": "Yes, the PDF Reader works on all devices with a modern web browser."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF阅读器",
+      "metaDescription": "免费在线PDF阅读器。在浏览器中查看PDF。",
+      "keywords": [
+        "pdf阅读器",
+        "pdf查看器"
+      ],
+      "description": "<p>在浏览器中查看PDF文档。</p>",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "打开PDF",
+          "description": "上传PDF文件。"
+        },
+        {
+          "step": 2,
+          "title": "导航页面",
+          "description": "使用页面控制导航。"
+        },
+        {
+          "step": 3,
+          "title": "调整视图",
+          "description": "放大、缩小或旋转。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档审阅",
+          "description": "快速审阅PDF文档。",
+          "icon": "book-open"
+        },
+        {
+          "title": "移动阅读",
+          "description": "在任何设备上阅读PDF。",
+          "icon": "smartphone"
+        },
+        {
+          "title": "快速预览",
+          "description": "预览PDF。",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "文档安全吗？",
+          "answer": "是的，完全在浏览器中处理。"
+        },
+        {
+          "question": "可以编辑吗？",
+          "answer": "此工具仅用于查看。"
+        },
+        {
+          "question": "支持移动设备吗？",
+          "answer": "是的。"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "title": "EPUB to PDF",
+  "metaDescription": "Convert EPUB e-books to PDF. Preserve formatting, images, and chapter structure.",
+  "keywords": [
+    "epub to pdf",
+    "convert epub",
+    "ebook to pdf",
+    "epub converter"
+  ],
+  "description": "\n      <p>EPUB to PDF converts electronic book files into high-quality PDF documents. EPUB is the most popular e-book format, used by most e-readers and digital libraries.</p>\n      <p>This tool preserves text formatting, images, and the chapter structure of your e-books. Perfect for printing, archiving, or sharing e-books in a universally viewable format.</p>\n      <p>All conversion happens locally in your browser using advanced rendering technology, ensuring your books remain private and the conversion is fast.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload EPUB File",
+      "description": "Drag and drop your .epub file or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Wait for Conversion",
+      "description": "The tool will render and convert all pages of your e-book."
+    },
+    {
+      "step": 3,
+      "title": "Download PDF",
+      "description": "Click Download to save your converted PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Print E-books",
+      "description": "Convert e-books to PDF for physical printing.",
+      "icon": "printer"
+    },
+    {
+      "title": "Archive Books",
+      "description": "Store e-books in long-term stable PDF format.",
+      "icon": "archive"
+    },
+    {
+      "title": "Share Documents",
+      "description": "Share e-books with anyone, even without an e-reader.",
+      "icon": "share-2"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is the formatting preserved?",
+      "answer": "Yes! This tool uses native EPUB rendering, preserving text formatting, images, and layout with high fidelity."
+    },
+    {
+      "question": "Are DRM-protected EPUBs supported?",
+      "answer": "No, DRM-protected e-books cannot be converted. Only DRM-free EPUB files are supported."
+    },
+    {
+      "question": "How is page size determined?",
+      "answer": "EPUB content is rendered to standard A4 page size for optimal readability."
+    }
+  ]
+}

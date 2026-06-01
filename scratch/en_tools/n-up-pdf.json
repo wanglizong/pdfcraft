@@ -1,0 +1,59 @@
+{
+  "title": "N-Up PDF",
+  "metaDescription": "Print multiple PDF pages per sheet. Create 2-up, 4-up, or custom layouts.",
+  "keywords": [
+    "n-up pdf",
+    "multiple pages per sheet",
+    "2-up printing",
+    "page imposition"
+  ],
+  "description": "\n      <p>N-Up PDF arranges multiple pages onto single sheets, creating 2-up, 4-up, 6-up, 9-up, or custom layouts. Perfect for saving paper when printing or creating handouts.</p>\n      <p>Choose from preset layouts or create custom arrangements. The tool automatically scales and positions pages for optimal results.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Choose Layout",
+      "description": "Select 2-up, 4-up, 6-up, 9-up, or custom grid."
+    },
+    {
+      "step": 3,
+      "title": "Create and Download",
+      "description": "Click Create to generate the n-up PDF and download."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Save Paper",
+      "description": "Print multiple pages per sheet to reduce paper usage.",
+      "icon": "leaf"
+    },
+    {
+      "title": "Create Handouts",
+      "description": "Make compact handouts from presentation slides.",
+      "icon": "file-text"
+    },
+    {
+      "title": "Review Documents",
+      "description": "Print documents in reduced size for review.",
+      "icon": "eye"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What layouts are available?",
+      "answer": "2-up, 4-up, 6-up, 9-up, and custom grid layouts are available."
+    },
+    {
+      "question": "Can I add borders between pages?",
+      "answer": "Yes, you can add borders and gutters between pages."
+    },
+    {
+      "question": "Is page order preserved?",
+      "answer": "Yes, pages are arranged in reading order (left-to-right, top-to-bottom)."
+    }
+  ]
+}

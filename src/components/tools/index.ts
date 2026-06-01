@@ -102,3 +102,37 @@ export { ExtractTablesTool, type ExtractTablesToolProps } from './extract-tables
 export { OCGManagerTool, type OCGManagerToolProps } from './ocg-manager';
 export { PDFReaderTool, type PDFReaderToolProps } from './pdf-reader';
 
+// PDF Overlay Tool
+export { OverlayPDFTool, type OverlayPDFToolProps } from './overlay/OverlayPDFTool';
+
+// New Upgrade Tools
+export { AIPDFReflowerTool } from './ai-pdf-reflower/AIPDFReflowerTool';
+export { CitationLinkerTool } from './citation-linker/CitationLinkerTool';
+export { PDFVectorExtractorTool } from './vector-extractor/PDFVectorExtractorTool';
+export { DeepSanitizeTool } from './deep-sanitize/DeepSanitizeTool';
+export { BookletFoldingSimulatorTool } from './booklet-folding-simulator/BookletFoldingSimulatorTool';
+export { PDFToSlideTool } from './pdf-to-slide/PDFToSlideTool';
+export { FormLogicDesignerTool } from './form-logic-designer/FormLogicDesignerTool';
+export { EinkOptimizerTool } from './eink-optimizer/EinkOptimizerTool';
+export { CertCryptorTool } from './cert-cryptor/CertCryptorTool';
+export { PassportIdComposerTool } from './passport-id-composer/PassportIdComposerTool';
+export { AnnotationExporterTool } from './annotation-exporter/AnnotationExporterTool';
+export { BatchWatermarkRemoverTool } from './batch-watermark-remover/BatchWatermarkRemoverTool';
+export { SmartDataRedactorTool } from './smart-data-redactor/SmartDataRedactorTool';
+export { BookmarksAutoGeneratorTool } from './bookmarks-auto-generator/BookmarksAutoGeneratorTool';
+export { BatchBarcodeInjectorTool } from './batch-barcode-injector/BatchBarcodeInjectorTool';
+export { SignatureInkOptimizerTool } from './signature-ink-optimizer/SignatureInkOptimizerTool';
+export { DeadLinkDebuggerTool } from './dead-link-debugger/DeadLinkDebuggerTool';
+export { InteractiveTocGeneratorTool } from './interactive-toc-generator/InteractiveTocGeneratorTool';
+export { GlobalInvoiceParserTool } from './global-invoice-parser/GlobalInvoiceParserTool';
+export { PdfDeskewAlignerTool } from './pdf-deskew-aligner/PdfDeskewAlignerTool';
+export { PdfTwoColumnReflowerTool } from './pdf-two-column-reflower/PdfTwoColumnReflowerTool';
+export { PdfPageResizerUniformTool } from './pdf-page-resizer-uniform/PdfPageResizerUniformTool';
+export { HandwritingInkContrastBoosterTool } from './handwriting-ink-contrast-booster/HandwritingInkContrastBoosterTool';
+export { PdfSpineBookbinderTool } from './pdf-spine-bookbinder/PdfSpineBookbinderTool';
+export { PdfSignatureAnchorHelperTool } from './pdf-signature-anchor-helper/PdfSignatureAnchorHelperTool';
+export { PdfLosslessSlicerTool } from './pdf-lossless-slicer/PdfLosslessSlicerTool';
+export { PdfScratchpadCanvasTool } from './pdf-scratchpad-canvas/PdfScratchpadCanvasTool';
+export { PhotoTilingPrepressTool } from './photo-tiling-prepress/PhotoTilingPrepressTool';
+
+

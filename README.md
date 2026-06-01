@@ -288,6 +288,29 @@ To stop containers:
 docker compose down
 ```
 
+#### 🌐 Subpath Deployment (basePath Support)
+
+PDFCraft supports deployment under a subpath (e.g., `https://your-domain.com/pdfcraft/`). To enable this, you must specify the base path during the build process.
+
+**Using Docker Build:**
+```bash
+docker build --build-arg BASE_PATH=/pdfcraft -t pdfcraft .
+```
+
+**Using Docker Compose:**
+```yaml
+services:
+  pdfcraft:
+    build:
+      context: .
+      args:
+        - BASE_PATH=/pdfcraft
+    environment:
+      - BASE_PATH=/pdfcraft
+```
+
+*Note: Since the app is statically exported, the `BASE_PATH` must be provided during the build stage.*
+
 ## 📜 Scripts
 
 - `npm run dev`: Starts the development server with Turbopack. Automatically runs `predev` to decompress LibreOffice WASM files.
@@ -332,6 +355,7 @@ PDFCraft is configured for static export (`output: 'export'`), which means it ca
 - **Headers Configuration**: Security and caching headers are pre-configured in all deployment files.
 - **Image Optimization**: Static export uses `images: { unoptimized: true }`.
 - **WASM Support**: All deployment configs include proper MIME types for WebAssembly.
+- **Subpath Support**: Set `BASE_PATH` environment variable during build to deploy under a subdirectory.
 
 ### Verify Deployment
 After deployment, please check the following features to ensure everything is working correctly:

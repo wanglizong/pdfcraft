@@ -1,7 +1,8 @@
 /**
  * Word to PDF Processor
- * 
- * Converts Word documents to PDF using LibreOffice WASM.
+ *
+ * Uses LibreOffice WASM when Cross-Origin Isolation is available (best fidelity).
+ * Falls back to Pyodide (python-docx) for .docx when isolation headers are missing.
  */
 
 import type {
@@ -11,6 +12,9 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
+import { getSharedLibreOfficeConverter } from '@/lib/libreoffice/shared-converter';
+import { isCrossOriginIsolated } from '@/lib/utils/cross-origin-isolated';
+import { convertWordToPdfPyodide } from './word-to-pdf-pyodide';
 
 /** Maximum file size: 50 MB */
 const MAX_FILE_SIZE = 50 * 1024 * 1024;
@@ -21,36 +25,11 @@ export interface WordToPDFOptions {
     /** Reserved for future options */
 }
 
-let converterPromise: Promise<any> | null = null;
-let converterInstance: any = null;
-
-async function getConverter(onProgress?: (percent: number, message: string) => void): Promise<any> {
-    if (converterInstance?.isReady()) return converterInstance;
-
-    if (converterPromise) {
-        await converterPromise;
-        return converterInstance;
-    }
-
-    converterPromise = (async () => {
-        const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
-        converterInstance = getLibreOfficeConverter();
-        await converterInstance.initialize((progress: any) => {
-            onProgress?.(progress.percent, progress.message);
-        });
-    })();
-
-    await converterPromise;
-    return converterInstance;
-}
-
 export class WordToPDFProcessor extends BasePDFProcessor {
     private conversionProgressTimer: ReturnType<typeof setInterval> | null = null;
 
     private startConversionProgress(message: string): void {
         this.stopConversionProgress();
-        // LibreOffice convert() does not expose granular runtime progress.
-        // Keep UI responsive by advancing a bounded pseudo-progress while waiting.
         this.conversionProgressTimer = setInterval(() => {
             if (this.progress >= 98) return;
             this.updateProgress(this.progress + 1, message);
@@ -67,6 +46,51 @@ export class WordToPDFProcessor extends BasePDFProcessor {
     protected reset(): void {
         this.stopConversionProgress();
         super.reset();
+    }
+
+    private async convertWithLibreOffice(file: File): Promise<Blob> {
+        const converter = await getSharedLibreOfficeConverter((percent, message) => {
+            this.updateProgress(Math.min(percent * 0.8, 80), message);
+        });
+
+        if (this.checkCancelled()) {
+            throw new Error('Processing was cancelled.');
+        }
+
+        this.updateProgress(85, 'Converting Word document to PDF...');
+        this.startConversionProgress('Converting Word document to PDF...');
+
+        try {
+            return await Promise.race([
+                converter.convertToPdf(file),
+                new Promise<never>((_, reject) =>
+                    setTimeout(
+                        () =>
+                            reject(
+                                new Error(
+                                    `Conversion timed out after ${CONVERT_TIMEOUT_MS / 60000} minutes. The file may be too complex.`
+                                )
+                            ),
+                        CONVERT_TIMEOUT_MS
+                    )
+                ),
+            ]);
+        } finally {
+            this.stopConversionProgress();
+        }
+    }
+
+    private async convertWithPyodideFallback(file: File): Promise<Blob> {
+        this.updateProgress(
+            10,
+            'Using compatibility converter (server lacks Cross-Origin Isolation)...'
+        );
+
+        const pdfBlob = await convertWordToPdfPyodide(file, (message) => {
+            this.updateProgress(Math.min(this.progress + 2, 90), message);
+        });
+
+        return pdfBlob;
     }
 
     async process(
@@ -98,7 +122,6 @@ export class WordToPDFProcessor extends BasePDFProcessor {
             );
         }
 
-        // File size guard
         if (file.size > MAX_FILE_SIZE) {
             return this.createErrorOutput(
                 PDFErrorCode.INVALID_OPTIONS,
@@ -107,47 +130,49 @@ export class WordToPDFProcessor extends BasePDFProcessor {
             );
         }
 
+        const useLibreOffice = isCrossOriginIsolated();
+
+        if (!useLibreOffice && ext !== 'docx') {
+            return this.createErrorOutput(
+                PDFErrorCode.PROCESSING_FAILED,
+                `.${ext} files require LibreOffice, which needs Cross-Origin Isolation on your server.`,
+                'Your host must send Cross-Origin-Opener-Policy: same-origin and Cross-Origin-Embedder-Policy: require-corp on all HTML responses. Alternatively, convert the file to .docx first.'
+            );
+        }
+
         try {
-            this.updateProgress(5, 'Loading conversion engine (first time may take 1-2 minutes)...');
-
-            const converter = await getConverter((percent, message) => {
-                this.updateProgress(Math.min(percent * 0.8, 80), message);
-            });
+            const pdfBlob = useLibreOffice
+                ? await this.convertWithLibreOffice(file)
+                : await this.convertWithPyodideFallback(file);
 
             if (this.checkCancelled()) {
-                return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
-            }
-
-            this.updateProgress(85, 'Converting Word document to PDF...');
-            this.startConversionProgress('Converting Word document to PDF...');
-
-            // Convert with timeout protection
-            const pdfBlob = await Promise.race([
-                converter.convertToPdf(file),
-                new Promise<never>((_, reject) =>
-                    setTimeout(() => reject(new Error(
-                        `Conversion timed out after ${CONVERT_TIMEOUT_MS / 60000} minutes. The file may be too complex.`
-                    )), CONVERT_TIMEOUT_MS)
-                ),
-            ]);
-            this.stopConversionProgress();
-
-            if (this.checkCancelled()) {
-                return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
+                return this.createErrorOutput(
+                    PDFErrorCode.PROCESSING_CANCELLED,
+                    'Processing was cancelled.'
+                );
             }
 
             this.updateProgress(100, 'Conversion complete!');
 
             const baseName = file.name.replace(/\.(docx?|odt|rtf)$/i, '');
-            return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, { format: 'pdf' });
-
+            return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, {
+                format: 'pdf',
+                engine: useLibreOffice ? 'libreoffice' : 'pyodide',
+            });
         } catch (error) {
             this.stopConversionProgress();
             console.error('Conversion error:', error);
+            const details = error instanceof Error ? error.message : 'Unknown error';
+            const isEnvError = /SharedArrayBuffer|crossOriginIsolated|Cross-Origin/i.test(
+                details
+            );
+            const hint = isEnvError
+                ? 'Add COOP/COEP headers on your server, or use a .docx file (compatibility converter works without them).'
+                : 'Verify the file is a valid Word document and try again.';
             return this.createErrorOutput(
                 PDFErrorCode.PROCESSING_FAILED,
-                'Failed to convert Word document to PDF.',
-                error instanceof Error ? error.message : 'Unknown error'
+                `Failed to convert Word document to PDF: ${details}`,
+                `${details}\n\n${hint}`
             );
         }
     }

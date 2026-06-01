@@ -1,0 +1,188 @@
+=== id ===
+  tools.deskewPdf.uploadLabel: Unggah File PDF yang Dipindai
+  tools.deskewPdf.uploadDescription: Seret dan letakkan file PDF di sini. Anda dapat memproses hingga 10 file sekaligus.
+  tools.deskewPdf.filesTitle: File ke Deskew
+  tools.deskewPdf.optionsTitle: Opsi Meja
+  tools.deskewPdf.thresholdLabel: Ambang Batas Deteksi
+  tools.deskewPdf.thresholdDesc: Nilai yang lebih tinggi mendeteksi sudut kemiringan yang lebih halus. Bawaan: 10
+  tools.deskewPdf.dpiLabel: Analisis DPI
+  tools.deskewPdf.dpiDesc: DPI yang lebih tinggi memberikan deteksi yang lebih akurat tetapi membutuhkan waktu lebih lama.
+  tools.deskewPdf.processButton: PDF yang dideskripsikan
+  tools.deskewPdf.successMessage: File PDF berhasil dideskripsikan!
+  tools.findAndRedact.uploadDescription: Seret dan lepas file PDF untuk mencari dan menyunting teks.
+  tools.findAndRedact.searchTitle: Cari Teks
+  tools.findAndRedact.searchTermLabel: Istilah Pencarian
+  tools.findAndRedact.searchTermPlaceholder: Masukkan teks yang akan dicari (misalnya, nomor rekening, nama)...
+  tools.findAndRedact.searchInputPlaceholder: Masukkan istilah pencarian, dipisahkan dengan koma...
+  tools.findAndRedact.searchInputHelp: Tip: Pisahkan beberapa istilah dengan koma (,)
+  tools.findAndRedact.multipleTermsPlaceholder: Masukkan istilah pencarian (satu istilah per baris atau dipisahkan koma)...
+Contoh:
+John Doe
+akun123
+555-1234
+  tools.findAndRedact.termsCount: {count} istilah penelusuran
+  tools.findAndRedact.searching: Mencari...
+  tools.findAndRedact.caseSensitive: Peka Huruf Besar-kecil
+  tools.findAndRedact.wholeWord: Hanya Kata Utuh
+  tools.findAndRedact.useRegex: Gunakan Ekspresi Reguler
+  tools.findAndRedact.enterSearchTerm: Silakan masukkan setidaknya satu istilah pencarian.
+  tools.findAndRedact.noMatchesFound: Tidak ditemukan kecocokan untuk istilah pencarian.
+  tools.findAndRedact.searchFailed: Gagal mencari PDF.
+  tools.findAndRedact.matchesFound: {count} kecocokan ditemukan
+  tools.findAndRedact.filterByPage: Filter berdasarkan Halaman
+  tools.findAndRedact.selectedCount: {dipilih} dari {total} dipilih
+  tools.findAndRedact.selectMatchesToRedact: Silakan pilih setidaknya satu kecocokan untuk disunting.
+  tools.findAndRedact.redactionOptions: Pilihan Redaksi
+  tools.findAndRedact.redactionColor: Warna Redaksi
+  tools.findAndRedact.replacementText: Teks Pengganti (opsional)
+  tools.findAndRedact.replacementTextPlaceholder: misalnya, [DISUNTING]
+  tools.findAndRedact.addBorder: Tambahkan batas di sekitar area yang disunting
+  tools.findAndRedact.warningTitle: Peringatan
+  tools.findAndRedact.warningText: Redaksi bersifat permanen. Setelah diterapkan, konten asli tidak dapat dipulihkan.
+  tools.findAndRedact.redactButton: Sunting {count} Dipilih
+  tools.findAndRedact.redactFailed: Gagal menerapkan redaksi.
+  tools.findAndRedact.successMessage: Berhasil menyunting teks yang dipilih! Klik unduh untuk menyimpan.
+  tools.findAndRedact.pagesWithMatches: Halaman yang cocok:
+  tools.findAndRedact.selectedMatch: Terpilih
+  tools.findAndRedact.unselectedMatch: Tidak dipilih
+=== ro ===
+  tools.deskewPdf.uploadLabel: Încărcați fișiere PDF scanate
+  tools.deskewPdf.uploadDescription: Trageți și plasați fișiere PDF aici. Puteți procesa până la 10 fișiere simultan.
+  tools.deskewPdf.filesTitle: Fișiere la Deskew
+  tools.deskewPdf.optionsTitle: Opțiuni de aliniare
+  tools.deskewPdf.thresholdLabel: Pragul de detectare
+  tools.deskewPdf.thresholdDesc: Valorile mai mari detectează unghiuri de deformare mai subtile. Implicit: 10
+  tools.deskewPdf.dpiLabel: Analiza DPI
+  tools.deskewPdf.dpiDesc: DPI mai mare oferă o detectare mai precisă, dar durează mai mult.
+  tools.deskewPdf.processButton: Aliniați PDF-urile
+  tools.deskewPdf.successMessage: Fișier(e) PDF acomodat(e) cu succes!
+  tools.findAndRedact.uploadDescription: Trageți și plasați un fișier PDF pentru a căuta și a redacta text.
+  tools.findAndRedact.searchTitle: Căutați text
+  tools.findAndRedact.searchTermLabel: Termeni de căutare
+  tools.findAndRedact.searchTermPlaceholder: Introduceți textul de căutat (de exemplu, numărul contului, numele)...
+  tools.findAndRedact.searchInputPlaceholder: Introduceți termenii de căutare, separați prin virgule...
+  tools.findAndRedact.searchInputHelp: Sfat: separați mai mulți termeni cu virgule (,)
+  tools.findAndRedact.multipleTermsPlaceholder: Introduceți termenii de căutare (unul pe rând sau separați prin virgulă)...
+Exemplu:
+John Doe
+contul123
+555-1234
+  tools.findAndRedact.termsCount: {count} termen(i) de căutare
+  tools.findAndRedact.searching: Se caută...
+  tools.findAndRedact.caseSensitive: Caz sensibil
+  tools.findAndRedact.wholeWord: Numai cuvinte întregi
+  tools.findAndRedact.useRegex: Utilizați expresia regulată
+  tools.findAndRedact.enterSearchTerm: Vă rugăm să introduceți cel puțin un termen de căutare.
+  tools.findAndRedact.noMatchesFound: Nu s-au găsit rezultate pentru termenii de căutare.
+  tools.findAndRedact.searchFailed: Nu s-a putut căuta în PDF.
+  tools.findAndRedact.matchesFound: S-au găsit {count} potriviri
+  tools.findAndRedact.filterByPage: Filtrați după pagină
+  tools.findAndRedact.selectedCount: {selectat} din {total} selectat
+  tools.findAndRedact.selectMatchesToRedact: Vă rugăm să selectați cel puțin o potrivire pentru a redacta.
+  tools.findAndRedact.redactionOptions: Opțiuni de redactare
+  tools.findAndRedact.redactionColor: Culoare de redactare
+  tools.findAndRedact.replacementText: Text de înlocuire (opțional)
+  tools.findAndRedact.replacementTextPlaceholder: de ex., [EXPULGAT]
+  tools.findAndRedact.addBorder: Adăugați chenar în jurul zonelor redactate
+  tools.findAndRedact.warningTitle: Avertizare
+  tools.findAndRedact.warningText: Redactarea este permanentă. Odată aplicat, conținutul original nu poate fi recuperat.
+  tools.findAndRedact.redactButton: Redact {count} Selectat
+  tools.findAndRedact.redactFailed: Nu s-au aplicat redactări.
+  tools.findAndRedact.successMessage: Textul selectat a fost redactat! Faceți clic pe descărcare pentru a salva.
+  tools.findAndRedact.pagesWithMatches: Pagini cu potriviri:
+  tools.findAndRedact.selectedMatch: Selectat
+  tools.findAndRedact.unselectedMatch: Neselectat
+=== vi ===
+  tools.deskewPdf.uploadLabel: Tải lên tệp PDF đã quét
+  tools.deskewPdf.uploadDescription: Kéo và thả tập tin PDF vào đây. Bạn có thể xử lý tối đa 10 tệp cùng một lúc.
+  tools.deskewPdf.filesTitle: Tập tin vào Deskew
+  tools.deskewPdf.optionsTitle: Tùy chọn nghiêng
+  tools.deskewPdf.thresholdLabel: Ngưỡng phát hiện
+  tools.deskewPdf.thresholdDesc: Giá trị cao hơn phát hiện các góc nghiêng tinh tế hơn. Mặc định: 10
+  tools.deskewPdf.dpiLabel: Phân tích dpi
+  tools.deskewPdf.dpiDesc: Độ phân giải cao hơn mang lại khả năng phát hiện chính xác hơn nhưng mất nhiều thời gian hơn.
+  tools.deskewPdf.processButton: Làm lệch các tệp PDF
+  tools.deskewPdf.successMessage: Đã xóa thành công (các) tệp PDF!
+  tools.findAndRedact.uploadDescription: Kéo và thả tệp PDF để tìm kiếm và sắp xếp lại văn bản.
+  tools.findAndRedact.searchTitle: Tìm kiếm văn bản
+  tools.findAndRedact.searchTermLabel: Cụm từ tìm kiếm
+  tools.findAndRedact.searchTermPlaceholder: Nhập nội dung cần tìm kiếm (ví dụ: số tài khoản, tên)...
+  tools.findAndRedact.searchInputPlaceholder: Nhập cụm từ tìm kiếm, phân tách bằng dấu phẩy...
+  tools.findAndRedact.searchInputHelp: Mẹo: Phân tách nhiều thuật ngữ bằng dấu phẩy (,)
+  tools.findAndRedact.multipleTermsPlaceholder: Nhập cụm từ tìm kiếm (một cụm từ trên mỗi dòng hoặc được phân tách bằng dấu phẩy)...
+Ví dụ:
+John Doe
+tài khoản123
+555-1234
+  tools.findAndRedact.termsCount: {count} cụm từ tìm kiếm
+  tools.findAndRedact.searching: Đang tìm kiếm...
+  tools.findAndRedact.caseSensitive: Phân biệt chữ hoa chữ thường
+  tools.findAndRedact.wholeWord: Chỉ toàn bộ từ
+  tools.findAndRedact.useRegex: Sử dụng biểu thức chính quy
+  tools.findAndRedact.enterSearchTerm: Vui lòng nhập ít nhất một cụm từ tìm kiếm.
+  tools.findAndRedact.noMatchesFound: Không tìm thấy kết quả phù hợp cho cụm từ tìm kiếm.
+  tools.findAndRedact.searchFailed: Không thể tìm kiếm bản PDF.
+  tools.findAndRedact.matchesFound: Đã tìm thấy {count} kết quả phù hợp
+  tools.findAndRedact.filterByPage: Lọc theo trang
+  tools.findAndRedact.selectedCount: {đã chọn} trong số {tổng} đã chọn
+  tools.findAndRedact.selectMatchesToRedact: Vui lòng chọn ít nhất một kết quả phù hợp để sắp xếp lại.
+  tools.findAndRedact.redactionOptions: Tùy chọn biên tập
+  tools.findAndRedact.redactionColor: Màu biên tập
+  tools.findAndRedact.replacementText: Văn bản thay thế (tùy chọn)
+  tools.findAndRedact.replacementTextPlaceholder: ví dụ: [BỊ XÓA]
+  tools.findAndRedact.addBorder: Thêm đường viền xung quanh các khu vực được xử lý lại
+  tools.findAndRedact.warningTitle: Cảnh báo
+  tools.findAndRedact.warningText: Việc chỉnh sửa là vĩnh viễn. Sau khi áp dụng, nội dung ban đầu không thể phục hồi được.
+  tools.findAndRedact.redactButton: Đã chọn lại {count}
+  tools.findAndRedact.redactFailed: Không áp dụng được các thao tác chỉnh sửa.
+  tools.findAndRedact.successMessage: Đã biên tập thành công văn bản đã chọn! Bấm tải về để lưu.
+  tools.findAndRedact.pagesWithMatches: Các trang có kết quả phù hợp:
+  tools.findAndRedact.selectedMatch: Đã chọn
+  tools.findAndRedact.unselectedMatch: Không được chọn
+=== ar ===
+  tools.deskewPdf.uploadLabel: تحميل ملفات PDF الممسوحة ضوئيًا
+  tools.deskewPdf.uploadDescription: قم بسحب وإسقاط ملفات PDF هنا. يمكنك معالجة ما يصل إلى 10 ملفات في وقت واحد.
+  tools.deskewPdf.filesTitle: الملفات إلى Deskew
+  tools.deskewPdf.optionsTitle: خيارات ديسكو
+  tools.deskewPdf.thresholdLabel: عتبة الكشف
+  tools.deskewPdf.thresholdDesc: تكتشف القيم الأعلى زوايا انحراف أكثر دقة. الافتراضي: 10
+  tools.deskewPdf.dpiLabel: تحليل دي بي آي
+  tools.deskewPdf.dpiDesc: توفر DPI الأعلى اكتشافًا أكثر دقة ولكنها تستغرق وقتًا أطول.
+  tools.deskewPdf.processButton: ملفات PDF منسقة
+  tools.deskewPdf.successMessage: تم تعديل ملف (ملفات) PDF بنجاح!
+  tools.findAndRedact.uploadDescription: قم بسحب وإسقاط ملف PDF للبحث عن النص وتنقيحه.
+  tools.findAndRedact.searchTitle: البحث عن النص
+  tools.findAndRedact.searchTermLabel: مصطلحات البحث
+  tools.findAndRedact.searchTermPlaceholder: أدخل نصًا للبحث (على سبيل المثال، رقم الحساب، الاسم)...
+  tools.findAndRedact.searchInputPlaceholder: أدخل مصطلحات البحث، مفصولة بفواصل...
+  tools.findAndRedact.searchInputHelp: نصيحة: افصل بين المصطلحات المتعددة بفواصل (،)
+  tools.findAndRedact.multipleTermsPlaceholder: أدخل مصطلحات البحث (واحدة في كل سطر أو مفصولة بفواصل)...
+مثال:
+جون دو
+account123
+555-1234
+  tools.findAndRedact.termsCount: {count} عبارة (مصطلحات) البحث
+  tools.findAndRedact.searching: جارٍ البحث...
+  tools.findAndRedact.caseSensitive: حساسية الموضوع
+  tools.findAndRedact.wholeWord: الكلمات الكاملة فقط
+  tools.findAndRedact.useRegex: استخدم التعبير العادي
+  tools.findAndRedact.enterSearchTerm: الرجاء إدخال مصطلح بحث واحد على الأقل.
+  tools.findAndRedact.noMatchesFound: لم يتم العثور على تطابقات لمصطلحات البحث.
+  tools.findAndRedact.searchFailed: فشل في البحث في ملف PDF.
+  tools.findAndRedact.matchesFound: تم العثور على {count} من التطابقات
+  tools.findAndRedact.filterByPage: تصفية حسب الصفحة
+  tools.findAndRedact.selectedCount: تم تحديد {selected} من {total}.
+  tools.findAndRedact.selectMatchesToRedact: يرجى تحديد تطابق واحد على الأقل لتنقيحه.
+  tools.findAndRedact.redactionOptions: خيارات التنقيح
+  tools.findAndRedact.redactionColor: لون التنقيح
+  tools.findAndRedact.replacementText: نص بديل (اختياري)
+  tools.findAndRedact.replacementTextPlaceholder: على سبيل المثال، [تم التنقيح]
+  tools.findAndRedact.addBorder: أضف الحدود حول المناطق المنقحة
+  tools.findAndRedact.warningTitle: تحذير
+  tools.findAndRedact.warningText: التنقيح دائم. بمجرد تطبيقه، لا يمكن استرداد المحتوى الأصلي.
+  tools.findAndRedact.redactButton: تنقيح {count} تم التحديد
+  tools.findAndRedact.redactFailed: فشل تطبيق التنقيحات.
+  tools.findAndRedact.successMessage: تم تنقيح النص المحدد بنجاح! انقر فوق تنزيل للحفظ.
+  tools.findAndRedact.pagesWithMatches: الصفحات التي تحتوي على تطابقات:
+  tools.findAndRedact.selectedMatch: مختارة
+  tools.findAndRedact.unselectedMatch: لم يتم التحديد

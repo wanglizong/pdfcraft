@@ -1,0 +1,60 @@
+{
+  "title": "PSD to PDF",
+  "metaDescription": "Convert Adobe Photoshop (PSD) files to PDF format. Supports multiple files and preserves image quality.",
+  "keywords": [
+    "psd to pdf",
+    "convert psd",
+    "photoshop to pdf",
+    "psd converter",
+    "adobe psd to pdf"
+  ],
+  "description": "\n      <p>PSD to PDF converts Adobe Photoshop (PSD) files into PDF documents. This tool allows you to view and share PSD designs without needing Photoshop installed.</p>\n      <p>You can convert multiple PSD files at once and combine them into a single PDF document. The tool processes each PSD file, rendering the visible layers into high-quality PDF pages.</p>\n      <p>All conversion happens locally in your browser, ensuring your designs remain private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload PSD Files",
+      "description": "Drag and drop your PSD or PSB files, or click to select them from your device."
+    },
+    {
+      "step": 2,
+      "title": "Arrange Order",
+      "description": "Drag and drop the file thumbnails to arrange them in the desired order."
+    },
+    {
+      "step": 3,
+      "title": "Convert and Download",
+      "description": "Click Convert to render the PSDs and download your PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Share Designs",
+      "description": "Share Photoshop designs with clients or colleagues who don't have Photoshop.",
+      "icon": "share-2"
+    },
+    {
+      "title": "Portfolio Creation",
+      "description": "Compile your design work into a professional PDF portfolio.",
+      "icon": "layout"
+    },
+    {
+      "title": "Print Preparation",
+      "description": "Convert designs to PDF for printing purposes.",
+      "icon": "printer"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Do I need Photoshop installed?",
+      "answer": "No, this tool works entirely in your browser without requiring Adobe Photoshop."
+    },
+    {
+      "question": "Are layers preserved?",
+      "answer": "The tool renders the visible state of the PSD (composite image). Individual layers are flattened in the PDF."
+    },
+    {
+      "question": "What is the maximum file size?",
+      "answer": "You can upload files up to 100MB each. Large PSD files may take a moment to process."
+    }
+  ]
+}

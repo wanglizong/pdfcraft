@@ -1,0 +1,386 @@
+{
+  "tools.digitalSign.locationPlaceholder": {
+    "en": "e.g., New York, USA",
+    "zh": "例如：北京，中国"
+  },
+  "tools.digitalSign.contactInfoLabel": {
+    "en": "Contact Info",
+    "zh": "联系信息"
+  },
+  "tools.digitalSign.contactInfoPlaceholder": {
+    "en": "e.g., email@example.com",
+    "zh": "例如：email@example.com"
+  },
+  "tools.digitalSign.visibleSignatureLabel": {
+    "en": "Add visible signature",
+    "zh": "添加可见签名"
+  },
+  "tools.digitalSign.xPosition": {
+    "en": "X Position",
+    "zh": "X 坐标"
+  },
+  "tools.digitalSign.yPosition": {
+    "en": "Y Position",
+    "zh": "Y 坐标"
+  },
+  "tools.digitalSign.firstPage": {
+    "en": "First Page",
+    "zh": "第一页"
+  },
+  "tools.digitalSign.lastPage": {
+    "en": "Last Page",
+    "zh": "最后一页"
+  },
+  "tools.digitalSign.signatureImageLabel": {
+    "en": "Signature Image (optional, PNG/JPEG)",
+    "zh": "签名图片（可选，PNG/JPEG）"
+  },
+  "tools.digitalSign.signatureTextLabel": {
+    "en": "Signature Text (optional, auto-generated if empty)",
+    "zh": "签名文本（可选，留空自动生成）"
+  },
+  "tools.digitalSign.signatureTextPlaceholder": {
+    "en": "Auto-generated if empty",
+    "zh": "留空自动生成"
+  },
+  "tools.digitalSign.textSizeLabel": {
+    "en": "Text Size",
+    "zh": "文本大小"
+  },
+  "tools.digitalSign.signButton": {
+    "en": "Sign PDF",
+    "zh": "签名 PDF"
+  },
+  "tools.digitalSign.successMessage": {
+    "en": "PDF signed successfully! The signature can be verified in any PDF reader.",
+    "zh": "PDF 签名成功！可以在任何 PDF 阅读器中验证签名。"
+  },
+  "tools.digitalSign.errorFetch": {
+    "en": "Failed to fetch certificate chain. Check your internet connection and try again.",
+    "zh": "获取证书链失败。请检查网络连接并重试。"
+  },
+  "tools.digitalSign.errorParse": {
+    "en": "Failed to parse certificate",
+    "zh": "解析证书失败"
+  },
+  "tools.digitalSign.errorPEM": {
+    "en": "Failed to read PEM file.",
+    "zh": "读取 PEM 文件失败。"
+  },
+  "tools.digitalSign.errorType": {
+    "en": "Please select a .pfx, .p12, or .pem file.",
+    "zh": "请选择 .pfx, .p12, 或 .pem 文件。"
+  },
+  "tools.digitalSign.errorImgType": {
+    "en": "Please select a PNG or JPEG image.",
+    "zh": "请选择 PNG 或 JPEG 图片。"
+  },
+  "tools.validateSign.uploadLabel": {
+    "en": "Upload Signed PDF",
+    "zh": "上传已签名的 PDF"
+  },
+  "tools.validateSign.uploadDescription": {
+    "en": "Drag and drop a signed PDF file here, or click to browse.",
+    "zh": "将已签名的 PDF 文件拖放到此处，或点击浏览。"
+  },
+  "tools.validateSign.trustedCertTitle": {
+    "en": "Trusted Certificate (Optional)",
+    "zh": "受信任证书（可选）"
+  },
+  "tools.validateSign.trustedCertDescription": {
+    "en": "Upload a trusted CA certificate to verify the signature chain.",
+    "zh": "上传受信任的 CA 证书以验证签名链。"
+  },
+  "tools.validateSign.trustedCertLoaded": {
+    "en": "Trusted certificate loaded: {name}",
+    "zh": "受信任证书已加载：{name}"
+  },
+  "tools.validateSign.analyzing": {
+    "en": "Analyzing signatures...",
+    "zh": "正在分析签名..."
+  },
+  "tools.validateSign.noSignaturesTitle": {
+    "en": "No Signatures Found",
+    "zh": "未找到签名"
+  },
+  "tools.validateSign.noSignaturesDescription": {
+    "en": "This PDF does not contain any digital signatures.",
+    "zh": "此 PDF 不包含任何数字签名。"
+  },
+  "tools.validateSign.signaturesFound": {
+    "en": "{count} signatures found",
+    "zh": "找到 {count} 个签名"
+  },
+  "tools.validateSign.validCount": {
+    "en": "{count} valid",
+    "zh": "{count} 个有效"
+  },
+  "tools.validateSign.trustedCount": {
+    "en": "{count}/{total} trusted",
+    "zh": "{count}/{total} 个受信任"
+  },
+  "tools.validateSign.validSignature": {
+    "en": "Valid Signature",
+    "zh": "签名有效"
+  },
+  "tools.validateSign.invalidSignature": {
+    "en": "Invalid Signature",
+    "zh": "签名无效"
+  },
+  "tools.validateSign.certificateExpired": {
+    "en": "Certificate Expired",
+    "zh": "证书已过期"
+  },
+  "tools.validateSign.selfSigned": {
+    "en": "Self-Signed Certificate",
+    "zh": "自签名证书"
+  },
+  "tools.validateSign.fullCoverage": {
+    "en": "Full Coverage",
+    "zh": "完全覆盖"
+  },
+  "tools.validateSign.partialCoverage": {
+    "en": "Partial Coverage",
+    "zh": "部分覆盖"
+  },
+  "tools.validateSign.trusted": {
+    "en": "Trusted",
+    "zh": "受信任"
+  },
+  "tools.validateSign.notTrusted": {
+    "en": "Not in trust chain",
+    "zh": "不在信任链中"
+  },
+  "tools.validateSign.signedBy": {
+    "en": "Signed By",
+    "zh": "签名者"
+  },
+  "tools.validateSign.issuer": {
+    "en": "Issuer",
+    "zh": "颁发者"
+  },
+  "tools.validateSign.signedOn": {
+    "en": "Signed On",
+    "zh": "签名时间"
+  },
+  "tools.validateSign.validFrom": {
+    "en": "Valid From",
+    "zh": "有效期始于"
+  },
+  "tools.validateSign.validUntil": {
+    "en": "Valid Until",
+    "zh": "有效期至"
+  },
+  "tools.validateSign.reason": {
+    "en": "Reason",
+    "zh": "原因"
+  },
+  "tools.validateSign.location": {
+    "en": "Location",
+    "zh": "地点"
+  },
+  "tools.validateSign.technicalDetails": {
+    "en": "Technical Details",
+    "zh": "技术细节"
+  },
+  "tools.validateSign.serialNumber": {
+    "en": "Serial Number",
+    "zh": "序列号"
+  },
+  "tools.validateSign.digestAlgorithm": {
+    "en": "Digest Algorithm",
+    "zh": "摘要算法"
+  },
+  "tools.validateSign.signatureAlgorithm": {
+    "en": "Signature Algorithm",
+    "zh": "签名算法"
+  },
+  "tools.validateSign.errorType": {
+    "en": "Please select a .pem, .crt, .cer, or .der certificate file.",
+    "zh": "请选择 .pem, .crt, .cer, 或 .der 证书文件。"
+  },
+  "tools.viewMetadata.uploadDescription": {
+    "en": "Drag and drop a PDF file here to view its metadata.",
+    "zh": "拖放PDF文件到此处以查看其元数据。"
+  },
+  "tools.viewMetadata.documentProperties": {
+    "en": "Document Properties",
+    "zh": "文档属性"
+  },
+  "tools.viewMetadata.creator": {
+    "en": "Creator Application",
+    "zh": "创建程序"
+  },
+  "tools.viewMetadata.producer": {
+    "en": "PDF Producer",
+    "zh": "PDF生成器"
+  },
+  "tools.viewMetadata.dates": {
+    "en": "Dates",
+    "zh": "日期"
+  },
+  "tools.viewMetadata.creationDate": {
+    "en": "Creation Date",
+    "zh": "创建日期"
+  },
+  "tools.viewMetadata.modificationDate": {
+    "en": "Modification Date",
+    "zh": "修改日期"
+  },
+  "tools.viewMetadata.documentInfo": {
+    "en": "Document Information",
+    "zh": "文档信息"
+  },
+  "tools.viewMetadata.pageCount": {
+    "en": "Page Count",
+    "zh": "页数"
+  },
+  "tools.viewMetadata.fileSize": {
+    "en": "File Size",
+    "zh": "文件大小"
+  },
+  "tools.viewMetadata.pdfVersion": {
+    "en": "PDF Version",
+    "zh": "PDF版本"
+  },
+  "tools.viewMetadata.isLinearized": {
+    "en": "Linearized (Fast Web View)",
+    "zh": "线性化（快速Web视图）"
+  },
+  "tools.viewMetadata.customMetadata": {
+    "en": "Additional Metadata",
+    "zh": "其他元数据"
+  },
+  "tools.viewMetadata.exportJson": {
+    "en": "Export as JSON",
+    "zh": "导出为JSON"
+  },
+  "tools.viewMetadata.successMessage": {
+    "en": "Metadata extracted successfully! You can export it as JSON if needed.",
+    "zh": "元数据提取成功！如需要可导出为JSON。"
+  },
+  "tools.editMetadata.uploadDescription": {
+    "en": "Drag and drop a PDF file here to edit its metadata.",
+    "zh": "拖放PDF文件到此处以编辑其元数据。"
+  },
+  "tools.editMetadata.editTitle": {
+    "en": "Edit Document Properties",
+    "zh": "编辑文档属性"
+  },
+  "tools.editMetadata.titlePlaceholder": {
+    "en": "Enter document title",
+    "zh": "输入文档标题"
+  },
+  "tools.editMetadata.authorPlaceholder": {
+    "en": "Enter author name",
+    "zh": "输入作者姓名"
+  },
+  "tools.editMetadata.subjectPlaceholder": {
+    "en": "Enter document subject",
+    "zh": "输入文档主题"
+  },
+  "tools.editMetadata.keywordsPlaceholder": {
+    "en": "Enter keywords separated by commas",
+    "zh": "输入关键词，用逗号分隔"
+  },
+  "tools.editMetadata.creator": {
+    "en": "Creator Application",
+    "zh": "创建程序"
+  },
+  "tools.editMetadata.creatorPlaceholder": {
+    "en": "Enter creator application",
+    "zh": "输入创建程序"
+  },
+  "tools.editMetadata.producer": {
+    "en": "PDF Producer",
+    "zh": "PDF生成器"
+  },
+  "tools.editMetadata.producerPlaceholder": {
+    "en": "Enter PDF producer",
+    "zh": "输入PDF生成器"
+  },
+  "tools.editMetadata.saveButton": {
+    "en": "Save Metadata",
+    "zh": "保存元数据"
+  },
+  "tools.editMetadata.editAnother": {
+    "en": "Edit Another PDF",
+    "zh": "编辑另一个PDF"
+  },
+  "tools.editMetadata.modificationNote": {
+    "en": "The modification date will be updated automatically when you save.",
+    "zh": "保存时修改日期将自动更新。"
+  },
+  "tools.editMetadata.successMessage": {
+    "en": "Metadata updated successfully! Click the download button to save your file.",
+    "zh": "元数据更新成功！点击下载按钮保存文件。"
+  },
+  "tools.editPdf.uploadLabel": {
+    "en": "Upload PDF to Edit",
+    "zh": "上传PDF进行编辑"
+  },
+  "tools.editPdf.instructions": {
+    "en": "How to use",
+    "zh": "使用说明"
+  },
+  "tools.editPdf.instructionsText": {
+    "en": "Use the toolbar above the PDF to add text, draw, highlight, or add images. Click the download button (💾) in the toolbar to save your edited PDF.",
+    "zh": "使用PDF上方的工具栏添加文本、绘图、高亮或添加图片。点击工具栏中的下载按钮（💾）保存编辑后的PDF。"
+  },
+  "tools.editPdf.saveButton": {
+    "en": "Save PDF",
+    "zh": "保存PDF"
+  },
+  "tools.editPdf.saveDownload": {
+    "en": "Save & Download",
+    "zh": "保存并下载"
+  },
+  "tools.editPdf.saveError": {
+    "en": "Failed to save PDF. Please use the export button in the toolbar.",
+    "zh": "保存PDF失败。请使用工具栏中的导出按钮。"
+  },
+  "tools.editPdf.savingMessage": {
+    "en": "Saving PDF with annotations...",
+    "zh": "正在保存带注释的PDF..."
+  },
+  "tools.editPdf.successMessage": {
+    "en": "PDF saved successfully! Click the download button to save your edited file.",
+    "zh": "PDF保存成功！点击下载按钮保存编辑后的文件。"
+  },
+  "tools.editPdf.redactWarningTitle": {
+    "en": "Redaction Mode Active",
+    "zh": "涂黑模式已激活"
+  },
+  "tools.editPdf.redactWarningDescription": {
+    "en": "Select areas to permanently remove content. Redacted content cannot be recovered after saving.",
+    "zh": "选择要永久删除内容的区域。保存后涂黑的内容无法恢复。"
+  },
+  "tools.editPdf.toolbar.select": {
+    "en": "Select",
+    "zh": "选择"
+  },
+  "tools.editPdf.toolbar.highlight": {
+    "en": "Highlight",
+    "zh": "高亮"
+  },
+  "tools.editPdf.toolbar.underline": {
+    "en": "Underline",
+    "zh": "下划线"
+  },
+  "tools.editPdf.toolbar.strikethrough": {
+    "en": "Strikethrough",
+    "zh": "删除线"
+  },
+  "tools.editPdf.toolbar.draw": {
+    "en": "Draw",
+    "zh": "绘图"
+  },
+  "tools.editPdf.toolbar.rectangle": {
+    "en": "Rectangle",
+    "zh": "矩形"
+  },
+  "tools.editPdf.toolbar.circle": {
+    "en": "Circle",
+    "zh": "圆形"
+  }
+}

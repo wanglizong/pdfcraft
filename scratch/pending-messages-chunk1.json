@@ -1,0 +1,1922 @@
+{
+  "common.buttons.insertAtBeginning": {
+    "en": "Insert at Beginning",
+    "zh": "在开头插入"
+  },
+  "common.buttons.insertAtEnd": {
+    "en": "Insert at End",
+    "zh": "在末尾插入"
+  },
+  "common.buttons.rotateAllLeft": {
+    "en": "Rotate All Left",
+    "zh": "全部左旋"
+  },
+  "common.buttons.rotateAllRight": {
+    "en": "Rotate All Right",
+    "zh": "全部右旋"
+  },
+  "common.footer.footer": {
+    "en": "© 2025 PDFCraft. All rights reserved.",
+    "zh": "© 2025 PDFCraft. 保留所有权利。"
+  },
+  "common.footer.copyright": {
+    "en": "© {year} PDFCraft. All rights reserved.",
+    "zh": "© {year} PDFCraft. 保留所有权利。"
+  },
+  "common.footer.madeWith": {
+    "en": "Made with <Heart /> and <Nextjs />",
+    "zh": "Made with <Heart /> and <Nextjs />"
+  },
+  "common.fileUploader.dragDrop": {
+    "en": "Drag and drop files here, or click to browse",
+    "zh": "Drag and drop files here, or click to browse"
+  },
+  "common.fileUploader.dropToUpload": {
+    "en": "Drop files to upload",
+    "zh": "Drop files to upload"
+  },
+  "common.fileUploader.support": {
+    "en": "Support",
+    "zh": "Support"
+  },
+  "common.fileUploader.paste": {
+    "en": "Paste (Ctrl+V)",
+    "zh": "Paste (Ctrl+V)"
+  },
+  "common.fileUploader.encryptedTitle": {
+    "en": "This Document is Encrypted",
+    "zh": "此文档已加密"
+  },
+  "common.fileUploader.enterPasswordHelp": {
+    "en": "Please enter the password to unlock and load:<br/>",
+    "zh": "请输入密码以解锁并载入：<br/>"
+  },
+  "common.fileUploader.passwordPlaceholder": {
+    "en": "Enter document password...",
+    "zh": "请输入文档密码"
+  },
+  "common.fileUploader.decrypting": {
+    "en": "Decrypting...",
+    "zh": "解密中..."
+  },
+  "common.fileUploader.decryptAndContinue": {
+    "en": "Decrypt & Continue",
+    "zh": "解密并继续"
+  },
+  "common.accessibility.skipToContent": {
+    "en": "Skip to main content",
+    "zh": "跳转到主要内容"
+  },
+  "common.accessibility.skipToNavigation": {
+    "en": "Skip to navigation",
+    "zh": "跳转到导航"
+  },
+  "common.accessibility.loading": {
+    "en": "Loading, please wait",
+    "zh": "加载中，请稍候"
+  },
+  "common.accessibility.menuExpanded": {
+    "en": "Menu expanded",
+    "zh": "菜单已展开"
+  },
+  "common.accessibility.menuCollapsed": {
+    "en": "Menu collapsed",
+    "zh": "菜单已折叠"
+  },
+  "common.accessibility.newWindow": {
+    "en": "Opens in new window",
+    "zh": "在新窗口中打开"
+  },
+  "common.accessibility.externalLink": {
+    "en": "External link",
+    "zh": "外部链接"
+  },
+  "common.accessibility.required": {
+    "en": "Required field",
+    "zh": "必填字段"
+  },
+  "common.accessibility.optional": {
+    "en": "Optional",
+    "zh": "可选"
+  },
+  "common.accessibility.selected": {
+    "en": "Selected",
+    "zh": "已选择"
+  },
+  "common.accessibility.notSelected": {
+    "en": "Not selected",
+    "zh": "未选择"
+  },
+  "common.accessibility.pageOf": {
+    "en": "Page {current} of {total}",
+    "zh": "第 {current} 页，共 {total} 页"
+  },
+  "common.accessibility.sortAscending": {
+    "en": "Sort ascending",
+    "zh": "升序排列"
+  },
+  "common.accessibility.sortDescending": {
+    "en": "Sort descending",
+    "zh": "降序排列"
+  },
+  "common.accessibility.closeDialog": {
+    "en": "Close dialog",
+    "zh": "关闭对话框"
+  },
+  "common.accessibility.expandSection": {
+    "en": "Expand section",
+    "zh": "展开部分"
+  },
+  "common.accessibility.collapseSection": {
+    "en": "Collapse section",
+    "zh": "折叠部分"
+  },
+  "common.pdfDeskewAligner.uploadLabel": {
+    "en": "Upload Skewed Scanned PDF",
+    "zh": "上传歪斜的 PDF 扫描文档"
+  },
+  "common.pdfDeskewAligner.uploadDescription": {
+    "en": "Utilizes Hough transform edge fitting to probe grid axis and losslessly deskew pages to perfect horizontal alignment.",
+    "zh": "系统基于霍夫变换直线拟合模型，毫秒级分析文档网格轴心，重绘歪斜扫描页面以完美实现物理水平对齐。"
+  },
+  "common.pdfDeskewAligner.optionsTitle": {
+    "en": "Deskew Aligner Settings",
+    "zh": "倾斜对齐参数"
+  },
+  "common.pdfDeskewAligner.processButton": {
+    "en": "Execute Physical Deskew Aligner",
+    "zh": "执行物理纠偏对齐"
+  },
+  "common.pdfDeskewAligner.successMessage": {
+    "en": "Document scanned axes horizontally aligned successfully!",
+    "zh": "文档扫描轴线水平纠偏成功！"
+  },
+  "common.pdfDeskewAligner.compassTitle": {
+    "en": "Gyroscope Edge Aligner",
+    "zh": "发光陀螺仪对齐罗盘"
+  },
+  "common.pdfDeskewAligner.gyroHelp": {
+    "en": "Set detection options on the right. Gyroscope probes are aligning pages horizontally.",
+    "zh": "右侧设置检测灵敏度。陀螺仪探针正在纠偏物理轴线。"
+  },
+  "common.pdfDeskewAligner.dpiLabel": {
+    "en": "Detection Precision Resolution",
+    "zh": "检测分辨率 (DPI)"
+  },
+  "common.pdfDeskewAligner.dpi72": {
+    "en": "72 DPI (Fastest Probing)",
+    "zh": "72 DPI (极速检测)"
+  },
+  "common.pdfDeskewAligner.dpi150": {
+    "en": "150 DPI (Balanced Standard)",
+    "zh": "150 DPI (标准平衡)"
+  },
+  "common.pdfDeskewAligner.dpi300": {
+    "en": "300 DPI (High Precision)",
+    "zh": "300 DPI (高清拟合)"
+  },
+  "common.pdfDeskewAligner.thresholdLabel": {
+    "en": "Aligner Edge Angle Threshold",
+    "zh": "歪斜检测阈值"
+  },
+  "common.pdfTwoColumnReflower.uploadLabel": {
+    "en": "Upload Academic Paper / 2-Column PDF",
+    "zh": "上传学术论文或双栏排版 PDF"
+  },
+  "common.pdfTwoColumnReflower.uploadDescription": {
+    "en": "Intelligently split the middle gutter and vertically flow left and right columns to comfortable single-column readable layouts.",
+    "zh": "中缝智能矢量对齐切分。无损提取页面左右子栏并自动垂直串联，一键输出单栏排版适合移动端直接畅读。"
+  },
+  "common.pdfTwoColumnReflower.optionsTitle": {
+    "en": "Reflower Layout Settings",
+    "zh": "论文单栏重排设置"
+  },
+  "common.pdfTwoColumnReflower.processButton": {
+    "en": "Execute Lossless Reflow",
+    "zh": "智能单栏矢量重排"
+  },
+  "common.pdfTwoColumnReflower.successMessage": {
+    "en": "Academic paper double-column flow successfully reflowed to single-column!",
+    "zh": "学术论文双栏排版无损单栏重排成功！"
+  },
+  "common.pdfTwoColumnReflower.previewTitle": {
+    "en": "3D Folded Page Simulation View",
+    "zh": "3D 微折叠透视渲染预览页"
+  },
+  "common.pdfTwoColumnReflower.splitRatio": {
+    "en": "Middle Gutter Offset Ratio",
+    "zh": "中缝定位分栏比例"
+  },
+  "common.pdfTwoColumnReflower.readingFlowLabel": {
+    "en": "Reading Flow Direction",
+    "zh": "阅读流平铺方向"
+  },
+  "common.pdfTwoColumnReflower.flowVertical": {
+    "en": "Vertical Waterfall Layout (Recommended)",
+    "zh": "纵向瀑布流平铺 (推荐)"
+  },
+  "common.pdfTwoColumnReflower.flowHorizontal": {
+    "en": "Horizontal Book Scheme",
+    "zh": "横向折页式流"
+  },
+  "common.pdfPageResizerUniform.successMessage": {
+    "en": "Varied PDF sheets successfully unified to standard size!",
+    "zh": "多规格页面尺寸完美归一成功！"
+  },
+  "common.pdfPageResizerUniform.loadedFiles": {
+    "en": "{count} multi-size documents loaded",
+    "zh": "已加载 {count} 个多规格文档"
+  },
+  "common.handwritingInkContrastBooster.uploadLabel": {
+    "en": "Upload Signature/Seal Contract Photo",
+    "zh": "上传手写签名、盖章或合同拍摄照片"
+  },
+  "common.handwritingInkContrastBooster.uploadDescription": {
+    "en": "Applies local CLAHE histogram enhancement to bleach moldy shadows and sharply boost blue/black signatures and red stamp ink.",
+    "zh": "采用高级局部对比度直方图增强(CLAHE)算法。将手机拍摄照片中发黄、霉斑阴影背景强效漂白，加粗加浓蓝/黑色签字笔锋和红色印章。"
+  },
+  "common.handwritingInkContrastBooster.optionsTitle": {
+    "en": "Ink Contrast Booster Settings",
+    "zh": "去噪增强设置"
+  },
+  "common.handwritingInkContrastBooster.processButton": {
+    "en": "Execute Background Bleach",
+    "zh": "执行笔迹去噪漂白"
+  },
+  "common.handwritingInkContrastBooster.successMessage": {
+    "en": "Handwritten stroke lines and red stamp contrast purified successfully!",
+    "zh": "手写笔锋与盖泥印迹局部对比度强效纯化成功！"
+  },
+  "common.handwritingInkContrastBooster.magnifierTitle": {
+    "en": "Illuminated Contrast Lens (Drag to sweep paper mold)",
+    "zh": "发光探照对比镜 (拖拽鼠标穿透漂除霉斑)"
+  },
+  "common.handwritingInkContrastBooster.inkTitle": {
+    "en": "Handwritten Ink / Signatures",
+    "zh": "Handwritten Ink / 签字笔迹"
+  },
+  "common.handwritingInkContrastBooster.bleachHelp": {
+    "en": "(Drag the right slider to bleach backing paper)",
+    "zh": "(拉动右侧滑块漂白纸张)"
+  },
+  "common.handwritingInkContrastBooster.targetTypeLabel": {
+    "en": "Target Extraction Scheme",
+    "zh": "目标提取种类"
+  },
+  "common.handwritingInkContrastBooster.typeAuto": {
+    "en": "Auto-boost Color Features",
+    "zh": "自动增强色彩特征"
+  },
+  "common.handwritingInkContrastBooster.typeDarkInk": {
+    "en": "Sharpen Dark Ink Strokes",
+    "zh": "深色签字字迹增强"
+  },
+  "common.handwritingInkContrastBooster.typeRedStamp": {
+    "en": "Restore Red Wax Stamp Contrast",
+    "zh": "红色盖章印泥还原"
+  },
+  "common.handwritingInkContrastBooster.bleachThreshold": {
+    "en": "Background Bleach Luma Threshold",
+    "zh": "背景擦除亮度阈值"
+  },
+  "common.handwritingInkContrastBooster.strokeContrast": {
+    "en": "Stroke Ink Contrast Level",
+    "zh": "笔画笔锋对比度"
+  },
+  "common.pdfSpineBookbinder.uploadLabel": {
+    "en": "Design Spine Without Uploading",
+    "zh": "无须上传文档，直接设计装订书脊"
+  },
+  "common.pdfSpineBookbinder.uploadDescription": {
+    "en": "Input total pages and paper density (GSM) to model and calculate binding spine mm width and compile print crease layout.",
+    "zh": "输入页数与纸张克重，毫秒级建模计算物理书脊宽度。自动画出压线折叠线，设计出超宽标准印刷书脊封面。"
+  },
+  "common.pdfSpineBookbinder.successMessage": {
+    "en": "Spine binding thickness computed and fold-line envelope generated successfully!",
+    "zh": "胶装书脊厚度估算及印刷折叠封面生成成功！"
+  },
+  "common.pdfSpineBookbinder.spineWidthText": {
+    "en": "Estimated Spine Thickness: {width} mm",
+    "zh": "预测书脊厚度: {width} mm"
+  },
+  "common.pdfSpineBookbinder.totalPagesUnit": {
+    "en": "{count} sides",
+    "zh": "{count} 面"
+  },
+  "common.pdfSignatureAnchorHelper.uploadLabel": {
+    "en": "Upload Contract or PDF Agreement",
+    "zh": "上传待签署的合同或 PDF 协议"
+  },
+  "common.pdfSignatureAnchorHelper.uploadDescription": {
+    "en": "Click anywhere on the preview sheet to anchor interactive glowing sign-here tags and scrolling index guide bookmarks.",
+    "zh": "在协议预览画面中任意点击即可瞬间定位。自动在特定坐标无损追加闪烁发光的‘此处签字’指示层和便捷跳转链接。"
+  },
+  "common.pdfSignatureAnchorHelper.optionsTitle": {
+    "en": "Interactive Anchor Settings",
+    "zh": "指引标徽设置"
+  },
+  "common.pdfSignatureAnchorHelper.processButton": {
+    "en": "Inject Radar Signature Guide",
+    "zh": "向 PDF 注入签字雷达指引"
+  },
+  "common.pdfSignatureAnchorHelper.successMessage": {
+    "en": "Interactive signature anchors and navigation pointers woven successfully!",
+    "zh": "合同签字指示标徽及跳转链接物理注入成功！"
+  },
+  "common.pdfSignatureAnchorHelper.anchorLabelDefault": {
+    "en": "Sign Here / Click to Place",
+    "zh": "Sign Here / 此处签字"
+  },
+  "common.pdfSignatureAnchorHelper.magnifierTitle": {
+    "en": "Agreement Radar Anchor Deck (Click preview to place signatures)",
+    "zh": "合同签字指引定位台 (在画面任意处点击以修改定位)"
+  },
+  "common.pdfSignatureAnchorHelper.anchorLabelLabel": {
+    "en": "Guide Overlay Text",
+    "zh": "指引图层铭文内容"
+  },
+  "common.pdfSignatureAnchorHelper.targetPageLabel": {
+    "en": "Active Target Page",
+    "zh": "生效目标页码"
+  },
+  "common.pdfLosslessSlicer.successMessage": {
+    "en": "High-resolution drawing local sliced out losslessly!",
+    "zh": "超大工程蓝图局部矢量无损切片成功！"
+  },
+  "common.pdfScratchpadCanvas.uploadLabel": {
+    "en": "Upload Lecture Slides / PDF Papers",
+    "zh": "上传 PDF 文档以追加拼接草稿纸 margins"
+  },
+  "common.pdfScratchpadCanvas.uploadDescription": {
+    "en": "Stretches paper boundary losslessly to stitch 200pt grid, ruled notebook lines, or Cornell layout drafts alongside slide margins.",
+    "zh": "自动无损物理拓宽 PDF 页面边界。在右侧或者底部完美拼接发光网格、课本横线、康奈尔信纸，供用户在离线状态下大展拳脚肆意批注记录。"
+  },
+  "common.pdfScratchpadCanvas.optionsTitle": {
+    "en": "Scratchpad Canvas Settings",
+    "zh": "草稿留白方向及底网设置"
+  },
+  "common.pdfScratchpadCanvas.processButton": {
+    "en": "Stitch Scratchpad Canvas",
+    "zh": "执行草稿网格拼接"
+  },
+  "common.pdfScratchpadCanvas.successMessage": {
+    "en": "Draft grids stitched alongside page margins successfully!",
+    "zh": "页面物理维度外扩及草稿便签格拼接成功！"
+  },
+  "common.pdfScratchpadCanvas.previewTitle": {
+    "en": "3D Folded Scratchpad Preview (Click to toggle fold animation)",
+    "zh": "3D 折页拼接草稿展示 (点击切换显示隐藏看折页动画)"
+  },
+  "common.pdfScratchpadCanvas.foldPad": {
+    "en": "Collapse Crease",
+    "zh": "折叠草稿"
+  },
+  "common.pdfScratchpadCanvas.unfoldPad": {
+    "en": "Unfold Crease",
+    "zh": "展平草稿"
+  },
+  "common.pdfScratchpadCanvas.padPositionLabel": {
+    "en": "Scratchpad Placement Margin",
+    "zh": "草稿信笺摆放方向"
+  },
+  "common.pdfScratchpadCanvas.padPositionRight": {
+    "en": "Stitch on Right Side (Recommended)",
+    "zh": "拼接在页面右侧 (推荐)"
+  },
+  "common.pdfScratchpadCanvas.padPositionBottom": {
+    "en": "Stitch at Bottom Side",
+    "zh": "拼接在页面底部"
+  },
+  "common.pdfScratchpadCanvas.padSizeLabel": {
+    "en": "Scratchpad Physical Width",
+    "zh": "草稿纸物理宽度"
+  },
+  "common.pdfScratchpadCanvas.gridTypeLabel": {
+    "en": "Scratchpad Grid Style",
+    "zh": "草稿信笺底纹类型"
+  },
+  "common.pdfScratchpadCanvas.gridTypeGrid": {
+    "en": "Subtle Digital Glow Grid",
+    "zh": "微光数码发光网格线"
+  },
+  "common.pdfScratchpadCanvas.gridTypeRuled": {
+    "en": "Standard Ruled Notebook Stripes",
+    "zh": "英文笔记本标准横线条纹"
+  },
+  "common.pdfScratchpadCanvas.gridTypeBlank": {
+    "en": "Pure Artist White Canvas",
+    "zh": "全白纯净艺术画布"
+  },
+  "common.photoTilingPrepress.uploadLabel": {
+    "en": "Upload ID / Passport Photo",
+    "zh": "上传你的证件照片 (JPEG/PNG)"
+  },
+  "common.photoTilingPrepress.uploadDescription": {
+    "en": "Arrange ID photo grids on standard 5\"/6\" photo paper print sheet with precision and dashed physical crop slicing marks.",
+    "zh": "将单张证件照或生活卡片在 5寸/6寸 高档相纸上矩阵式自动铺满排版。精确平铺并贴心地加盖物理虚线裁切刻度线，方便打印后用美工刀完美切割。"
+  },
+  "common.photoTilingPrepress.optionsTitle": {
+    "en": "Prepress Tiling Settings",
+    "zh": "印前排版与磁力网格设置"
+  },
+  "common.photoTilingPrepress.processButton": {
+    "en": "Tile Matrix Prepress",
+    "zh": "执行物理矩阵拼版贴版"
+  },
+  "common.photoTilingPrepress.successMessage": {
+    "en": "Passport photo matrix prepress and crop marks stamped successfully!",
+    "zh": "多规格照片印前矩阵贴版排版及裁剪虚线加盖成功！"
+  },
+  "common.photoTilingPrepress.previewTitle": {
+    "en": "Wooden Pre-flight Card Desk (Magnetic Alignment Snaps)",
+    "zh": "木质排版贴纸台 (磁性吸附拼版格子)"
+  },
+  "common.photoTilingPrepress.photoSpecLabel": {
+    "en": "Target Photo Specifications",
+    "zh": "目标证件照片尺寸规格"
+  },
+  "common.photoTilingPrepress.photoSpec1Inch": {
+    "en": "Standard 1-Inch (25mm x 35mm)",
+    "zh": "标准一寸照 (25mm x 35mm)"
+  },
+  "common.photoTilingPrepress.photoSpec2Inch": {
+    "en": "Standard 2-Inch (35mm x 49mm)",
+    "zh": "标准二寸照 (35mm x 49mm)"
+  },
+  "common.photoTilingPrepress.paperSizeLabel": {
+    "en": "Print Photo Paper Dimensions",
+    "zh": "打印相纸物理规格"
+  },
+  "common.photoTilingPrepress.paperSize5Inch": {
+    "en": "5-Inch Paper (3.5 x 5 in)",
+    "zh": "5 寸标准相纸 (3.5 x 5 in)"
+  },
+  "common.photoTilingPrepress.paperSize6Inch": {
+    "en": "6-Inch Paper (4.0 x 6 in)",
+    "zh": "6 寸标准相纸 (4.0 x 6 in)"
+  },
+  "common.photoTilingPrepress.gapPtLabel": {
+    "en": "Photo Snaps Gap Margin",
+    "zh": "照片缝隙边距 (Snaps gap)"
+  },
+  "common.passportIdComposer.uploadLabel": {
+    "en": "Upload ID Card / Passport Photos (Front + Back)",
+    "zh": "上传身份证/护照照片 (正面 + 反面)"
+  },
+  "common.passportIdComposer.uploadDescription": {
+    "en": "Accepts PDFs or JPG/PNG image files. The system will align and compile them onto a standard A4 layout page.",
+    "zh": "支持 PDF 或者是 JPG/PNG 图片。系统将智能对齐并拼合至 A4 规格。"
+  },
+  "common.passportIdComposer.optionsTitle": {
+    "en": "ID Cards Tiling Settings",
+    "zh": "拼版拼合设置"
+  },
+  "common.passportIdComposer.processButton": {
+    "en": "Generate ID Tiling Sheet",
+    "zh": "一键生成国标拼大版"
+  },
+  "common.passportIdComposer.successMessage": {
+    "en": "ID cards arranged onto standard A4 sheet successfully!",
+    "zh": "多规格证件A4拼版贴版成功！"
+  },
+  "common.passportIdComposer.previewTitle": {
+    "en": "ID Layout Preview Deck (Magnetic snapping layout grids)",
+    "zh": "证件拼合排版沙盘 (磁性碰撞吸附网格)"
+  },
+  "common.passportIdComposer.frontLabel": {
+    "en": "FRONT (Face)",
+    "zh": "正面 (FRONT)"
+  },
+  "common.passportIdComposer.backLabel": {
+    "en": "BACK (Details)",
+    "zh": "反面 (BACK)"
+  },
+  "common.passportIdComposer.watermarkLabel": {
+    "en": "Anti-Copy Security Watermark Text",
+    "zh": "防伪防滥用水印文字"
+  },
+  "common.passportIdComposer.watermarkPlaceholder": {
+    "en": "e.g. FOR OFFICE USE ONLY",
+    "zh": "仅供复印使用"
+  },
+  "common.passportIdComposer.layoutSpecLabel": {
+    "en": "Target Print Layout Specification",
+    "zh": "目标排版拼大版规格"
+  },
+  "common.passportIdComposer.layoutSpecA4": {
+    "en": "Standard A4 Portrait (Both sides centered)",
+    "zh": "标准 A4 纵向 (双面合一置中)"
+  },
+  "common.passportIdComposer.layoutSpecA4Double": {
+    "en": "Standard A4 Landscape (Both sides side-by-side)",
+    "zh": "标准 A4 横向 (双面等大并排)"
+  },
+  "common.passportIdComposer.idCardHeightLabel": {
+    "en": "ID Card Placement Height (points)",
+    "zh": "证件拼合高度 (points)"
+  },
+  "common.passportIdComposer.layersCountLabel": {
+    "en": "Added {count}/2 ID layout layers",
+    "zh": "已添加 {count}/2 个证件拼版图层"
+  },
+  "common.annotationExporter.uploadLabel": {
+    "en": "Upload PDF with Markups / Annotations",
+    "zh": "上传需要提取大纲笔记的 PDF 文件"
+  },
+  "common.annotationExporter.uploadDescription": {
+    "en": "Automatically deserializes PDF markup streams, extracting fluorescent highlights and comment notes into structured summaries.",
+    "zh": "系统将自动反序列化 PDF 批注流，提取所有高亮及文本划线并整理成结构化大纲。"
+  },
+  "common.annotationExporter.optionsTitle": {
+    "en": "Markup Extraction Filtering",
+    "zh": "提取类型过滤"
+  },
+  "common.annotationExporter.processButton": {
+    "en": "Extract PDF Summary Note",
+    "zh": "一键分析并提取大纲笔记"
+  },
+  "common.annotationExporter.successMessage": {
+    "en": "All highlights and commenter notes extracted successfully!",
+    "zh": "PDF文本划线高亮及批注摘要提取成功！"
+  },
+  "common.annotationExporter.previewTitle": {
+    "en": "Extraction Summary Preview Deck",
+    "zh": "大纲笔记本预览舱"
+  },
+  "common.annotationExporter.formatLabel": {
+    "en": "Export Document Format",
+    "zh": "导出格式"
+  },
+  "common.annotationExporter.formatMd": {
+    "en": "Markdown (.md - hierarchy preserved)",
+    "zh": "Markdown 笔记本格式"
+  },
+  "common.annotationExporter.formatJson": {
+    "en": "JSON Data (Developer format)",
+    "zh": "JSON 原始开发数据"
+  },
+  "common.annotationExporter.includeLabel": {
+    "en": "Extraction Markup Targets",
+    "zh": "批注提取过滤目标"
+  },
+  "common.annotationExporter.incHighlightsLabel": {
+    "en": "Extract Highlight Markups",
+    "zh": "提取所有划线高亮"
+  },
+  "common.annotationExporter.incNotesLabel": {
+    "en": "Extract Sticky Comment Notes",
+    "zh": "提取 Sticky Notes 批注"
+  },
+  "common.annotationExporter.incUnderlinesLabel": {
+    "en": "Extract Underlines & Marked Areas",
+    "zh": "提取下划线与标注区域"
+  },
+  "common.annotationExporter.emptyStateTitle": {
+    "en": "Wait for parse complete, notes will compile to standard layout.",
+    "zh": "等待分析完成，导出的笔记将自动组装为带章节物理索引的笔记本。"
+  },
+  "common.batchWatermarkRemover.uploadLabel": {
+    "en": "Upload PDF Files with Watermarks",
+    "zh": "上传含背景水印的 PDF 文档"
+  },
+  "common.batchWatermarkRemover.uploadDescription": {
+    "en": "Locates repeated background patterns and text markers, stripping watermark content streams with physical vector preservation.",
+    "zh": "接收水印文本关键词，从底层内容流中定位擦除 Tj/TJ 数据块，完全保留原始矢量分辨率。"
+  },
+  "common.batchWatermarkRemover.optionsTitle": {
+    "en": "Watermark Cleansing Parameters",
+    "zh": "水印擦除净化选项"
+  },
+  "common.batchWatermarkRemover.processButton": {
+    "en": "Execute Stream Purge",
+    "zh": "一键分析并物理擦除"
+  },
+  "common.batchWatermarkRemover.successMessage": {
+    "en": "All matched watermark background layers purged successfully!",
+    "zh": "PDF批量水印流物理擦除清除成功！"
+  },
+  "common.batchWatermarkRemover.previewTitle": {
+    "en": "Watermark Removal Precision Sandbox",
+    "zh": "高精内容流去水印沙盘"
+  },
+  "common.batchWatermarkRemover.emptyStateDescription": {
+    "en": "Identify Tj/TJ contents stream keywords and automatically clean repetitive backdrop layouts, keeping raw vector resolution.",
+    "zh": "智能检索 Tj/TJ 文本操作数流，物理剔除背景特定文本层，不做任何有损转图，无缝维持高清晰度。"
+  },
+  "common.batchWatermarkRemover.watermarkKeywordsLabel": {
+    "en": "Target Watermark Text Pattern",
+    "zh": "水印文本关键词"
+  },
+  "common.batchWatermarkRemover.watermarkKeywordsPlaceholder": {
+    "en": "e.g. COPY, CONFIDENTIAL (comma-separated)",
+    "zh": "e.g. COPY, 内部文档 (逗号分隔)"
+  },
+  "common.batchWatermarkRemover.toleranceLabel": {
+    "en": "Glyph Matching Tolerance",
+    "zh": "图样字典匹配容差"
+  },
+  "common.smartDataRedactor.uploadLabel": {
+    "en": "Upload PDF Documents to Redact",
+    "zh": "上传需要脱敏/隐藏敏感词的 PDF"
+  },
+  "common.smartDataRedactor.uploadDescription": {
+    "en": "Employs regex matching. Automatically discovers emails, phone numbers, and IDs, placing solid black barriers to obscure data.",
+    "zh": "系统采用 NLP 正则与坐标流检测。自动发现电话、邮箱、身份证等隐私，盖印黑色并抹除文本流防提取。"
+  },
+  "common.smartDataRedactor.optionsTitle": {
+    "en": "Redaction Filters Settings",
+    "zh": "脱敏规则设定"
+  },
+  "common.smartDataRedactor.processButton": {
+    "en": "Execute Privacy Redaction",
+    "zh": "一键扫描并脱敏敏感隐私"
+  },
+  "common.smartDataRedactor.successMessage": {
+    "en": "All sensitive privacy data masked and purged successfully!",
+    "zh": "PDF隐私敏感数据脱敏成功！"
+  },
+  "common.smartDataRedactor.previewTitle": {
+    "en": "Privacy Data Redaction Sandtable",
+    "zh": "智能脱敏沙盘舱"
+  },
+  "common.smartDataRedactor.emptyStateDescription": {
+    "en": "Discover and obscure target sensitive categories, completely clearing corresponding glyph text streams from PDF.",
+    "zh": "一键分析并用黑色图块完美掩盖敏感模式，从底层 PDF 字符流中完全擦除对应文本块，防止提取。"
+  },
+  "common.smartDataRedactor.emailRedactLabel": {
+    "en": "Filter Email Addresses",
+    "zh": "自动匹配电子邮箱"
+  },
+  "common.smartDataRedactor.phoneRedactLabel": {
+    "en": "Filter Phone Numbers",
+    "zh": "自动匹配电话号码"
+  },
+  "common.smartDataRedactor.idRedactLabel": {
+    "en": "Filter Passport & ID Cards",
+    "zh": "自动匹配身份证件/护照号"
+  },
+  "common.smartDataRedactor.customKeywordsLabel": {
+    "en": "Custom Redaction Phrases",
+    "zh": "自定义敏感词过滤"
+  },
+  "common.smartDataRedactor.customKeywordsPlaceholder": {
+    "en": "Comma-separated phrases",
+    "zh": "逗号分隔自定义词"
+  },
+  "common.bookmarksAutoGenerator.uploadLabel": {
+    "en": "Upload PDF Lacking Bookmark Outlines",
+    "zh": "上传无大纲书签的 PDF 文本"
+  },
+  "common.bookmarksAutoGenerator.uploadDescription": {
+    "en": "Probes text weight and page height differences to intelligently parse chapter indexes, injecting outline structures into PDF Binary.",
+    "zh": "系统基于字号高低层次与章节名序号自动反推标题大纲，并直接物理注入 /Outline 二进制书签结构。"
+  },
+  "common.bookmarksAutoGenerator.optionsTitle": {
+    "en": "Auto Bookmark Outline Strategies",
+    "zh": "书签自动推导规则"
+  },
+  "common.bookmarksAutoGenerator.processButton": {
+    "en": "Generate Outline Bookmarks",
+    "zh": "一键推导并注入大纲书签"
+  },
+  "common.bookmarksAutoGenerator.successMessage": {
+    "en": "Chapter bookmark outlines computed and injected successfully!",
+    "zh": "PDF多级书签大纲目录物理注入成功！"
+  },
+  "common.bookmarksAutoGenerator.previewTitle": {
+    "en": "3D Dynamic Outline Hierarchy Tree",
+    "zh": "3D 书签层级分支图"
+  },
+  "common.bookmarksAutoGenerator.emptyStateDescription": {
+    "en": "Inspects title font sizing and hierarchical tags like 'Chapter 1' to compile deep expandable bookmark navigation sidebars.",
+    "zh": "自动检测字号与诸如“第一章”、“1.1”等层级表达式，并自动生成可多级展开的书签侧边栏。"
+  },
+  "common.bookmarksAutoGenerator.detectStrategyLabel": {
+    "en": "Title Detection Strategy",
+    "zh": "检测策略"
+  },
+  "common.bookmarksAutoGenerator.detectStrategyBoth": {
+    "en": "Font Size Weight + Regex Patterns",
+    "zh": "排版字号 + 章节正则提取"
+  },
+  "common.bookmarksAutoGenerator.detectStrategyRegex": {
+    "en": "Regex Structural Matching Only",
+    "zh": "纯章节序号正则检测"
+  },
+  "common.bookmarksAutoGenerator.detectStrategyFontSize": {
+    "en": "Font Size Hierarchy Only",
+    "zh": "纯字号高低层次推导"
+  },
+  "common.bookmarksAutoGenerator.minFontSizeLabel": {
+    "en": "Header Minimum Threshold Size (px)",
+    "zh": "标题最小字号 (px)"
+  },
+  "common.batchBarcodeInjector.uploadLabel": {
+    "en": "Upload Target PDF to Inject Barcode",
+    "zh": "上传需要批量注入条码的 PDF 文件"
+  },
+  "common.batchBarcodeInjector.uploadDescription": {
+    "en": "Receives link items list or text assets, compiling QR codes / barcodes to overlay on specified page coordinates.",
+    "zh": "接收资产链接或编号清单，生成专属 QR / 条码，精确定位并批量注入到各页指定物理坐标上。"
+  },
+  "common.batchBarcodeInjector.optionsTitle": {
+    "en": "Batch Barcode Overlay Parameters",
+    "zh": "资产条码批量注入选项"
+  },
+  "common.batchBarcodeInjector.processButton": {
+    "en": "Batch Position & Inject Barcode",
+    "zh": "批量定位并盖印注入"
+  },
+  "common.batchBarcodeInjector.successMessage": {
+    "en": "QR codes / barcodes batches injected successfully!",
+    "zh": "资产条码/二维码批量定位注入成功！"
+  },
+  "common.batchBarcodeInjector.previewTitle": {
+    "en": "Visual Barcode Alignment Grid Workspace",
+    "zh": "可视化注入对齐导轨舱"
+  },
+  "common.batchBarcodeInjector.gridLabel": {
+    "en": "Origin is at bottom-left corner (X: {xPos}pt, Y: {yPos}pt)",
+    "zh": "对齐导轨以左下角为原点 (X: {xPos}pt, Y: {yPos}pt)"
+  },
+  "common.batchBarcodeInjector.barcodeTypeLabel": {
+    "en": "Barcode Symbology",
+    "zh": "二维码/条码类别"
+  },
+  "common.batchBarcodeInjector.barcodeTypeQr": {
+    "en": "QR Code",
+    "zh": "QR Code (二维码)"
+  },
+  "common.batchBarcodeInjector.barcodeTypeBar": {
+    "en": "Barcode Code128",
+    "zh": "Barcode Code128 (条形码)"
+  },
+  "common.batchBarcodeInjector.barcodeValueLabel": {
+    "en": "Embedded Code Data Value",
+    "zh": "注入的文本/链接值"
+  },
+  "common.batchBarcodeInjector.xPosLabel": {
+    "en": "Horizontal Alignment X Offset (pt)",
+    "zh": "横坐标 X (pt)"
+  },
+  "common.batchBarcodeInjector.yPosLabel": {
+    "en": "Vertical Alignment Y Offset (pt)",
+    "zh": "纵坐标 Y (pt)"
+  },
+  "common.signatureInkOptimizer.uploadLabel": {
+    "en": "Upload Signature / Stamp Contract Photo",
+    "zh": "上传手机拍摄的手写签名或印章图片"
+  },
+  "common.signatureInkOptimizer.uploadDescription": {
+    "en": "Applies chrominance extraction to strip dark paper shadow details and bleach mold background, keeping high-fidelity stamps.",
+    "zh": "系统采用 Alpha 色差去杂噪算法。一键剥除背景杂色、光影褶皱，只留下通透立体的墨迹/红色盖章。"
+  },
+  "common.signatureInkOptimizer.optionsTitle": {
+    "en": "Ink Extraction Threshold Parameters",
+    "zh": "墨迹去噪滤镜选项"
+  },
+  "common.signatureInkOptimizer.processButton": {
+    "en": "Extract High-Fidelity Stamp",
+    "zh": "提取纯净透明手写签章"
+  },
+  "common.signatureInkOptimizer.successMessage": {
+    "en": "Signature and seal background purged successfully!",
+    "zh": "手写签名/盖章背景去噪净化提取成功！"
+  },
+  "common.signatureInkOptimizer.previewTitle": {
+    "en": "Signature Stamp Extraction Deck",
+    "zh": "签字笔迹净化舱舱门"
+  },
+  "common.signatureInkOptimizer.emptyStateDescription": {
+    "en": "Slide purification factors to bleach grey sheet shadow pixels and emphasize high fidelity red stamps.",
+    "zh": "拉动右侧净化离心滑条，白灰色背景杂讯将如水波般融化消失，仅保留高保真笔划线条。"
+  },
+  "common.signatureInkOptimizer.optimizerTypeLabel": {
+    "en": "Signature / Seal Target Category",
+    "zh": "目标提取种类"
+  },
+  "common.signatureInkOptimizer.optimizerTypeAuto": {
+    "en": "Auto-boost chromatic features",
+    "zh": "自动增强色彩特征"
+  },
+  "common.signatureInkOptimizer.optimizerTypeDark": {
+    "en": "Deepen handwritten dark signature ink",
+    "zh": "深色手写字迹增强"
+  },
+  "common.signatureInkOptimizer.optimizerTypeRed": {
+    "en": "Restore red stamp wax seal contrast",
+    "zh": "红色盖章印泥还原"
+  },
+  "common.signatureInkOptimizer.thresholdLabel": {
+    "en": "Background Bleaching Luma Threshold",
+    "zh": "背景擦除亮度阈值"
+  },
+  "common.signatureInkOptimizer.contrastLabel": {
+    "en": "Ink Stroke Contrast Level",
+    "zh": "字迹笔锋对比度"
+  },
+  "common.deadLinkDebugger.uploadLabel": {
+    "en": "Upload PDF to Validate Hyperlinks",
+    "zh": "上传需要调试网页超链接的 PDF 文件"
+  },
+  "common.deadLinkDebugger.uploadDescription": {
+    "en": "Traverses internal page structures to probe /URI Action triggers, executing live link checking and redirect overrides.",
+    "zh": "系统将遍历扫描文档内所有的 /URI 跳转动作，进行在线可达性探测，并允许在网页中一键热覆盖修复。"
+  },
+  "common.deadLinkDebugger.optionsTitle": {
+    "en": "Hyperlink Verification Options",
+    "zh": "超链接探测与重定向选项"
+  },
+  "common.deadLinkDebugger.processButton": {
+    "en": "Initiate Link Diagnosis",
+    "zh": "开始全局超链接探测"
+  },
+  "common.deadLinkDebugger.successMessage": {
+    "en": "Dead links diagnosed and overridden successfully!",
+    "zh": "PDF网页死链探测与坐标重定向覆盖成功！"
+  },
+  "common.deadLinkDebugger.previewTitle": {
+    "en": "Interactive Hyperlinks Diagnostic Tree Map",
+    "zh": "PDF 超链接深度探测脉络图"
+  },
+  "common.deadLinkDebugger.detectingText": {
+    "en": "Probing URL reachability status...",
+    "zh": "探测链接可达性中..."
+  },
+  "common.deadLinkDebugger.idleText": {
+    "en": "Click the trigger button to scan global hyperlink nodes.",
+    "zh": "点击右侧按钮开始全局深度扫描。"
+  },
+  "common.deadLinkDebugger.redirectPlaceholder": {
+    "en": "Redirect to new target URL...",
+    "zh": "重定向到新 URL..."
+  },
+  "common.deadLinkDebugger.emptyStateDescription": {
+    "en": "Deep scan PDF URL redirections and list them in details to perform redirect overrides in one click.",
+    "zh": "一键分析 PDF 文件的外链，自动在左侧列出。您可以针对性地修改并一键写入更新。"
+  },
+  "common.interactiveTocGenerator.uploadLabel": {
+    "en": "Upload PDF to Inject Interactive TOC",
+    "zh": "上传需要添加前置互动目录的 PDF 文件"
+  },
+  "common.interactiveTocGenerator.uploadDescription": {
+    "en": "Parses headings to format elegant front index sheet layouts, binding interactive GoTo anchor link triggers to headers.",
+    "zh": "捕获标题并排版生成精美前置索引页，注入双向 GoTo 锚定定位器及“Back to TOC”双向边缘锚点。"
+  },
+  "common.interactiveTocGenerator.optionsTitle": {
+    "en": "Double-Sided Table of Contents Options",
+    "zh": "双向互动目录参数"
+  },
+  "common.interactiveTocGenerator.processButton": {
+    "en": "Inject Two-Way Interactive TOC",
+    "zh": "一键生成并双向锚定"
+  },
+  "common.interactiveTocGenerator.successMessage": {
+    "en": "Interactive Table of Contents front page stitched successfully!",
+    "zh": "前置互动目录页及双向跳转锚点物理注入成功！"
+  },
+  "common.interactiveTocGenerator.previewTitle": {
+    "en": "Interactive TOC Folded Simulation Preview",
+    "zh": "互动目录折纸生成预览舱"
+  },
+  "common.interactiveTocGenerator.emptyStateDescription": {
+    "en": "Build elegant, linkable table of contents sheet while anchoring 'Back to TOC' jumping pointer guides on sheet margins.",
+    "zh": "生成排版艺术感拉满的前置目录页，为每一章建立超链接；同时正文页边缘注入“Back to TOC”双向悬浮锚点。"
+  },
+  "common.interactiveTocGenerator.tocTitleLabel": {
+    "en": "TOC Front Page Title Text",
+    "zh": "目录页的主标题"
+  },
+  "common.interactiveTocGenerator.insertPageLabel": {
+    "en": "Insertion Index Page Offset (0 for start)",
+    "zh": "插入页码位置 (0 表示最前面)"
+  },
+  "common.aiPdfReflower.uploadLabel": {
+    "en": "Upload PDF for Adaptive Reflow",
+    "zh": "上传需要自适应重排的 PDF 文档"
+  },
+  "common.aiPdfReflower.uploadDescription": {
+    "en": "Drag and drop academic papers, two-column layouts, or text PDFs here. The system will automatically parse and reflow.",
+    "zh": "拖放学术论文、双栏文档或文字类 PDF 到此处。系统将自动执行行重组和双栏解析。"
+  },
+  "common.aiPdfReflower.scanningMetadata": {
+    "en": "Analyzing document structure...",
+    "zh": "解析文档结构中..."
+  },
+  "common.aiPdfReflower.optionsTitle": {
+    "en": "Adaptive Reader Settings",
+    "zh": "自适应阅读设置"
+  },
+  "common.aiPdfReflower.optionsHelp": {
+    "en": "Adjust typography and layout styled on the 3D phone simulator.",
+    "zh": "实时修改右侧 3D 手机模拟器内的文字排版风格。"
+  },
+  "common.aiPdfReflower.themeLabel": {
+    "en": "Reader Theme Scheme",
+    "zh": "阅读底色方案"
+  },
+  "common.aiPdfReflower.themeSepia": {
+    "en": "Warm Eye-Care",
+    "zh": "护眼纸张"
+  },
+  "common.aiPdfReflower.themeLight": {
+    "en": "Clean Bright White",
+    "zh": "亮白清爽"
+  },
+  "common.aiPdfReflower.themeGreen": {
+    "en": "Fresh Soft Green",
+    "zh": "清新柔绿"
+  },
+  "common.aiPdfReflower.themeDark": {
+    "en": "Midnight Geek",
+    "zh": "夜间极客"
+  },
+  "common.aiPdfReflower.fontSizeLabel": {
+    "en": "Typography Font Size",
+    "zh": "阅读字号大小"
+  },
+  "common.aiPdfReflower.pullToExport": {
+    "en": "Pull Cord to Export",
+    "zh": "拉动拉绳一键导出"
+  },
+  "common.aiPdfReflower.pullToExportHint": {
+    "en": "Pull down ring to save (Markdown)",
+    "zh": "下拉环快速保存 (Markdown)"
+  },
+  "common.bookletFoldingSimulator.fourPagesFold": {
+    "en": "4-Page Fold",
+    "zh": "4页对折"
+  },
+  "common.bookletFoldingSimulator.oneSheetDoubleSide": {
+    "en": "1 Sheet Double-Sided",
+    "zh": "1张印张双面"
+  },
+  "common.bookletFoldingSimulator.eightPagesSaddle": {
+    "en": "8-Page Saddle Stitch",
+    "zh": "8页骑马钉"
+  },
+  "common.bookletFoldingSimulator.twoSheetsMiddleStitch": {
+    "en": "2 Sheets Middle Stitched",
+    "zh": "2张印张中缝装订"
+  },
+  "common.bookletFoldingSimulator.foldingDamping": {
+    "en": "3D Folding Damping Factor",
+    "zh": "3D 折叠阻尼系数"
+  },
+  "common.bookletFoldingSimulator.flatUnfold": {
+    "en": "Flat Unfold",
+    "zh": "纯平展开"
+  },
+  "common.bookletFoldingSimulator.fullyFolded": {
+    "en": "Fully Folded",
+    "zh": "完全折合"
+  },
+  "common.bookletFoldingSimulator.view2D": {
+    "en": "2D Layout",
+    "zh": "2D 视图"
+  },
+  "common.bookletFoldingSimulator.view3D": {
+    "en": "3D Simulation",
+    "zh": "3D 仿真"
+  },
+  "common.bookletFoldingSimulator.leftPageHalf": {
+    "en": "Left Side (Imposed & Bound)",
+    "zh": "左半版面 (对折装订)"
+  },
+  "common.bookletFoldingSimulator.rightPageHalf": {
+    "en": "Right Side",
+    "zh": "右半版面"
+  },
+  "common.certCryptor.waxStyleSuffix": {
+    "en": " (Physical Wax Seal Style)",
+    "zh": " (物理火漆风格)"
+  },
+  "common.certCryptor.goldWax": {
+    "en": "Royal Gold Seal",
+    "zh": "皇家黄金"
+  },
+  "common.certCryptor.redWax": {
+    "en": "Vintage Deep Red",
+    "zh": "复古深红"
+  },
+  "common.certCryptor.bronzeWax": {
+    "en": "Antique Crimson Bronze",
+    "zh": "古铜赤金"
+  },
+  "common.certCryptor.enableDoubleKey": {
+    "en": "Enable Certificate Double-Key Encryption (256-bit Strong Lock)",
+    "zh": "启用证书双钥锁 (256位强加密)"
+  },
+  "common.certCryptor.decryptPasswordHelp": {
+    "en": "Set PFX Decryption Key Password",
+    "zh": "设置解密所持密码 (PFX 解密密钥)"
+  },
+  "common.certCryptor.passwordPlaceholder": {
+    "en": "Default password: pdfcraft",
+    "zh": "默认密码: pdfcraft"
+  },
+  "common.certCryptor.sealCoordinates": {
+    "en": "Seal Coordinates: X: {x}px, Y: {y}px",
+    "zh": "数字证书盖印坐标: X: {x}px, Y: {y}px"
+  },
+  "common.certCryptor.clickToReposition": {
+    "en": "Click anywhere to reposition the wax seal",
+    "zh": "在白纸处点击以重定位印章"
+  },
+  "common.citationLinker.uploadLabel": {
+    "en": "Upload Academic PDF with Bibliographies",
+    "zh": "上传带有参考文献列表的学术 PDF"
+  },
+  "common.citationLinker.uploadDescription": {
+    "en": "Drag and drop papers, articles, or reports. The system will auto-link markers (e.g. [1]) with references.",
+    "zh": "拖放学术文献、期刊论文或会议报告。系统将自动找出引用标记（如 [1]）并关联参考文献。"
+  },
+  "common.citationLinker.scanningMetadata": {
+    "en": "Scanning bibliographic structures...",
+    "zh": "扫描文本结构中..."
+  },
+  "common.citationLinker.optionsTitle": {
+    "en": "Citation Link Activation Settings",
+    "zh": "引文链接激活选项"
+  },
+  "common.citationLinker.detectDoi": {
+    "en": "Auto-detect Reference DOI Hyperlinks",
+    "zh": "自动检测参考文献 DOI 超链接"
+  },
+  "common.citationLinker.enableGoto": {
+    "en": "Enable page-jump 'GoTo' when DOI is absent",
+    "zh": "无 DOI 时自动启用“页内跳转” (GoTo Page)"
+  },
+  "common.citationLinker.editingCitation": {
+    "en": "Modifying Citation: {marker}",
+    "zh": "正在修改引文: {marker}"
+  },
+  "common.citationLinker.citationPage": {
+    "en": "Page: Page {page}",
+    "zh": "所在页面: 第 {page} 页"
+  },
+  "common.citationLinker.citationRef": {
+    "en": "Reference: {ref}",
+    "zh": "文献: {ref}"
+  },
+  "common.citationLinker.doiPlaceholder": {
+    "en": "Enter Reference DOI / URL Link...",
+    "zh": "请输入此文献的 DOI / URL 链接"
+  },
+  "common.citationLinker.citationListTitle": {
+    "en": "Scanned Citations ({count})",
+    "zh": "扫描出的引文列表 ({count})"
+  },
+  "common.citationLinker.gotoPage": {
+    "en": "Page Jump",
+    "zh": "页内跳转"
+  },
+  "common.citationLinker.injectLink": {
+    "en": "Activate Link Injection",
+    "zh": "激活超链接注入"
+  },
+  "common.citationLinker.doiExternalLink": {
+    "en": "Solid Green: DOI External Link",
+    "zh": "绿实线: DOI 外部链接"
+  },
+  "common.citationLinker.gotoPageLink": {
+    "en": "Dashed Grey: Page-Jump Link",
+    "zh": "灰虚线: 参考文献页内跳转"
+  },
+  "common.citationLinker.injectingMessage": {
+    "en": "Injecting active citation annotations into PDF catalog...",
+    "zh": "正在注入高强可点击引文注释..."
+  },
+  "common.citationLinker.successDesc": {
+    "en": "Successfully injected active links and page-jump actions for {count} citations. Fully interactive in any PDF reader.",
+    "zh": "共为 {count} 处引文符号注入了关联链接和页内跳转跳转点，文档可在任意符合标准的 PDF 阅读器中完美交互。"
+  },
+  "common.comparePdfs.compareStats": {
+    "en": "Aligned {total} pages • {diff} pages contain semantic differences",
+    "zh": "共对齐 {total} 页 • 其中 {diff} 包含语义性差异"
+  },
+  "common.comparePdfs.pagePairIndex": {
+    "en": "Page {current} of {total}",
+    "zh": "对齐序列 {current} / {total} 页"
+  },
+  "common.comparePdfs.detectedDiff": {
+    "en": "⚠️ Detected {percent}% semantic difference",
+    "zh": "⚠️ 检出 {percent}% 语义差异"
+  },
+  "common.compress.waitingFiles": {
+    "en": "Pending Files ({count})",
+    "zh": "待压缩文件列表 ({count})"
+  },
+  "common.compress.qualityCompare": {
+    "en": "Left: Original (100%) | Right: Compressed ({quality})",
+    "zh": "左: 原始画质 (100%) | 右: 模拟压缩 ({quality})"
+  },
+  "common.compress.zipDownload": {
+    "en": "Download ZIP ({count} files)",
+    "zh": "打包下载 ZIP ({count} 个文件)"
+  },
+  "common.compress.sizeInfo": {
+    "en": "Original: {size} MB • Cleaned obsolete fragments and metadata streams locally.",
+    "zh": "原始大小: {size} MB • 成功在本地清理了非必要废弃片段和无用元数据流。"
+  },
+  "common.deepSanitize.uploadLabel": {
+    "en": "Upload PDF for Safe Sanitization",
+    "zh": "上传需要脱敏防溯源的 PDF 文档"
+  },
+  "common.deepSanitize.uploadDescription": {
+    "en": "Drag & drop contracts, confidential files, or government records. Cleans PieceInfo and rebuilds cross-reference tables.",
+    "zh": "拖放商业合同、机密文件或政府底档。系统将扫描可选图层、PieceInfo 历史并强制重构 xref 树。"
+  },
+  "common.deepSanitize.prechecking": {
+    "en": "Performing deep structural pre-check...",
+    "zh": "深度结构预检中..."
+  },
+  "common.deepSanitize.optionsTitle": {
+    "en": "Sanitization Scrub Options",
+    "zh": "深度擦除控制选项"
+  },
+  "common.deepSanitize.processButton": {
+    "en": "Execute Deep Sanitization",
+    "zh": "执行深度净化脱敏"
+  },
+  "common.deepSanitize.riskReport": {
+    "en": "Discovered Security Risk Report:",
+    "zh": "扫描发现的安全风险排查报告:"
+  },
+  "common.deepSanitize.successTitle": {
+    "en": "Deep Sanitization Complete!",
+    "zh": "深度元数据净化完成！"
+  },
+  "common.editPdf.defaultAuthor": {
+    "en": "Annotation (Guest User)",
+    "zh": "标注 (不具名用户)"
+  },
+  "common.editPdf.undoBtn": {
+    "en": "Undo",
+    "zh": "撤销"
+  },
+  "common.editPdf.redoBtn": {
+    "en": "Redo",
+    "zh": "重做"
+  },
+  "common.einkOptimizer.originalStroke": {
+    "en": "Original Stroke",
+    "zh": "原笔迹"
+  },
+  "common.einkOptimizer.afterSampleText": {
+    "en": "The philosophy of education is the study of the purpose, nature, and effects of education. Broadly defined, education is the process by which society transmits its accumulated knowledge...",
+    "zh": "古之学者必有师。师者，所以传道受业解惑也。人非生而知之者，孰能无惑？惑而不从师，其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之..."
+  },
+  "common.findAndRedact.allMatches": {
+    "en": "All ({count})",
+    "zh": "全部 ({count})"
+  },
+  "common.ocr.optionsTitle": {
+    "en": "OCR Parameter Configuration",
+    "zh": "OCR 文字识别参数配置"
+  },
+  "common.ocr.selectLang": {
+    "en": "Select Recognition Languages (Multiple allowed)",
+    "zh": "选择识别语言 (支持多选)"
+  },
+  "common.ocr.outputFormat": {
+    "en": "Output File Format",
+    "zh": "输出文件格式"
+  },
+  "common.ocr.formatSearchablePdf": {
+    "en": "Double-Layer Searchable PDF",
+    "zh": "双层可搜索 PDF"
+  },
+  "common.ocr.formatText": {
+    "en": "Extract Plain Text File (.txt)",
+    "zh": "提取纯文本文件 (.txt)"
+  },
+  "common.ocr.accuracyTitle": {
+    "en": "OCR Engine Accuracy Resolution",
+    "zh": "渲染识别精度"
+  },
+  "common.ocr.accuracySd": {
+    "en": "Standard (Fast, clear documents)",
+    "zh": "标清 (适合清晰原件)"
+  },
+  "common.ocr.accuracyHd": {
+    "en": "High Quality (Recommended, standard scans)",
+    "zh": "高清 (推荐，识别更稳)"
+  },
+  "common.ocr.accuracyUd": {
+    "en": "Ultra Resolution (Deep scanning, faint ink)",
+    "zh": "超清 (慢，适合模糊件)"
+  },
+  "common.ocr.specifyPages": {
+    "en": "Target Recognition Pages",
+    "zh": "指定识别页码"
+  },
+  "common.ocr.pagesPlaceholder": {
+    "en": "e.g. 1-3, 5",
+    "zh": "如: 1-3, 5"
+  },
+  "common.ocr.startOcr": {
+    "en": "Start Character Recognition",
+    "zh": "开始文字识别"
+  },
+  "common.ocr.advantageTitle": {
+    "en": "Double-Layer PDF Advantages:",
+    "zh": "双层 PDF 核心优势:"
+  },
+  "common.ocr.advantageDesc": {
+    "en": "The reconstructed searchable PDF embeds an invisible, perfectly aligned text layer above the scanned pixels. Keeps the original appearance while enabling full text highlighting, searching, and copying.",
+    "zh": "重构后的可搜索 PDF 功能，会在后台计算 OCR 文字排版物理 Bounding Box，在原始 PDF 图层上层精确注入完全透明的文字图层 (Invisible Text Layer)。这不仅保持了原始扫描文件的图纸外观，还让文本完美支持划词复制、检索和选定。"
+  },
+  "common.ocr.successTitle": {
+    "en": "OCR Recognition Complete!",
+    "zh": "文字识别提取完成！"
+  },
+  "common.ocr.successSearchablePdf": {
+    "en": "Searchable PDF generated! The scanned sheets are overlaid with interactive text. Highlight and search freely.",
+    "zh": "双层可搜索 PDF 编译完成。原始扫描图片已被文字遮罩覆盖，您可以使用任意 PDF 查看器打开文件并进行划词搜索与复制。"
+  },
+  "common.ocr.successText": {
+    "en": "Plain text structures extracted successfully. Text preview displayed below.",
+    "zh": "纯文本文件结构提取成功，已在下方显示文本流预览。"
+  },
+  "common.ocr.previewTitle": {
+    "en": "Extracted Text Stream Preview",
+    "zh": "提取出来的文本流预览"
+  },
+  "common.overlayPdf.uploadBaseLabel": {
+    "en": "1. Upload Base Document (Base PDF)",
+    "zh": "1. 上传主文档 (Base PDF)"
+  },
+  "common.overlayPdf.uploadBaseButton": {
+    "en": "Upload Base PDF",
+    "zh": "点击上传主 PDF"
+  },
+  "common.overlayPdf.uploadBaseDesc": {
+    "en": "Serves as the structural background frame",
+    "zh": "该文档的内容会作为合并的基本骨架"
+  },
+  "common.overlayPdf.uploadLayerLabel": {
+    "en": "2. Upload Layer Document (Layer PDF)",
+    "zh": "2. 上传覆叠层文档 (Layer PDF)"
+  },
+  "common.overlayPdf.uploadLayerButton": {
+    "en": "Upload Overlay PDF",
+    "zh": "点击上传图层 PDF"
+  },
+  "common.overlayPdf.uploadLayerDesc": {
+    "en": "Stamp seals, structural trust margins, grids, or headers",
+    "zh": "如公章、带有设计背景的信托网格、信笺等"
+  },
+  "common.overlayPdf.previewTitle": {
+    "en": "3D Layer Imposition Preview",
+    "zh": "3D 层叠层级动态预览"
+  },
+  "common.overlayPdf.basePageLabel": {
+    "en": "Base Page",
+    "zh": "主页面"
+  },
+  "common.overlayPdf.layerPageLabel": {
+    "en": "Layer Page",
+    "zh": "图层面"
+  },
+  "common.overlayPdf.placementModeOverlay": {
+    "en": "Foreground (Overlay): Overlay layer is rendered on top of the base contents.",
+    "zh": "前景层模式 (Overlay)：图层文档渲染在主文档的页面内容之上。"
+  },
+  "common.overlayPdf.placementModeUnderlay": {
+    "en": "Background (Underlay): Overlay layer is rendered beneath all base contents.",
+    "zh": "背景层模式 (Underlay)：图层文档垫在主文档所有页面内容的最底层。"
+  },
+  "common.overlayPdf.optionsTitle": {
+    "en": "Overlay Merging Parameters",
+    "zh": "覆叠拼接配置"
+  },
+  "common.overlayPdf.placementModeLabel": {
+    "en": "A. Layer Imposition Mode (Placement Mode)",
+    "zh": "A. 覆叠层级模式 (Placement Mode)"
+  },
+  "common.overlayPdf.placementOverlayBtn": {
+    "en": "Foreground Overlay",
+    "zh": "前景覆叠 (Overlay)"
+  },
+  "common.overlayPdf.placementUnderlayBtn": {
+    "en": "Background Underlay",
+    "zh": "背景垫底 (Underlay)"
+  },
+  "common.overlayPdf.targetRangeLabel": {
+    "en": "B. Target Page Range (Target Page Range)",
+    "zh": "B. 目标作用页面范围 (Target Page Range)"
+  },
+  "common.overlayPdf.targetRangeHelp": {
+    "en": "Leave blank to apply to all base pages",
+    "zh": "空表示应用至全部主页面"
+  },
+  "common.overlayPdf.targetRangePlaceholder": {
+    "en": "e.g. 1-5, 8, odd, even",
+    "zh": "例如：1-5, 8, odd, even"
+  },
+  "common.overlayPdf.loopOverlayLabel": {
+    "en": "C. Loop Repeating (Loop Shorter Overlay Document)",
+    "zh": "C. 循环重复图层文档 (Loop Shorter Overlay Document)"
+  },
+  "common.overlayPdf.loopOverlayDesc": {
+    "en": "Loop-repeats the overlay document if it is shorter than the base document. If unchecked, remaining pages are left blank.",
+    "zh": "当图层文件总页数短于主 PDF 时，自动循环重复套用该图层（例如信笺背景）。若关闭，则超出页数的页面不再应用覆叠。"
+  },
+  "common.overlayPdf.processButton": {
+    "en": "Execute Layer Overlay",
+    "zh": "开始应用覆叠生成 PDF"
+  },
+  "common.overlayPdf.successMessage": {
+    "en": "🎉 PDF layers overlaid successfully! Click download above to save.",
+    "zh": "🎉 PDF 覆叠拼版处理成功！点击上方按钮进行下载。"
+  },
+  "common.pageLabels.errorMetadata": {
+    "en": "Failed to parse PDF metadata. File might be corrupted.",
+    "zh": "无法解析主 PDF 的元数据，该文件可能已损坏。"
+  },
+  "common.pageLabels.errorUpload": {
+    "en": "Please upload a target PDF first.",
+    "zh": "请上传待添加页面标签 of PDF。"
+  },
+  "common.pageLabels.progressInjecting": {
+    "en": "Injecting page label catalog records...",
+    "zh": "正在批量注入页面标签..."
+  },
+  "common.pageLabels.errorInjecting": {
+    "en": "Failed to inject page labels.",
+    "zh": "注入页面标签失败。"
+  },
+  "common.pageLabels.errorUnknown": {
+    "en": "An unknown error occurred.",
+    "zh": "发生未知错误。"
+  },
+  "common.pageLabels.uploadLabel": {
+    "en": "1. Upload Document (PDF)",
+    "zh": "1. 上传文档 (PDF)"
+  },
+  "common.pageLabels.uploadDesc": {
+    "en": "Injects standard PageLabels into the PDF Catalog. Fully compliant with Adobe Acrobat.",
+    "zh": "本工具将直接在 PDF Catalog 中注入标准的 PageLabels 字典，与 Adobe Acrobat 完全兼容。"
+  },
+  "common.pageLabels.rulesTitle": {
+    "en": "2. Configure Page Label Mapping Rules",
+    "zh": "2. 配置标签映射规则 (Page Label Rules)"
+  },
+  "common.pageLabels.addRuleBtn": {
+    "en": "Add New Label Rule",
+    "zh": "添加新规则"
+  },
+  "common.pageLabels.ruleTitle": {
+    "en": "Rule #{index}",
+    "zh": "规则 #{index}"
+  },
+  "common.pageLabels.deleteRuleTooltip": {
+    "en": "Remove this rule",
+    "zh": "删除此规则"
+  },
+  "common.pageLabels.pageRangeLabel": {
+    "en": "Page Range Scope",
+    "zh": "页码作用范围"
+  },
+  "common.pageLabels.pageRangeHelp": {
+    "en": "Leave blank to apply to all pages",
+    "zh": "留空应用到所有页"
+  },
+  "common.pageLabels.pageRangePlaceholder": {
+    "en": "e.g. 1-9, odd, even",
+    "zh": "例如: 1-9, odd, even"
+  },
+  "common.pageLabels.styleLabel": {
+    "en": "Label Numbering Style",
+    "zh": "标签编码样式"
+  },
+  "common.pageLabels.styleD": {
+    "en": "1, 2, 3... (Arabic Numbers)",
+    "zh": "1, 2, 3... (阿拉伯数字)"
+  },
+  "common.pageLabels.styleR": {
+    "en": "I, II, III... (Uppercase Roman)",
+    "zh": "I, II, III... (大写罗马)"
+  },
+  "common.pageLabels.style_r": {
+    "en": "i, ii, iii... (Lowercase Roman)",
+    "zh": "i, ii, iii... (小写罗马)"
+  },
+  "common.pageLabels.styleA": {
+    "en": "A, B, C... (Uppercase Alphabets)",
+    "zh": "A, B, C... (大写字母)"
+  },
+  "common.pageLabels.style_a": {
+    "en": "a, b, c... (Lowercase Alphabets)",
+    "zh": "a, b, c... (小写字母)"
+  },
+  "common.pageLabels.styleNone": {
+    "en": "No numbers (Prefix only)",
+    "zh": "无数字样式 (仅前缀)"
+  },
+  "common.pageLabels.prefixLabel": {
+    "en": "Custom Label Prefix",
+    "zh": "自定义前缀 (Prefix)"
+  },
+  "common.pageLabels.prefixPlaceholder": {
+    "en": "e.g. Appendix-, A-",
+    "zh": "例如: Appendix-, A-"
+  },
+  "common.pageLabels.startValueLabel": {
+    "en": "Start Value",
+    "zh": "起始数值 (Start Value)"
+  },
+  "common.pageLabels.processButton": {
+    "en": "Inject PageLabels",
+    "zh": "开始注入 PageLabels"
+  },
+  "common.pageLabels.successMessage": {
+    "en": "🎉 PageLabels injected successfully! Open in a professional viewer to inspect the sidebar.",
+    "zh": "🎉 页面标签注入成功！请下载已签名的 PDF 并在专业阅读器中查看侧栏导航。"
+  },
+  "common.pageLabels.previewTitle": {
+    "en": "Real-time Page Label Sequence Preview",
+    "zh": "页面标签序列实时流预览"
+  },
+  "common.pageLabels.algorithmTitle": {
+    "en": "Precedence & Boundary Overlay Logic:",
+    "zh": "规则优先覆盖与不相交算法："
+  },
+  "common.pageLabels.algorithmDesc": {
+    "en": "The badges below display computed label layouts. The colored badge next to each page index represents the layout visible in reader search fields.",
+    "zh": "下方徽章代表 PDF 内部每一页最终算出的标签序列。物理页码旁的渐变色小徽章，即为其展现给用户的结构标签。"
+  },
+  "common.pageLabels.collapsedPages": {
+    "en": "{count} pages collapsed to optimize performance.",
+    "zh": "还有 {count} 页未显示，已自动折叠以提升交互性能。"
+  },
+  "common.pageLabels.loadFullPreview": {
+    "en": "Load complete {count} page preview",
+    "zh": "加载完整 {count} 页预览"
+  },
+  "common.pdfToCbz.errorMetadata": {
+    "en": "Failed to parse PDF comic metadata. File may be corrupted.",
+    "zh": "无法解析主 PDF 漫画的元数据。该文件可能已损坏。"
+  },
+  "common.pdfToCbz.errorUpload": {
+    "en": "Please upload a comic PDF first.",
+    "zh": "请上传待转换的漫画 PDF 文件。"
+  },
+  "common.pdfToCbz.progressExtracting": {
+    "en": "Extracting comic sheets...",
+    "zh": "正在提取漫画页面中..."
+  },
+  "common.pdfToCbz.errorExtracting": {
+    "en": "Failed to compile CBZ package.",
+    "zh": "编译漫画包 CBZ 失败。"
+  },
+  "common.pdfToCbz.errorUnknown": {
+    "en": "An unknown packing error occurred.",
+    "zh": "打包转换时发生未知错误。"
+  },
+  "common.pdfToCbz.uploadLabel": {
+    "en": "1. Upload Comic/Artwork (PDF)",
+    "zh": "1. 上传漫画/插画 (PDF)"
+  },
+  "common.pdfToCbz.uploadButton": {
+    "en": "Upload Comic PDF",
+    "zh": "点击上传漫画 PDF 文档"
+  },
+  "common.pdfToCbz.uploadDesc": {
+    "en": "Renders pages at maximum details while embedding standard OPF / XML comic databases.",
+    "zh": "渲染高清页面的同时，自动自动嵌入 OPF / XML / Comment 漫画专属多维度数据库信息。"
+  },
+  "common.pdfToCbz.previewTitle": {
+    "en": "3D Dynamic Comic Flip Cover Preview",
+    "zh": "3D 漫画体三维动态封面预览"
+  },
+  "common.pdfToCbz.comicTitleDefault": {
+    "en": "Comic Title",
+    "zh": "漫画标题"
+  },
+  "common.pdfToCbz.comicArtistDefault": {
+    "en": "Anonymous Artist",
+    "zh": "佚名作者"
+  },
+  "common.pdfToCbz.directionRtlHelp": {
+    "en": "Right to Left: Classic Manga scheme. Spines bind on the right side.",
+    "zh": "右翻页模式 (Right to Left)：经典日漫读向，书脊对齐右侧翻开。"
+  },
+  "common.pdfToCbz.directionLtrHelp": {
+    "en": "Left to Right: Standard novel and comic book scheme. Spines bind on the left side.",
+    "zh": "左翻页模式 (Left to Right)：标准小说/美漫读向，书脊对齐左侧翻开。"
+  },
+  "common.pdfToCbz.metadataTitle": {
+    "en": "2. Complete Book Metadata (ComicInfo.xml)",
+    "zh": "2. 完善书籍信息与元数据 (Metadata)"
+  },
+  "common.pdfToCbz.fieldTitle": {
+    "en": "Book Title (Title)",
+    "zh": "漫画标题 (Title)"
+  },
+  "common.pdfToCbz.fieldSeries": {
+    "en": "Series Title (Series)",
+    "zh": "所属系列/书名 (Series)"
+  },
+  "common.pdfToCbz.seriesPlaceholder": {
+    "en": "e.g. One Piece, Attack on Titan",
+    "zh": "如: 海贼王、进击的巨人"
+  },
+  "common.pdfToCbz.fieldIssue": {
+    "en": "Issue Number",
+    "zh": "单册期数/话号 (Issue Number)"
+  },
+  "common.pdfToCbz.fieldVolume": {
+    "en": "Volume Number",
+    "zh": "分卷号 (Volume)"
+  },
+  "common.pdfToCbz.fieldArtist": {
+    "en": "Writer / Artist",
+    "zh": "编剧与绘画作者 (Writer/Artist)"
+  },
+  "common.pdfToCbz.artistPlaceholder": {
+    "en": "e.g., Oda Eiichiro",
+    "zh": "如: 尾田荣一郎"
+  },
+  "common.pdfToCbz.fieldPublisher": {
+    "en": "Publisher",
+    "zh": "发行商/出版社 (Publisher)"
+  },
+  "common.pdfToCbz.publisherPlaceholder": {
+    "en": "e.g., Shueisha",
+    "zh": "如: 集英社"
+  },
+  "common.pdfToCbz.fieldGenre": {
+    "en": "Genre Tags",
+    "zh": "题材题材题材 (Genre)"
+  },
+  "common.pdfToCbz.genrePlaceholder": {
+    "en": "e.g., Action / Shonen / Adventure",
+    "zh": "如: 热血 / 少年 / 动作"
+  },
+  "common.pdfToCbz.readingOrderLabel": {
+    "en": "Comic Reading Flow Direction",
+    "zh": "漫画书籍阅读顺序"
+  },
+  "common.pdfToCbz.readingOrderLtr": {
+    "en": "Left to Right (LTR - Standard)",
+    "zh": "从左至右 (LTR - 普通电子书)"
+  },
+  "common.pdfToCbz.readingOrderRtl": {
+    "en": "Right to Left (RTL - Manga Scheme)",
+    "zh": "从右至左 (RTL - 日漫读向)"
+  },
+  "common.pdfToCbz.deviceOptimizeTitle": {
+    "en": "3. Image Compression & Device Tuning",
+    "zh": "3. 图像画质与设备调谐"
+  },
+  "common.pdfToCbz.qualityLabel": {
+    "en": "Image Compression Quality (JPEG/WebP)",
+    "zh": "图像压缩画质 (JPEG/WebP Quality)"
+  },
+  "common.pdfToCbz.scaleLabel": {
+    "en": "Resolution Scale Factor",
+    "zh": "分辨率比例 (Scale Multiplier)"
+  },
+  "common.pdfToCbz.formatLabel": {
+    "en": "Compressed Output Format",
+    "zh": "压缩保存图像格式"
+  },
+  "common.pdfToCbz.einkGreyscale": {
+    "en": "e-Ink Optimization",
+    "zh": "墨水屏灰阶处理"
+  },
+  "common.pdfToCbz.einkGreyscaleDesc": {
+    "en": "Desaturates pages to fast 16-level grayscale for e-paper refresh boosts.",
+    "zh": "脱色加速墨水屏刷新率与画质对比度"
+  },
+  "common.pdfToCbz.processButton": {
+    "en": "Compile CBZ Comic Package",
+    "zh": "开始提取编译 CBZ 漫画包"
+  },
+  "common.pdfToCbz.successMessage": {
+    "en": "🎉 Comic CBZ compiled successfully! metadata.opf and ComicInfo.xml injected. Download ready.",
+    "zh": "🎉 漫画 CBZ 打包成功！内置 metadata.opf 与 ComicInfo.xml 元数据。请一键下载。"
+  },
+  "common.pdfToSlide.themeLabel": {
+    "en": "PPT Background Theme Scheme",
+    "zh": "PPT 主题基色"
+  },
+  "common.pdfToSlide.progressReconstructing": {
+    "en": "Analyzing semantic layers and reconstructing PPTX slides...",
+    "zh": "正在解构页面层次并重建幻灯片大纲..."
+  },
+  "common.pdfToSlide.prevPage": {
+    "en": "Previous Outline",
+    "zh": "上一页"
+  },
+  "common.pdfToSlide.nextPage": {
+    "en": "Next Outline",
+    "zh": "下一页"
+  },
+  "common.pdfToSlide.outlinePreviewTitle": {
+    "en": "Slide Cards & Diagram Outlines Preview",
+    "zh": "大纲与图表将在这里渲染为卡片大纲预览"
+  },
+  "common.pdfToSlide.outlinePreviewDesc": {
+    "en": "Select a color theme and click generate to begin reconstructing slides.",
+    "zh": "选择您的主题色并点击生成开始大纲幻灯片重建"
+  },
+  "common.pdfToTiff.errorMetadata": {
+    "en": "Failed to parse PDF metadata. File may be corrupted.",
+    "zh": "无法解析主 PDF 元数据，该文件可能已损坏。"
+  },
+  "common.pdfToTiff.errorUpload": {
+    "en": "Please upload a target PDF first.",
+    "zh": "请上传待转换为 TIFF 的 PDF 文件。"
+  },
+  "common.pdfToTiff.progressExtracting": {
+    "en": "Serializing pages to multi-page TIFF streams...",
+    "zh": "正在将页面序列化为单文件多页 TIFF..."
+  },
+  "common.pdfToTiff.errorExtracting": {
+    "en": "Failed to compile multi-page TIFF.",
+    "zh": "编译多页 TIFF 文件失败。"
+  },
+  "common.pdfToTiff.errorUnknown": {
+    "en": "An unknown serialization error occurred.",
+    "zh": "序列化打包时发生未知错误。"
+  },
+  "common.pdfToTiff.uploadLabel": {
+    "en": "1. Upload Document (PDF)",
+    "zh": "1. 上传文档 (PDF)"
+  },
+  "common.pdfToTiff.uploadDesc": {
+    "en": "Physical binary IFD compositor, stitching multiple high-fidelity pages directly into a single multi-page TIFF.",
+    "zh": "手写手写手写手写手写手写二进制 IFD 拼接编译器，直接合并生成单个包含多页面（Multi-page）的合法高保真 TIFF。"
+  },
+  "common.pdfToTiff.previewTitle": {
+    "en": "3D Spectral Pixels Density Preview",
+    "zh": "3D 晶格像素密度与光谱实时预览"
+  },
+  "common.pdfToTiff.descColor": {
+    "en": "24-bit RGB Color: 3 bytes per pixel. Preserves high-fidelity full color spectrum.",
+    "zh": "24-bit 印刷全彩 (RGB)：每像素占用 3 字节，完美还原丰富的光谱色彩。"
+  },
+  "common.pdfToTiff.descGrayscale": {
+    "en": "8-bit Grayscale: Converts colors to balanced luminances, ideal for scanning black-and-white archives.",
+    "zh": "8-bit 专业灰度：使用经典光敏系数脱色，层次分明，适合黑白文卷存档。"
+  },
+  "common.pdfToTiff.descMono": {
+    "en": "1-bit Monochromatic: Half-tone 127 binarization threshold, extreme contrast, shrinks file sizes by 24x.",
+    "zh": "1-bit 纯黑白二值：基于半色调 127 阀值二值化，极具对比度，体积缩减至 1/24。"
+  },
+  "common.pdfToTiff.optionsTitle": {
+    "en": "2. Multi-Page TIFF Output Parameters",
+    "zh": "2. 印刷级多页 TIFF 输出配置"
+  },
+  "common.pdfToTiff.colorModeLabel": {
+    "en": "A. Color Extraction Mode (Color Mode)",
+    "zh": "A. 色彩表达模式 (Color Mode)"
+  },
+  "common.pdfToTiff.colorModeFull": {
+    "en": "RGB Full Color (24-bit)",
+    "zh": "全彩 (RGB 24-bit)"
+  },
+  "common.pdfToTiff.colorModeGrayscale": {
+    "en": "8-bit Grayscale",
+    "zh": "灰阶 (8-bit)"
+  },
+  "common.pdfToTiff.colorModeMono": {
+    "en": "B&W Monochromatic (1-bit)",
+    "zh": "黑白单色 (1-bit)"
+  },
+  "common.pdfToTiff.compressionLabel": {
+    "en": "B. Image Compression Method",
+    "zh": "B. 图像压缩算法 (Compression Method)"
+  },
+  "common.pdfToTiff.compressionNone": {
+    "en": "No Compression (None - High compatibility)",
+    "zh": "无压缩 (None - 极大兼容)"
+  },
+  "common.pdfToTiff.compressionPackbits": {
+    "en": "Lossless Run-Length Compression (PackBits RLE)",
+    "zh": "无损游程压缩 (PackBits RLE)"
+  },
+  "common.pdfToTiff.resolutionLabel": {
+    "en": "C. Resolution Pixel Density (Resolution)",
+    "zh": "C. 高精度 DPI 分辨率滑轨 (Resolution)"
+  },
+  "common.pdfToTiff.resolutionDpi": {
+    "en": "{dpi} DPI ({percent}% Retina Scale)",
+    "zh": "{dpi} DPI ({percent}% 视网膜缩放)"
+  },
+  "common.pdfToTiff.dpi72": {
+    "en": "72 DPI (Low Screen Resolution)",
+    "zh": "72 DPI (屏幕低精)"
+  },
+  "common.pdfToTiff.dpi150": {
+    "en": "150 DPI (Balanced Office Standard)",
+    "zh": "150 DPI (普通办公)"
+  },
+  "common.pdfToTiff.dpi300": {
+    "en": "300 DPI (Archival Print Quality)",
+    "zh": "300 DPI (印刷级高清)"
+  },
+  "common.pdfToTiff.dpi600": {
+    "en": "600 DPI (Retina Ultra Precision)",
+    "zh": "600 DPI (视网膜超清)"
+  },
+  "common.pdfToTiff.tipTitle": {
+    "en": "Archival Print Notes:",
+    "zh": "印刷与存档提示："
+  },
+  "common.pdfToTiff.tipDesc": {
+    "en": "Multi-page TIFF documents scroll smoothly in Photoshop or Acrobat, yet remain raster bitmapped. For text and vector lines, we recommend at least",
+    "zh": "多页 TIFF (Multi-page TIFF) 在导入 Acrobat 或 Photoshop 时，可像 PDF 一样顺畅地进行页面上下滚动，但其完全由光栅位图构成。对图表和文字，我们极力推荐使用"
+  },
+  "common.pdfToTiff.processButton": {
+    "en": "Execute Multi-Page TIFF Packing",
+    "zh": "开始编译并生成多页 TIFF"
+  },
+  "common.pdfToTiff.successMessage": {
+    "en": "🎉 Single-file multi-page TIFF compiled successfully! Download ready.",
+    "zh": "🎉 单文件多页 TIFF 编译成功！所有页面已合并就位。一键极速下载。"
+  },
+  "common.removeBlankPages.summaryTitle": {
+    "en": "Sanitization Metrics",
+    "zh": "过滤状态汇总"
+  },
+  "common.removeBlankPages.totalLabel": {
+    "en": "Total: {count} pages",
+    "zh": "共 {count} 页"
+  },
+  "common.removeBlankPages.blankLabel": {
+    "en": "Deleted: {count} pages",
+    "zh": "待删除: {count} 页"
+  },
+  "common.removeBlankPages.keepLabel": {
+    "en": "Retained: {count} pages",
+    "zh": "保留: {count} 页"
+  },
+  "common.removeBlankPages.keepAllBtn": {
+    "en": "Retain All Pages",
+    "zh": "保留全部页"
+  },
+  "common.removeBlankPages.deleteAllBtn": {
+    "en": "Delete All Pages",
+    "zh": "删除全部页"
+  },
+  "common.removeBlankPages.allTab": {
+    "en": "All Pages ({count})",
+    "zh": "全部页面 ({count})"
+  },
+  "common.removeBlankPages.blankTab": {
+    "en": "Target Blanks ({count})",
+    "zh": "推荐删除 ({count})"
+  },
+  "common.removeBlankPages.keepTab": {
+    "en": "Retained ({count})",
+    "zh": "保留页面 ({count})"
+  },
+  "common.removeBlankPages.emptyState": {
+    "en": "No pages match the current filter",
+    "zh": "当前视图下没有页面可供显示"
+  },
+  "common.removeBlankPages.successRemoved": {
+    "en": "Successfully purged {count} blank page(s) and recompiled the PDF locally.",
+    "zh": "系统已清理 {count} 页空白页，保留并重新编译了剩余页面。"
+  },
+  "common.removeBlankPages.successNoChange": {
+    "en": "No blank pages were marked for removal. Exported directly.",
+    "zh": "文档中未检测到被删除的页面，已直接导出。"
+  },
+  "common.removeBlankPages.processNew": {
+    "en": "Upload New Document",
+    "zh": "处理新文件"
+  },
+  "common.removeBlankPages.clickToKeep": {
+    "en": "Click to retain page",
+    "zh": "点击保留该页"
+  },
+  "common.removeBlankPages.clickToDelete": {
+    "en": "Click to delete page",
+    "zh": "点击删除该页"
+  },
+  "common.removeBlankPages.entropyLabel": {
+    "en": "Entropy: {entropy}",
+    "zh": "熵: {entropy}"
+  },
+  "common.removeBlankPages.forceKeep": {
+    "en": "Retain",
+    "zh": "强留"
+  },
+  "common.removeBlankPages.blankBadge": {
+    "en": "Blank",
+    "zh": "空页"
+  },
+  "common.rotate.optionsTitle": {
+    "en": "Real-time Rotate Center",
+    "zh": "校准控制中心"
+  },
+  "common.rotate.optionsHelp": {
+    "en": "Select pages below and use the dials/slider to align or rotate pages.",
+    "zh": "选择下方页面，使用快调或无极表盘精准矫正歪斜或翻转的文档。"
+  },
+  "common.rotate.selectedPages": {
+    "en": "Selected {selected} / {total} page(s)",
+    "zh": "已选中 {selected} / {total} 页"
+  },
+  "common.rotate.quickRotate": {
+    "en": "Quick Rotation Angles",
+    "zh": "快捷快调"
+  },
+  "common.rotate.fineRotate": {
+    "en": "Fine-Grained Alignment Dial",
+    "zh": "无极微调 (细粒度)"
+  },
+  "common.rotate.rotateLeft90": {
+    "en": "Rotate Left 90°",
+    "zh": "左旋 90°"
+  },
+  "common.rotate.rotateRight90": {
+    "en": "Rotate Right 90°",
+    "zh": "右旋 90°"
+  },
+  "common.rotate.rotate180": {
+    "en": "Flip 180°",
+    "zh": "翻转 180°"
+  },
+  "common.rotate.resetRotate": {
+    "en": "Reset Angle",
+    "zh": "一键清零"
+  },
+  "common.rotate.quickSelectLabel": {
+    "en": "Quick Page Selections:",
+    "zh": "快速选择页组："
+  },
+  "common.rotate.selectOdd": {
+    "en": "Odd Pages Only",
+    "zh": "仅奇数页"
+  },
+  "common.rotate.selectEven": {
+    "en": "Even Pages Only",
+    "zh": "仅偶数页"
+  },
+  "common.rotate.correctionLabel": {
+    "en": "Align",
+    "zh": "校正"
+  },
+  "common.rotate.wheelHelp": {
+    "en": "Scroll mouse wheel to align",
+    "zh": "滚动滚轮微调"
+  },
+  "common.rotate.sliderLeft": {
+    "en": "-180.0° (Left)",
+    "zh": "-180.0° (左)"
+  },
+  "common.rotate.sliderTitle": {
+    "en": "Precise Alignment Slider",
+    "zh": "精细微调滑块"
+  },
+  "common.rotate.sliderRight": {
+    "en": "+180.0° (Right)",
+    "zh": "+180.0° (右)"
+  },
+  "common.rotate.preciseInput": {
+    "en": "Manual Input:",
+    "zh": "精密输入："
+  },
+  "common.rotate.inputTip": {
+    "en": "Angles will automatically normalize to [-180°, 180°] when blurred or submitted.",
+    "zh": "输入提示：您可以输入任意角度，比如较大值，在失焦或按下回车时系统将自动取模规范化在 [-180°, 180°] 的等效区间内。"
+  },
+  "common.rotate.processingButton": {
+    "en": "Rotating pages...",
+    "zh": "旋转处理中..."
+  },
+  "common.rotate.processButton": {
+    "en": "Rotate {count} Aligned Pages",
+    "zh": "开始旋转 {count} 个已校准页面"
+  },
+  "common.rotate.successMessage": {
+    "en": "🎉 PDF pages rotated successfully! Click download above to save.",
+    "zh": "🎉 PDF 页面物理旋转保存成功！点击上方按钮进行下载。"
+  },
+  "common.rotate.previewTitle": {
+    "en": "Interactive Page Board Workspace",
+    "zh": "实时物理预览视窗"
+  },
+  "common.rotate.previewHelp": {
+    "en": "Click page thumbnail to select • Drag controllers to fine-tune alignments",
+    "zh": "点击页面切换选择 • 拖拽左侧控制进行细粒度微调"
+  },
+  "common.rotate.loadingPreview": {
+    "en": "Decompressing and loading PDF pages...",
+    "zh": "正在解压并加载 PDF 预览图..."
+  },
+  "common.timestamp.tsaMesignDesc": {
+    "en": "MeSign TSA Trusted Authority",
+    "zh": "中国信安可信时间戳权威机构"
+  },
+  "common.timestamp.tsaDigicertDesc": {
+    "en": "DigiCert TSA Global PKI Cryptographic node",
+    "zh": "全球领先的 PKI 安全时间戳提供商"
+  }
+}

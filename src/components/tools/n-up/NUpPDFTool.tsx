@@ -480,7 +480,7 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
 
                 {/* Orientation indicator */}
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 text-[10px] font-medium bg-[hsl(var(--color-muted))] text-[hsl(var(--color-muted-foreground))] rounded-full border border-[hsl(var(--color-border))]">
-                  {orientation === 'landscape' ? '横向' : orientation === 'portrait' ? '纵向' : '自动'}
+                  {orientation === 'landscape' ? t('options.landscape') : orientation === 'portrait' ? t('options.portrait') : t('options.auto')}
                 </div>
               </div>
 
@@ -490,20 +490,20 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                 <div className="grid grid-cols-2 gap-2">
                   <div className="p-3 rounded-lg bg-white dark:bg-[hsl(var(--color-card))] border border-[hsl(var(--color-border))] shadow-sm">
                     <div className="text-2xl font-bold text-[hsl(var(--color-primary))]">{gridCols} × {gridRows}</div>
-                    <div className="text-xs text-[hsl(var(--color-muted-foreground))]">{tTools('nUpPdf.gridLabel') || '网格布局'}</div>
+                    <div className="text-xs text-[hsl(var(--color-muted-foreground))]">{tTools('nUpPdf.gridLabel')}</div>
                   </div>
                   <div className="p-3 rounded-lg bg-white dark:bg-[hsl(var(--color-card))] border border-[hsl(var(--color-border))] shadow-sm">
                     <div className="text-2xl font-bold text-[hsl(var(--color-foreground))]">{outputSheets}</div>
-                    <div className="text-xs text-[hsl(var(--color-muted-foreground))]">{tTools('nUpPdf.outputPages') || '输出页数'}</div>
+                    <div className="text-xs text-[hsl(var(--color-muted-foreground))]">{tTools('nUpPdf.outputPages')}</div>
                   </div>
                 </div>
 
                 {/* Summary */}
                 <div className="p-3 rounded-lg bg-[hsl(var(--color-muted)/0.5)] text-sm">
                   <p className="text-[hsl(var(--color-muted-foreground))]">
-                    <span className="font-medium text-[hsl(var(--color-foreground))]">{totalPages}</span> {tTools('nUpPdf.pagesLabel') || '页'} →
-                    <span className="font-medium text-[hsl(var(--color-foreground))]"> {outputSheets}</span> {tTools('nUpPdf.sheetsLabel') || '张'}
-                    <span className="opacity-70"> ({actualPagesPerSheet} {tTools('nUpPdf.perSheetLabel') || '页/张'})</span>
+                    <span className="font-medium text-[hsl(var(--color-foreground))]">{totalPages}</span> {tTools('nUpPdf.pagesLabel')} →
+                    <span className="font-medium text-[hsl(var(--color-foreground))]"> {outputSheets}</span> {tTools('nUpPdf.sheetsLabel')}
+                    <span className="opacity-70"> ({actualPagesPerSheet} {tTools('nUpPdf.perSheetLabel')})</span>
                   </p>
                 </div>
 
@@ -517,8 +517,8 @@ export function NUpPDFTool({ className = '' }: NUpPDFToolProps) {
                   </svg>
                   <span>
                     {pagesPerSheet === 2 && layoutDirection === 'vertical'
-                      ? (tTools('nUpPdf.topToBottom') || '从上到下')
-                      : (tTools('nUpPdf.leftToRight') || '从左到右，然后向下')
+                      ? tTools('nUpPdf.topToBottom')
+                      : tTools('nUpPdf.leftToRight')
                     }
                   </span>
                 </div>

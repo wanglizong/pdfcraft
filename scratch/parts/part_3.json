@@ -1,0 +1,322 @@
+{
+  "tools.viewMetadata.successMessage": {
+    "en": "Metadata extracted successfully! You can export it as JSON if needed.",
+    "zh": "元数据提取成功！如需要可导出为JSON。"
+  },
+  "tools.editMetadata.uploadDescription": {
+    "en": "Drag and drop a PDF file here to edit its metadata.",
+    "zh": "拖放PDF文件到此处以编辑其元数据。"
+  },
+  "tools.editMetadata.editTitle": {
+    "en": "Edit Document Properties",
+    "zh": "编辑文档属性"
+  },
+  "tools.editMetadata.titlePlaceholder": {
+    "en": "Enter document title",
+    "zh": "输入文档标题"
+  },
+  "tools.editMetadata.authorPlaceholder": {
+    "en": "Enter author name",
+    "zh": "输入作者姓名"
+  },
+  "tools.editMetadata.subjectPlaceholder": {
+    "en": "Enter document subject",
+    "zh": "输入文档主题"
+  },
+  "tools.editMetadata.keywordsPlaceholder": {
+    "en": "Enter keywords separated by commas",
+    "zh": "输入关键词，用逗号分隔"
+  },
+  "tools.editMetadata.creator": {
+    "en": "Creator Application",
+    "zh": "创建程序"
+  },
+  "tools.editMetadata.creatorPlaceholder": {
+    "en": "Enter creator application",
+    "zh": "输入创建程序"
+  },
+  "tools.editMetadata.producer": {
+    "en": "PDF Producer",
+    "zh": "PDF生成器"
+  },
+  "tools.editMetadata.producerPlaceholder": {
+    "en": "Enter PDF producer",
+    "zh": "输入PDF生成器"
+  },
+  "tools.editMetadata.saveButton": {
+    "en": "Save Metadata",
+    "zh": "保存元数据"
+  },
+  "tools.editMetadata.editAnother": {
+    "en": "Edit Another PDF",
+    "zh": "编辑另一个PDF"
+  },
+  "tools.editMetadata.modificationNote": {
+    "en": "The modification date will be updated automatically when you save.",
+    "zh": "保存时修改日期将自动更新。"
+  },
+  "tools.editMetadata.successMessage": {
+    "en": "Metadata updated successfully! Click the download button to save your file.",
+    "zh": "元数据更新成功！点击下载按钮保存文件。"
+  },
+  "tools.editPdf.uploadLabel": {
+    "en": "Upload PDF to Edit",
+    "zh": "上传PDF进行编辑"
+  },
+  "tools.editPdf.instructions": {
+    "en": "How to use",
+    "zh": "使用说明"
+  },
+  "tools.editPdf.instructionsText": {
+    "en": "Use the toolbar above the PDF to add text, draw, highlight, or add images. Click the download button (💾) in the toolbar to save your edited PDF.",
+    "zh": "使用PDF上方的工具栏添加文本、绘图、高亮或添加图片。点击工具栏中的下载按钮（💾）保存编辑后的PDF。"
+  },
+  "tools.editPdf.saveButton": {
+    "en": "Save PDF",
+    "zh": "保存PDF"
+  },
+  "tools.editPdf.saveDownload": {
+    "en": "Save & Download",
+    "zh": "保存并下载"
+  },
+  "tools.editPdf.saveError": {
+    "en": "Failed to save PDF. Please use the export button in the toolbar.",
+    "zh": "保存PDF失败。请使用工具栏中的导出按钮。"
+  },
+  "tools.editPdf.savingMessage": {
+    "en": "Saving PDF with annotations...",
+    "zh": "正在保存带注释的PDF..."
+  },
+  "tools.editPdf.successMessage": {
+    "en": "PDF saved successfully! Click the download button to save your edited file.",
+    "zh": "PDF保存成功！点击下载按钮保存编辑后的文件。"
+  },
+  "tools.editPdf.redactWarningTitle": {
+    "en": "Redaction Mode Active",
+    "zh": "涂黑模式已激活"
+  },
+  "tools.editPdf.redactWarningDescription": {
+    "en": "Select areas to permanently remove content. Redacted content cannot be recovered after saving.",
+    "zh": "选择要永久删除内容的区域。保存后涂黑的内容无法恢复。"
+  },
+  "tools.editPdf.toolbar.select": {
+    "en": "Select",
+    "zh": "选择"
+  },
+  "tools.editPdf.toolbar.highlight": {
+    "en": "Highlight",
+    "zh": "高亮"
+  },
+  "tools.editPdf.toolbar.underline": {
+    "en": "Underline",
+    "zh": "下划线"
+  },
+  "tools.editPdf.toolbar.strikethrough": {
+    "en": "Strikethrough",
+    "zh": "删除线"
+  },
+  "tools.editPdf.toolbar.draw": {
+    "en": "Draw",
+    "zh": "绘图"
+  },
+  "tools.editPdf.toolbar.rectangle": {
+    "en": "Rectangle",
+    "zh": "矩形"
+  },
+  "tools.editPdf.toolbar.circle": {
+    "en": "Circle",
+    "zh": "圆形"
+  },
+  "tools.editPdf.toolbar.arrow": {
+    "en": "Arrow",
+    "zh": "箭头"
+  },
+  "tools.editPdf.toolbar.image": {
+    "en": "Image",
+    "zh": "图片"
+  },
+  "tools.editPdf.toolbar.redact": {
+    "en": "Redact",
+    "zh": "涂黑"
+  },
+  "tools.editPdf.options.highlightColor": {
+    "en": "Highlight Color",
+    "zh": "高亮颜色"
+  },
+  "tools.editPdf.options.inkColor": {
+    "en": "Ink Color",
+    "zh": "墨水颜色"
+  },
+  "tools.editPdf.options.inkThickness": {
+    "en": "Ink Thickness",
+    "zh": "墨水粗细"
+  },
+  "tools.imageToPdf.uploadLabel": {
+    "en": "Upload Images",
+    "zh": "上传图片"
+  },
+  "tools.imageToPdf.uploadDescription": {
+    "en": "Drag and drop images here, or click to browse. Supports JPG, PNG, WebP, BMP, TIFF, SVG, HEIC.",
+    "zh": "拖放图片到此处，或点击浏览。支持JPG、PNG、WebP、BMP、TIFF、SVG、HEIC。"
+  },
+  "tools.imageToPdf.imagesTitle": {
+    "en": "Images",
+    "zh": "图片"
+  },
+  "tools.imageToPdf.reorderHint": {
+    "en": "Drag and drop to reorder images. Images will appear in the PDF in the order shown.",
+    "zh": "拖放以重新排序图片。图片将按显示顺序出现在PDF中。"
+  },
+  "tools.imageToPdf.optionsTitle": {
+    "en": "PDF Options",
+    "zh": "PDF选项"
+  },
+  "tools.imageToPdf.orientationAuto": {
+    "en": "Auto (match image)",
+    "zh": "自动（匹配图片）"
+  },
+  "tools.imageToPdf.marginNone": {
+    "en": "None",
+    "zh": "无"
+  },
+  "tools.imageToPdf.marginSmall": {
+    "en": "Small (0.25\")",
+    "zh": "小（0.25英寸）"
+  },
+  "tools.imageToPdf.marginMedium": {
+    "en": "Medium (0.5\")",
+    "zh": "中（0.5英寸）"
+  },
+  "tools.imageToPdf.marginLarge": {
+    "en": "Large (1\")",
+    "zh": "大（1英寸）"
+  },
+  "tools.imageToPdf.centerImage": {
+    "en": "Center images on page",
+    "zh": "图片居中"
+  },
+  "tools.imageToPdf.scaleToFit": {
+    "en": "Scale images to fit page",
+    "zh": "缩放图片以适应页面"
+  },
+  "tools.imageToPdf.fitMode": {
+    "en": "Fit Mode",
+    "zh": "适应模式"
+  },
+  "tools.imageToPdf.fitPage": {
+    "en": "Fit to Page",
+    "zh": "适应页面"
+  },
+  "tools.imageToPdf.fillPage": {
+    "en": "Fill Page",
+    "zh": "填充页面"
+  },
+  "tools.imageToPdf.originalSize": {
+    "en": "Original Size",
+    "zh": "原始大小"
+  },
+  "tools.imageToPdf.svgQuality": {
+    "en": "SVG Export Quality",
+    "zh": "SVG导出质量"
+  },
+  "tools.imageToPdf.svgQualityLow": {
+    "en": "Low (1x - smaller file)",
+    "zh": "低（1x - 文件较小）"
+  },
+  "tools.imageToPdf.svgQualityMedium": {
+    "en": "Medium (2x - balanced)",
+    "zh": "中（2x - 平衡）"
+  },
+  "tools.imageToPdf.svgQualityHigh": {
+    "en": "High (3x - better quality)",
+    "zh": "高（3x - 质量更好）"
+  },
+  "tools.imageToPdf.svgQualityVeryHigh": {
+    "en": "Very High (4x - best quality)",
+    "zh": "最高（4x - 最佳质量）"
+  },
+  "tools.imageToPdf.svgQualityHint": {
+    "en": "Higher quality produces sharper images but larger file sizes.",
+    "zh": "更高的质量会产生更清晰的图像，但文件更大。"
+  },
+  "tools.imageToPdf.successMessage": {
+    "en": "Images converted to PDF successfully! Click the download button to save your file.",
+    "zh": "图片已成功转换为PDF！点击下载按钮保存文件。"
+  },
+  "tools.compressPdf.batchUploadDescription": {
+    "en": "Drag and drop PDF files here. You can compress up to 10 files at once.",
+    "zh": "拖放PDF文件到此处。一次最多可压缩10个文件。"
+  },
+  "tools.compressPdf.filesTitle": {
+    "en": "Files to Compress",
+    "zh": "要压缩的文件"
+  },
+  "tools.compressPdf.optionsTitle": {
+    "en": "Compression Options",
+    "zh": "压缩选项"
+  },
+  "tools.compressPdf.algorithmPhoton": {
+    "en": "Photon",
+    "zh": "Photon 极速"
+  },
+  "tools.compressPdf.qualityLabel": {
+    "en": "Compression Quality",
+    "zh": "压缩质量"
+  },
+  "tools.compressPdf.qualityLow": {
+    "en": "Low",
+    "zh": "低"
+  },
+  "tools.compressPdf.qualityLowDesc": {
+    "en": "Maximum compression with object stream optimization",
+    "zh": "最大压缩，优化对象流结构"
+  },
+  "tools.compressPdf.qualityMedium": {
+    "en": "Medium",
+    "zh": "中"
+  },
+  "tools.compressPdf.qualityMediumDesc": {
+    "en": "Balanced compression with structure optimization",
+    "zh": "平衡压缩，优化文档结构"
+  },
+  "tools.compressPdf.qualityHigh": {
+    "en": "High",
+    "zh": "高"
+  },
+  "tools.compressPdf.qualityHighDesc": {
+    "en": "Moderate compression, preserves more structure",
+    "zh": "适度压缩，保留更多结构"
+  },
+  "tools.compressPdf.qualityMaximum": {
+    "en": "Maximum",
+    "zh": "最高"
+  },
+  "tools.compressPdf.qualityMaximumDesc": {
+    "en": "Minimal compression, preserves original quality",
+    "zh": "最小压缩，保留原始质量"
+  },
+  "tools.compressPdf.optimizeImages": {
+    "en": "Optimize embedded images",
+    "zh": "优化嵌入图片"
+  },
+  "tools.compressPdf.removeMetadata": {
+    "en": "Remove metadata (title, author, etc.)",
+    "zh": "移除元数据（标题、作者等）"
+  },
+  "tools.compressPdf.compressButton": {
+    "en": "Compress PDFs",
+    "zh": "压缩PDF"
+  },
+  "tools.compressPdf.successMessage": {
+    "en": "PDF compressed successfully!",
+    "zh": "PDF压缩成功！"
+  },
+  "tools.compressPdf.batchSuccessMessage": {
+    "en": "Successfully compressed all PDF files!",
+    "zh": "所有PDF文件压缩成功！"
+  },
+  "tools.compressPdf.compressedSize": {
+    "en": "Compressed:",
+    "zh": "压缩后："
+  }
+}

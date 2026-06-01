@@ -9,6 +9,7 @@
  */
 
 import { WorkflowNode, WorkflowEdge, WorkflowOutputFile } from '@/types/workflow';
+import { fileMatchesAcceptedFormats } from '@/lib/workflow/engine';
 import type { ProcessOutput, ProgressCallback, ProcessInput } from '@/types/pdf';
 import { PDFErrorCode, ErrorCategory } from '@/types/pdf';
 import { logger } from '@/lib/utils/logger';
@@ -28,7 +29,7 @@ import { ReversePagesPDFProcessor } from '@/lib/pdf/processors/reverse';
 import { NUpPDFProcessor } from '@/lib/pdf/processors/n-up';
 import { CombineSinglePagePDFProcessor } from '@/lib/pdf/processors/combine-single-page';
 import { PosterizePDFProcessor } from '@/lib/pdf/processors/posterize';
-import { EditMetadataPDFProcessor } from '@/lib/pdf/processors/edit-metadata';
+import { EditMetadataPDFProcessor, type EditableMetadata } from '@/lib/pdf/processors/edit-metadata';
 import { TableOfContentsProcessor } from '@/lib/pdf/processors/table-of-contents';
 import { PageNumbersProcessor } from '@/lib/pdf/processors/page-numbers';
 import { WatermarkProcessor } from '@/lib/pdf/processors/watermark';
@@ -82,31 +83,67 @@ import { PDFToDocxProcessor } from '@/lib/pdf/processors/pdf-to-docx';
 import { PDFToPptxProcessor } from '@/lib/pdf/processors/pdf-to-pptx';
 import { PDFToExcelProcessor } from '@/lib/pdf/processors/pdf-to-excel';
 
+/** Default file extension when a workflow blob has no filename metadata */
+const TOOL_DEFAULT_EXTENSION: Record<string, string> = {
+    'word-to-pdf': 'docx',
+    'excel-to-pdf': 'xlsx',
+    'pptx-to-pdf': 'pptx',
+    'ppt-to-pdf': 'ppt',
+    'rtf-to-pdf': 'rtf',
+};
+
+function mimeTypeFromFilename(filename: string): string {
+    const lower = filename.toLowerCase();
+    if (lower.endsWith('.docx')) {
+        return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+    }
+    if (lower.endsWith('.doc')) return 'application/msword';
+    if (lower.endsWith('.odt')) return 'application/vnd.oasis.opendocument.text';
+    if (lower.endsWith('.rtf')) return 'application/rtf';
+    if (lower.endsWith('.xlsx')) {
+        return 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    }
+    if (lower.endsWith('.xls')) return 'application/vnd.ms-excel';
+    if (lower.endsWith('.pptx')) {
+        return 'application/vnd.openxmlformats-officedocument.presentationml.presentation';
+    }
+    if (lower.endsWith('.ppt')) return 'application/vnd.ms-powerpoint';
+    if (lower.endsWith('.zip')) return 'application/zip';
+    if (lower.endsWith('.png')) return 'image/png';
+    if (lower.endsWith('.jpg') || lower.endsWith('.jpeg')) return 'image/jpeg';
+    if (lower.endsWith('.webp')) return 'image/webp';
+    if (lower.endsWith('.svg')) return 'image/svg+xml';
+    if (lower.endsWith('.txt')) return 'text/plain';
+    if (lower.endsWith('.json')) return 'application/json';
+    if (lower.endsWith('.pdf')) return 'application/pdf';
+    return 'application/octet-stream';
+}
+
+function defaultFilenameForTool(toolId: string, index: number, prefix: string): string {
+    const ext = TOOL_DEFAULT_EXTENSION[toolId] ?? 'pdf';
+    return `${prefix}_${index}.${ext}`;
+}
+
 /**
  * Convert WorkflowOutputFile or Blob to File with proper metadata
  */
-function convertToFile(input: File | Blob | WorkflowOutputFile, index: number, defaultName: string = 'input'): File {
+function convertToFile(
+    input: File | Blob | WorkflowOutputFile,
+    index: number,
+    defaultName: string = 'input',
+    toolId?: string
+): File {
     if (input instanceof File) return input;
-    
+
     if ('blob' in input && 'filename' in input) {
-        // WorkflowOutputFile with metadata
-        const filename = input.filename || `${defaultName}_${index}.pdf`;
-        let type = 'application/pdf';
-        
-        // Detect MIME type from extension
-        if (filename.endsWith('.zip')) type = 'application/zip';
-        else if (filename.endsWith('.png')) type = 'image/png';
-        else if (filename.endsWith('.jpg') || filename.endsWith('.jpeg')) type = 'image/jpeg';
-        else if (filename.endsWith('.webp')) type = 'image/webp';
-        else if (filename.endsWith('.svg')) type = 'image/svg+xml';
-        else if (filename.endsWith('.txt')) type = 'text/plain';
-        else if (filename.endsWith('.json')) type = 'application/json';
-        
+        const filename = input.filename || defaultFilenameForTool(toolId ?? '', index, defaultName);
+        const type = mimeTypeFromFilename(filename);
         return new File([input.blob], filename, { type });
     }
-    
-    // Plain Blob without metadata - TypeScript now knows input is Blob here
-    return new File([input as Blob], `${defaultName}_${index}.pdf`, { type: 'application/pdf' });
+
+    const filename = defaultFilenameForTool(toolId ?? '', index, defaultName);
+    const type = mimeTypeFromFilename(filename);
+    return new File([input as Blob], filename, { type });
 }
 
 /**
@@ -131,9 +168,14 @@ export async function executeNode(
     const settings = node.data.settings || {};
 
     // Convert all inputs to File objects with proper metadata
-    const files: File[] = inputFiles.map((f, i) => 
-        convertToFile(f, i, `workflow_${toolId}`)
+    const allFiles: File[] = inputFiles.map((f, i) =>
+        convertToFile(f, i, `workflow_${toolId}`, toolId)
     );
+
+    const acceptedFormats = node.data.acceptedFormats ?? [];
+    const files: File[] = acceptedFormats.length > 0
+        ? allFiles.filter((f) => fileMatchesAcceptedFormats(f.name, acceptedFormats))
+        : allFiles;
 
     try {
         switch (toolId) {
@@ -295,11 +337,37 @@ export async function executeNode(
             case 'edit-metadata': {
                 if (files.length === 0) throw new Error('No input file');
                 const processor = new EditMetadataPDFProcessor();
-                const options: Record<string, unknown> = {};
-                if (settings.title) options.title = String(settings.title);
-                if (settings.author) options.author = String(settings.author);
-                if (settings.subject) options.subject = String(settings.subject);
-                if (settings.keywords) options.keywords = [String(settings.keywords)];
+
+                const metadata: EditableMetadata = {};
+                if (settings.title !== undefined && String(settings.title).trim() !== '') {
+                    metadata.title = String(settings.title);
+                }
+                if (settings.author !== undefined && String(settings.author).trim() !== '') {
+                    metadata.author = String(settings.author);
+                }
+                if (settings.subject !== undefined && String(settings.subject).trim() !== '') {
+                    metadata.subject = String(settings.subject);
+                }
+                if (settings.keywords !== undefined && String(settings.keywords).trim() !== '') {
+                    metadata.keywords = String(settings.keywords)
+                        .split(',')
+                        .map((k) => k.trim())
+                        .filter((k) => k.length > 0);
+                }
+                if (settings.creator !== undefined && String(settings.creator).trim() !== '') {
+                    metadata.creator = String(settings.creator);
+                }
+                if (settings.producer !== undefined && String(settings.producer).trim() !== '') {
+                    metadata.producer = String(settings.producer);
+                }
+
+                const options = {
+                    metadata,
+                    updateModificationDate:
+                        settings.updateModificationDate !== undefined
+                            ? Boolean(settings.updateModificationDate)
+                            : true,
+                };
                 return await processor.process(createProcessInput(files, options), onProgress);
             }
 
@@ -1001,11 +1069,15 @@ export function collectInputFiles(
     nodeId: string,
     nodes: WorkflowNode[],
     edges: WorkflowEdge[],
-    nodeOutputs: Map<string, (Blob | WorkflowOutputFile)[]>
+    nodeOutputs: Map<string, (Blob | WorkflowOutputFile)[]>,
+    inputAssignments?: Map<string, File[]>
 ): (Blob | WorkflowOutputFile)[] {
     const parentEdges = edges.filter(e => e.target === nodeId);
 
     if (parentEdges.length === 0) {
+        if (inputAssignments?.has(nodeId)) {
+            return inputAssignments.get(nodeId)!;
+        }
         const node = nodes.find(n => n.id === nodeId);
         if (node?.data.inputFiles) {
             return node.data.inputFiles;

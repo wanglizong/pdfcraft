@@ -1,0 +1,1587 @@
+{
+  "pt": {
+    "pdf-to-excel": {
+      "title": "PDF para Excel",
+      "metaDescription": "Converta PDF em planilha do Excel. Extraia tabelas para o formato XLSX.",
+      "keywords": [
+        "pdf para excel",
+        "pdf para xlsx",
+        "converter tabelas pdf",
+        "extrair tabelas"
+      ],
+      "description": "\n      <p>O PDF para Excel converte seus documentos PDF em planilhas editáveis do Microsoft Excel (XLSX). A ferramenta detecta automaticamente as tabelas no seu PDF e as extrai para planilhas separadas.</p>\n      <p>Esta ferramenta é ideal para analisar relatórios financeiros, faturas ou quaisquer dados apresentados em tabelas. As tabelas de cada página são organizadas em planilhas para facilitar a manipulação dos dados.</p>\n      <p>Toda a conversão ocorre localmente no seu navegador, garantindo que seus dados permaneçam privados e seguros.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Processar",
+          "description": "A ferramenta identificará e extrairá as tabelas automaticamente."
+        },
+        {
+          "step": 3,
+          "title": "Baixar Excel",
+          "description": "Baixe seu arquivo Excel com as tabelas extraídas."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Análise Financeira",
+          "description": "Converta extratos bancários ou faturas para o Excel para análise.",
+          "icon": "trending-up"
+        },
+        {
+          "title": "Extração de Dados",
+          "description": "Extraia tabelas de dados de artigos de pesquisa ou relatórios.",
+          "icon": "database"
+        },
+        {
+          "title": "Gestão de Inventário",
+          "description": "Converta listas de inventário de PDF para planilha.",
+          "icon": "clipboard"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Como as tabelas são tratadas?",
+          "answer": "As tabelas detectadas em cada página são extraídas para as planilhas correspondentes no arquivo Excel."
+        },
+        {
+          "question": "E se não houver tabelas?",
+          "answer": "Uma planilha informativa será criada indicando que nenhuma tabela foi encontrada."
+        },
+        {
+          "question": "A formatação é preservada?",
+          "answer": "Os dados são preservados, mas a formatação visual complexa pode ser simplificada para uso na planilha."
+        }
+      ]
+    },
+    "ocr-pdf": {
+      "title": "OCR em PDF",
+      "metaDescription": "Torne PDFs digitalizados pesquisáveis com OCR. Extraia texto de imagens e documentos digitalizados.",
+      "keywords": [
+        "ocr em pdf",
+        "pdf pesquisavel",
+        "reconhecimento de texto",
+        "digitalizar para texto"
+      ],
+      "description": "\n      <p>O OCR em PDF usa o Reconhecimento Ótico de Caracteres para extrair texto de documentos digitalizados e imagens dentro de PDFs. Converta PDFs baseados em imagens em documentos com texto pesquisável e selecionável.</p>\n      <p>O suporte a múltiplos idiomas garante um reconhecimento de texto preciso, independentemente do idioma do documento. O layout original é preservado enquanto uma camada de texto pesquisável é adicionada.</p>\n      <p>Todo o processamento de OCR ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar PDF Digitalizado",
+          "description": "Arraste e solte seu PDF digitalizado ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Selecionar Idioma",
+          "description": "Escolha o idioma do documento para um reconhecimento preciso."
+        },
+        {
+          "step": 3,
+          "title": "Processar e Baixar",
+          "description": "Clique em Processar para executar o OCR e baixar o PDF pesquisável."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Digitalizar Arquivos",
+          "description": "Torne pesquisáveis os arquivos de documentos digitalizados.",
+          "icon": "archive"
+        },
+        {
+          "title": "Pesquisa de Documentos",
+          "description": "Ative a pesquisa de texto em documentos digitalizados.",
+          "icon": "search"
+        },
+        {
+          "title": "Extração de Texto",
+          "description": "Extraia texto de documentos digitalizados para edição.",
+          "icon": "type"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quais idiomas são suportados?",
+          "answer": "Mais de 100 idiomas são suportados, incluindo inglês, chinês, japonês, coreano e mais."
+        },
+        {
+          "question": "O layout original será preservado?",
+          "answer": "Sim, o layout visual original é preservado com a adição de uma camada de texto pesquisável."
+        },
+        {
+          "question": "Qual é a precisão do OCR?",
+          "answer": "A precisão depende da qualidade da digitalização, mas normalmente excede 95% para documentos claros."
+        }
+      ]
+    },
+    "extract-images": {
+      "title": "Extrair Imagens de PDF",
+      "metaDescription": "Extraia todas as imagens incorporadas de arquivos PDF. Baixe individualmente ou como um arquivo ZIP. Filtre imagens pequenas automaticamente.",
+      "keywords": [
+        "extrair imagens de pdf",
+        "extracao de imagens pdf",
+        "obter imagens de pdf",
+        "baixar imagens de pdf",
+        "pdf para imagens"
+      ],
+      "description": "\n      <p>A ferramenta Extrair Imagens de PDF recupera todas as imagens incorporadas dos seus documentos PDF. Baixe imagens de alta qualidade individualmente ou como um arquivo ZIP conveniente.</p>\n      <p>A ferramenta filtra automaticamente imagens pequenas, como ícones e decorações, com base em limites de tamanho personalizáveis. Processe vários PDFs de uma só vez para uma extração em lote eficiente.</p>\n      <p>Toda a extração ocorre no seu navegador, garantindo que seus documentos permaneçam privados e seguros.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seus PDFs",
+          "description": "Arraste e solte um ou mais arquivos PDF ou clique para selecionar do seu dispositivo."
+        },
+        {
+          "step": 2,
+          "title": "Definir Opções de Filtro",
+          "description": "Ajuste a largura, altura e tamanho mínimo do arquivo para filtrar imagens pequenas indesejadas."
+        },
+        {
+          "step": 3,
+          "title": "Extrair Imagens",
+          "description": "Clique em Extrair para encontrar todas as imagens incorporadas em seus PDFs."
+        },
+        {
+          "step": 4,
+          "title": "Baixar",
+          "description": "Baixe imagens individuais ou todas as imagens como um arquivo ZIP."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Recuperação de Fotos",
+          "description": "Extraia fotos e imagens incorporadas em documentos PDF para reutilização ou arquivamento.",
+          "icon": "image"
+        },
+        {
+          "title": "Coleção de Ativos",
+          "description": "Reúna todos os gráficos e imagens de relatórios, apresentações ou folhetos em PDF.",
+          "icon": "folder"
+        },
+        {
+          "title": "Reutilização de Conteúdo",
+          "description": "Extraia imagens de PDFs para usar em outros documentos, sites ou apresentações.",
+          "icon": "refresh-cw"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quais formatos de imagem são extraídos?",
+          "answer": "As imagens são extraídas em seu formato nativo (JPEG, PNG, etc.) quando possível, ou convertidas para PNG para dados de imagem brutos."
+        },
+        {
+          "question": "Por que algumas imagens estão faltando?",
+          "answer": "Imagens pequenas abaixo do limite de tamanho são filtradas. Ajuste as configurações de filtro para extrair imagens menores."
+        },
+        {
+          "question": "Posso extrair de PDFs digitalizados?",
+          "answer": "PDFs digitalizados normalmente contêm a digitalização como uma imagem grande por página. Use a ferramenta PDF para Imagem para conversão página por página."
+        }
+      ]
+    },
+    "edit-attachments": {
+      "title": "Editar Anexos",
+      "metaDescription": "Gerencie anexos de PDF. Visualize, renomeie e remova arquivos incorporados.",
+      "keywords": [
+        "editar anexos",
+        "gerenciar arquivos pdf",
+        "remover anexos",
+        "renomear anexos"
+      ],
+      "description": "\n      <p>O Editar Anexos permite gerenciar arquivos incorporados em documentos PDF. Visualize todos os anexos, renomeie-os ou remova arquivos indesejados do PDF.</p>\n      <p>Perfeito para limpar pacotes de PDF ou atualizar informações de anexos antes da distribuição.</p>\n      <p>Toda a edição ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Gerenciar Anexos",
+          "description": "Visualize, renomeie ou exclua arquivos incorporados."
+        },
+        {
+          "step": 3,
+          "title": "Salvar e Baixar",
+          "description": "Clique em Salvar para aplicar as alterações e baixar."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Limpar PDFs",
+          "description": "Remova anexos desnecessários de pacotes de PDF.",
+          "icon": "trash-2"
+        },
+        {
+          "title": "Renomear Arquivos",
+          "description": "Atualize os nomes dos anexos para maior clareza.",
+          "icon": "edit"
+        },
+        {
+          "title": "Revisar Conteúdos",
+          "description": "Audite arquivos incorporados antes da distribuição.",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Posso adicionar novos anexos aqui?",
+          "answer": "Use a ferramenta Adicionar Anexos para incorporar novos arquivos."
+        },
+        {
+          "question": "A remoção é permanente?",
+          "answer": "Sim, os anexos removidos não podem ser recuperados do arquivo de saída."
+        },
+        {
+          "question": "Posso visualizar os anexos?",
+          "answer": "Você pode ver os nomes e tamanhos dos arquivos; use a ferramenta Extrair Anexos para visualizar os conteúdos."
+        }
+      ]
+    },
+    "add-blank-page": {
+      "title": "Adicionar Página em Branco",
+      "metaDescription": "Insira páginas em branco em documentos PDF. Adicione páginas vazias em qualquer posição.",
+      "keywords": [
+        "adicionar pagina em branco",
+        "inserir pagina",
+        "pagina vazia",
+        "insercao de pagina pdf"
+      ],
+      "description": "\n      <p>O Adicionar Página em Branco insere páginas vazias em seus documentos PDF em qualquer posição. Adicione páginas antes, depois ou entre páginas existentes com tamanho de página personalizável.</p>\n      <p>Perfeito para adicionar espaço para anotações, criar divisórias de seção ou preparar documentos para impressão.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Escolher Posição",
+          "description": "Selecione onde inserir as páginas em branco e quantas."
+        },
+        {
+          "step": 3,
+          "title": "Adicionar e Baixar",
+          "description": "Clique em Adicionar para inserir as páginas e baixar."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Espaço para Notas",
+          "description": "Adicione páginas em branco para anotações manuscritas.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Divisores de Seção",
+          "description": "Insira páginas em branco entre as seções do documento.",
+          "icon": "minus"
+        },
+        {
+          "title": "Preparação para Impressão",
+          "description": "Adicione páginas para alinhamento de impressão frente e verso.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Posso escolher o tamanho da página?",
+          "answer": "Sim, as páginas em branco podem corresponder às páginas existentes ou usar dimensões personalizadas."
+        },
+        {
+          "question": "Posso adicionar várias páginas em branco?",
+          "answer": "Sim, você pode adicionar qualquer número de páginas em branco de uma só vez."
+        },
+        {
+          "question": "Posso adicionar páginas coloridas?",
+          "answer": "Use a ferramenta Cor de Fundo após adicionar páginas em branco para adicionar cor."
+        }
+      ]
+    },
+    "rotate-pdf": {
+      "title": "Rotacionar PDF",
+      "metaDescription": "Rotacione páginas de PDF. Gire páginas em 90, 180 ou 270 graus.",
+      "keywords": [
+        "rotacionar pdf",
+        "girar paginas pdf",
+        "rotacao de pdf",
+        "corrigir orientacao"
+      ],
+      "description": "\n      <p>O Rotacionar PDF gira as páginas do seu documento em 90, 180 ou 270 graus. Corrija digitalizações orientadas incorretamente, rotacione páginas em paisagem ou ajuste a orientação da página para visualização.</p>\n      <p>Rotacione todas as páginas uniformemente ou selecione páginas específicas para girar individualmente. A ferramenta preserva todo o conteúdo e formatação.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Selecionar Rotação",
+          "description": "Escolha o ângulo de rotação e quais páginas rotacionar."
+        },
+        {
+          "step": 3,
+          "title": "Rotacionar e Baixar",
+          "description": "Clique em Rotacionar para aplicar as alterações e baixar."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Corrigir Digitalizações",
+          "description": "Corrija a orientação de documentos digitalizados.",
+          "icon": "rotate-cw"
+        },
+        {
+          "title": "Páginas em Paisagem",
+          "description": "Rotacione páginas em paisagem para visualização adequada.",
+          "icon": "monitor"
+        },
+        {
+          "title": "Orientação Mista",
+          "description": "Padronize a orientação das páginas em documentos mistos.",
+          "icon": "layout"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Posso rotacionar páginas diferentes de formas diferentes?",
+          "answer": "Sim, você pode aplicar rotações diferentes a páginas diferentes."
+        },
+        {
+          "question": "A rotação afeta a qualidade de impressão?",
+          "answer": "Não, a rotação preserva toda a qualidade do conteúdo."
+        },
+        {
+          "question": "Posso rotacionar por ângulos personalizados?",
+          "answer": "A rotação é limitada a incrementos de 90 graus (90, 180, 270)."
+        }
+      ]
+    },
+    "combine-single-page": {
+      "title": "Combinar em uma Única Página",
+      "metaDescription": "Junte as páginas de um PDF em uma única página contínua. Crie documentos de página única roláveis.",
+      "keywords": [
+        "combinar paginas",
+        "pdf de pagina unica",
+        "juntar paginas",
+        "rolagem continua"
+      ],
+      "description": "\n      <p>O Combinar em uma Única Página junta todas as páginas do PDF em uma página contínua. Crie documentos roláveis perfeitos para visualização na web ou leitura contínua.</p>\n      <p>As páginas são unidas verticalmente com espaçamento personalizável. O resultado é uma única página longa contendo todo o conteúdo.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Definir Espaçamento",
+          "description": "Escolha o intervalo entre as páginas unidas."
+        },
+        {
+          "step": 3,
+          "title": "Combinar e Baixar",
+          "description": "Clique em Combinar para criar o PDF de página única."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentos Web",
+          "description": "Crie PDFs roláveis para incorporação em páginas da web.",
+          "icon": "globe"
+        },
+        {
+          "title": "Leitura Contínua",
+          "description": "Converta documentos paginados em rolagem contínua.",
+          "icon": "scroll"
+        },
+        {
+          "title": "Conteúdo de Formato Longo",
+          "description": "Combine páginas para uma leitura contínua e sem interrupções.",
+          "icon": "file-text"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Existe um limite de páginas?",
+          "answer": "Documentos muito longos podem ser limitados pela memória do navegador."
+        },
+        {
+          "question": "Posso adicionar separadores entre as páginas?",
+          "answer": "Sim, você pode adicionar espaçamento ou linhas entre as páginas originais."
+        },
+        {
+          "question": "Isso funciona para impressão?",
+          "answer": "O resultado é ideal para visualização em tela; use o layout N-Up para impressão."
+        }
+      ]
+    },
+    "view-metadata": {
+      "title": "Visualizar Metadados",
+      "metaDescription": "Visualize as propriedades do documento PDF. Veja autor, título, datas e outros metadados.",
+      "keywords": [
+        "metadados do pdf",
+        "propriedades do documento",
+        "informacoes do pdf",
+        "ver detalhes do pdf"
+      ],
+      "description": "\n      <p>O Visualizar Metadados exibe todas as propriedades do documento e metadados dos seus arquivos PDF. Veja autor, título, assunto, palavras-chave, data de criação, data de modificação e mais.</p>\n      <p>Útil para auditar documentos, verificar informações de arquivos ou confirmar a autenticidade do documento.</p>\n      <p>Toda a visualização ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Visualizar Propriedades",
+          "description": "Veja todos os metadados exibidos em um formato organizado."
+        },
+        {
+          "step": 3,
+          "title": "Exportar se Necessário",
+          "description": "Opcionalmente, exporte os metadados como JSON."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Auditoria de Documentos",
+          "description": "Revise as propriedades do documento para conformidade.",
+          "icon": "clipboard-check"
+        },
+        {
+          "title": "Verificar Autenticidade",
+          "description": "Verifique datas de criação e informações do autor.",
+          "icon": "shield"
+        },
+        {
+          "title": "Informações do Arquivo",
+          "description": "Obtenha informações detalhadas sobre os arquivos PDF.",
+          "icon": "info"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quais metadados são mostrados?",
+          "answer": "Título, autor, assunto, palavras-chave, criador, produtor, datas e versão do PDF."
+        },
+        {
+          "question": "Posso editar os metadados aqui?",
+          "answer": "Use a ferramenta Editar Metadados para modificar as propriedades do documento."
+        },
+        {
+          "question": "Os metadados XMP estão incluídos?",
+          "answer": "Sim, os metadados padrão e XMP são exibidos."
+        }
+      ]
+    },
+    "pdf-to-zip": {
+      "title": "PDFs para ZIP",
+      "metaDescription": "Empacote múltiplos PDFs em um arquivo ZIP. Comprima e agrupe arquivos PDF.",
+      "keywords": [
+        "pdf para zip",
+        "comprimir pdfs",
+        "agrupar pdfs",
+        "arquivar pdfs"
+      ],
+      "description": "\n      <p>O PDFs para ZIP empacota múltiplos arquivos PDF em um único arquivo ZIP. Comprima e agrupe seus PDFs para facilitar o compartilhamento, armazenamento ou backup.</p>\n      <p>A ferramenta cria um arquivo compactado contendo todos os seus arquivos PDF, reduzindo o tamanho total e simplificando o gerenciamento de arquivos.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus arquivos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar PDFs",
+          "description": "Arraste e solte múltiplos arquivos PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Configurar o Arquivo",
+          "description": "Opcionalmente, defina o nome do arquivo ZIP e o nível de compressão."
+        },
+        {
+          "step": 3,
+          "title": "Criar e Baixar",
+          "description": "Clique em Criar para gerar o arquivo ZIP."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Compartilhamento de Arquivos",
+          "description": "Agrupe múltiplos PDFs para facilitar o compartilhamento.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Criação de Backup",
+          "description": "Crie backups compactados de coleções de PDFs.",
+          "icon": "archive"
+        },
+        {
+          "title": "Anexos de E-mail",
+          "description": "Combine PDFs em um único anexo para e-mail.",
+          "icon": "mail"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quanta compressão é aplicada?",
+          "answer": "A compressão ZIP normalmente reduz o tamanho total de 10% a 30%."
+        },
+        {
+          "question": "Existe um limite de arquivos?",
+          "answer": "Você pode incluir até 100 PDFs em um único arquivo ZIP."
+        },
+        {
+          "question": "Posso definir uma senha?",
+          "answer": "A criação de arquivos ZIP protegidos por senha não é suportada no momento."
+        }
+      ]
+    },
+    "posterize-pdf": {
+      "title": "Posterizar PDF",
+      "metaDescription": "Divida páginas grandes de PDF em blocos imprimíveis. Crie pôsteres a partir de páginas de PDF.",
+      "keywords": [
+        "posterizar pdf",
+        "dividir pdf em mosaico",
+        "impressao de grande formato",
+        "poster em pdf"
+      ],
+      "description": "\n      <p>O Posterizar PDF divide páginas grandes de PDF em blocos (ladrilhos) menores que podem ser impressos em papel padrão e montados como pôsteres. Perfeito para imprimir diagramas grandes, mapas ou obras de arte.</p>\n      <p>Configure o tamanho da grade e a sobreposição para facilitar a montagem. A ferramenta calcula automaticamente as dimensões dos blocos para o tamanho de saída desejado.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu PDF de grande formato ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Configurar Blocos",
+          "description": "Defina o tamanho da grade, a sobreposição e o tamanho do papel de saída."
+        },
+        {
+          "step": 3,
+          "title": "Criar e Baixar",
+          "description": "Clique em Criar para gerar os blocos imprimíveis."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Impressão de Pôsteres",
+          "description": "Imprima pôsteres grandes em papel padrão.",
+          "icon": "maximize-2"
+        },
+        {
+          "title": "Impressão de Mapas",
+          "description": "Imprima mapas grandes em seções para posterior montagem.",
+          "icon": "map"
+        },
+        {
+          "title": "Reprodução de Arte",
+          "description": "Crie impressões grandes a partir de artes em PDF.",
+          "icon": "image"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Qual sobreposição devo usar?",
+          "answer": "Recomenda-se uma sobreposição de 10 a 20 mm para facilitar o alinhamento durante a montagem."
+        },
+        {
+          "question": "Posso adicionar marcas de corte?",
+          "answer": "Sim, marcas de corte podem ser adicionadas para ajudar no corte e alinhamento."
+        },
+        {
+          "question": "Quais tamanhos de papel são suportados?",
+          "answer": "A4, Carta, A3 e tamanhos personalizados são suportados."
+        }
+      ]
+    },
+    "page-dimensions": {
+      "title": "Dimensões da Página",
+      "metaDescription": "Analise os tamanhos das páginas do PDF. Visualize as dimensões de todas as páginas em seu documento.",
+      "keywords": [
+        "tamanho da pagina pdf",
+        "dimensoes da pagina",
+        "medicoes de pdf",
+        "tamanho do documento"
+      ],
+      "description": "\n      <p>O Dimensões da Página analisa e exibe o tamanho de cada página do seu documento PDF. Visualize as dimensões in várias unidades (polegadas, mm, pontos) e identifique páginas com tamanhos não padrão.</p>\n      <p>Útil para a preparação de impressão, análise de documentos ou identificação de tamanhos de página inconsistentes.</p>\n      <p>Toda a análise ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Visualizar Dimensões",
+          "description": "Veja os tamanhos das páginas exibidos para todas as páginas."
+        },
+        {
+          "step": 3,
+          "title": "Exportar Relatório",
+          "description": "Opcionalmente, exporte as dimensões como JSON."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Planejamento de Impressão",
+          "description": "Verifique os tamanhos das páginas antes de imprimir.",
+          "icon": "printer"
+        },
+        {
+          "title": "Análise de Documento",
+          "description": "Identifique páginas com dimensões incomuns.",
+          "icon": "search"
+        },
+        {
+          "title": "Controle de Qualidade",
+          "description": "Verifique se os tamanhos das páginas atendem às especificações.",
+          "icon": "check-circle"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quais unidades estão disponíveis?",
+          "answer": "Polegadas, milímetros, centímetros e pontos."
+        },
+        {
+          "question": "Mostra a orientação?",
+          "answer": "Sim, a orientação retrato ou paisagem é indicada."
+        },
+        {
+          "question": "Posso corrigir tamanhos inconsistentes?",
+          "answer": "Use a ferramenta Corrigir Tamanho da Página para padronizar as dimensões."
+        }
+      ]
+    },
+    "remove-restrictions": {
+      "title": "Remover Restrições",
+      "metaDescription": "Remova as restrições do PDF. Desbloqueie as permissões de impressão, cópia e edição.",
+      "keywords": [
+        "remover restricoes pdf",
+        "desbloquear pdf",
+        "permissoes do pdf",
+        "desbloquear permissoes pdf"
+      ],
+      "description": "\n      <p>O Remover Restrições desbloqueia PDFs que possuem restrições de permissão que impedem a impressão, cópia ou edição. Esta ferramenta remove as restrições de senha do proprietário, preservando o conteúdo do documento.</p>\n      <p>Nota: Esta ferramenta não pode remover senhas de usuário que impedem a abertura do documento. Use a ferramenta Decodificar PDF para arquivos protegidos por senha.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar PDF Restrito",
+          "description": "Arraste e solte seu PDF restrito ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Remover Restrições",
+          "description": "Clique em Remover para desbloquear o documento."
+        },
+        {
+          "step": 3,
+          "title": "Baixar",
+          "description": "Baixe o PDF sem restrições."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Permitir Impressão",
+          "description": "Desbloqueie PDFs que impedem a impressão.",
+          "icon": "printer"
+        },
+        {
+          "title": "Permitir Cópia",
+          "description": "Permita a seleção e cópia de texto.",
+          "icon": "copy"
+        },
+        {
+          "title": "Permitir Edição",
+          "description": "Remova as restrições sobre a edição do documento.",
+          "icon": "edit"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Isso é legal?",
+          "answer": "Remover restrições de documentos que você possui ou tem direitos é geralmente legal."
+        },
+        {
+          "question": "Pode remover senhas de abertura?",
+          "answer": "Não, use a ferramenta Decodificar PDF para documentos protegidos por senha de abertura."
+        },
+        {
+          "question": "O conteúdo será afetado?",
+          "answer": "Não, apenas as restrições são removidas; o conteúdo permanece inalterado."
+        }
+      ]
+    },
+    "sanitize-pdf": {
+      "title": "Sanitizar PDF",
+      "metaDescription": "Remova dados ocultos de PDFs. Limpe metadados, scripts e informações confidenciais.",
+      "keywords": [
+        "sanitizar pdf",
+        "limpar pdf",
+        "remover dados ocultos",
+        "privacidade do pdf"
+      ],
+      "description": "\n      <p>O Sanitizar PDF remove dados ocultos e informações potencialmente confidenciais dos seus documentos. Remova metadados, scripts incorporados, anexos, comentários e outros conteúdos ocultos.</p>\n      <p>Essencial para preparar documentos para distribuição pública ou quando a privacidade é uma preocupação.</p>\n      <p>Toda a sanitização ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Selecionar o que Remover",
+          "description": "Escolha quais tipos de dados ocultos deseja remover."
+        },
+        {
+          "step": 3,
+          "title": "Sanitizar e Baixar",
+          "description": "Clique em Sanitizar para limpar o PDF e baixe."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Lançamento Público",
+          "description": "Prepare documentos para distribuição pública.",
+          "icon": "globe"
+        },
+        {
+          "title": "Proteção de Privacidade",
+          "description": "Remova informações pessoais antes do compartilhamento.",
+          "icon": "shield"
+        },
+        {
+          "title": "Conformidade de Segurança",
+          "description": "Atenda aos requisitos de segurança para o manuseio de documentos.",
+          "icon": "check-circle"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quais dados ocultos são removidos?",
+          "answer": "Metadados, scripts, anexos, comentários, dados de formulários e camadas ocultas."
+        },
+        {
+          "question": "O conteúdo visível será afetado?",
+          "answer": "Não, apenas os dados ocultos são removidos; o conteúdo visível permanece."
+        },
+        {
+          "question": "Isso é reversível?",
+          "answer": "Não, os dados removidos não podem ser recuperados. Mantenha um backup do original."
+        }
+      ]
+    },
+    "find-and-redact": {
+      "title": "Localizar e Censurar",
+      "metaDescription": "Pesquise e censure textos em todas as páginas de um PDF. Remova em lote informações confidenciais como números de conta, nomes e muito mais.",
+      "keywords": [
+        "censurar pdf",
+        "localizar e censurar",
+        "censura em lote",
+        "remover texto",
+        "censura de pdf",
+        "ocultar dados confidenciais"
+      ],
+      "description": "\n      <p>O Localizar e Censurar permite pesquisar textos, números ou padrões específicos em todas as páginas do seu PDF e ocultar todas as ocorrências correspondentes de uma só vez. Perfeito para remover informações confidenciais como números de contas, nomes, endereços ou quaisquer dados sigilosos.</p>\n      <p>Visualize todas as correspondências antes de aplicar a censura e selecione quais ocorrências deseja ocultar. Suporta pesquisa que diferencia maiúsculas de minúsculas, correspondência de palavras inteiras e expressões regulares para correspondência avançada de padrões.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados e seguros.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Buscar por Texto",
+          "description": "Digite o texto, número ou padrão regex que você deseja encontrar e censurar."
+        },
+        {
+          "step": 3,
+          "title": "Revisar e Selecionar",
+          "description": "Visualize todas as correspondências e selecione quais deseja ocultar."
+        },
+        {
+          "step": 4,
+          "title": "Aplicar Censura",
+          "description": "Personalize a aparência da marcação e aplique às correspondências selecionadas."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Conformidade com Privacidade",
+          "description": "Censure informações pessoais para estar em conformidade com o GDPR, HIPAA ou outros regulamentos.",
+          "icon": "shield"
+        },
+        {
+          "title": "Documentos Jurídicos",
+          "description": "Remova dados confidenciais de documentos jurídicos antes de compartilhá-los.",
+          "icon": "scale"
+        },
+        {
+          "title": "Registros Financeiros",
+          "description": "Censure números de contas, CPFs ou dados financeiros de extratos.",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "A censura é permanente?",
+          "answer": "Sim, a censura remove permanentemente o texto subjacente. O conteúdo original não pode ser recuperado. Sempre mantenha um backup do arquivo original."
+        },
+        {
+          "question": "Posso censurar imagens ou texto digitalizado?",
+          "answer": "Esta ferramenta funciona com PDFs baseados em texto. Para documentos digitalizados, você precisará usar a censura manual baseada em área."
+        },
+        {
+          "question": "Posso personalizar a aparência da censura?",
+          "answer": "Sim, você pode definir a cor da marcação de ocultação, adicionar bordas e, opcionalmente, incluir um texto de substituição como \"[CENSURADO]\"."
+        },
+        {
+          "question": "Como funciona a busca por regex?",
+          "answer": "Ative \"Usar Expressão Regular\" para pesquisar usando padrões regex. For exemplo, \\d{4}-\\d{4}-\\d{4}-\\d{4} para encontrar números de cartão de crédito."
+        }
+      ]
+    },
+    "flatten-pdf": {
+      "title": "Achatar PDF",
+      "metaDescription": "Achatamento de formulários e anotações do PDF. Torne o conteúdo não editável.",
+      "keywords": [
+        "achatar pdf",
+        "achatar formularios",
+        "achatar anotacoes",
+        "pdf nao editavel"
+      ],
+      "description": "\n      <p>O Achatar PDF converte elementos interativos, como campos de formulário e anotações, em conteúdo estático. O PDF achatado mantém a mesma aparência, mas não pode mais ser editado.</p>\n      <p>Perfeito para finalizar formulários preenchidos, preservar anotações ou criar versões de documentos que não podem ser editadas.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu PDF com formulários ou anotações."
+        },
+        {
+          "step": 2,
+          "title": "Selecionar o que Achatar",
+          "description": "Escolha achatar formulários, anotações ou ambos."
+        },
+        {
+          "step": 3,
+          "title": "Achatar e Baixar",
+          "description": "Clique em Achatar para criar o PDF estático."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Finalizar Formulários",
+          "description": "Bloqueie dados de formulários preenchidos para evitar alterações.",
+          "icon": "lock"
+        },
+        {
+          "title": "Preservar Anotações",
+          "description": "Torne as anotações permanentes no documento.",
+          "icon": "check-circle"
+        },
+        {
+          "title": "Arquivar Documentos",
+          "description": "Crie versões não editáveis para fins de arquivamento.",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "O achatamento é reversível?",
+          "answer": "Não, o achatamento é permanente. Mantenha um backup do original."
+        },
+        {
+          "question": "A aparência vai mudar?",
+          "answer": "Não, o documento permanece com a mesma aparência, mas deixa de ser interativo."
+        },
+        {
+          "question": "Isso reduz o tamanho do arquivo?",
+          "answer": "Às vezes, pois os elementos interativos são convertidos em conteúdo mais simples."
+        }
+      ]
+    },
+    "remove-metadata": {
+      "title": "Remover Metadados",
+      "metaDescription": "Remova os metadados de arquivos PDF. Remova autor, datas e propriedades do documento.",
+      "keywords": [
+        "remover metadados pdf",
+        "limpar metadados",
+        "privacidade do pdf",
+        "pdf anonimo"
+      ],
+      "description": "\n      <p>O Remover Metadados limpa todas as propriedades do documento e metadados dos seus arquivos PDF. Remova nomes de autores, datas de criação, informações do software e outros dados de identificação.</p>\n      <p>Essencial para a privacidade ao compartilhar documentos ou quando os metadados podem revelar informações confidenciais.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Remover Metadados",
+          "description": "Clique em Remover para limpar todos os metadados."
+        },
+        {
+          "step": 3,
+          "title": "Baixar",
+          "description": "Baixe o PDF sem metadados."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Proteção de Privacidade",
+          "description": "Remova informações pessoais antes do compartilhamento.",
+          "icon": "shield"
+        },
+        {
+          "title": "Documentos Anônimos",
+          "description": "Crie documentos sem atribuição de autoria.",
+          "icon": "user-x"
+        },
+        {
+          "title": "Distribuição Limpa",
+          "description": "Distribua documentos sem metadados internos.",
+          "icon": "send"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Quais metadados são removidos?",
+          "answer": "Informações de autor, título, assunto, palavras-chave, datas, criador e produtor."
+        },
+        {
+          "question": "Os metadados XMP são removidos?",
+          "answer": "Sim, tanto os metadados padrão quanto os XMP são limpos."
+        },
+        {
+          "question": "O conteúdo será afetado?",
+          "answer": "Não, apenas os metadados são removidos; o conteúdo do documento permanece inalterado."
+        }
+      ]
+    },
+    "change-permissions": {
+      "title": "Alterar Permissões",
+      "metaDescription": "Modifique as permissões de PDF. Controle o acesso de impressão, cópia e edição.",
+      "keywords": [
+        "permissoes do pdf",
+        "alterar acesso pdf",
+        "restringir pdf",
+        "seguranca do pdf"
+      ],
+      "description": "\n      <p>O Alterar Permissões modifica os controles de acesso em seus documentos PDF. Habilite ou desabilite permissões de impressão, cópia, edição e anotação.</p>\n      <p>Defina uma senha de proprietário para impor essas restrições. Os destinatários poderão visualizar o documento, mas ficarão limitados nas ações que podem realizar.</p>\n      <p>Todo o processamento ocorre no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Definir Permissões",
+          "description": "Habilite ou desabilite impressão, cópia, edição e anotações."
+        },
+        {
+          "step": 3,
+          "title": "Aplicar e Baixar",
+          "description": "Defina a senha do proprietário e baixe o PDF restrito."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Evitar Cópia",
+          "description": "Desative a cópia de texto para proteger seu conteúdo.",
+          "icon": "copy"
+        },
+        {
+          "title": "Controlar Impressão",
+          "description": "Restrinja ou permita a impressão de documentos.",
+          "icon": "printer"
+        },
+        {
+          "title": "Limitar Edição",
+          "description": "Impeça modificações no documento.",
+          "icon": "edit-3"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Preciso de uma senha?",
+          "answer": "Uma senha de proprietário é necessária para aplicar e garantir as permissões."
+        },
+        {
+          "question": "As permissões podem ser removidas?",
+          "answer": "Sim, com a senha do proprietário ou usando a ferramenta Remover Restrições."
+        },
+        {
+          "question": "Todos os leitores de PDF são compatíveis?",
+          "answer": "A maioria dos leitores de PDF respeita as permissões, mas alguns podem não aplicá-las estritamente."
+        }
+      ]
+    },
+    "pdf-to-markdown": {
+      "title": "PDF para Markdown",
+      "metaDescription": "Converta PDF para o formato Markdown. Extraia texto e preserve a formatação como títulos e listas.",
+      "keywords": [
+        "pdf para markdown",
+        "converter pdf para md",
+        "extracao de texto pdf",
+        "conversor markdown",
+        "pdf para texto"
+      ],
+      "description": "\n      <p>O PDF para Markdown converte seus documentos PDF em arquivos Markdown limpos e bem estruturados. A ferramenta extrai o conteúdo do texto de forma inteligente e tenta preservar a formatação, como cabeçalhos, listas e parágrafos.</p>\n      <p>Perfeito para converter documentos PDF em formatos editáveis para documentação, anotações ou sistemas de gerenciamento de conteúdo que suportam Markdown.</p>\n      <p>Toda a conversão ocorre localmente no seu navegador, garantindo que seus documentos permaneçam privados e seguros.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Configurar Opções",
+          "description": "Defina o intervalo de páginas, escolha se deseja incluir números de página e ajuste as configurações de quebra de linha."
+        },
+        {
+          "step": 3,
+          "title": "Converter e Baixar",
+          "description": "Clique em Converter para gerar seu arquivo Markdown e baixe."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentação",
+          "description": "Converta manuais e guias em PDF para Markdown para documentação controlada por versão.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Anotações",
+          "description": "Extraia conteúdo de artigos e livros em PDF para seu sistema de notas pessoais.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Migração de Conteúdo",
+          "description": "Migre conteúdo em PDF para plataformas CMS que suportam Markdown.",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "A formatação é preservada?",
+          "answer": "A ferramenta tenta detectar títulos com base no tamanho da fonte e listas com marcadores ou numeradas. Layouts complexos podem exigir ajustes manuais."
+        },
+        {
+          "question": "Posso converter páginas específicas?",
+          "answer": "Sim, você pode especificar um intervalo de páginas como \"1-3, 5, 7\" para converter apenas essas páginas."
+        },
+        {
+          "question": "Funciona com PDFs digitalizados?",
+          "answer": "PDFs digitalizados contêm imagens, não texto editável. Use nossa ferramenta de OCR primeiro para extrair o texto antes de convertê-lo para Markdown."
+        }
+      ]
+    },
+    "pdf-booklet": {
+      "title": "Criador de Livreto PDF",
+      "metaDescription": "Crie layouts de livreto a partir de PDF para impressão. Organize páginas para encadernação com grampo canoa com várias opções de grade.",
+      "keywords": [
+        "livreto pdf",
+        "criador de livreto",
+        "imprimir livreto",
+        "grampo canoa",
+        "imposicao pdf"
+      ],
+      "description": "\n      <p>O Criador de Livreto PDF organiza as páginas do seu PDF em layouts de livreto prontos para impressão e dobra. Perfeito para criar brochuras, zines, folhetos e publicações com encadernação em grampo canoa.</p>\n      <p>Escolha entre vários modos de grade (1x2, 2x2, 2x4, 4x4), tamanhos de papel e opções de orientação. A ferramenta lida automaticamente com a imposição de páginas para a sequência correta de dobra.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Carregue o documento PDF que deseja converter em um livreto."
+        },
+        {
+          "step": 2,
+          "title": "Escolher o Layout",
+          "description": "Selecione o modo de grade, tamanho do papel, orientação e opções de rotação."
+        },
+        {
+          "step": 3,
+          "title": "Criar e Baixar",
+          "description": "Gere o layout do livreto e baixe para impressão."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Brochures e Folhetos",
+          "description": "Crie brochuras prontas para dobra a partir de documentos PDF padrão.",
+          "icon": "book-open"
+        },
+        {
+          "title": "Zines",
+          "description": "Produza zines de autopublicação com a imposição de páginas correta.",
+          "icon": "book"
+        },
+        {
+          "title": "Programas de Eventos",
+          "description": "Crie livretos de programação profissional para eventos.",
+          "icon": "calendar"
+        }
+      ],
+      "faq": [
+        {
+          "question": "O que é encadernação com grampo canoa?",
+          "answer": "A encadernação com grampo canoa (saddle-stitch) é um método onde folhas dobradas são encaixadas umas dentro das outras e grampeadas ao longo da dobra central."
+        },
+        {
+          "question": "Qual modo de grade devo usar?",
+          "answer": "O modo 1x2 é o padrão para livretos comuns. Use 2x2 ou maior para impressão de múltiplas páginas para economizar papel."
+        },
+        {
+          "question": "Posso visualizar o layout?",
+          "answer": "Sim, a ferramenta fornece uma visualização visual antes de gerar o livreto final."
+        }
+      ]
+    },
+    "rasterize-pdf": {
+      "title": "Rasterizar PDF",
+      "metaDescription": "Converta páginas de PDF em imagens de alta qualidade. Exporte como PNG, JPEG ou WebP com configurações de DPI personalizadas.",
+      "keywords": [
+        "rasterizar pdf",
+        "pdf para imagem",
+        "pdf para png",
+        "pdf para jpeg",
+        "converter paginas pdf"
+      ],
+      "description": "\n      <p>O Rasterizar PDF converte as páginas do seu PDF em imagens rasterizadas de alta qualidade. Escolha entre os formatos de saída PNG, JPEG ou WebP com controle total sobre as configurações de DPI e qualidade.</p>\n      <p>Perfeito para criar miniaturas, imagens para redes sociais ou arquivar o conteúdo do PDF como imagens. Suporta seleção de intervalo de páginas e processamento em lote.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Arraste e solte seu arquivo PDF ou clique para selecionar."
+        },
+        {
+          "step": 2,
+          "title": "Configurar Saída",
+          "description": "Selecione o DPI, o formato de saída (PNG/JPEG/WebP), a qualidade e o intervalo de páginas."
+        },
+        {
+          "step": 3,
+          "title": "Converter e Baixar",
+          "description": "Processe as páginas e baixe as imagens individualmente ou compactadas em um arquivo ZIP."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Redes Sociais",
+          "description": "Converta slides de PDF em imagens para postagem em redes sociais.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Miniaturas (Thumbnails)",
+          "description": "Gere miniaturas de visualização para documentos PDF.",
+          "icon": "image"
+        },
+        {
+          "title": "Publicação na Web",
+          "description": "Converta conteúdo de PDF em formatos de imagem otimizados para a web.",
+          "icon": "globe"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Qual DPI devo usar?",
+          "answer": "72 DPI para tela, 150 DPI para uso geral, 300 DPI para qualidade de impressão."
+        },
+        {
+          "question": "Qual formato é o melhor?",
+          "answer": "PNG para qualidade/transparência, JPEG para tamanho reduzido e WebP para uso moderno na web."
+        },
+        {
+          "question": "Posso converter páginas específicas?",
+          "answer": "Sim, especifique intervalos de páginas como \"1-5, 8, 10-15\" para converter apenas essas páginas."
+        }
+      ]
+    },
+    "markdown-to-pdf": {
+      "title": "Markdown para PDF",
+      "metaDescription": "Converta arquivos Markdown em documentos PDF com formatação elegante. Suporte para GitHub Flavored Markdown e realce de sintaxe.",
+      "keywords": [
+        "markdown para pdf",
+        "md para pdf",
+        "converter markdown",
+        "gfm para pdf",
+        "conversor markdown"
+      ],
+      "description": "\n      <p>O Markdown para PDF converte seus arquivos Markdown em documentos PDF com estilo profissional. Suporta CommonMark e GitHub Flavored Markdown (GFM), incluindo tabelas, listas de tarefas e blocos de código.</p>\n      <p>Escolha entre vários temas (claro, escuro, GitHub) e personalize o tamanho da página e as margens. Os blocos de código possuem realce de sintaxe para melhor legibilidade.</p>\n      <p>Toda a conversão ocorre localmente no seu navegador, garantindo que seu conteúdo permaneça privado.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar Arquivo Markdown",
+          "description": "Carregue seu arquivo com extensão .md ou .markdown."
+        },
+        {
+          "step": 2,
+          "title": "Escolher Tema",
+          "description": "Selecione um tema visual e configure as definições da página."
+        },
+        {
+          "step": 3,
+          "title": "Converter e Baixar",
+          "description": "Gere o PDF estilizado e baixe."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentação",
+          "description": "Converta arquivos README e documentações em PDFs prontos para compartilhamento.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Exportação de Notas",
+          "description": "Exporte notas em Markdown para PDF para impressão ou compartilhamento.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Relatórios",
+          "description": "Crie relatórios a partir de Markdown com estilo profissional.",
+          "icon": "bar-chart"
+        }
+      ],
+      "faq": [
+        {
+          "question": "O GitHub Flavored Markdown é suportado?",
+          "answer": "Sim, tabelas, listas de tarefas, tachado e outros recursos do GFM são totalmente suportados."
+        },
+        {
+          "question": "Posso personalizar o estilo?",
+          "answer": "Escolha entre temas predefinidos ou adicione CSS personalizado para controle total."
+        },
+        {
+          "question": "Os blocos de código são destacados?",
+          "answer": "Sim, os blocos de código incluem realce de sintaxe para as linguagens de programação mais comuns."
+        }
+      ]
+    },
+    "cbz-to-pdf": {
+      "title": "CBZ para PDF",
+      "metaDescription": "Converta arquivos de quadrinhos (CBZ) para PDF. Preserve a ordem das imagens e a qualidade para quadrinhos digitais.",
+      "keywords": [
+        "cbz para pdf",
+        "quadrinhos para pdf",
+        "converter cbz",
+        "conversor de quadrinhos",
+        "conversor cbz"
+      ],
+      "description": "\n      <p>O CBZ para PDF converte arquivos de quadrinhos digitais (Comic Book Archive) em documentos PDF. A ferramenta extrai todas as imagens do arquivo CBZ e as compila em um PDF, mantendo a ordem correta de leitura.</p>\n      <p>Escolha entre várias opções de tamanho de página, incluindo as dimensões originais da imagem ou tamanhos padronizados de revistas em quadrinhos. Perfeito para ler quadrinhos em dispositivos que suportam PDF mas não abrem arquivos CBZ.</p>\n      <p>Toda a conversão ocorre localmente no seu navegador, garantindo que seus quadrinhos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar Arquivo CBZ",
+          "description": "Carregue seu arquivo de quadrinhos com extensão .cbz."
+        },
+        {
+          "step": 2,
+          "title": "Selecionar Opções",
+          "description": "Escolha as configurações de tamanho de página e qualidade da imagem."
+        },
+        {
+          "step": 3,
+          "title": "Converter e Baixar",
+          "description": "Converta para PDF e baixe seus quadrinhos."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Compatibilidade com E-Readers",
+          "description": "Converta CBZ para PDF para e-readers que só aceitam o formato PDF.",
+          "icon": "book"
+        },
+        {
+          "title": "Arquivamento de Quadrinhos",
+          "description": "Crie arquivos PDF da sua coleção de quadrinhos digitais.",
+          "icon": "archive"
+        },
+        {
+          "title": "Preparação para Impressão",
+          "description": "Converta quadrinhos digitais para PDF para posterior impressão.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "O que é o formato CBZ?",
+          "answer": "O CBZ é um arquivo ZIP que contém páginas de quadrinhos em formato de imagem, renomeado com a extensão .cbz."
+        },
+        {
+          "question": "A qualidade das imagens é preservada?",
+          "answer": "Sim, as imagens são incorporadas com sua qualidade original no arquivo PDF."
+        },
+        {
+          "question": "Pastas aninhadas são suportadas?",
+          "answer": "Sim, as imagens de todas as pastas contidas no arquivo compactado são extraídas e ordenadas corretamente."
+        }
+      ]
+    },
+    "font-to-outline": {
+      "title": "Converter Fontes em Contornos",
+      "metaDescription": "Remova as dependências de fontes de documentos PDF convertendo as páginas em imagens de alta qualidade. Garante a compatibilidade em todos os sistemas.",
+      "keywords": [
+        "fontes em contornos",
+        "contornar fontes",
+        "remover fontes",
+        "compatibilidade de fontes",
+        "achatar fontes pdf",
+        "remocao de fontes pdf"
+      ],
+      "description": "\n      <p>O Converter Fontes em Contornos remove todas as dependências de fontes do seu PDF, convertendo cada página em conteúdo rasterizado de alta qualidade. Isso garante que seu documento tenha exatamente a mesma aparência em qualquer sistema, mesmo que as fontes originais não estejam instaladas.</p>\n      <p>A ferramenta renderiza cada página no DPI escolhido (150-600), removendo fontes incorporadas enquanto preserva a aparência visual exata. Opcionalmente, você pode adicionar uma camada de texto invisível para manter a capacidade de pesquisa.</p>\n      <p>Isso é essencial para preparação de impressão, compatibilidade multiplataforma e para evitar problemas de licenciamento de fontes ao compartilhar documentos. Todo o processamento ocorre localmente no seu navegador.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Carregue o PDF que contém as fontes que deseja remover."
+        },
+        {
+          "step": 2,
+          "title": "Configurar Qualidade",
+          "description": "Escolha o DPI (300 recomendado para impressão, 150 para tela). Ative o texto pesquisável, se necessário."
+        },
+        {
+          "step": 3,
+          "title": "Converter e Baixar",
+          "description": "Processe o arquivo e baixe o PDF independente de fontes."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Preparação para Impressão",
+          "description": "Elimine problemas de fontes em impressoras comerciais removendo todas as dependências de fontes.",
+          "icon": "printer"
+        },
+        {
+          "title": "Compartilhamento Multiplataforma",
+          "description": "Compartilhe documentos que parecem idênticos em qualquer dispositivo, independentemente das fontes instaladas.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Licenciamento de Fontes",
+          "description": "Remova fontes incorporadas para evitar preocupações com licenciamento ao distribuir documentos.",
+          "icon": "shield"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Como isso funciona?",
+          "answer": "A ferramenta renderiza cada página em alta resolução (no DPI escolhido) e recria o PDF a partir dessas imagens, removendo todas as dependências de fontes enquanto preserva a aparência visual."
+        },
+        {
+          "question": "Ainda posso selecionar texto após a conversão?",
+          "answer": "Por padrão, não. O texto se torna parte da imagem. No entanto, você pode ativar a opção \"Preservar texto pesquisável\" para adicionar uma camada de texto invisível para funcionalidades de pesquisa e cópia."
+        },
+        {
+          "question": "Qual DPI devo usar?",
+          "answer": "300 DPI é recomendado para saída com qualidade de impressão. 150 DPI é suficiente para visualização em tela e produz arquivos menores. 600 DPI fornece a mais alta qualidade, mas gera arquivos grandes."
+        },
+        {
+          "question": "O tamanho do arquivo vai aumentar?",
+          "answer": "O tamanho do arquivo depende do DPI e do conteúdo. 150 DPI geralmente produz arquivos menores, 300 DPI pode aumentar o tamanho e 600 DPI aumenta significativamente. A compactação é aplicada automaticamente."
+        },
+        {
+          "question": "Isso é reversível?",
+          "answer": "Não, os dados das fontes são removidos permanentemente. Mantenha um backup do original se precisar editar o texto com as fontes originais."
+        },
+        {
+          "question": "E quanto aos gráficos vetoriais?",
+          "answer": "Gráficos vetoriais (formas, linhas) no PDF original serão convertidos em raster juntamente com o texto. A qualidade visual é preservada no DPI escolhido."
+        }
+      ]
+    },
+    "extract-tables": {
+      "title": "Extrair Tabelas de PDF",
+      "metaDescription": "Detecte e extraia tabelas de documentos PDF. Exporte para os formatos JSON, Markdown ou CSV.",
+      "keywords": [
+        "extrair tabelas",
+        "extracao de tabelas pdf",
+        "pdf para csv",
+        "pdf para excel",
+        "deteccao de tabelas"
+      ],
+      "description": "\n      <p>O Extrair Tabelas de PDF detecta dados tabulares em seus documentos PDF e os exporta em formatos estruturados. Escolha JSON para integração de dados, Markdown para documentação ou CSV para planilhas.</p>\n      <p>A ferramenta usa algoritmos de detecção inteligente para identificar estruturas de tabelas mesmo em documentos complexos. Especifique intervalos de páginas e ajuste parâmetros de detecção para resultados ideais.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Carregue o PDF contendo as tabelas que deseja extrair."
+        },
+        {
+          "step": 2,
+          "title": "Configurar Detecção",
+          "description": "Defina o intervalo de páginas e os limites mínimos de colunas/linhas."
+        },
+        {
+          "step": 3,
+          "title": "Exportar e Baixar",
+          "description": "Escolha o formato de saída (JSON/Markdown/CSV) e baixe."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Análise de Dados",
+          "description": "Extraia dados de tabelas para análise em planilhas ou bancos de dados.",
+          "icon": "bar-chart"
+        },
+        {
+          "title": "Processamento de Relatórios",
+          "description": "Extraia tabelas de relatórios em PDF para processamento posterior.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Documentação",
+          "description": "Converta tabelas de PDF para Markdown para documentação técnica.",
+          "icon": "book"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Pode detectar tabelas complexas?",
+          "answer": "A ferramenta funciona melhor com tabelas de grade simples. Células mescladas complexas podem exigir ajustes manuais."
+        },
+        {
+          "question": "O que fazer se nenhuma tabela for encontrada?",
+          "answer": "Tente ajustar o limite mínimo de colunas/linhas ou verifique se o PDF contém estruturas de tabelas reais."
+        },
+        {
+          "question": "Posso extrair de páginas específicas?",
+          "answer": "Sim, especifique um intervalo de páginas para limitar a extração a determinadas páginas."
+        }
+      ]
+    },
+    "ocg-manager": {
+      "title": "Gerenciador de Camadas PDF (OCG)",
+      "metaDescription": "Gerencie camadas de PDF (Grupos de Conteúdo Opcional). Visualize, ative/desative, adicione, exclua e renomeie camadas em seus documentos PDF.",
+      "keywords": [
+        "camadas pdf",
+        "gerenciador ocg",
+        "grupos de conteudo opcional",
+        "visibilidade de camadas pdf",
+        "gerenciar camadas pdf"
+      ],
+      "description": "\n      <p>O Gerenciador de Camadas PDF permite visualizar e gerenciar Grupos de Conteúdo Opcional (OCG) em seus documentos PDF. As camadas OCG são usadas em desenhos técnicos, mapas e documentos complexos para organizar o conteúdo em camadas ativáveis/desativáveis.</p>\n      <p>Visualize todas as camadas em seu PDF, alterne sua visibilidade, adicione novas camadas, exclua as indesejadas ou renomeie as existentes. Esta ferramenta é essencial para trabalhar com PDFs em camadas, como plantas arquitetônicas, exportações de CAD e documentos prontos para impressão.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo que seus documentos permaneçam privados e seguros.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Carregar seu PDF",
+          "description": "Carregue um arquivo PDF que contenha camadas (OCG) ou um no qual deseja adicionar camadas."
+        },
+        {
+          "step": 2,
+          "title": "Visualizar Camadas",
+          "description": "A ferramenta lista automaticamente todas as camadas encontradas no documento com seu status de visibilidade."
+        },
+        {
+          "step": 3,
+          "title": "Gerenciar Camadas",
+          "description": "Alterne a visibilidade das camadas, renomeie camadas, adicione novas ou exclua camadas indesejadas."
+        },
+        {
+          "step": 4,
+          "title": "Salvar e Baixar",
+          "description": "Baixe o PDF modificado com as alterações de camadas aplicadas."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Desenhos Técnicos",
+          "description": "Gerencie camadas em exportações de CAD para mostrar/ocultar dimensões, anotações ou diferentes vistas.",
+          "icon": "ruler"
+        },
+        {
+          "title": "Edição de Mapas",
+          "description": "Alterne diferentes camadas do mapa, como topografia, estradas e etiquetas, para impressões personalizadas.",
+          "icon": "map"
+        },
+        {
+          "title": "Preparação para Impressão",
+          "description": "Prepare PDFs em camadas para impressão, alternando as camadas apropriadas para diferentes versões.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "O que são camadas de PDF (OCG)?",
+          "answer": "Os Grupos de Conteúdo Opcional (OCG) são camadas em um PDF que podem ser exibidas ou ocultadas. São comumente usadas em desenhos CAD, mapas e documentos complexos."
+        },
+        {
+          "question": "Por que meu PDF não mostra nenhuma camada?",
+          "answer": "Nem todos os PDFs contêm camadas. As camadas são normalmente adicionadas durante a criação do PDF a partir de softwares de design ou aplicações CAD."
+        },
+        {
+          "question": "As alterações de camadas afetarão o conteúdo original?",
+          "answer": "As alterações de visibilidade das camadas afetam apenas o que é exibido ou impresso. O conteúdo real permanece no documento."
+        }
+      ]
+    },
+    "pdf-reader": {
+      "title": "Leitor de PDF",
+      "metaDescription": "Leitor de PDF online gratuito. Visualize, navegue, amplie, rotacione e imprima documentos PDF diretamente no seu navegador.",
+      "keywords": [
+        "leitor de pdf",
+        "visualizador de pdf",
+        "ver pdf online",
+        "ler pdf",
+        "visualizador pdf navegador"
+      ],
+      "description": "\n      <p>O Leitor de PDF é um visualizador completo que permite ler e navegar por documentos PDF diretamente no seu navegador. Nenhuma instalação de software é necessária - basta carregar seu PDF e começar a ler.</p>\n      <p>Navegue entre as páginas, amplie e reduza o zoom, rotacione a visualização e use o modo de tela cheia para uma leitura sem distrações. Você também pode imprimir documentos ou baixá-los para acesso offline.</p>\n      <p>Toda a visualização ocorre localmente no seu navegador. Seus documentos nunca são enviados para qualquer servidor, garantindo privacidade total.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Abrir seu PDF",
+          "description": "Clique para carregar ou arraste e solte um arquivo PDF para abri-lo no leitor."
+        },
+        {
+          "step": 2,
+          "title": "Navegar pelas Páginas",
+          "description": "Use os controles de página para ir para a página anterior ou seguinte, ou pule para um número de página específico."
+        },
+        {
+          "step": 3,
+          "title": "Ajustar Visualização",
+          "description": "Aumente ou diminua o zoom, rotacione a visualização ou entre no modo de tela cheia para uma leitura confortável."
+        },
+        {
+          "step": 4,
+          "title": "Imprimir ou Baixar",
+          "description": "Imprima o documento ou baixe-o para acesso offline quando necessário."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Revisão de Documentos",
+          "description": "Revise documentos PDF rapidamente sem instalar nenhum software.",
+          "icon": "book-open"
+        },
+        {
+          "title": "Leitura Móvel",
+          "description": "Leia documentos PDF em qualquer dispositivo com um navegador da web.",
+          "icon": "smartphone"
+        },
+        {
+          "title": "Visualização Rápida",
+          "description": "Visualize PDFs antes de decidir baixá-los ou imprimi-los.",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Meu documento está seguro?",
+          "answer": "Sim, seu documento é processado inteiramente no seu navegador e nunca é enviado para nenhum servidor."
+        },
+        {
+          "question": "Posso fazer anotações ou editar o PDF?",
+          "answer": "Esta ferramenta serve apenas para visualização. Use nossas ferramentas Assinar PDF ou Anotar PDF para edições."
+        },
+        {
+          "question": "Funciona em dispositivos móveis?",
+          "answer": "Sim, o Leitor de PDF funciona em todos os dispositivos com um navegador da web moderno."
+        }
+      ]
+    }
+  }
+}

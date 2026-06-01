@@ -1,0 +1,242 @@
+{
+  "tools.fixPageSize.orientAuto": {
+    "en": "Auto",
+    "zh": "自动"
+  },
+  "tools.pageNumbers.positionTitle": {
+    "en": "Position",
+    "zh": "位置"
+  },
+  "tools.pageNumbers.formatTitle": {
+    "en": "Format",
+    "zh": "格式"
+  },
+  "tools.pageNumbers.suffix": {
+    "en": "Suffix",
+    "zh": "后缀"
+  },
+  "tools.watermark.position": {
+    "en": "Position",
+    "zh": "位置"
+  },
+  "tools.watermark.posDiagonal": {
+    "en": "Diagonal",
+    "zh": "对角线"
+  },
+  "tools.formCreator.dropdownTool": {
+    "en": "Dropdown",
+    "zh": "下拉框"
+  },
+  "tools.formCreator.fieldName": {
+    "en": "Name",
+    "zh": "名称"
+  },
+  "tools.formCreator.template.feedback": {
+    "en": "Feedback",
+    "zh": "反馈表单"
+  },
+  "tools.formCreator.labelPosition": {
+    "en": "Position",
+    "zh": "位置"
+  },
+  "common.status.error": {
+    "en": "Error",
+    "zh": "错误"
+  },
+  "common.batchProcessing.error": {
+    "en": "Error",
+    "zh": "错误"
+  },
+  "workflow.error": {
+    "en": "Error",
+    "zh": "错误"
+  },
+  "tools.bookmark.color": {
+    "en": "Color",
+    "zh": "颜色"
+  },
+  "tools.pageNumbers.color": {
+    "en": "Color",
+    "zh": "颜色"
+  },
+  "tools.watermark.color": {
+    "en": "Color",
+    "zh": "颜色"
+  },
+  "common.navigation.contact": {
+    "en": "Contact",
+    "zh": "联系我们"
+  },
+  "common.options.portrait": {
+    "en": "Portrait",
+    "zh": "纵向"
+  },
+  "common.deadLinkDebugger.pageNumberLabel": {
+    "en": "Page {page}",
+    "zh": "第 {page} 页"
+  },
+  "common.comparePdfs.pageIndex": {
+    "en": "Page {page}",
+    "zh": "第 {page} 页"
+  },
+  "common.editPdf.annRectangle": {
+    "en": "Rectangle",
+    "zh": "矩形"
+  },
+  "common.editPdf.annNote": {
+    "en": "Note",
+    "zh": "注解"
+  },
+  "common.editPdf.annSignature": {
+    "en": "Signature",
+    "zh": "签名"
+  },
+  "common.nUpPdf.orientationPortrait": {
+    "en": "Portrait",
+    "zh": "纵向"
+  },
+  "common.removeBlankPages.pageNumber": {
+    "en": "Page {page}",
+    "zh": "第 {page} 页"
+  },
+  "common.rotate.pageNumber": {
+    "en": "Page {page}",
+    "zh": "第 {page} 页"
+  },
+  "common.vectorExtractor.pageLabel": {
+    "en": "Page {page}",
+    "zh": "第 {page} 页"
+  },
+  "contactPage.form.fields.message.label": {
+    "en": "Message",
+    "zh": "消息"
+  },
+  "workflow.conversion": {
+    "en": "Conversion",
+    "zh": "转换"
+  },
+  "workflow.description": {
+    "en": "Description",
+    "zh": "描述"
+  },
+  "tools.gridCombine.orientation": {
+    "en": "Orientation",
+    "zh": "方向"
+  },
+  "tools.gridCombine.page": {
+    "en": "page",
+    "zh": "页"
+  },
+  "tools.gridCombine.pages": {
+    "en": "pages",
+    "zh": "页"
+  },
+  "tools.nUpPdf.orientation": {
+    "en": "Orientation",
+    "zh": "方向"
+  },
+  "tools.nUpPdf.pagesLabel": {
+    "en": "pages",
+    "zh": "页"
+  },
+  "tools.posterizePdf.orientation": {
+    "en": "Orientation",
+    "zh": "方向"
+  },
+  "tools.digitalSign.pageLabel": {
+    "en": "Page",
+    "zh": "页面"
+  },
+  "tools.imageToPdf.orientation": {
+    "en": "Orientation",
+    "zh": "方向"
+  },
+  "tools.imageToPdf.orientationPortrait": {
+    "en": "Portrait",
+    "zh": "纵向"
+  },
+  "tools.cropPdf.pages": {
+    "en": "pages",
+    "zh": "页"
+  },
+  "tools.cropPdf.page": {
+    "en": "Page",
+    "zh": "页"
+  },
+  "tools.extractImages.page": {
+    "en": "Page",
+    "zh": "页面"
+  },
+  "tools.rotatePdf.angle": {
+    "en": "Angle",
+    "zh": "旋转角度"
+  },
+  "tools.combineSinglePage.orientation": {
+    "en": "Orientation",
+    "zh": "方向"
+  },
+  "tools.txtToPdf.orientation": {
+    "en": "Orientation",
+    "zh": "方向"
+  },
+  "tools.txtToPdf.portrait": {
+    "en": "Portrait",
+    "zh": "纵向"
+  },
+  "tools.pdfToSvg.previewPage": {
+    "en": "Page",
+    "zh": "页面"
+  },
+  "tools.pageDimensions.page": {
+    "en": "Page",
+    "zh": "页面"
+  },
+  "tools.pageDimensions.orientation": {
+    "en": "Orientation",
+    "zh": "方向"
+  },
+  "tools.removeRestrictions.optionsTitle": {
+    "en": "Options",
+    "zh": "选项"
+  },
+  "tools.fixPageSize.orientPortrait": {
+    "en": "Portrait",
+    "zh": "纵向"
+  },
+  "tools.bookmark.page": {
+    "en": "Page",
+    "zh": "页码"
+  },
+  "tools.bookmark.style": {
+    "en": "Style",
+    "zh": "样式"
+  },
+  "tools.pageNumbers.styleTitle": {
+    "en": "Style",
+    "zh": "样式"
+  },
+  "tools.pageNumbers.style": {
+    "en": "Style",
+    "zh": "样式"
+  },
+  "tools.pageNumbers.oddPositionHint": {
+    "en": "Pages 1, 3, 5...",
+    "zh": "第1、3、5...页"
+  },
+  "tools.pageNumbers.evenPositionHint": {
+    "en": "Pages 2, 4, 6...",
+    "zh": "第2、4、6...页"
+  },
+  "tools.watermark.type": {
+    "en": "Type",
+    "zh": "类型"
+  },
+  "tools.watermark.angle": {
+    "en": "Angle",
+    "zh": "角度"
+  },
+  "tools.headerFooter.styleTitle": {
+    "en": "Style",
+    "zh": "样式"
+  }
+}

@@ -124,45 +124,70 @@ export class SplitPDFProcessor extends BasePDFProcessor {
       const outputFilenames: string[] = [];
       const progressPerRange = 75 / splitOptions.ranges.length;
 
-      for (let i = 0; i < splitOptions.ranges.length; i++) {
-        if (this.checkCancelled()) {
-          return this.createErrorOutput(
-            PDFErrorCode.PROCESSING_CANCELLED,
-            'Processing was cancelled.'
+      // Try to use PyMuPDF for high-fidelity splitting if possible
+      // This preserves fonts and complex structures better than pdf-lib
+      try {
+        const { loadPyMuPDF } = await import('../pymupdf-loader');
+        const pymupdf = await loadPyMuPDF();
+        
+        if (pymupdf && typeof pymupdf.splitPdf === 'function') {
+          this.updateProgress(20, 'Using high-fidelity engine for splitting...');
+          const blobs = await pymupdf.splitPdf(file, splitOptions.ranges);
+          
+          for (let i = 0; i < blobs.length; i++) {
+            const range = splitOptions.ranges[i];
+            outputBlobs.push(blobs[i]);
+            const filename = generateSplitFilename(file.name, range, i + 1, splitOptions.ranges.length);
+            outputFilenames.push(filename);
+            this.updateProgress(20 + (i + 1) * progressPerRange, `Processed part ${i + 1} of ${blobs.length}`);
+          }
+        } else {
+          throw new Error('PyMuPDF split not available');
+        }
+      } catch (pymupdfErr) {
+        console.warn('PyMuPDF split failed or not available, falling back to pdf-lib:', pymupdfErr);
+        
+        // Fallback to pdf-lib (original logic)
+        for (let i = 0; i < splitOptions.ranges.length; i++) {
+          if (this.checkCancelled()) {
+            return this.createErrorOutput(
+              PDFErrorCode.PROCESSING_CANCELLED,
+              'Processing was cancelled.'
+            );
+          }
+
+          const range = splitOptions.ranges[i];
+          const rangeProgress = 15 + (i * progressPerRange);
+
+          this.updateProgress(
+            rangeProgress,
+            `Extracting pages ${range.start}-${range.end}...`
           );
+
+          // Create a new PDF for this range
+          const newPdf = await pdfLib.PDFDocument.create();
+
+          // Get page indices (0-based)
+          const pageIndices: number[] = [];
+          for (let pageNum = range.start; pageNum <= range.end; pageNum++) {
+            pageIndices.push(pageNum - 1); // Convert to 0-based index
+          }
+
+          // Copy pages from source to new document
+          const copiedPages = await newPdf.copyPages(sourcePdf, pageIndices);
+          for (const page of copiedPages) {
+            newPdf.addPage(page);
+          }
+
+          // Save the new PDF
+          const pdfBytes = await newPdf.save({ useObjectStreams: true });
+          const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
+          outputBlobs.push(blob);
+
+          // Generate filename for this range
+          const filename = generateSplitFilename(file.name, range, i + 1, splitOptions.ranges.length);
+          outputFilenames.push(filename);
         }
-
-        const range = splitOptions.ranges[i];
-        const rangeProgress = 15 + (i * progressPerRange);
-
-        this.updateProgress(
-          rangeProgress,
-          `Extracting pages ${range.start}-${range.end}...`
-        );
-
-        // Create a new PDF for this range
-        const newPdf = await pdfLib.PDFDocument.create();
-
-        // Get page indices (0-based)
-        const pageIndices: number[] = [];
-        for (let pageNum = range.start; pageNum <= range.end; pageNum++) {
-          pageIndices.push(pageNum - 1); // Convert to 0-based index
-        }
-
-        // Copy pages from source to new document
-        const copiedPages = await newPdf.copyPages(sourcePdf, pageIndices);
-        for (const page of copiedPages) {
-          newPdf.addPage(page);
-        }
-
-        // Save the new PDF
-        const pdfBytes = await newPdf.save({ useObjectStreams: true });
-        const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
-        outputBlobs.push(blob);
-
-        // Generate filename for this range
-        const filename = generateSplitFilename(file.name, range, i + 1, splitOptions.ranges.length);
-        outputFilenames.push(filename);
       }
 
       this.updateProgress(95, 'Finalizing...');

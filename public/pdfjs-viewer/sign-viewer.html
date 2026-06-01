@@ -194,10 +194,10 @@
   </div>
 
   <script type="module">
-    import * as pdfjsLib from './pdf.mjs';
-    import { EventBus, PDFViewer, PDFLinkService } from './pdf_viewer.mjs';
+    import * as pdfjsLib from './pdf.js';
+    import { EventBus, PDFViewer, PDFLinkService } from './pdf_viewer.js';
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.js';
 
     const eventBus = new EventBus();
     const linkService = new PDFLinkService({ eventBus });

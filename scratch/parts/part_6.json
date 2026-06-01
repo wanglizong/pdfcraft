@@ -1,0 +1,322 @@
+{
+  "tools.pdfToZip.filename": {
+    "en": "Output Filename",
+    "zh": "Output Filename"
+  },
+  "tools.pdfToZip.filenamePlaceholder": {
+    "en": "e.g., pdfs.zip",
+    "zh": "e.g., pdfs.zip"
+  },
+  "tools.pdfToZip.compressionFast": {
+    "en": "Fast (low compression)",
+    "zh": "Fast (low compression)"
+  },
+  "tools.pdfToZip.compressionNormal": {
+    "en": "Normal (balanced)",
+    "zh": "Normal (balanced)"
+  },
+  "tools.pdfToZip.compressionMax": {
+    "en": "Maximum (smallest file)",
+    "zh": "Maximum (smallest file)"
+  },
+  "tools.pdfToZip.noCompression": {
+    "en": "No compression (fastest)",
+    "zh": "不压缩（最快）"
+  },
+  "tools.pdfToZip.lowCompression": {
+    "en": "Low compression (fast)",
+    "zh": "低压缩（快速）"
+  },
+  "tools.pdfToZip.mediumCompression": {
+    "en": "Medium compression (balanced)",
+    "zh": "中等压缩（平衡）"
+  },
+  "tools.pdfToZip.highCompression": {
+    "en": "High compression (smaller file)",
+    "zh": "高压缩（文件更小）"
+  },
+  "tools.pdfToZip.createButton": {
+    "en": "Create ZIP Archive",
+    "zh": "创建ZIP压缩包"
+  },
+  "tools.pdfToZip.successMessage": {
+    "en": "Successfully packaged PDF files into a ZIP archive. Click the download button to save your file.",
+    "zh": "PDF文件已成功打包为ZIP压缩包。点击下载按钮保存文件。"
+  },
+  "tools.textToPdf.uploadLabel": {
+    "en": "Upload Text Files",
+    "zh": "上传文本文件"
+  },
+  "tools.textToPdf.uploadDescription": {
+    "en": "Drag and drop text files here, or click to browse.",
+    "zh": "拖放文本文件到此处，或点击浏览。"
+  },
+  "tools.textToPdf.filesTitle": {
+    "en": "Text Files",
+    "zh": "文本文件"
+  },
+  "tools.textToPdf.optionsTitle": {
+    "en": "PDF Options",
+    "zh": "PDF选项"
+  },
+  "tools.textToPdf.fontFamily": {
+    "en": "Font",
+    "zh": "字体"
+  },
+  "tools.textToPdf.lineHeight": {
+    "en": "Line Spacing",
+    "zh": "行距"
+  },
+  "tools.textToPdf.preserveLineBreaks": {
+    "en": "Preserve line breaks",
+    "zh": "保留换行符"
+  },
+  "tools.textToPdf.wrapLines": {
+    "en": "Wrap long lines",
+    "zh": "自动换行"
+  },
+  "tools.textToPdf.successMessage": {
+    "en": "Text converted to PDF successfully! Click the download button to save your file.",
+    "zh": "文本已成功转换为PDF！点击下载按钮保存文件。"
+  },
+  "tools.txtToPdf.uploadLabel": {
+    "en": "Upload Text Files",
+    "zh": "上传文本文件"
+  },
+  "tools.txtToPdf.uploadDescription": {
+    "en": "Drag and drop text files here, or click to browse.",
+    "zh": "拖放文本文件到此处，或点击浏览。"
+  },
+  "tools.txtToPdf.filesTitle": {
+    "en": "Text Files",
+    "zh": "文本文件"
+  },
+  "tools.txtToPdf.optionsTitle": {
+    "en": "PDF Options",
+    "zh": "PDF选项"
+  },
+  "tools.txtToPdf.fontFamily": {
+    "en": "Font Family",
+    "zh": "字体"
+  },
+  "tools.txtToPdf.lineHeight": {
+    "en": "Line Spacing",
+    "zh": "行距"
+  },
+  "tools.txtToPdf.preserveLineBreaks": {
+    "en": "Preserve line breaks",
+    "zh": "保留换行符"
+  },
+  "tools.txtToPdf.wrapLines": {
+    "en": "Wrap long lines",
+    "zh": "自动换行"
+  },
+  "tools.txtToPdf.successMessage": {
+    "en": "Text converted to PDF successfully! Click the download button to save your file.",
+    "zh": "文本已成功转换为PDF！点击下载按钮保存文件。"
+  },
+  "tools.txtToPdf.modeUpload": {
+    "en": "Upload Files",
+    "zh": "上传文件"
+  },
+  "tools.txtToPdf.modeText": {
+    "en": "Enter Text",
+    "zh": "输入文本"
+  },
+  "tools.txtToPdf.enterText": {
+    "en": "Enter Text",
+    "zh": "输入文本"
+  },
+  "tools.txtToPdf.textPlaceholder": {
+    "en": "Type or paste your text here...",
+    "zh": "在此输入或粘贴文本..."
+  },
+  "tools.txtToPdf.characters": {
+    "en": "characters",
+    "zh": "字符"
+  },
+  "tools.txtToPdf.noTextError": {
+    "en": "Please enter some text to convert.",
+    "zh": "请输入要转换的文本。"
+  },
+  "tools.txtToPdf.noFilesError": {
+    "en": "Please add at least 1 text file.",
+    "zh": "请至少添加1个文本文件。"
+  },
+  "tools.txtToPdf.width": {
+    "en": "Width (pt)",
+    "zh": "宽度（点）"
+  },
+  "tools.txtToPdf.height": {
+    "en": "Height (pt)",
+    "zh": "高度（点）"
+  },
+  "tools.txtToPdf.single": {
+    "en": "Single",
+    "zh": "单倍"
+  },
+  "tools.txtToPdf.double": {
+    "en": "Double",
+    "zh": "双倍"
+  },
+  "tools.txtToPdf.selectLanguages": {
+    "en": "Select Languages",
+    "zh": "选择语言"
+  },
+  "tools.txtToPdf.selectLanguagesPlaceholder": {
+    "en": "Select languages...",
+    "zh": "选择语言..."
+  },
+  "tools.txtToPdf.searchLanguages": {
+    "en": "Search languages...",
+    "zh": "搜索语言..."
+  },
+  "tools.txtToPdf.languageHint": {
+    "en": "Select languages used in your text for proper font support",
+    "zh": "选择文本中使用的语言以获得正确的字体支持"
+  },
+  "tools.jsonToPdf.uploadLabel": {
+    "en": "Upload JSON File",
+    "zh": "上传JSON文件"
+  },
+  "tools.jsonToPdf.uploadDescription": {
+    "en": "Drag and drop a JSON file.",
+    "zh": "拖放JSON文件到此处。"
+  },
+  "tools.jsonToPdf.successMessage": {
+    "en": "JSON converted to PDF successfully!",
+    "zh": "JSON已成功转换为PDF！"
+  },
+  "tools.pdfToGreyscale.uploadDescription": {
+    "en": "Drag and drop a PDF file to convert to greyscale.",
+    "zh": "拖放PDF文件到此处转换为灰度。"
+  },
+  "tools.pdfToGreyscale.optionsTitle": {
+    "en": "Greyscale Options",
+    "zh": "灰度选项"
+  },
+  "tools.pdfToGreyscale.method": {
+    "en": "Conversion Method",
+    "zh": "转换方法"
+  },
+  "tools.pdfToGreyscale.methodLuminosity": {
+    "en": "Luminosity (Recommended)",
+    "zh": "亮度法（推荐）"
+  },
+  "tools.pdfToGreyscale.methodAverage": {
+    "en": "Average",
+    "zh": "平均法"
+  },
+  "tools.pdfToGreyscale.methodLightness": {
+    "en": "Lightness",
+    "zh": "明度法"
+  },
+  "tools.pdfToGreyscale.qualityLow": {
+    "en": "Low (Faster)",
+    "zh": "低（更快）"
+  },
+  "tools.pdfToGreyscale.qualityMedium": {
+    "en": "Medium (Recommended)",
+    "zh": "中（推荐）"
+  },
+  "tools.pdfToGreyscale.qualityHigh": {
+    "en": "High (Slower)",
+    "zh": "高（较慢）"
+  },
+  "tools.pdfToGreyscale.convertButton": {
+    "en": "Convert to Greyscale",
+    "zh": "转换为灰度"
+  },
+  "tools.pdfToGreyscale.successMessage": {
+    "en": "PDF converted to greyscale successfully!",
+    "zh": "PDF已成功转换为灰度！"
+  },
+  "tools.pdfToJson.optionsTitle": {
+    "en": "Extraction Options",
+    "zh": "提取选项"
+  },
+  "tools.pdfToJson.includeText": {
+    "en": "Include Text",
+    "zh": "包含文本"
+  },
+  "tools.pdfToJson.includeMetadata": {
+    "en": "Include Metadata",
+    "zh": "包含元数据"
+  },
+  "tools.pdfToJson.includePageInfo": {
+    "en": "Include Page Info",
+    "zh": "包含页面信息"
+  },
+  "tools.pdfToJson.includeOutline": {
+    "en": "Include Outline",
+    "zh": "包含大纲"
+  },
+  "tools.pdfToJson.prettyPrint": {
+    "en": "Pretty Print",
+    "zh": "格式化输出"
+  },
+  "tools.pdfToJson.previewTitle": {
+    "en": "JSON Preview",
+    "zh": "JSON预览"
+  },
+  "tools.pdfToJson.convertButton": {
+    "en": "Extract to JSON",
+    "zh": "提取为JSON"
+  },
+  "tools.pdfToJson.successMessage": {
+    "en": "PDF extracted to JSON successfully! Click the download button to save your file.",
+    "zh": "PDF已成功提取为JSON！点击下载按钮保存文件。"
+  },
+  "tools.ocrPdf.uploadDescription": {
+    "en": "Drag and drop a scanned PDF file here, or click to browse.",
+    "zh": "拖放扫描的PDF文件到此处，或点击浏览。"
+  },
+  "tools.ocrPdf.optionsTitle": {
+    "en": "OCR Options",
+    "zh": "OCR选项"
+  },
+  "tools.ocrPdf.languages": {
+    "en": "Languages",
+    "zh": "语言"
+  },
+  "tools.ocrPdf.languagesHint": {
+    "en": "Select one or more languages for better accuracy",
+    "zh": "选择一种或多种语言以提高准确性"
+  },
+  "tools.ocrPdf.formatText": {
+    "en": "Text File (.txt)",
+    "zh": "文本文件 (.txt)"
+  },
+  "tools.ocrPdf.formatPdf": {
+    "en": "Searchable PDF",
+    "zh": "可搜索PDF"
+  },
+  "tools.ocrPdf.qualityLow": {
+    "en": "Low (Faster)",
+    "zh": "低（更快）"
+  },
+  "tools.ocrPdf.qualityMedium": {
+    "en": "Medium (Recommended)",
+    "zh": "中（推荐）"
+  },
+  "tools.ocrPdf.qualityHigh": {
+    "en": "High (Slower)",
+    "zh": "高（较慢）"
+  },
+  "tools.ocrPdf.processButton": {
+    "en": "Start OCR",
+    "zh": "开始OCR"
+  },
+  "tools.ocrPdf.previewTitle": {
+    "en": "Extracted Text Preview",
+    "zh": "提取文本预览"
+  },
+  "tools.ocrPdf.successMessage": {
+    "en": "OCR completed successfully! Click the download button to save your file.",
+    "zh": "OCR完成！点击下载按钮保存文件。"
+  },
+  "tools.ocrPdf.infoTitle": {
+    "en": "About OCR",
+    "zh": "关于OCR"
+  }
+}

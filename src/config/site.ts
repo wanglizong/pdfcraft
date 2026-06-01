@@ -2,15 +2,15 @@
  * Site configuration
  */
 export const siteConfig = {
-  name: 'Hello PDF',
+  name: 'PDFCraft',
   description: 'Professional PDF Tools - Free, Private & Browser-Based. Merge, split, compress, convert, and edit PDF files online without uploading to servers.',
-  url: 'https://hello-pdf.com',
+  url: 'https://pdfcraft.devtoolcafe.com',
   ogImage: '/images/og-image.png',
   links: {
-    github: '',
-    twitter: '',
+    github: 'https://github.com/PDFCraftTool/pdfcraft',
+    twitter: 'https://twitter.com/pdfcraft',
   },
-  creator: 'Hello PDF',
+  creator: 'PDFCraft Team',
   keywords: [
     'PDF tools',
     'PDF editor',
@@ -25,8 +25,8 @@ export const siteConfig = {
   ],
   // SEO-related settings
   seo: {
-    titleTemplate: '%s | Hello PDF',
-    defaultTitle: 'Hello PDF -Professional PDF Tools',
+    titleTemplate: '%s | PDFCraft',
+    defaultTitle: 'PDFCraft - Professional PDF Tools',
     twitterHandle: '@pdfcraft',
     locale: 'en_US',
   },

@@ -1,0 +1,59 @@
+{
+  "title": "Combine to Single Page",
+  "metaDescription": "Stitch PDF pages into one continuous page. Create scrollable single-page documents.",
+  "keywords": [
+    "combine pages",
+    "single page pdf",
+    "stitch pages",
+    "continuous scroll"
+  ],
+  "description": "\n      <p>Combine to Single Page stitches all PDF pages into one continuous page. Create scrollable documents perfect for web viewing or continuous reading.</p>\n      <p>Pages are joined vertically with customizable spacing. The result is a single long page containing all content.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Set Spacing",
+      "description": "Choose the gap between stitched pages."
+    },
+    {
+      "step": 3,
+      "title": "Combine and Download",
+      "description": "Click Combine to create the single-page PDF."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Web Documents",
+      "description": "Create scrollable PDFs for web embedding.",
+      "icon": "globe"
+    },
+    {
+      "title": "Continuous Reading",
+      "description": "Convert paginated documents to continuous scroll.",
+      "icon": "scroll"
+    },
+    {
+      "title": "Long-Form Content",
+      "description": "Combine pages for seamless long-form reading.",
+      "icon": "file-text"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is there a page limit?",
+      "answer": "Very long documents may be limited by browser memory."
+    },
+    {
+      "question": "Can I add separators between pages?",
+      "answer": "Yes, you can add spacing or lines between original pages."
+    },
+    {
+      "question": "Will this work for printing?",
+      "answer": "The result is best for screen viewing; use N-Up for print layouts."
+    }
+  ]
+}

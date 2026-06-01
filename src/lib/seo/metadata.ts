@@ -9,6 +9,7 @@ import type { Metadata } from 'next';
 import { siteConfig } from '@/config/site';
 import { type Locale, localeConfig, locales } from '@/lib/i18n/config';
 import type { Tool, ToolContent } from '@/types/tool';
+import { getBasePath } from '@/lib/utils/path';
 
 /**
  * Base metadata configuration
@@ -42,7 +43,8 @@ export interface ToolMetadataOptions extends BaseMetadataOptions {
  */
 export function getCanonicalUrl(locale: Locale, path: string = ''): string {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `${siteConfig.url}/${locale}${cleanPath}`;
+  const basePath = getBasePath().replace(/\/$/, '');
+  return `${siteConfig.url}${basePath}/${locale}${cleanPath}`;
 }
 
 /**
@@ -51,13 +53,14 @@ export function getCanonicalUrl(locale: Locale, path: string = ''): string {
 export function getAlternateUrls(path: string = ''): Record<string, string> {
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
   const alternates: Record<string, string> = {};
+  const basePath = getBasePath().replace(/\/$/, '');
 
   for (const locale of locales) {
-    alternates[locale] = `${siteConfig.url}/${locale}${cleanPath}`;
+    alternates[locale] = `${siteConfig.url}${basePath}/${locale}${cleanPath}`;
   }
 
   // Add x-default pointing to English
-  alternates['x-default'] = `${siteConfig.url}/en${cleanPath}`;
+  alternates['x-default'] = `${siteConfig.url}${basePath}/en${cleanPath}`;
 
   return alternates;
 }
@@ -265,6 +268,7 @@ export function getOpenGraphLocale(locale: Locale): string {
     it: 'it_IT',
     id: 'id_ID',
     vi: 'vi_VN',
+    ro: 'ro_RO',
   };
   return ogLocaleMap[locale] || 'en_US';
 }

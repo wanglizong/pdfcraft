@@ -1,0 +1,60 @@
+{
+  "title": "MOBI to PDF",
+  "metaDescription": "Convert MOBI e-books to PDF. Support for Kindle format with high-quality rendering.",
+  "keywords": [
+    "mobi to pdf",
+    "convert mobi",
+    "kindle to pdf",
+    "azw to pdf",
+    "mobi converter"
+  ],
+  "description": "\n      <p>MOBI to PDF converts Amazon Kindle e-book files into high-quality PDF documents. MOBI format (including AZW and AZW3) is Amazon's proprietary e-book format used on Kindle devices.</p>\n      <p>This tool preserves text formatting, images, and the structure of your Kindle books. Perfect for printing, archiving, or reading on devices that don't support MOBI format.</p>\n      <p>All conversion happens locally in your browser using advanced rendering technology, ensuring your books remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload MOBI File",
+      "description": "Drag and drop your .mobi, .azw, or .azw3 file or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Wait for Conversion",
+      "description": "The tool will render and convert all pages of your e-book."
+    },
+    {
+      "step": 3,
+      "title": "Download PDF",
+      "description": "Click Download to save your converted PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Print Kindle Books",
+      "description": "Convert Kindle e-books to PDF for physical printing.",
+      "icon": "printer"
+    },
+    {
+      "title": "Archive Books",
+      "description": "Store Kindle books in universal PDF format.",
+      "icon": "archive"
+    },
+    {
+      "title": "Cross-Device Reading",
+      "description": "Read Kindle books on devices that only support PDF.",
+      "icon": "tablet-smartphone"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What MOBI formats are supported?",
+      "answer": "This tool supports .mobi, .azw, and .azw3 files (non-DRM versions)."
+    },
+    {
+      "question": "Are DRM-protected Kindle books supported?",
+      "answer": "No, DRM-protected e-books cannot be converted. Only DRM-free files are supported."
+    },
+    {
+      "question": "Will my formatting be preserved?",
+      "answer": "Yes! The tool uses native MOBI rendering to preserve text, images, and layout."
+    }
+  ]
+}

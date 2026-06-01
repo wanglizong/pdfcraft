@@ -1,0 +1,59 @@
+{
+  "title": "Extract Attachments",
+  "metaDescription": "Extract embedded files from PDFs. Download all attachments from PDF documents.",
+  "keywords": [
+    "extract attachments",
+    "pdf attachments",
+    "download embedded files",
+    "pdf extraction"
+  ],
+  "description": "\n      <p>Extract Attachments retrieves all embedded files from PDF documents. Download attachments individually or as a ZIP archive containing all files.</p>\n      <p>Perfect for accessing source files, data, or supplementary materials embedded in PDF packages.</p>\n      <p>All extraction happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "View Attachments",
+      "description": "See a list of all embedded files in the PDF."
+    },
+    {
+      "step": 3,
+      "title": "Extract and Download",
+      "description": "Download individual files or all as a ZIP."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Access Source Files",
+      "description": "Extract original data files from PDF reports.",
+      "icon": "download"
+    },
+    {
+      "title": "Recover Attachments",
+      "description": "Retrieve embedded files from PDF packages.",
+      "icon": "folder-open"
+    },
+    {
+      "title": "Batch Extraction",
+      "description": "Extract attachments from multiple PDFs at once.",
+      "icon": "layers"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What if there are no attachments?",
+      "answer": "The tool will indicate if no embedded files are found."
+    },
+    {
+      "question": "Are all attachment types supported?",
+      "answer": "Yes, all embedded file types can be extracted."
+    },
+    {
+      "question": "Can I extract from multiple PDFs?",
+      "answer": "Yes, you can process multiple PDFs and download all attachments."
+    }
+  ]
+}

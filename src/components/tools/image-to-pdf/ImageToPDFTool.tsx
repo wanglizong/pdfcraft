@@ -8,6 +8,7 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { imagesToPDF, imagesToPDFBatch, PAGE_SIZES, type PageSizeType, type ImageToPDFOptions, type BatchExportResult } from '@/lib/pdf/processors/image-to-pdf';
+import { Select } from '@/components/ui/FormField';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
 /**
@@ -410,11 +411,10 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
               <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
                 {tTools('imageToPdf.pageSize') || 'Page Size'}
               </label>
-              <select
+              <Select
                 value={pageSize}
                 onChange={(e) => setPageSize(e.target.value as PageSizeType)}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
               >
                 <option value="A4">A4</option>
                 <option value="LETTER">Letter</option>
@@ -422,7 +422,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                 <option value="A3">A3</option>
                 <option value="A5">A5</option>
                 <option value="FIT">Fit to Image</option>
-              </select>
+              </Select>
             </div>
 
             {/* Orientation */}
@@ -430,16 +430,15 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
               <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
                 {tTools('imageToPdf.orientation') || 'Orientation'}
               </label>
-              <select
+              <Select
                 value={orientation}
                 onChange={(e) => setOrientation(e.target.value as 'portrait' | 'landscape' | 'auto')}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
               >
                 <option value="auto">{tTools('imageToPdf.orientationAuto') || 'Auto (match image)'}</option>
                 <option value="portrait">{tTools('imageToPdf.orientationPortrait') || 'Portrait'}</option>
                 <option value="landscape">{tTools('imageToPdf.orientationLandscape') || 'Landscape'}</option>
-              </select>
+              </Select>
             </div>
 
             {/* Margin */}
@@ -447,17 +446,16 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
               <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
                 {tTools('imageToPdf.margin') || 'Margin'}
               </label>
-              <select
+              <Select
                 value={margin}
                 onChange={(e) => setMargin(Number(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
               >
                 <option value="0">{tTools('imageToPdf.marginNone') || 'None'}</option>
                 <option value="18">{tTools('imageToPdf.marginSmall') || 'Small (0.25")'}</option>
                 <option value="36">{tTools('imageToPdf.marginMedium') || 'Medium (0.5")'}</option>
                 <option value="72">{tTools('imageToPdf.marginLarge') || 'Large (1")'}</option>
-              </select>
+              </Select>
             </div>
           </div>
 
@@ -517,7 +515,7 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
                     value={imagesPerPdf}
                     onChange={(e) => setImagesPerPdf(Math.max(1, Math.min(files.length, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-24 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                    className="w-24 px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
                   />
                   <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
                     {tTools('imageToPdf.batchModeHint', { pdfCount: Math.ceil(files.length / imagesPerPdf) }) ||
@@ -534,17 +532,17 @@ export function ImageToPDFTool({ className = '', imageType }: ImageToPDFToolProp
               <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
                 {tTools('imageToPdf.svgQuality') || 'SVG Export Quality'}
               </label>
-              <select
+              <Select
                 value={svgScale}
                 onChange={(e) => setSvgScale(Number(e.target.value))}
                 disabled={isProcessing}
-                className="w-full sm:w-auto px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                className="w-full sm:w-auto"
               >
                 <option value="1">{tTools('imageToPdf.svgQualityLow') || 'Low (1x - smaller file)'}</option>
                 <option value="2">{tTools('imageToPdf.svgQualityMedium') || 'Medium (2x - balanced)'}</option>
                 <option value="3">{tTools('imageToPdf.svgQualityHigh') || 'High (3x - better quality)'}</option>
                 <option value="4">{tTools('imageToPdf.svgQualityVeryHigh') || 'Very High (4x - best quality)'}</option>
-              </select>
+              </Select>
               <p className="mt-1 text-xs text-[hsl(var(--color-muted-foreground))]">
                 {tTools('imageToPdf.svgQualityHint') || 'Higher quality produces sharper images but larger file sizes.'}
               </p>

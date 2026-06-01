@@ -1,0 +1,322 @@
+{
+  "tools.posterizePdf.createButton": {
+    "en": "Posterize PDF",
+    "zh": "海报化PDF"
+  },
+  "tools.posterizePdf.successMessage": {
+    "en": "PDF posterized successfully! Click the download button to save your file.",
+    "zh": "PDF海报化成功！点击下载按钮保存文件。"
+  },
+  "tools.digitalSign.uploadLabel": {
+    "en": "Upload PDF to Sign",
+    "zh": "上传要签名的 PDF"
+  },
+  "tools.digitalSign.certificateTitle": {
+    "en": "Certificate",
+    "zh": "证书"
+  },
+  "tools.digitalSign.uploadCertificateLabel": {
+    "en": "Upload Certificate (.pfx, .p12, or .pem)",
+    "zh": "上传证书（.pfx, .p12, 或 .pem）"
+  },
+  "tools.digitalSign.certificateLoaded": {
+    "en": "Certificate loaded",
+    "zh": "证书已加载"
+  },
+  "tools.digitalSign.enterPassword": {
+    "en": "Enter password to unlock",
+    "zh": "输入密码以解锁"
+  },
+  "tools.digitalSign.certificatePasswordLabel": {
+    "en": "Certificate Password",
+    "zh": "证书密码"
+  },
+  "tools.digitalSign.unlockButton": {
+    "en": "Unlock",
+    "zh": "解锁"
+  },
+  "tools.digitalSign.issuer": {
+    "en": "Issuer",
+    "zh": "颁发者"
+  },
+  "tools.digitalSign.valid": {
+    "en": "Valid",
+    "zh": "有效期"
+  },
+  "tools.digitalSign.warningExpired": {
+    "en": "Warning: Certificate is expired or not yet valid. Signing may still work but the signature will show as invalid.",
+    "zh": "警告：证书已过期或尚未生效。签名可能仍然有效，但显示为无效。"
+  },
+  "tools.digitalSign.signatureOptionsTitle": {
+    "en": "Signature Options",
+    "zh": "签名选项"
+  },
+  "tools.digitalSign.reasonLabel": {
+    "en": "Reason",
+    "zh": "原因"
+  },
+  "tools.digitalSign.reasonPlaceholder": {
+    "en": "e.g., Document approval",
+    "zh": "例如：文件审批"
+  },
+  "tools.digitalSign.locationLabel": {
+    "en": "Location",
+    "zh": "地点"
+  },
+  "tools.digitalSign.locationPlaceholder": {
+    "en": "e.g., New York, USA",
+    "zh": "例如：北京，中国"
+  },
+  "tools.digitalSign.contactInfoLabel": {
+    "en": "Contact Info",
+    "zh": "联系信息"
+  },
+  "tools.digitalSign.contactInfoPlaceholder": {
+    "en": "e.g., email@example.com",
+    "zh": "例如：email@example.com"
+  },
+  "tools.digitalSign.visibleSignatureLabel": {
+    "en": "Add visible signature",
+    "zh": "添加可见签名"
+  },
+  "tools.digitalSign.xPosition": {
+    "en": "X Position",
+    "zh": "X 坐标"
+  },
+  "tools.digitalSign.yPosition": {
+    "en": "Y Position",
+    "zh": "Y 坐标"
+  },
+  "tools.digitalSign.firstPage": {
+    "en": "First Page",
+    "zh": "第一页"
+  },
+  "tools.digitalSign.lastPage": {
+    "en": "Last Page",
+    "zh": "最后一页"
+  },
+  "tools.digitalSign.signatureImageLabel": {
+    "en": "Signature Image (optional, PNG/JPEG)",
+    "zh": "签名图片（可选，PNG/JPEG）"
+  },
+  "tools.digitalSign.signatureTextLabel": {
+    "en": "Signature Text (optional, auto-generated if empty)",
+    "zh": "签名文本（可选，留空自动生成）"
+  },
+  "tools.digitalSign.signatureTextPlaceholder": {
+    "en": "Auto-generated if empty",
+    "zh": "留空自动生成"
+  },
+  "tools.digitalSign.textSizeLabel": {
+    "en": "Text Size",
+    "zh": "文本大小"
+  },
+  "tools.digitalSign.signButton": {
+    "en": "Sign PDF",
+    "zh": "签名 PDF"
+  },
+  "tools.digitalSign.successMessage": {
+    "en": "PDF signed successfully! The signature can be verified in any PDF reader.",
+    "zh": "PDF 签名成功！可以在任何 PDF 阅读器中验证签名。"
+  },
+  "tools.digitalSign.errorFetch": {
+    "en": "Failed to fetch certificate chain. Check your internet connection and try again.",
+    "zh": "获取证书链失败。请检查网络连接并重试。"
+  },
+  "tools.digitalSign.errorParse": {
+    "en": "Failed to parse certificate",
+    "zh": "解析证书失败"
+  },
+  "tools.digitalSign.errorPEM": {
+    "en": "Failed to read PEM file.",
+    "zh": "读取 PEM 文件失败。"
+  },
+  "tools.digitalSign.errorType": {
+    "en": "Please select a .pfx, .p12, or .pem file.",
+    "zh": "请选择 .pfx, .p12, 或 .pem 文件。"
+  },
+  "tools.digitalSign.errorImgType": {
+    "en": "Please select a PNG or JPEG image.",
+    "zh": "请选择 PNG 或 JPEG 图片。"
+  },
+  "tools.validateSign.uploadLabel": {
+    "en": "Upload Signed PDF",
+    "zh": "上传已签名的 PDF"
+  },
+  "tools.validateSign.uploadDescription": {
+    "en": "Drag and drop a signed PDF file here, or click to browse.",
+    "zh": "将已签名的 PDF 文件拖放到此处，或点击浏览。"
+  },
+  "tools.validateSign.trustedCertTitle": {
+    "en": "Trusted Certificate (Optional)",
+    "zh": "受信任证书（可选）"
+  },
+  "tools.validateSign.trustedCertDescription": {
+    "en": "Upload a trusted CA certificate to verify the signature chain.",
+    "zh": "上传受信任的 CA 证书以验证签名链。"
+  },
+  "tools.validateSign.trustedCertLoaded": {
+    "en": "Trusted certificate loaded: {name}",
+    "zh": "受信任证书已加载：{name}"
+  },
+  "tools.validateSign.analyzing": {
+    "en": "Analyzing signatures...",
+    "zh": "正在分析签名..."
+  },
+  "tools.validateSign.noSignaturesTitle": {
+    "en": "No Signatures Found",
+    "zh": "未找到签名"
+  },
+  "tools.validateSign.noSignaturesDescription": {
+    "en": "This PDF does not contain any digital signatures.",
+    "zh": "此 PDF 不包含任何数字签名。"
+  },
+  "tools.validateSign.signaturesFound": {
+    "en": "{count} signatures found",
+    "zh": "找到 {count} 个签名"
+  },
+  "tools.validateSign.validCount": {
+    "en": "{count} valid",
+    "zh": "{count} 个有效"
+  },
+  "tools.validateSign.trustedCount": {
+    "en": "{count}/{total} trusted",
+    "zh": "{count}/{total} 个受信任"
+  },
+  "tools.validateSign.validSignature": {
+    "en": "Valid Signature",
+    "zh": "签名有效"
+  },
+  "tools.validateSign.invalidSignature": {
+    "en": "Invalid Signature",
+    "zh": "签名无效"
+  },
+  "tools.validateSign.certificateExpired": {
+    "en": "Certificate Expired",
+    "zh": "证书已过期"
+  },
+  "tools.validateSign.selfSigned": {
+    "en": "Self-Signed Certificate",
+    "zh": "自签名证书"
+  },
+  "tools.validateSign.fullCoverage": {
+    "en": "Full Coverage",
+    "zh": "完全覆盖"
+  },
+  "tools.validateSign.partialCoverage": {
+    "en": "Partial Coverage",
+    "zh": "部分覆盖"
+  },
+  "tools.validateSign.trusted": {
+    "en": "Trusted",
+    "zh": "受信任"
+  },
+  "tools.validateSign.notTrusted": {
+    "en": "Not in trust chain",
+    "zh": "不在信任链中"
+  },
+  "tools.validateSign.signedBy": {
+    "en": "Signed By",
+    "zh": "签名者"
+  },
+  "tools.validateSign.issuer": {
+    "en": "Issuer",
+    "zh": "颁发者"
+  },
+  "tools.validateSign.signedOn": {
+    "en": "Signed On",
+    "zh": "签名时间"
+  },
+  "tools.validateSign.validFrom": {
+    "en": "Valid From",
+    "zh": "有效期始于"
+  },
+  "tools.validateSign.validUntil": {
+    "en": "Valid Until",
+    "zh": "有效期至"
+  },
+  "tools.validateSign.reason": {
+    "en": "Reason",
+    "zh": "原因"
+  },
+  "tools.validateSign.location": {
+    "en": "Location",
+    "zh": "地点"
+  },
+  "tools.validateSign.technicalDetails": {
+    "en": "Technical Details",
+    "zh": "技术细节"
+  },
+  "tools.validateSign.serialNumber": {
+    "en": "Serial Number",
+    "zh": "序列号"
+  },
+  "tools.validateSign.digestAlgorithm": {
+    "en": "Digest Algorithm",
+    "zh": "摘要算法"
+  },
+  "tools.validateSign.signatureAlgorithm": {
+    "en": "Signature Algorithm",
+    "zh": "签名算法"
+  },
+  "tools.validateSign.errorType": {
+    "en": "Please select a .pem, .crt, .cer, or .der certificate file.",
+    "zh": "请选择 .pem, .crt, .cer, 或 .der 证书文件。"
+  },
+  "tools.viewMetadata.uploadDescription": {
+    "en": "Drag and drop a PDF file here to view its metadata.",
+    "zh": "拖放PDF文件到此处以查看其元数据。"
+  },
+  "tools.viewMetadata.documentProperties": {
+    "en": "Document Properties",
+    "zh": "文档属性"
+  },
+  "tools.viewMetadata.creator": {
+    "en": "Creator Application",
+    "zh": "创建程序"
+  },
+  "tools.viewMetadata.producer": {
+    "en": "PDF Producer",
+    "zh": "PDF生成器"
+  },
+  "tools.viewMetadata.dates": {
+    "en": "Dates",
+    "zh": "日期"
+  },
+  "tools.viewMetadata.creationDate": {
+    "en": "Creation Date",
+    "zh": "创建日期"
+  },
+  "tools.viewMetadata.modificationDate": {
+    "en": "Modification Date",
+    "zh": "修改日期"
+  },
+  "tools.viewMetadata.documentInfo": {
+    "en": "Document Information",
+    "zh": "文档信息"
+  },
+  "tools.viewMetadata.pageCount": {
+    "en": "Page Count",
+    "zh": "页数"
+  },
+  "tools.viewMetadata.fileSize": {
+    "en": "File Size",
+    "zh": "文件大小"
+  },
+  "tools.viewMetadata.pdfVersion": {
+    "en": "PDF Version",
+    "zh": "PDF版本"
+  },
+  "tools.viewMetadata.isLinearized": {
+    "en": "Linearized (Fast Web View)",
+    "zh": "线性化（快速Web视图）"
+  },
+  "tools.viewMetadata.customMetadata": {
+    "en": "Additional Metadata",
+    "zh": "其他元数据"
+  },
+  "tools.viewMetadata.exportJson": {
+    "en": "Export as JSON",
+    "zh": "导出为JSON"
+  }
+}

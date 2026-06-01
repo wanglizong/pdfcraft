@@ -3,6 +3,14 @@ node_modules
 .pnp
 .pnp.js
 
+# Generated .js copies of PDF.js .mjs bundles (see scripts/ensure-pdfjs-viewer-js.js)
+public/pdfjs-viewer/pdf.js
+public/pdfjs-viewer/pdf.worker.js
+public/pdfjs-viewer/pdf.sandbox.js
+public/pdfjs-viewer/pdf_viewer.js
+public/pdfjs-viewer/viewer.js
+public/workers/pdf.worker.min.js
+
 # Build output
 .next
 out
@@ -68,5 +76,9 @@ comparisons.txt
 # LibreOffice WASM decompressed files (large, generated from .gz)
 public/libreoffice-wasm/soffice.wasm
 public/libreoffice-wasm/soffice.data
+public/libreoffice-wasm/soffice.wasm.bin
+public/libreoffice-wasm/soffice.data.bin
 
+# Tauri / Cargo (local build output)
+src-tauri/target/
 

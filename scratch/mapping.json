@@ -1,0 +1,1786 @@
+{
+  "上传需要自适应重排的 PDF 文档": {
+    "tool": "aiPdfReflower",
+    "key": "uploadLabel"
+  },
+  "拖放学术论文、双栏文档或文字类 PDF 到此处。系统将自动执行行重组和双栏解析。": {
+    "tool": "aiPdfReflower",
+    "key": "uploadDescription"
+  },
+  "解析文档结构中...": {
+    "tool": "aiPdfReflower",
+    "key": "scanningMetadata"
+  },
+  "自适应阅读设置": {
+    "tool": "aiPdfReflower",
+    "key": "optionsTitle"
+  },
+  "实时修改右侧 3D 手机模拟器内的文字排版风格。": {
+    "tool": "aiPdfReflower",
+    "key": "optionsHelp"
+  },
+  "阅读底色方案": {
+    "tool": "aiPdfReflower",
+    "key": "themeLabel"
+  },
+  "护眼纸张": {
+    "tool": "aiPdfReflower",
+    "key": "themeSepia"
+  },
+  "亮白清爽": {
+    "tool": "aiPdfReflower",
+    "key": "themeLight"
+  },
+  "清新柔绿": {
+    "tool": "aiPdfReflower",
+    "key": "themeGreen"
+  },
+  "夜间极客": {
+    "tool": "aiPdfReflower",
+    "key": "themeDark"
+  },
+  "阅读字号大小": {
+    "tool": "aiPdfReflower",
+    "key": "fontSizeLabel"
+  },
+  "拉动拉绳一键导出": {
+    "tool": "aiPdfReflower",
+    "key": "pullToExport"
+  },
+  "下拉环快速保存 (Markdown)": {
+    "tool": "aiPdfReflower",
+    "key": "pullToExportHint"
+  },
+  "4页对折": {
+    "tool": "bookletFoldingSimulator",
+    "key": "fourPagesFold"
+  },
+  "1张印张双面": {
+    "tool": "bookletFoldingSimulator",
+    "key": "oneSheetDoubleSide"
+  },
+  "8页骑马钉": {
+    "tool": "bookletFoldingSimulator",
+    "key": "eightPagesSaddle"
+  },
+  "2张印张中缝装订": {
+    "tool": "bookletFoldingSimulator",
+    "key": "twoSheetsMiddleStitch"
+  },
+  "3D 折叠阻尼系数": {
+    "tool": "bookletFoldingSimulator",
+    "key": "foldingDamping"
+  },
+  "纯平展开": {
+    "tool": "bookletFoldingSimulator",
+    "key": "flatUnfold"
+  },
+  "完全折合": {
+    "tool": "bookletFoldingSimulator",
+    "key": "fullyFolded"
+  },
+  "2D 视图": {
+    "tool": "bookletFoldingSimulator",
+    "key": "view2D"
+  },
+  "3D 仿真": {
+    "tool": "bookletFoldingSimulator",
+    "key": "view3D"
+  },
+  "左半版面 (对折装订)": {
+    "tool": "bookletFoldingSimulator",
+    "key": "leftPageHalf"
+  },
+  "右半版面": {
+    "tool": "bookletFoldingSimulator",
+    "key": "rightPageHalf"
+  },
+  " (物理火漆风格)": {
+    "tool": "certCryptor",
+    "key": "waxStyleSuffix"
+  },
+  "皇家黄金": {
+    "tool": "certCryptor",
+    "key": "goldWax"
+  },
+  "复古深红": {
+    "tool": "certCryptor",
+    "key": "redWax"
+  },
+  "古铜赤金": {
+    "tool": "certCryptor",
+    "key": "bronzeWax"
+  },
+  "启用证书双钥锁 (256位强加密)": {
+    "tool": "certCryptor",
+    "key": "enableDoubleKey"
+  },
+  "设置解密所持密码 (PFX 解密密钥)": {
+    "tool": "certCryptor",
+    "key": "decryptPasswordHelp"
+  },
+  "默认密码: pdfcraft": {
+    "tool": "certCryptor",
+    "key": "passwordPlaceholder"
+  },
+  "数字证书盖印坐标: X: {x}px, Y: {y}px": {
+    "tool": "certCryptor",
+    "key": "sealCoordinates"
+  },
+  "在白纸处点击以重定位印章": {
+    "tool": "certCryptor",
+    "key": "clickToReposition"
+  },
+  "上传带有参考文献列表的学术 PDF": {
+    "tool": "citationLinker",
+    "key": "uploadLabel"
+  },
+  "拖放学术文献、期刊论文或会议报告。系统将自动找出引用标记（如 [1]）并关联参考文献。": {
+    "tool": "citationLinker",
+    "key": "uploadDescription"
+  },
+  "扫描文本结构中...": {
+    "tool": "citationLinker",
+    "key": "scanningMetadata"
+  },
+  "引文链接激活选项": {
+    "tool": "citationLinker",
+    "key": "optionsTitle"
+  },
+  "自动检测参考文献 DOI 超链接": {
+    "tool": "citationLinker",
+    "key": "detectDoi"
+  },
+  "无 DOI 时自动启用“页内跳转” (GoTo Page)": {
+    "tool": "citationLinker",
+    "key": "enableGoto"
+  },
+  "正在修改引文: {marker}": {
+    "tool": "citationLinker",
+    "key": "editingCitation"
+  },
+  "所在页面: 第 {page} 页": {
+    "tool": "citationLinker",
+    "key": "citationPage"
+  },
+  "文献: {ref}": {
+    "tool": "citationLinker",
+    "key": "citationRef"
+  },
+  "请输入此文献的 DOI / URL 链接": {
+    "tool": "citationLinker",
+    "key": "doiPlaceholder"
+  },
+  "扫描出的引文列表 ({count})": {
+    "tool": "citationLinker",
+    "key": "citationListTitle"
+  },
+  "页内跳转": {
+    "tool": "citationLinker",
+    "key": "gotoPage"
+  },
+  "激活超链接注入": {
+    "tool": "citationLinker",
+    "key": "injectLink"
+  },
+  "绿实线: DOI 外部链接": {
+    "tool": "citationLinker",
+    "key": "doiExternalLink"
+  },
+  "灰虚线: 参考文献页内跳转": {
+    "tool": "citationLinker",
+    "key": "gotoPageLink"
+  },
+  "正在注入高强可点击引文注释...": {
+    "tool": "citationLinker",
+    "key": "injectingMessage"
+  },
+  "共为 {count} 处引文符号注入了关联链接和页内跳转跳转点，文档可在任意符合标准的 PDF 阅读器中完美交互。": {
+    "tool": "citationLinker",
+    "key": "successDesc"
+  },
+  "正在解构并提取源文档 (Original PDF)...": {
+    "tool": "comparePdfs",
+    "key": "progressExtractingOriginal"
+  },
+  "无法提取源文档。": {
+    "tool": "comparePdfs",
+    "key": "errorExtractingOriginal"
+  },
+  "正在解构并提取修改文档 (Modified PDF)...": {
+    "tool": "comparePdfs",
+    "key": "progressExtractingModified"
+  },
+  "无法提取比对文档。": {
+    "tool": "comparePdfs",
+    "key": "errorExtractingModified"
+  },
+  "正在运行智能 CJK 双端语义对齐与段落差分...": {
+    "tool": "comparePdfs",
+    "key": "progressRunningDiff"
+  },
+  "运行智能语义比对时发生算法异常。": {
+    "tool": "comparePdfs",
+    "key": "errorDiffFailed"
+  },
+  "源文档 (Original PDF / Left Version)": {
+    "tool": "comparePdfs",
+    "key": "originalPdfTitle"
+  },
+  "移除": {
+    "tool": "comparePdfs",
+    "key": "removeButton"
+  },
+  "上传源 PDF 文档": {
+    "tool": "comparePdfs",
+    "key": "originalPdfLabel"
+  },
+  "作为被差分比对的基本原始版面": {
+    "tool": "comparePdfs",
+    "key": "originalPdfDesc"
+  },
+  "比对文档 (Modified PDF / Right Version)": {
+    "tool": "comparePdfs",
+    "key": "modifiedPdfTitle"
+  },
+  "上传比对 PDF 文档": {
+    "tool": "comparePdfs",
+    "key": "modifiedPdfLabel"
+  },
+  "包含修改、添加、删除或位置偏移的最新版面": {
+    "tool": "comparePdfs",
+    "key": "modifiedPdfDesc"
+  },
+  "开始智能语义差分比对": {
+    "tool": "comparePdfs",
+    "key": "startCompare"
+  },
+  "智能语义比对完成 (Acrobat 商业级对齐)": {
+    "tool": "comparePdfs",
+    "key": "successTitle"
+  },
+  "共对齐 {total} 页 • 其中 {diff} 包含语义性差异": {
+    "tool": "comparePdfs",
+    "key": "compareStats"
+  },
+  "高亮过滤 (Filter)": {
+    "tool": "comparePdfs",
+    "key": "filterLabel"
+  },
+  "文字增删": {
+    "tool": "comparePdfs",
+    "key": "filterText"
+  },
+  "格式变化 (Fonts)": {
+    "tool": "comparePdfs",
+    "key": "filterFont"
+  },
+  "页眉页脚 (低噪)": {
+    "tool": "comparePdfs",
+    "key": "filterHeaderFooter"
+  },
+  "段落位移": {
+    "tool": "comparePdfs",
+    "key": "filterMoved"
+  },
+  "重置新比对": {
+    "tool": "comparePdfs",
+    "key": "resetButton"
+  },
+  "上一页对齐": {
+    "tool": "comparePdfs",
+    "key": "prevPair"
+  },
+  "对齐序列 {current} / {total} 页": {
+    "tool": "comparePdfs",
+    "key": "pagePairIndex"
+  },
+  "📂 插入页 (Inserted Page)": {
+    "tool": "comparePdfs",
+    "key": "insertedPage"
+  },
+  "❌ 移除页 (Deleted Page)": {
+    "tool": "comparePdfs",
+    "key": "deletedPage"
+  },
+  "⚠️ 检出 {percent}% 语义差异": {
+    "tool": "comparePdfs",
+    "key": "detectedDiff"
+  },
+  "✅ 无差异 (完全一致)": {
+    "tool": "comparePdfs",
+    "key": "noDiff"
+  },
+  "全屏沉浸比对": {
+    "tool": "comparePdfs",
+    "key": "fullscreenTooltip"
+  },
+  "下一页对齐": {
+    "tool": "comparePdfs",
+    "key": "nextPair"
+  },
+  " (原版本)": {
+    "tool": "comparePdfs",
+    "key": "originalVersion"
+  },
+  "第 {page} 页": {
+    "tool": "vectorExtractor",
+    "key": "pageLabel"
+  },
+  "❌ 移除了文本": {
+    "tool": "comparePdfs",
+    "key": "removedText"
+  },
+  "⚠️ 文本被修改": {
+    "tool": "comparePdfs",
+    "key": "modifiedText"
+  },
+  "➡️ 段落在此处发生跨行位移": {
+    "tool": "comparePdfs",
+    "key": "paragraphMovedRight"
+  },
+  "📂 插入页面 (Inserted Page)": {
+    "tool": "comparePdfs",
+    "key": "insertedPageTitle"
+  },
+  "此页面为修改版本中强行增加的页面。原版本在此无对应映射，已自动实现隔空对齐。": {
+    "tool": "comparePdfs",
+    "key": "insertedPageDesc"
+  },
+  " (修改版)": {
+    "tool": "comparePdfs",
+    "key": "modifiedVersion"
+  },
+  "💚 新增了文本": {
+    "tool": "comparePdfs",
+    "key": "addedText"
+  },
+  "⬅️ 承接自前方的段落跨行位移": {
+    "tool": "comparePdfs",
+    "key": "paragraphMovedLeft"
+  },
+  "❌ 移除页面 (Deleted Page)": {
+    "tool": "comparePdfs",
+    "key": "deletedPageTitle"
+  },
+  "此页面在修改版本中已被完全删除。系统在此处插入空白对齐，以防扰乱后续页面的比对秩序。": {
+    "tool": "comparePdfs",
+    "key": "deletedPageDesc"
+  },
+  "待压缩文件列表 ({count})": {
+    "tool": "compress",
+    "key": "waitingFiles"
+  },
+  "清空全部": {
+    "tool": "compress",
+    "key": "clearAll"
+  },
+  "拖动中间分割滑条查看无级压缩画质对比 (第 1 页)": {
+    "tool": "compress",
+    "key": "sliderTooltip"
+  },
+  "左: 原始画质 (100%) | 右: 模拟压缩 ({quality})": {
+    "tool": "compress",
+    "key": "qualityCompare"
+  },
+  "体积缩水率 (轻)": {
+    "tool": "compress",
+    "key": "sizeShrink"
+  },
+  "像素清晰度 (重)": {
+    "tool": "compress",
+    "key": "pixelSharpness"
+  },
+  "压缩质量档位选择": {
+    "tool": "compress",
+    "key": "qualityTitle"
+  },
+  "低质量": {
+    "tool": "compress",
+    "key": "qualityLow"
+  },
+  "中等": {
+    "tool": "compress",
+    "key": "qualityMedium"
+  },
+  "高质量": {
+    "tool": "compress",
+    "key": "qualityHigh"
+  },
+  "极限无损": {
+    "tool": "compress",
+    "key": "qualityMaximum"
+  },
+  "体积大幅压缩 60%-80%，适合普通发票收据与纯文字汇报。": {
+    "tool": "compress",
+    "key": "descLow"
+  },
+  "均衡型，在保持清晰可读的字体边缘时获得 40% 体积优化。": {
+    "tool": "compress",
+    "key": "descMedium"
+  },
+  "保证摄影级图片的高对比度和颜色动态，略微减少体积。": {
+    "tool": "compress",
+    "key": "descHigh"
+  },
+  "接近 1:1 的极限高精，只清理隐藏垃圾碎片与未引用块。": {
+    "tool": "compress",
+    "key": "descMaximum"
+  },
+  "优化嵌入的所有图形资产": {
+    "tool": "compress",
+    "key": "optimizeGraphics"
+  },
+  "强力清空作者/软件描述元数据": {
+    "tool": "compress",
+    "key": "clearMetadata"
+  },
+  "优化执行中...": {
+    "tool": "compress",
+    "key": "processingButton"
+  },
+  "压缩操作执行完毕！": {
+    "tool": "compress",
+    "key": "successTitle"
+  },
+  "打包下载 ZIP ({count} 个文件)": {
+    "tool": "compress",
+    "key": "zipDownload"
+  },
+  "文档优化压缩完毕！": {
+    "tool": "compress",
+    "key": "successDone"
+  },
+  "原始大小: {size} MB • 成功在本地清理了非必要废弃片段和无用元数据流。": {
+    "tool": "compress",
+    "key": "sizeInfo"
+  },
+  "上传需要脱敏防溯源的 PDF 文档": {
+    "tool": "deepSanitize",
+    "key": "uploadLabel"
+  },
+  "拖放商业合同、机密文件或政府底档。系统将扫描可选图层、PieceInfo 历史并强制重构 xref 树。": {
+    "tool": "deepSanitize",
+    "key": "uploadDescription"
+  },
+  "深度结构预检中...": {
+    "tool": "deepSanitize",
+    "key": "prechecking"
+  },
+  "深度擦除控制选项": {
+    "tool": "deepSanitize",
+    "key": "optionsTitle"
+  },
+  "抹除 XMP XML 元数据与常规描述": {
+    "tool": "deepSanitize",
+    "key": "clearXmp"
+  },
+  "Title, Author, Producer, 各种修改历史摘要流": {
+    "tool": "deepSanitize",
+    "key": "clearXmpDesc"
+  },
+  "清理 PieceInfo 专属编辑器私有属性": {
+    "tool": "deepSanitize",
+    "key": "clearPieceInfo"
+  },
+  "Adobe Acrobat 等软件留存的页面节点修改痕迹": {
+    "tool": "deepSanitize",
+    "key": "clearPieceInfoDesc"
+  },
+  "剥离 OCProperties 可选内容水印图层": {
+    "tool": "deepSanitize",
+    "key": "clearOcProperties"
+  },
+  "很多公司的防泄密动态不可见水印的底层承载层": {
+    "tool": "deepSanitize",
+    "key": "clearOcPropertiesDesc"
+  },
+  "彻底擦除所有交互式批注与外链 (慎用)": {
+    "tool": "deepSanitize",
+    "key": "clearAnnotations"
+  },
+  "将删除文档中的可点击外链、手写文字高亮和备注批注": {
+    "tool": "deepSanitize",
+    "key": "clearAnnotationsDesc"
+  },
+  "执行深度净化脱敏": {
+    "tool": "deepSanitize",
+    "key": "processButton"
+  },
+  "扫描发现的安全风险排查报告:": {
+    "tool": "deepSanitize",
+    "key": "riskReport"
+  },
+  "深度元数据净化完成！": {
+    "tool": "deepSanitize",
+    "key": "successTitle"
+  },
+  "已将原始文档的 XMP 元数据、描述字典、PieceInfo 缓冲、可选内容图层（OCG）全部剔除，并完成 xref 的物理重构。旧版本修改残留已不具恢复可能。": {
+    "tool": "deepSanitize",
+    "key": "successDesc"
+  },
+  "保存": {
+    "tool": "editPdf",
+    "key": "saveBtn"
+  },
+  "云线": {
+    "tool": "editPdf",
+    "key": "annCloud"
+  },
+  "矩形": {
+    "tool": "editPdf",
+    "key": "annRectangle"
+  },
+  "圆形": {
+    "tool": "editPdf",
+    "key": "annCircle"
+  },
+  "箭头": {
+    "tool": "editPdf",
+    "key": "annArrow"
+  },
+  "自由绘制": {
+    "tool": "editPdf",
+    "key": "annFreehand"
+  },
+  "文字": {
+    "tool": "editPdf",
+    "key": "annFreeText"
+  },
+  "自由高亮": {
+    "tool": "editPdf",
+    "key": "annFreeHighlight"
+  },
+  "注解": {
+    "tool": "editPdf",
+    "key": "annNote"
+  },
+  "签名": {
+    "tool": "editPdf",
+    "key": "annSignature"
+  },
+  "盖章": {
+    "tool": "editPdf",
+    "key": "annStamp"
+  },
+  "自定义描边色:": {
+    "tool": "editPdf",
+    "key": "strokeColorLabel"
+  },
+  "启用填充色:": {
+    "tool": "editPdf",
+    "key": "fillColorLabel"
+  },
+  "标注 (不具名用户)": {
+    "tool": "editPdf",
+    "key": "defaultAuthor"
+  },
+  "撤销": {
+    "tool": "editPdf",
+    "key": "undoBtn"
+  },
+  "重做": {
+    "tool": "editPdf",
+    "key": "redoBtn"
+  },
+  " (大津偏置)": {
+    "tool": "einkOptimizer",
+    "key": "otsueThresholdSuffix"
+  },
+  "保留更多笔画": {
+    "tool": "einkOptimizer",
+    "key": "keepStrokes"
+  },
+  "剥离杂质底色": {
+    "tool": "einkOptimizer",
+    "key": "stripBackground"
+  },
+  " (字迹加粗)": {
+    "tool": "einkOptimizer",
+    "key": "dilationSuffix"
+  },
+  "原笔迹": {
+    "tool": "einkOptimizer",
+    "key": "originalStroke"
+  },
+  "微加粗 (1px)": {
+    "tool": "einkOptimizer",
+    "key": "microDilation"
+  },
+  "强加粗 (2px)": {
+    "tool": "einkOptimizer",
+    "key": "strongDilation"
+  },
+  "优化后：视网膜级高对比度文字": {
+    "tool": "einkOptimizer",
+    "key": "afterLabel"
+  },
+  "古之学者必有师。师者，所以传道受业解惑也。人非生而知之者，孰能无惑？惑而不从师，其为惑也，终不解矣。生乎吾前，其闻道也固先乎吾，吾从而师之...": {
+    "tool": "einkOptimizer",
+    "key": "beforeSampleText"
+  },
+  "原始扫描页：底色发灰、字迹浅淡": {
+    "tool": "einkOptimizer",
+    "key": "beforeLabel"
+  },
+  "此文档已加密": {
+    "tool": "fileUploader",
+    "key": "encryptedTitle"
+  },
+  "请输入密码以解锁并载入：<br/>": {
+    "tool": "fileUploader",
+    "key": "enterPasswordHelp"
+  },
+  "请输入文档密码": {
+    "tool": "fileUploader",
+    "key": "passwordPlaceholder"
+  },
+  "取消": {
+    "tool": "fileUploader",
+    "key": "cancelButton"
+  },
+  "解密中...": {
+    "tool": "fileUploader",
+    "key": "decrypting"
+  },
+  "解密并继续": {
+    "tool": "fileUploader",
+    "key": "decryptAndContinue"
+  },
+  "全部 ({count})": {
+    "tool": "findAndRedact",
+    "key": "allMatches"
+  },
+  "触发联动": {
+    "tool": "formLogicDesigner",
+    "key": "triggerLink"
+  },
+  "{count} 个交互字段已就绪": {
+    "tool": "formLogicDesigner",
+    "key": "fieldsReady"
+  },
+  "联动关系编译说明": {
+    "tool": "formLogicDesigner",
+    "key": "logicIntroTitle"
+  },
+  "在右侧发光毛玻璃节点中，找到控制源节点（如勾选框）。": {
+    "tool": "formLogicDesigner",
+    "key": "logicIntro1"
+  },
+  "从小圆点拉出连线，连接至被联动目标字段。": {
+    "tool": "formLogicDesigner",
+    "key": "logicIntro2"
+  },
+  "如果源是复选框：默认生成当勾选时激活该字段的 Validate JS 脚本。": {
+    "tool": "formLogicDesigner",
+    "key": "logicIntro3"
+  },
+  "连接线上会泛起紫色粒子，代表动作联动已联通。": {
+    "tool": "formLogicDesigner",
+    "key": "logicIntro4"
+  },
+  "发光探照对比镜 (拖拽鼠标穿透漂除霉斑)": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "magnifierTitle"
+  },
+  "清空": {
+    "tool": "pdfTwoColumnReflower",
+    "key": "clearButton"
+  },
+  "Handwritten Ink / 签字笔迹": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "inkTitle"
+  },
+  "(拉动右侧滑块漂白纸张)": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "bleachHelp"
+  },
+  "目标提取种类": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "targetTypeLabel"
+  },
+  "自动增强色彩特征": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "typeAuto"
+  },
+  "深色签字字迹增强": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "typeDarkInk"
+  },
+  "红色盖章印泥还原": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "typeRedStamp"
+  },
+  "背景擦除亮度阈值": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "bleachThreshold"
+  },
+  "笔画笔锋对比度": {
+    "tool": "handwritingInkContrastBooster",
+    "key": "strokeContrast"
+  },
+  "横向": {
+    "tool": "nUpPdf",
+    "key": "orientationLandscape"
+  },
+  "纵向": {
+    "tool": "nUpPdf",
+    "key": "orientationPortrait"
+  },
+  "自动": {
+    "tool": "nUpPdf",
+    "key": "orientationAuto"
+  },
+  "OCR 文字识别参数配置": {
+    "tool": "ocr",
+    "key": "optionsTitle"
+  },
+  "选择识别语言 (支持多选)": {
+    "tool": "ocr",
+    "key": "selectLang"
+  },
+  "输出文件格式": {
+    "tool": "ocr",
+    "key": "outputFormat"
+  },
+  "双层可搜索 PDF": {
+    "tool": "ocr",
+    "key": "formatSearchablePdf"
+  },
+  "提取纯文本文件 (.txt)": {
+    "tool": "ocr",
+    "key": "formatText"
+  },
+  "渲染识别精度": {
+    "tool": "ocr",
+    "key": "accuracyTitle"
+  },
+  "标清 (适合清晰原件)": {
+    "tool": "ocr",
+    "key": "accuracySd"
+  },
+  "高清 (推荐，识别更稳)": {
+    "tool": "ocr",
+    "key": "accuracyHd"
+  },
+  "超清 (慢，适合模糊件)": {
+    "tool": "ocr",
+    "key": "accuracyUd"
+  },
+  "指定识别页码": {
+    "tool": "ocr",
+    "key": "specifyPages"
+  },
+  "如: 1-3, 5": {
+    "tool": "ocr",
+    "key": "pagesPlaceholder"
+  },
+  "开始文字识别": {
+    "tool": "ocr",
+    "key": "startOcr"
+  },
+  "双层 PDF 核心优势:": {
+    "tool": "ocr",
+    "key": "advantageTitle"
+  },
+  "重构后的可搜索 PDF 功能，会在后台计算 OCR 文字排版物理 Bounding Box，在原始 PDF 图层上层精确注入完全透明的文字图层 (Invisible Text Layer)。这不仅保持了原始扫描文件的图纸外观，还让文本完美支持划词复制、检索和选定。": {
+    "tool": "ocr",
+    "key": "advantageDesc"
+  },
+  "文字识别提取完成！": {
+    "tool": "ocr",
+    "key": "successTitle"
+  },
+  "双层可搜索 PDF 编译完成。原始扫描图片已被文字遮罩覆盖，您可以使用任意 PDF 查看器打开文件并进行划词搜索与复制。": {
+    "tool": "ocr",
+    "key": "successSearchablePdf"
+  },
+  "纯文本文件结构提取成功，已在下方显示文本流预览。": {
+    "tool": "ocr",
+    "key": "successText"
+  },
+  "提取出来的文本流预览": {
+    "tool": "ocr",
+    "key": "previewTitle"
+  },
+  "1. 上传主文档 (Base PDF)": {
+    "tool": "overlayPdf",
+    "key": "uploadBaseLabel"
+  },
+  "{count} 页 • {size} MB": {
+    "tool": "timestamp",
+    "key": "uploadSuccess"
+  },
+  "点击上传主 PDF": {
+    "tool": "overlayPdf",
+    "key": "uploadBaseButton"
+  },
+  "该文档的内容会作为合并的基本骨架": {
+    "tool": "overlayPdf",
+    "key": "uploadBaseDesc"
+  },
+  "2. 上传覆叠层文档 (Layer PDF)": {
+    "tool": "overlayPdf",
+    "key": "uploadLayerLabel"
+  },
+  "点击上传图层 PDF": {
+    "tool": "overlayPdf",
+    "key": "uploadLayerButton"
+  },
+  "如公章、带有设计背景的信托网格、信笺等": {
+    "tool": "overlayPdf",
+    "key": "uploadLayerDesc"
+  },
+  "3D 层叠层级动态预览": {
+    "tool": "overlayPdf",
+    "key": "previewTitle"
+  },
+  "主页面": {
+    "tool": "overlayPdf",
+    "key": "basePageLabel"
+  },
+  "图层面": {
+    "tool": "overlayPdf",
+    "key": "layerPageLabel"
+  },
+  "前景层模式 (Overlay)：图层文档渲染在主文档的页面内容之上。": {
+    "tool": "overlayPdf",
+    "key": "placementModeOverlay"
+  },
+  "背景层模式 (Underlay)：图层文档垫在主文档所有页面内容的最底层。": {
+    "tool": "overlayPdf",
+    "key": "placementModeUnderlay"
+  },
+  "覆叠拼接配置": {
+    "tool": "overlayPdf",
+    "key": "optionsTitle"
+  },
+  "A. 覆叠层级模式 (Placement Mode)": {
+    "tool": "overlayPdf",
+    "key": "placementModeLabel"
+  },
+  "前景覆叠 (Overlay)": {
+    "tool": "overlayPdf",
+    "key": "placementOverlayBtn"
+  },
+  "背景垫底 (Underlay)": {
+    "tool": "overlayPdf",
+    "key": "placementUnderlayBtn"
+  },
+  "B. 目标作用页面范围 (Target Page Range)": {
+    "tool": "overlayPdf",
+    "key": "targetRangeLabel"
+  },
+  "空表示应用至全部主页面": {
+    "tool": "overlayPdf",
+    "key": "targetRangeHelp"
+  },
+  "例如：1-5, 8, odd, even": {
+    "tool": "overlayPdf",
+    "key": "targetRangePlaceholder"
+  },
+  "C. 循环重复图层文档 (Loop Shorter Overlay Document)": {
+    "tool": "overlayPdf",
+    "key": "loopOverlayLabel"
+  },
+  "当图层文件总页数短于主 PDF 时，自动循环重复套用该图层（例如信笺背景）。若关闭，则超出页数的页面不再应用覆叠。": {
+    "tool": "overlayPdf",
+    "key": "loopOverlayDesc"
+  },
+  "开始应用覆叠生成 PDF": {
+    "tool": "overlayPdf",
+    "key": "processButton"
+  },
+  "🎉 PDF 覆叠拼版处理成功！点击上方按钮进行下载。": {
+    "tool": "overlayPdf",
+    "key": "successMessage"
+  },
+  "无法解析主 PDF 的元数据，该文件可能已损坏。": {
+    "tool": "pageLabels",
+    "key": "errorMetadata"
+  },
+  "请上传待添加页面标签 of PDF。": {
+    "tool": "pageLabels",
+    "key": "errorUpload"
+  },
+  "正在批量注入页面标签...": {
+    "tool": "pageLabels",
+    "key": "progressInjecting"
+  },
+  "注入页面标签失败。": {
+    "tool": "pageLabels",
+    "key": "errorInjecting"
+  },
+  "发生未知错误。": {
+    "tool": "pageLabels",
+    "key": "errorUnknown"
+  },
+  "1. 上传文档 (PDF)": {
+    "tool": "pdfToTiff",
+    "key": "uploadLabel"
+  },
+  "点击或拖拽上传 PDF": {
+    "tool": "pageLabels",
+    "key": "uploadButton"
+  },
+  "本工具将直接在 PDF Catalog 中注入标准的 PageLabels 字典，与 Adobe Acrobat 完全兼容。": {
+    "tool": "pageLabels",
+    "key": "uploadDesc"
+  },
+  "2. 配置标签映射规则 (Page Label Rules)": {
+    "tool": "pageLabels",
+    "key": "rulesTitle"
+  },
+  "添加新规则": {
+    "tool": "pageLabels",
+    "key": "addRuleBtn"
+  },
+  "规则 #{index}": {
+    "tool": "pageLabels",
+    "key": "ruleTitle"
+  },
+  "删除此规则": {
+    "tool": "pageLabels",
+    "key": "deleteRuleTooltip"
+  },
+  "页码作用范围": {
+    "tool": "pageLabels",
+    "key": "pageRangeLabel"
+  },
+  "留空应用到所有页": {
+    "tool": "pageLabels",
+    "key": "pageRangeHelp"
+  },
+  "例如: 1-9, odd, even": {
+    "tool": "pageLabels",
+    "key": "pageRangePlaceholder"
+  },
+  "标签编码样式": {
+    "tool": "pageLabels",
+    "key": "styleLabel"
+  },
+  "1, 2, 3... (阿拉伯数字)": {
+    "tool": "pageLabels",
+    "key": "styleD"
+  },
+  "I, II, III... (大写罗马)": {
+    "tool": "pageLabels",
+    "key": "styleR"
+  },
+  "i, ii, iii... (小写罗马)": {
+    "tool": "pageLabels",
+    "key": "style_r"
+  },
+  "A, B, C... (大写字母)": {
+    "tool": "pageLabels",
+    "key": "styleA"
+  },
+  "a, b, c... (小写字母)": {
+    "tool": "pageLabels",
+    "key": "style_a"
+  },
+  "无数字样式 (仅前缀)": {
+    "tool": "pageLabels",
+    "key": "styleNone"
+  },
+  "自定义前缀 (Prefix)": {
+    "tool": "pageLabels",
+    "key": "prefixLabel"
+  },
+  "例如: Appendix-, A-": {
+    "tool": "pageLabels",
+    "key": "prefixPlaceholder"
+  },
+  "起始数值 (Start Value)": {
+    "tool": "pageLabels",
+    "key": "startValueLabel"
+  },
+  "开始注入 PageLabels": {
+    "tool": "pageLabels",
+    "key": "processButton"
+  },
+  "🎉 页面标签注入成功！请下载已签名的 PDF 并在专业阅读器中查看侧栏导航。": {
+    "tool": "pageLabels",
+    "key": "successMessage"
+  },
+  "页面标签序列实时流预览": {
+    "tool": "pageLabels",
+    "key": "previewTitle"
+  },
+  "规则优先覆盖与不相交算法：": {
+    "tool": "pageLabels",
+    "key": "algorithmTitle"
+  },
+  "下方徽章代表 PDF 内部每一页最终算出的标签序列。物理页码旁的渐变色小徽章，即为其展现给用户的结构标签。": {
+    "tool": "pageLabels",
+    "key": "algorithmDesc"
+  },
+  "还有 {count} 页未显示，已自动折叠以提升交互性能。": {
+    "tool": "pageLabels",
+    "key": "collapsedPages"
+  },
+  "加载完整 {count} 页预览": {
+    "tool": "pageLabels",
+    "key": "loadFullPreview"
+  },
+  "发光陀螺仪对齐罗盘": {
+    "tool": "pdfDeskewAligner",
+    "key": "compassTitle"
+  },
+  "右侧设置检测灵敏度。陀螺仪探针正在纠偏物理轴线。": {
+    "tool": "pdfDeskewAligner",
+    "key": "gyroHelp"
+  },
+  "检测分辨率 (DPI)": {
+    "tool": "pdfDeskewAligner",
+    "key": "dpiLabel"
+  },
+  "72 DPI (极速检测)": {
+    "tool": "pdfDeskewAligner",
+    "key": "dpi72"
+  },
+  "150 DPI (标准平衡)": {
+    "tool": "pdfDeskewAligner",
+    "key": "dpi150"
+  },
+  "300 DPI (高清拟合)": {
+    "tool": "pdfDeskewAligner",
+    "key": "dpi300"
+  },
+  "歪斜检测阈值": {
+    "tool": "pdfDeskewAligner",
+    "key": "thresholdLabel"
+  },
+  "发光绿色激光切割网格 (按住拖拽以缩放裁剪网格)": {
+    "tool": "pdfLosslessSlicer",
+    "key": "magnifierTitle"
+  },
+  "目标切片页码": {
+    "tool": "pdfLosslessSlicer",
+    "key": "targetPageLabel"
+  },
+  "切片宽度: {percent}%": {
+    "tool": "pdfLosslessSlicer",
+    "key": "sliceWidth"
+  },
+  "切片高度: {percent}%": {
+    "tool": "pdfLosslessSlicer",
+    "key": "sliceHeight"
+  },
+  "3D 多规格纸张叠放收纳舱": {
+    "tool": "pdfPageResizerUniform",
+    "key": "magnifierTitle"
+  },
+  "已加载 {count} 个多规格文档": {
+    "tool": "pdfPageResizerUniform",
+    "key": "loadedFiles"
+  },
+  "各种物理纸张尺寸将在环形光幕矩阵中自动等比平移缩放、完美居中裁剪。": {
+    "tool": "pdfPageResizerUniform",
+    "key": "uniformHelp"
+  },
+  "目标统一纸张规格": {
+    "tool": "pdfPageResizerUniform",
+    "key": "targetSpecLabel"
+  },
+  "A4 标准国际标准 (595 x 842 pt)": {
+    "tool": "pdfPageResizerUniform",
+    "key": "specA4"
+  },
+  "A3 大型工程尺寸 (842 x 1191 pt)": {
+    "tool": "pdfPageResizerUniform",
+    "key": "specA3"
+  },
+  "Letter 美规标准信纸 (612 x 792 pt)": {
+    "tool": "pdfPageResizerUniform",
+    "key": "specLetter"
+  },
+  "缩放及边界填充模式": {
+    "tool": "pdfPageResizerUniform",
+    "key": "scaleModeLabel"
+  },
+  "等比自适应缩放且留白对齐 (推荐)": {
+    "tool": "pdfPageResizerUniform",
+    "key": "modeFit"
+  },
+  "等比填满并无损居中剪裁边缘": {
+    "tool": "pdfPageResizerUniform",
+    "key": "modeFill"
+  },
+  "Sign Here / 此处签字": {
+    "tool": "pdfSignatureAnchorHelper",
+    "key": "anchorLabelDefault"
+  },
+  "合同签字指引定位台 (在画面任意处点击以修改定位)": {
+    "tool": "pdfSignatureAnchorHelper",
+    "key": "magnifierTitle"
+  },
+  "指引图层铭文内容": {
+    "tool": "pdfSignatureAnchorHelper",
+    "key": "anchorLabelLabel"
+  },
+  "生效目标页码": {
+    "tool": "pdfSignatureAnchorHelper",
+    "key": "targetPageLabel"
+  },
+  "3D 书籍胶装折页模型 (按住鼠标左键任意旋转)": {
+    "tool": "pdfSpineBookbinder",
+    "key": "magnifierTitle"
+  },
+  "预测书脊厚度: {width} mm": {
+    "tool": "pdfSpineBookbinder",
+    "key": "spineWidthText"
+  },
+  "书脊版面铭刻文字": {
+    "tool": "pdfSpineBookbinder",
+    "key": "spineTextLabel"
+  },
+  "例如: 毕业设计论文 / 商业合同": {
+    "tool": "pdfSpineBookbinder",
+    "key": "spineTextPlaceholder"
+  },
+  "装订书籍总面数 (Pages)": {
+    "tool": "pdfSpineBookbinder",
+    "key": "totalPagesLabel"
+  },
+  "{count} 面": {
+    "tool": "pdfSpineBookbinder",
+    "key": "totalPagesUnit"
+  },
+  "内页纸张克重 (GSM)": {
+    "tool": "pdfSpineBookbinder",
+    "key": "gsmLabel"
+  },
+  "80g 复印纸 (每面厚 0.05mm)": {
+    "tool": "pdfSpineBookbinder",
+    "key": "gsm80"
+  },
+  "100g 铜版纸 (每面厚 0.06mm)": {
+    "tool": "pdfSpineBookbinder",
+    "key": "gsm100"
+  },
+  "120g 哑粉纸 (每面厚 0.07mm)": {
+    "tool": "pdfSpineBookbinder",
+    "key": "gsm120"
+  },
+  "150g 重型艺术纸 (每面厚 0.09mm)": {
+    "tool": "pdfSpineBookbinder",
+    "key": "gsm150"
+  },
+  "无法解析主 PDF 漫画的元数据。该文件可能已损坏。": {
+    "tool": "pdfToCbz",
+    "key": "errorMetadata"
+  },
+  "请上传待转换的漫画 PDF 文件。": {
+    "tool": "pdfToCbz",
+    "key": "errorUpload"
+  },
+  "正在提取漫画页面中...": {
+    "tool": "pdfToCbz",
+    "key": "progressExtracting"
+  },
+  "编译漫画包 CBZ 失败。": {
+    "tool": "pdfToCbz",
+    "key": "errorExtracting"
+  },
+  "打包转换时发生未知错误。": {
+    "tool": "pdfToCbz",
+    "key": "errorUnknown"
+  },
+  "1. 上传漫画/插画 (PDF)": {
+    "tool": "pdfToCbz",
+    "key": "uploadLabel"
+  },
+  "点击上传漫画 PDF 文档": {
+    "tool": "pdfToCbz",
+    "key": "uploadButton"
+  },
+  "渲染高清页面的同时，自动自动嵌入 OPF / XML / Comment 漫画专属多维度数据库信息。": {
+    "tool": "pdfToCbz",
+    "key": "uploadDesc"
+  },
+  "3D 漫画体三维动态封面预览": {
+    "tool": "pdfToCbz",
+    "key": "previewTitle"
+  },
+  "漫画标题": {
+    "tool": "pdfToCbz",
+    "key": "comicTitleDefault"
+  },
+  "佚名作者": {
+    "tool": "pdfToCbz",
+    "key": "comicArtistDefault"
+  },
+  "右翻页模式 (Right to Left)：经典日漫读向，书脊对齐右侧翻开。": {
+    "tool": "pdfToCbz",
+    "key": "directionRtlHelp"
+  },
+  "左翻页模式 (Left to Right)：标准小说/美漫读向，书脊对齐左侧翻开。": {
+    "tool": "pdfToCbz",
+    "key": "directionLtrHelp"
+  },
+  "2. 完善书籍信息与元数据 (Metadata)": {
+    "tool": "pdfToCbz",
+    "key": "metadataTitle"
+  },
+  "漫画标题 (Title)": {
+    "tool": "pdfToCbz",
+    "key": "fieldTitle"
+  },
+  "所属系列/书名 (Series)": {
+    "tool": "pdfToCbz",
+    "key": "fieldSeries"
+  },
+  "如: 海贼王、进击的巨人": {
+    "tool": "pdfToCbz",
+    "key": "seriesPlaceholder"
+  },
+  "单册期数/话号 (Issue Number)": {
+    "tool": "pdfToCbz",
+    "key": "fieldIssue"
+  },
+  "分卷号 (Volume)": {
+    "tool": "pdfToCbz",
+    "key": "fieldVolume"
+  },
+  "编剧与绘画作者 (Writer/Artist)": {
+    "tool": "pdfToCbz",
+    "key": "fieldArtist"
+  },
+  "如: 尾田荣一郎": {
+    "tool": "pdfToCbz",
+    "key": "artistPlaceholder"
+  },
+  "发行商/出版社 (Publisher)": {
+    "tool": "pdfToCbz",
+    "key": "fieldPublisher"
+  },
+  "如: 集英社": {
+    "tool": "pdfToCbz",
+    "key": "publisherPlaceholder"
+  },
+  "题材题材题材 (Genre)": {
+    "tool": "pdfToCbz",
+    "key": "fieldGenre"
+  },
+  "如: 热血 / 少年 / 动作": {
+    "tool": "pdfToCbz",
+    "key": "genrePlaceholder"
+  },
+  "漫画书籍阅读顺序": {
+    "tool": "pdfToCbz",
+    "key": "readingOrderLabel"
+  },
+  "从左至右 (LTR - 普通电子书)": {
+    "tool": "pdfToCbz",
+    "key": "readingOrderLtr"
+  },
+  "从右至左 (RTL - 日漫读向)": {
+    "tool": "pdfToCbz",
+    "key": "readingOrderRtl"
+  },
+  "3. 图像画质与设备调谐": {
+    "tool": "pdfToCbz",
+    "key": "deviceOptimizeTitle"
+  },
+  "图像压缩画质 (JPEG/WebP Quality)": {
+    "tool": "pdfToCbz",
+    "key": "qualityLabel"
+  },
+  "分辨率比例 (Scale Multiplier)": {
+    "tool": "pdfToCbz",
+    "key": "scaleLabel"
+  },
+  "压缩保存图像格式": {
+    "tool": "pdfToCbz",
+    "key": "formatLabel"
+  },
+  "墨水屏灰阶处理": {
+    "tool": "pdfToCbz",
+    "key": "einkGreyscale"
+  },
+  "脱色加速墨水屏刷新率与画质对比度": {
+    "tool": "pdfToCbz",
+    "key": "einkGreyscaleDesc"
+  },
+  "开始提取编译 CBZ 漫画包": {
+    "tool": "pdfToCbz",
+    "key": "processButton"
+  },
+  "🎉 漫画 CBZ 打包成功！内置 metadata.opf 与 ComicInfo.xml 元数据。请一键下载。": {
+    "tool": "pdfToCbz",
+    "key": "successMessage"
+  },
+  "PPT 主题基色": {
+    "tool": "pdfToSlide",
+    "key": "themeLabel"
+  },
+  "正在解构页面层次并重建幻灯片大纲...": {
+    "tool": "pdfToSlide",
+    "key": "progressReconstructing"
+  },
+  "上一页": {
+    "tool": "pdfToSlide",
+    "key": "prevPage"
+  },
+  "下一页": {
+    "tool": "pdfToSlide",
+    "key": "nextPage"
+  },
+  "大纲与图表将在这里渲染为卡片大纲预览": {
+    "tool": "pdfToSlide",
+    "key": "outlinePreviewTitle"
+  },
+  "选择您的主题色并点击生成开始大纲幻灯片重建": {
+    "tool": "pdfToSlide",
+    "key": "outlinePreviewDesc"
+  },
+  "无法解析主 PDF 元数据，该文件可能已损坏。": {
+    "tool": "pdfToTiff",
+    "key": "errorMetadata"
+  },
+  "请上传待转换为 TIFF 的 PDF 文件。": {
+    "tool": "pdfToTiff",
+    "key": "errorUpload"
+  },
+  "正在将页面序列化为单文件多页 TIFF...": {
+    "tool": "pdfToTiff",
+    "key": "progressExtracting"
+  },
+  "编译多页 TIFF 文件失败。": {
+    "tool": "pdfToTiff",
+    "key": "errorExtracting"
+  },
+  "序列化打包时发生未知错误。": {
+    "tool": "pdfToTiff",
+    "key": "errorUnknown"
+  },
+  "点击上传待转换 PDF 文件": {
+    "tool": "pdfToTiff",
+    "key": "uploadButton"
+  },
+  "手写手写手写手写手写手写二进制 IFD 拼接编译器，直接合并生成单个包含多页面（Multi-page）的合法高保真 TIFF。": {
+    "tool": "pdfToTiff",
+    "key": "uploadDesc"
+  },
+  "3D 晶格像素密度与光谱实时预览": {
+    "tool": "pdfToTiff",
+    "key": "previewTitle"
+  },
+  "24-bit 印刷全彩 (RGB)：每像素占用 3 字节，完美还原丰富的光谱色彩。": {
+    "tool": "pdfToTiff",
+    "key": "descColor"
+  },
+  "8-bit 专业灰度：使用经典光敏系数脱色，层次分明，适合黑白文卷存档。": {
+    "tool": "pdfToTiff",
+    "key": "descGrayscale"
+  },
+  "1-bit 纯黑白二值：基于半色调 127 阀值二值化，极具对比度，体积缩减至 1/24。": {
+    "tool": "pdfToTiff",
+    "key": "descMono"
+  },
+  "2. 印刷级多页 TIFF 输出配置": {
+    "tool": "pdfToTiff",
+    "key": "optionsTitle"
+  },
+  "A. 色彩表达模式 (Color Mode)": {
+    "tool": "pdfToTiff",
+    "key": "colorModeLabel"
+  },
+  "全彩 (RGB 24-bit)": {
+    "tool": "pdfToTiff",
+    "key": "colorModeFull"
+  },
+  "灰阶 (8-bit)": {
+    "tool": "pdfToTiff",
+    "key": "colorModeGrayscale"
+  },
+  "黑白单色 (1-bit)": {
+    "tool": "pdfToTiff",
+    "key": "colorModeMono"
+  },
+  "B. 图像压缩算法 (Compression Method)": {
+    "tool": "pdfToTiff",
+    "key": "compressionLabel"
+  },
+  "无压缩 (None - 极大兼容)": {
+    "tool": "pdfToTiff",
+    "key": "compressionNone"
+  },
+  "无损游程压缩 (PackBits RLE)": {
+    "tool": "pdfToTiff",
+    "key": "compressionPackbits"
+  },
+  "C. 高精度 DPI 分辨率滑轨 (Resolution)": {
+    "tool": "pdfToTiff",
+    "key": "resolutionLabel"
+  },
+  "{dpi} DPI ({percent}% 视网膜缩放)": {
+    "tool": "pdfToTiff",
+    "key": "resolutionDpi"
+  },
+  "72 DPI (屏幕低精)": {
+    "tool": "pdfToTiff",
+    "key": "dpi72"
+  },
+  "150 DPI (普通办公)": {
+    "tool": "pdfToTiff",
+    "key": "dpi150"
+  },
+  "300 DPI (印刷级高清)": {
+    "tool": "pdfToTiff",
+    "key": "dpi300"
+  },
+  "600 DPI (视网膜超清)": {
+    "tool": "pdfToTiff",
+    "key": "dpi600"
+  },
+  "印刷与存档提示：": {
+    "tool": "pdfToTiff",
+    "key": "tipTitle"
+  },
+  "多页 TIFF (Multi-page TIFF) 在导入 Acrobat 或 Photoshop 时，可像 PDF 一样顺畅地进行页面上下滚动，但其完全由光栅位图构成。对图表和文字，我们极力推荐使用": {
+    "tool": "pdfToTiff",
+    "key": "tipDesc"
+  },
+  "300 DPI": {
+    "tool": "pdfToTiff",
+    "key": "tipRecommend"
+  },
+  "开始编译并生成多页 TIFF": {
+    "tool": "pdfToTiff",
+    "key": "processButton"
+  },
+  "🎉 单文件多页 TIFF 编译成功！所有页面已合并就位。一键极速下载。": {
+    "tool": "pdfToTiff",
+    "key": "successMessage"
+  },
+  "3D 微折叠透视渲染预览页": {
+    "tool": "pdfTwoColumnReflower",
+    "key": "previewTitle"
+  },
+  "中缝定位分栏比例": {
+    "tool": "pdfTwoColumnReflower",
+    "key": "splitRatio"
+  },
+  "阅读流平铺方向": {
+    "tool": "pdfTwoColumnReflower",
+    "key": "readingFlowLabel"
+  },
+  "纵向瀑布流平铺 (推荐)": {
+    "tool": "pdfTwoColumnReflower",
+    "key": "flowVertical"
+  },
+  "横向折页式流": {
+    "tool": "pdfTwoColumnReflower",
+    "key": "flowHorizontal"
+  },
+  "过滤状态汇总": {
+    "tool": "removeBlankPages",
+    "key": "summaryTitle"
+  },
+  "共 {count} 页": {
+    "tool": "removeBlankPages",
+    "key": "totalLabel"
+  },
+  "待删除: {count} 页": {
+    "tool": "removeBlankPages",
+    "key": "blankLabel"
+  },
+  "保留: {count} 页": {
+    "tool": "removeBlankPages",
+    "key": "keepLabel"
+  },
+  "重置手动修改": {
+    "tool": "removeBlankPages",
+    "key": "resetBtn"
+  },
+  "保留全部页": {
+    "tool": "removeBlankPages",
+    "key": "keepAllBtn"
+  },
+  "删除全部页": {
+    "tool": "removeBlankPages",
+    "key": "deleteAllBtn"
+  },
+  "全部页面 ({count})": {
+    "tool": "removeBlankPages",
+    "key": "allTab"
+  },
+  "推荐删除 ({count})": {
+    "tool": "removeBlankPages",
+    "key": "blankTab"
+  },
+  "保留页面 ({count})": {
+    "tool": "removeBlankPages",
+    "key": "keepTab"
+  },
+  "当前视图下没有页面可供显示": {
+    "tool": "removeBlankPages",
+    "key": "emptyState"
+  },
+  "系统已清理 {count} 页空白页，保留并重新编译了剩余页面。": {
+    "tool": "removeBlankPages",
+    "key": "successRemoved"
+  },
+  "文档中未检测到被删除的页面，已直接导出。": {
+    "tool": "removeBlankPages",
+    "key": "successNoChange"
+  },
+  "处理新文件": {
+    "tool": "removeBlankPages",
+    "key": "processNew"
+  },
+  "点击保留该页": {
+    "tool": "removeBlankPages",
+    "key": "clickToKeep"
+  },
+  "点击删除该页": {
+    "tool": "removeBlankPages",
+    "key": "clickToDelete"
+  },
+  "熵: {entropy}": {
+    "tool": "removeBlankPages",
+    "key": "entropyLabel"
+  },
+  "强删": {
+    "tool": "removeBlankPages",
+    "key": "forceDelete"
+  },
+  "强留": {
+    "tool": "removeBlankPages",
+    "key": "forceKeep"
+  },
+  "空页": {
+    "tool": "removeBlankPages",
+    "key": "blankBadge"
+  },
+  "校准控制中心": {
+    "tool": "rotate",
+    "key": "optionsTitle"
+  },
+  "选择下方页面，使用快调或无极表盘精准矫正歪斜或翻转的文档。": {
+    "tool": "rotate",
+    "key": "optionsHelp"
+  },
+  "已选中 {selected} / {total} 页": {
+    "tool": "rotate",
+    "key": "selectedPages"
+  },
+  "全选": {
+    "tool": "rotate",
+    "key": "selectAll"
+  },
+  "清除": {
+    "tool": "rotate",
+    "key": "clearAll"
+  },
+  "快捷快调": {
+    "tool": "rotate",
+    "key": "quickRotate"
+  },
+  "无极微调 (细粒度)": {
+    "tool": "rotate",
+    "key": "fineRotate"
+  },
+  "左旋 90°": {
+    "tool": "rotate",
+    "key": "rotateLeft90"
+  },
+  "右旋 90°": {
+    "tool": "rotate",
+    "key": "rotateRight90"
+  },
+  "翻转 180°": {
+    "tool": "rotate",
+    "key": "rotate180"
+  },
+  "一键清零": {
+    "tool": "rotate",
+    "key": "resetRotate"
+  },
+  "快速选择页组：": {
+    "tool": "rotate",
+    "key": "quickSelectLabel"
+  },
+  "仅奇数页": {
+    "tool": "rotate",
+    "key": "selectOdd"
+  },
+  "仅偶数页": {
+    "tool": "rotate",
+    "key": "selectEven"
+  },
+  "校正": {
+    "tool": "rotate",
+    "key": "correctionLabel"
+  },
+  "滚动滚轮微调": {
+    "tool": "rotate",
+    "key": "wheelHelp"
+  },
+  "-180.0° (左)": {
+    "tool": "rotate",
+    "key": "sliderLeft"
+  },
+  "精细微调滑块": {
+    "tool": "rotate",
+    "key": "sliderTitle"
+  },
+  "+180.0° (右)": {
+    "tool": "rotate",
+    "key": "sliderRight"
+  },
+  "精密输入：": {
+    "tool": "rotate",
+    "key": "preciseInput"
+  },
+  "输入提示：您可以输入任意角度，比如较大值，在失焦或按下回车时系统将自动取模规范化在 [-180°, 180°] 的等效区间内。": {
+    "tool": "rotate",
+    "key": "inputTip"
+  },
+  "旋转处理中...": {
+    "tool": "rotate",
+    "key": "processingButton"
+  },
+  "开始旋转 {count} 个已校准页面": {
+    "tool": "rotate",
+    "key": "processButton"
+  },
+  "🎉 PDF 页面物理旋转保存成功！点击上方按钮进行下载。": {
+    "tool": "rotate",
+    "key": "successMessage"
+  },
+  "实时物理预览视窗": {
+    "tool": "rotate",
+    "key": "previewTitle"
+  },
+  "点击页面切换选择 • 拖拽左侧控制进行细粒度微调": {
+    "tool": "rotate",
+    "key": "previewHelp"
+  },
+  "正在解压并加载 PDF 预览图...": {
+    "tool": "rotate",
+    "key": "loadingPreview"
+  },
+  "中国信安可信时间戳权威机构": {
+    "tool": "timestamp",
+    "key": "tsaMesignDesc"
+  },
+  "全球领先的 PKI 安全时间戳提供商": {
+    "tool": "timestamp",
+    "key": "tsaDigicertDesc"
+  },
+  "Comodo 安全原子钟授时服务": {
+    "tool": "timestamp",
+    "key": "tsaSectigoDesc"
+  },
+  "北美可信第三方权威授时节点": {
+    "tool": "timestamp",
+    "key": "tsaSslDesc"
+  },
+  "开源高强密码学免费确权机构": {
+    "tool": "timestamp",
+    "key": "tsaFreetsaDesc"
+  },
+  "上传待签名确权 PDF": {
+    "tool": "timestamp",
+    "key": "uploadLabel"
+  },
+  "将 PDF 文件拖放到此处。支持所有标准和加密 PDF 的自动解密载入。": {
+    "tool": "timestamp",
+    "key": "uploadDescription"
+  },
+  "1. 选择受信任 TSA 服务器 (RFC 3161)": {
+    "tool": "timestamp",
+    "key": "tsaStepTitle"
+  },
+  "系统只发送无规律的 SHA-256 哈希值与服务器交互，绝对保障文档隐私。": {
+    "tool": "timestamp",
+    "key": "tsaPrivacyHelp"
+  },
+  "极速": {
+    "tool": "timestamp",
+    "key": "tsaSpeedFast"
+  },
+  "稳定": {
+    "tool": "timestamp",
+    "key": "tsaSpeedStable"
+  },
+  "签署可信时间戳": {
+    "tool": "timestamp",
+    "key": "processButton"
+  },
+  "等待时间戳确权签署": {
+    "tool": "timestamp",
+    "key": "processingTitle"
+  },
+  "上传文件并选择 TSA，点击“签署可信时间戳”生成由权威授时中心盖章的加密证书凭证。": {
+    "tool": "timestamp",
+    "key": "processingDesc"
+  },
+  "电子存证可信时间戳凭据": {
+    "tool": "timestamp",
+    "key": "resultTitle"
+  },
+  "TSA 原子钟授时时间 (UTC)": {
+    "tool": "timestamp",
+    "key": "tsaTime"
+  },
+  "安全文件哈希校验和 (SHA-256)": {
+    "tool": "timestamp",
+    "key": "tsaHash"
+  },
+  "授时权威商 (TSA)": {
+    "tool": "timestamp",
+    "key": "tsaName"
+  },
+  "证书序列号 (Serial)": {
+    "tool": "timestamp",
+    "key": "tsaSerial"
+  },
+  "上传需要提取矢量的 PDF 文件": {
+    "tool": "vectorExtractor",
+    "key": "uploadLabel"
+  },
+  "拖放带有徽标 Logo、插图、CAD 图表或复杂数学公式的 PDF。系统将把图层翻译为高保真 SVG 画布。": {
+    "tool": "vectorExtractor",
+    "key": "uploadDescription"
+  },
+  "共 {count} 页 • {size} MB": {
+    "tool": "vectorExtractor",
+    "key": "uploadSuccess"
+  },
+  "移动鼠标悬停以 3D 包围高亮元素，点击选择。": {
+    "tool": "vectorExtractor",
+    "key": "magnifierTitle"
+  },
+  "矢量元素属性": {
+    "tool": "vectorExtractor",
+    "key": "propertiesTitle"
+  },
+  "未选中任何元素": {
+    "tool": "vectorExtractor",
+    "key": "emptyPropertiesTitle"
+  },
+  "点击左侧画布上的任何矢量线条、文字或色块进行高保真单独提取。": {
+    "tool": "vectorExtractor",
+    "key": "emptyPropertiesDesc"
+  },
+  "色彩预填充 (RGB)": {
+    "tool": "vectorExtractor",
+    "key": "rgbColor"
+  },
+  "代码已复制": {
+    "tool": "vectorExtractor",
+    "key": "codeCopied"
+  },
+  "复制 SVG 源代码": {
+    "tool": "vectorExtractor",
+    "key": "copyCode"
+  },
+  "下载选中矢量图": {
+    "tool": "vectorExtractor",
+    "key": "downloadSvg"
+  }
+}

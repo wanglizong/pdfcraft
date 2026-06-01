@@ -156,6 +156,7 @@ export class OCRProcessor extends BasePDFProcessor {
       this.updateProgress(25, `Processing ${pagesToOCR.length} page(s)...`);
 
       const textResults: string[] = [];
+      const ocrPagesData: Array<{ pageNum: number; words: any[] }> = [];
       const progressPerPage = 70 / pagesToOCR.length;
 
       for (let i = 0; i < pagesToOCR.length; i++) {
@@ -176,8 +177,9 @@ export class OCRProcessor extends BasePDFProcessor {
         );
 
         try {
-          const pageText = await this.ocrPage(pdf, pageNum, ocrOptions);
-          textResults.push(`--- Page ${pageNum} ---\n${pageText}`);
+          const pageData = await this.ocrPage(pdf, pageNum, ocrOptions);
+          textResults.push(`--- Page ${pageNum} ---\n${pageData.text}`);
+          ocrPagesData.push({ pageNum, words: pageData.words });
         } catch (error) {
           textResults.push(`--- Page ${pageNum} ---\n[OCR Error: ${error instanceof Error ? error.message : 'Unknown error'}]`);
         }
@@ -197,8 +199,8 @@ export class OCRProcessor extends BasePDFProcessor {
         blob = new Blob([fullText], { type: 'text/plain' });
         outputFilename = `${baseName}_ocr.txt`;
       } else {
-        // For searchable PDF, we create a PDF with the extracted text
-        blob = await this.createSearchablePDF(file, textResults, ocrOptions);
+        // For searchable PDF, we create a PDF with the extracted text layer
+        blob = await this.createSearchablePDF(file, ocrPagesData, ocrOptions);
         outputFilename = `${baseName}_searchable.pdf`;
       }
 
@@ -242,13 +244,13 @@ export class OCRProcessor extends BasePDFProcessor {
   }
 
   /**
-   * Perform OCR on a single page
+   * Perform OCR on a single page and return text with word coordinates
    */
   private async ocrPage(
-    pdf: Awaited<ReturnType<Awaited<ReturnType<typeof loadPdfjs>>['getDocument']>['promise']>,
+    pdf: any,
     pageNum: number,
     options: OCROptions
-  ): Promise<string> {
+  ): Promise<{ text: string; words: any[] }> {
     if (!this.tesseractWorker) {
       throw new Error('Tesseract worker not initialized');
     }
@@ -277,16 +279,43 @@ export class OCRProcessor extends BasePDFProcessor {
     }).promise;
 
     // Perform OCR
-    const result = await this.tesseractWorker.recognize(canvas);
-    return result.data.text;
+    const result = await (this.tesseractWorker as any).recognize(canvas);
+    
+    // Coordinate conversion from canvas space to PDF coordinate space (y-flipped)
+    const pdfViewport = page.getViewport({ scale: 1.0 });
+    const pageHeight = pdfViewport.height;
+
+    const words = (result.data.words || []).map((w: any) => {
+      const { x0, y0, x1, y1 } = w.bbox;
+      const scale = options.scale;
+      
+      const pdfX = x0 / scale;
+      const pdfY = pageHeight - (y1 / scale);
+      const pdfWidth = (x1 - x0) / scale;
+      const pdfHeight = (y1 - y0) / scale;
+
+      return {
+        text: w.text,
+        x: pdfX,
+        y: pdfY,
+        width: pdfWidth,
+        height: pdfHeight,
+        fontSize: pdfHeight * 0.85,
+      };
+    });
+
+    return {
+      text: result.data.text,
+      words,
+    };
   }
 
   /**
-   * Create a searchable PDF with OCR text layer
+   * Create a searchable PDF with OCR transparent text layer
    */
   private async createSearchablePDF(
     originalFile: File,
-    textResults: string[],
+    ocrPagesData: Array<{ pageNum: number; words: any[] }>,
     options: OCROptions
   ): Promise<Blob> {
     const pdfLib = await loadPdfLib();
@@ -295,13 +324,36 @@ export class OCRProcessor extends BasePDFProcessor {
     const arrayBuffer = await originalFile.arrayBuffer();
     const pdfDoc = await pdfLib.PDFDocument.load(arrayBuffer);
 
-    // For now, we'll create a simple text file with the OCR results
-    // A full searchable PDF implementation would require adding invisible text layers
-    // which is complex and beyond the scope of this basic implementation
+    // Embed standard fonts (Helvetica is safe and standard)
+    const font = await pdfDoc.embedFont(pdfLib.StandardFonts.Helvetica);
+
+    for (const pageData of ocrPagesData) {
+      const pageIdx = pageData.pageNum - 1;
+      if (pageIdx >= pdfDoc.getPageCount()) continue;
+
+      const page = pdfDoc.getPage(pageIdx);
+
+      // Draw invisible text items
+      for (const w of pageData.words) {
+        if (!w.text.trim()) continue;
+        try {
+          page.drawText(w.text, {
+            x: w.x,
+            y: w.y,
+            size: Math.max(5, w.fontSize),
+            font,
+            color: pdfLib.rgb(0, 0, 0),
+            opacity: 0.0, // Totally invisible text overlay
+          });
+        } catch (e) {
+          console.error(`Failed to overlay invisible text: ${w.text}`, e);
+        }
+      }
+    }
 
     // Add metadata to indicate OCR was performed
     pdfDoc.setTitle(`${originalFile.name} (OCR)`);
-    pdfDoc.setSubject('OCR processed document');
+    pdfDoc.setSubject('OCR processed document with invisible text layer');
     pdfDoc.setKeywords(['OCR', 'searchable', ...options.languages]);
 
     const pdfBytes = await pdfDoc.save({ useObjectStreams: true });

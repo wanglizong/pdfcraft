@@ -1,0 +1,65 @@
+{
+  "title": "Extract Images from PDF",
+  "metaDescription": "Extract all embedded images from PDF files. Download individually or as a ZIP archive. Filter small images automatically.",
+  "keywords": [
+    "extract pdf images",
+    "pdf image extraction",
+    "get images from pdf",
+    "download pdf images",
+    "pdf to images"
+  ],
+  "description": "\n      <p>Extract Images from PDF retrieves all embedded images from your PDF documents. Download high-quality images individually or as a convenient ZIP archive.</p>\n      <p>The tool automatically filters out small images like icons and decorations based on customizable size thresholds. Process multiple PDFs at once for efficient batch extraction.</p>\n      <p>All extraction happens in your browser, ensuring your documents remain private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDFs",
+      "description": "Drag and drop one or more PDF files or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Set Filter Options",
+      "description": "Adjust minimum width, height, and file size to filter out unwanted small images."
+    },
+    {
+      "step": 3,
+      "title": "Extract Images",
+      "description": "Click Extract to find all embedded images in your PDFs."
+    },
+    {
+      "step": 4,
+      "title": "Download",
+      "description": "Download individual images or all images as a ZIP archive."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Photo Recovery",
+      "description": "Extract photos and images embedded in PDF documents for reuse or archiving.",
+      "icon": "image"
+    },
+    {
+      "title": "Asset Collection",
+      "description": "Gather all graphics and images from PDF reports, presentations, or brochures.",
+      "icon": "folder"
+    },
+    {
+      "title": "Content Repurposing",
+      "description": "Extract images from PDFs to use in other documents, websites, or presentations.",
+      "icon": "refresh-cw"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What image formats are extracted?",
+      "answer": "Images are extracted in their native format (JPEG, PNG, etc.) when possible, or converted to PNG for raw image data."
+    },
+    {
+      "question": "Why are some images missing?",
+      "answer": "Small images below the size threshold are filtered out. Adjust the filter settings to extract smaller images."
+    },
+    {
+      "question": "Can I extract from scanned PDFs?",
+      "answer": "Scanned PDFs typically contain the scan as one large image per page. Use PDF to Image tool instead for page-by-page conversion."
+    }
+  ]
+}

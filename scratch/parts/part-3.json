@@ -1,0 +1,454 @@
+{
+  "tools.formCreator.formOptions": {
+    "en": "Form Options",
+    "zh": "表单选项"
+  },
+  "tools.formCreator.flattenForm": {
+    "en": "Flatten Form",
+    "zh": "扁平化表单"
+  },
+  "tools.formCreator.flattenFormHint": {
+    "en": "Make form fields non-editable (converts to static content)",
+    "zh": "使表单字段不可编辑（转换为静态内容）"
+  },
+  "tools.formCreator.projectManagement": {
+    "en": "Project Management",
+    "zh": "项目管理"
+  },
+  "tools.formCreator.saveProject": {
+    "en": "Save Project",
+    "zh": "保存项目"
+  },
+  "tools.formCreator.savedProjects": {
+    "en": "Saved Projects",
+    "zh": "已保存的项目"
+  },
+  "tools.formCreator.loadProject": {
+    "en": "Load",
+    "zh": "加载"
+  },
+  "tools.formCreator.saveProjectTitle": {
+    "en": "Save Project",
+    "zh": "保存项目"
+  },
+  "tools.formCreator.projectName": {
+    "en": "Project Name",
+    "zh": "项目名称"
+  },
+  "tools.formCreator.projectNamePlaceholder": {
+    "en": "Enter project name...",
+    "zh": "输入项目名称..."
+  },
+  "tools.formCreator.saveInfo": {
+    "en": "{fields} form field(s) will be saved.",
+    "zh": "将保存 {fields} 个表单字段。"
+  },
+  "tools.formCreator.saveNote": {
+    "en": "Projects are saved locally in your browser.",
+    "zh": "项目保存在浏览器本地存储中。"
+  },
+  "tools.formCreator.undo": {
+    "en": "Undo (Ctrl+Z)",
+    "zh": "撤销 (Ctrl+Z)"
+  },
+  "tools.formCreator.redo": {
+    "en": "Redo (Ctrl+Y)",
+    "zh": "重做 (Ctrl+Y)"
+  },
+  "tools.formCreator.duplicate": {
+    "en": "Duplicate (Ctrl+D)",
+    "zh": "复制 (Ctrl+D)"
+  },
+  "tools.formCreator.align": {
+    "en": "Align",
+    "zh": "对齐"
+  },
+  "tools.formCreator.alignLeft": {
+    "en": "Align Left",
+    "zh": "左对齐"
+  },
+  "tools.formCreator.alignCenter": {
+    "en": "Align Center",
+    "zh": "水平居中"
+  },
+  "tools.formCreator.alignRight": {
+    "en": "Align Right",
+    "zh": "右对齐"
+  },
+  "tools.formCreator.alignTop": {
+    "en": "Align Top",
+    "zh": "顶部对齐"
+  },
+  "tools.formCreator.alignMiddle": {
+    "en": "Align Middle",
+    "zh": "垂直居中"
+  },
+  "tools.formCreator.alignBottom": {
+    "en": "Align Bottom",
+    "zh": "底部对齐"
+  },
+  "tools.formCreator.defaultValue": {
+    "en": "Default Value",
+    "zh": "默认值"
+  },
+  "tools.formCreator.defaultValuePlaceholder": {
+    "en": "Enter default text...",
+    "zh": "输入默认文本..."
+  },
+  "tools.formCreator.defaultChecked": {
+    "en": "Checked by default",
+    "zh": "默认选中"
+  },
+  "tools.formCreator.defaultSelection": {
+    "en": "Default Selection",
+    "zh": "默认选择"
+  },
+  "tools.formCreator.noDefault": {
+    "en": "-- None --",
+    "zh": "-- 无 --"
+  },
+  "tools.formCreator.required": {
+    "en": "Required field",
+    "zh": "必填字段"
+  },
+  "tools.formCreator.shortcutsHint": {
+    "en": "Shortcuts: Ctrl+Z (Undo) | Ctrl+Y (Redo) | Ctrl+D (Duplicate) | Ctrl+A (Select All) | Delete (Remove)",
+    "zh": "快捷键: Ctrl+Z (撤销) | Ctrl+Y (重做) | Ctrl+D (复制) | Ctrl+A (全选) | Delete (删除)"
+  },
+  "tools.formCreator.buttonTool": {
+    "en": "Button",
+    "zh": "按钮"
+  },
+  "tools.formCreator.listboxTool": {
+    "en": "List Box",
+    "zh": "列表框"
+  },
+  "tools.formCreator.buttonLabel": {
+    "en": "Button Label",
+    "zh": "按钮文本"
+  },
+  "tools.formCreator.signatureLabel": {
+    "en": "Signature Label",
+    "zh": "签名提示"
+  },
+  "tools.formCreator.signatureLabelPlaceholder": {
+    "en": "Sign here",
+    "zh": "在此签名"
+  },
+  "tools.formCreator.dateFormat": {
+    "en": "Date Format",
+    "zh": "日期格式"
+  },
+  "tools.formCreator.defaultDate": {
+    "en": "Default Date",
+    "zh": "默认日期"
+  },
+  "tools.formCreator.multiSelect": {
+    "en": "Allow multiple selection",
+    "zh": "允许多选"
+  },
+  "tools.formCreator.basicTools": {
+    "en": "Basic",
+    "zh": "基础"
+  },
+  "tools.formCreator.advancedTools": {
+    "en": "More",
+    "zh": "更多"
+  },
+  "tools.formCreator.properties": {
+    "en": "Properties",
+    "zh": "属性"
+  },
+  "tools.formCreator.fieldsTab": {
+    "en": "Fields",
+    "zh": "字段"
+  },
+  "tools.formCreator.addField": {
+    "en": "Add",
+    "zh": "添加"
+  },
+  "tools.formCreator.clickToAdd": {
+    "en": "Click on PDF to add field",
+    "zh": "点击PDF添加字段"
+  },
+  "tools.formCreator.orCreateBlank": {
+    "en": "Or",
+    "zh": "或"
+  },
+  "tools.formCreator.createBlankPdf": {
+    "en": "Create Blank PDF",
+    "zh": "创建空白PDF"
+  },
+  "tools.formCreator.createBlankPdfTitle": {
+    "en": "Create Blank PDF",
+    "zh": "创建空白PDF"
+  },
+  "tools.formCreator.pageCount": {
+    "en": "Number of Pages",
+    "zh": "页数"
+  },
+  "tools.formCreator.blankPdfNote": {
+    "en": "A blank PDF will be created for you to add form fields.",
+    "zh": "将创建一个空白PDF，您可以在其中添加表单字段。"
+  },
+  "tools.formCreator.addBlankPage": {
+    "en": "Add Blank Page",
+    "zh": "添加空白页"
+  },
+  "tools.formCreator.addPageBefore": {
+    "en": "Before current",
+    "zh": "在当前页之前"
+  },
+  "tools.formCreator.addPageAfter": {
+    "en": "After current",
+    "zh": "在当前页之后"
+  },
+  "tools.formCreator.addPageEnd": {
+    "en": "At end",
+    "zh": "在末尾"
+  },
+  "tools.formCreator.templateHint": {
+    "en": "Or choose a template to get started quickly",
+    "zh": "或选择一个模板快速开始"
+  },
+  "tools.formCreator.templates": {
+    "en": "Template",
+    "zh": "模板"
+  },
+  "tools.formCreator.selectTemplate": {
+    "en": "Select...",
+    "zh": "选择..."
+  },
+  "tools.formCreator.template.contact": {
+    "en": "Contact Form",
+    "zh": "联系表单"
+  },
+  "tools.formCreator.template.registration": {
+    "en": "Registration",
+    "zh": "注册表单"
+  },
+  "tools.formCreator.template.order": {
+    "en": "Order Form",
+    "zh": "订单表单"
+  },
+  "tools.formCreator.template.consent": {
+    "en": "Consent Form",
+    "zh": "同意书"
+  },
+  "tools.formCreator.template.invoice": {
+    "en": "Invoice",
+    "zh": "发票"
+  },
+  "tools.formCreator.fieldLabelPlaceholder": {
+    "en": "Enter label text...",
+    "zh": "输入标签文本..."
+  },
+  "tools.formCreator.labelAbove": {
+    "en": "Above",
+    "zh": "上方"
+  },
+  "tools.removeBlankPages.removeButton": {
+    "en": "Apply & Remove Blank Pages",
+    "zh": "应用并移除空白页"
+  },
+  "tools.tableOfContents.tocTitlePlaceholder": {
+    "en": "Enter TOC title...",
+    "zh": "输入目录标题..."
+  },
+  "tools.markdownToPdf.uploadLabel": {
+    "en": "Upload Markdown File",
+    "zh": "上传 Markdown 文件"
+  },
+  "tools.markdownToPdf.uploadDescription": {
+    "en": "Drag and drop a .md or .markdown file to convert to PDF.",
+    "zh": "拖放 .md 或 .markdown 文件以转换为 PDF。"
+  },
+  "tools.markdownToPdf.uploadFile": {
+    "en": "Upload File",
+    "zh": "上传文件"
+  },
+  "tools.markdownToPdf.showPreview": {
+    "en": "Show Preview",
+    "zh": "显示预览"
+  },
+  "tools.markdownToPdf.hidePreview": {
+    "en": "Hide Preview",
+    "zh": "隐藏预览"
+  },
+  "tools.markdownToPdf.themeLabel": {
+    "en": "Theme",
+    "zh": "主题"
+  },
+  "tools.markdownToPdf.gfmLabel": {
+    "en": "Enable GitHub Flavored Markdown (tables, task lists, etc.)",
+    "zh": "启用 GitHub 风格 Markdown（表格、任务列表等）"
+  },
+  "tools.markdownToPdf.syntaxHighlightLabel": {
+    "en": "Enable syntax highlighting for code blocks",
+    "zh": "启用代码块语法高亮"
+  },
+  "tools.markdownToPdf.successMessage": {
+    "en": "PDF created successfully! Click download to save.",
+    "zh": "PDF 创建成功！点击下载保存。"
+  },
+  "tools.pdfToDocx.convertButton": {
+    "en": "Convert to DOCX",
+    "zh": "转换为DOCX"
+  },
+  "tools.pdfToDocx.successMessage": {
+    "en": "Your PDF has been successfully converted to DOCX! Click the download button to save your file.",
+    "zh": "您的PDF已成功转换为DOCX！点击下载按钮保存文件。"
+  },
+  "tools.pdfToMarkdown.includePageNumbers": {
+    "en": "Include page numbers as headers",
+    "zh": "将页码作为标题包含"
+  },
+  "tools.pdfToMarkdown.preserveLineBreaks": {
+    "en": "Preserve line breaks",
+    "zh": "保留换行符"
+  },
+  "tools.pdfToMarkdown.convertButton": {
+    "en": "Convert to Markdown",
+    "zh": "转换为Markdown"
+  },
+  "tools.pdfToMarkdown.sourceTab": {
+    "en": "Markdown Source",
+    "zh": "Markdown 源码"
+  },
+  "tools.pdfToMarkdown.successMessage": {
+    "en": "Your PDF has been successfully converted to Markdown! Click the download button to save your file.",
+    "zh": "您的PDF已成功转换为Markdown！点击下载按钮保存文件。"
+  },
+  "tools.pdfToMarkdown.failed": {
+    "en": "Failed to convert PDF to Markdown.",
+    "zh": "PDF转换为Markdown失败。"
+  },
+  "tools.pdfToExcel.extractNote": {
+    "en": "Each page's tables will be extracted to separate sheets in the Excel file.",
+    "zh": "每一页的表格都将提取到 Excel 文件中的独立工作表中。"
+  },
+  "tools.pdfToExcel.convertButton": {
+    "en": "Convert to Excel",
+    "zh": "转换为 Excel"
+  },
+  "tools.pdfToExcel.successTitle": {
+    "en": "Conversion Successful!",
+    "zh": "转换成功！"
+  },
+  "tools.pdfToExcel.successMessage": {
+    "en": "Your PDF tables have been extracted to Excel.",
+    "zh": "您的 PDF 表格已提取到 Excel。"
+  },
+  "tools.pdfToPptx.dpiLabel": {
+    "en": "Image Quality (DPI)",
+    "zh": "图像质量 (DPI)"
+  },
+  "tools.pdfToPptx.dpiHint": {
+    "en": "Higher DPI produces better quality slides but larger file sizes.",
+    "zh": "较高的 DPI 会产生质量更好的幻灯片，但文件体积也会更大。"
+  },
+  "tools.pdfToPptx.lowSet": {
+    "en": "Low (72 DPI - smaller file)",
+    "zh": "低 (72 DPI - 文件较小)"
+  },
+  "tools.pdfToPptx.mediumSet": {
+    "en": "Medium (150 DPI - balanced)",
+    "zh": "中 (150 DPI - 平衡)"
+  },
+  "tools.pdfToPptx.highSet": {
+    "en": "High (200 DPI - better quality)",
+    "zh": "高 (200 DPI - 质量更好)"
+  },
+  "tools.pdfToPptx.veryHighSet": {
+    "en": "Very High (300 DPI - best quality)",
+    "zh": "极高 (300 DPI - 最佳质量)"
+  },
+  "tools.pdfToPptx.convertButton": {
+    "en": "Convert to PowerPoint",
+    "zh": "转换为 PowerPoint"
+  },
+  "tools.pdfToPptx.successTitle": {
+    "en": "Conversion Successful!",
+    "zh": "转换成功！"
+  },
+  "tools.pdfToPptx.successMessage": {
+    "en": "Your PDF has been converted to PowerPoint. Each page is now a slide with full-quality images.",
+    "zh": "您的 PDF 已成功转换为 PowerPoint。每一页现在都是具有高质量图像的幻灯片。"
+  },
+  "tools.wordToPdf.uploadLabel": {
+    "en": "Upload Word Document",
+    "zh": "上传Word文档"
+  },
+  "tools.wordToPdf.uploadDescription": {
+    "en": "Drag and drop a Word document (.docx) here, or click to browse.",
+    "zh": "拖放Word文档（.docx）到此处，或点击浏览。"
+  },
+  "tools.wordToPdf.successMessage": {
+    "en": "Your Word document has been successfully converted to PDF!",
+    "zh": "您的Word文档已成功转换为PDF！"
+  },
+  "tools.psdToPdf.uploadLabel": {
+    "en": "Upload PSD File",
+    "zh": "上传 PSD 文件"
+  },
+  "tools.psdToPdf.uploadDescription": {
+    "en": "Drag and drop a PSD (Photoshop) file here, or click to browse.",
+    "zh": "将 PSD (Photoshop) 文件拖放到此处，或点击浏览。"
+  },
+  "tools.psdToPdf.successMessage": {
+    "en": "PSD converted to PDF successfully! Click the download button to save your file.",
+    "zh": "PSD 已成功转换为 PDF！点击下载按钮保存文件。"
+  },
+  "tools.excelToPdf.uploadLabel": {
+    "en": "Upload Excel File",
+    "zh": "上传Excel文件"
+  },
+  "tools.excelToPdf.uploadDescription": {
+    "en": "Drag and drop an Excel file (.xlsx) here, or click to browse.",
+    "zh": "拖放Excel文件（.xlsx）到此处，或点击浏览。"
+  },
+  "tools.excelToPdf.successMessage": {
+    "en": "Your Excel file has been successfully converted to PDF!",
+    "zh": "您的Excel文件已成功转换为PDF！"
+  },
+  "tools.pptxToPdf.uploadLabel": {
+    "en": "Upload PowerPoint File",
+    "zh": "上传PowerPoint文件"
+  },
+  "tools.pptxToPdf.uploadDescription": {
+    "en": "Drag and drop a PowerPoint file (.pptx) here, or click to browse.",
+    "zh": "拖放PowerPoint文件（.pptx）到此处，或点击浏览。"
+  },
+  "tools.pptxToPdf.successMessage": {
+    "en": "Your PowerPoint file has been successfully converted to PDF!",
+    "zh": "您的PowerPoint文件已成功转换为PDF！"
+  },
+  "tools.xpsToPdf.uploadLabel": {
+    "en": "Upload XPS File",
+    "zh": "上传XPS文件"
+  },
+  "tools.xpsToPdf.uploadDescription": {
+    "en": "Drag and drop an XPS file here, or click to browse.",
+    "zh": "拖放XPS文件到此处，或点击浏览。"
+  },
+  "tools.xpsToPdf.successMessage": {
+    "en": "Your XPS file has been successfully converted to PDF!",
+    "zh": "您的XPS文件已成功转换为PDF！"
+  },
+  "tools.rtfToPdf.uploadLabel": {
+    "en": "Upload RTF File",
+    "zh": "上传RTF文件"
+  },
+  "tools.rtfToPdf.uploadDescription": {
+    "en": "Drag and drop an RTF file here, or click to browse.",
+    "zh": "拖放RTF文件到此处，或点击浏览。"
+  },
+  "tools.rtfToPdf.successMessage": {
+    "en": "Your RTF file has been successfully converted to PDF!",
+    "zh": "您的RTF文件已成功转换为PDF！"
+  },
+  "tools.epubToPdf.uploadLabel": {
+    "en": "Upload EPUB File",
+    "zh": "上传EPUB文件"
+  }
+}

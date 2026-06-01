@@ -1,0 +1,322 @@
+{
+  "tools.rotateCustom.rotateButton": {
+    "en": "Rotate PDF",
+    "zh": "旋转 PDF"
+  },
+  "tools.rotateCustom.rotatedCount": {
+    "en": "({count} page(s) set)",
+    "zh": "({count} 页已设置)"
+  },
+  "tools.rotateCustom.successMessage": {
+    "en": "Rotation completed successfully! Click the download button to save your file.",
+    "zh": "旋转完成！点击下载按钮保存文件。"
+  },
+  "tools.addBlankPage.uploadDescription": {
+    "en": "Drag and drop a PDF file to add blank pages.",
+    "zh": "拖放PDF文件到此处以添加空白页。"
+  },
+  "tools.addBlankPage.optionsTitle": {
+    "en": "Add Blank Pages Options",
+    "zh": "添加空白页选项"
+  },
+  "tools.addBlankPage.positionLabel": {
+    "en": "Insert Position",
+    "zh": "插入位置"
+  },
+  "tools.addBlankPage.positionHint": {
+    "en": "Enter 0 to insert at the beginning, or {total} to insert at the end.",
+    "zh": "输入 0 在开头插入，或输入 {total} 在末尾插入。"
+  },
+  "tools.addBlankPage.countLabel": {
+    "en": "Number of Blank Pages",
+    "zh": "空白页数量"
+  },
+  "tools.addBlankPage.addButton": {
+    "en": "Add Blank Pages",
+    "zh": "添加空白页"
+  },
+  "tools.addBlankPage.successMessage": {
+    "en": "Blank pages added successfully! Click the download button to save your file.",
+    "zh": "空白页添加成功！点击下载按钮保存文件。"
+  },
+  "tools.reversePages.uploadDescription": {
+    "en": "Drag and drop a PDF file to reverse page order.",
+    "zh": "拖放PDF文件到此处以反转页面顺序。"
+  },
+  "tools.reversePages.infoTitle": {
+    "en": "Reverse Page Order",
+    "zh": "反转页面顺序"
+  },
+  "tools.reversePages.infoDescription": {
+    "en": "This will reverse the order of all pages in your PDF. The last page will become the first, and so on.",
+    "zh": "这将反转PDF中所有页面的顺序。最后一页将变成第一页，依此类推。"
+  },
+  "tools.reversePages.reverseButton": {
+    "en": "Reverse Pages",
+    "zh": "反转页面"
+  },
+  "tools.reversePages.successMessage": {
+    "en": "Page order reversed successfully! Click the download button to save your file.",
+    "zh": "页面顺序反转成功！点击下载按钮保存文件。"
+  },
+  "tools.alternateMerge.uploadDescription": {
+    "en": "Upload two or more PDF files to interleave their pages alternately.",
+    "zh": "上传两个或更多PDF文件以交替合并页面。"
+  },
+  "tools.alternateMerge.filesTitle": {
+    "en": "Files to Interleave",
+    "zh": "要交替合并的文件"
+  },
+  "tools.alternateMerge.reorderHint": {
+    "en": "Drag and drop to reorder files. Pages will be interleaved in the order shown (1st page from file 1, 1st page from file 2, 2nd page from file 1, etc.).",
+    "zh": "拖放以重新排序文件。页面将按显示顺序交替合并（文件1的第1页，文件2的第1页，文件1的第2页，依此类推）。"
+  },
+  "tools.alternateMerge.optionsTitle": {
+    "en": "Interleave Options",
+    "zh": "交替合并选项"
+  },
+  "tools.alternateMerge.reverseSecond": {
+    "en": "Reverse second document",
+    "zh": "反转第二个文档"
+  },
+  "tools.alternateMerge.reverseSecondHint": {
+    "en": "Enable this for back-to-front scanned documents",
+    "zh": "适用于从后往前扫描的文档"
+  },
+  "tools.alternateMerge.howItWorks": {
+    "en": "How it works:",
+    "zh": "工作原理："
+  },
+  "tools.alternateMerge.howItWorksDescription": {
+    "en": "Pages are interleaved alternately: Page 1 from File 1, Page 1 from File 2, Page 2 from File 1, Page 2 from File 2, and so on. If documents have different page counts, extra pages are appended at the end.",
+    "zh": "页面交替合并：文件1的第1页，文件2的第1页，文件1的第2页，文件2的第2页，依此类推。如果文档页数不同，多余的页面将附加在末尾。"
+  },
+  "tools.alternateMerge.mergeButton": {
+    "en": "Interleave PDFs",
+    "zh": "交替合并PDF"
+  },
+  "tools.alternateMerge.successMessage": {
+    "en": "PDFs interleaved successfully! Click the download button to save your file.",
+    "zh": "PDF交替合并成功！点击下载按钮保存文件。"
+  },
+  "tools.combineSinglePage.optionsTitle": {
+    "en": "Combine Options",
+    "zh": "合并选项"
+  },
+  "tools.combineSinglePage.vertical": {
+    "en": "Vertical (Top to Bottom)",
+    "zh": "垂直（从上到下）"
+  },
+  "tools.combineSinglePage.horizontal": {
+    "en": "Horizontal (Left to Right)",
+    "zh": "水平（从左到右）"
+  },
+  "tools.combineSinglePage.spacing": {
+    "en": "Page Spacing (points)",
+    "zh": "页面间距（点）"
+  },
+  "tools.combineSinglePage.addSeparator": {
+    "en": "Add separator lines between pages",
+    "zh": "在页面之间添加分隔线"
+  },
+  "tools.combineSinglePage.separatorThickness": {
+    "en": "Separator Thickness (points)",
+    "zh": "分隔线粗细（点）"
+  },
+  "tools.combineSinglePage.separatorColor": {
+    "en": "Separator Color",
+    "zh": "分隔线颜色"
+  },
+  "tools.combineSinglePage.previewInfo": {
+    "en": "{pages} pages will be combined into 1 continuous {orientation} page.",
+    "zh": "{pages} 页将合并为 1 个连续的{orientation}页面。"
+  },
+  "tools.combineSinglePage.combineButton": {
+    "en": "Combine Pages",
+    "zh": "合并页面"
+  },
+  "tools.combineSinglePage.successMessage": {
+    "en": "Pages combined successfully! Click the download button to save your file.",
+    "zh": "页面合并成功！点击下载按钮保存文件。"
+  },
+  "tools.addAttachments.pdfFileTitle": {
+    "en": "1. Select PDF File",
+    "zh": "1. 选择PDF文件"
+  },
+  "tools.addAttachments.pdfUploadDescription": {
+    "en": "Select the PDF file to add attachments to.",
+    "zh": "选择要添加附件的PDF文件。"
+  },
+  "tools.addAttachments.attachmentsTitle": {
+    "en": "2. Select Files to Attach",
+    "zh": "2. 选择要附加的文件"
+  },
+  "tools.addAttachments.attachmentsUploadLabel": {
+    "en": "Upload Attachments",
+    "zh": "上传附件"
+  },
+  "tools.addAttachments.attachmentsUploadDescription": {
+    "en": "Select files to embed in the PDF. Any file type is supported.",
+    "zh": "选择要嵌入PDF的文件。支持任何文件类型。"
+  },
+  "tools.addAttachments.optionsTitle": {
+    "en": "Attachment Options",
+    "zh": "附件选项"
+  },
+  "tools.addAttachments.attachmentLevel": {
+    "en": "Attachment Level",
+    "zh": "附件级别"
+  },
+  "tools.addAttachments.documentLevel": {
+    "en": "Document Level",
+    "zh": "文档级别"
+  },
+  "tools.addAttachments.pageLevel": {
+    "en": "Page Level",
+    "zh": "页面级别"
+  },
+  "tools.addAttachments.pageRangeHint": {
+    "en": "Specify which pages to attach files to.",
+    "zh": "指定要附加文件的页面。"
+  },
+  "tools.addAttachments.addButton": {
+    "en": "Add Attachments",
+    "zh": "添加附件"
+  },
+  "tools.addAttachments.successMessage": {
+    "en": "Attachments added successfully! Click the download button to save your file.",
+    "zh": "附件添加成功！点击下载按钮保存文件。"
+  },
+  "tools.editAttachments.uploadDescription": {
+    "en": "Select a PDF file to view and manage its attachments.",
+    "zh": "选择PDF文件以查看和管理其附件。"
+  },
+  "tools.editAttachments.loadingAttachments": {
+    "en": "Loading attachments...",
+    "zh": "正在加载附件..."
+  },
+  "tools.editAttachments.attachmentsTitle": {
+    "en": "Attachments",
+    "zh": "附件"
+  },
+  "tools.editAttachments.removeButton": {
+    "en": "Remove Selected",
+    "zh": "移除选中"
+  },
+  "tools.editAttachments.noAttachments": {
+    "en": "No attachments found in this PDF file.",
+    "zh": "此PDF文件中没有附件。"
+  },
+  "tools.editAttachments.selectedCount": {
+    "en": "{count} attachment(s) selected for removal",
+    "zh": "已选择 {count} 个附件待移除"
+  },
+  "tools.editAttachments.selectAtLeastOne": {
+    "en": "Please select at least one attachment to remove.",
+    "zh": "请至少选择一个附件进行移除。"
+  },
+  "tools.editAttachments.attachmentCount": {
+    "en": "attachment(s)",
+    "zh": "个附件"
+  },
+  "tools.editAttachments.saveButton": {
+    "en": "Save Changes",
+    "zh": "保存更改"
+  },
+  "tools.editAttachments.successMessage": {
+    "en": "Attachments removed successfully! Click the download button to save your file.",
+    "zh": "附件移除成功！点击下载按钮保存文件。"
+  },
+  "tools.comparePdfs.file1Label": {
+    "en": "First PDF (Original)",
+    "zh": "第一个PDF（原始）"
+  },
+  "tools.comparePdfs.uploadFile1": {
+    "en": "Upload First PDF",
+    "zh": "上传第一个PDF"
+  },
+  "tools.comparePdfs.file2Label": {
+    "en": "Second PDF (Modified)",
+    "zh": "第二个PDF（修改后）"
+  },
+  "tools.comparePdfs.uploadFile2": {
+    "en": "Upload Second PDF",
+    "zh": "上传第二个PDF"
+  },
+  "tools.comparePdfs.uploadDescription": {
+    "en": "Drag and drop or click to browse",
+    "zh": "拖放或点击浏览"
+  },
+  "tools.comparePdfs.compareButton": {
+    "en": "Compare PDFs",
+    "zh": "比较PDF"
+  },
+  "tools.comparePdfs.resultsTitle": {
+    "en": "Comparison Results",
+    "zh": "比较结果"
+  },
+  "tools.comparePdfs.newComparison": {
+    "en": "New Comparison",
+    "zh": "新建比较"
+  },
+  "tools.comparePdfs.viewMode": {
+    "en": "View Mode:",
+    "zh": "查看模式："
+  },
+  "tools.comparePdfs.sideBySide": {
+    "en": "Side by Side",
+    "zh": "并排显示"
+  },
+  "tools.comparePdfs.overlay": {
+    "en": "Overlay",
+    "zh": "叠加显示"
+  },
+  "tools.comparePdfs.differences": {
+    "en": "Differences",
+    "zh": "差异显示"
+  },
+  "tools.comparePdfs.opacity": {
+    "en": "Opacity:",
+    "zh": "不透明度："
+  },
+  "tools.comparePdfs.diffView": {
+    "en": "Difference View (Red areas show changes)",
+    "zh": "差异视图（红色区域显示变化）"
+  },
+  "tools.comparePdfs.pageOverview": {
+    "en": "Page Overview",
+    "zh": "页面概览"
+  },
+  "tools.comparePdfs.fullscreen": {
+    "en": "Fullscreen",
+    "zh": "全屏"
+  },
+  "tools.comparePdfs.exitFullscreen": {
+    "en": "Exit Fullscreen",
+    "zh": "退出全屏"
+  },
+  "tools.comparePdfs.successMessage": {
+    "en": "Comparison complete! Use the view modes and page navigation to explore differences.",
+    "zh": "比较完成！使用查看模式和页面导航来探索差异。"
+  },
+  "tools.pdfToZip.uploadDescription": {
+    "en": "Drag and drop PDF files to package.",
+    "zh": "拖放PDF文件到此处进行打包。"
+  },
+  "tools.pdfToZip.filesTitle": {
+    "en": "Files to Package",
+    "zh": "待打包文件"
+  },
+  "tools.pdfToZip.totalSize": {
+    "en": "Total size",
+    "zh": "总大小"
+  },
+  "tools.pdfToZip.optionsTitle": {
+    "en": "ZIP Options",
+    "zh": "ZIP选项"
+  },
+  "tools.pdfToZip.compressionLevel": {
+    "en": "Compression Level",
+    "zh": "压缩级别"
+  }
+}

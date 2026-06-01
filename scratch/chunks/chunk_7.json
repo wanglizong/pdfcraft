@@ -1,0 +1,242 @@
+{
+  "common.pdfToTiff.colorModeGrayscale": {
+    "en": "8-bit Grayscale",
+    "zh": "灰阶 (8-bit)"
+  },
+  "common.pdfToTiff.colorModeMono": {
+    "en": "B&W Monochromatic (1-bit)",
+    "zh": "黑白单色 (1-bit)"
+  },
+  "common.pdfToTiff.compressionLabel": {
+    "en": "B. Image Compression Method",
+    "zh": "B. 图像压缩算法 (Compression Method)"
+  },
+  "common.pdfToTiff.compressionNone": {
+    "en": "No Compression (None - High compatibility)",
+    "zh": "无压缩 (None - 极大兼容)"
+  },
+  "common.pdfToTiff.compressionPackbits": {
+    "en": "Lossless Run-Length Compression (PackBits RLE)",
+    "zh": "无损游程压缩 (PackBits RLE)"
+  },
+  "common.pdfToTiff.resolutionLabel": {
+    "en": "C. Resolution Pixel Density (Resolution)",
+    "zh": "C. 高精度 DPI 分辨率滑轨 (Resolution)"
+  },
+  "common.pdfToTiff.resolutionDpi": {
+    "en": "{dpi} DPI ({percent}% Retina Scale)",
+    "zh": "{dpi} DPI ({percent}% 视网膜缩放)"
+  },
+  "common.pdfToTiff.dpi72": {
+    "en": "72 DPI (Low Screen Resolution)",
+    "zh": "72 DPI (屏幕低精)"
+  },
+  "common.pdfToTiff.dpi150": {
+    "en": "150 DPI (Balanced Office Standard)",
+    "zh": "150 DPI (普通办公)"
+  },
+  "common.pdfToTiff.dpi300": {
+    "en": "300 DPI (Archival Print Quality)",
+    "zh": "300 DPI (印刷级高清)"
+  },
+  "common.pdfToTiff.dpi600": {
+    "en": "600 DPI (Retina Ultra Precision)",
+    "zh": "600 DPI (视网膜超清)"
+  },
+  "common.pdfToTiff.tipTitle": {
+    "en": "Archival Print Notes:",
+    "zh": "印刷与存档提示："
+  },
+  "common.pdfToTiff.tipDesc": {
+    "en": "Multi-page TIFF documents scroll smoothly in Photoshop or Acrobat, yet remain raster bitmapped. For text and vector lines, we recommend at least",
+    "zh": "多页 TIFF (Multi-page TIFF) 在导入 Acrobat 或 Photoshop 时，可像 PDF 一样顺畅地进行页面上下滚动，但其完全由光栅位图构成。对图表和文字，我们极力推荐使用"
+  },
+  "common.pdfToTiff.processButton": {
+    "en": "Execute Multi-Page TIFF Packing",
+    "zh": "开始编译并生成多页 TIFF"
+  },
+  "common.pdfToTiff.successMessage": {
+    "en": "🎉 Single-file multi-page TIFF compiled successfully! Download ready.",
+    "zh": "🎉 单文件多页 TIFF 编译成功！所有页面已合并就位。一键极速下载。"
+  },
+  "common.removeBlankPages.summaryTitle": {
+    "en": "Sanitization Metrics",
+    "zh": "过滤状态汇总"
+  },
+  "common.removeBlankPages.totalLabel": {
+    "en": "Total: {count} pages",
+    "zh": "共 {count} 页"
+  },
+  "common.removeBlankPages.blankLabel": {
+    "en": "Deleted: {count} pages",
+    "zh": "待删除: {count} 页"
+  },
+  "common.removeBlankPages.keepLabel": {
+    "en": "Retained: {count} pages",
+    "zh": "保留: {count} 页"
+  },
+  "common.removeBlankPages.keepAllBtn": {
+    "en": "Retain All Pages",
+    "zh": "保留全部页"
+  },
+  "common.removeBlankPages.deleteAllBtn": {
+    "en": "Delete All Pages",
+    "zh": "删除全部页"
+  },
+  "common.removeBlankPages.allTab": {
+    "en": "All Pages ({count})",
+    "zh": "全部页面 ({count})"
+  },
+  "common.removeBlankPages.blankTab": {
+    "en": "Target Blanks ({count})",
+    "zh": "推荐删除 ({count})"
+  },
+  "common.removeBlankPages.keepTab": {
+    "en": "Retained ({count})",
+    "zh": "保留页面 ({count})"
+  },
+  "common.removeBlankPages.emptyState": {
+    "en": "No pages match the current filter",
+    "zh": "当前视图下没有页面可供显示"
+  },
+  "common.removeBlankPages.successRemoved": {
+    "en": "Successfully purged {count} blank page(s) and recompiled the PDF locally.",
+    "zh": "系统已清理 {count} 页空白页，保留并重新编译了剩余页面。"
+  },
+  "common.removeBlankPages.successNoChange": {
+    "en": "No blank pages were marked for removal. Exported directly.",
+    "zh": "文档中未检测到被删除的页面，已直接导出。"
+  },
+  "common.removeBlankPages.processNew": {
+    "en": "Upload New Document",
+    "zh": "处理新文件"
+  },
+  "common.removeBlankPages.clickToKeep": {
+    "en": "Click to retain page",
+    "zh": "点击保留该页"
+  },
+  "common.removeBlankPages.clickToDelete": {
+    "en": "Click to delete page",
+    "zh": "点击删除该页"
+  },
+  "common.removeBlankPages.entropyLabel": {
+    "en": "Entropy: {entropy}",
+    "zh": "熵: {entropy}"
+  },
+  "common.removeBlankPages.forceKeep": {
+    "en": "Retain",
+    "zh": "强留"
+  },
+  "common.removeBlankPages.blankBadge": {
+    "en": "Blank",
+    "zh": "空页"
+  },
+  "common.rotate.optionsTitle": {
+    "en": "Real-time Rotate Center",
+    "zh": "校准控制中心"
+  },
+  "common.rotate.optionsHelp": {
+    "en": "Select pages below and use the dials/slider to align or rotate pages.",
+    "zh": "选择下方页面，使用快调或无极表盘精准矫正歪斜或翻转的文档。"
+  },
+  "common.rotate.selectedPages": {
+    "en": "Selected {selected} / {total} page(s)",
+    "zh": "已选中 {selected} / {total} 页"
+  },
+  "common.rotate.quickRotate": {
+    "en": "Quick Rotation Angles",
+    "zh": "快捷快调"
+  },
+  "common.rotate.fineRotate": {
+    "en": "Fine-Grained Alignment Dial",
+    "zh": "无极微调 (细粒度)"
+  },
+  "common.rotate.rotateLeft90": {
+    "en": "Rotate Left 90°",
+    "zh": "左旋 90°"
+  },
+  "common.rotate.rotateRight90": {
+    "en": "Rotate Right 90°",
+    "zh": "右旋 90°"
+  },
+  "common.rotate.rotate180": {
+    "en": "Flip 180°",
+    "zh": "翻转 180°"
+  },
+  "common.rotate.resetRotate": {
+    "en": "Reset Angle",
+    "zh": "一键清零"
+  },
+  "common.rotate.quickSelectLabel": {
+    "en": "Quick Page Selections:",
+    "zh": "快速选择页组："
+  },
+  "common.rotate.selectOdd": {
+    "en": "Odd Pages Only",
+    "zh": "仅奇数页"
+  },
+  "common.rotate.selectEven": {
+    "en": "Even Pages Only",
+    "zh": "仅偶数页"
+  },
+  "common.rotate.correctionLabel": {
+    "en": "Align",
+    "zh": "校正"
+  },
+  "common.rotate.wheelHelp": {
+    "en": "Scroll mouse wheel to align",
+    "zh": "滚动滚轮微调"
+  },
+  "common.rotate.sliderLeft": {
+    "en": "-180.0° (Left)",
+    "zh": "-180.0° (左)"
+  },
+  "common.rotate.sliderTitle": {
+    "en": "Precise Alignment Slider",
+    "zh": "精细微调滑块"
+  },
+  "common.rotate.sliderRight": {
+    "en": "+180.0° (Right)",
+    "zh": "+180.0° (右)"
+  },
+  "common.rotate.preciseInput": {
+    "en": "Manual Input:",
+    "zh": "精密输入："
+  },
+  "common.rotate.inputTip": {
+    "en": "Angles will automatically normalize to [-180°, 180°] when blurred or submitted.",
+    "zh": "输入提示：您可以输入任意角度，比如较大值，在失焦或按下回车时系统将自动取模规范化在 [-180°, 180°] 的等效区间内。"
+  },
+  "common.rotate.processingButton": {
+    "en": "Rotating pages...",
+    "zh": "旋转处理中..."
+  },
+  "common.rotate.processButton": {
+    "en": "Rotate {count} Aligned Pages",
+    "zh": "开始旋转 {count} 个已校准页面"
+  },
+  "common.rotate.successMessage": {
+    "en": "🎉 PDF pages rotated successfully! Click download above to save.",
+    "zh": "🎉 PDF 页面物理旋转保存成功！点击上方按钮进行下载。"
+  },
+  "common.rotate.previewTitle": {
+    "en": "Interactive Page Board Workspace",
+    "zh": "实时物理预览视窗"
+  },
+  "common.rotate.previewHelp": {
+    "en": "Click page thumbnail to select • Drag controllers to fine-tune alignments",
+    "zh": "点击页面切换选择 • 拖拽左侧控制进行细粒度微调"
+  },
+  "common.rotate.loadingPreview": {
+    "en": "Decompressing and loading PDF pages...",
+    "zh": "正在解压并加载 PDF 预览图..."
+  },
+  "common.timestamp.tsaMesignDesc": {
+    "en": "MeSign TSA Trusted Authority",
+    "zh": "中国信安可信时间戳权威机构"
+  },
+  "common.timestamp.tsaDigicertDesc": {
+    "en": "DigiCert TSA Global PKI Cryptographic node",
+    "zh": "全球领先的 PKI 安全时间戳提供商"
+  }
+}

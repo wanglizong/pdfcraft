@@ -52,7 +52,15 @@ for (const worker of workerFiles) {
         copyFileSync(srcPath, destPath);
         console.log(`✓ Copied ${worker.name}`);
         console.log(`  From: ${worker.src}`);
-        console.log(`  To:   ${worker.dest}\n`);
+        console.log(`  To:   ${worker.dest}`);
+
+        // Also create a .js copy for hosts that serve .mjs as application/octet-stream
+        if (destPath.endsWith('.mjs')) {
+            const jsDestPath = destPath.replace(/\.mjs$/, '.js');
+            copyFileSync(srcPath, jsDestPath);
+            console.log(`  To:   ${jsDestPath.replace(rootDir + '/', '')}`);
+        }
+        console.log('');
     } catch (error) {
         console.error(`✗ Failed to copy ${worker.name}:`, error.message);
     }

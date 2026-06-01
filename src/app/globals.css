@@ -80,6 +80,7 @@
 
 /* Dark Mode Theme */
 .dark {
+  color-scheme: dark;
   --color-primary: 226 71% 60%;
   --color-primary-foreground: 222 47% 11%;
   --color-primary-hover: 226 71% 70%;
@@ -116,6 +117,17 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Styles for Form Elements */
+select, input:not([type="checkbox"]):not([type="radio"]):not([type="range"]), textarea {
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
+}
+
+select option {
+  background-color: hsl(var(--color-background));
+  color: hsl(var(--color-foreground));
 }
 
 /* Utility Classes using CSS Variables */

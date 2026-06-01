@@ -1,0 +1,59 @@
+{
+  "title": "PDF to PowerPoint",
+  "metaDescription": "Convert PDF to PowerPoint presentation. Each page becomes a high-quality slide.",
+  "keywords": [
+    "pdf to pptx",
+    "pdf to powerpoint",
+    "convert pdf slides",
+    "pdf presentation"
+  ],
+  "description": "\n      <p>PDF to PowerPoint converts your PDF documents into editable PowerPoint presentations (PPTX). Each PDF page is transformed into a high-quality slide, preserving the visual layout perfectly.</p>\n      <p>This tool is ideal for converting reports, handouts, or any PDF content into presentation format. You can choose the image quality (DPI) to balance between file size and visual clarity.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select it from your device."
+    },
+    {
+      "step": 2,
+      "title": "Choose Quality Settings",
+      "description": "Select the image quality (DPI) for the slides. Higher DPI means better quality but larger file size."
+    },
+    {
+      "step": 3,
+      "title": "Convert and Download",
+      "description": "Click Convert to create your PowerPoint presentation and download the PPTX file."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Presentation Creation",
+      "description": "Convert PDF reports or documents into presentation slides for meetings.",
+      "icon": "presentation"
+    },
+    {
+      "title": "Training Materials",
+      "description": "Transform PDF training documents into interactive PowerPoint presentations.",
+      "icon": "book-open"
+    },
+    {
+      "title": "Content Repurposing",
+      "description": "Convert existing PDF content into editable slide format for further customization.",
+      "icon": "refresh-cw"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Will the slides be editable?",
+      "answer": "Each slide contains a high-quality image of the PDF page. You can add text, shapes, and annotations on top in PowerPoint."
+    },
+    {
+      "question": "What DPI should I choose?",
+      "answer": "Use 150 DPI for presentations displayed on screens. Use 300 DPI for printing or when you need the highest quality."
+    },
+    {
+      "question": "Can I convert multi-page PDFs?",
+      "answer": "Yes, each page of your PDF becomes a separate slide in the PowerPoint presentation."
+    }
+  ]
+}

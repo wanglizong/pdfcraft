@@ -1,0 +1,386 @@
+{
+  "tools.editPdf.toolbar.arrow": {
+    "en": "Arrow",
+    "zh": "箭头"
+  },
+  "tools.editPdf.toolbar.image": {
+    "en": "Image",
+    "zh": "图片"
+  },
+  "tools.editPdf.toolbar.redact": {
+    "en": "Redact",
+    "zh": "涂黑"
+  },
+  "tools.editPdf.options.highlightColor": {
+    "en": "Highlight Color",
+    "zh": "高亮颜色"
+  },
+  "tools.editPdf.options.inkColor": {
+    "en": "Ink Color",
+    "zh": "墨水颜色"
+  },
+  "tools.editPdf.options.inkThickness": {
+    "en": "Ink Thickness",
+    "zh": "墨水粗细"
+  },
+  "tools.imageToPdf.uploadLabel": {
+    "en": "Upload Images",
+    "zh": "上传图片"
+  },
+  "tools.imageToPdf.uploadDescription": {
+    "en": "Drag and drop images here, or click to browse. Supports JPG, PNG, WebP, BMP, TIFF, SVG, HEIC.",
+    "zh": "拖放图片到此处，或点击浏览。支持JPG、PNG、WebP、BMP、TIFF、SVG、HEIC。"
+  },
+  "tools.imageToPdf.imagesTitle": {
+    "en": "Images",
+    "zh": "图片"
+  },
+  "tools.imageToPdf.reorderHint": {
+    "en": "Drag and drop to reorder images. Images will appear in the PDF in the order shown.",
+    "zh": "拖放以重新排序图片。图片将按显示顺序出现在PDF中。"
+  },
+  "tools.imageToPdf.optionsTitle": {
+    "en": "PDF Options",
+    "zh": "PDF选项"
+  },
+  "tools.imageToPdf.orientationAuto": {
+    "en": "Auto (match image)",
+    "zh": "自动（匹配图片）"
+  },
+  "tools.imageToPdf.marginNone": {
+    "en": "None",
+    "zh": "无"
+  },
+  "tools.imageToPdf.marginSmall": {
+    "en": "Small (0.25\")",
+    "zh": "小（0.25英寸）"
+  },
+  "tools.imageToPdf.marginMedium": {
+    "en": "Medium (0.5\")",
+    "zh": "中（0.5英寸）"
+  },
+  "tools.imageToPdf.marginLarge": {
+    "en": "Large (1\")",
+    "zh": "大（1英寸）"
+  },
+  "tools.imageToPdf.centerImage": {
+    "en": "Center images on page",
+    "zh": "图片居中"
+  },
+  "tools.imageToPdf.scaleToFit": {
+    "en": "Scale images to fit page",
+    "zh": "缩放图片以适应页面"
+  },
+  "tools.imageToPdf.fitMode": {
+    "en": "Fit Mode",
+    "zh": "适应模式"
+  },
+  "tools.imageToPdf.fitPage": {
+    "en": "Fit to Page",
+    "zh": "适应页面"
+  },
+  "tools.imageToPdf.fillPage": {
+    "en": "Fill Page",
+    "zh": "填充页面"
+  },
+  "tools.imageToPdf.originalSize": {
+    "en": "Original Size",
+    "zh": "原始大小"
+  },
+  "tools.imageToPdf.svgQuality": {
+    "en": "SVG Export Quality",
+    "zh": "SVG导出质量"
+  },
+  "tools.imageToPdf.svgQualityLow": {
+    "en": "Low (1x - smaller file)",
+    "zh": "低（1x - 文件较小）"
+  },
+  "tools.imageToPdf.svgQualityMedium": {
+    "en": "Medium (2x - balanced)",
+    "zh": "中（2x - 平衡）"
+  },
+  "tools.imageToPdf.svgQualityHigh": {
+    "en": "High (3x - better quality)",
+    "zh": "高（3x - 质量更好）"
+  },
+  "tools.imageToPdf.svgQualityVeryHigh": {
+    "en": "Very High (4x - best quality)",
+    "zh": "最高（4x - 最佳质量）"
+  },
+  "tools.imageToPdf.svgQualityHint": {
+    "en": "Higher quality produces sharper images but larger file sizes.",
+    "zh": "更高的质量会产生更清晰的图像，但文件更大。"
+  },
+  "tools.imageToPdf.successMessage": {
+    "en": "Images converted to PDF successfully! Click the download button to save your file.",
+    "zh": "图片已成功转换为PDF！点击下载按钮保存文件。"
+  },
+  "tools.compressPdf.batchUploadDescription": {
+    "en": "Drag and drop PDF files here. You can compress up to 10 files at once.",
+    "zh": "拖放PDF文件到此处。一次最多可压缩10个文件。"
+  },
+  "tools.compressPdf.filesTitle": {
+    "en": "Files to Compress",
+    "zh": "要压缩的文件"
+  },
+  "tools.compressPdf.optionsTitle": {
+    "en": "Compression Options",
+    "zh": "压缩选项"
+  },
+  "tools.compressPdf.algorithmPhoton": {
+    "en": "Photon",
+    "zh": "Photon 极速"
+  },
+  "tools.compressPdf.qualityLabel": {
+    "en": "Compression Quality",
+    "zh": "压缩质量"
+  },
+  "tools.compressPdf.qualityLow": {
+    "en": "Low",
+    "zh": "低"
+  },
+  "tools.compressPdf.qualityLowDesc": {
+    "en": "Maximum compression with object stream optimization",
+    "zh": "最大压缩，优化对象流结构"
+  },
+  "tools.compressPdf.qualityMedium": {
+    "en": "Medium",
+    "zh": "中"
+  },
+  "tools.compressPdf.qualityMediumDesc": {
+    "en": "Balanced compression with structure optimization",
+    "zh": "平衡压缩，优化文档结构"
+  },
+  "tools.compressPdf.qualityHigh": {
+    "en": "High",
+    "zh": "高"
+  },
+  "tools.compressPdf.qualityHighDesc": {
+    "en": "Moderate compression, preserves more structure",
+    "zh": "适度压缩，保留更多结构"
+  },
+  "tools.compressPdf.qualityMaximum": {
+    "en": "Maximum",
+    "zh": "最高"
+  },
+  "tools.compressPdf.qualityMaximumDesc": {
+    "en": "Minimal compression, preserves original quality",
+    "zh": "最小压缩，保留原始质量"
+  },
+  "tools.compressPdf.optimizeImages": {
+    "en": "Optimize embedded images",
+    "zh": "优化嵌入图片"
+  },
+  "tools.compressPdf.removeMetadata": {
+    "en": "Remove metadata (title, author, etc.)",
+    "zh": "移除元数据（标题、作者等）"
+  },
+  "tools.compressPdf.compressButton": {
+    "en": "Compress PDFs",
+    "zh": "压缩PDF"
+  },
+  "tools.compressPdf.successMessage": {
+    "en": "PDF compressed successfully!",
+    "zh": "PDF压缩成功！"
+  },
+  "tools.compressPdf.batchSuccessMessage": {
+    "en": "Successfully compressed all PDF files!",
+    "zh": "所有PDF文件压缩成功！"
+  },
+  "tools.compressPdf.compressedSize": {
+    "en": "Compressed:",
+    "zh": "压缩后："
+  },
+  "tools.compressPdf.saved": {
+    "en": "Saved:",
+    "zh": "节省："
+  },
+  "tools.signPdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to sign.",
+    "zh": "拖放PDF文件到此处进行签名。"
+  },
+  "tools.signPdf.instructionsTitle": {
+    "en": "How to Sign",
+    "zh": "如何签名"
+  },
+  "tools.signPdf.instruction1": {
+    "en": "Click the Signature tool (pen icon) in the toolbar",
+    "zh": "点击工具栏中的签名工具（钢笔图标）"
+  },
+  "tools.signPdf.instruction2": {
+    "en": "Draw, type, or upload your signature",
+    "zh": "绘制、输入或上传您的签名"
+  },
+  "tools.signPdf.instruction3": {
+    "en": "Click where you want to place the signature",
+    "zh": "点击要放置签名的位置"
+  },
+  "tools.signPdf.instruction4": {
+    "en": "Click \"Save Signed PDF\" below when done",
+    "zh": "完成后点击下方的「保存签名PDF」"
+  },
+  "tools.signPdf.flattenOption": {
+    "en": "Flatten signature (recommended - makes signature permanent)",
+    "zh": "扁平化签名（推荐 - 使签名永久）"
+  },
+  "tools.signPdf.saveButton": {
+    "en": "Save Signed PDF",
+    "zh": "保存签名PDF"
+  },
+  "tools.signPdf.successMessage": {
+    "en": "PDF signed successfully!",
+    "zh": "PDF签名成功！"
+  },
+  "tools.cropPdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to crop.",
+    "zh": "拖放PDF文件到此处进行裁剪。"
+  },
+  "tools.cropPdf.applyToAll": {
+    "en": "Apply to all pages",
+    "zh": "应用到所有页面"
+  },
+  "tools.cropPdf.cropButton": {
+    "en": "Crop PDF",
+    "zh": "裁剪PDF"
+  },
+  "tools.cropPdf.successMessage": {
+    "en": "PDF cropped successfully!",
+    "zh": "PDF裁剪成功！"
+  },
+  "tools.cropPdf.zoomIn": {
+    "en": "Zoom In",
+    "zh": "放大"
+  },
+  "tools.cropPdf.zoomOut": {
+    "en": "Zoom Out",
+    "zh": "缩小"
+  },
+  "tools.cropPdf.resetZoom": {
+    "en": "Reset Zoom",
+    "zh": "重置缩放"
+  },
+  "tools.cropPdf.fullscreen": {
+    "en": "Fullscreen",
+    "zh": "全屏"
+  },
+  "tools.cropPdf.exitFullscreen": {
+    "en": "Exit Fullscreen",
+    "zh": "退出全屏"
+  },
+  "tools.cropPdf.marginTop": {
+    "en": "Margin Top",
+    "zh": "上边距"
+  },
+  "tools.cropPdf.marginBottom": {
+    "en": "Margin Bottom",
+    "zh": "下边距"
+  },
+  "tools.cropPdf.marginLeft": {
+    "en": "Margin Left",
+    "zh": "左边距"
+  },
+  "tools.cropPdf.marginRight": {
+    "en": "Margin Right",
+    "zh": "右边距"
+  },
+  "tools.cropPdf.optionsTitle": {
+    "en": "Crop Options",
+    "zh": "裁剪选项"
+  },
+  "tools.repairPdf.uploadDescription": {
+    "en": "Drag and drop PDF files to repair.",
+    "zh": "拖放PDF文件到此处进行修复。"
+  },
+  "tools.repairPdf.filesTitle": {
+    "en": "Files to Repair",
+    "zh": "要修复的文件"
+  },
+  "tools.repairPdf.repairButton": {
+    "en": "Repair PDFs",
+    "zh": "修复PDF"
+  },
+  "tools.repairPdf.successMessage": {
+    "en": "PDF repaired successfully!",
+    "zh": "PDF修复成功！"
+  },
+  "tools.dividePages.optionsTitle": {
+    "en": "Division Options",
+    "zh": "分割选项"
+  },
+  "tools.dividePages.divisionType": {
+    "en": "Division Type",
+    "zh": "分割类型"
+  },
+  "tools.dividePages.vertical": {
+    "en": "Vertical",
+    "zh": "垂直"
+  },
+  "tools.dividePages.horizontal": {
+    "en": "Horizontal",
+    "zh": "水平"
+  },
+  "tools.dividePages.grid2x2": {
+    "en": "2×2 Grid",
+    "zh": "2×2网格"
+  },
+  "tools.dividePages.grid3x3": {
+    "en": "3×3 Grid",
+    "zh": "3×3网格"
+  },
+  "tools.dividePages.previewInfo": {
+    "en": "Each page will be divided based on the selected option.",
+    "zh": "每页将根据所选选项进行分割。"
+  },
+  "tools.dividePages.divideButton": {
+    "en": "Divide Pages",
+    "zh": "分割页面"
+  },
+  "tools.dividePages.successMessage": {
+    "en": "Pages divided successfully!",
+    "zh": "页面分割成功！"
+  },
+  "tools.encryptPdf.passwordTitle": {
+    "en": "Password Settings",
+    "zh": "密码设置"
+  },
+  "tools.encryptPdf.privacyNotice": {
+    "en": "🔒 Your passwords are processed locally and never sent to any server.",
+    "zh": "🔒 您的密码在本地处理，永远不会发送到任何服务器。"
+  },
+  "tools.encryptPdf.userPasswordLabel": {
+    "en": "User Password (to open document)",
+    "zh": "用户密码（打开文档）"
+  },
+  "tools.encryptPdf.userPasswordPlaceholder": {
+    "en": "Enter password to open PDF",
+    "zh": "输入打开PDF的密码"
+  },
+  "tools.encryptPdf.userPasswordHint": {
+    "en": "Required to open and view the PDF.",
+    "zh": "打开和查看PDF时需要此密码。"
+  },
+  "tools.encryptPdf.ownerPasswordLabel": {
+    "en": "Owner Password (to change permissions)",
+    "zh": "所有者密码（更改权限）"
+  },
+  "tools.encryptPdf.ownerPasswordPlaceholder": {
+    "en": "Enter owner password",
+    "zh": "输入所有者密码"
+  },
+  "tools.encryptPdf.ownerPasswordHint": {
+    "en": "Required to modify permissions or remove encryption.",
+    "zh": "修改权限或移除加密时需要此密码。"
+  },
+  "tools.encryptPdf.permissionsTitle": {
+    "en": "Document Permissions",
+    "zh": "文档权限"
+  },
+  "tools.encryptPdf.permPrinting": {
+    "en": "Allow Printing",
+    "zh": "允许打印"
+  },
+  "tools.encryptPdf.permModifying": {
+    "en": "Allow Modifying",
+    "zh": "允许修改"
+  }
+}

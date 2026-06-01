@@ -1,0 +1,59 @@
+{
+  "title": "Rotate PDF",
+  "metaDescription": "Rotate PDF pages. Turn pages 90, 180, or 270 degrees.",
+  "keywords": [
+    "rotate pdf",
+    "turn pdf pages",
+    "pdf rotation",
+    "fix orientation"
+  ],
+  "description": "\n      <p>Rotate PDF turns pages in your document by 90, 180, or 270 degrees. Fix incorrectly oriented scans, rotate landscape pages, or adjust page orientation for viewing.</p>\n      <p>Rotate all pages uniformly or select specific pages to rotate individually. The tool preserves all content and formatting.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Select Rotation",
+      "description": "Choose rotation angle and which pages to rotate."
+    },
+    {
+      "step": 3,
+      "title": "Rotate and Download",
+      "description": "Click Rotate to apply changes and download."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Fix Scans",
+      "description": "Correct orientation of scanned documents.",
+      "icon": "rotate-cw"
+    },
+    {
+      "title": "Landscape Pages",
+      "description": "Rotate landscape pages for proper viewing.",
+      "icon": "monitor"
+    },
+    {
+      "title": "Mixed Orientation",
+      "description": "Standardize page orientation in mixed documents.",
+      "icon": "layout"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can I rotate different pages differently?",
+      "answer": "Yes, you can apply different rotations to different pages."
+    },
+    {
+      "question": "Does rotation affect print quality?",
+      "answer": "No, rotation preserves all content quality."
+    },
+    {
+      "question": "Can I rotate by custom angles?",
+      "answer": "Rotation is limited to 90-degree increments (90, 180, 270)."
+    }
+  ]
+}

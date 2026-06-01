@@ -1323,6 +1323,33 @@ export const toolContentEn: Record<string, ToolContent> = {
     ],
   },
 
+  'pdf-to-cbz': {
+    title: 'PDF to CBZ',
+    metaDescription: 'Convert PDF documents to high-definition Comic Book ZIP archives (.cbz). Built-in Calibre OPF, ComicInfo XML, and ZIP Comment metadata for perfect multi-reader cataloging.',
+    keywords: ['pdf to cbz', 'pdf to comic', 'cbz packaging', 'calibre comic archive', 'comicinfo metadata'],
+    description: `
+      <p>PDF to CBZ is custom-engineered for comic enthusiasts and digital ebook archivists. It renders every page of your PDF volumes into high-fidelity rasterized graphics and compiles them into a standard Comic Book ZIP (.cbz) bundle.</p>
+      <p>To eliminate frustrating manual scraping in systems like Calibre, Komga, Kavita, or CDisplayEx, the processor automatically generates and injects both <strong>ComicInfo.xml</strong> and <strong>metadata.opf</strong> files internally, while simultaneously writing a standardized <strong>ComicBookInfo JSON</strong> payload directly into the ZIP file comment metadata.</p>
+      <p>Includes complete configuration sliders for image compression quality, page dimension scale, right-to-left layout reading toggles (Manga mode), and black-and-white grayscale color filtering.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Comic PDF', description: 'Drag and drop your primary comic, artbook, or manga PDF file.' },
+      { step: 2, title: 'Input Comic Metadata', description: 'Fill out Series, Volume, Title, Writer, and Publisher fields, and toggle layout or grayscale optimization.' },
+      { step: 3, title: 'Compile and Download', description: 'Click Convert to compile and retrieve your metadata-rich .cbz file instantly ready for Calibre.' },
+    ],
+    useCases: [
+      { title: 'Retrograde Comic Packaging', description: 'Transform raw scanned PDF books into compact, standard-compliant CBZ comic files easily scrapable by comic library managers.', icon: 'book' },
+      { title: 'Zero-Effort Calibre Integration', description: 'The built-in metadata.opf schema allows Calibre to fetch and classify creators and volume issues without manual lookup.', icon: 'database' },
+      { title: 'E-Ink Screen Enhancement', description: 'Pre-filter graphic color channels into high-contrast grayscale on compile, boosting visual refresh and clarity on E-ink screens while saving storage.', icon: 'eye' },
+    ],
+    faq: [
+      { question: 'What is a .cbz file?', answer: 'A CBZ file is a specialized archive container format for comic book series. It is internally formatted as a ZIP package containing sequentially numbered page images alongside structural metadata XML files.' },
+      { question: 'How is metadata compatible?', answer: 'We compile and embed ComicInfo.xml, metadata.opf, and ZIP File Comments in one pass. This guarantees absolute compliance across multiple comic and e-book ecosystems.' },
+      { question: 'Why use Grayscale mode?', answer: 'If you read on a grayscale E-ink reader (like Kindle or Kobo), compiling directly in Grayscale reduces artifact ghosting, delivers superior contrast levels, and shrinks the final CBZ file size.' },
+    ],
+  },
+
+
   'pdf-to-svg': {
     title: 'PDF to SVG',
     metaDescription: 'Convert PDF pages to SVG vector graphics. Perfect scalability at any size with individual page export.',
@@ -1715,6 +1742,85 @@ export const toolContentEn: Record<string, ToolContent> = {
       { question: 'Can I rotate different pages differently?', answer: 'Yes, you can apply different rotations to different pages.' },
       { question: 'Does rotation affect print quality?', answer: 'No, rotation preserves all content quality.' },
       { question: 'Can I rotate by custom angles?', answer: 'Rotation is limited to 90-degree increments (90, 180, 270).' },
+    ],
+  },
+
+  'overlay-pdf': {
+    title: 'Overlay PDF',
+    metaDescription: 'Overlay or underlay pages from one PDF onto another. Perfect for stamps, letterheads, and layout composition.',
+    keywords: ['overlay pdf', 'underlay pdf', 'stamp pdf', 'watermark pdf', 'combine layers'],
+    description: `
+      <p>Overlay PDF allows you to layer pages of one PDF document on top or underneath another PDF document. It is perfect for applying letterheads, adding background grids, stamping watermarks, or fusing layout drafts together.</p>
+      <p>Supports both Overlay mode (layer goes on top) and Underlay mode (layer goes underneath). Specify custom target page ranges or loop shorter overlay documents to cover the entire base file automatically.</p>
+      <p>All processing is executed entirely inside your web browser locally, guaranteeing total security and data privacy.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Main PDF', description: 'Drag and drop your primary base PDF document.' },
+      { step: 2, title: 'Upload Layer PDF', description: 'Provide the overlay/underlay document that acts as the layer.' },
+      { step: 3, title: 'Configure Layering', description: 'Choose overlay or underlay mode, specify page ranges, and enable page looping.' },
+      { step: 4, title: 'Compile and Download', description: 'Click Compile to process and download the layered result PDF.' },
+    ],
+    useCases: [
+      { title: 'Corporate Letterheads', description: 'Layer invoice contents on top of standard company letterhead templates.', icon: 'file-text' },
+      { title: 'Watermarks & Seals', description: 'Overlay security stamps, signature seals, or backgrounds across documents.', icon: 'shield' },
+      { title: 'Drawing Blueprints', description: 'Combine draft architectures or layout grids underneath text blocks.', icon: 'layout' },
+    ],
+    faq: [
+      { question: 'What is the difference between Overlay and Underlay?', answer: 'Overlay places the secondary layer on top of your main content. Underlay places it at the very bottom, acting as a background template.' },
+      { question: 'Can I loop the overlay layer?', answer: 'Yes, if the layer PDF is shorter than the base document, enabling Loop will cycle it (e.g. page 1, 2, 1, 2) to cover all base pages.' },
+      { question: 'Is page range supported?', answer: 'Yes, you can target specific pages using range syntax such as "1-5", "odd", "even", or comma-separated lists.' },
+    ],
+  },
+
+  'timestamp-pdf': {
+    title: 'Timestamp PDF',
+    metaDescription: 'Add RFC 3161 trusted timestamps to PDF documents. Prove document existence at a specific point in time without certificates.',
+    keywords: ['timestamp pdf', 'rfc 3161', 'tsa server', 'trusted timestamping', 'proof of existence'],
+    description: `
+      <p>Timestamp PDF adds RFC 3161 compliant trusted timestamps to your PDF documents using external Time Stamping Authorities (TSA). It provides legally-binding mathematical proof that a document existed in a specific, unaltered state at a precise instant in time.</p>
+      <p>Select from global trusted TSA servers such as DigiCert, Sectigo, SSL.com, FreeTSA, or MeSign. No personal signing certificates are required to secure your documents against future tampering.</p>
+      <p>Supports fully secure local hashing before handshake, guaranteeing absolute document contents remain 100% confidential.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF Document', description: 'Select the target PDF file you want to timestamp.' },
+      { step: 2, title: 'Select TSA Server', description: 'Choose a trusted global Time Stamping Authority from the list.' },
+      { step: 3, title: 'Apply and Timestamp', description: 'Click Timestamp to fetch secure response from TSA and embed the token.' },
+    ],
+    useCases: [
+      { title: 'Intellectual Property', description: 'Establish clear priority proof of patents, drafts, and ideas before public release.', icon: 'lightbulb' },
+      { title: 'Financial Auditing', description: 'Provide certified tamper-proof logging of ledger archives and balance reports.', icon: 'activity' },
+      { title: 'Legal Contracts', description: 'Lock legal agreements with a trusted time proof to avoid backdating arguments.', icon: 'file-check' },
+    ],
+    faq: [
+      { question: 'What is a trusted timestamp (RFC 3161)?', answer: 'An RFC 3161 timestamp is a cryptographically signed token issued by a recognized third-party authority (TSA) that links a document hash to a specific, verified clock source.' },
+      { question: 'Do I need a digital certificate?', answer: 'No, the cryptographic signature is provided directly by the trusted TSA server, making the process effortless for document owners.' },
+      { question: 'Does the TSA see my document contents?', answer: 'Never. The tool only sends a secure SHA-256 hash of your document to the TSA server, keeping your actual document completely private.' },
+    ],
+  },
+
+  'add-page-labels': {
+    title: 'Add Page Labels',
+    metaDescription: 'Apply custom page labels to your PDF catalog. Supports Roman numerals, prefixes, and complex disjoint ranges.',
+    keywords: ['pdf page labels', 'roman numerals pdf', 'pdf prefix labels', 'disjoint range page labels', 'pdf indexing'],
+    description: `
+      <p>Add Page Labels allows you to inject custom page labeling metadata (/PageLabels) into your PDF\'s root Catalog dictionary. This customizes the labels displayed in professional PDF reader navigation sidebars and top page number jump panels (e.g. using Roman numerals for front matter, decimal sequences for main body, or custom prefixes such as A-0, A-1 for technical subsections).</p>
+      <p>Supports combining multiple custom rules seamlessly. Crucially, we\'ve built a highly optimized <strong>disjoint-range slicing algorithm</strong>: even if you declare complex alternating patterns (e.g., odd pages style A, even pages style B), the tool will elegantly dissect and compose boundaries to ensure proper standard-compliant display without leaking formats into unmapped pages.</p>
+      <p>All operations are processed entirely inside your local browser sandbox, securing absolute data privacy.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF Document', description: 'Provide the target PDF document you wish to label.' },
+      { step: 2, title: 'Configure Labeling Rules', description: 'Add one or more rules specifying page ranges (e.g., "1-5", "odd", or comma-separated lists), prefix, style, and starting sequence.' },
+      { step: 3, title: 'Preview and Download', description: 'Review the live page label list preview below, then compile and download your updated PDF document.' },
+    ],
+    useCases: [
+      { title: 'Academic Thesis Formatting', description: 'Set lowercase Roman numerals (i, ii, iii) for introductory front matter and transition to decimal for main chapters.', icon: 'book' },
+      { title: 'Engineering Blueprint Prefixes', description: 'Attach subsystem abbreviations (e.g., "A-1", "M-5") as page label prefixes, letting teams search and locate pages in seconds.', icon: 'layout' },
+      { title: 'Custom Alternating Layouts', description: 'Apply highly specific page range indexing to odd/even sequences or non-contiguous sections with maximum freedom.', icon: 'shuffle' },
+    ],
+    faq: [
+      { question: 'What are page labels vs page numbers?', answer: 'Ordinary page numbers are visual text blocks rendered directly on the paper canvas (visible when printed). Page labels, however, are structural metadata injected into the PDF catalog. They control what is displayed underneath thumbnails and in the page lookup box inside software like Adobe Acrobat or Apple Preview.' },
+      { question: 'What happens if I leave the Page Range empty?', answer: 'Leaving the page range empty causes the rule to apply globally to all pages of the document.' },
+      { question: 'How are overlapping rules handled?', answer: 'Rules are evaluated sequentially in the order they are listed. If a page range of a later rule overlaps with an earlier one, the later rule takes priority and overrides the label for that page.' },
     ],
   },
 
@@ -2618,5 +2724,710 @@ export const toolContentEn: Record<string, ToolContent> = {
       { question: 'Why might a signature be invalid?', answer: 'Signatures may be invalid if the document was modified, the certificate expired, or the certificate is not trusted.' },
     ],
   },
+  'ai-pdf-reflower': {
+    title: 'AI PDF Layout Reflower',
+    metaDescription: 'Re-typeset PDF documents into responsive mobile-friendly layouts. Support Markdown and EPUB export for enhanced small-screen reading.',
+    keywords: ['pdf reflow', 'responsive pdf', 'pdf to markdown', 'epub export', 'mobile pdf reader'],
+    description: `
+      <p>AI PDF Layout Reflower is your ultimate companion for reading PDF documents on mobile devices. Traditional PDFs use a fixed layout, which often requires endless zooming and horizontal scrolling on smartphones or tablets, resulting in a tedious reading experience.</p>
+      <p>This tool intelligently parses the text flow, line spacing, and physical coordinates of the PDF pages, reconstructing the semantic paragraphs and heading hierarchies. For multi-column or dual-column documents, it intelligently merges column flows into a single responsive flow, ensuring smooth reading.</p>
+      <p>Additionally, it supports rendering mathematical formulas into LaTeX/MathJax and offers multiple reading themes (Sepia, Dark, Eye-protecting Green). You can export the reflowed layout as Markdown or a standard EPUB ebook with a single click.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF File', description: 'Drag and drop your PDF file or click to browse and select it.' },
+      { step: 2, title: 'Select Reading Theme', description: 'Choose your preferred font size and theme colors in the 3D mobile simulator on the right.' },
+      { step: 3, title: 'Export Document', description: 'Once satisfied, use the physical pull-rope to export the document as Markdown or EPUB.' },
+    ],
+    useCases: [
+      { title: 'Mobile Literature Reading', description: 'Read academic papers and research reports on your phone seamlessly without constant zooming.', icon: 'smartphone' },
+      { title: 'Ebook Conversion', description: 'Convert text-heavy PDFs into EPUB files and import them into Kindle or other ebook readers.', icon: 'book' },
+      { title: 'Note Archive', description: 'Directly convert structured PDF content into clean Markdown files for your personal knowledge base.', icon: 'file-text' },
+    ],
+    faq: [
+      { question: 'Does it handle dual-column PDFs correctly?', answer: 'Yes, the layout reflower detects the horizontal coordinates of text blocks and structures left and right columns sequentially, preventing line interleaving.' },
+      { question: 'Will images and math formulas be lost?', answer: 'Mathematical formulas are converted to LaTeX/MathJax syntax for clean web rendering, and images are preserved in their corresponding semantic positions.' },
+      { question: 'Is the conversion done in the cloud?', answer: 'No, all layout analysis and format packaging are performed locally in your browser to guarantee the absolute privacy of your documents.' },
+    ],
+  },
+  'citation-linker': {
+    title: 'Citation Linker',
+    metaDescription: 'Scan and activate citation markers in PDFs, converting them into clickable DOI links or page-jump targets.',
+    keywords: ['citation linker', 'pdf hyperlink', 'doi matching', 'academic helper', 'pdf references'],
+    description: `
+      <p>Citation Linker is designed specifically for academic researchers. In many PDF papers, citation markers (e.g., [1], [2]) are plain text, forcing readers to scroll back and forth to the reference list at the end of the document, interrupting their focus.</p>
+      <p>This tool reads PDF text locally, uses pattern recognition to match citation markers to their corresponding reference entries, and overlays clickable PDF link annotations using DOI lookups or page-jump coordinates.</p>
+      <p>It also generates an interactive citation relationship map to visually navigate the document\'s reference network.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Academic PDF', description: 'Upload a PDF paper or thesis containing a bibliography/reference section.' },
+      { step: 2, title: 'Review Citations', description: 'Inspect the citation pairs in the interactive map and manually edit or add DOI links if necessary.' },
+      { step: 3, title: 'Inject Links', description: 'Click the activate button to overlay hyperlinks onto the PDF and download the updated document.' },
+    ],
+    useCases: [
+      { title: 'Deep Literature Reading', description: 'Click citation markers to immediately view reference details or navigate to external DOI pages.', icon: 'link' },
+      { title: 'Pre-publication Preparation', description: 'Ensure your written academic papers have fully active hyperlink navigations before final submission.', icon: 'award' },
+      { title: 'Reference Map Analysis', description: 'Understand literature hierarchies and connections via the interactive network topology map.', icon: 'git-network' },
+    ],
+    faq: [
+      { question: 'What if a reference has no DOI?', answer: 'If a DOI cannot be found, the tool falls back to an internal "GoTo Page" action, allowing you to click the marker and jump directly to the reference page.' },
+      { question: 'Which citation formats are supported?', answer: 'It supports common numeric brackets (e.g., [1], [1-3]) and author-year citations (e.g., Author et al., 202X).' },
+      { question: 'Will it modify the appearance of my PDF?', answer: 'No, it injects invisible Link annotations on top of the text, preserving the original layout, fonts, and styling of your document.' },
+    ],
+  },
+  'vector-extractor': {
+    title: 'PDF Vector Extractor',
+    metaDescription: 'Convert PDF into high-fidelity SVG, allowing you to select, recolor, and export vector charts, logos, and graphics.',
+    keywords: ['extract vectors from pdf', 'pdf to svg', 'pdf vector charts', 'extract logo', 'vector drawings'],
+    description: `
+      <p>PDF Vector Extractor unlocks vector paths and artwork embedded inside PDF files. Easily extract vector charts, diagrams, or logos from documents for design work or printing.</p>
+      <p>Under the hood, it utilizes high-fidelity SVG rendering to deconstruct PDF vector paths into clean, standard SVG element trees without loss of precision.</p>
+      <p>The interface highlights hover elements with a Z-axis 3D layer explosion effect, complete with a color picker panel for designers to adjust and extract vector nodes.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF Document', description: 'Upload a PDF containing vector assets, diagrams, charts, or logos.' },
+      { step: 2, title: 'Select Elements', description: 'Hover over the vector canvas to highlight elements, then click to select a node.' },
+      { step: 3, title: 'Customize and Export', description: 'Adjust path attributes in the panel, then download as SVG or copy SVG source code.' },
+    ],
+    useCases: [
+      { title: 'Design Asset Extraction', description: 'Quickly extract company logos, icons, and illustrations from brand guidelines or brochures.', icon: 'bezier' },
+      { title: 'Scientific Chart Export', description: 'Extract vector charts from research papers to use in high-resolution printing or presentations.', icon: 'presentation' },
+      { title: 'Vector Asset Recoloring', description: 'Modify the stroke and fill colors of extracted assets before saving them for web projects.', icon: 'crown' },
+    ],
+    faq: [
+      { question: 'Why can\'t I select certain images?', answer: 'PDFs contain both raster images (like photos or scanned pages) and vector artwork (like shapes and curves). Only vector paths can be deconstructed into SVG paths.' },
+      { question: 'Does the output SVG contain styles?', answer: 'Yes, the exported SVG retains all original properties including fills, strokes, opacity, gradients, and coordinate transforms.' },
+      { question: 'Will large files lag?', answer: 'We use WebAssembly acceleration, but PDFs with extremely complex CAD drawings or thousands of vector paths may take a few seconds to render.' },
+    ],
+  },
+  'deep-sanitize': {
+    title: 'Deep Metadata Sanitizer',
+    metaDescription: 'Thoroughly wipe author metadata, modification logs, hidden layers, and orphan objects from PDFs for maximum privacy.',
+    keywords: ['pdf sanitization', 'clear metadata', 'anonymize pdf', 'strip hidden watermark', 'secure pdf'],
+    description: `
+      <p>Deep Metadata Sanitizer is your ultimate defense against metadata leaks and hidden tracking. Simply drawing black boxes over visible text in PDF files is not enough to protect commercial secrets.</p>
+      <p>This tool scans the PDF binary structure to completely erase author info, creator software, editing logs (XMP Metadata), proprietary PieceInfo caches, and OCG optional content groups (often used for invisible watermarks).</p>
+      <p>It also rewrites the cross-reference tables (xref) completely, discarding all incremental update blocks to ensure that deleted or modified historical data cannot be restored.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF', description: 'Select the PDF file containing sensitive data or modification history.' },
+      { step: 2, title: 'Run Scanner', description: 'Trigger the 3D containment scanner to check the file for hidden metadata and layers.' },
+      { step: 3, title: 'Deep Sanitize', description: 'Click sanitize to wipe out tracking elements and download the fully clean PDF.' },
+    ],
+    useCases: [
+      { title: 'Contract Sharing', description: 'Remove drafting records, paths, and previous revisions before sharing business contracts with third parties.', icon: 'file-signature' },
+      { title: 'Anonymized Publishing', description: 'Wipe invisible annotations and watermarks to publish documents anonymously and securely.', icon: 'eye-off' },
+      { title: 'PDF Optimization', description: 'Remove orphaned objects and garbage data streams to make files load faster on the web.', icon: 'zap' },
+    ],
+    faq: [
+      { question: 'How is this different from standard metadata removal?', answer: 'Standard tools only clear basic fields like title or author. Deep Sanitizer reconstructs the entire PDF xref table, wiping PieceInfo, hidden watermarks, and historical incremental revisions.' },
+      { question: 'Will this affect document layout or text?', answer: 'No, it only strips hidden description streams and structure data. The visible layout, texts, and graphics remain unchanged.' },
+      { question: 'Does this remove PDF passwords?', answer: 'No, if a PDF is encrypted, you must unlock it first before performing a deep sanitization.' },
+    ],
+  },
+  'booklet-folding-simulator': {
+    title: '3D Booklet & Folding Simulator',
+    metaDescription: 'Impose multi-page PDFs into foldable print sheets, featuring 3D physical folding animations and saddle-stitch previews.',
+    keywords: ['3D imposition', 'folding simulator', 'saddle stitch', 'book layout', 'print proofing'],
+    description: `
+      <p>3D Booklet & Folding Simulator is an advanced tool designed for print designers and publishing professionals. Traditional book layout requires calculating complex page overlays and imposition pagination sequences. This tool visualizes and automates that entire process.</p>
+      <p>Under the hood, our custom imposition algorithm maps a sequential PDF page list into standard print sheet layouts (such as 4-page half-folds, 8-page saddle stitches, or accordion folds), merging pages onto the front and back of large physical sheets.</p>
+      <p>On the front-end, we utilize pure CSS 3D Matrix transforms and spring-mass physics curves to animate sheet folding horizontally and vertically, delivering a physical-like binding preview with a high WOW factor.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF File', description: 'Drag and drop the PDF document you wish to layout for printing.' },
+      { step: 2, title: 'Select Folding Layout', description: 'Choose your preferred imposition scheme (e.g., 4-page fold, 8-page saddle stitch, 4-page accordion).' },
+      { step: 3, title: 'Interactive 3D Preview', description: 'Drag the slider to watch the sheet fold in 3D and inspect the final page numbering layout.' },
+      { step: 4, title: 'Generate Imposed PDF', description: 'Click generate to download the rearranged and merged physical sheet PDF, ready for double-sided printing.' },
+    ],
+    useCases: [
+      { title: 'Brochure Prototyping', description: 'Pre-visualize the folding sequence of tri-folds and pamphlets to prevent upsidedown pages after printing.', icon: 'book-open' },
+      { title: 'Book Saddle-Stitching', description: 'Generate imposed print sheets for multi-page magazines or booklets automatically.', icon: 'layers' },
+      { title: 'Print Shop Visual Aids', description: 'Help clients visualize how pages are physically distributed and folded on print sheets.', icon: 'printer' },
+    ],
+    faq: [
+      { question: 'What is "Imposition"?', answer: 'Imposition is a fundamental step in prepress printing. Since commercial presses print on large sheets, pages are arranged out of order so that once printed, folded, and bound, the pages appear in the correct sequential order. This tool automatically calculates that layout.' },
+      { question: 'Does the 3D preview alter my PDF content?', answer: 'No, the original PDF content is merely rendered as texture mappings onto the 3D sheet. The generated PDF only adjusts page order and placement; text and graphic qualities are kept intact.' },
+      { question: 'What if my PDF page count is not a multiple of 4 or 8?', answer: 'The optimizer automatically appends blank pages at the end to satisfy the mathematical page-count requirements of the selected folding layout.' },
+    ],
+  },
+  'pdf-to-slide': {
+    title: 'PDF to Slide',
+    metaDescription: 'Intelligently analyze PDF outlines, extract vector charts, and reconstruct them into fully-editable PPTX presentations.',
+    keywords: ['PDF to PPT', 'slide reconstruction', 'chart extraction', 'academic presentation', 'PPTX compiler'],
+    description: `
+      <p>AI PDF-to-Slide Reconstructor breathes new life into static PDF documents, transforming them into modern, highly-customizable PowerPoint slides (PPTX).</p>
+      <p>The tool uses an advanced layout outline extractor that automatically parses document heading levels, paragraph lines, and font weights to establish a logical slide framework. It also isolates vector charts and high-resolution tables, stripping background artifacts to embed them cleanly as independent editable assets.</p>
+      <p>All PPTX outputs are built using standard Office Open XML elements, meaning all text remains fully editable and vectors do not lose resolution. The front-end showcases a fluid "starfield" card transition animation that visualizes the reconstruction in an engaging manner.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Academic/Business PDF', description: 'Upload a PDF document that contains structured sections and diagrams.' },
+      { step: 2, title: 'Analyze Slide Outlines', description: 'Inspect the extracted slide structure, adjust titles, or delete unneeded card blocks.' },
+      { step: 3, title: 'Reconstruct to PPTX', description: 'Start the compilation engine to receive a standard, editable presentation file.' },
+    ],
+    useCases: [
+      { title: 'Research Paper Presentation', description: 'Convert academic journal PDFs, text structures, and vector diagrams into slide decks ready for talks.', icon: 'graduation-cap' },
+      { title: 'Business Report Summary', description: 'Distill massive annual corporate reports into clean, bulleted presentation drafts instantly.', icon: 'presentation' },
+      { title: 'Multi-Device Demos', description: 'Avoid copying screenshots manually. Get a clean, fully-editable layout framework in seconds.', icon: 'laptop' },
+    ],
+    faq: [
+      { question: 'Are the slides editable in Microsoft Office?', answer: 'Yes. The files are generated natively in memory according to the official Office Open XML (OOXML) specification. Texts, tables, and placeholders are fully interactive in PowerPoint, Keynote, and WPS.' },
+      { question: 'How are charts extracted?', answer: 'The engine scans vector paths and raster layers in the PDF, detects bounded areas representing graphs, and clips them out as standalone SVG nodes or high-DPI images.' },
+      { question: 'Does this work on scanned documents?', answer: 'For scanned PDFs lacking actual text layers, we recommend running our OCR tool first before passing the file to the Slide Reconstructor.' },
+    ],
+  },
+  'form-logic-designer': {
+    title: 'Form Logic Designer',
+    metaDescription: 'Design dynamic behaviors using a glassmorphic node canvas and inject interactive AcroJS logic into PDF forms.',
+    keywords: ['PDF form logic', 'AcroJS injection', 'node flow', 'interactive PDF', 'field dependencies'],
+    description: `
+      <p>Interactive Form Logic Designer is a pioneering tool that fills a massive gap in PDF capabilities: creating active, responsive fields instead of flat, dead forms.</p>
+      <p>Through our visual canvas featuring "glowing glassmorphic nodes" (built on React Flow), form fields are represented as connected modules. You can drag links to define relationships: e.g., when a checkbox is checked ➜ enable a text input ➜ auto-calculate values and update a total field.</p>
+      <p>Once designed, the AcroJS engine compiles the logic into official Acrobat JavaScript and injects it into the '/AA' (Additional Actions) dictionaries of the AcroForm. The interactive behaviors are then executed natively inside any standard PDF reader.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Interactive PDF', description: 'Provide a PDF file that already has active form fields (AcroForm).' },
+      { step: 2, title: 'Map Out Logic in Canvas', description: 'Connect fields as nodes. Link output events (change, blur) to target actions (show, hide, calculate, disable).' },
+      { step: 3, title: 'Compile and Download', description: 'Inject the compiled JavaScript logic into the PDF dictionary and save the final smart document.' },
+    ],
+    useCases: [
+      { title: 'Smart Sales Contracts', description: 'Show or hide supplementary input fields dynamically based on the client\'s selected terms.', icon: 'file-signature' },
+      { title: 'Automated Expense Forms', description: 'Sum up multiple expense lines and compute taxes dynamically without manual calculation.', icon: 'calculator' },
+      { title: 'Interactive Questionnaires', description: 'Skip irrelevant questions based on previous answers, providing a cleaner mobile filling experience.', icon: 'form-input' },
+    ],
+    faq: [
+      { question: 'Do I need a PDF with pre-existing fields?', answer: 'Yes. This tool is designed to bind logical rules to existing fields. If your PDF does not have interactive fields, use our Form Creator tool to add inputs and check boxes first.' },
+      { question: 'Will this logic run on any PDF reader?', answer: 'It runs on all PDF readers that comply with Adobe PDF standards and support Acrobat JavaScript (such as Adobe Acrobat Reader, Foxit Reader, and major web browsers). Minimalist mobile readers might support basic actions only.' },
+      { question: 'Does this affect paper printing?', answer: 'Not at all. The injected scripts only run on-screen during form completion. When printing, the current state of fields is printed statically without any node visualization.' },
+    ],
+  },
+  'eink-optimizer': {
+    title: 'e-Ink Reader Optimizer',
+    metaDescription: 'Optimize PDFs for e-Ink screens via background clearing, Otsu binarization, and morphological text dilation.',
+    keywords: ['eink optimizer', 'binarization', 'text bolding', 'eye-friendly reading', 'otsu threshold'],
+    description: `
+      <p>e-Ink Reader Optimizer is a must-have tool custom-made for e-Reader enthusiasts using Kindle, Onyx Boox, Kobo, or other e-paper devices.</p>
+      <p>Many scanned PDF e-books suffer from faint lettering, muddy gray backgrounds, noise, or scan shadows when viewed on e-Ink screens. This tool analyzes gray-value histograms and applies Otsu\'s Binarization Thresholding to separate text from background, converting gray backdrops to clean white.</p>
+      <p>Additionally, it integrates morphological dilation to bold and thicken thin, faded characters, providing crisp, high-contrast typography. The inertia-damped contrast slider allows you to fine-tune the paper-like contrast in real-time.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload Scanned PDF', description: 'Upload e-books or scanned documents with faint text or gray backgrounds.' },
+      { step: 2, title: 'Adjust Contrast Slider', description: 'Drag the damped slider to balance background removal and character bolding in real-time.' },
+      { step: 3, title: 'Optimize and Download', description: 'Process the entire PDF to generate a high-contrast, eye-friendly document tailored for e-Ink.' },
+    ],
+    useCases: [
+      { title: 'Ancient Manuscript Restoration', description: 'Thicken faded text in scans of historical books or handwritten manuscripts to make them readable.', icon: 'scroll' },
+      { title: 'Exam Sheet Clean-up', description: 'Bleach background shadows from photocopied or photographed exams, returning clean black text on white paper.', icon: 'file-text' },
+      { title: 'E-paper Device Tailoring', description: 'Convert colored PDFs to optimized grayscale, preventing messy, dithering artifacts on monochrome screens.', icon: 'tablet' },
+    ],
+    faq: [
+      { question: 'How does the "character bolding" work?', answer: 'In image processing, this is called dilation. It uses a structuring matrix to expand character margins by a pixel, physically thickening faint strokes to make them legible.' },
+      { question: 'Will this process bloat the file size?', answer: 'Quite the opposite. By binarizing complex color/grayscale images to simple black-and-white layouts, standard compression (like CCITT Group 4) can shrink the PDF file size significantly.' },
+      { question: 'Does this support native text PDFs?', answer: 'Yes. Native vector PDFs are rasterized at high resolutions in the background, optimized, and compiled back, ensuring unified high-contrast reading.' },
+    ],
+  },
+  'cert-cryptor': {
+    title: 'Certificate Encrypt & Sign',
+    metaDescription: 'Secure PDFs using asymmetric public-key certificate encryption, paired with a 3D gold wax-seal imprint and PKCS#7 signature.',
+    keywords: ['certificate encryption', 'wax seal signature', 'digital signature', 'asymmetric crypt', 'PKCS7 signature'],
+    description: `
+      <p>3D Wax-Seal & Certificate Cryptor provides military-grade security and premium physical-grade aesthetics for sensitive corporate files, degrees, or agreements.</p>
+      <p>Technically, it offers asymmetric public-key encryption: import a recipient\'s public key certificate (.cer/.crt) to lock the PDF stream; only the holder of the matching private key (.pfx) can decrypt it. It also generates standard PKCS#7 digital signatures to ensure document tamper-proof integrity.</p>
+      <p>Visually, we feature a 3D physical gold or red wax-seal stamp. When you sign, a beautifully rendered stamp descends with a satisfying mechanical sound, leaving a 3D wax seal with realistic normal-mapped height variations and wax run-offs on the page, surrounded by glowing cryptographic tracks.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF and Cert', description: 'Add your PDF and import your signing certificate (.pfx) or the recipient\'s public certificate (.cer).' },
+      { step: 2, title: 'Place the 3D Stamp', description: 'Drag and locate the seal on the document preview, and pick a wax style (e.g., gold, crimson).' },
+      { step: 3, title: 'Press and Sign', description: 'Click execute to watch the 3D wax-seal imprint ceremony, generating a physical-grade digital signature.' },
+      { step: 4, title: 'Download Secured PDF', description: 'Save the output document, now cryptographically locked and stamped.' },
+    ],
+    useCases: [
+      { title: 'Diplomas and Certificates', description: 'Affix highly-valued 3D wax seal badges to digital diplomas and awards, backed by genuine digital signatures.', icon: 'award' },
+      { title: 'Confidential Agreements', description: 'Lock sensitive contracts using the client\'s public certificate so that only their secure physical keycard can unlock it.', icon: 'shield-alert' },
+      { title: 'Official Press Releases', description: 'Digitally sign public announcements to prevent malicious text edits or spoofing.', icon: 'stamp' },
+    ],
+    faq: [
+      { question: 'Is the wax seal just an image or a real signature?', answer: 'Both. The system renders an incredibly realistic 3D wax imprint with normal-mapped depth (visual layer) and encodes an authentic, tamper-proof PKCS#7 cryptographic signature inside the PDF (data layer).' },
+      { question: 'What is "Certificate-based Encryption"?', answer: 'It is a passwordless encryption technique. You encrypt the file using the recipient\'s public key. The reader automatically searches for their local private certificate to decrypt the file seamlessly, ensuring robust security.' },
+      { question: 'Can I customize the stamp design?', answer: 'Yes. We provide multiple designs like the PDFCraft watermark or a Royal crest, and you can adjust the wax melting radius and normal-map indentation depth in the panel.' },
+    ],
+  },
+  'passport-id-composer': {
+    title: 'Double-Sided ID Composer',
+    metaDescription: 'Instantly compose both front and back sides of ID cards or passports onto a single A4 page with optional anti-counterfeit watermarks.',
+    keywords: ['ID card composer', 'passport imposition', 'A4 double-sided copy', 'identity card printing', 'anti-counterfeit watermark'],
+    description: `
+      <p>The Passport & ID Double-sided Composer is an incredibly useful productivity utility for standard business and personal operations.</p>
+      <p>When applying for bank accounts, onboarding, or signing agreements, we frequently need copies of both sides of ID cards. This tool accepts front/back images or PDF pages and precisely arranges them onto a single A4 page complying with national standard layout resolutions.</p>
+      <p>Furthermore, you can customize overlapping translucent anti-counterfeit watermarks (e.g. "FOR ONBOARDING ONLY") to prevent unauthorized document reuse. It even features a 3D glow laser sweep copier scanner door visual effect to deliver premium feedback.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload ID files', description: 'Upload front and back photos/scans of your ID or passport (up to 2 files).' },
+      { step: 2, title: 'Configure secure watermark', description: 'Input custom text overlay to restrict unauthorized document replication.' },
+      { step: 3, title: 'Compose & download', description: 'Click execute to generate a single-page print-ready A4 PDF.' },
+    ],
+    useCases: [
+      { title: 'HR onboarding submission', description: 'Quickly align employee ID copies and apply protective watermarks.', icon: 'user' },
+      { title: 'Government & banking service', description: 'Prepare standardized ID prints that meet physical archive requirements.', icon: 'landmark' },
+      { title: 'Travel backups', description: 'Arrange passport pages and visa details onto a unified A4 paper.', icon: 'plane' },
+    ],
+    faq: [
+      { question: 'Will watermarks block identity text details?', answer: 'No. The watermark is rendered at a carefully tuned 15% opacity to block forgery without sacrificing the legibility of text or photo fields.' },
+      { question: 'Is the composite card size accurate?', answer: 'Yes. It renders the ID card at the standard physical dimension of 85.6mm × 54mm scaled perfectly on the A4 page.' },
+      { question: 'Does it support driver licenses?', answer: 'Yes, it works beautifully for any card-based identity scans.' },
+    ],
+  },
+  'annotation-exporter': {
+    title: 'Export Annotations',
+    metaDescription: 'Extract PDF comments, notes, highlights, and underlines, and structure them into Markdown/JSON notebooks aligned with outline chapters.',
+    keywords: ['export annotations', 'extract pdf highlights', 'pdf reader notes', 'markdown outline notebooks', 'study summary helper'],
+    description: `
+      <p>The Smart Annotation Exporter is a powerful workspace that unlocks full value from your PDF annotations.</p>
+      <p>While conducting literature reviews or reading extensive ebooks, we make heavy use of highlights and sticky notes. This tool deserializes the low-level PDF <code>/Annots</code> dictionary and extracts all highlights, notes, underlines, and hand-drawn ink markers.</p>
+      <p>It automatically aligns the comments with their respective outline headers, generating a structured Markdown or JSON notebook with page reference anchors. Watch your highlights float beautifully into the frosted-glass notebook panel.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Import annotated PDF', description: 'Upload any PDF essay or book containing your underlines, highlights, or comments.' },
+      { step: 2, title: 'Configure filters & format', description: 'Select the annotation types you want to extract and choose Markdown or JSON.' },
+      { step: 3, title: 'Extract notebook', description: 'Click execute to parse the comments stream and assemble your outline summary.' },
+    ],
+    useCases: [
+      { title: 'Scientific literature synthesis', description: 'Extract reading notes across multiple papers into Markdown templates to compose lit reviews instantly.', icon: 'graduation-cap' },
+      { title: 'Study journal compiling', description: 'Collect beautiful insights and personal remarks from textbooks into Obsidian databases.', icon: 'book' },
+      { title: 'Document collaborative audit', description: 'Gather review corrections from different team members and establish actionable task lists.', icon: 'users' },
+    ],
+    faq: [
+      { question: 'Can it extract tablet hand-drawn ink strokes?', answer: 'Yes. As long as the hand-drawn marks are stored as standard PDF Ink annotations, the tool can perfectly isolate and structure their page positions.' },
+      { question: 'Why are some highlighted extracts empty?', answer: 'If the PDF is a non-searchable image scan lacking underlying text, highlights only store coordinates. Run OCR on the PDF first, then extract annotations.' },
+      { question: 'Do the Markdown links jump back to the PDF?', answer: 'The exported file lists precise page numbers and original outline headings to make cross-referencing seamless.' },
+    ],
+  },
+  'batch-watermark-remover': {
+    title: 'Batch Remove Watermarks',
+    metaDescription: 'Physically scrub watermark strings and XObject images from the PDF content stream without messing up layouts.',
+    keywords: ['remove watermark', 'pdf watermark eraser', 'content stream purge', 'batch watermark cleaning', 'remove draft watermark'],
+    description: `
+      <p>The Batch Watermark Remover is a state-of-the-art PDF sanitizer that physically cleanses documents.</p>
+      <p>Generic watermark removers usually just overlay white blocks or distort document spacing. This tool utilizes a robust <strong>Content Stream Purge</strong> technique.</p>
+      <p>It parses the low-level rendering operators of each page, identifies specific watermark string commands (e.g. "Confidential", "DRAFT") or background image objects, and physically deletes or overwrites them. The watermarks disappear completely, preserving the original formatting and vector quality.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload watermarked file', description: 'Provide the PDF document showing commercial logos or security labels.' },
+      { step: 2, title: 'Define target watermark', description: 'Input the exact string to delete, or toggle translucent XObject image cleanup.' },
+      { step: 3, title: 'Run physical purge', description: 'Click execute to scrub the content operators with high fidelity.' },
+    ],
+    useCases: [
+      { title: 'Archiving corporate assets', description: 'Remove expired "Confidential" or "Draft" watermarks for general public distribution.', icon: 'archive' },
+      { title: 'Clearing background clutter', description: 'Scrub heavy background pictures that distract readers from scanning text.', icon: 'eye' },
+      { title: 'Document reusing', description: 'Cleanse old page footer branding elements to apply new corporate templates easily.', icon: 'copy' },
+    ],
+    faq: [
+      { question: 'Can the purged watermarks be recovered?', answer: 'No. Unlike visual masks, we rewrite the page binary stream to erase the operators, leaving no traces.' },
+      { question: 'Does it support complex gradients?', answer: 'If the watermark is stored as a separate text node or image XObject, the tool can isolate and physically wipe it.' },
+      { question: 'Will it modify normal page text?', answer: 'No. The scrubbing engine only target operators matching the specified watermark signature; regular text remains untouched.' },
+    ],
+  },
+  'smart-data-redactor': {
+    title: 'Sensitive Data Redaction',
+    metaDescription: 'Automatically detect phone numbers, emails, and IDs, overlay opaque masks, and physically erase underlying text streams.',
+    keywords: ['automatic redaction', 'redact privacy pdf', 'erase email pdf', 'mask phone numbers', 'gdpr compliance tool'],
+    description: `
+      <p>The Smart Privacy Data Redactor is an automated tool designed to ensure robust document privacy compliance.</p>
+      <p>Simply overlaying black boxes in normal editors is unsafe because the underlying text can still be copied. This tool implements true <strong>NLP pattern matching and physical content stream sanitization</strong>.</p>
+      <p>It scans the document for emails, phone numbers, SSNs, or custom keywords, places a premium matte black mask over the coordinates, and permanently overwrites the character stream with <code>[REDACTED]</code>, blocking copy-paste leaks.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload target PDF', description: 'Provide the contract or statement showing sensitive customer details.' },
+      { step: 2, title: 'Select redaction rules', description: 'Check target patterns (email, phone, ID) or define custom sensitive words.' },
+      { step: 3, title: 'Auto redact & download', description: 'Click execute to overlay secure masks and wipe the text streams.' },
+    ],
+    useCases: [
+      { title: 'Commercial agreements sharing', description: 'Safely publish business documents by hiding personal salaries, phone numbers, or emails.', icon: 'file-signature' },
+      { title: 'Resume database anonymization', description: 'Strip applicant names, contact info, or addresses to comply with strict privacy regulations.', icon: 'user-check' },
+      { title: 'Financial statement distribution', description: 'Conceal specific ledger numbers or shareholder names before publishing reports.', icon: 'pie-chart' },
+    ],
+    faq: [
+      { question: 'Are redacted details truly un-copyable?', answer: 'Yes. We rewrite the page content stream to erase the characters. Copy-pasting from the redacted box will only extract the string "[REDACTED]".' },
+      { question: 'Does it work for scanned image PDFs?', answer: 'This tool targets vector text streams. For scanned image files, use our OCR tool first or crop manually.' },
+      { question: 'Is the red HUD target scope saved in the file?', answer: 'No, that is a gorgeous frontend interactive loading effect. The output PDF displays standard clean black rectangles.' },
+    ],
+  },
+  'bookmarks-auto-generator': {
+    title: 'Auto Generate Bookmarks',
+    metaDescription: 'Analyze document layout hierarchy and regex patterns (e.g. Chapter) to generate and inject /Outline bookmark catalogs.',
+    keywords: ['generate bookmarks', 'pdf outline builder', 'inject bookmarks pdf', 'font size catalog', 'outline tree builder'],
+    description: `
+      <p>The Auto Bookmarks Generator brings absolute clarity to lengthy, unstructured PDF documents.</p>
+      <p>Scanning through books or booklets with no outline navigation is painful. This tool parses typographic hierarchies (such as font sizes and weights) along with regex rules (like "Chapter 1", "Section 1.1") to automatically deduce headings.</p>
+      <p>It then compiles and injects these headings directly into the PDF <code>/Outline</code> dictionary. Any standard viewer will then show a beautifully structured, multi-level navigation sidebar, backed by an interactive 3D outline tree preview.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Provide unstructured PDF', description: 'Upload large brochures, academic papers, or ebooks lacking a catalog sidebar.' },
+      { step: 2, title: 'Tune heading rules', description: 'Configure strategies specifying minimum font size thresholds and match rules.' },
+      { step: 3, title: 'Build and inject', description: 'Click execute to render the outline nodes and physically write the outline bookmarks.' },
+    ],
+    useCases: [
+      { title: 'Technical manuals organizing', description: 'Auto compile multi-level chapters for standard guidelines, saving hours of manual indexing.', icon: 'tool' },
+      { title: 'Thesis preparation', description: 'Inject clean nested bookmarks matching exact academic submission standards.', icon: 'graduation-cap' },
+      { title: 'Ebook navigation optimization', description: 'Structure scanned text publications into readable chapters for tablets or mobile readers.', icon: 'tablet' },
+    ],
+    faq: [
+      { question: 'Can it match custom chapter formats?', answer: 'Yes. You can add custom regex patterns in the sidebar panel (e.g., `^Part\\s+\\w+`) to target unique layouts.' },
+      { question: 'Will this affect the visual page presentation?', answer: 'No. The tool only adds an internal structural bookmark catalog. The text and visual assets of the pages remain untouched.' },
+      { question: 'How many bookmark levels are supported?', answer: 'The tool supports deeply nested bookmark structures, allowing chapter, section, and subsection layouts.' },
+    ],
+  },
+  'batch-barcode-injector': {
+    title: 'Batch Inject Barcodes',
+    metaDescription: 'Generate custom QR/Code128 tags and precisely inject them into bulk PDF pages with aligning guidelines.',
+    keywords: ['generate qr pdf', 'barcode injector', 'asset tag pdf', 'qr coordinate positioning', 'stamp barcodes'],
+    description: `
+      <p>The Batch Barcode precision injector bridges digital asset tracking with physical document indexing.</p>
+      <p>In warehousing, contract review, or logistics, we often need to Stamp unique barcodes onto invoices or device cards. This tool makes it incredibly easy.</p>
+      <p>Generate highly readable QR codes or Code128 barcodes, and use our gorgeous aligning workspace with green laser guides to position them. A clean scan audio beep triggers on placement, providing highly premium feedback.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload document', description: 'Drag and drop single or multi-page PDFs representing agreements or shipping lists.' },
+      { step: 2, title: 'Position barcode coordinates', description: 'Set code type, value, and drag the placement box to specify coordinates.' },
+      { step: 3, title: 'Stamps and download', description: 'Click execute to render the code layer onto the targeted page indices.' },
+    ],
+    useCases: [
+      { title: 'Contract validation tracing', description: 'Apply a unique QR code showing anti-counterfeit details onto the header of contracts.', icon: 'file-check' },
+      { title: 'Shipping lists coding', description: 'Place Code128 barcodes at target spots for quick warehouse scanning gun validation.', icon: 'truck' },
+      { title: 'Asset registration carding', description: 'Add inventory QR codes displaying maintenance specs onto physical equipment sheets.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'Are the generated barcodes highly scannable?', answer: 'Yes. We embed lossless high-resolution PNG representations that remain sharp even when printed at very small dimensions.' },
+      { question: 'Can I inject unique values on each page?', answer: 'Currently, the batch run applies the same configured code onto all selected pages. Multi-valued excel import is planned in a future update.' },
+      { question: 'What does the `pt` coordinate represent?', answer: '`pt` (Point) is the standard PDF physical unit (72 pt = 1 inch). A4 pages are represented as 595 × 842 pt.' },
+    ],
+  },
+  'signature-ink-optimizer': {
+    title: 'Extract Signature & Stamp',
+    metaDescription: 'Extract handwritten signatures and red corporate stamps from photos, remove paper shadow noise, and export transparent PNGs.',
+    keywords: ['extract signature', 'transparent signature background', 'clean stamp photo', 'sharpen hand signature', 'png seal maker'],
+    description: `
+      <p>The Signature & Stamp Chroma Ink Optimizer functions as a professional high-fidelity ink purifier.</p>
+      <p>Signatures or corporate seals captured on phones often suffer from yellow paper tint, uneven shadows, and page wrinkles. Pasting them directly onto contract PDFs looks amateur.</p>
+      <p>This tool separates the Alpha channel based on luminance and color space. It completely bleaches paper backgrounds while sharpening stamp red (Chroma Ink) and handwriting black. The result is a premium, transparent PNG stamp carrying genuine ink textures.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload seal photo', description: 'Provide a phone-captured photo of your signature or stamp seal.' },
+      { step: 2, title: 'Adjust cleaning sliders', description: 'Move contrast and luminance sliders to isolate the background noise in real-time.' },
+      { step: 3, title: 'Download clean signature', description: 'Export as transparent PNG ready to be stamped onto formal document agreements.' },
+    ],
+    useCases: [
+      { title: 'Professional e-signature prep', description: 'Convert gray signature photos into beautiful, transparent layers to sign agreements.', icon: 'file-signature' },
+      { title: 'Corporate seal sanitizing', description: 'Clean physical stamp scans by discarding paper fiber noise, preparing crisp transparent stamp seals.', icon: 'stamp' },
+      { title: 'Drawn line art extraction', description: 'Isolate black strokes from drawing sketchbooks for easy Photoshop coloring workflows.', icon: 'edit' },
+    ],
+    faq: [
+      { question: 'How does self-adaptive Alpha extraction differ from normal keying?', answer: 'Standard chroma-keying often makes signature stroke details look blocky and pixelated. Our algorithm isolates only white/yellow background noise and smooths the ink borders.' },
+      { question: 'Which image formats are supported?', answer: 'We support JPG, JPEG, and PNG. For best results, capture your signature photo under bright, even lighting.' },
+      { question: 'Will the handwriting detail be modified?', answer: 'No. The pixel filtering acts on original coordinates, sharpening contrast while maintaining genuine stroke textures.' },
+    ],
+  },
+  'dead-link-debugger': {
+    title: 'Fix Dead Links',
+    metaDescription: 'Scan all URL actions and link annotations in PDF, detect reachability, and inject redirects.',
+    keywords: ['dead link pdf', 'edit pdf hyperlinks', 'pdf link validation', 'redirect link pdf', 'update urls in pdf'],
+    description: `
+      <p>The Dead Link Debugger is a deep structural editor that guarantees link interaction quality in published files.</p>
+      <p>Broken urls (404/500) inside manuals, whitepapers, or guides reduce branding authority. This tool lets you manage the hyperlinks database seamlessly.</p>
+      <p>It parses the low-level <code>/Link</code> dictionaries on each page, Probes them, and displays link status in an interactive grid (red for dead links, orange for redirects). Simply type the updated redirect URL, and the tool writes the new target directly back into the PDF binary stream.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Provide target document', description: 'Upload the PDF manual or catalog containing links to debug.' },
+      { step: 2, title: 'Scan and update', description: 'Let the debugger extract all URL entities. Input new redirect URLs for broken items.' },
+      { step: 3, title: 'Save redirect updates', description: 'Click execute to rewrite /URI actions and download the corrected PDF.' },
+    ],
+    useCases: [
+      { title: 'Flyer broken links hotfix', description: 'Instantly correct wrong urls on published flyers without reopening original design editors.', icon: 'refresh-cw' },
+      { title: 'Bibliography links verification', description: 'Verify academic bibliography links in reports, updating references to maintain authority.', icon: 'book' },
+      { title: 'Corporate rebranding updates', description: 'Batch update old URLs across corporate PDFs when company domain names are changed.', icon: 'globe' },
+    ],
+    faq: [
+      { question: 'Why isn\'t link reachability fully checked online?', answer: 'Web browsers enforce strict CORS policies that block direct multi-origin link checking. Our tool lists the links clearly and lets you hot-fix them manually.' },
+      { question: 'Will this modify the visual text representation on the page?', answer: 'No. It only alters the underlying `/URI` navigation action. The visual link text remains unchanged.' },
+      { question: 'Does it support modifying internal page bookmarks?', answer: 'This tool handles external `/URI` hyperlinks. For internal layout navigation, use our interactive TOC tool.' },
+    ],
+  },
+  'interactive-toc-generator': {
+    title: 'Generate Interactive TOC',
+    metaDescription: 'Generate aesthetic Table of Contents pages, insert them pre-content, and wire internal bidirectional GoTo anchors.',
+    keywords: ['generate table of contents', 'interactive toc pdf', 'bidirectional anchor link', 'pdf index page builder', 'goto page action'],
+    description: `
+      <p>The Interactive TOC Builder introduces a revolutionary navigation experience to extensive PDFs.</p>
+      <p>Flipping through hundreds of pages in unstructured documents to locate target chapters is frustrating. This tool introduces <strong>Bidirectional TOC compilation</strong>.</p>
+      <p>It scans headers and generates an origami-inspired, premium Table of Contents page inserted right after the cover. In addition to creating clickable /GoTo links for each index row, it injects a tiny, elegant "TOC ↩" hovering anchor at the corner of each target chapter page. Readers can jump back and forth instantly, enjoying web-like navigation.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Provide PDF document', description: 'Upload a report, eBook, or proposal that needs an interactive catalog.' },
+      { step: 2, title: 'Set TOC title & index', description: 'Customize the main title and choose the page index to insert the TOC page.' },
+      { step: 3, title: 'Weave anchors & save', description: 'Click execute to compile the pages and write the dual-link navigation.' },
+    ],
+    useCases: [
+      { title: 'Annual corporate report polishing', description: 'Inject a beautiful index page after the cover sheet to allow shareholders to jump between financial charts.', icon: 'file-bar' },
+      { title: 'Thesis indexing', description: 'Fast compile standard indexes aligned with university formatting rules.', icon: 'bookmark' },
+      { title: 'Operation manual navigation', description: 'Help handbook readers quickly jump from troubleshooting sheets back to the main TOC.', icon: 'check-circle' },
+    ],
+    faq: [
+      { question: 'How do the bidirectional anchors work?', answer: 'We create standard Link annotations on the TOC page targeting the respective pages; then we embed a link back to the TOC page on all target chapter sheets.' },
+      { question: 'Will inserting the TOC page break existing page numbers?', answer: 'No. The compiler accounts for the offset of the newly inserted TOC page, ensuring all target destinations align.' },
+      { question: 'Is the TOC page valid when printed physically?', answer: 'Yes. The generated TOC lists clean physical page numbers to guide paper readers while enabling clickable links on screen.' },
+    ],
+  },
+  'global-invoice-parser': {
+    title: 'Invoice Translate & Convert',
+    metaDescription: 'Extract currency totals from multi-national invoices, run calculations, and stamp interactive frosted-glass exchange ledgers.',
+    keywords: ['translate invoice', 'invoice currency converter', 'exchange rate calculator pdf', 'stamp local currency', 'global invoice tool'],
+    description: `
+      <p>The Global Invoice Translator provides ultimate clarity for international finance teams and global buyers.</p>
+      <p>Handling invoices in multiple currencies ($ , € , ¥) often involves tedious manual arithmetic. This tool enables <strong>in-place label translation and real-time exchange rates conversion</strong>.</p>
+      <p>It scans the document for price totals, runs calculations based on currency benchmarks, and physically stamps an elegant semi-transparent frosted-glass "Exchange Rate ledger" at the page margin. It renders with a gorgeous rolling slot-machine numeric visual effect, bringing absolute control to global billing.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload invoice PDF', description: 'Import any invoice billed in foreign currencies (e.g. USD, EUR, JPY).' },
+      { step: 2, title: 'Select local currency', description: 'Choose your local currency (e.g. CNY) and specify a custom or real-time exchange rate.' },
+      { step: 3, title: 'Apply ledger stamp', description: 'Click execute to overlay the gorgeous exchange rate ledger ready for accounting.' },
+    ],
+    useCases: [
+      { title: 'Foreign business trip reimbursement', description: 'Convert travel bills into local currency and stamp conversion details, easing accounting workflows.', icon: 'plane' },
+      { title: 'Cross-border shopping audit', description: 'Translate invoice columns and isolate the true cost of e-commerce goods.', icon: 'credit-card' },
+      { title: 'International business bookkeeping', description: 'Stamp consistent conversion ledgers on corporate invoices to streamline year-end audits.', icon: 'folder-open' },
+    ],
+     faq: [
+      { question: 'How does it detect invoice amounts?', answer: 'It scans character streams for currency symbols and analyzes semantic headings like "Total" or "Due" to locate the invoice final sum.' },
+      { question: 'Are exchange rates fetched in real-time?', answer: 'Yes. By default, it retrieves base rates from standard financial APIs. You can also specify custom rates for internal audits.' },
+      { question: 'Will the stamped ledger cover important invoice details?', answer: 'The engine scans the page margin to find optimal positioning. The ledger is also semi-transparent, aligning elegantly with your layouts.' },
+    ],
+  },
+  'pdf-deskew-aligner': {
+    title: 'Auto Scan Deskew',
+    metaDescription: 'Detect and auto-correct page rotations and alignments on mobile-photo or scanned PDF sheets instantly.',
+    keywords: ['pdf deskew', 'scanned page alignment', 'auto rotate pdf page', 'straighten scanned paper', 'document alignment tool'],
+    description: `
+      <p>The PDF Scan Aligner is a mandatory utility for sanitizing tilted digital assets and mobile snapshots.</p>
+      <p>Documents scanned via physical flatbeds or captured quickly with smartphones often carry subtle rotations. Tilted pages look highly unprofessional, hinder text readability, and cause margins to clip during printing.</p>
+      <p>This tool utilizes robust <strong>Radon Transform and Hough Line detection algorithms</strong> to scan gradients and text lines under 20ms. It precisely measures skew down to 0.01 degrees and performs pixel-level Canvas rotation, snapping your receipts, contracts, and booklets back into crisp geometric alignment.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Provide skew PDF', description: 'Upload any PDF sheet carrying rotated or poorly aligned scanned documents.' },
+      { step: 2, title: 'Analyze and tweak', description: 'The engine auto-detects skew angle and draws aligning grids. Tweak angle manually if needed.' },
+      { step: 3, title: 'Straighten & download', description: 'Click execute to swing pages through a smooth gyroscope transition and download aligned PDF.' },
+    ],
+    useCases: [
+      { title: 'Receipt & Contract Archiving', description: 'Straighten quick hand-held mobile contract scans before saving them as formal digital PDF archives.', icon: 'file-text' },
+      { title: 'Academic Book Digitizing', description: 'Sanitize microfilm book scans where text lines drift out of horizontal margins.', icon: 'book' },
+      { title: 'Student Homework Grading', description: 'Correct homework snapshots taken by student phones, relaxing the eyes of grading teachers.', icon: 'edit-3' },
+    ],
+    faq: [
+      { question: 'How is document skew detected?', answer: 'We run high-speed Hough Line projections on text lines. Since formal prints have clear horizontal spacing patterns, finding the angle with the maximum variance isolates the rotation.' },
+      { question: 'Will this process crop away page edges?', answer: 'No. The engine calculates the rotated boundary and extends the Canvas using auto-padding, ensuring all margin text remains intact without cropping.' },
+      { question: 'Does it support documents filled with diagrams?', answer: 'Yes, as long as there is an underlying structure of lines or general paragraphs, our algorithms can accurately lock onto the principal reading angle.' },
+    ],
+  },
+  'pdf-two-column-reflower': {
+    title: 'Two-Column Paper Reflow',
+    metaDescription: 'Analyze IEEE/ACM double-column paper PDF structures and reflow them into responsive single-column layouts for smooth mobile and e-Reader viewing.',
+    keywords: ['two-column pdf to single', 'reflow academic paper', 'read papers on smartphone', 'pdf reader reflow', 'mobile friendly papers'],
+    description: `
+      <p>The Academic Two-Column Reflower solves the most significant pain point of digital research: reading papers on standard mobile screens.</p>
+      <p>Double-column layouts (used by IEEE, ACM, Nature, and major reports) are designed for A4 paper. Navigating them on phone screens or Kindle devices requires constant zooming, dragging right, scrolling down, and panning back up. It breaks reading comprehension completely.</p>
+      <p>Our processor implements a <strong>smart paragraph reflow and vertical partition barrier scan</strong>. It analyzes character coordinates to map double-column gutters, divides the layout, and weaves segments vertically (left column first, then right). Graphs, formulas, and headings are seamlessly rearranged into a single-column, flowable vertical scroll PDF.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload double-column PDF', description: 'Provide the IEEE/ACM journal report or multi-column PDF sheet.' },
+      { step: 2, title: 'Inspect partition gutter', description: 'Verify the red vertical partition slice guides. Adjust margins to prevent overlapping elements.' },
+      { step: 3, title: 'Reflow and save', description: 'Click execute to compile the pages into flowable layouts and download instantly.' },
+    ],
+    useCases: [
+      { title: 'e-Reader Book Import', description: 'Convert dense double-column essays into comfortable single-column documents matching Kindle and Onyx screens.', icon: 'tablet' },
+      { title: 'Subway Phone Reading', description: 'Read research literature comfortably with single-hand vertical swipe gestures during transit.', icon: 'smartphone' },
+      { title: 'Archival Journal Formatting', description: 'Modernize old narrow-column newspapers into readable, single-column web formats.', icon: 'book-open' },
+    ],
+    faq: [
+      { question: 'How are broad charts and equations handled?', answer: 'Our engine applies "span element detection." When an equation or diagram exceeds normal column widths, it is isolated as a full-width item, maintaining original proportions without clipping.' },
+      { question: 'Will this modify the vector text resolution?', answer: 'Not at all. We rewrite PDF text object transform matrices at the object tree level instead of rasterizing, meaning text remains 100% vector and fully selectable.' },
+      { question: 'Does this work on scanned image documents?', answer: 'For flat image-based PDFs, we highly recommend running our OCR tool first before executing the Reflow process.' },
+    ],
+  },
+  'pdf-page-resizer-uniform': {
+    title: 'Uniform PDF Page Size',
+    metaDescription: 'Batch resize and normalize mixed-format A4, A3, and Letter PDF sheets into a uniform target size with proportional centering and margin padding.',
+    keywords: ['uniform page size', 'resize pdf pages', 'merge diverse pdf', 'mediabox normalize', 'batch page scale'],
+    description: `
+      <p>The Multi-Format PDF Resizer is the ultimate standardizer for cluttered, mismatched corporate documents.</p>
+      <p>Combining invoices, contracts, and supplementary charts often results in a PDF containing massive A3 ledger pages, standard A4 agreements, and Letter-sized envelopes. Flipping through them is highly distracting, and sending them to physical office printers often causes jam errors due to size mismatch.</p>
+      <p>This tool rewrites the low-level <code>/MediaBox</code> and <code>/CropBox</code> grids on each page. It maps existing widths and heights, scales original pages proportionally to match target presets (e.g. standard A4), and introduces elegant, consistent surrounding margins, making the entire file look incredibly polished.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Provide mixed-size PDF', description: 'Upload a merged PDF document containing mismatched, messy page sizes.' },
+      { step: 2, title: 'Choose target preset', description: 'Select the target uniform size (e.g. A4, Letter, A3) and toggle scale modes.' },
+      { step: 3, title: 'Align and download', description: 'Click execute to trigger 3D sheet alignment, downloading a beautifully standardized PDF.' },
+    ],
+    useCases: [
+      { title: 'Corporate RFP Proposals', description: 'Standardize scanned qualification certificates and A4 bidding sheets before physical printing.', icon: 'file-text' },
+      { title: 'Financial Chart Integration', description: 'Scale broad A3 financial cash flows into neat A4 pages, preserving printing standards.', icon: 'layout' },
+      { title: 'Book Margin Standardization', description: 'Force slightly varied scanned book pages into an absolutely uniform dimension for comfortable reading.', icon: 'book' },
+    ],
+    faq: [
+      { question: 'Will this warp my content?', answer: 'Never. We support both "Contain" (proportional scaling with white bars) and "Cover" (centered crop). The default Contain mode preserves aspect ratios, preventing distortion.' },
+      { question: 'Will existing forms and annotations remain clickable?', answer: 'Yes. The algorithm maps the scaling factors to the Annotation coordinate arrays, scaling link boxes, sign boundaries, and inputs to align perfectly after resizing.' },
+      { question: 'Is there a limit on how many pages I can resize?', answer: 'No. Since all operations run locally in your client sandbox using native JavaScript, you can process extensive PDFs containing hundreds of pages in seconds.' },
+    ],
+  },
+  'handwriting-ink-contrast-booster': {
+    title: 'Enhance Handwriting Ink',
+    metaDescription: 'Extract blue or black handwriting signatures from photos, bleach yellow paper grain, and dramatically boost ink contrast for readability.',
+    keywords: ['enhance handwritten contract', 'ink contrast boost', 'bleach scanned paper', 'sharpen faded signature', 'signature extraction'],
+    description: `
+      <p>The Handwriting Ink Contrast Booster is a savior for digitizing signed agreements and historical manuscript archives.</p>
+      <p>Scans of hand-signed documents often look dull due to grey scanner glass reflection, yellow paper tint, or faded ink. Re-printing or photocopying these files results in blurry, illegible signatures. Traditional contrast tools darken the entire background, worsening the layout.</p>
+      <p>This tool utilizes **Contrast Limited Adaptive Histogram Equalization (CLAHE) and hue-based color separation**. In a secure local Canvas process, it isolates handwriting strokes (both black and blue) from background parchment, bleaches shadow wrinkles completely, and infuses faded inks with deep, saturated contrast, leaving your documents looking incredibly crisp and clean.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Import hand-signed document', description: 'Provide a PDF containing faded signatures, handwritten diaries, or sketches.' },
+      { step: 2, title: 'Configure ink filter', description: 'Select the color profile to isolate (e.g. blue ink, black ink, or both) and adjust sharpening.' },
+      { step: 3, title: 'Sharpen and download', description: 'Click execute to trace colors with a radar scanner effect and download purified PDF.' },
+    ],
+    useCases: [
+      { title: 'Executed Contracts Repair', description: 'Repair poorly scanned agreements, sharpening signatures and bleaching paper background to A4-pure white.', icon: 'file-check' },
+      { title: 'Handwritten Manuscripts Archive', description: 'Digitize written journals or diaries, extracting clear black strokes while erasing age-related stains.', icon: 'book' },
+      { title: 'Historical Ledger Restoration', description: 'Restore faint ink details on aged archival ledgers, rescuing valuable handwritten coordinates.', icon: 'archive' },
+    ],
+    faq: [
+      { question: 'How does this differ from normal grayscale conversion?', answer: 'Grayscale converts paper shadows into gray values. Our adaptive algorithm separates background luminance and isolates signature "ink spectrums," purifying the backdrop to absolute white while leaving stroke edges sharp.' },
+      { question: 'Will I lose handwriting stroke texture?', answer: 'No. The CLAHE algorithm works on a sub-pixel level, preserving natural pen-stroke pressure, ink fading, and dynamic line weights.' },
+      { question: 'Can I keep red corporate stamp marks?', answer: 'Yes. By enabling "Chroma Ink Preservation," the booster whitens paper background and darkens writing, while maintaining the bright colors of red seals and blue ink signatures.' },
+    ],
+  },
+  'pdf-spine-bookbinder': {
+    title: 'Calculate Book Spine Width',
+    metaDescription: 'Calculate book spine width based on page count and paper GSM, and generate a printable cover template with spine fold lines.',
+    keywords: ['book spine calculator', 'binding spine thickness', 'generate book cover pdf', 'spine fold marks', 'perfect binding prepress'],
+    description: `
+      <p>The PDF Spine Bookbinder is a pre-press savior for designers, self-publishing authors, and commercial bidding teams.</p>
+      <p>When compiling thick book catalogs, bidding proposals, or annual directories, perfect binding (glue binding) requires a cover with precise spine coordinates. If the spine width is off by even 1mm, the bound cover will warp, shift, or crease. Calculating page counts against paper weight is complex and error-prone.</p>
+      <p>This tool utilizes a <strong>physically modeled GSM paper-to-thickness library</strong>. Simply input your PDF page count and select paper stock (e.g. 80 GSM offset, 100 GSM glossy). The engine calculates spine width down to micrometers and compiles a print-ready, extra-wide cover PDF complete with standard front/back flaps and precise fold mark creases.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Set pages & stock type', description: 'Input document page count and select the target paper stock specifications.' },
+      { step: 2, title: 'Input spine text', description: 'Enter book titles, author details, and customize spine/cover backgrounds.' },
+      { step: 3, title: '3D Preview & Export', description: 'Spin and inspect your book cover in an interactive 3D binder. Export high-resolution vector PDF.' },
+    ],
+    useCases: [
+      { title: 'Thick Bidding Proposals', description: 'Design professional cover sheets with precise spine crease alignments for thick tender bids.', icon: 'layers' },
+      { title: 'Thesis Hardcover Binding', description: 'Map out perfect spine layout widths for university master/doctorate degree theses.', icon: 'award' },
+      { title: 'Self-Publishing Novel Covers', description: 'Calculate book spine width easily before submitting files to Print-on-Demand publishing services.', icon: 'book-open' },
+    ],
+    faq: [
+      { question: 'How accurate is the GSM paper-thickness calculation?', answer: 'Highly accurate. Our physics library matches industry averages (e.g. 70 GSM = 0.09mm, 80 GSM = 0.10mm, 150 GSM glossy = 0.125mm). We also include a "Double-sided printing" toggle to halve calculations automatically.' },
+      { question: 'Are the exported covers ready for direct printing?', answer: 'Yes. The files are vector-perfect PDFs carrying standard registration marks, color bars, and spine guides, fully compliant with offset and digital commercial presses.' },
+      { question: 'Can I upload a background image spanning the spine?', answer: 'Yes. You can upload custom layouts, and our compositor will wrap and align the graphics across the spine folds automatically.' },
+    ],
+  },
+  'pdf-signature-anchor-helper': {
+    title: 'Signature Position Guide',
+    metaDescription: 'Automatically locate signature fields in contracts, and inject interactive hovering guides and anchors for quick signing.',
+    keywords: ['locate signature pdf', 'inject sign anchor', 'contract signing helper', 'click to sign guide', 'prevent missing signatures'],
+    description: `
+      <p>The PDF Signature Guide Injector guarantees clean, error-free signing workflows for multi-page agreements.</p>
+      <p>When sending multi-page NDA agreements, financial statements, or commercial leases, clients often miss critical signing boxes, requiring endless back-and-forth email loops and delayed business transactions.</p>
+      <p>Our tool uses <strong>natural regex semantic mapping</strong>. It scans the PDF character map to locate terms like <code>Signature:</code>, <code>签字：</code>, <code>Witness:</code>, or <code>签署日期：</code>. It then leverages <code>pdf-lib</code> to inject standard PDF interactive Link annotations. When opened in any standard reader, clients see blinking, neon-bordered arrows that instantly guide them to the correct boxes, making signing foolproof.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Import business contract', description: 'Upload the PDF contract or NDA that needs signature coordinates.' },
+      { step: 2, title: 'Auto-scan signature slots', description: 'Inspect the automatically located signing boxes, and manually add custom sign points if needed.' },
+      { step: 3, title: 'Inject anchors & save', description: 'Click execute to write the interactive pointer layers into the PDF structure.' },
+    ],
+    useCases: [
+      { title: 'Corporate NDA Agreements', description: 'Inject clear, flashing guides next to sign blocks to prevent onboarding employees from missing clauses.', icon: 'file-text' },
+      { title: 'Commercial Lease Contracts', description: 'Guide multiple co-signers through multi-page real estate documents with custom-colored tabs.', icon: 'users' },
+      { title: 'Procurement PO Signatures', description: 'Overlay interactive pointers on invoices and purchase orders to accelerate accounting approval loops.', icon: 'briefcase' },
+    ],
+    faq: [
+      { question: 'Will these guides appear when I print the contract?', answer: 'No. The anchors are injected with the standard PDF `Printable` flag set to false. They display beautifully on computer/tablet screens but remain completely invisible when printed.' },
+      { question: 'Can clients jump between signature fields easily?', answer: 'Yes. We weave bidirectional internal anchors. Clients can click the "Sign Guide" bookmark to automatically jump to the next empty signature slot instantly.' },
+      { question: 'Does this work on scanned image documents?', answer: 'Yes. Besides looking up text streams, our spatial layout parser estimates signature lines based on horizontal rules and bounding boxes on scanned sheets.' },
+    ],
+  },
+  'pdf-lossless-slicer': {
+    title: 'Lossless Drawing Slicing',
+    metaDescription: 'Extract a partial region of large PDF CAD drawings, maps, or charts at a low-level, keeping vector resolution intact while dropping file size.',
+    keywords: ['pdf vector crop', 'lossless pdf slice', 'cad drawing crop', 'cropbox matrix edit', 'extract map region'],
+    description: `
+      <p>The PDF Lossless Drawing Slicer is a high-precision, surgical tool built for architects, engineers, and map detailers.</p>
+      <p>When extracting a specific pump room or chip core from a massive CAD engineering blueprint or geographic map PDF, traditional screenshots result in pixelated, blurry text. Normal cropping tools simply place a mask over the sheet, meaning the massive 100MB file remains huge, and hidden content can still be extracted.</p>
+      <p>This tool edits the page <code>/MediaBox</code>, <code>/CropBox</code>, and <code>/BleedBox</code> matrices at the object tree level. It physically isolates vector nodes outside the selected region, keeping the target area 100% vector-perfect (allowing infinite zoom magnification) while purging redundant off-screen paths and images to shrink the file size by 95%!</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Import large blueprint', description: 'Upload the vector-rich CAD, GIS map, or high-resolution catalog PDF.' },
+      { step: 2, title: 'Draw cutting box', description: 'Drag and scale the green laser-line crop box to target the local region you want to slice.' },
+      { step: 3, title: 'Trigger laser crop', description: 'Click execute to trigger our low-level object slicer and download the tiny, lossless PDF.' },
+    ],
+    useCases: [
+      { title: 'CAD Blueprint Isolation', description: 'Slice out a "cooling system" detail from a massive 100MB floor plan blueprint to share with sub-contractors.', icon: 'crop' },
+      { title: 'GIS Map Snipping', description: 'Extract a lossless, vector-clear block of a city street map for a presentation slide without resolution loss.', icon: 'map' },
+      { title: 'Manual Illustration Tracing', description: 'Lossless isolate scientific book figures to embed into high-quality academic papers.', icon: 'image' },
+    ],
+    faq: [
+      { question: 'How is this different from standard cropping?', answer: 'Standard cropping merely adjusts visual bounds; the hidden vectors remain in the file. Our slicer trims overlapping vector paths and purges out-of-bounds XObject images, ensuring complete data isolation and maximum file compression.' },
+      { question: 'Will text layers remain searchable?', answer: 'Yes. Any text characters that fall inside the sliced boundary remain fully vector-clear, searchable, and selectable.' },
+      { question: 'Can I export sliced regions to SVG?', answer: 'The output is a standardized vector PDF. You can pass the resulting file to our PDF-to-SVG tool to convert it to a web-scalable vector graphics format.' },
+    ],
+  },
+  'pdf-scratchpad-canvas': {
+    title: 'Grid Scratchpad Canvas',
+    metaDescription: 'Stitch high-quality grid, ruled, or Cornell note-taking margins to PDF pages for formula derivations and exam note preparation.',
+    keywords: ['pdf margin expand', 'add scratchpad page', 'cornell notes grid', 'stitch draft space', 'pdf notes template'],
+    description: `
+      <p>The PDF Scratchpad Margin Extender is an essential study companion tailored for students, researchers, and professional exam candidates.</p>
+      <p>When solving practice test papers, reviewing slides, or reading academic textbooks on digital tablets, page margins are incredibly tight. Opening a separate notes app forces you to toggle screens constantly, breaking focus. Adding flat blank sheets prevents you from viewing the problem and your calculation side-by-side.</p>
+      <p>This tool rewrites page width or height dimensions in the low-level PDF structure, expanding <code>/MediaBox</code> margins by 200~250 pt on the right or bottom. It then overlays clean grid lines, college-ruled notebook lines, or Cornell layouts in the new margins, giving you dedicated, adjacent draft boards next to every single slide or question!</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload lecture slides', description: 'Provide the PDF textbook, slides, or study papers.' },
+      { step: 2, title: 'Choose margin & grid style', description: 'Pick margin expansion direction (e.g. right side for tablets) and select the grid template.' },
+      { step: 3, title: 'Stitch canvas & download', description: 'Click execute to generate expanded pages complete with beautiful draft grids.' },
+    ],
+    useCases: [
+      { title: 'STEM Exam Preparation', description: 'Stitch grid margins next to math and physics exam questions, solving derivations right next to the question.', icon: 'edit-3' },
+      { title: 'Language Reading Analysis', description: 'Add ruled notebook margins next to foreign language essays for vocabulary analysis and paragraph translation.', icon: 'book' },
+      { title: 'Architectural Blueprint Audit', description: 'Add empty margin spaces on the side of blueprints for engineering calculations and client review comments.', icon: 'columns' },
+    ],
+    faq: [
+      { question: 'Will this squish my original PDF text?', answer: 'Not at all. The algorithm expands the paper dimension outwards. The original content retains its layout, fonts, and resolution; we simply stretch the white space on the borders and draw grids on them.' },
+      { question: 'Can standard hand-writing pens write in the scratchpad?', answer: 'Yes. The new PDF pages are compiled natively. Popular tablet note-taking applications like Goodnotes, Notability, Xodo, and Acrobat can write, highlight, and doodle directly in the new grid space.' },
+      { question: 'Are grid lines dark and distracting?', answer: 'We curated three subtle, eye-friendly colors (soft blue-gray, warm brown, and glowing green). The lines are thin and gentle, serving as guides without distracting you from the original page content.' },
+    ],
+  },
+  'photo-tiling-prepress': {
+    title: 'ID Photo DIY Print Tiler',
+    metaDescription: 'Crop and tile passport/ID photos onto standard 5" or 6" photo papers, and stamp precise prepress physical crop marks for easy cutting.',
+    keywords: ['id photo tiling', 'print passport photo', 'tile photo standard paper', 'id photo layout prepress', 'stamp crop marks'],
+    description: `
+      <p>The Prepress Photo Tiling tool is a cost-effective, high-precision layout compiler built for personal registration cards and photography studios.</p>
+      <p>Printing passport photos, ID photos, or driver licenses at home often results in incorrect physical dimensions (often printed too large or too small), wasted photo paper, and uneven alignments. Going to professional print shops to get layouts made is time-consuming.</p>
+      <p>Our tool integrates a <strong>precision prepress matrix engine</strong>. It accepts portrait photographs or ID card scans, crops them to standard dimensions (e.g. 1" or 2" passport specs), calculates optimal tile counts for standard photo papers (e.g. 5" or 6" sheets), and injects crisp, micro-pixel crop lines for easy physical cutting, generating a perfect printable PDF.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Import passport photo', description: 'Upload the camera portrait snapshot or double-sided ID card images.' },
+      { step: 2, title: 'Configure paper & layout', description: 'Select the target print paper size (e.g. 6") and choose the grid layouts (e.g. 8 copies of 1" photos).' },
+      { step: 3, title: 'Tile and export', description: 'Inspect photo tiles on our grid, and export the high-DPI printable PDF.' },
+    ],
+    useCases: [
+      { title: 'Self-Service Passport Photos', description: 'Arrange your mobile-shot passport portraits onto a single 6" photo paper grid, and print 8 copies for a fraction of standard studio costs.', icon: 'user' },
+      { title: 'ID Card Double-sided Copy', description: 'Format front and back scans of national ID cards neatly on standard Letter/A4 sheets for official submissions.', icon: 'file-text' },
+      { title: 'Batch Photo Thumbnail Sheets', description: 'Tile multiple family memories or design snapshots onto a grid paper to print thumbnail contact sheets efficiently.', icon: 'grid' },
+    ],
+    faq: [
+      { question: 'Will the printed dimensions match official 1" or 2" specs?', answer: 'Yes. The grid engine measures using standard PDF points (72 pt = 1 inch), rendering 1" photos exactly at 25x35mm, and 2" photos at 35x49mm. Ensure you print at "Actual Size / 100% Scale" in your printer settings.' },
+      { question: 'Can I combine 1" and 2" photos on a single sheet?', answer: 'Yes. We provide curated hybrid layout presets (e.g. "4 copies of 1" + 4 copies of 2""), allowing you to maximize photo paper space.' },
+      { question: 'Does the template include border bleeds?', answer: 'Yes. The prepress layouts reserve a standard 4mm print-safe margin on the paper borders, preventing physical printer rollers from cropping the photos.' },
+    ],
+  },
 };
+
+
+
 

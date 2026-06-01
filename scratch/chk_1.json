@@ -1,0 +1,242 @@
+{
+  "tools.removeMetadata.removeButton": {
+    "en": "Remove Metadata",
+    "zh": "移除元数据"
+  },
+  "tools.removeMetadata.successMessage": {
+    "en": "Metadata removed successfully!",
+    "zh": "元数据移除成功！"
+  },
+  "tools.removeMetadata.removedFields": {
+    "en": "Removed:",
+    "zh": "已移除："
+  },
+  "tools.changePermissions.optionsTitle": {
+    "en": "Document Permissions",
+    "zh": "文档权限"
+  },
+  "tools.changePermissions.passwordTitle": {
+    "en": "Password Settings",
+    "zh": "密码设置"
+  },
+  "tools.changePermissions.privacyNotice": {
+    "en": "🔒 Your passwords are processed locally and never sent to any server.",
+    "zh": "🔒 您的密码在本地处理，永远不会发送到任何服务器。"
+  },
+  "tools.changePermissions.currentPasswordLabel": {
+    "en": "Current Password (if PDF is encrypted)",
+    "zh": "当前密码（如果PDF已加密）"
+  },
+  "tools.changePermissions.currentPasswordPlaceholder": {
+    "en": "Enter current password",
+    "zh": "输入当前密码"
+  },
+  "tools.changePermissions.currentPasswordHint": {
+    "en": "Required if the PDF is already password-protected.",
+    "zh": "如果PDF已受密码保护，则需要输入。"
+  },
+  "tools.changePermissions.newUserPasswordLabel": {
+    "en": "New User Password (to open document)",
+    "zh": "新用户密码（打开文档）"
+  },
+  "tools.changePermissions.newUserPasswordPlaceholder": {
+    "en": "Enter user password",
+    "zh": "输入用户密码"
+  },
+  "tools.changePermissions.newUserPasswordHint": {
+    "en": "Users will need this password to open the PDF.",
+    "zh": "用户需要此密码才能打开PDF。"
+  },
+  "tools.changePermissions.newOwnerPasswordLabel": {
+    "en": "New Owner Password (to change permissions)",
+    "zh": "新所有者密码（更改权限）"
+  },
+  "tools.changePermissions.newOwnerPasswordPlaceholder": {
+    "en": "Enter owner password",
+    "zh": "输入所有者密码"
+  },
+  "tools.changePermissions.newOwnerPasswordHint": {
+    "en": "Required to enforce permission restrictions.",
+    "zh": "需要此密码才能执行权限限制。"
+  },
+  "tools.changePermissions.allowAll": {
+    "en": "Allow All",
+    "zh": "全部允许"
+  },
+  "tools.changePermissions.restrictAll": {
+    "en": "Restrict All",
+    "zh": "全部限制"
+  },
+  "tools.changePermissions.info": {
+    "en": "Note: Permission enforcement requires PDF encryption. Set an owner password below to enforce restrictions.",
+    "zh": "注意：权限执行需要PDF加密。请在下方设置所有者密码以执行限制。"
+  },
+  "tools.changePermissions.allowPrinting": {
+    "en": "Allow Printing",
+    "zh": "允许打印"
+  },
+  "tools.changePermissions.allowPrintingDesc": {
+    "en": "Users can print the document",
+    "zh": "用户可以打印文档"
+  },
+  "tools.changePermissions.allowHighQualityPrinting": {
+    "en": "Allow High-Quality Printing",
+    "zh": "允许高质量打印"
+  },
+  "tools.changePermissions.allowHighQualityPrintingDesc": {
+    "en": "Users can print at high resolution",
+    "zh": "用户可以高分辨率打印"
+  },
+  "tools.changePermissions.allowModifying": {
+    "en": "Allow Modifying",
+    "zh": "允许修改"
+  },
+  "tools.changePermissions.allowModifyingDesc": {
+    "en": "Users can edit the document",
+    "zh": "用户可以编辑文档"
+  },
+  "tools.changePermissions.allowCopying": {
+    "en": "Allow Copying",
+    "zh": "允许复制"
+  },
+  "tools.changePermissions.allowCopyingDesc": {
+    "en": "Users can copy text and images",
+    "zh": "用户可以复制文本和图像"
+  },
+  "tools.changePermissions.allowAnnotating": {
+    "en": "Allow Annotating",
+    "zh": "允许注释"
+  },
+  "tools.changePermissions.allowAnnotatingDesc": {
+    "en": "Users can add comments and annotations",
+    "zh": "用户可以添加评论和注释"
+  },
+  "tools.changePermissions.allowFillingForms": {
+    "en": "Allow Filling Forms",
+    "zh": "允许填写表单"
+  },
+  "tools.changePermissions.allowFillingFormsDesc": {
+    "en": "Users can fill in form fields",
+    "zh": "用户可以填写表单字段"
+  },
+  "tools.changePermissions.allowAccessibility": {
+    "en": "Allow Accessibility",
+    "zh": "允许辅助功能"
+  },
+  "tools.changePermissions.allowAccessibilityDesc": {
+    "en": "Screen readers can access content",
+    "zh": "屏幕阅读器可以访问内容"
+  },
+  "tools.changePermissions.allowAssembly": {
+    "en": "Allow Assembly",
+    "zh": "允许组装"
+  },
+  "tools.changePermissions.allowAssemblyDesc": {
+    "en": "Users can insert, delete, or rotate pages",
+    "zh": "用户可以插入、删除或旋转页面"
+  },
+  "tools.changePermissions.applyButton": {
+    "en": "Apply Permissions",
+    "zh": "应用权限"
+  },
+  "tools.changePermissions.successMessage": {
+    "en": "Permissions updated successfully!",
+    "zh": "权限更新成功！"
+  },
+  "tools.changePermissions.successHint": {
+    "en": "For full permission enforcement, encrypt the PDF with an owner password.",
+    "zh": "如需完全执行权限，请使用所有者密码加密PDF。"
+  },
+  "tools.changePermissions.invalidPassword": {
+    "en": "The current password you entered is incorrect. Please check and try again.",
+    "zh": "您输入的当前密码不正确，请检查后重试。"
+  },
+  "tools.changePermissions.passwordRequired": {
+    "en": "This PDF is password-protected. Please enter the current password to proceed.",
+    "zh": "此PDF受密码保护，请输入当前密码以继续。"
+  },
+  "tools.fixPageSize.optionsTitle": {
+    "en": "Page Size Options",
+    "zh": "页面尺寸选项"
+  },
+  "tools.fixPageSize.targetSize": {
+    "en": "Target Page Size",
+    "zh": "目标页面尺寸"
+  },
+  "tools.fixPageSize.width": {
+    "en": "Width (points)",
+    "zh": "宽度（点）"
+  },
+  "tools.fixPageSize.height": {
+    "en": "Height (points)",
+    "zh": "高度（点）"
+  },
+  "tools.fixPageSize.scaleMode": {
+    "en": "Content Scaling",
+    "zh": "内容缩放"
+  },
+  "tools.fixPageSize.scaleFit": {
+    "en": "Fit",
+    "zh": "适应"
+  },
+  "tools.fixPageSize.scaleFill": {
+    "en": "Fill",
+    "zh": "填充"
+  },
+  "tools.fixPageSize.scaleStretch": {
+    "en": "Stretch",
+    "zh": "拉伸"
+  },
+  "tools.fixPageSize.scaleCenter": {
+    "en": "Center",
+    "zh": "居中"
+  },
+  "tools.fixPageSize.scaleFitDesc": {
+    "en": "Scale content to fit within page, maintaining aspect ratio",
+    "zh": "缩放内容以适应页面，保持纵横比"
+  },
+  "tools.fixPageSize.scaleFillDesc": {
+    "en": "Scale content to fill page, may crop edges",
+    "zh": "缩放内容以填充页面，可能裁剪边缘"
+  },
+  "tools.fixPageSize.scaleStretchDesc": {
+    "en": "Stretch content to fill page exactly",
+    "zh": "拉伸内容以完全填充页面"
+  },
+  "tools.fixPageSize.scaleCenterDesc": {
+    "en": "Center content without scaling",
+    "zh": "居中内容，不缩放"
+  },
+  "tools.fixPageSize.orientation": {
+    "en": "Page Orientation",
+    "zh": "页面方向"
+  },
+  "tools.fixPageSize.maintainAspectRatio": {
+    "en": "Maintain aspect ratio",
+    "zh": "保持纵横比"
+  },
+  "tools.fixPageSize.applyButton": {
+    "en": "Fix Page Sizes",
+    "zh": "修复页面尺寸"
+  },
+  "tools.fixPageSize.successMessage": {
+    "en": "Page sizes fixed successfully!",
+    "zh": "页面尺寸修复成功！"
+  },
+  "tools.bookmark.normal": {
+    "en": "Normal",
+    "zh": "常规"
+  },
+  "tools.bookmark.bold": {
+    "en": "Bold",
+    "zh": "加粗"
+  },
+  "tools.bookmark.italic": {
+    "en": "Italic",
+    "zh": "倾斜"
+  },
+  "tools.bookmark.boldItalic": {
+    "en": "Bold & Italic",
+    "zh": "加粗并倾斜"
+  }
+}

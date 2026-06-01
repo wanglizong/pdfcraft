@@ -1,0 +1,386 @@
+{
+  "common.timestamp.tsaSectigoDesc": {
+    "en": "Sectigo TSA Comodo Atomic Clock Server",
+    "zh": "Comodo 安全原子钟授时服务"
+  },
+  "common.timestamp.tsaSslDesc": {
+    "en": "SSL.com Trusted American TSA Provider",
+    "zh": "北美可信第三方权威授时节点"
+  },
+  "common.timestamp.tsaFreetsaDesc": {
+    "en": "FreeTSA.org Free High-grade TSA Service",
+    "zh": "开源高强密码学免费确权机构"
+  },
+  "common.timestamp.uploadLabel": {
+    "en": "Upload PDF for TSA Timestamp",
+    "zh": "上传待签名确权 PDF"
+  },
+  "common.timestamp.uploadDescription": {
+    "en": "Drag & drop PDF here. Fully supports encrypted PDFs with automated local decryption.",
+    "zh": "将 PDF 文件拖放到此处。支持所有标准和加密 PDF 的自动解密载入。"
+  },
+  "common.timestamp.tsaStepTitle": {
+    "en": "1. Select Trusted TSA Authority (RFC 3161 Compliant)",
+    "zh": "1. 选择受信任 TSA 服务器 (RFC 3161)"
+  },
+  "common.timestamp.tsaPrivacyHelp": {
+    "en": "Only SHA-256 hashes are sent to the TSA servers. Full document privacy guaranteed.",
+    "zh": "系统只发送无规律的 SHA-256 哈希值与服务器交互，绝对保障文档隐私。"
+  },
+  "common.timestamp.tsaSpeedFast": {
+    "en": "Fast",
+    "zh": "极速"
+  },
+  "common.timestamp.tsaSpeedStable": {
+    "en": "Stable",
+    "zh": "稳定"
+  },
+  "common.timestamp.processButton": {
+    "en": "Stamp Trusted Timestamp",
+    "zh": "签署可信时间戳"
+  },
+  "common.timestamp.processingTitle": {
+    "en": "Waiting for Cryptographic Seal",
+    "zh": "等待时间戳确权签署"
+  },
+  "common.timestamp.processingDesc": {
+    "en": "Uploading hash streams. Generating authoritative RFC 3161 timestamps.",
+    "zh": "上传文件并选择 TSA，点击“签署可信时间戳”生成由权威授时中心盖章的加密证书凭证。"
+  },
+  "common.timestamp.resultTitle": {
+    "en": "Authoritative TSA Timestamp Certificate",
+    "zh": "电子存证可信时间戳凭据"
+  },
+  "common.timestamp.tsaTime": {
+    "en": "Atomic TSA Certified Time (UTC)",
+    "zh": "TSA 原子钟授时时间 (UTC)"
+  },
+  "common.timestamp.tsaHash": {
+    "en": "SHA-256 Cryptographic Hash Checksum",
+    "zh": "安全文件哈希校验和 (SHA-256)"
+  },
+  "common.timestamp.tsaName": {
+    "en": "TSA Authority Issuer",
+    "zh": "授时权威商 (TSA)"
+  },
+  "common.timestamp.tsaSerial": {
+    "en": "TSA Timestamp Token Serial",
+    "zh": "证书序列号 (Serial)"
+  },
+  "common.vectorExtractor.uploadLabel": {
+    "en": "Upload PDF to Extract Vectors",
+    "zh": "上传需要提取矢量的 PDF 文件"
+  },
+  "common.vectorExtractor.uploadDescription": {
+    "en": "Drag and drop PDFs with logos, diagrams, CAD drawings, or mathematical formulas. Rebuilds layers into high-fidelity SVGs.",
+    "zh": "拖放带有徽标 Logo、插图、CAD 图表或复杂数学公式的 PDF。系统将把图层翻译为高保真 SVG 画布。"
+  },
+  "common.vectorExtractor.magnifierTitle": {
+    "en": "Hover to highlight vectors in 3D, click to select.",
+    "zh": "移动鼠标悬停以 3D 包围高亮元素，点击选择。"
+  },
+  "common.vectorExtractor.propertiesTitle": {
+    "en": "Vector Layer Properties",
+    "zh": "矢量元素属性"
+  },
+  "common.vectorExtractor.emptyPropertiesTitle": {
+    "en": "No Vector Selected",
+    "zh": "未选中任何元素"
+  },
+  "common.vectorExtractor.emptyPropertiesDesc": {
+    "en": "Click any vector path, character, or shape to extract the code.",
+    "zh": "点击左侧画布上的任何矢量线条、文字或色块进行高保真单独提取。"
+  },
+  "common.vectorExtractor.rgbColor": {
+    "en": "RGB Color Pre-fill",
+    "zh": "色彩预填充 (RGB)"
+  },
+  "common.vectorExtractor.codeCopied": {
+    "en": "SVG code copied to clipboard",
+    "zh": "代码已复制"
+  },
+  "common.vectorExtractor.copyCode": {
+    "en": "Copy SVG Code",
+    "zh": "复制 SVG 源代码"
+  },
+  "common.vectorExtractor.downloadSvg": {
+    "en": "Download SVG Asset",
+    "zh": "下载选中矢量图"
+  },
+  "toolsPage.title": {
+    "en": "Professional PDF Tools",
+    "zh": "专业 PDF 工具"
+  },
+  "toolsPage.subtitle": {
+    "en": "{count}+ free, secure, and easy-to-use tools for all your PDF needs.",
+    "zh": "{count}+ 款免费、安全且易于使用的工具，满足您所有的 PDF 需求。"
+  },
+  "toolsPage.filters": {
+    "en": "Filters",
+    "zh": "筛选"
+  },
+  "toolsPage.allTools": {
+    "en": "All Tools",
+    "zh": "所有工具"
+  },
+  "toolsPage.clearAll": {
+    "en": "Clear all",
+    "zh": "清除全部"
+  },
+  "toolsPage.clearFilters": {
+    "en": "Clear filters",
+    "zh": "清除筛选"
+  },
+  "toolsPage.showingAll": {
+    "en": "Showing all {count} tools",
+    "zh": "显示全部 {count} 个工具"
+  },
+  "toolsPage.showingFiltered": {
+    "en": "Showing {filtered} of {total} tools",
+    "zh": "显示 {filtered} / {total} 个工具"
+  },
+  "toolsPage.forQuery": {
+    "en": "for \"{query}\"",
+    "zh": "搜索 \"{query}\""
+  },
+  "toolsPage.inCategory": {
+    "en": "in {category}",
+    "zh": "分类：{category}"
+  },
+  "toolsPage.noToolsFound": {
+    "en": "No tools found",
+    "zh": "未找到工具"
+  },
+  "contactPage.methods.email.action": {
+    "en": "contact@pdfcraft.app",
+    "zh": "contact@pdfcraft.app"
+  },
+  "contactPage.methods.github.title": {
+    "en": "GitHub",
+    "zh": "GitHub"
+  },
+  "contactPage.methods.twitter.title": {
+    "en": "Twitter",
+    "zh": "推特"
+  },
+  "contactPage.methods.twitter.action": {
+    "en": "@pdfcraft",
+    "zh": "@pdfcraft"
+  },
+  "contactPage.form.fields.email.placeholder": {
+    "en": "your@email.com",
+    "zh": "your@email.com"
+  },
+  "errors.pageError": {
+    "en": "Something went wrong",
+    "zh": "Something went wrong"
+  },
+  "errors.pageErrorDescription": {
+    "en": "An unexpected error occurred. Please try again.",
+    "zh": "An unexpected error occurred. Please try again."
+  },
+  "errors.tryAgain": {
+    "en": "Try again",
+    "zh": "Try again"
+  },
+  "errors.goHome": {
+    "en": "Go home",
+    "zh": "Go home"
+  },
+  "errors.toolNotFound": {
+    "en": "Tool Not Found",
+    "zh": "工具未找到"
+  },
+  "tools.mergePdf.uploadDescription": {
+    "en": "Drag and drop PDF files here, or click to browse. You can add multiple files.",
+    "zh": "拖放PDF文件到此处，或点击浏览。可以添加多个文件。"
+  },
+  "tools.mergePdf.filesTitle": {
+    "en": "Files to Merge",
+    "zh": "要合并的文件"
+  },
+  "tools.mergePdf.reorderHint": {
+    "en": "Drag and drop to reorder files. Files will be merged in the order shown.",
+    "zh": "拖放以重新排序文件。文件将按显示顺序合并。"
+  },
+  "tools.mergePdf.optionsTitle": {
+    "en": "Merge Options",
+    "zh": "合并选项"
+  },
+  "tools.mergePdf.preserveBookmarks": {
+    "en": "Preserve bookmarks (create bookmark for each file)",
+    "zh": "保留书签（为每个文件创建书签）"
+  },
+  "tools.mergePdf.mergeButton": {
+    "en": "Merge PDFs",
+    "zh": "合并PDF"
+  },
+  "tools.mergePdf.successMessage": {
+    "en": "PDFs merged successfully! Click the download button to save your file.",
+    "zh": "PDF合并成功！点击下载按钮保存文件。"
+  },
+  "tools.splitPdf.pagesPerFile": {
+    "en": "Pages Per File",
+    "zh": "Pages Per File"
+  },
+  "tools.splitPdf.pageRanges": {
+    "en": "Page Ranges",
+    "zh": "Page Ranges"
+  },
+  "tools.splitPdf.pageRangesPlaceholder": {
+    "en": "e.g., 1-3, 5, 7-9",
+    "zh": "e.g., 1-3, 5, 7-9"
+  },
+  "tools.splitPdf.modeEveryNPages": {
+    "en": "Every N Pages",
+    "zh": "Every N Pages"
+  },
+  "tools.deletePages.selectTitle": {
+    "en": "Select Pages to Delete",
+    "zh": "选择要删除的页面"
+  },
+  "tools.deletePages.selectHint": {
+    "en": "Click pages to select them for deletion, or enter page numbers/ranges above.",
+    "zh": "点击页面选择删除，或在上方输入页码/范围。"
+  },
+  "tools.deletePages.warning": {
+    "en": "Warning",
+    "zh": "警告"
+  },
+  "tools.deletePages.warningText": {
+    "en": "Selected pages will be permanently removed from the PDF. At least one page must remain.",
+    "zh": "选中的页面将从PDF中永久删除。至少需要保留一页。"
+  },
+  "tools.deletePages.deleteButton": {
+    "en": "Delete Pages",
+    "zh": "删除页面"
+  },
+  "tools.deletePages.successMessage": {
+    "en": "Pages deleted successfully! Click the download button to save your file.",
+    "zh": "页面删除成功！点击下载按钮保存文件。"
+  },
+  "tools.extractPages.selectTitle": {
+    "en": "Select Pages to Extract",
+    "zh": "选择要提取的页面"
+  },
+  "tools.extractPages.selectHint": {
+    "en": "Click pages to select them, or enter page numbers/ranges above.",
+    "zh": "点击页面选择，或在上方输入页码/范围。"
+  },
+  "tools.extractPages.extractButton": {
+    "en": "Extract Pages",
+    "zh": "提取页面"
+  },
+  "tools.extractPages.successMessage": {
+    "en": "Pages extracted successfully! Click the download button to save your file.",
+    "zh": "页面提取成功！点击下载按钮保存文件。"
+  },
+  "tools.posterizePdf.optionsTitle": {
+    "en": "Posterize Options",
+    "zh": "海报化选项"
+  },
+  "tools.posterizePdf.rows": {
+    "en": "Rows",
+    "zh": "行数"
+  },
+  "tools.posterizePdf.cols": {
+    "en": "Columns",
+    "zh": "列数"
+  },
+  "tools.posterizePdf.pageSize": {
+    "en": "Output Page Size",
+    "zh": "输出页面大小"
+  },
+  "tools.posterizePdf.overlap": {
+    "en": "Overlap",
+    "zh": "重叠"
+  },
+  "tools.posterizePdf.scalingMode": {
+    "en": "Scaling Mode",
+    "zh": "缩放模式"
+  },
+  "tools.posterizePdf.fit": {
+    "en": "Fit (preserve aspect ratio)",
+    "zh": "适应（保持纵横比）"
+  },
+  "tools.posterizePdf.fill": {
+    "en": "Fill (may crop)",
+    "zh": "填充（可能裁剪）"
+  },
+  "tools.posterizePdf.pageRange": {
+    "en": "Page Range (optional)",
+    "zh": "页面范围（可选）"
+  },
+  "tools.posterizePdf.pageRangePlaceholder": {
+    "en": "e.g., 1-5, 8, 10-15 (leave empty for all pages)",
+    "zh": "例如：1-5, 8, 10-15（留空表示所有页面）"
+  },
+  "tools.posterizePdf.previewInfo": {
+    "en": "Each page will be split into {rows}×{cols} = {total} tiles.",
+    "zh": "每页将被分割为 {rows}×{cols} = {total} 个图块。"
+  },
+  "tools.posterizePdf.createButton": {
+    "en": "Posterize PDF",
+    "zh": "海报化PDF"
+  },
+  "tools.posterizePdf.successMessage": {
+    "en": "PDF posterized successfully! Click the download button to save your file.",
+    "zh": "PDF海报化成功！点击下载按钮保存文件。"
+  },
+  "tools.digitalSign.uploadLabel": {
+    "en": "Upload PDF to Sign",
+    "zh": "上传要签名的 PDF"
+  },
+  "tools.digitalSign.certificateTitle": {
+    "en": "Certificate",
+    "zh": "证书"
+  },
+  "tools.digitalSign.uploadCertificateLabel": {
+    "en": "Upload Certificate (.pfx, .p12, or .pem)",
+    "zh": "上传证书（.pfx, .p12, 或 .pem）"
+  },
+  "tools.digitalSign.certificateLoaded": {
+    "en": "Certificate loaded",
+    "zh": "证书已加载"
+  },
+  "tools.digitalSign.enterPassword": {
+    "en": "Enter password to unlock",
+    "zh": "输入密码以解锁"
+  },
+  "tools.digitalSign.certificatePasswordLabel": {
+    "en": "Certificate Password",
+    "zh": "证书密码"
+  },
+  "tools.digitalSign.unlockButton": {
+    "en": "Unlock",
+    "zh": "解锁"
+  },
+  "tools.digitalSign.issuer": {
+    "en": "Issuer",
+    "zh": "颁发者"
+  },
+  "tools.digitalSign.valid": {
+    "en": "Valid",
+    "zh": "有效期"
+  },
+  "tools.digitalSign.warningExpired": {
+    "en": "Warning: Certificate is expired or not yet valid. Signing may still work but the signature will show as invalid.",
+    "zh": "警告：证书已过期或尚未生效。签名可能仍然有效，但显示为无效。"
+  },
+  "tools.digitalSign.signatureOptionsTitle": {
+    "en": "Signature Options",
+    "zh": "签名选项"
+  },
+  "tools.digitalSign.reasonLabel": {
+    "en": "Reason",
+    "zh": "原因"
+  },
+  "tools.digitalSign.reasonPlaceholder": {
+    "en": "e.g., Document approval",
+    "zh": "例如：文件审批"
+  },
+  "tools.digitalSign.locationLabel": {
+    "en": "Location",
+    "zh": "地点"
+  }
+}

@@ -1,0 +1,322 @@
+{
+  "tools.changePermissions.allowHighQualityPrinting": {
+    "en": "Allow High-Quality Printing",
+    "zh": "允许高质量打印"
+  },
+  "tools.changePermissions.allowHighQualityPrintingDesc": {
+    "en": "Users can print at high resolution",
+    "zh": "用户可以高分辨率打印"
+  },
+  "tools.changePermissions.allowModifying": {
+    "en": "Allow Modifying",
+    "zh": "允许修改"
+  },
+  "tools.changePermissions.allowModifyingDesc": {
+    "en": "Users can edit the document",
+    "zh": "用户可以编辑文档"
+  },
+  "tools.changePermissions.allowCopying": {
+    "en": "Allow Copying",
+    "zh": "允许复制"
+  },
+  "tools.changePermissions.allowCopyingDesc": {
+    "en": "Users can copy text and images",
+    "zh": "用户可以复制文本和图像"
+  },
+  "tools.changePermissions.allowAnnotating": {
+    "en": "Allow Annotating",
+    "zh": "允许注释"
+  },
+  "tools.changePermissions.allowAnnotatingDesc": {
+    "en": "Users can add comments and annotations",
+    "zh": "用户可以添加评论和注释"
+  },
+  "tools.changePermissions.allowFillingForms": {
+    "en": "Allow Filling Forms",
+    "zh": "允许填写表单"
+  },
+  "tools.changePermissions.allowFillingFormsDesc": {
+    "en": "Users can fill in form fields",
+    "zh": "用户可以填写表单字段"
+  },
+  "tools.changePermissions.allowAccessibility": {
+    "en": "Allow Accessibility",
+    "zh": "允许辅助功能"
+  },
+  "tools.changePermissions.allowAccessibilityDesc": {
+    "en": "Screen readers can access content",
+    "zh": "屏幕阅读器可以访问内容"
+  },
+  "tools.changePermissions.allowAssembly": {
+    "en": "Allow Assembly",
+    "zh": "允许组装"
+  },
+  "tools.changePermissions.allowAssemblyDesc": {
+    "en": "Users can insert, delete, or rotate pages",
+    "zh": "用户可以插入、删除或旋转页面"
+  },
+  "tools.changePermissions.applyButton": {
+    "en": "Apply Permissions",
+    "zh": "应用权限"
+  },
+  "tools.changePermissions.successMessage": {
+    "en": "Permissions updated successfully!",
+    "zh": "权限更新成功！"
+  },
+  "tools.changePermissions.successHint": {
+    "en": "For full permission enforcement, encrypt the PDF with an owner password.",
+    "zh": "如需完全执行权限，请使用所有者密码加密PDF。"
+  },
+  "tools.changePermissions.invalidPassword": {
+    "en": "The current password you entered is incorrect. Please check and try again.",
+    "zh": "您输入的当前密码不正确，请检查后重试。"
+  },
+  "tools.changePermissions.passwordRequired": {
+    "en": "This PDF is password-protected. Please enter the current password to proceed.",
+    "zh": "此PDF受密码保护，请输入当前密码以继续。"
+  },
+  "tools.fixPageSize.optionsTitle": {
+    "en": "Page Size Options",
+    "zh": "页面尺寸选项"
+  },
+  "tools.fixPageSize.targetSize": {
+    "en": "Target Page Size",
+    "zh": "目标页面尺寸"
+  },
+  "tools.fixPageSize.width": {
+    "en": "Width (points)",
+    "zh": "宽度（点）"
+  },
+  "tools.fixPageSize.height": {
+    "en": "Height (points)",
+    "zh": "高度（点）"
+  },
+  "tools.fixPageSize.scaleMode": {
+    "en": "Content Scaling",
+    "zh": "内容缩放"
+  },
+  "tools.fixPageSize.scaleFit": {
+    "en": "Fit",
+    "zh": "适应"
+  },
+  "tools.fixPageSize.scaleFill": {
+    "en": "Fill",
+    "zh": "填充"
+  },
+  "tools.fixPageSize.scaleStretch": {
+    "en": "Stretch",
+    "zh": "拉伸"
+  },
+  "tools.fixPageSize.scaleCenter": {
+    "en": "Center",
+    "zh": "居中"
+  },
+  "tools.fixPageSize.scaleFitDesc": {
+    "en": "Scale content to fit within page, maintaining aspect ratio",
+    "zh": "缩放内容以适应页面，保持纵横比"
+  },
+  "tools.fixPageSize.scaleFillDesc": {
+    "en": "Scale content to fill page, may crop edges",
+    "zh": "缩放内容以填充页面，可能裁剪边缘"
+  },
+  "tools.fixPageSize.scaleStretchDesc": {
+    "en": "Stretch content to fill page exactly",
+    "zh": "拉伸内容以完全填充页面"
+  },
+  "tools.fixPageSize.scaleCenterDesc": {
+    "en": "Center content without scaling",
+    "zh": "居中内容，不缩放"
+  },
+  "tools.fixPageSize.orientation": {
+    "en": "Page Orientation",
+    "zh": "页面方向"
+  },
+  "tools.fixPageSize.maintainAspectRatio": {
+    "en": "Maintain aspect ratio",
+    "zh": "保持纵横比"
+  },
+  "tools.fixPageSize.applyButton": {
+    "en": "Fix Page Sizes",
+    "zh": "修复页面尺寸"
+  },
+  "tools.fixPageSize.successMessage": {
+    "en": "Page sizes fixed successfully!",
+    "zh": "页面尺寸修复成功！"
+  },
+  "tools.bookmark.normal": {
+    "en": "Normal",
+    "zh": "常规"
+  },
+  "tools.bookmark.bold": {
+    "en": "Bold",
+    "zh": "加粗"
+  },
+  "tools.bookmark.italic": {
+    "en": "Italic",
+    "zh": "倾斜"
+  },
+  "tools.bookmark.boldItalic": {
+    "en": "Bold & Italic",
+    "zh": "加粗并倾斜"
+  },
+  "tools.bookmark.setToCurrentPage": {
+    "en": "Set to current page",
+    "zh": "设为当前页"
+  },
+  "tools.watermark.optionsTitle": {
+    "en": "Watermark Options",
+    "zh": "水印选项"
+  },
+  "tools.watermark.textWatermark": {
+    "en": "Text Watermark",
+    "zh": "文字水印"
+  },
+  "tools.watermark.imageWatermark": {
+    "en": "Image Watermark",
+    "zh": "图片水印"
+  },
+  "tools.watermark.watermarkImage": {
+    "en": "Watermark Image (PNG/JPG)",
+    "zh": "水印图片 (PNG/JPG)"
+  },
+  "tools.watermark.enterText": {
+    "en": "Please enter text for the watermark.",
+    "zh": "请输入水印文字。"
+  },
+  "tools.watermark.selectImage": {
+    "en": "Please select an image file for the watermark.",
+    "zh": "请选择水印图片。"
+  },
+  "tools.watermark.unsupportedImage": {
+    "en": "Unsupported image format. Please use PNG or JPG.",
+    "zh": "不支持的图片格式，请使用 PNG 或 JPG。"
+  },
+  "tools.watermark.failed": {
+    "en": "Failed to add watermark.",
+    "zh": "添加水印失败。"
+  },
+  "tools.watermark.addButton": {
+    "en": "Add Watermark",
+    "zh": "添加水印"
+  },
+  "tools.watermark.successMessage": {
+    "en": "Watermark added successfully!",
+    "zh": "水印添加成功！"
+  },
+  "tools.headerFooter.headerTitle": {
+    "en": "Header",
+    "zh": "页眉"
+  },
+  "tools.headerFooter.footerTitle": {
+    "en": "Footer",
+    "zh": "页脚"
+  },
+  "tools.headerFooter.previewHint": {
+    "en": "Enter header or footer text to see preview",
+    "zh": "输入页眉或页脚文本以查看预览"
+  },
+  "tools.headerFooter.addButton": {
+    "en": "Add Header & Footer",
+    "zh": "添加页眉页脚"
+  },
+  "tools.headerFooter.successMessage": {
+    "en": "Header & footer added successfully!",
+    "zh": "页眉页脚添加成功！"
+  },
+  "tools.invertColors.invertButton": {
+    "en": "Invert Colors",
+    "zh": "反转颜色"
+  },
+  "tools.invertColors.successMessage": {
+    "en": "Colors inverted successfully!",
+    "zh": "颜色反转成功！"
+  },
+  "tools.backgroundColor.applyButton": {
+    "en": "Apply Background",
+    "zh": "应用背景"
+  },
+  "tools.backgroundColor.successMessage": {
+    "en": "Background color applied successfully!",
+    "zh": "背景颜色应用成功！"
+  },
+  "tools.textColor.modeLabel": {
+    "en": "Text Type",
+    "zh": "文本类型"
+  },
+  "tools.textColor.modeDark": {
+    "en": "Dark text (light background)",
+    "zh": "深色文字（浅色背景）"
+  },
+  "tools.textColor.modeLight": {
+    "en": "Light text (dark background)",
+    "zh": "浅色文字（深色背景）"
+  },
+  "tools.textColor.thresholdLabel": {
+    "en": "Brightness Threshold",
+    "zh": "亮度阈值"
+  },
+  "tools.textColor.thresholdHint": {
+    "en": "Adjust to control which pixels are affected",
+    "zh": "调整以控制哪些像素会被改变"
+  },
+  "tools.textColor.applyButton": {
+    "en": "Apply Text Color",
+    "zh": "应用文本颜色"
+  },
+  "tools.textColor.successMessage": {
+    "en": "Text color applied successfully!",
+    "zh": "文本颜色应用成功！"
+  },
+  "tools.stamps.instructionsTitle": {
+    "en": "How to Add Stamps",
+    "zh": "如何添加印章"
+  },
+  "tools.stamps.instruction1": {
+    "en": "Click the Stamp tool (image icon) in the toolbar above",
+    "zh": "点击上方工具栏中的印章工具（图片图标）"
+  },
+  "tools.stamps.instruction2": {
+    "en": "Click \"Add image\" to upload your stamp image",
+    "zh": "点击「添加图片」上传您的印章图片"
+  },
+  "tools.stamps.instruction3": {
+    "en": "Click on the PDF where you want to place the stamp",
+    "zh": "点击PDF中要放置印章的位置"
+  },
+  "tools.stamps.instruction4": {
+    "en": "Drag to resize or reposition the stamp",
+    "zh": "拖动以调整大小或重新定位印章"
+  },
+  "tools.stamps.instruction5": {
+    "en": "Click \"Save Stamped PDF\" below when done",
+    "zh": "完成后点击下方的「保存印章PDF」"
+  },
+  "tools.stamps.saveButton": {
+    "en": "Save Stamped PDF",
+    "zh": "保存印章PDF"
+  },
+  "tools.stamps.viewerNotReady": {
+    "en": "Viewer not ready. Please wait for the PDF to load.",
+    "zh": "查看器未就绪，请等待PDF加载完成。"
+  },
+  "tools.stamps.saveFailed": {
+    "en": "Failed to save stamped PDF. Please try again.",
+    "zh": "保存印章PDF失败，请重试。"
+  },
+  "tools.stamps.successMessage": {
+    "en": "Stamps added successfully!",
+    "zh": "印章添加成功！"
+  },
+  "tools.removeAnnotations.optionsTitle": {
+    "en": "Removal Options",
+    "zh": "删除选项"
+  },
+  "tools.removeAnnotations.successMessage": {
+    "en": "Annotations removed successfully!",
+    "zh": "注释删除成功！"
+  },
+  "tools.formFiller.uploadDescription": {
+    "en": "Drag and drop a PDF form.",
+    "zh": "拖放PDF表单到此处。"
+  }
+}

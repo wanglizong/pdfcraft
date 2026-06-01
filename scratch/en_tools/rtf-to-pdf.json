@@ -1,0 +1,59 @@
+{
+  "title": "RTF to PDF",
+  "metaDescription": "Convert RTF (Rich Text Format) files to PDF. Preserve text formatting in your documents.",
+  "keywords": [
+    "rtf to pdf",
+    "convert rtf",
+    "rich text to pdf",
+    "rtf converter"
+  ],
+  "description": "\n      <p>RTF to PDF converts Rich Text Format files into PDF documents. RTF is a widely supported text format that includes basic formatting like fonts, colors, and styles.</p>\n      <p>Upload your RTF files and get clean PDF output while preserving text content and basic formatting. Perfect for converting legacy documents to modern PDF format.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload RTF File",
+      "description": "Drag and drop your .rtf file or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Wait for Processing",
+      "description": "The tool will parse and convert the RTF content."
+    },
+    {
+      "step": 3,
+      "title": "Download PDF",
+      "description": "Click Download to save your converted PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Legacy Conversion",
+      "description": "Convert old RTF documents to modern PDF format.",
+      "icon": "history"
+    },
+    {
+      "title": "Document Sharing",
+      "description": "Share RTF documents in universally viewable PDF format.",
+      "icon": "share-2"
+    },
+    {
+      "title": "Archive Documents",
+      "description": "Archive RTF files in stable PDF format for long-term storage.",
+      "icon": "archive"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What formatting is preserved?",
+      "answer": "Basic text formatting including fonts, paragraphs, and styles are converted. Complex RTF features may be simplified."
+    },
+    {
+      "question": "Can I convert multiple RTF files?",
+      "answer": "Currently, one file is converted at a time. Use Merge PDF to combine multiple converted files."
+    },
+    {
+      "question": "Are embedded images supported?",
+      "answer": "Text content is the primary focus. Embedded objects may not be rendered."
+    }
+  ]
+}

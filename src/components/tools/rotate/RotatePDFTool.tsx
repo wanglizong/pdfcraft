@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback, useRef } from 'react';
+import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
@@ -23,10 +23,24 @@ interface PagePreview {
 }
 
 /**
+ * 角度标准化函数，将任意浮点数转换为 [-180, 180] 范围
+ */
+const normalizeInputAngle = (value: string | number, fallbackValue: number = 0): number => {
+  const parsed = typeof value === 'number' ? value : parseFloat(value);
+  if (isNaN(parsed)) return fallbackValue;
+  
+  let angle = parsed % 360;
+  if (angle > 180) angle -= 360;
+  if (angle <= -180) angle += 360;
+  
+  return Math.round(angle * 10) / 10; // 保留一位小数
+};
+
+/**
  * RotatePDFTool Component
- * Requirements: 5.1, 5.2
  * 
- * Provides the UI for rotating PDF pages.
+ * Provides an extremely premium, smooth UI for rotating PDF pages by 90-degree steps or arbitrary angles.
+ * Includes interactive dials, smooth sliders, angle input validation, multi-selection, and elastic transitions.
  */
 export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
   const t = useTranslations('common');
@@ -44,9 +58,16 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
   // Page previews and rotations
   const [pagePreviews, setPagePreviews] = useState<PagePreview[]>([]);
   const [isLoadingPreviews, setIsLoadingPreviews] = useState(false);
+  const [selectedPages, setSelectedPages] = useState<Set<number>>(new Set());
+  
+  // Custom calibration states
+  const [calibrationTab, setCalibrationTab] = useState<'preset' | 'stepless'>('preset');
+  const [steplessAngle, setSteplessAngle] = useState<string>('0');
+  const [isDialDragging, setIsDialDragging] = useState(false);
   
   // Ref for cancellation
   const cancelledRef = useRef(false);
+  const dialContainerRef = useRef<HTMLDivElement>(null);
 
   /**
    * Load PDF and generate page previews
@@ -54,6 +75,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
   const loadPdfPreviews = useCallback(async (pdfFile: File) => {
     setIsLoadingPreviews(true);
     setPagePreviews([]);
+    setSelectedPages(new Set());
     
     try {
       const pdfjsLib = await import('pdfjs-dist');
@@ -64,7 +86,6 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
       
       setTotalPages(pdf.numPages);
       
-      // Generate thumbnails for each page
       const previews: PagePreview[] = [];
       const maxPreviewPages = Math.min(pdf.numPages, 50);
       
@@ -92,12 +113,13 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
         }
       }
       
-      // Add remaining pages without thumbnails
       for (let i = maxPreviewPages + 1; i <= pdf.numPages; i++) {
         previews.push({ pageNumber: i, rotation: 0 });
       }
       
       setPagePreviews(previews);
+      // Default to select all pages initially
+      setSelectedPages(new Set(Array.from({ length: pdf.numPages }, (_, i) => i + 1)));
     } catch (err) {
       console.error('Failed to load PDF previews:', err);
       setError('Failed to load PDF preview. The file may be corrupted or encrypted.');
@@ -133,42 +155,228 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
     setFile(null);
     setTotalPages(0);
     setPagePreviews([]);
+    setSelectedPages(new Set());
     setResult(null);
     setError(null);
     setStatus('idle');
     setProgress(0);
+    setSteplessAngle('0');
   }, []);
 
   /**
-   * Rotate a single page
+   * Toggle select/deselect for a page preview
    */
-  const handleRotatePage = useCallback((pageNumber: number, angle: number) => {
-    setPagePreviews(prev => prev.map(p => 
-      p.pageNumber === pageNumber 
-        ? { ...p, rotation: (p.rotation + angle + 360) % 360 }
-        : p
-    ));
+  const handleToggleSelectPage = useCallback((pageNum: number) => {
+    setSelectedPages(prev => {
+      const next = new Set(prev);
+      if (next.has(pageNum)) {
+        next.delete(pageNum);
+      } else {
+        next.add(pageNum);
+      }
+      return next;
+    });
+  }, []);
+
+  /**
+   * Select all pages
+   */
+  const handleSelectAll = useCallback(() => {
+    setSelectedPages(new Set(Array.from({ length: totalPages }, (_, i) => i + 1)));
+  }, [totalPages]);
+
+  /**
+   * Clear selection
+   */
+  const handleClearSelection = useCallback(() => {
+    setSelectedPages(new Set());
+  }, []);
+
+  /**
+   * Select odd pages
+   */
+  const handleSelectOdd = useCallback(() => {
+    const odds = Array.from({ length: totalPages }, (_, i) => i + 1).filter(num => num % 2 !== 0);
+    setSelectedPages(new Set(odds));
+  }, [totalPages]);
+
+  /**
+   * Select even pages
+   */
+  const handleSelectEven = useCallback(() => {
+    const evens = Array.from({ length: totalPages }, (_, i) => i + 1).filter(num => num % 2 === 0);
+    setSelectedPages(new Set(evens));
+  }, [totalPages]);
+
+  /**
+   * Update rotation on specified pages
+   */
+  const updateRotationOnPages = useCallback((targetPages: Set<number> | number[], angleUpdater: (current: number) => number) => {
+    const targetSet = targetPages instanceof Set ? targetPages : new Set(targetPages);
+    setPagePreviews(prev => prev.map(p => {
+      if (targetSet.has(p.pageNumber)) {
+        const nextRotation = angleUpdater(p.rotation);
+        // Normalize rotation to [-180, 180]
+        let norm = nextRotation % 360;
+        if (norm > 180) norm -= 360;
+        if (norm <= -180) norm += 360;
+        return { ...p, rotation: Math.round(norm * 10) / 10 };
+      }
+      return p;
+    }));
     setResult(null);
   }, []);
 
   /**
-   * Rotate all pages
+   * Apply preset rotation incremental addition (e.g. +90 or -90)
    */
-  const handleRotateAll = useCallback((angle: number) => {
-    setPagePreviews(prev => prev.map(p => ({
-      ...p,
-      rotation: (p.rotation + angle + 360) % 360,
-    })));
-    setResult(null);
-  }, []);
+  const handleApplyPresetRotation = useCallback((angle: number) => {
+    const target = selectedPages.size > 0 
+      ? selectedPages 
+      : new Set(Array.from({ length: totalPages }, (_, i) => i + 1));
+      
+    updateRotationOnPages(target, current => current + angle);
+  }, [selectedPages, totalPages, updateRotationOnPages]);
 
   /**
-   * Reset all rotations
+   * Directly set absolute fine-grain angle for selected pages (or all if none selected)
+   */
+  const handleApplyAbsoluteRotation = useCallback((angle: number) => {
+    const target = selectedPages.size > 0 
+      ? selectedPages 
+      : new Set(Array.from({ length: totalPages }, (_, i) => i + 1));
+      
+    updateRotationOnPages(target, () => angle);
+  }, [selectedPages, totalPages, updateRotationOnPages]);
+
+  /**
+   * Reset all page rotations
    */
   const handleResetAll = useCallback(() => {
     setPagePreviews(prev => prev.map(p => ({ ...p, rotation: 0 })));
+    setSteplessAngle('0');
     setResult(null);
   }, []);
+
+  /**
+   * Interactive Dial Angle Calculation
+   */
+  const handleDialPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (status === 'processing') return;
+    setIsDialDragging(true);
+    e.currentTarget.setPointerCapture(e.pointerId);
+    calculateDialAngle(e);
+  };
+
+  const handleDialPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDialDragging || status === 'processing') return;
+    calculateDialAngle(e);
+  };
+
+  const handleDialPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    setIsDialDragging(false);
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  };
+
+  const calculateDialAngle = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!dialContainerRef.current) return;
+    const rect = dialContainerRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const dx = e.clientX - centerX;
+    const dy = e.clientY - centerY;
+    
+    // Calculate angle in radians, convert to degrees
+    let angleRad = Math.atan2(dy, dx);
+    let angleDeg = (angleRad * 180) / Math.PI;
+    
+    // Offset standard mathematical angle (0 is positive x axis) 
+    // to put 0 at positive y axis (top) and make it clockwise
+    angleDeg = angleDeg + 90;
+    
+    // Normalize to [-180, 180]
+    let normalized = angleDeg % 360;
+    if (normalized > 180) normalized -= 360;
+    if (normalized <= -180) normalized += 360;
+    
+    // Round to 0.5 deg steps for high tactile precision
+    normalized = Math.round(normalized * 2) / 2;
+    
+    setSteplessAngle(normalized.toString());
+    handleApplyAbsoluteRotation(normalized);
+  };
+
+  /**
+   * Mouse Wheel support on dial to precision adjust angle
+   */
+  const handleDialWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    e.preventDefault();
+    if (status === 'processing') return;
+    
+    const step = e.shiftKey ? 5 : 0.5;
+    const direction = e.deltaY < 0 ? 1 : -1;
+    
+    setSteplessAngle(prev => {
+      const current = parseFloat(prev) || 0;
+      let next = current + direction * step;
+      if (next > 180) next -= 360;
+      if (next <= -180) next += 360;
+      const rounded = Math.round(next * 10) / 10;
+      handleApplyAbsoluteRotation(rounded);
+      return rounded.toString();
+    });
+  };
+
+  /**
+   * Handle text input change for manual angle entry
+   */
+  const handleTextInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    // Allow typing leading minus sign or decimals
+    if (val === '' || val === '-' || val.endsWith('.') || val.endsWith('.0')) {
+      setSteplessAngle(val);
+      return;
+    }
+    
+    const parsed = parseFloat(val);
+    if (!isNaN(parsed)) {
+      setSteplessAngle(val);
+      // Soft-apply during typing
+      handleApplyAbsoluteRotation(normalizeInputAngle(parsed));
+    }
+  };
+
+  /**
+   * Handle loss of focus on angle input to strictly sanitize/modularize
+   */
+  const handleTextInputBlur = () => {
+    const finalAngle = normalizeInputAngle(steplessAngle);
+    setSteplessAngle(finalAngle.toString());
+    handleApplyAbsoluteRotation(finalAngle);
+  };
+
+  /**
+   * Handle key press on text input (Enter to apply & submit)
+   */
+  const handleTextInputKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const finalAngle = normalizeInputAngle(steplessAngle);
+      setSteplessAngle(finalAngle.toString());
+      handleApplyAbsoluteRotation(finalAngle);
+      e.currentTarget.blur();
+    }
+  };
+
+  /**
+   * Sync range slider input
+   */
+  const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const parsed = parseFloat(e.target.value) || 0;
+    setSteplessAngle(parsed.toString());
+    handleApplyAbsoluteRotation(parsed);
+  };
 
   /**
    * Handle rotate operation
@@ -192,11 +400,13 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
     setError(null);
     setResult(null);
 
-    // Build rotations map
+    // Build rotations map (1-indexed for processors, converted to non-negative 0-359 degree values)
     const rotations: Record<number, number> = {};
     pagePreviews.forEach(p => {
       if (p.rotation !== 0) {
-        rotations[p.pageNumber] = p.rotation;
+        // Convert [-180, 180] to [0, 360) non-negative floats/ints
+        const norm360 = (p.rotation % 360 + 360) % 360;
+        rotations[p.pageNumber] = Math.round(norm360 * 10) / 10;
       }
     });
 
@@ -274,7 +484,7 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
       {/* Error Message */}
       {error && (
         <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
+          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700 dark:bg-red-950/40 dark:border-red-900/50 dark:text-red-400"
           role="alert"
         >
           <p className="text-sm">{error}</p>
@@ -310,120 +520,460 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
         </Card>
       )}
 
-      {/* Rotation Controls */}
+      {/* Master Interactive Workspace Grid */}
       {file && totalPages > 0 && (
-        <Card variant="outlined" size="lg">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
-            <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
-              {tTools('rotatePdf.rotateTitle') || 'Rotate Pages'}
-              {rotatedCount > 0 && (
-                <span className="ml-2 text-[hsl(var(--color-primary))]">
-                  ({rotatedCount} page{rotatedCount !== 1 ? 's' : ''} rotated)
-                </span>
-              )}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              <Button variant="outline" size="sm" onClick={() => handleRotateAll(-90)} disabled={isProcessing}>
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                </svg>
-                {t('buttons.rotateAllLeft') || 'Rotate All Left'}
-              </Button>
-              <Button variant="outline" size="sm" onClick={() => handleRotateAll(90)} disabled={isProcessing}>
-                <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6" />
-                </svg>
-                {t('buttons.rotateAllRight') || 'Rotate All Right'}
-              </Button>
-              <Button variant="ghost" size="sm" onClick={handleResetAll} disabled={isProcessing || !hasRotations}>
-                {t('buttons.reset') || 'Reset'}
-              </Button>
-            </div>
-          </div>
-
-          <p className="text-sm text-[hsl(var(--color-muted-foreground))] mb-4">
-            {tTools('rotatePdf.hint') || 'Click the rotation buttons on each page to rotate individually, or use the buttons above to rotate all pages.'}
-          </p>
-
-          {isLoadingPreviews ? (
-            <div className="flex items-center justify-center py-12">
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-8 h-8 border-2 border-[hsl(var(--color-primary))] border-t-transparent rounded-full animate-spin" />
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
-                  {t('status.loading') || 'Loading previews...'}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+          
+          {/* LEFT: Rotational Calibration Hub (Glassmorphism Control Area) */}
+          <div className="lg:col-span-4 space-y-6">
+            <Card 
+              variant="default" 
+              className="backdrop-blur-md bg-white/40 dark:bg-black/30 border border-white/20 dark:border-zinc-800/40 shadow-xl overflow-hidden"
+            >
+              {/* Header */}
+              <div className="p-5 border-b border-[hsl(var(--color-border))]">
+                <h3 className="text-lg font-bold tracking-tight text-[hsl(var(--color-foreground))] flex items-center gap-2">
+                  <svg className="w-5 h-5 text-[hsl(var(--color-primary))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  {t('rotatePdf.calibrationCenter')}
+                </h3>
+                <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                  {t('rotatePdf.calibrationHelp')}
                 </p>
               </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 max-h-[500px] overflow-y-auto p-1">
-              {pagePreviews.map((preview) => (
-                <div
-                  key={preview.pageNumber}
-                  className="relative flex flex-col items-center"
-                >
-                  <div 
-                    className={`relative aspect-[3/4] w-full rounded-[var(--radius-md)] border-2 overflow-hidden bg-[hsl(var(--color-muted))] ${
-                      preview.rotation !== 0 
-                        ? 'border-[hsl(var(--color-primary))] ring-2 ring-[hsl(var(--color-primary)/0.3)]' 
-                        : 'border-[hsl(var(--color-border))]'
+
+              {/* Selection Summary Block */}
+              <div className="px-5 py-3 bg-[hsl(var(--color-muted)/0.3)] border-b border-[hsl(var(--color-border))] flex items-center justify-between">
+                <span className="text-xs font-semibold text-[hsl(var(--color-foreground))]">
+                  {t('rotatePdf.selectedPages', { selected: selectedPages.size, total: totalPages })}
+                </span>
+                <div className="flex gap-1.5">
+                  <button 
+                    onClick={handleSelectAll} 
+                    className="text-[10px] px-2 py-1 rounded bg-[hsl(var(--color-card))] border border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] font-medium transition-colors"
+                  >
+                    {t('buttons.selectAll')}
+                  </button>
+                  <button 
+                    onClick={handleClearSelection} 
+                    className="text-[10px] px-2 py-1 rounded bg-[hsl(var(--color-card))] border border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] font-medium transition-colors"
+                  >
+                    {t('buttons.clear')}
+                  </button>
+                </div>
+              </div>
+
+              {/* Tabs Panel */}
+              <div className="p-5 space-y-6">
+                {/* Mode Selector Tab buttons */}
+                <div className="flex bg-[hsl(var(--color-muted)/0.5)] p-1 rounded-[var(--radius-md)]">
+                  <button
+                    onClick={() => setCalibrationTab('preset')}
+                    className={`flex-1 py-1.5 text-xs font-semibold rounded-[var(--radius-sm)] transition-all ${
+                      calibrationTab === 'preset'
+                        ? 'bg-[hsl(var(--card-background, var(--color-card)))] text-[hsl(var(--color-foreground))] shadow-sm'
+                        : 'text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))]'
                     }`}
                   >
-                    <div 
-                      className="w-full h-full flex items-center justify-center transition-transform duration-300"
-                      style={{ transform: `rotate(${preview.rotation}deg)` }}
-                    >
-                      {preview.thumbnail ? (
-                        <img
-                          src={preview.thumbnail}
-                          alt={`Page ${preview.pageNumber}`}
-                          className="max-w-full max-h-full object-contain"
-                        />
-                      ) : (
-                        <span className="text-sm text-[hsl(var(--color-muted-foreground))]">
-                          {preview.pageNumber}
-                        </span>
-                      )}
-                    </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs py-0.5 text-center">
-                      {preview.pageNumber}
-                      {preview.rotation !== 0 && (
-                        <span className="ml-1 text-[hsl(var(--color-primary))]">
-                          ({preview.rotation}°)
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  
-                  {/* Per-page rotation controls */}
-                  <div className="flex items-center gap-1 mt-2">
-                    <button
-                      type="button"
-                      onClick={() => handleRotatePage(preview.pageNumber, -90)}
-                      disabled={isProcessing}
-                      className="w-7 h-7 flex items-center justify-center rounded bg-[hsl(var(--color-muted))] hover:bg-[hsl(var(--color-muted-foreground)/0.2)] text-[hsl(var(--color-foreground))] transition-colors disabled:opacity-50"
-                      aria-label={`Rotate page ${preview.pageNumber} left`}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                      </svg>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => handleRotatePage(preview.pageNumber, 90)}
-                      disabled={isProcessing}
-                      className="w-7 h-7 flex items-center justify-center rounded bg-[hsl(var(--color-muted))] hover:bg-[hsl(var(--color-muted-foreground)/0.2)] text-[hsl(var(--color-foreground))] transition-colors disabled:opacity-50"
-                      aria-label={`Rotate page ${preview.pageNumber} right`}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6" />
-                      </svg>
-                    </button>
-                  </div>
+                    {t('rotatePdf.presetRotation')}
+                  </button>
+                  <button
+                    onClick={() => setCalibrationTab('stepless')}
+                    className={`flex-1 py-1.5 text-xs font-semibold rounded-[var(--radius-sm)] transition-all ${
+                      calibrationTab === 'stepless'
+                        ? 'bg-[hsl(var(--card-background, var(--color-card)))] text-[hsl(var(--color-foreground))] shadow-sm'
+                        : 'text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))]'
+                    }`}
+                  >
+                    {t('rotatePdf.steplessRotation')}
+                  </button>
                 </div>
-              ))}
+
+                {/* TAB 1: PRESET ROTATION PANEL */}
+                {calibrationTab === 'preset' && (
+                  <div className="space-y-4 animate-in fade-in slide-in-from-top-1 duration-200">
+                    <div className="grid grid-cols-2 gap-2">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleApplyPresetRotation(-90)} 
+                        disabled={isProcessing || selectedPages.size === 0}
+                        className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium"
+                      >
+                        <svg className="w-5 h-5 text-[hsl(var(--color-primary))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                        </svg>
+                        {t('rotatePdf.rotateLeft90')}
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleApplyPresetRotation(90)} 
+                        disabled={isProcessing || selectedPages.size === 0}
+                        className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium"
+                      >
+                        <svg className="w-5 h-5 text-[hsl(var(--color-primary))]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6" />
+                        </svg>
+                        {t('rotatePdf.rotateRight90')}
+                      </Button>
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        onClick={() => handleApplyPresetRotation(180)} 
+                        disabled={isProcessing || selectedPages.size === 0}
+                        className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium"
+                      >
+                        <svg className="w-5 h-5 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89H17.5" />
+                        </svg>
+                        {t('rotatePdf.rotate180')}
+                      </Button>
+                      <Button 
+                        variant="ghost" 
+                        size="sm" 
+                        onClick={handleResetAll} 
+                        disabled={isProcessing || !hasRotations}
+                        className="py-3 flex flex-col items-center gap-1.5 text-xs font-medium border border-dashed border-[hsl(var(--color-border))]"
+                      >
+                        <svg className="w-5 h-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                        {t('rotatePdf.clearAllRotations')}
+                      </Button>
+                    </div>
+
+                    {/* Pre-defined Range Selection Quick Filters */}
+                    <div className="pt-2 border-t border-[hsl(var(--color-border))]">
+                      <p className="text-[11px] font-semibold text-[hsl(var(--color-muted-foreground))] mb-2">{t('rotatePdf.quickSelectGroup')}</p>
+                      <div className="flex gap-1.5">
+                        <button
+                          type="button"
+                          onClick={handleSelectOdd}
+                          className="flex-1 text-[11px] py-1 rounded bg-[hsl(var(--color-muted))] hover:bg-[hsl(var(--color-muted-foreground)/0.2)] text-[hsl(var(--color-foreground))] transition-colors font-medium"
+                        >
+                          {t('rotatePdf.selectOdd')}
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleSelectEven}
+                          className="flex-1 text-[11px] py-1 rounded bg-[hsl(var(--color-muted))] hover:bg-[hsl(var(--color-muted-foreground)/0.2)] text-[hsl(var(--color-foreground))] transition-colors font-medium"
+                        >
+                          {t('rotatePdf.selectEven')}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 2: STEPLESS STEP ROTATION (FINE GRAIN DIAL + SLIDER) */}
+                {calibrationTab === 'stepless' && (
+                  <div className="space-y-6 animate-in fade-in slide-in-from-bottom-1 duration-200">
+                    
+                    {/* Visual Rotating Circle Dial Container */}
+                    <div className="flex flex-col items-center justify-center">
+                      <div 
+                        ref={dialContainerRef}
+                        onPointerDown={handleDialPointerDown}
+                        onPointerMove={handleDialPointerMove}
+                        onPointerUp={handleDialPointerUp}
+                        onPointerCancel={handleDialPointerUp}
+                        onWheel={handleDialWheel}
+                        className="relative w-36 h-36 rounded-full border-2 border-[hsl(var(--color-primary)/0.25)] dark:border-zinc-700/60 bg-[hsl(var(--color-card))] shadow-inner flex items-center justify-center cursor-grab active:cursor-grabbing select-none"
+                        style={{ touchAction: 'none' }}
+                      >
+                        {/* Angular Scale marks background */}
+                        <svg className="absolute w-full h-full transform -rotate-90 pointer-events-none" viewBox="0 0 100 100">
+                          {Array.from({ length: 12 }, (_, i) => {
+                            const angle = (i * 30 * Math.PI) / 180;
+                            const x1 = 50 + 40 * Math.cos(angle);
+                            const y1 = 50 + 40 * Math.sin(angle);
+                            const x2 = 50 + (i % 3 === 0 ? 33 : 36) * Math.cos(angle);
+                            const y2 = 50 + (i % 3 === 0 ? 33 : 36) * Math.sin(angle);
+                            return (
+                              <line
+                                key={i}
+                                x1={x1}
+                                y1={y1}
+                                x2={x2}
+                                y2={y2}
+                                stroke={i % 3 === 0 ? 'hsl(var(--color-primary)/0.5)' : 'hsl(var(--color-muted-foreground)/0.3)'}
+                                strokeWidth={i % 3 === 0 ? 1 : 0.6}
+                              />
+                            );
+                          })}
+                        </svg>
+
+                        {/* Interactive dial pointer dial handle */}
+                        <div 
+                          className="absolute w-full h-full pointer-events-none transition-transform"
+                          style={{ transform: `rotate(${parseFloat(steplessAngle) || 0}deg)` }}
+                        >
+                          {/* Radial indicator line */}
+                          <div className="absolute top-1 left-1/2 -translate-x-1/2 w-0.5 h-6 bg-[hsl(var(--color-primary))] rounded-full" />
+                          {/* Dial Knob Handle */}
+                          <div className="absolute top-5 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-[hsl(var(--color-primary))] border-2 border-white dark:border-black shadow-md" />
+                        </div>
+
+                        {/* Inner readout display */}
+                        <div className="text-center z-10 pointer-events-none">
+                          <p className="text-[10px] uppercase font-bold tracking-widest text-[hsl(var(--color-muted-foreground))]">{t('rotatePdf.calibrateLabel')}</p>
+                          <p className="text-2xl font-black text-[hsl(var(--color-foreground))] tracking-tighter">
+                            {parseFloat(steplessAngle) > 0 ? `+${steplessAngle}` : steplessAngle}°
+                          </p>
+                          <p className="text-[9px] text-[hsl(var(--color-primary))] font-semibold">{t('rotatePdf.wheelFineTune')}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Stepless Smooth Slider */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center text-xs font-semibold text-[hsl(var(--color-muted-foreground))]">
+                        <span>-180.0° ({t('options.left')})</span>
+                        <span className="text-[hsl(var(--color-primary))] font-bold">{t('rotatePdf.fineTuneSlider')}</span>
+                        <span>+180.0° ({t('options.right')})</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="-180"
+                        max="180"
+                        step="0.5"
+                        value={parseFloat(steplessAngle) || 0}
+                        onChange={handleSliderChange}
+                        disabled={isProcessing || selectedPages.size === 0}
+                        className="w-full h-1.5 rounded-lg appearance-none bg-[hsl(var(--color-muted))] accent-[hsl(var(--color-primary))] outline-none cursor-pointer"
+                      />
+                    </div>
+
+                    {/* Numeric Precision Input Block with quick -0.5 and +0.5 */}
+                    <div className="pt-2 border-t border-[hsl(var(--color-border))] flex items-center justify-between gap-4">
+                      <span className="text-xs font-semibold text-[hsl(var(--color-muted-foreground))]">{t('rotatePdf.precisionInput')}</span>
+                      
+                      <div className="flex items-center bg-[hsl(var(--color-muted)/0.4)] border border-[hsl(var(--color-input))] rounded-[var(--radius-md)] overflow-hidden pr-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const val = Math.max(-180, (parseFloat(steplessAngle) || 0) - 0.5);
+                            setSteplessAngle(val.toString());
+                            handleApplyAbsoluteRotation(val);
+                          }}
+                          disabled={isProcessing || selectedPages.size === 0}
+                          className="w-8 h-8 font-bold text-sm flex items-center justify-center hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] transition-colors"
+                        >
+                          -
+                        </button>
+                        
+                        <div className="relative flex items-center max-w-[70px]">
+                          <input
+                            type="text"
+                            value={steplessAngle}
+                            onChange={handleTextInputChange}
+                            onBlur={handleTextInputBlur}
+                            onKeyDown={handleTextInputKeyDown}
+                            disabled={isProcessing || selectedPages.size === 0}
+                            className="w-full text-center bg-transparent font-bold text-sm text-[hsl(var(--color-foreground))] border-none outline-none py-1 focus:ring-0"
+                          />
+                          <span className="absolute right-0.5 text-xs text-[hsl(var(--color-muted-foreground))] select-none">°</span>
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const val = Math.min(180, (parseFloat(steplessAngle) || 0) + 0.5);
+                            setSteplessAngle(val.toString());
+                            handleApplyAbsoluteRotation(val);
+                          }}
+                          disabled={isProcessing || selectedPages.size === 0}
+                          className="w-8 h-8 font-bold text-sm flex items-center justify-center hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] transition-colors"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Range Alert Message */}
+                    <div className="text-[10px] text-[hsl(var(--color-muted-foreground))] bg-[hsl(var(--color-muted)/0.25)] p-2.5 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] leading-relaxed">
+                      {t.rich('rotatePdf.inputTip', { b: (chunks) => <strong>{chunks}</strong>, code: (chunks) => <code>{chunks}</code> })}
+                    </div>
+
+                  </div>
+                )}
+              </div>
+            </Card>
+
+            {/* Run Operations Button Area */}
+            <div className="space-y-3">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={handleRotate}
+                disabled={!canRotate}
+                loading={isProcessing}
+                className="w-full py-4 font-bold shadow-lg shadow-[hsl(var(--color-primary)/0.15)] flex gap-2 items-center justify-center"
+              >
+                {!isProcessing && (
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89H17.5" />
+                  </svg>
+                )}
+                {isProcessing 
+                  ? t('status.processing')
+                  : t('rotatePdf.startRotate', { count: rotatedCount })
+                }
+              </Button>
+
+              {result && (
+                <DownloadButton
+                  file={result}
+                  filename={file.name.replace('.pdf', '_rotated.pdf')}
+                  variant="secondary"
+                  size="lg"
+                  className="w-full py-4 border-2 border-[hsl(var(--color-secondary-hover))]"
+                  showFileSize
+                />
+              )}
             </div>
-          )}
-        </Card>
+
+            {/* Success Prompt */}
+            {status === 'complete' && result && (
+              <div 
+                className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700 dark:bg-green-950/20 dark:border-green-900/50 dark:text-green-400 text-center animate-in fade-in"
+                role="status"
+              >
+                <p className="text-sm font-semibold">
+                  {t('rotatePdf.successMessage')}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* RIGHT: Live Physics Preview Grid */}
+          <div className="lg:col-span-8 space-y-4">
+            <div className="flex items-center justify-between bg-[hsl(var(--color-card))] px-4 py-3 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))]">
+              <div className="flex items-center gap-2">
+                <div className="w-2.5 h-2.5 rounded-full bg-[hsl(var(--color-primary))] animate-pulse" />
+                <span className="text-sm font-semibold text-[hsl(var(--color-foreground))]">{t('rotatePdf.previewTitle')}</span>
+              </div>
+              <span className="text-xs text-[hsl(var(--color-muted-foreground))]">
+                {t('rotatePdf.previewHelp')}
+              </span>
+            </div>
+
+            {isLoadingPreviews ? (
+              <div className="flex items-center justify-center py-32 bg-[hsl(var(--color-card))] rounded-[var(--radius-lg)] border border-[hsl(var(--color-border))]">
+                <div className="flex flex-col items-center gap-3">
+                  <div className="w-10 h-10 border-4 border-[hsl(var(--color-primary))] border-t-transparent rounded-full animate-spin" />
+                  <p className="text-sm font-semibold text-[hsl(var(--color-muted-foreground))]">
+                    {t('rotatePdf.loadingPreviews')}
+                  </p>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-[hsl(var(--color-card))] rounded-[var(--radius-lg)] border border-[hsl(var(--color-border))] p-5 max-h-[640px] overflow-y-auto shadow-inner">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 p-1">
+                  {pagePreviews.map((preview) => {
+                    const isSelected = selectedPages.has(preview.pageNumber);
+                    const isRotated = preview.rotation !== 0;
+                    
+                    return (
+                      <div
+                        key={preview.pageNumber}
+                        onClick={() => handleToggleSelectPage(preview.pageNumber)}
+                        className={`group relative flex flex-col items-center rounded-[var(--radius-lg)] border-2 bg-[hsl(var(--color-muted)/0.25)] overflow-hidden transition-all duration-300 cursor-pointer select-none ${
+                          isSelected 
+                            ? 'border-[hsl(var(--color-primary))] shadow-[0_0_12px_hsl(var(--color-primary)/0.2)]' 
+                            : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-muted-foreground)/0.4)]'
+                        }`}
+                      >
+                        {/* Selection Checkbox corner Badge */}
+                        <div className={`absolute top-2.5 right-2.5 z-20 w-5 h-5 rounded-full flex items-center justify-center transition-all ${
+                          isSelected 
+                            ? 'bg-[hsl(var(--color-primary))] text-[hsl(var(--color-primary-foreground))] scale-100' 
+                            : 'bg-black/40 text-transparent scale-90 group-hover:scale-100 group-hover:bg-black/60'
+                        }`}>
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                          </svg>
+                        </div>
+
+                        {/* Custom Fine-grain rotation degree angle Badge (Gold/Purple premium) */}
+                        {isRotated && (
+                          <div className="absolute top-2.5 left-2.5 z-20 px-2 py-0.5 text-[10px] font-black tracking-wider text-amber-950 bg-amber-400 border border-amber-300 dark:text-amber-100 dark:bg-amber-900/80 dark:border-amber-800 rounded-md shadow-md">
+                            {preview.rotation > 0 ? `+${preview.rotation}` : preview.rotation}°
+                          </div>
+                        )}
+
+                        {/* Thumbnail View Frame */}
+                        <div className="relative aspect-[3/4] w-full p-4 flex items-center justify-center overflow-hidden bg-[hsl(var(--color-muted)/0.15)] border-b border-[hsl(var(--color-border))]">
+                          {/* Rotated Container applying Smooth Damping CSS Spring */}
+                          <div 
+                            className="w-full h-full flex items-center justify-center transition-transform duration-[400ms]"
+                            style={{ 
+                              transform: `rotate(${preview.rotation}deg)`,
+                              transitionTimingFunction: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)' // Elastic bounce effect
+                            }}
+                          >
+                            {preview.thumbnail ? (
+                              <img
+                                src={preview.thumbnail}
+                                alt={`Page ${preview.pageNumber}`}
+                                className="max-w-full max-h-full object-contain shadow-[var(--shadow-sm)] rounded-[var(--radius-sm)] pointer-events-none"
+                              />
+                            ) : (
+                              <div className="w-16 h-20 rounded border border-dashed border-[hsl(var(--color-border))] flex items-center justify-center text-sm font-semibold text-[hsl(var(--color-muted-foreground))]">
+                                Page {preview.pageNumber}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Footer details & micro quick rotation buttons */}
+                        <div className="w-full px-3 py-2.5 bg-[hsl(var(--color-card))] flex items-center justify-between">
+                          <span className="text-xs font-extrabold text-[hsl(var(--color-foreground))]">
+                            {t('comparePdfs.pageNumber', { page: preview.pageNumber })}
+                          </span>
+                          
+                          {/* micro discrete actions block */}
+                          <div 
+                            className="flex items-center gap-1 z-10"
+                            onClick={(e) => e.stopPropagation()} // Prevent card selecting toggle when clicking buttons
+                          >
+                            <button
+                              type="button"
+                              onClick={() => updateRotationOnPages([preview.pageNumber], current => current - 90)}
+                              disabled={isProcessing}
+                              className="w-6 h-6 flex items-center justify-center rounded bg-[hsl(var(--color-muted))] hover:bg-[hsl(var(--color-muted-foreground)/0.2)] text-[hsl(var(--color-foreground))] transition-colors disabled:opacity-50"
+                              aria-label={`Rotate page ${preview.pageNumber} left`}
+                            >
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                              </svg>
+                            </button>
+                            
+                            <button
+                              type="button"
+                              onClick={() => updateRotationOnPages([preview.pageNumber], current => current + 90)}
+                              disabled={isProcessing}
+                              className="w-6 h-6 flex items-center justify-center rounded bg-[hsl(var(--color-muted))] hover:bg-[hsl(var(--color-muted-foreground)/0.2)] text-[hsl(var(--color-foreground))] transition-colors disabled:opacity-50"
+                              aria-label={`Rotate page ${preview.pageNumber} right`}
+                            >
+                              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 10H11a8 8 0 00-8 8v2m18-10l-6 6m6-6l-6-6" />
+                              </svg>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+
+        </div>
       )}
 
       {/* Processing Progress */}
@@ -435,46 +985,6 @@ export function RotatePDFTool({ className = '' }: RotatePDFToolProps) {
           onCancel={handleCancel}
           showPercentage
         />
-      )}
-
-      {/* Action Buttons */}
-      {file && (
-        <div className="flex flex-wrap items-center gap-4">
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={handleRotate}
-            disabled={!canRotate}
-            loading={isProcessing}
-          >
-            {isProcessing 
-              ? (t('status.processing') || 'Processing...') 
-              : (tTools('rotatePdf.rotateButton') || `Rotate ${rotatedCount} Page${rotatedCount !== 1 ? 's' : ''}`)
-            }
-          </Button>
-
-          {result && (
-            <DownloadButton
-              file={result}
-              filename={file.name.replace('.pdf', '_rotated.pdf')}
-              variant="secondary"
-              size="lg"
-              showFileSize
-            />
-          )}
-        </div>
-      )}
-
-      {/* Success Message */}
-      {status === 'complete' && result && (
-        <div 
-          className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
-          role="status"
-        >
-          <p className="text-sm font-medium">
-            {tTools('rotatePdf.successMessage') || 'PDF pages rotated successfully! Click the download button to save your file.'}
-          </p>
-        </div>
       )}
     </div>
   );

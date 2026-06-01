@@ -1,0 +1,242 @@
+{
+  "faqPage.sections.features.merge.question": {
+    "en": "Can I merge multiple PDF files?",
+    "zh": "我可以合并多个 PDF 文件吗？"
+  },
+  "faqPage.sections.features.merge.answer": {
+    "en": "Yes, you can merge multiple PDF files into one. Simply use the Merge PDF tool, upload your files, arrange them in the desired order, and click merge.",
+    "zh": "是的，您可以将多个 PDF 文件合并为一个。只需使用合并 PDF 工具，上传您的文件，按所需顺序排列，然后点击合并。"
+  },
+  "faqPage.sections.features.images.question": {
+    "en": "Can I convert images to PDF?",
+    "zh": "我可以将图像转换为 PDF 吗？"
+  },
+  "faqPage.sections.features.images.answer": {
+    "en": "Yes, PDFCraft supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once.",
+    "zh": "是的，PDFCraft 支持将各种图像格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）转换为 PDF。您可以一次转换单个或多个图像。"
+  },
+  "faqPage.sections.features.edit.question": {
+    "en": "Can I edit text in a PDF?",
+    "zh": "我可以编辑 PDF 中的文本吗？"
+  },
+  "faqPage.sections.features.edit.answer": {
+    "en": "PDFCraft provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities.",
+    "zh": "PDFCraft 提供注释和编辑工具，包括高亮、添加文本、形状、图像和签名。如需全文编辑，PDF 编辑器工具提供全面的注释功能。"
+  },
+  "faqPage.sections.technical.browsers.question": {
+    "en": "What browsers are supported?",
+    "zh": "支持哪些浏览器？"
+  },
+  "faqPage.sections.technical.browsers.answer": {
+    "en": "PDFCraft works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience.",
+    "zh": "PDFCraft 适用于所有现代浏览器，包括 Chrome、Firefox、Safari 和 Edge。我们建议使用最新版本的浏览器以获得最佳体验。"
+  },
+  "faqPage.sections.technical.sizeLimit.question": {
+    "en": "Is there a file size limit?",
+    "zh": "有文件大小限制吗？"
+  },
+  "faqPage.sections.technical.sizeLimit.answer": {
+    "en": "Most tools support files up to 100MB, with some tools like merge and compress supporting up to 500MB. These limits are in place to ensure smooth performance in your browser.",
+    "zh": "大多数工具支持最大 100MB 的文件，合并和压缩等工具支持最大 500MB。这些限制是为了确保浏览器中的流畅性能。"
+  },
+  "faqPage.sections.technical.slow.question": {
+    "en": "Why is processing slow for large files?",
+    "zh": "为什么大文件处理速度慢？"
+  },
+  "faqPage.sections.technical.slow.answer": {
+    "en": "Since all processing happens in your browser, performance depends on your device's capabilities. Large files require more memory and processing power. For best results, close other browser tabs and applications.",
+    "zh": "由于所有处理都在浏览器中进行，性能取决于您设备的能力。大文件需要更多的内存和处理能力。为了获得最佳结果，请关闭其他浏览器标签页和应用程序。"
+  },
+  "faqPage.sections.technical.offline.question": {
+    "en": "Does PDFCraft work offline?",
+    "zh": "PDFCraft 可以离线工作吗？"
+  },
+  "faqPage.sections.technical.offline.answer": {
+    "en": "Currently, PDFCraft requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection.",
+    "zh": "目前，PDFCraft 需要互联网连接才能加载应用程序。但是，一旦加载，PDF 处理本身在本地进行，不需要连接。"
+  },
+  "faqPage.sections.languages.supported.question": {
+    "en": "What languages are supported?",
+    "zh": "支持哪些语言？"
+  },
+  "faqPage.sections.languages.supported.answer": {
+    "en": "PDFCraft is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support).",
+    "zh": "PDFCraft 提供 9 种语言版本：英语、日语、韩语、西班牙语、法语、德语、中文、葡萄牙语和阿拉伯语（支持从右到左）。"
+  },
+  "faqPage.sections.languages.change.question": {
+    "en": "How do I change the language?",
+    "zh": "如何更改语言？"
+  },
+  "faqPage.sections.languages.change.answer": {
+    "en": "You can change the language using the language selector in the header. Your preference will be saved for future visits.",
+    "zh": "您可以使用顶部的语言选择器更改语言。您的偏好将被保存以供将来访问。"
+  },
+  "faqPage.cta.title": {
+    "en": "Still have questions?",
+    "zh": "还有问题吗？"
+  },
+  "faqPage.cta.description": {
+    "en": "Can't find the answer you're looking for? Feel free to reach out to us.",
+    "zh": "找不到您想要的答案？请随时联系我们。"
+  },
+  "faqPage.cta.button": {
+    "en": "Contact Us",
+    "zh": "联系我们"
+  },
+  "aboutPage.title": {
+    "en": "About {brand}",
+    "zh": "关于 {brand}"
+  },
+  "aboutPage.description": {
+    "en": "{brand} is a free, privacy-focused PDF toolkit that runs entirely in your browser. With {count}+ professional tools, you can edit, convert, merge, split, and secure your PDF files without ever uploading them to a server.",
+    "zh": "{brand} 是一个免费、注重隐私的 PDF 工具包，完全在您的浏览器中运行。拥有 {count}+ 个专业工具，您可以编辑、转换、合并、分割和保护您的 PDF 文件，而无需将其上传到任何服务器。"
+  },
+  "aboutPage.mission.title": {
+    "en": "Our Mission",
+    "zh": "我们的使命"
+  },
+  "aboutPage.mission.p1": {
+    "en": "We believe that everyone should have access to powerful PDF tools without compromising their privacy or paying expensive subscription fees. That's why we created {brand} – a comprehensive PDF toolkit that puts your privacy first.",
+    "zh": "我们相信，每个人都应该能够使用强大的 PDF 工具，而无需牺牲隐私或支付昂贵的订阅费用。这就是为什么我们创建了 {brand} —— 一个将您的隐私放在首位的综合 PDF 工具包。"
+  },
+  "aboutPage.mission.p2": {
+    "en": "Unlike traditional PDF services that require you to upload your files to remote servers, {brand} processes everything locally in your browser. Your sensitive documents never leave your device, giving you complete control over your data.",
+    "zh": "与要求您将文件上传到远程服务器的传统 PDF 服务不同，{brand} 在您的浏览器中本地处理所有内容。您的敏感文档从未离开您的设备，让您完全控制您的数据。"
+  },
+  "aboutPage.mission.p3": {
+    "en": "Whether you're a student, professional, or casual user, {brand} provides all the tools you need to work with PDFs efficiently and securely.",
+    "zh": "无论您是学生、专业人士还是普通用户，{brand} 都为您提供高效、安全地处理 PDF 所需的所有工具。"
+  },
+  "aboutPage.values.title": {
+    "en": "Our Values",
+    "zh": "我们的价值观"
+  },
+  "aboutPage.values.privacy.title": {
+    "en": "Privacy First",
+    "zh": "隐私至上"
+  },
+  "aboutPage.values.privacy.description": {
+    "en": "Your files never leave your device. All processing happens locally in your browser, ensuring complete privacy and security.",
+    "zh": "您的文件从未离开您的设备。所有处理都在浏览器本地进行，确保完全的隐私和安全。"
+  },
+  "aboutPage.values.fast.title": {
+    "en": "Fast & Efficient",
+    "zh": "快速高效"
+  },
+  "aboutPage.values.fast.description": {
+    "en": "Powered by modern web technologies, PDFCraft delivers lightning-fast PDF processing without the need for uploads or downloads.",
+    "zh": "由现代 Web 技术驱动，PDFCraft 提供闪电般的 PDF 处理速度，无需上传或下载。"
+  },
+  "aboutPage.values.accessible.title": {
+    "en": "Accessible Everywhere",
+    "zh": "随处可用"
+  },
+  "aboutPage.values.accessible.description": {
+    "en": "Available in 9 languages and works on any device with a modern browser. No installation required.",
+    "zh": "提供 9 种语言版本，可在任何带有现代浏览器的设备上工作。无需安装。"
+  },
+  "aboutPage.values.free.title": {
+    "en": "Free Forever",
+    "zh": "永久免费"
+  },
+  "aboutPage.values.free.description": {
+    "en": "PDFCraft is completely free to use with no hidden costs, no registration required, and no limits on usage.",
+    "zh": "PDFCraft 完全免费使用，没有隐藏费用，无需注册，也不限制使用次数。"
+  },
+  "aboutPage.values.openSource.title": {
+    "en": "Open Source",
+    "zh": "开源透明"
+  },
+  "aboutPage.values.openSource.description": {
+    "en": "Built with transparency in mind. Our code is open source, allowing anyone to verify our privacy claims.",
+    "zh": "以透明为核心构建。我们的代码是开源的，允许任何人验证我们的隐私承诺。"
+  },
+  "aboutPage.values.community.title": {
+    "en": "Community Driven",
+    "zh": "社区驱动"
+  },
+  "aboutPage.values.community.description": {
+    "en": "Developed with feedback from users around the world. We continuously improve based on your needs.",
+    "zh": "根据全球用户的反馈开发。我们会根据您的需求不断改进。"
+  },
+  "aboutPage.technology.title": {
+    "en": "Built with Modern Technology",
+    "zh": "采用现代技术构建"
+  },
+  "aboutPage.technology.description": {
+    "en": "{brand} is built using cutting-edge web technologies to ensure the best possible experience:",
+    "zh": "{brand} 采用尖端 Web 技术构建，以确保最佳体验："
+  },
+  "aboutPage.technology.list.nextjs": {
+    "en": "<strong1>Next.js</strong1> - For fast, SEO-friendly page rendering",
+    "zh": "<strong1>Next.js</strong1> - 用于快速、SEO友好的页面渲染"
+  },
+  "aboutPage.technology.list.wasm": {
+    "en": "<strong1>WebAssembly</strong1> - For near-native PDF processing performance",
+    "zh": "<strong1>WebAssembly</strong1> - 提供近乎原生的 PDF 处理性能"
+  },
+  "aboutPage.technology.list.workers": {
+    "en": "<strong1>Web Workers</strong1> - For non-blocking background processing",
+    "zh": "<strong1>Web Workers</strong1> - 用于非阻塞后台处理"
+  },
+  "aboutPage.technology.list.pdflib": {
+    "en": "<strong1>pdf-lib & PDF.js</strong1> - Industry-standard PDF manipulation libraries",
+    "zh": "<strong1>pdf-lib & PDF.js</strong1> - 业界标准的 PDF 操作库"
+  },
+  "aboutPage.technology.list.indexeddb": {
+    "en": "<strong1>IndexedDB</strong1> - For secure local storage of your work",
+    "zh": "<strong1>IndexedDB</strong1> - 用于安全地本地存储您的工作"
+  },
+  "aboutPage.technology.summary": {
+    "en": "This combination of technologies allows us to provide professional-grade PDF tools that run entirely in your browser, without any server-side processing.",
+    "zh": "这种技术组合使我们能够提供专业级的 PDF 工具，完全在您的浏览器中运行，无需任何服务器端处理。"
+  },
+  "aboutPage.cta.title": {
+    "en": "Ready to Get Started?",
+    "zh": "准备好开始了吗？"
+  },
+  "aboutPage.cta.description": {
+    "en": "Explore our {count}+ PDF tools and see what {brand} can do for you.",
+    "zh": "探索我们的 {count}+ 个 PDF 工具，看看 {brand} 能为您做什么。"
+  },
+  "aboutPage.cta.button": {
+    "en": "Browse All Tools",
+    "zh": "浏览所有工具"
+  },
+  "contactPage.form.fields.name.label": {
+    "en": "Name",
+    "zh": "姓名"
+  },
+  "contactPage.form.fields.subject.options.feedback": {
+    "en": "Feedback",
+    "zh": "反馈"
+  },
+  "workflow.optional": {
+    "en": "optional",
+    "zh": "可选"
+  },
+  "tools.editPdf.toolbar.text": {
+    "en": "Text",
+    "zh": "文本"
+  },
+  "tools.compressPdf.algorithmStandard": {
+    "en": "Standard",
+    "zh": "标准"
+  },
+  "tools.compressPdf.originalSize": {
+    "en": "Original:",
+    "zh": "原始："
+  },
+  "tools.addBlankPage.position": {
+    "en": "Position",
+    "zh": "位置"
+  },
+  "tools.linearizePdf.originalSize": {
+    "en": "Original:",
+    "zh": "原始："
+  },
+  "tools.removeRestrictions.originalSize": {
+    "en": "Original:",
+    "zh": "原始大小："
+  }
+}

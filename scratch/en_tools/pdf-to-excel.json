@@ -1,0 +1,59 @@
+{
+  "title": "PDF to Excel",
+  "metaDescription": "Convert PDF to Excel spreadsheet. Extract tables to XLSX format.",
+  "keywords": [
+    "pdf to excel",
+    "pdf to xlsx",
+    "convert pdf tables",
+    "extract tables"
+  ],
+  "description": "\n      <p>PDF to Excel converts your PDF documents into editable Microsoft Excel spreadsheets (XLSX). The tool automatically detects tables in your PDF and extracts them into separate sheets.</p>\n      <p>This tool is ideal for analyzing financial reports, invoices, or any data presented in tables. Each page's tables are organized into sheets for easy data manipulation.</p>\n      <p>All conversion happens locally in your browser, ensuring your data remains private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Process",
+      "description": "The tool will automatically identify and extract tables."
+    },
+    {
+      "step": 3,
+      "title": "Download Excel",
+      "description": "Download your Excel file with extracted tables."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Financial Analysis",
+      "description": "Convert bank statements or invoices to Excel for analysis.",
+      "icon": "trending-up"
+    },
+    {
+      "title": "Data Extraction",
+      "description": "Pull data tables from research papers or reports.",
+      "icon": "database"
+    },
+    {
+      "title": "Inventory Management",
+      "description": "Convert inventory lists from PDF to spreadsheet.",
+      "icon": "clipboard"
+    }
+  ],
+  "faq": [
+    {
+      "question": "How are tables handled?",
+      "answer": "Tables detected on each page are extracted to corresponding sheets in the Excel file."
+    },
+    {
+      "question": "What if there are no tables?",
+      "answer": "An info sheet will be created indicating no tables were found."
+    },
+    {
+      "question": "Is formatting preserved?",
+      "answer": "Data is preserved, but complex visual formatting may be simplified for spreadsheet use."
+    }
+  ]
+}

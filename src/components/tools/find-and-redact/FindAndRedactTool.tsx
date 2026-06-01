@@ -429,7 +429,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                 handleSearch();
                                             }
                                         }}
-                                        placeholder={tTools('searchInputPlaceholder') || '输入搜索词，用逗号分隔多个词'}
+                                        placeholder={tTools('searchInputPlaceholder')}
                                         className="w-full px-4 py-3 border rounded-lg bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
                                         disabled={isProcessing || isSearching}
                                     />
@@ -442,7 +442,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
 
                                 {/* Help text */}
                                 <p className="mt-1.5 text-xs text-gray-500 dark:text-gray-400">
-                                    {tTools('searchInputHelp') || '提示：用逗号（,）分隔多个搜索词'}
+                                    {tTools('searchInputHelp')}
                                 </p>
 
                                 {/* Parsed Terms Tags */}
@@ -450,7 +450,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                     <div className="mt-3">
                                         <div className="flex items-center gap-2 mb-2">
                                             <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                                                {tTools('termsCount', { count: parsedTerms.length }) || `${parsedTerms.length} 个搜索词`}
+                                                {tTools('termsCount', { count: parsedTerms.length })}
                                             </span>
                                             <button
                                                 type="button"
@@ -679,7 +679,7 @@ export function FindAndRedactTool({ className = '' }: FindAndRedactToolProps) {
                                                         }`}
                                                     disabled={isProcessing}
                                                 >
-                                                    全部 ({matches.length})
+                                                    {tTools('allMatches', { count: matches.length })}
                                                 </button>
                                                 {pagesWithMatches.map(page => {
                                                     const pageMatchCount = matches.filter(m => m.page === page).length;

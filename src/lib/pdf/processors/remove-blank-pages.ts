@@ -12,6 +12,7 @@ export interface RemoveBlankPagesOptions {
   threshold?: number; // 0-100, percentage of white pixels to consider blank
   checkMargins?: boolean;
   marginSize?: number;
+  explicitPagesToRemove?: number[]; // 1-indexed page numbers to remove
 }
 
 export class RemoveBlankPagesProcessor extends BasePDFProcessor {
@@ -45,40 +46,44 @@ export class RemoveBlankPagesProcessor extends BasePDFProcessor {
       const pdfDoc = await pdfjsLib.getDocument({ data: arrayBuffer.slice(0) }).promise;
       const totalPages = pdfDoc.numPages;
 
-      this.updateProgress(25, 'Analyzing pages...');
-
-      const blankPages: number[] = [];
+      let blankPages: number[] = [];
       const threshold = removeOptions.threshold || 99;
 
-      for (let i = 1; i <= totalPages; i++) {
-        if (this.checkCancelled()) {
-          return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
-        }
-
-        const page = await pdfDoc.getPage(i);
-        const viewport = page.getViewport({ scale: 0.5 });
-
-        const canvas = document.createElement('canvas');
-        const context = canvas.getContext('2d');
-
-        if (context) {
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-
-          await page.render({
-            canvasContext: context,
-            viewport: viewport,
-          }).promise;
-
-          const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-          const isBlank = this.isPageBlank(imageData, threshold);
-
-          if (isBlank) {
-            blankPages.push(i);
+      if (removeOptions.explicitPagesToRemove) {
+        blankPages = [...removeOptions.explicitPagesToRemove];
+        this.updateProgress(50, 'Applying custom blank page selections...');
+      } else {
+        this.updateProgress(25, 'Analyzing pages...');
+        for (let i = 1; i <= totalPages; i++) {
+          if (this.checkCancelled()) {
+            return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
           }
-        }
 
-        this.updateProgress(25 + (40 * i / totalPages), `Analyzing page ${i}...`);
+          const page = await pdfDoc.getPage(i);
+          const viewport = page.getViewport({ scale: 0.5 });
+
+          const canvas = document.createElement('canvas');
+          const context = canvas.getContext('2d');
+
+          if (context) {
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+
+            await page.render({
+              canvasContext: context,
+              viewport: viewport,
+            }).promise;
+
+            const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+            const isBlank = this.isPageBlank(imageData, threshold);
+
+            if (isBlank) {
+              blankPages.push(i);
+            }
+          }
+
+          this.updateProgress(25 + (40 * i / totalPages), `Analyzing page ${i}...`);
+        }
       }
 
       if (blankPages.length === 0) {
@@ -126,22 +131,38 @@ export class RemoveBlankPagesProcessor extends BasePDFProcessor {
 
   private isPageBlank(imageData: ImageData, threshold: number): boolean {
     const data = imageData.data;
-    let whitePixels = 0;
     const totalPixels = data.length / 4;
-
+    
+    // Calculate grayscaled histogram frequencies
+    const histogram = new Float32Array(256);
+    
     for (let i = 0; i < data.length; i += 4) {
       const r = data[i];
       const g = data[i + 1];
       const b = data[i + 2];
+      
+      // Grayscale conversion
+      const gray = Math.round(0.299 * r + 0.587 * g + 0.114 * b);
+      histogram[gray]++;
+    }
 
-      // Check if pixel is close to white (allowing some tolerance)
-      if (r > 250 && g > 250 && b > 250) {
-        whitePixels++;
+    // Shannon Information Entropy calculation: H = -sum(p_i * log2(p_i))
+    let entropy = 0;
+    const eps = 1e-10; // Prevent log2(0)
+    
+    for (let i = 0; i < 256; i++) {
+      const prob = histogram[i] / totalPixels;
+      if (prob > 0) {
+        entropy -= prob * Math.log2(prob + eps);
       }
     }
 
-    const whitePercentage = (whitePixels / totalPixels) * 100;
-    return whitePercentage >= threshold;
+    // Typical text page entropy is > 0.15, scan noise is < 0.08
+    // Translate user threshold (e.g. 99) into entropy threshold (higher threshold = lower entropy required to be blank)
+    const entropyLimit = (100 - threshold) * 0.02; // threshold 99 -> 0.02, threshold 95 -> 0.10
+    
+    console.log(`[Remove Blank Pages] Page entropy: ${entropy.toFixed(4)}, limit: ${entropyLimit.toFixed(4)}`);
+    return entropy < Math.max(0.01, entropyLimit);
   }
 
   protected getAcceptedTypes(): string[] {

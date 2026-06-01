@@ -27,13 +27,15 @@
  */
 
 import { WorkerBrowserConverter } from '@matbee/libreoffice-converter/browser';
+import { fetchAssembledBlob } from '../utils/asset-loader';
+import { withBasePath } from '../utils/path';
 
-const LIBREOFFICE_PATH = '/libreoffice-wasm/';
-const ASSET_VERSION = '20240212-3';
+const LIBREOFFICE_PATH = withBasePath('/libreoffice-wasm/');
+const ASSET_VERSION = '20240212-4';
 // Request uncompressed names. In production, nginx gzip_static serves the .gz variant
 // with correct Content-Encoding and MIME headers (required for WebAssembly streaming).
-const SOFFICE_WASM_FILE = 'soffice.wasm';
-const SOFFICE_DATA_FILE = 'soffice.data';
+const SOFFICE_WASM_FILE = 'soffice.wasm.bin';
+const SOFFICE_DATA_FILE = 'soffice.data.bin';
 
 function normalizeBasePath(path: string): string {
     return path.endsWith('/') ? path : `${path}/`;
@@ -59,6 +61,8 @@ export class LibreOfficeConverter {
     private totalAssetSizeMB = 0;
     /** Replaceable progress callback — allows late-binding when preload started without one */
     private progressCallback?: ProgressCallback;
+    /** Track Blob URLs for cleanup */
+    private blobUrls: string[] = [];
 
     constructor(basePath?: string) {
         this.basePath = normalizeBasePath(basePath || LIBREOFFICE_PATH);
@@ -113,13 +117,35 @@ export class LibreOfficeConverter {
                 : '';
             this.progressCallback?.({ phase: 'loading', percent: 5, message: `Loading conversion engine${totalInfo}...` });
 
+            const filesToFetch = [
+                { name: 'soffice.wasm.bin', url: `${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`, estSize: 147 * 1024 * 1024 },
+                { name: 'soffice.data.bin', url: `${this.basePath}${SOFFICE_DATA_FILE}?v=${ASSET_VERSION}`, estSize: 99 * 1024 * 1024 },
+                { name: 'NotoSansSC-Regular.ttf', url: withBasePath(`/fonts/NotoSansSC-Regular.ttf?v=${ASSET_VERSION}`), estSize: 16.4 * 1024 * 1024 }
+            ];
+
+            // Fetch and reassemble assets (handles chunking on Cloudflare Pages)
+            const [sofficeWasmBlob, sofficeDataBlob, fontBlob] = await Promise.all(
+                filesToFetch.map(f => fetchAssembledBlob(f.url))
+            );
+
+            const sofficeWasmUrl = URL.createObjectURL(sofficeWasmBlob);
+            const sofficeDataUrl = URL.createObjectURL(sofficeDataBlob);
+
+            this.blobUrls = [sofficeWasmUrl, sofficeDataUrl];
+
+            // Load CJK font into ArrayBuffer for the converter
+            const fontArrayBuffer = await fontBlob.arrayBuffer();
+
             this.converter = new WorkerBrowserConverter({
                 sofficeJs: `${this.basePath}soffice.js?v=${ASSET_VERSION}`,
-                sofficeWasm: `${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`,
-                sofficeData: `${this.basePath}${SOFFICE_DATA_FILE}?v=${ASSET_VERSION}`,
+                sofficeWasm: sofficeWasmUrl,
+                sofficeData: sofficeDataUrl,
                 sofficeWorkerJs: `${this.basePath}soffice.worker.js?v=${ASSET_VERSION}`,
                 browserWorkerJs: `${this.basePath}browser.worker.global.js?v=${ASSET_VERSION}`,
                 verbose: false,
+                fonts: [
+                    { filename: 'NotoSansSC-Regular.ttf', data: fontArrayBuffer }
+                ],
                 onProgress: (info: { phase: string; percent: number; message: string }) => {
                     // Use this.progressCallback so a late-arriving callback from the UI gets picked up
                     if (this.progressCallback && !this.initialized) {
@@ -165,6 +191,20 @@ export class LibreOfficeConverter {
     private async checkEnvironment(): Promise<void> {
         console.warn('[LibreOffice] === Environment Check ===');
 
+        // Unregister any active service workers to prevent them from intercepting 
+        // LibreOffice WASM assets and causing ERR_FAILED / 500 OOM crashes.
+        if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+            try {
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (const reg of registrations) {
+                    await reg.unregister();
+                    console.warn(`[LibreOffice] Unregistered active Service Worker to prevent interference: ${reg.scope}`);
+                }
+            } catch (e) {
+                console.warn('[LibreOffice] Failed to unregister Service Worker:', e);
+            }
+        }
+
         // 1. Check COOP/COEP — this is the #1 cause of WASM timeout
         const isIsolated = window.crossOriginIsolated;
         console.warn(`[LibreOffice] Cross-Origin Isolated: ${isIsolated ? 'YES ✅' : 'NO ❌'}`);
@@ -206,12 +246,25 @@ export class LibreOfficeConverter {
             const url = `${this.basePath}${file}?v=${ASSET_VERSION}`;
             try {
                 const start = performance.now();
-                const res = await fetch(url, { method: 'HEAD' });
+                // Check for the file itself or its chunk manifest
+                let res = await fetch(url, { method: 'HEAD' });
+                
+                if (!res.ok) {
+                    const manifestUrl = `${this.basePath}${file}.manifest.json?v=${ASSET_VERSION}`;
+                    const mRes = await fetch(manifestUrl, { method: 'HEAD' });
+                    if (mRes.ok) {
+                        res = mRes;
+                        console.warn(`[LibreOffice] ${file}: Found chunk manifest instead of raw file.`);
+                    }
+                }
+
                 const duration = Math.round(performance.now() - start);
 
                 if (res.ok) {
                     const size = res.headers.get('content-length');
                     const type = res.headers.get('content-type');
+                    // Note: manifest size is small, so totalAssetSizeMB will be undercounted 
+                    // if files are chunked, but that's acceptable for an environment check.
                     const sizeNum = size ? parseInt(size) : 0;
                     if (sizeNum > 0) totalBytes += sizeNum;
                     const sizeMb = sizeNum > 0 ? (sizeNum / 1024 / 1024).toFixed(2) + 'MB' : 'unknown size';
@@ -298,6 +351,11 @@ export class LibreOfficeConverter {
         if (this.converter) {
             await this.converter.destroy();
         }
+        
+        // Revoke Blob URLs to release memory
+        this.blobUrls.forEach(url => URL.revokeObjectURL(url));
+        this.blobUrls = [];
+        
         this.converter = null;
         this.initialized = false;
     }

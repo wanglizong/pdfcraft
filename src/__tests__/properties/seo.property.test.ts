@@ -124,9 +124,9 @@ describe('SEO Property Tests', () => {
             expect(metadata.openGraph?.title).toBeTruthy();
             expect(metadata.openGraph?.description).toBeTruthy();
             expect(metadata.twitter).toBeDefined();
-            expect(metadata.twitter?.card).toBeTruthy();
-            expect(metadata.twitter?.title).toBeTruthy();
-            expect(metadata.twitter?.description).toBeTruthy();
+            expect((metadata.twitter as any)?.card).toBeTruthy();
+            expect((metadata.twitter as any)?.title).toBeTruthy();
+            expect((metadata.twitter as any)?.description).toBeTruthy();
             
             return true;
           }
@@ -223,7 +223,7 @@ describe('SEO Property Tests', () => {
             expect(schema.url).toContain(tool.slug);
             expect(schema.url).toContain(locale);
             expect(schema.applicationCategory).toBe('UtilitiesApplication');
-            expect(schema.operatingSystem).toBe('Web Browser');
+            expect(schema.operatingSystem).toBe('Windows, macOS, Linux, iOS, Android, Chrome OS');
             expect(schema.offers).toBeDefined();
             expect(schema.offers.price).toBe('0');
             

@@ -1,0 +1,74 @@
+{
+  "title": "PDF to SVG",
+  "metaDescription": "Convert PDF pages to SVG vector graphics. Perfect scalability at any size with individual page export.",
+  "keywords": [
+    "pdf to svg",
+    "convert pdf to svg",
+    "vector graphics",
+    "scalable pdf",
+    "svg converter"
+  ],
+  "description": "\n      <p>PDF to SVG converts each page of your PDF document into a scalable vector graphic (SVG). SVG is a vector format that maintains perfect quality at any zoom level or print size.</p>\n      <p>Unlike raster formats (JPG, PNG), SVG graphics never become pixelated when scaled. This makes them ideal for logos, diagrams, technical drawings, and any content that needs to be displayed at different sizes.</p>\n      <p>Preview each converted page and download them individually or as a ZIP file. All processing happens locally in your browser, ensuring complete privacy for your documents.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to browse and select."
+    },
+    {
+      "step": 2,
+      "title": "Configure Options",
+      "description": "Set the resolution quality and optionally specify page ranges."
+    },
+    {
+      "step": 3,
+      "title": "Preview and Convert",
+      "description": "Click Convert to process. Preview each page by clicking on thumbnails."
+    },
+    {
+      "step": 4,
+      "title": "Download",
+      "description": "Download individual SVG files or all pages as a ZIP archive."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Logos and Graphics",
+      "description": "Extract logos and vector graphics from PDFs for use in design software.",
+      "icon": "pen-tool"
+    },
+    {
+      "title": "Technical Diagrams",
+      "description": "Convert technical drawings and diagrams to scalable SVG format.",
+      "icon": "ruler"
+    },
+    {
+      "title": "Web Development",
+      "description": "Create web-ready SVG files from PDF content for responsive websites.",
+      "icon": "globe"
+    },
+    {
+      "title": "Print at Any Size",
+      "description": "Generate vector graphics that print perfectly at any size.",
+      "icon": "printer"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is SVG format?",
+      "answer": "SVG (Scalable Vector Graphics) is a vector image format that can be scaled to any size without losing quality. It is widely used for logos, icons, and web graphics."
+    },
+    {
+      "question": "Will the SVG be truly vector?",
+      "answer": "The SVG contains a high-resolution rendering of the PDF page. For PDFs with vector content, you get crisp output at any scale."
+    },
+    {
+      "question": "Can I preview before downloading?",
+      "answer": "Yes! Click on any thumbnail to see a full-size preview of the SVG. You can download individual pages or all at once."
+    },
+    {
+      "question": "What resolution should I choose?",
+      "answer": "Higher resolution (216 or 288 DPI) produces larger, more detailed SVGs. Use lower settings for faster processing and smaller files."
+    }
+  ]
+}

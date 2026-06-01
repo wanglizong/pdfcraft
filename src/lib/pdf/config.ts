@@ -6,17 +6,17 @@
  * Libraries are lazy-loaded to optimize initial page load.
  */
 
-/**
+/**The file at 'blob:http://pdfcrafts.test/7e5bc74f-8bb7-4280-8a23-96852ad1356f' was loaded over an insecure connection. This file should be served over HTTPS.
  * PDF.js configuration
  */
 export const PDFJS_CONFIG = {
   // Worker source path - loaded from public directory
   workerSrc: '/workers/pdf.worker.min.mjs',
   // CMap URL for character mapping
-  cMapUrl: '/pdfjs/cmaps/',
+  cMapUrl: '/pdfjs-viewer/cmaps/',
   cMapPacked: true,
   // Standard fonts URL
-  standardFontDataUrl: '/pdfjs/standard_fonts/',
+  standardFontDataUrl: '/pdfjs-viewer/standard_fonts/',
 } as const;
 
 /**

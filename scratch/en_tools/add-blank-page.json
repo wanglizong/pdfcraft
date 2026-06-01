@@ -1,0 +1,59 @@
+{
+  "title": "Add Blank Page",
+  "metaDescription": "Insert blank pages into PDF documents. Add empty pages at any position.",
+  "keywords": [
+    "add blank page",
+    "insert page",
+    "empty page",
+    "pdf page insertion"
+  ],
+  "description": "\n      <p>Add Blank Page inserts empty pages into your PDF documents at any position. Add pages before, after, or between existing pages with customizable page size.</p>\n      <p>Perfect for adding space for notes, creating section dividers, or preparing documents for printing.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Choose Position",
+      "description": "Select where to insert blank pages and how many."
+    },
+    {
+      "step": 3,
+      "title": "Add and Download",
+      "description": "Click Add to insert pages and download."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Note Space",
+      "description": "Add blank pages for handwritten notes.",
+      "icon": "edit-3"
+    },
+    {
+      "title": "Section Dividers",
+      "description": "Insert blank pages between document sections.",
+      "icon": "minus"
+    },
+    {
+      "title": "Print Preparation",
+      "description": "Add pages for duplex printing alignment.",
+      "icon": "printer"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can I choose the page size?",
+      "answer": "Yes, blank pages can match existing pages or use custom dimensions."
+    },
+    {
+      "question": "Can I add multiple blank pages?",
+      "answer": "Yes, you can add any number of blank pages at once."
+    },
+    {
+      "question": "Can I add colored pages?",
+      "answer": "Use Background Color tool after adding blank pages to add color."
+    }
+  ]
+}

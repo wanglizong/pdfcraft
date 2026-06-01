@@ -13,10 +13,11 @@ import type {
 } from '@/types/pdf';
 import { PDFErrorCode } from '@/types/pdf';
 import { BasePDFProcessor } from '../processor';
+import { withBasePath } from '@/lib/utils/path';
 
 // Initialize PDF.js worker
 if (typeof window !== 'undefined') {
-    PDFJS.GlobalWorkerOptions.workerSrc = '/workers/pdf.worker.min.mjs';
+    PDFJS.GlobalWorkerOptions.workerSrc = withBasePath('/workers/pdf.worker.min.js');
 }
 
 /**

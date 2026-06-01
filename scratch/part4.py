@@ -1,0 +1,306 @@
+import json
+
+part4 = {
+  "psd-to-pdf": {
+    "title": "Converter PSD para PDF",
+    "metaDescription": "Converta arquivos Adobe Photoshop (PSD) para o formato PDF. Suporta vários arquivos e preserva a qualidade da imagem.",
+    "keywords": [
+      "psd para pdf",
+      "converter psd",
+      "photoshop para pdf",
+      "conversor psd",
+      "adobe psd para pdf"
+    ],
+    "description": "\n      <p>A ferramenta PSD para PDF converte arquivos do Adobe Photoshop (PSD) em documentos PDF. Esta ferramenta permite visualizar e compartilhar layouts em PSD sem a necessidade de ter o Photoshop instalado.</p>\n      <p>Você pode converter vários arquivos PSD de uma vez e combiná-los em um único documento PDF. A ferramenta processa cada arquivo PSD, renderizando as camadas visíveis em páginas PDF de alta qualidade.</p>\n      <p>Toda a conversão acontece localmente no seu navegador, garantindo que seus designs permaneçam privados e seguros.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar Arquivos PSD",
+        "description": "Arraste e solte seus arquivos PSD ou PSB, ou clique para selecioná-los do seu dispositivo."
+      },
+      {
+        "step": 2,
+        "title": "Organizar Ordem",
+        "description": "Arraste e solte as miniaturas dos arquivos para organizá-los na ordem desejada."
+      },
+      {
+        "step": 3,
+        "title": "Converter e Baixar",
+        "description": "Clique em Converter para renderizar os PSDs e baixar seu documento PDF."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Compartilhar Projetos",
+        "description": "Compartilhe designs do Photoshop com clientes ou colegas que não possuem o Photoshop instalado.",
+        "icon": "share-2"
+      },
+      {
+        "title": "Criação de Portfólio",
+        "description": "Reúna seus trabalhos de design em um portfólio profissional em PDF.",
+        "icon": "layout"
+      },
+      {
+        "title": "Preparação para Impressão",
+        "description": "Converta designs para PDF para fins de impressão.",
+        "icon": "printer"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Preciso do Photoshop instalado?",
+        "answer": "Não, esta ferramenta funciona totalmente no seu navegador sem a necessidade do Adobe Photoshop."
+      },
+      {
+        "question": "As camadas são preservadas?",
+        "answer": "A ferramenta renderiza o estado visível do PSD (imagem composta). As camadas individuais são mescladas (achatadas) no PDF."
+      },
+      {
+        "question": "Qual é o tamanho máximo de arquivo?",
+        "answer": "Você pode carregar arquivos de até 100MB cada. Arquivos PSD grandes podem levar algum tempo para serem processados."
+      }
+    ]
+  },
+  "tiff-to-pdf": {
+    "title": "Converter TIFF para PDF",
+    "metaDescription": "Converta imagens TIFF em PDF. Suporte para arquivos TIFF de várias páginas e conversão de alta qualidade.",
+    "keywords": [
+      "tiff para pdf",
+      "converter tiff",
+      "tif para pdf",
+      "tiff de varias paginas"
+    ],
+    "description": "\n      <p>A ferramenta TIFF para PDF converte imagens TIFF, incluindo arquivos TIFF de várias páginas, em documentos PDF. O TIFF é comumente usado para digitalizações de alta qualidade e gráficos profissionais.</p>\n      <p>Arquivos TIFF de várias páginas são convertidos automaticamente em PDFs de várias páginas. A conversão preserva a alta qualidade de suas imagens originais.</p>\n      <p>Toda a conversão ocorre no seu navegador, garantindo que seus arquivos permaneçam privados.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar Arquivos TIFF",
+        "description": "Arraste e solte seus arquivos TIFF ou clique para selecionar."
+      },
+      {
+        "step": 2,
+        "title": "Configurar Opções",
+        "description": "Selecione as configurações de página e opções de compressão."
+      },
+      {
+        "step": 3,
+        "title": "Converter e Baixar",
+        "description": "Clique em Converter para criar seu PDF."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Documentos Digitalizados",
+        "description": "Converta digitalizações de alta qualidade de TIFF para PDF.",
+        "icon": "scan"
+      },
+      {
+        "title": "Gráficos Profissionais",
+        "description": "Converta gráficos TIFF profissionais para distribuição.",
+        "icon": "image"
+      },
+      {
+        "title": "Conversão de Arquivo",
+        "description": "Converta arquivos TIFF para o formato PDF, que é mais acessível.",
+        "icon": "archive"
+      }
+    ],
+    "faq": [
+      {
+        "question": "TIFFs de várias páginas são suportados?",
+        "answer": "Sim, arquivos TIFF de várias páginas são convertidos em PDFs de várias páginas automaticamente."
+      },
+      {
+        "question": "A qualidade é preservada?",
+        "answer": "Sim, a qualidade do TIFF é totalmente preservada no PDF gerado."
+      },
+      {
+        "question": "Qual compressão é usada?",
+        "answer": "Você pode escolher entre opções de compressão com perda ou sem perda (lossless)."
+      }
+    ]
+  },
+  "word-to-pdf": {
+    "title": "Converter Word para PDF",
+    "metaDescription": "Converta documentos do Word (DOCX) em PDF. Preserve a formatação e o layout em seus documentos convertidos.",
+    "keywords": [
+      "word para pdf",
+      "docx para pdf",
+      "converter word",
+      "conversor word",
+      "microsoft word para pdf"
+    ],
+    "description": "\n      <p>A ferramenta Word para PDF converte documentos do Microsoft Word no formato PDF enquanto preserva a formatação original, o layout e a estrutura do conteúdo.</p>\n      <p>Carregue seus arquivos DOCX e obtenha uma saída em PDF de alta qualidade, ideal para compartilhar, imprimir ou arquivar. A conversão mantém a formatação do texto, estilos de parágrafo e estrutura básica do documento.</p>\n      <p>Toda a conversão ocorre localmente no seu navegador, garantindo que seus documentos permaneçam privados e seguros.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar Documento Word",
+        "description": "Arraste e solte seu arquivo .docx ou clique para selecionar do seu dispositivo."
+      },
+      {
+        "step": 2,
+        "title": "Aguardar Processamento",
+        "description": "A ferramenta carregará o documento e o preparará para a conversão."
+      },
+      {
+        "step": 3,
+        "title": "Baixar PDF",
+        "description": "Clique em Baixar para salvar seu documento PDF convertido."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Compartilhamento de Documentos",
+        "description": "Converta documentos do Word para PDF para visualização e compartilhamento universal.",
+        "icon": "share-2"
+      },
+      {
+        "title": "Preparação para Impressão",
+        "description": "Crie PDFs prontos para impressão a partir de documentos do Word.",
+        "icon": "printer"
+      },
+      {
+        "title": "Arquivamento de Documentos",
+        "description": "Arquive documentos do Word no formato estável do PDF para armazenamento de longo prazo.",
+        "icon": "archive"
+      }
+    ],
+    "faq": [
+      {
+        "question": "O formato .doc é suportado?",
+        "answer": "Atualmente, apenas o formato .docx é suportado. Converta arquivos .doc para .docx primeiro usando o Microsoft Word ou LibreOffice."
+      },
+      {
+        "question": "As imagens são preservadas?",
+        "answer": "O conteúdo do texto e a formatação básica são preservados. Layouts complexos com muitas imagens podem ter uma renderização simplificada."
+      },
+      {
+        "question": "A conversão é segura?",
+        "answer": "Sim, todo o processamento ocorre no seu navegador. Seus documentos nunca saem do seu dispositivo."
+      }
+    ]
+  },
+  "excel-to-pdf": {
+    "title": "Converter Excel para PDF",
+    "metaDescription": "Converta planilhas do Excel (XLSX) em PDF. Preserve tabelas e dados nos seus documentos convertidos.",
+    "keywords": [
+      "excel para pdf",
+      "xlsx para pdf",
+      "converter excel",
+      "planilha para pdf",
+      "microsoft excel para pdf"
+    ],
+    "description": "\n      <p>A ferramenta Excel para PDF converte planilhas do Microsoft Excel no formato PDF, preservando a estrutura das tabelas e a organização dos dados.</p>\n      <p>Carregue seus arquivos XLSX e obtenha uma saída em PDF limpa, com tabelas formatadas corretamente. Cada aba do arquivo se torna uma seção separada no PDF.</p>\n      <p>Toda a conversão ocorre localmente no seu navegador, garantindo que seus dados permaneçam privados e seguros.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar Arquivo Excel",
+        "description": "Arraste e solte seu arquivo .xlsx ou clique para selecionar do seu dispositivo."
+      },
+      {
+        "step": 2,
+        "title": "Aguardar Processamento",
+        "description": "A ferramenta carregará a planilha e converterá todas as abas."
+      },
+      {
+        "step": 3,
+        "title": "Baixar PDF",
+        "description": "Clique em Baixar para salvar seu documento PDF convertido."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Compartilhamento de Relatórios",
+        "description": "Converta relatórios do Excel para PDF para distribuição aos interessados.",
+        "icon": "file-text"
+      },
+      {
+        "title": "Arquivamento de Dados",
+        "description": "Arquive dados de planilhas no formato estável do PDF.",
+        "icon": "archive"
+      },
+      {
+        "title": "Preparação para Impressão",
+        "description": "Crie PDFs prontos para impressão a partir de planilhas do Excel.",
+        "icon": "printer"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Múltiplas abas são suportadas?",
+        "answer": "Sim, todas as abas da pasta de trabalho são convertidas e incluídas no PDF."
+      },
+      {
+        "question": "O formato .xls é suportado?",
+        "answer": "Atualmente, apenas o formato .xlsx é suportado. Salve os arquivos .xls como .xlsx primeiro."
+      },
+      {
+        "question": "As fórmulas são preservadas?",
+        "answer": "O PDF mostra os valores calculados. As fórmulas não são executáveis no formato PDF."
+      }
+    ]
+  },
+  "pptx-to-pdf": {
+    "title": "Converter PowerPoint para PDF",
+    "metaDescription": "Converta apresentações do PowerPoint (PPTX) em PDF. Preserve slides e conteúdo para facilitar o compartilhamento.",
+    "keywords": [
+      "powerpoint para pdf",
+      "pptx para pdf",
+      "converter pptx",
+      "apresentacao para pdf",
+      "slides para pdf"
+    ],
+    "description": "\n      <p>A ferramenta PowerPoint para PDF converte apresentações do Microsoft PowerPoint no formato PDF, preservando o conteúdo e texto dos slides para facilitar o compartilhamento e visualização.</p>\n      <p>Cada slide se torna uma página no PDF, mantendo o fluxo da apresentação. Perfeito para compartilhar apresentações com pessoas que não têm o PowerPoint instalado.</p>\n      <p>Toda a conversão ocorre localmente no seu navegador, garantindo que suas apresentações permaneçam privadas e seguras.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar Arquivo PowerPoint",
+        "description": "Arraste e solte seu arquivo .pptx ou clique para selecionar do seu dispositivo."
+      },
+      {
+        "step": 2,
+        "title": "Aguardar Processamento",
+        "description": "A ferramenta extrairá o conteúdo dos slides e criará o PDF."
+      },
+      {
+        "step": 3,
+        "title": "Baixar PDF",
+        "description": "Clique em Baixar para salvar seu documento PDF convertido."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Compartilhamento de Apresentações",
+        "description": "Compartilhe apresentações com qualquer pessoa, sem a necessidade de ter o PowerPoint.",
+        "icon": "share-2"
+      },
+      {
+        "title": "Criação de Folhetos",
+        "description": "Crie folhetos em PDF a partir dos slides da sua apresentação.",
+        "icon": "file-text"
+      },
+      {
+        "title": "Arquivamento de Apresentações",
+        "description": "Arquive apresentações no formato estável do PDF.",
+        "icon": "archive"
+      }
+    ],
+    "faq": [
+      {
+        "question": "As animações são preservadas?",
+        "answer": "O PDF é um formato estático, portanto, as animações e transições não são preservadas. Cada slide se torna uma página estática."
+      },
+      {
+        "question": "O formato .ppt é suportado?",
+        "answer": "Atualmente, apenas o formato .pptx é suportado. Converta arquivos .ppt para .pptx primeiro."
+      },
+      {
+        "question": "As anotações do apresentador são incluídas?",
+        "answer": "Atualmente, as anotações do apresentador não são incluídas no PDF gerado."
+      }
+    ]
+  }
+}
+
+with open('d:/NextProject/pdfcraft/scratch/part4.json', 'w', encoding='utf-8') as f:
+    json.dump(part4, f, ensure_ascii=False, indent=2)

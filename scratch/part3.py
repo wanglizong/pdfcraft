@@ -1,0 +1,302 @@
+import json
+
+part3 = {
+  "add-watermark": {
+    "title": "Adicionar Marca-d'água",
+    "metaDescription": "Adicione marcas-d'água de texto ou imagem a arquivos PDF. Proteja e promova a marca de seus documentos.",
+    "keywords": [
+      "adicionar marca-d'agua",
+      "marca-d'agua pdf",
+      "carimbo pdf",
+      "proteger pdf"
+    ],
+    "description": "\n      <p>A ferramenta Adicionar Marca-d'água permite colocar marcas-d'água de texto ou imagem nos seus documentos PDF. As marcas-d'água podem indicar o status do documento (Rascunho, Confidencial), adicionar a identidade da marca ou impedir a cópia não autorizada.</p>\n      <p>Personalize a posição, tamanho, opacidade, rotação e col da marca-d'água. Aplique a todas as páginas ou selecione páginas específicas. A ferramenta suporta marcas-d'água de texto e de imagem.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo a privacidade dos seus documentos.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar seu PDF",
+        "description": "Arraste e solte seu arquivo PDF ou clique para selecionar o documento."
+      },
+      {
+        "step": 2,
+        "title": "Criar Marca-d'água",
+        "description": "Insira o texto ou carregue uma imagem para a sua marca-d'água. Ajuste a posição, tamanho, opacidade e rotação."
+      },
+      {
+        "step": 3,
+        "title": "Aplicar e Baixar",
+        "description": "Clique em Aplicar para adicionar a marca-d'água e baixar seu PDF atualizado."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Proteção de Documentos",
+        "description": "Adicione marcas-d'água como 'Confidencial' ou 'Rascunho' para indicar o status do documento.",
+        "icon": "shield"
+      },
+      {
+        "title": "Identidade de Marca",
+        "description": "Adicione logotipos ou nomes da empresa a documentos oficiais.",
+        "icon": "award"
+      },
+      {
+        "title": "Aviso de Direitos Autorais",
+        "description": "Adicione informações de direitos autorais para proteger a propriedade intelectual.",
+        "icon": "copyright"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Posso usar uma imagem como marca-d'água?",
+        "answer": "Sim, você pode carregar imagens nos formatos PNG, JPG ou SVG para usar como marcas-d'água."
+      },
+      {
+        "question": "Posso tornar a marca-d'água semi-transparente?",
+        "answer": "Sim, você pode ajustar a opacidade de totalmente transparente a totalmente opaca."
+      },
+      {
+        "question": "Posso aplicar marcas-d'água diferentes em páginas diferentes?",
+        "answer": "A ferramenta aplica a mesma marca-d'água às páginas selecionadas. Para marcas-d'água diferentes, processe o documento várias vezes."
+      }
+    ]
+  },
+  "header-footer": {
+    "title": "Cabeçalho e Rodapé",
+    "metaDescription": "Adicione cabeçalhos e rodapés a documentos PDF. Inclua números de página, datas e texto personalizado.",
+    "keywords": [
+      "cabecalho pdf",
+      "rodape pdf",
+      "adicionar cabecalho rodape",
+      "timbre pdf"
+    ],
+    "description": "\n      <p>A ferramenta Cabeçalho e Rodapé adiciona cabeçalhos e rodapés personalizáveis aos seus documentos PDF. Inclua números de página, datas, títulos do documento ou qualquer texto personalizado nas áreas de cabeçalho ou rodapé.</p>\n      <p>Posicione o conteúdo à esquerda, no centro ou à direita do cabeçalho/rodapé. Use conteúdos diferentes para páginas ímpares e pares, se necessário. Perfeito para criar documentos profissionais com formatação consistente.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo que seus documentos permaneçam privados.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar seu PDF",
+        "description": "Arraste e solte seu arquivo PDF ou clique para selecionar o documento."
+      },
+      {
+        "step": 2,
+        "title": "Configurar Cabeçalho/Rodapé",
+        "description": "Insira o texto para as áreas de cabeçalho e rodapé. Adicione números de página, datas ou texto personalizado."
+      },
+      {
+        "step": 3,
+        "title": "Aplicar e Baixar",
+        "description": "Clique em Aplicar para adicionar cabeçalhos/rodapés e baixar o PDF atualizado."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Documentos Comerciais",
+        "description": "Adicione o nome da empresa e números de página a documentos profissionais.",
+        "icon": "briefcase"
+      },
+      {
+        "title": "Documentos Jurídicos",
+        "description": "Inclua números de processos, datas e referências de páginas em petições judiciais.",
+        "icon": "scale"
+      },
+      {
+        "title": "Trabalhos Acadêmicos",
+        "description": "Adicione cabeçalhos dinâmicos com o título do artigo e o nome do autor.",
+        "icon": "graduation-cap"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Posso ter cabeçalhos diferentes em páginas ímpares e pares?",
+        "answer": "Sim, você pode configurar conteúdos diferentes para páginas ímpares e pares."
+      },
+      {
+        "question": "Posso incluir a data atual?",
+        "answer": "Sim, você pode inserir campos de data dinâmicos que mostram a data atual."
+      },
+      {
+        "question": "Posso ignorar o cabeçalho/rodapé em certas páginas?",
+        "answer": "Sim, você pode especificar quais páginas devem ter cabeçalhos/rodapés e quais devem ser ignoradas."
+      }
+    ]
+  },
+  "form-filler": {
+    "title": "Preencher Formulário",
+    "metaDescription": "Preencha formulários PDF online. Complete formulários PDF interativos sem precisar imprimir.",
+    "keywords": [
+      "preencher formulario pdf",
+      "preenchedor de formulario pdf",
+      "completar formulario pdf",
+      "pdf interativo"
+    ],
+    "description": "\n      <p>A ferramenta Preencher Formulário permite preencher formulários PDF interativos diretamente no seu navegador. Preencha campos de texto, marque caixas de seleção, selecione opções e adicione assinaturas sem imprimir o documento.</p>\n      <p>A ferramenta suporta formulários PDF padrão e formulários XFA. Seus dados preenchidos podem ser salvos e o formulário pode ser mesclado (achatado/flattened) para evitar edições futuras.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo que os dados do seu formulário permaneçam privados.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar Formulário PDF",
+        "description": "Arraste e solte seu formulário PDF ou clique para selecionar o arquivo."
+      },
+      {
+        "step": 2,
+        "title": "Preencher o Formulário",
+        "description": "Clique nos campos do formulário para inserir texto, marcar caixas ou selecionar opções."
+      },
+      {
+        "step": 3,
+        "title": "Salvar e Baixar",
+        "description": "Clique em Salvar para preservar suas inserções e baixar o formulário preenchido."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Formulários de Candidatura",
+        "description": "Preencha candidaturas de emprego, solicitações de permissão e formulários de registro.",
+        "icon": "clipboard"
+      },
+      {
+        "title": "Formulários Fiscais",
+        "description": "Preencha documentos fiscais e formulários financeiros eletronicamente.",
+        "icon": "file-text"
+      },
+      {
+        "title": "Contratos",
+        "description": "Preencha formulários de contrato com suas informações antes de assinar.",
+        "icon": "file-signature"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Posso salvar meu progresso?",
+        "answer": "Sim, você pode salvar formulários parcialmente preenchidos e continuar mais tarde."
+      },
+      {
+        "question": "O que é o achatamento (flattening) de formulário?",
+        "answer": "O achatamento converte os campos do formulário em conteúdo estático, impedindo edições futuras."
+      },
+      {
+        "question": "Formulários XFA são suportados?",
+        "answer": "Sim, a ferramenta suporta tanto formulários AcroForms padrão quanto formulários XFA."
+      }
+    ]
+  },
+  "form-creator": {
+    "title": "Criar Formulário",
+    "metaDescription": "Crie formulários PDF preenchíveis. Adicione campos de texto, caixas de seleção e menus suspensos a documentos.",
+    "keywords": [
+      "criar formulario pdf",
+      "criador de formulario pdf",
+      "pdf preenchivel",
+      "adicionar campos de formulario"
+    ],
+    "description": "\n      <p>A ferramenta Criar Formulário transforma documentos PDF estáticos em formulários interativos preenchíveis. Adicione campos de texto, caixas de seleção, botões de rádio, menus suspensos e muito mais para criar formulários profissionais.</p>\n      <p>Arraste e solte elementos de formulário em seu documento, configure as propriedades dos campos e crie formulários que podem ser preenchidos eletronicamente. Perfeito para criar solicitações, pesquisas e formulários de coleta de dados.</p>\n      <p>Todo o processamento ocorre localmente no seu navegador, garantindo a privacidade dos seus documentos.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar seu PDF",
+        "description": "Arraste e solte seu arquivo PDF ou clique para selecionar o documento para converter em um formulário."
+      },
+      {
+        "step": 2,
+        "title": "Adicionar Campos de Formulário",
+        "description": "Selecione os tipos de campo na barra de ferramentas e clique para posicioná-los no documento."
+      },
+      {
+        "step": 3,
+        "title": "Configurar e Salvar",
+        "description": "Defina as propriedades dos campos, depois salve e baixe seu formulário PDF preenchível."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Formulários de Inscrição",
+        "description": "Crie fichas de emprego, formulários de associação e registros preenchíveis.",
+        "icon": "user-plus"
+      },
+      {
+        "title": "Pesquisas",
+        "description": "Construa pesquisas e questionários interativos para coleta de dados.",
+        "icon": "clipboard-list"
+      },
+      {
+        "title": "Formulários de Pedido",
+        "description": "Crie formulários de pedido de produtos com campos de quantidade e caixas de seleção.",
+        "icon": "shopping-cart"
+      }
+    ],
+    "faq": [
+      {
+        "question": "Quais tipos de campos posso adicionar?",
+        "answer": "Campos de texto, caixas de seleção, botões de opção (radio buttons), menus suspensos, seletores de data e campos de assinatura."
+      },
+      {
+        "question": "Posso tornar os campos obrigatórios?",
+        "answer": "Sim, você pode marcar campos como obrigatórios e adicionar regras de validação."
+      },
+      {
+        "question": "Posso adicionar cálculos?",
+        "answer": "Cálculos básicos, como soma e média, podem ser adicionados a campos numéricos."
+      }
+    ]
+  },
+  "bmp-to-pdf": {
+    "title": "Converter BMP para PDF",
+    "metaDescription": "Converta imagens bitmap BMP em PDF. Suporte a formatos antigos com preservação de qualidade.",
+    "keywords": [
+      "bmp para pdf",
+      "converter bmp",
+      "bitmap para pdf",
+      "conversor bmp"
+    ],
+    "description": "\n      <p>A ferramenta BMP para PDF converte imagens bitmap em documentos PDF. O BMP é um formato de imagem legado comumente usado em ambientes Windows, e esta ferramenta facilita a conversão desses arquivos para o formato PDF moderno.</p>\n      <p>Combine vários arquivos BMP em um único PDF com configurações personalizáveis. A conversão compacta os arquivos BMP, que costumam ser grandes, mantendo a qualidade da imagem.</p>\n      <p>Toda a conversão ocorre no seu navegador, garantindo que suas imagens permaneçam privadas.</p>\n    ",
+    "howToUse": [
+      {
+        "step": 1,
+        "title": "Carregar Arquivos BMP",
+        "description": "Arraste e solte suas imagens BMP ou clique para selecionar os arquivos."
+      },
+      {
+        "step": 2,
+        "title": "Configurar Opções",
+        "description": "Organize as imagens e selecione as configurações de página."
+      },
+      {
+        "step": 3,
+        "title": "Converter e Baixar",
+        "description": "Clique em Converter para criar seu PDF."
+      }
+    ],
+    "useCases": [
+      {
+        "title": "Conversão de Arquivos Antigos",
+        "description": "Converta arquivos BMP antigos para o formato PDF moderno.",
+        "icon": "history"
+      },
+      {
+        "title": "Capturas de Tela do Windows",
+        "description": "Converta capturas de tela em formato bitmap do Windows para PDF.",
+        "icon": "monitor"
+      },
+      {
+        "title": "Modernização de Arquivos",
+        "description": "Atualize arquivos de imagens antigas para o formato PDF.",
+        "icon": "archive"
+      }
+    ],
+    "faq": [
+      {
+        "question": "O tamanho do arquivo será reduzido?",
+        "answer": "Sim, os arquivos BMP normalmente são compactados significativamente quando convertidos para PDF."
+      },
+      {
+        "question": "A qualidade é preservada?",
+        "answer": "Sim, a qualidade da imagem é mantida durante a conversão."
+      },
+      {
+        "question": "Quais profundidades de cor BMP são suportadas?",
+        "answer": "Todas as profundidades de cor BMP padrão são suportadas, incluindo 24 bits e 32 bits."
+      }
+    ]
+  }
+}
+
+with open('d:/NextProject/pdfcraft/scratch/part3.json', 'w', encoding='utf-8') as f:
+    json.dump(part3, f, ensure_ascii=False, indent=2)

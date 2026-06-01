@@ -69,6 +69,9 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
   // UI state
   const [isExtractingBookmarks, setIsExtractingBookmarks] = useState(false);
+  const [draggedNodeId, setDraggedNodeId] = useState<string | null>(null);
+  const [dragOverNodeId, setDragOverNodeId] = useState<string | null>(null);
+  const [dropPosition, setDropPosition] = useState<'before' | 'after' | 'inside' | null>(null);
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const cancelledRef = useRef(false);
@@ -85,7 +88,7 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       setTotalPages(doc.numPages);
       setCurrentPage(1);
 
-      // Extract existing bookmarks
+      // Extract existing bookmarks automatically on load
       setIsExtractingBookmarks(true);
       try {
         const outline = await doc.getOutline();
@@ -103,6 +106,32 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
       console.error(err);
     }
   }, []);
+
+  // Manually extract bookmarks from the current PDF
+  const handleExtractBookmarks = useCallback(async () => {
+    if (!pdfDoc) return;
+
+    if (bookmarks.length > 0) {
+      if (!confirm(tTools('bookmark.replaceConfirm') || 'This will replace current bookmarks. Continue?')) {
+        return;
+      }
+    }
+
+    setIsExtractingBookmarks(true);
+    try {
+      const outline = await pdfDoc.getOutline();
+      if (outline && outline.length > 0) {
+        const extracted = await parseOutline(outline, pdfDoc);
+        setBookmarks(extracted);
+      } else {
+        alert(tTools('bookmark.noBookmarksFound') || 'No bookmarks found in this PDF.');
+      }
+    } catch (err) {
+      console.warn('Failed to extract bookmarks:', err);
+      alert(tTools('bookmark.failedExtract') || 'Failed to extract bookmarks.');
+    }
+    setIsExtractingBookmarks(false);
+  }, [pdfDoc, bookmarks, tTools]);
 
   // Parse PDF outline to bookmark nodes
   const parseOutline = async (
@@ -130,11 +159,28 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
         }
       }
 
+      // Handle style
+      let style: 'bold' | 'italic' | 'bold-italic' | undefined = undefined;
+      if (item.bold && item.italic) style = 'bold-italic';
+      else if (item.bold) style = 'bold';
+      else if (item.italic) style = 'italic';
+
+      // Handle color (pdfjs color is [r, g, b] 0-255)
+      let color: string | undefined = undefined;
+      if (item.color && item.color.length === 3) {
+        const r = item.color[0].toString(16).padStart(2, '0');
+        const g = item.color[1].toString(16).padStart(2, '0');
+        const b = item.color[2].toString(16).padStart(2, '0');
+        color = `#${r}${g}${b}`;
+      }
+
       const node: BookmarkNode = {
         id: `bm-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`,
         title: item.title || 'Untitled',
         pageNumber,
         children: [],
+        color,
+        style,
         isExpanded: true,
       };
 
@@ -267,10 +313,14 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
   // Update bookmark
   const handleUpdateBookmark = useCallback((updated: BookmarkNode) => {
+    // Ensure pageNumber is a valid number
+    const pageNum = typeof updated.pageNumber === 'string' ? 1 : (updated.pageNumber || 1);
+    const finalUpdate = { ...updated, pageNumber: pageNum };
+
     const updateIn = (nodes: BookmarkNode[]): BookmarkNode[] => {
       return nodes.map(node => {
-        if (node.id === updated.id) {
-          return { ...updated, children: node.children };
+        if (node.id === finalUpdate.id) {
+          return { ...finalUpdate, children: node.children };
         }
         return { ...node, children: updateIn(node.children) };
       });
@@ -295,12 +345,135 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     setBookmarks(prev => toggleIn(prev));
   }, []);
 
+  // Sort bookmarks by page number recursively, with title natural sort as fallback
+  const handleSortBookmarks = useCallback(() => {
+    const sortNodes = (nodes: BookmarkNode[]): BookmarkNode[] => {
+      const sorted = [...nodes].sort((a, b) => {
+        if (a.pageNumber !== b.pageNumber) {
+          return a.pageNumber - b.pageNumber;
+        }
+        // Fallback to natural sort by title if on the same page
+        return a.title.localeCompare(b.title, undefined, { numeric: true, sensitivity: 'base' });
+      });
+      return sorted.map(node => ({
+        ...node,
+        children: sortNodes(node.children)
+      }));
+    };
+
+    setBookmarks(prev => sortNodes(prev));
+    setResult(null);
+  }, []);
+
+  // Drag and Drop handlers
+  const handleDragStart = (e: React.DragEvent, id: string) => {
+    setDraggedNodeId(id);
+    e.dataTransfer.setData('text/plain', id);
+    e.dataTransfer.effectAllowed = 'move';
+  };
+
+  const handleDragOver = (e: React.DragEvent, targetId: string) => {
+    e.preventDefault();
+    if (!draggedNodeId || draggedNodeId === targetId) return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    const mouseY = e.clientY - rect.top;
+    const height = rect.height;
+
+    // Logic to determine drop position
+    if (mouseY < height * 0.25) {
+      setDropPosition('before');
+    } else if (mouseY > height * 0.75) {
+      setDropPosition('after');
+    } else {
+      setDropPosition('inside');
+    }
+    setDragOverNodeId(targetId);
+  };
+
+  const handleDrop = (e: React.DragEvent, targetId: string) => {
+    e.preventDefault();
+    if (!draggedNodeId || !dropPosition || draggedNodeId === targetId) {
+      setDraggedNodeId(null);
+      setDragOverNodeId(null);
+      setDropPosition(null);
+      return;
+    }
+
+    handleMoveNode(draggedNodeId, targetId, dropPosition);
+    setDraggedNodeId(null);
+    setDragOverNodeId(null);
+    setDropPosition(null);
+  };
+
+  const handleDragEnd = () => {
+    setDraggedNodeId(null);
+    setDragOverNodeId(null);
+    setDropPosition(null);
+  };
+
+  const handleMoveNode = useCallback((sourceId: string, targetId: string, position: 'before' | 'after' | 'inside') => {
+    setBookmarks(prev => {
+      let sourceNode: BookmarkNode | null = null;
+
+      // 1. Recursive removal of source node
+      const removeNode = (nodes: BookmarkNode[]): BookmarkNode[] => {
+        return nodes.filter(node => {
+          if (node.id === sourceId) {
+            sourceNode = { ...node };
+            return false;
+          }
+          if (node.children && node.children.length > 0) {
+            node.children = removeNode(node.children);
+          }
+          return true;
+        });
+      };
+
+      // Create a deep copy to avoid mutations
+      const nodesWithoutSource = removeNode(JSON.parse(JSON.stringify(prev)));
+      if (!sourceNode) return prev;
+
+      // 2. Recursive insertion at target
+      const insertNode = (nodes: BookmarkNode[]): BookmarkNode[] => {
+        const targetIndex = nodes.findIndex(node => node.id === targetId);
+        if (targetIndex !== -1) {
+          const result = [...nodes];
+          if (position === 'before') {
+            result.splice(targetIndex, 0, sourceNode!);
+          } else if (position === 'after') {
+            result.splice(targetIndex + 1, 0, sourceNode!);
+          } else if (position === 'inside') {
+            result[targetIndex] = {
+              ...result[targetIndex],
+              children: [...result[targetIndex].children, sourceNode!],
+              isExpanded: true
+            };
+          }
+          return result;
+        }
+
+        return nodes.map(node => {
+          if (node.children && node.children.length > 0) {
+            return { ...node, children: insertNode(node.children) };
+          }
+          return node;
+        });
+      };
+
+      return insertNode(nodesWithoutSource);
+    });
+    setResult(null);
+  }, []);
+
   // Convert BookmarkNode[] to BookmarkItem[] for processor
   const convertToBookmarkItems = (nodes: BookmarkNode[]): BookmarkItem[] => {
     return nodes.map(node => ({
       id: node.id,
       title: node.title,
       pageNumber: node.pageNumber,
+      color: node.color,
+      style: node.style,
       children: node.children.length > 0 ? convertToBookmarkItems(node.children) : undefined,
     }));
   };
@@ -354,12 +527,33 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
     return (
       <div key={bookmark.id} style={{ marginLeft: depth * 16 }}>
         <div
-          className={`flex items-center gap-2 p-2 rounded cursor-pointer transition-colors ${isSelected
-            ? 'bg-blue-100 border border-blue-300'
-            : 'hover:bg-gray-100'
-            }`}
+          draggable={true}
+          onDragStart={(e) => handleDragStart(e, bookmark.id)}
+          onDragOver={(e) => handleDragOver(e, bookmark.id)}
+          onDrop={(e) => handleDrop(e, bookmark.id)}
+          onDragEnd={handleDragEnd}
+          className={`group flex items-center gap-2 p-2 rounded cursor-pointer transition-all border ${
+            isSelected ? 'bg-blue-100 border-blue-300' : 'border-transparent hover:bg-gray-50'
+          } ${
+            dragOverNodeId === bookmark.id && dropPosition === 'inside' ? 'bg-blue-50 border-blue-300 border-dashed' : ''
+          } ${
+            dragOverNodeId === bookmark.id && dropPosition === 'before' ? 'border-t-blue-500' : ''
+          } ${
+            dragOverNodeId === bookmark.id && dropPosition === 'after' ? 'border-b-blue-500' : ''
+          } ${
+            draggedNodeId === bookmark.id ? 'opacity-30' : ''
+          }`}
           onClick={() => handleBookmarkClick(bookmark)}
         >
+          {/* Drag Handle */}
+          <div className="flex-shrink-0 text-gray-400 cursor-grab active:cursor-grabbing">
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="9" cy="8" r="1.5" /><circle cx="15" cy="8" r="1.5" />
+              <circle cx="9" cy="12" r="1.5" /><circle cx="15" cy="12" r="1.5" />
+              <circle cx="9" cy="16" r="1.5" /><circle cx="15" cy="16" r="1.5" />
+            </svg>
+          </div>
+
           {/* Expand/collapse toggle */}
           {bookmark.children.length > 0 && (
             <button
@@ -373,28 +567,91 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
 
           {/* Bookmark content */}
           {isEditing ? (
-            <div className="flex-1 flex gap-2" onClick={(e) => e.stopPropagation()}>
-              <input
-                type="text"
-                value={editingBookmark.title}
-                onChange={(e) => setEditingBookmark({ ...editingBookmark, title: e.target.value })}
-                className="flex-1 px-2 py-1 border rounded text-sm"
-                autoFocus
-              />
-              <input
-                type="number"
-                value={editingBookmark.pageNumber}
-                onChange={(e) => setEditingBookmark({ ...editingBookmark, pageNumber: parseInt(e.target.value) || 1 })}
-                min={1}
-                max={totalPages}
-                className="w-16 px-2 py-1 border rounded text-sm"
-              />
-              <Button size="sm" onClick={() => handleUpdateBookmark(editingBookmark)}>✓</Button>
-              <Button size="sm" variant="ghost" onClick={() => setEditingBookmark(null)}>✕</Button>
+            <div className="flex-1 flex flex-col gap-2 p-2 bg-gray-50 rounded border border-blue-200" onClick={(e) => e.stopPropagation()}>
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.title') || 'Title'}</label>
+                  <input
+                    type="text"
+                    value={editingBookmark.title}
+                    onChange={(e) => setEditingBookmark({ ...editingBookmark, title: e.target.value })}
+                    className="w-full px-2 py-1 border rounded text-sm"
+                    placeholder={tTools('bookmark.title') || 'Title'}
+                    autoFocus
+                  />
+                </div>
+                <div>
+                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.page') || 'Page'}</label>
+                  <div className="flex items-center gap-1">
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={editingBookmark.pageNumber}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        if (/^\d*$/.test(val)) {
+                          setEditingBookmark({ 
+                            ...editingBookmark, 
+                            pageNumber: val === '' ? '' : Math.min(totalPages, parseInt(val)) 
+                          } as any);
+                        }
+                      }}
+                      className="w-14 px-2 py-1 border rounded text-sm h-8"
+                      placeholder="1"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setEditingBookmark({ ...editingBookmark, pageNumber: currentPage })}
+                      className="p-1 text-blue-500 hover:text-blue-700 bg-white border rounded h-8 w-8 flex items-center justify-center transition-colors"
+                      title={tTools('bookmark.setToCurrentPage') || 'Set to current page'}
+                    >
+                      📍
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="flex-shrink-0">
+                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.color') || 'Color'}</label>
+                  <input
+                    type="color"
+                    value={editingBookmark.color || '#000000'}
+                    onChange={(e) => setEditingBookmark({ ...editingBookmark, color: e.target.value })}
+                    className="w-10 h-8 p-0 border rounded cursor-pointer"
+                    title={tTools('bookmark.color') || 'Color'}
+                  />
+                </div>
+                <div className="flex-1">
+                  <label className="block text-[10px] text-gray-500 uppercase font-bold mb-1">{tTools('bookmark.style') || 'Style'}</label>
+                  <select
+                    value={editingBookmark.style || ''}
+                    onChange={(e) => setEditingBookmark({ ...editingBookmark, style: e.target.value as any || undefined })}
+                    className="w-full px-2 py-1 border rounded text-sm h-8"
+                  >
+                    <option value="">{tTools('bookmark.normal') || 'Normal'}</option>
+                    <option value="bold">{tTools('bookmark.bold') || 'Bold'}</option>
+                    <option value="italic">{tTools('bookmark.italic') || 'Italic'}</option>
+                    <option value="bold-italic">{tTools('bookmark.boldItalic') || 'Bold & Italic'}</option>
+                  </select>
+                </div>
+                <div className="flex gap-1 self-end mb-0.5">
+                  <Button size="sm" onClick={() => handleUpdateBookmark(editingBookmark)} title={t('buttons.save') || 'Save'}>✓</Button>
+                  <Button size="sm" variant="ghost" onClick={() => setEditingBookmark(null)} title={t('buttons.cancel') || 'Cancel'}>✕</Button>
+                </div>
+              </div>
             </div>
           ) : (
             <>
-              <span className="flex-1 text-sm truncate">{bookmark.title}</span>
+              <span 
+                className={`flex-1 text-sm truncate ${
+                  bookmark.style === 'bold' ? 'font-bold' : 
+                  bookmark.style === 'italic' ? 'italic' : 
+                  bookmark.style === 'bold-italic' ? 'font-bold italic' : ''
+                }`}
+                style={{ color: bookmark.color }}
+              >
+                {bookmark.title}
+              </span>
               <span className="text-xs text-gray-500">p.{bookmark.pageNumber}</span>
 
               {/* Actions */}
@@ -500,13 +757,32 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
           <Card variant="outlined" size="lg">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-medium">{tTools('bookmark.bookmarksTitle') || 'Bookmarks'}</h3>
-              <Button variant="primary" size="sm" onClick={handleAddBookmark}>
-                + {tTools('bookmark.addBookmark') || 'Add Bookmark'}
-              </Button>
+              <div className="flex gap-1">
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  onClick={handleExtractBookmarks}
+                  title={tTools('bookmark.extractExisting') || 'Extract Existing Bookmarks'}
+                >
+                  📥 {tTools('bookmark.extractExisting') || 'Extract'}
+                </Button>
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  onClick={handleSortBookmarks}
+                  title={tTools('bookmark.sortByPage') || 'Sort by page number'}
+                  disabled={bookmarks.length === 0}
+                >
+                  ↑↓ {tTools('bookmark.sort') || 'Sort'}
+                </Button>
+                <Button variant="primary" size="sm" onClick={handleAddBookmark}>
+                  + {tTools('bookmark.addBookmark') || 'Add Bookmark'}
+                </Button>
+              </div>
             </div>
 
             {isExtractingBookmarks && (
-              <p className="text-sm text-gray-500 mb-4">Extracting existing bookmarks...</p>
+              <p className="text-sm text-gray-500 mb-4">{tTools('bookmark.extracting') || 'Extracting existing bookmarks...'}</p>
             )}
 
             {/* Bookmark list */}
@@ -523,9 +799,14 @@ export function BookmarkTool({ className = '' }: BookmarkToolProps) {
             </div>
 
             {/* Hint */}
-            <p className="text-xs text-gray-500 mt-2">
-              {tTools('bookmark.hint') || 'Click a bookmark to preview its page. Use +/✎/× to add child, edit, or delete.'}
-            </p>
+            <div className="mt-2 space-y-1">
+              <p className="text-xs text-gray-500">
+                {tTools('bookmark.hint') || 'Click a bookmark to preview its page. Use +/✎/× to add child, edit, or delete.'}
+              </p>
+              <p className="text-xs text-blue-500 font-medium">
+                {tTools('bookmark.dragHint') || 'Drag and drop to reorder bookmarks.'}
+              </p>
+            </div>
           </Card>
         </div>
       )}

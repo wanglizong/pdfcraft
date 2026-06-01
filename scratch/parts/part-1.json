@@ -1,0 +1,454 @@
+{
+  "tools.compressPdf.photonWarning": {
+    "en": "Note: Photon converts pages to images, which may reduce text quality and lose interactivity (links, forms).",
+    "zh": "注意：Photon 压缩会将页面转换为图像，这可能会降低文字质量并丢失交互性（如链接、表单）。"
+  },
+  "tools.compressPdf.photonDpiLabel": {
+    "en": "Output DPI",
+    "zh": "输出 DPI"
+  },
+  "tools.compressPdf.photonDpiDesc": {
+    "en": "Higher DPI = better quality, larger file size",
+    "zh": "DPI 越高，质量越好，文件越大"
+  },
+  "tools.cropPdf.reset": {
+    "en": "Reset",
+    "zh": "重置"
+  },
+  "tools.organizePdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to organize pages.",
+    "zh": "拖放PDF文件到此处以整理页面。"
+  },
+  "tools.organizePdf.reorderTitle": {
+    "en": "Drag to Reorder Pages",
+    "zh": "拖动重新排序页面"
+  },
+  "tools.organizePdf.reverseOrder": {
+    "en": "Reverse Order",
+    "zh": "反转顺序"
+  },
+  "tools.organizePdf.resetOrder": {
+    "en": "Reset Order",
+    "zh": "重置顺序"
+  },
+  "tools.organizePdf.reorderHint": {
+    "en": "Drag and drop pages to reorder them. Use the arrows to move pages up or down.",
+    "zh": "拖放页面以重新排序。使用箭头向上或向下移动页面。"
+  },
+  "tools.organizePdf.orderChanged": {
+    "en": "Page order has been changed. Click \"Apply Changes\" to save.",
+    "zh": "页面顺序已更改。点击「应用更改」保存。"
+  },
+  "tools.organizePdf.applyButton": {
+    "en": "Apply Changes",
+    "zh": "应用更改"
+  },
+  "tools.organizePdf.successMessage": {
+    "en": "PDF pages reorganized successfully! Click the download button to save your file.",
+    "zh": "PDF页面重新整理成功！点击下载按钮保存文件。"
+  },
+  "tools.organizePdf.duplicatePage": {
+    "en": "Duplicate",
+    "zh": "复制"
+  },
+  "tools.organizePdf.cannotDeleteLast": {
+    "en": "Cannot delete the last page",
+    "zh": "无法删除最后一页"
+  },
+  "tools.extractAttachments.uploadDescription": {
+    "en": "Select PDF files to extract attachments from.",
+    "zh": "选择PDF文件以提取附件。"
+  },
+  "tools.extractAttachments.extractButton": {
+    "en": "Extract Attachments",
+    "zh": "提取附件"
+  },
+  "tools.extractAttachments.extractedTitle": {
+    "en": "Extracted Attachments",
+    "zh": "已提取的附件"
+  },
+  "tools.extractAttachments.downloadAll": {
+    "en": "Download All",
+    "zh": "全部下载"
+  },
+  "tools.extractAttachments.successMessage": {
+    "en": "Attachments extracted successfully!",
+    "zh": "附件提取成功！"
+  },
+  "tools.extractImages.uploadDescription": {
+    "en": "Select PDF files to extract images from.",
+    "zh": "选择PDF文件以提取其中的图片。"
+  },
+  "tools.extractImages.filterTitle": {
+    "en": "Filter Options",
+    "zh": "过滤选项"
+  },
+  "tools.extractImages.filterDescription": {
+    "en": "Filter out small images (icons, decorations, etc.)",
+    "zh": "过滤掉小尺寸图片（如图标、装饰图案等）"
+  },
+  "tools.extractImages.minWidth": {
+    "en": "Min Width (px)",
+    "zh": "最小宽度（像素）"
+  },
+  "tools.extractImages.minHeight": {
+    "en": "Min Height (px)",
+    "zh": "最小高度（像素）"
+  },
+  "tools.extractImages.minSizeKB": {
+    "en": "Min Size (KB)",
+    "zh": "最小大小（KB）"
+  },
+  "tools.extractImages.extractButton": {
+    "en": "Extract Images",
+    "zh": "提取图片"
+  },
+  "tools.extractImages.extractedTitle": {
+    "en": "Extracted Images",
+    "zh": "已提取的图片"
+  },
+  "tools.extractImages.downloadAll": {
+    "en": "Download All",
+    "zh": "全部下载"
+  },
+  "tools.extractImages.downloadZip": {
+    "en": "Download as ZIP",
+    "zh": "下载为ZIP"
+  },
+  "tools.extractImages.successMessage": {
+    "en": "Images extracted successfully! Click to download individual images or use \"Download as ZIP\".",
+    "zh": "图片提取成功！点击下载单个图片或使用\"下载为ZIP\"。"
+  },
+  "tools.extractImages.minSize": {
+    "en": "Minimum Size (px)",
+    "zh": "最小尺寸 (px)"
+  },
+  "tools.addBlankPage.positionStart": {
+    "en": "Document Beginning",
+    "zh": "文档开头"
+  },
+  "tools.addBlankPage.positionEnd": {
+    "en": "Document End",
+    "zh": "文档末尾"
+  },
+  "tools.addBlankPage.positionAfterEach": {
+    "en": "After Each Page",
+    "zh": "每页之后"
+  },
+  "tools.addBlankPage.matchSource": {
+    "en": "Match Source File",
+    "zh": "匹配源文件"
+  },
+  "tools.pdfToImage.uploadDescription": {
+    "en": "Drag and drop a PDF file to convert.",
+    "zh": "拖放PDF文件到此处进行转换。"
+  },
+  "tools.pdfToImage.format": {
+    "en": "Image Format",
+    "zh": "图片格式"
+  },
+  "tools.pdfToImage.dpi": {
+    "en": "Resolution (DPI)",
+    "zh": "分辨率（DPI）"
+  },
+  "tools.pdfToImage.resolution": {
+    "en": "Resolution",
+    "zh": "分辨率"
+  },
+  "tools.pdfToImage.layoutTitle": {
+    "en": "Page Layout",
+    "zh": "页面布局"
+  },
+  "tools.pdfToImage.columns": {
+    "en": "Columns",
+    "zh": "列数"
+  },
+  "tools.pdfToImage.rows": {
+    "en": "Rows",
+    "zh": "行数"
+  },
+  "tools.pdfToImage.skipFirstPage": {
+    "en": "Without first/cover page",
+    "zh": "不含封面页"
+  },
+  "tools.pdfToImage.skipFirstPageHint": {
+    "en": "The first page (cover) will be rendered as a separate image",
+    "zh": "第一页（封面）将作为单独的图片渲染"
+  },
+  "tools.pdfToImage.layoutPreview": {
+    "en": "Layout Preview",
+    "zh": "布局预览"
+  },
+  "tools.pdfToImage.pagesPerImage": {
+    "en": "pages per image",
+    "zh": "页/图"
+  },
+  "tools.pdfToImage.layoutHint": {
+    "en": "Combine multiple PDF pages into a single image with the selected grid layout.",
+    "zh": "将多个PDF页面按所选网格布局合并为单张图片。"
+  },
+  "tools.pdfToImage.convertButton": {
+    "en": "Convert to Images",
+    "zh": "转换为图片"
+  },
+  "tools.pdfToImage.previewTitle": {
+    "en": "Converted Images",
+    "zh": "转换后的图片"
+  },
+  "tools.pdfToImage.successMessage": {
+    "en": "PDF converted to images successfully!",
+    "zh": "PDF已成功转换为图片！"
+  },
+  "tools.pdfToSvg.uploadDescription": {
+    "en": "Drag and drop a PDF file to convert to SVG.",
+    "zh": "拖放PDF文件到此处转换为SVG。"
+  },
+  "tools.pdfToSvg.resolution": {
+    "en": "Resolution",
+    "zh": "分辨率"
+  },
+  "tools.pdfToSvg.resolutionHint": {
+    "en": "Higher resolution produces larger, more detailed SVG files.",
+    "zh": "更高分辨率会生成更大、更详细的SVG文件。"
+  },
+  "tools.pdfToSvg.convertButton": {
+    "en": "Convert to SVG",
+    "zh": "转换为SVG"
+  },
+  "tools.pdfToSvg.previewTitle": {
+    "en": "Converted SVGs",
+    "zh": "转换后的SVG"
+  },
+  "tools.pdfToSvg.successMessage": {
+    "en": "PDF converted to SVG successfully! Click on thumbnails to preview or download individual files.",
+    "zh": "PDF已成功转换为SVG！点击缩略图预览或下载单个文件。"
+  },
+  "tools.flattenPdf.optionsTitle": {
+    "en": "Flatten Options",
+    "zh": "扁平化选项"
+  },
+  "tools.flattenPdf.flattenForms": {
+    "en": "Flatten Form Fields",
+    "zh": "扁平化表单字段"
+  },
+  "tools.flattenPdf.flattenAnnotations": {
+    "en": "Flatten Annotations",
+    "zh": "扁平化注释"
+  },
+  "tools.pageNumbers.margin": {
+    "en": "Margin",
+    "zh": "边距"
+  },
+  "tools.pageNumbers.zoomIn": {
+    "en": "Zoom In",
+    "zh": "放大"
+  },
+  "tools.pageNumbers.zoomOut": {
+    "en": "Zoom Out",
+    "zh": "缩小"
+  },
+  "tools.pageNumbers.zoomReset": {
+    "en": "Reset Zoom",
+    "zh": "重置缩放"
+  },
+  "tools.pageNumbers.oddEvenTitle": {
+    "en": "Odd/Even Page Settings",
+    "zh": "奇偶页设置"
+  },
+  "tools.pageNumbers.pageMode": {
+    "en": "Page Mode",
+    "zh": "页面模式"
+  },
+  "tools.pageNumbers.modeAll": {
+    "en": "All pages",
+    "zh": "所有页面"
+  },
+  "tools.pageNumbers.modeOddOnly": {
+    "en": "Odd pages only (1, 3, 5...)",
+    "zh": "仅奇数页（1, 3, 5...）"
+  },
+  "tools.pageNumbers.modeEvenOnly": {
+    "en": "Even pages only (2, 4, 6...)",
+    "zh": "仅偶数页（2, 4, 6...）"
+  },
+  "tools.pageNumbers.modeDifferent": {
+    "en": "Different positions for odd/even",
+    "zh": "奇偶页不同位置"
+  },
+  "tools.pageNumbers.oddPosition": {
+    "en": "Odd Page Position",
+    "zh": "奇数页位置"
+  },
+  "tools.pageNumbers.evenPosition": {
+    "en": "Even Page Position",
+    "zh": "偶数页位置"
+  },
+  "tools.pageNumbers.differentModeHint": {
+    "en": "This mode is useful for double-sided printing where you want page numbers on the outer edge of each page.",
+    "zh": "此模式适用于双面打印，可将页码放置在每页的外侧边缘。"
+  },
+  "tools.pageNumbers.posBottomLeft": {
+    "en": "Bottom Left",
+    "zh": "左下角"
+  },
+  "tools.pageNumbers.posBottomCenter": {
+    "en": "Bottom Center",
+    "zh": "底部居中"
+  },
+  "tools.pageNumbers.posBottomRight": {
+    "en": "Bottom Right",
+    "zh": "右下角"
+  },
+  "tools.pageNumbers.posTopLeft": {
+    "en": "Top Left",
+    "zh": "左上角"
+  },
+  "tools.pageNumbers.posTopCenter": {
+    "en": "Top Center",
+    "zh": "顶部居中"
+  },
+  "tools.pageNumbers.posTopRight": {
+    "en": "Top Right",
+    "zh": "右上角"
+  },
+  "tools.formCreator.radioTool": {
+    "en": "Radio",
+    "zh": "单选框"
+  },
+  "tools.formCreator.fieldLabel": {
+    "en": "Label",
+    "zh": "标签"
+  },
+  "tools.pdfBooklet.paddingLabel": {
+    "en": "Padding",
+    "zh": "边距"
+  },
+  "common.navigation.home": {
+    "en": "Home",
+    "zh": "首页"
+  },
+  "common.navigation.privacy": {
+    "en": "Privacy",
+    "zh": "隐私"
+  },
+  "workflow.metaTitle": {
+    "en": "PDF Workflow Builder - PDFCraft",
+    "zh": "PDF 工作流编辑器 - PDFCraft"
+  },
+  "tools.formCreator.toolbarTitle": {
+    "en": "Toolbar",
+    "zh": "工具栏"
+  },
+  "tools.markdownToPdf.manualInput": {
+    "en": "Write Markdown",
+    "zh": "编写 Markdown"
+  },
+  "tools.markdownToPdf.editorLabel": {
+    "en": "Markdown Editor",
+    "zh": "Markdown 编辑器"
+  },
+  "tools.splitPdf.resultsTitle": {
+    "en": "Split Results",
+    "zh": "拆分结果"
+  },
+  "tools.pageNumbers.formatRoman": {
+    "en": "Roman (I, II, III)",
+    "zh": "罗马数字 (I, II, III)"
+  },
+  "tools.pageNumbers.prefix": {
+    "en": "Prefix",
+    "zh": "前缀"
+  },
+  "workflow.validationErrors": {
+    "en": "Validation Errors",
+    "zh": "验证错误"
+  },
+  "workflow.warnings": {
+    "en": "Warnings",
+    "zh": "警告"
+  },
+  "workflow.executionFailed": {
+    "en": "Workflow execution failed",
+    "zh": "工作流执行失败"
+  },
+  "workflow.retry": {
+    "en": "Retry",
+    "zh": "重试"
+  },
+  "workflow.history": {
+    "en": "History",
+    "zh": "历史"
+  },
+  "workflow.executionHistory": {
+    "en": "Execution History",
+    "zh": "执行历史"
+  },
+  "workflow.totalExecutions": {
+    "en": "Total Runs",
+    "zh": "总运行次数"
+  },
+  "workflow.successRate": {
+    "en": "Success Rate",
+    "zh": "成功率"
+  },
+  "workflow.avgDuration": {
+    "en": "Avg Duration",
+    "zh": "平均时长"
+  },
+  "workflow.noHistory": {
+    "en": "No execution history yet",
+    "zh": "暂无执行历史"
+  },
+  "workflow.noHistoryHint": {
+    "en": "Run a workflow to see history here",
+    "zh": "运行工作流后这里将显示历史记录"
+  },
+  "workflow.confirmDelete": {
+    "en": "Are you sure you want to delete this history record?",
+    "zh": "确定要删除这条历史记录吗？"
+  },
+  "workflow.confirmClearAllHistory": {
+    "en": "Are you sure you want to clear all history? This cannot be undone.",
+    "zh": "确定要清除所有历史记录吗？此操作不可撤销。"
+  },
+  "workflow.unnamedWorkflow": {
+    "en": "Unnamed Workflow",
+    "zh": "未命名工作流"
+  },
+  "workflow.nodesSuccess": {
+    "en": "nodes succeeded",
+    "zh": "个节点成功"
+  },
+  "workflow.nodesFailed": {
+    "en": "failed",
+    "zh": "失败"
+  },
+  "workflow.loadWorkflow": {
+    "en": "Load Workflow",
+    "zh": "加载工作流"
+  },
+  "workflow.viewDetails": {
+    "en": "View Details",
+    "zh": "查看详情"
+  },
+  "workflow.detailsInConsole": {
+    "en": "Details logged to console (F12)",
+    "zh": "详情已输出到控制台（F12）"
+  },
+  "workflow.workflowTemplates.optimizeForWeb.name": {
+    "en": "Optimize for Web",
+    "zh": "网页优化"
+  },
+  "workflow.workflowTemplates.optimizeForWeb.description": {
+    "en": "Compress and linearize PDF for fast web viewing",
+    "zh": "压缩并线性化PDF以实现快速网页浏览"
+  },
+  "workflow.workflowTemplates.splitAndWatermark.name": {
+    "en": "Split & Watermark",
+    "zh": "拆分并添加水印"
+  },
+  "workflow.workflowTemplates.splitAndWatermark.description": {
+    "en": "Split PDF into pages and add watermark to each",
+    "zh": "将PDF拆分为单页并为每页添加水印"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "title": "View Metadata",
+  "metaDescription": "View PDF document properties. See author, title, dates, and other metadata.",
+  "keywords": [
+    "pdf metadata",
+    "document properties",
+    "pdf info",
+    "view pdf details"
+  ],
+  "description": "\n      <p>View Metadata displays all document properties and metadata from your PDF files. See author, title, subject, keywords, creation date, modification date, and more.</p>\n      <p>Useful for auditing documents, checking file information, or verifying document authenticity.</p>\n      <p>All viewing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "View Properties",
+      "description": "See all metadata displayed in an organized format."
+    },
+    {
+      "step": 3,
+      "title": "Export if Needed",
+      "description": "Optionally export metadata as JSON."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Document Audit",
+      "description": "Review document properties for compliance.",
+      "icon": "clipboard-check"
+    },
+    {
+      "title": "Verify Authenticity",
+      "description": "Check creation dates and author information.",
+      "icon": "shield"
+    },
+    {
+      "title": "File Information",
+      "description": "Get detailed information about PDF files.",
+      "icon": "info"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What metadata is shown?",
+      "answer": "Title, author, subject, keywords, creator, producer, dates, and PDF version."
+    },
+    {
+      "question": "Can I edit metadata here?",
+      "answer": "Use the Edit Metadata tool to modify document properties."
+    },
+    {
+      "question": "Is XMP metadata included?",
+      "answer": "Yes, both standard and XMP metadata are displayed."
+    }
+  ]
+}

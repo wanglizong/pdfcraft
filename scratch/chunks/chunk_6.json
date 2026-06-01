@@ -1,0 +1,242 @@
+{
+  "common.pageLabels.algorithmTitle": {
+    "en": "Precedence & Boundary Overlay Logic:",
+    "zh": "规则优先覆盖与不相交算法："
+  },
+  "common.pageLabels.algorithmDesc": {
+    "en": "The badges below display computed label layouts. The colored badge next to each page index represents the layout visible in reader search fields.",
+    "zh": "下方徽章代表 PDF 内部每一页最终算出的标签序列。物理页码旁的渐变色小徽章，即为其展现给用户的结构标签。"
+  },
+  "common.pageLabels.collapsedPages": {
+    "en": "{count} pages collapsed to optimize performance.",
+    "zh": "还有 {count} 页未显示，已自动折叠以提升交互性能。"
+  },
+  "common.pageLabels.loadFullPreview": {
+    "en": "Load complete {count} page preview",
+    "zh": "加载完整 {count} 页预览"
+  },
+  "common.pdfToCbz.errorMetadata": {
+    "en": "Failed to parse PDF comic metadata. File may be corrupted.",
+    "zh": "无法解析主 PDF 漫画的元数据。该文件可能已损坏。"
+  },
+  "common.pdfToCbz.errorUpload": {
+    "en": "Please upload a comic PDF first.",
+    "zh": "请上传待转换的漫画 PDF 文件。"
+  },
+  "common.pdfToCbz.progressExtracting": {
+    "en": "Extracting comic sheets...",
+    "zh": "正在提取漫画页面中..."
+  },
+  "common.pdfToCbz.errorExtracting": {
+    "en": "Failed to compile CBZ package.",
+    "zh": "编译漫画包 CBZ 失败。"
+  },
+  "common.pdfToCbz.errorUnknown": {
+    "en": "An unknown packing error occurred.",
+    "zh": "打包转换时发生未知错误。"
+  },
+  "common.pdfToCbz.uploadLabel": {
+    "en": "1. Upload Comic/Artwork (PDF)",
+    "zh": "1. 上传漫画/插画 (PDF)"
+  },
+  "common.pdfToCbz.uploadButton": {
+    "en": "Upload Comic PDF",
+    "zh": "点击上传漫画 PDF 文档"
+  },
+  "common.pdfToCbz.uploadDesc": {
+    "en": "Renders pages at maximum details while embedding standard OPF / XML comic databases.",
+    "zh": "渲染高清页面的同时，自动自动嵌入 OPF / XML / Comment 漫画专属多维度数据库信息。"
+  },
+  "common.pdfToCbz.previewTitle": {
+    "en": "3D Dynamic Comic Flip Cover Preview",
+    "zh": "3D 漫画体三维动态封面预览"
+  },
+  "common.pdfToCbz.comicTitleDefault": {
+    "en": "Comic Title",
+    "zh": "漫画标题"
+  },
+  "common.pdfToCbz.comicArtistDefault": {
+    "en": "Anonymous Artist",
+    "zh": "佚名作者"
+  },
+  "common.pdfToCbz.directionRtlHelp": {
+    "en": "Right to Left: Classic Manga scheme. Spines bind on the right side.",
+    "zh": "右翻页模式 (Right to Left)：经典日漫读向，书脊对齐右侧翻开。"
+  },
+  "common.pdfToCbz.directionLtrHelp": {
+    "en": "Left to Right: Standard novel and comic book scheme. Spines bind on the left side.",
+    "zh": "左翻页模式 (Left to Right)：标准小说/美漫读向，书脊对齐左侧翻开。"
+  },
+  "common.pdfToCbz.metadataTitle": {
+    "en": "2. Complete Book Metadata (ComicInfo.xml)",
+    "zh": "2. 完善书籍信息与元数据 (Metadata)"
+  },
+  "common.pdfToCbz.fieldTitle": {
+    "en": "Book Title (Title)",
+    "zh": "漫画标题 (Title)"
+  },
+  "common.pdfToCbz.fieldSeries": {
+    "en": "Series Title (Series)",
+    "zh": "所属系列/书名 (Series)"
+  },
+  "common.pdfToCbz.seriesPlaceholder": {
+    "en": "e.g. One Piece, Attack on Titan",
+    "zh": "如: 海贼王、进击的巨人"
+  },
+  "common.pdfToCbz.fieldIssue": {
+    "en": "Issue Number",
+    "zh": "单册期数/话号 (Issue Number)"
+  },
+  "common.pdfToCbz.fieldVolume": {
+    "en": "Volume Number",
+    "zh": "分卷号 (Volume)"
+  },
+  "common.pdfToCbz.fieldArtist": {
+    "en": "Writer / Artist",
+    "zh": "编剧与绘画作者 (Writer/Artist)"
+  },
+  "common.pdfToCbz.artistPlaceholder": {
+    "en": "e.g., Oda Eiichiro",
+    "zh": "如: 尾田荣一郎"
+  },
+  "common.pdfToCbz.fieldPublisher": {
+    "en": "Publisher",
+    "zh": "发行商/出版社 (Publisher)"
+  },
+  "common.pdfToCbz.publisherPlaceholder": {
+    "en": "e.g., Shueisha",
+    "zh": "如: 集英社"
+  },
+  "common.pdfToCbz.fieldGenre": {
+    "en": "Genre Tags",
+    "zh": "题材题材题材 (Genre)"
+  },
+  "common.pdfToCbz.genrePlaceholder": {
+    "en": "e.g., Action / Shonen / Adventure",
+    "zh": "如: 热血 / 少年 / 动作"
+  },
+  "common.pdfToCbz.readingOrderLabel": {
+    "en": "Comic Reading Flow Direction",
+    "zh": "漫画书籍阅读顺序"
+  },
+  "common.pdfToCbz.readingOrderLtr": {
+    "en": "Left to Right (LTR - Standard)",
+    "zh": "从左至右 (LTR - 普通电子书)"
+  },
+  "common.pdfToCbz.readingOrderRtl": {
+    "en": "Right to Left (RTL - Manga Scheme)",
+    "zh": "从右至左 (RTL - 日漫读向)"
+  },
+  "common.pdfToCbz.deviceOptimizeTitle": {
+    "en": "3. Image Compression & Device Tuning",
+    "zh": "3. 图像画质与设备调谐"
+  },
+  "common.pdfToCbz.qualityLabel": {
+    "en": "Image Compression Quality (JPEG/WebP)",
+    "zh": "图像压缩画质 (JPEG/WebP Quality)"
+  },
+  "common.pdfToCbz.scaleLabel": {
+    "en": "Resolution Scale Factor",
+    "zh": "分辨率比例 (Scale Multiplier)"
+  },
+  "common.pdfToCbz.formatLabel": {
+    "en": "Compressed Output Format",
+    "zh": "压缩保存图像格式"
+  },
+  "common.pdfToCbz.einkGreyscale": {
+    "en": "e-Ink Optimization",
+    "zh": "墨水屏灰阶处理"
+  },
+  "common.pdfToCbz.einkGreyscaleDesc": {
+    "en": "Desaturates pages to fast 16-level grayscale for e-paper refresh boosts.",
+    "zh": "脱色加速墨水屏刷新率与画质对比度"
+  },
+  "common.pdfToCbz.processButton": {
+    "en": "Compile CBZ Comic Package",
+    "zh": "开始提取编译 CBZ 漫画包"
+  },
+  "common.pdfToCbz.successMessage": {
+    "en": "🎉 Comic CBZ compiled successfully! metadata.opf and ComicInfo.xml injected. Download ready.",
+    "zh": "🎉 漫画 CBZ 打包成功！内置 metadata.opf 与 ComicInfo.xml 元数据。请一键下载。"
+  },
+  "common.pdfToSlide.themeLabel": {
+    "en": "PPT Background Theme Scheme",
+    "zh": "PPT 主题基色"
+  },
+  "common.pdfToSlide.progressReconstructing": {
+    "en": "Analyzing semantic layers and reconstructing PPTX slides...",
+    "zh": "正在解构页面层次并重建幻灯片大纲..."
+  },
+  "common.pdfToSlide.prevPage": {
+    "en": "Previous Outline",
+    "zh": "上一页"
+  },
+  "common.pdfToSlide.nextPage": {
+    "en": "Next Outline",
+    "zh": "下一页"
+  },
+  "common.pdfToSlide.outlinePreviewTitle": {
+    "en": "Slide Cards & Diagram Outlines Preview",
+    "zh": "大纲与图表将在这里渲染为卡片大纲预览"
+  },
+  "common.pdfToSlide.outlinePreviewDesc": {
+    "en": "Select a color theme and click generate to begin reconstructing slides.",
+    "zh": "选择您的主题色并点击生成开始大纲幻灯片重建"
+  },
+  "common.pdfToTiff.errorMetadata": {
+    "en": "Failed to parse PDF metadata. File may be corrupted.",
+    "zh": "无法解析主 PDF 元数据，该文件可能已损坏。"
+  },
+  "common.pdfToTiff.errorUpload": {
+    "en": "Please upload a target PDF first.",
+    "zh": "请上传待转换为 TIFF 的 PDF 文件。"
+  },
+  "common.pdfToTiff.progressExtracting": {
+    "en": "Serializing pages to multi-page TIFF streams...",
+    "zh": "正在将页面序列化为单文件多页 TIFF..."
+  },
+  "common.pdfToTiff.errorExtracting": {
+    "en": "Failed to compile multi-page TIFF.",
+    "zh": "编译多页 TIFF 文件失败。"
+  },
+  "common.pdfToTiff.errorUnknown": {
+    "en": "An unknown serialization error occurred.",
+    "zh": "序列化打包时发生未知错误。"
+  },
+  "common.pdfToTiff.uploadLabel": {
+    "en": "1. Upload Document (PDF)",
+    "zh": "1. 上传文档 (PDF)"
+  },
+  "common.pdfToTiff.uploadDesc": {
+    "en": "Physical binary IFD compositor, stitching multiple high-fidelity pages directly into a single multi-page TIFF.",
+    "zh": "手写手写手写手写手写手写二进制 IFD 拼接编译器，直接合并生成单个包含多页面（Multi-page）的合法高保真 TIFF。"
+  },
+  "common.pdfToTiff.previewTitle": {
+    "en": "3D Spectral Pixels Density Preview",
+    "zh": "3D 晶格像素密度与光谱实时预览"
+  },
+  "common.pdfToTiff.descColor": {
+    "en": "24-bit RGB Color: 3 bytes per pixel. Preserves high-fidelity full color spectrum.",
+    "zh": "24-bit 印刷全彩 (RGB)：每像素占用 3 字节，完美还原丰富的光谱色彩。"
+  },
+  "common.pdfToTiff.descGrayscale": {
+    "en": "8-bit Grayscale: Converts colors to balanced luminances, ideal for scanning black-and-white archives.",
+    "zh": "8-bit 专业灰度：使用经典光敏系数脱色，层次分明，适合黑白文卷存档。"
+  },
+  "common.pdfToTiff.descMono": {
+    "en": "1-bit Monochromatic: Half-tone 127 binarization threshold, extreme contrast, shrinks file sizes by 24x.",
+    "zh": "1-bit 纯黑白二值：基于半色调 127 阀值二值化，极具对比度，体积缩减至 1/24。"
+  },
+  "common.pdfToTiff.optionsTitle": {
+    "en": "2. Multi-Page TIFF Output Parameters",
+    "zh": "2. 印刷级多页 TIFF 输出配置"
+  },
+  "common.pdfToTiff.colorModeLabel": {
+    "en": "A. Color Extraction Mode (Color Mode)",
+    "zh": "A. 色彩表达模式 (Color Mode)"
+  },
+  "common.pdfToTiff.colorModeFull": {
+    "en": "RGB Full Color (24-bit)",
+    "zh": "全彩 (RGB 24-bit)"
+  }
+}

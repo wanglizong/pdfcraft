@@ -12,6 +12,21 @@ vi.mock('next/link', () => ({
     React.createElement('a', { href, ...props }, children),
 }));
 
+// Mock next/navigation
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({
+    push: vi.fn(),
+    replace: vi.fn(),
+  }),
+  usePathname: () => '/en/tools',
+}));
+
+// Mock next-intl to avoid NextIntlClientProvider requirement
+vi.mock('next-intl', () => ({
+  useTranslations: () => (key: string) => key,
+  useLocale: () => 'en',
+}));
+
 describe('Tool Component Property Tests', () => {
   /**
    * **Feature: nextjs-pdf-toolkit, Property 3: Tool Card Rendering**

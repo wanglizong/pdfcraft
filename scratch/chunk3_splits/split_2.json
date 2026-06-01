@@ -1,0 +1,322 @@
+{
+  "tools.formFiller.saveButton": {
+    "en": "Save Form",
+    "zh": "保存表单"
+  },
+  "tools.formFiller.successMessage": {
+    "en": "Form saved successfully!",
+    "zh": "表单保存成功！"
+  },
+  "tools.removeBlankPages.optionsTitle": {
+    "en": "Detection Options",
+    "zh": "检测选项"
+  },
+  "tools.removeBlankPages.successMessage": {
+    "en": "Blank pages removed successfully!",
+    "zh": "空白页移除成功！"
+  },
+  "tools.removeBlankPages.analyzingPages": {
+    "en": "Reading pages and computing information entropy...",
+    "zh": "正在读取页面并计算信息熵..."
+  },
+  "tools.removeBlankPages.sensitivity": {
+    "en": "Sensitivity Threshold (0-100)",
+    "zh": "灵敏度阈值 (0-100)"
+  },
+  "tools.removeBlankPages.sensitivityHint": {
+    "en": "Higher sensitivity is more lenient, making pages with slight scanning noise/watermarks easily marked as blank. Recommended blank pages are greyed out with a red diagonal bar. Click cards directly to override: force keep or force delete.",
+    "zh": "值越高判定条件越宽松，即使带有少许墨迹或噪点的页面也会被当成空白页删除。系统推荐删除的页面会显示为置灰和红圈禁止符。你可以直接点击卡片来强行保留或删除某页。"
+  },
+  "tools.removeBlankPages.autoBlank": {
+    "en": "Detected Blank",
+    "zh": "检测为空白"
+  },
+  "tools.removeBlankPages.manualKeep": {
+    "en": "Forced Keep",
+    "zh": "已强制保留"
+  },
+  "tools.removeBlankPages.manualRemove": {
+    "en": "Forced Delete",
+    "zh": "已标记删除"
+  },
+  "tools.removeBlankPages.entropy": {
+    "en": "Entropy",
+    "zh": "信息熵"
+  },
+  "tools.removeBlankPages.noBlankPages": {
+    "en": "No blank pages found.",
+    "zh": "未发现空白页。"
+  },
+  "tools.tableOfContents.optionsTitle": {
+    "en": "TOC Options",
+    "zh": "目录选项"
+  },
+  "tools.tableOfContents.generateButton": {
+    "en": "Generate TOC",
+    "zh": "生成目录"
+  },
+  "tools.tableOfContents.successMessage": {
+    "en": "Table of contents generated successfully!",
+    "zh": "目录生成成功！"
+  },
+  "tools.tableOfContents.options": {
+    "en": "TOC Options",
+    "zh": "目录选项"
+  },
+  "tools.tableOfContents.tocTitle": {
+    "en": "TOC Title",
+    "zh": "目录标题"
+  },
+  "tools.tableOfContents.fontFamily": {
+    "en": "Font Family",
+    "zh": "字体"
+  },
+  "tools.tableOfContents.addBookmark": {
+    "en": "Add TOC entry to bookmarks",
+    "zh": "将目录添加到书签"
+  },
+  "tools.tableOfContents.bookmarkRequired": {
+    "en": "This tool generates a clickable table of contents from existing PDF bookmarks. Please ensure your PDF has bookmarks before using this tool. You can add bookmarks using the Edit Bookmarks tool.",
+    "zh": "此工具从现有PDF书签生成可点击的目录。请确保您的PDF已有书签。您可以使用「编辑书签」工具添加书签。"
+  },
+  "tools.tableOfContents.generate": {
+    "en": "Generate Table of Contents",
+    "zh": "生成目录"
+  },
+  "tools.tableOfContents.success": {
+    "en": "Table of contents generated successfully!",
+    "zh": "目录生成成功！"
+  },
+  "tools.pdfToDocx.preserveFormatting": {
+    "en": "Preserve formatting",
+    "zh": "Preserve formatting"
+  },
+  "tools.pdfToDocx.extractImages": {
+    "en": "Extract images",
+    "zh": "Extract images"
+  },
+  "tools.pdfToExcel.detectTables": {
+    "en": "Auto-detect tables",
+    "zh": "Auto-detect tables"
+  },
+  "tools.pdfBooklet.bindingEdge": {
+    "en": "Binding Edge",
+    "zh": "Binding Edge"
+  },
+  "tools.emailToPdf.embedAttachments": {
+    "en": "Embed attachments in PDF",
+    "zh": "Embed attachments in PDF"
+  },
+  "tools.fontToOutline.preserveSelectableText": {
+    "en": "Preserve selectable text",
+    "zh": "Preserve selectable text"
+  },
+  "tools.bookletFoldingSimulator.uploadDescription": {
+    "en": "Drag and drop a PDF file here for 3D folding simulation.",
+    "zh": "拖放PDF文件到此处进行3D折页模拟。"
+  },
+  "tools.bookletFoldingSimulator.optionsTitle": {
+    "en": "Imposition & Folding Options",
+    "zh": "拼版折页选项"
+  },
+  "tools.bookletFoldingSimulator.processButton": {
+    "en": "Apply Imposition",
+    "zh": "应用拼大版"
+  },
+  "tools.bookletFoldingSimulator.successMessage": {
+    "en": "Imposed folding PDF generated successfully!",
+    "zh": "拼大版折页PDF生成成功！"
+  },
+  "tools.bookletFoldingSimulator.foldingMode": {
+    "en": "Folding Scheme",
+    "zh": "折页方案"
+  },
+  "tools.bookletFoldingSimulator.simulate3D": {
+    "en": "3D Folding Simulation",
+    "zh": "3D折叠模拟"
+  },
+  "tools.bookletFoldingSimulator.sheetProgress": {
+    "en": "Sheet {current} of {total}",
+    "zh": "第 {current} / {total} 印张"
+  },
+  "tools.pdfToSlide.uploadLabel": {
+    "en": "Upload Academic/Business PDF",
+    "zh": "上传学术/商业PDF"
+  },
+  "tools.pdfToSlide.uploadDescription": {
+    "en": "Drag and drop a PDF here to extract outline and charts for slide reconstruction.",
+    "zh": "拖放PDF文件到此处，提取大纲与图表重建幻灯片。"
+  },
+  "tools.pdfToSlide.optionsTitle": {
+    "en": "Slide Reconstruction Options",
+    "zh": "Slide重建选项"
+  },
+  "tools.pdfToSlide.processButton": {
+    "en": "Reconstruct Slides (PPTX)",
+    "zh": "重建幻灯片 (PPTX)"
+  },
+  "tools.pdfToSlide.successMessage": {
+    "en": "Slide reconstruction successful! Click to download PPTX file.",
+    "zh": "幻灯片重建成功！点击下载PPTX文件。"
+  },
+  "tools.pdfToSlide.outlineExtracting": {
+    "en": "Analyzing document structure and extracting outlines...",
+    "zh": "正在分析文档层级并提炼大纲..."
+  },
+  "tools.pdfToSlide.chartExtracting": {
+    "en": "Scanning and isolating vector charts and tables as images...",
+    "zh": "正在扫描分割矢量图表与表格并保存为独立图像..."
+  },
+  "tools.einkOptimizer.uploadLabel": {
+    "en": "Upload Scanned PDF",
+    "zh": "上传扫描版PDF"
+  },
+  "tools.einkOptimizer.uploadDescription": {
+    "en": "Drag and drop your PDF e-book here to optimize for e-Ink paper contrast.",
+    "zh": "拖放PDF电子书到此处，进行墨水屏护眼黑白对比优化。"
+  },
+  "tools.einkOptimizer.optionsTitle": {
+    "en": "e-Ink Contrast Optimizer",
+    "zh": "墨水屏调色优化选项"
+  },
+  "tools.einkOptimizer.processButton": {
+    "en": "Optimize & Bold Text",
+    "zh": "优化并漂白字迹"
+  },
+  "tools.einkOptimizer.successMessage": {
+    "en": "e-Ink PDF optimization complete! File size successfully shrunk.",
+    "zh": "护眼墨水屏PDF优化完成！文件已成功瘦身。"
+  },
+  "tools.einkOptimizer.binarizationThreshold": {
+    "en": "Otsu Binarization Threshold",
+    "zh": "大津二值化阀值"
+  },
+  "tools.einkOptimizer.dilationAmount": {
+    "en": "Character Bolding (Dilation) Radius",
+    "zh": "字迹膨胀加粗程度"
+  },
+  "tools.certCryptor.uploadLabel": {
+    "en": "Upload PDF to Secure",
+    "zh": "上传待保护PDF"
+  },
+  "tools.certCryptor.uploadDescription": {
+    "en": "Drag and drop your PDF here to apply a 3D wax seal and certificate lock.",
+    "zh": "拖放PDF文件到此处以放置3D火漆印章及证书锁。"
+  },
+  "tools.certCryptor.optionsTitle": {
+    "en": "Wax Seal & Certificate Security",
+    "zh": "物理签名与证书加密选项"
+  },
+  "tools.certCryptor.processButton": {
+    "en": "Execute Wax Seal Signature",
+    "zh": "执行黄金蜡封签名"
+  },
+  "tools.certCryptor.successMessage": {
+    "en": "3D wax-seal imprint and certificate-based encryption applied successfully!",
+    "zh": "3D火漆签名与双钥证书加密已成功执行！"
+  },
+  "tools.certCryptor.waxColor": {
+    "en": "Wax Seal Style",
+    "zh": "火漆蜡色"
+  },
+  "tools.certCryptor.signCoordinates": {
+    "en": "Signature Placement",
+    "zh": "盖印坐标"
+  },
+  "tools.passportIdComposer.uploadLabel": {
+    "en": "Upload ID Images",
+    "zh": "上传证件照片"
+  },
+  "tools.passportIdComposer.uploadDescription": {
+    "en": "Drag & drop both front and back sides of passport/ID cards to compose A4 copy.",
+    "zh": "拖放身份证/护照正面与反面到此处进行拼大版。"
+  },
+  "tools.passportIdComposer.optionsTitle": {
+    "en": "ID Imposition Options",
+    "zh": "证件拼版选项"
+  },
+  "tools.passportIdComposer.processButton": {
+    "en": "Compose A4 Layout",
+    "zh": "一键合成国标拼大版"
+  },
+  "tools.passportIdComposer.successMessage": {
+    "en": "Passport/ID composed successfully!",
+    "zh": "国标证件双面拼版成功！"
+  },
+  "tools.annotationExporter.uploadLabel": {
+    "en": "Upload Annotated PDF",
+    "zh": "上传已批注的PDF"
+  },
+  "tools.annotationExporter.uploadDescription": {
+    "en": "Drag & drop PDF here to extract highlights, comments, and outline notebook.",
+    "zh": "拖放PDF文件到此处以提取所有高亮及笔记大纲。"
+  },
+  "tools.annotationExporter.optionsTitle": {
+    "en": "Annotation Extraction Options",
+    "zh": "批注提取选项"
+  },
+  "tools.annotationExporter.processButton": {
+    "en": "Extract Notebook",
+    "zh": "提炼大纲笔记"
+  },
+  "tools.annotationExporter.successMessage": {
+    "en": "PDF annotations extracted successfully!",
+    "zh": "PDF批注提炼成功！"
+  },
+  "tools.batchWatermarkRemover.uploadLabel": {
+    "en": "Upload Watermarked PDF",
+    "zh": "上传有水印的PDF"
+  },
+  "tools.batchWatermarkRemover.uploadDescription": {
+    "en": "Drag & drop PDF here to physically purge background watermarks.",
+    "zh": "拖放PDF文件到此处以一键物理清除水印。"
+  },
+  "tools.batchWatermarkRemover.optionsTitle": {
+    "en": "Watermark Removal Options",
+    "zh": "水印批量擦除选项"
+  },
+  "tools.batchWatermarkRemover.processButton": {
+    "en": "Purge Watermarks",
+    "zh": "一键物理擦除水印"
+  },
+  "tools.batchWatermarkRemover.successMessage": {
+    "en": "Watermarks physically purged successfully!",
+    "zh": "水印物理擦除净化完成！"
+  },
+  "tools.smartDataRedactor.uploadLabel": {
+    "en": "Upload PDF to Redact",
+    "zh": "上传待脱敏PDF"
+  },
+  "tools.smartDataRedactor.uploadDescription": {
+    "en": "Drag & drop PDF here to automatically scan & redact privacy data.",
+    "zh": "拖放PDF文件到此处进行隐私脱敏。"
+  },
+  "tools.smartDataRedactor.optionsTitle": {
+    "en": "Smart Redaction Rules",
+    "zh": "智能脱敏规则"
+  },
+  "tools.smartDataRedactor.processButton": {
+    "en": "Redact Sensitive Data",
+    "zh": "自动扫描并脱敏敏感词"
+  },
+  "tools.smartDataRedactor.successMessage": {
+    "en": "PDF privacy data redacted successfully!",
+    "zh": "PDF隐私数据脱敏成功！"
+  },
+  "tools.bookmarksAutoGenerator.uploadDescription": {
+    "en": "Drag & drop PDF here to auto generate bookmarks from structure.",
+    "zh": "拖放PDF文件到此处推导自动生成书签大纲。"
+  },
+  "tools.bookmarksAutoGenerator.optionsTitle": {
+    "en": "Bookmarks Generation Options",
+    "zh": "书签自动推导规则"
+  },
+  "tools.bookmarksAutoGenerator.processButton": {
+    "en": "Deduce & Inject Bookmarks",
+    "zh": "一键推导并注入大纲书签"
+  },
+  "tools.bookmarksAutoGenerator.successMessage": {
+    "en": "Bookmarks successfully injected into PDF Outline structure!",
+    "zh": "PDF多级书签物理注入成功！"
+  }
+}

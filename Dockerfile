@@ -24,6 +24,9 @@ COPY . .
 
 # Build the static export
 # Use BuildKit cache mount for Next.js cache to speed up rebuilds
+ARG BASE_PATH=""
+ENV BASE_PATH=$BASE_PATH
+ENV DOCKER_BUILD=true
 RUN --mount=type=cache,target=/root/.npm \
     --mount=type=cache,target=/app/.next/cache \
     npm run build
@@ -46,16 +49,6 @@ COPY security-headers.conf /etc/nginx/security-headers.conf
 
 # Copy the static export from builder stage
 COPY --from=builder /app/out /website/pdfcraft
-
-# Decompress LibreOffice WASM .gz files so both original and .gz exist.
-# gzip_static requires the original file to exist; without it, Nginx returns 404.
-# The .gz files are kept alongside for gzip_static to serve to gzip-capable clients.
-RUN if [ -d /website/pdfcraft/libreoffice-wasm ]; then \
-    cd /website/pdfcraft/libreoffice-wasm && \
-    for f in *.gz; do \
-    [ -f "$f" ] && gunzip -k "$f" || true; \
-    done; \
-    fi
 
 # Expose port 80
 EXPOSE 80

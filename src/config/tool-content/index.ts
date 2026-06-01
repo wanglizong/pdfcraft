@@ -10,6 +10,7 @@ export { toolContentEs } from './es';
 export { toolContentFr } from './fr';
 export { toolContentDe } from './de';
 export { toolContentZh } from './zh';
+export { toolContentZhTW } from './zh-TW';
 export { toolContentPt } from './pt';
 export { toolContentAr } from './ar';
 export { toolContentIt } from './it';
@@ -23,6 +24,7 @@ import { toolContentEs } from './es';
 import { toolContentFr } from './fr';
 import { toolContentDe } from './de';
 import { toolContentZh } from './zh';
+import { toolContentZhTW } from './zh-TW';
 import { toolContentPt } from './pt';
 import { toolContentAr } from './ar';
 import { toolContentIt } from './it';
@@ -30,7 +32,7 @@ import { toolContentId } from './id';
 import { toolContentVn } from './vi';
 import { ToolContent } from '@/types/tool';
 
-export type Locale = 'en' | 'ja' | 'ko' | 'es' | 'fr' | 'de' | 'zh' | 'zh-TW' | 'pt' | 'ar' | 'it' | 'id' | 'vi';
+export type Locale = 'en' | 'ja' | 'ko' | 'es' | 'fr' | 'de' | 'zh' | 'zh-TW' | 'pt' | 'ar' | 'it' | 'id' | 'vi' | 'ro';
 
 /**
  * Get tool content for a specific locale
@@ -47,18 +49,16 @@ export function getToolContent(locale: Locale, toolId: string): ToolContent | un
     fr: toolContentFr,
     de: toolContentDe,
     zh: toolContentZh,
+    'zh-TW': toolContentZhTW,
     pt: toolContentPt,
     ar: toolContentAr,
     it: toolContentIt,
     id: toolContentId,
     vi: toolContentVn,
+    ro: toolContentEn, // Fallback to English for Romanian tool content for now
   };
 
-  // Map zh-TW to zh (use Simplified Chinese content for Traditional Chinese)
-  const effectiveLocale: Exclude<Locale, 'zh-TW'> =
-    locale === 'zh-TW' ? 'zh' : locale;
-
-  const localeContent = contentMap[effectiveLocale];
+  const localeContent = contentMap[locale];
   if (localeContent && localeContent[toolId]) {
     return localeContent[toolId];
   }

@@ -14,6 +14,8 @@ import {
     validateConnection,
     validateWorkflow,
     calculateProgress,
+    distributeFilesToInputNodes,
+    fileMatchesAcceptedFormats,
 } from '@/lib/workflow/engine';
 import type { WorkflowNode, WorkflowEdge } from '@/types/workflow';
 
@@ -296,6 +298,65 @@ describe('Workflow Engine', () => {
             ];
             const progress = calculateProgress(mixedNodes);
             expect(progress).toBe(Math.round((100 + 50 + 0) / 3));
+        });
+    });
+
+    describe('fileMatchesAcceptedFormats', () => {
+        it('matches extensions with or without leading dot', () => {
+            expect(fileMatchesAcceptedFormats('photo.PNG', ['.png'])).toBe(true);
+            expect(fileMatchesAcceptedFormats('photo.jpg', ['.jpeg'])).toBe(false);
+            expect(fileMatchesAcceptedFormats('photo.jpeg', ['.jpg', '.jpeg'])).toBe(true);
+        });
+    });
+
+    describe('distributeFilesToInputNodes', () => {
+        const pngNode: WorkflowNode = {
+            id: 'png',
+            type: 'toolNode',
+            position: { x: 0, y: 0 },
+            data: {
+                toolId: 'png-to-pdf',
+                label: 'PNG to PDF',
+                icon: 'image-up',
+                category: 'convert-to-pdf',
+                acceptedFormats: ['.png'],
+                outputFormat: 'pdf',
+                status: 'idle',
+                progress: 0,
+            },
+        };
+
+        const jpgNode: WorkflowNode = {
+            id: 'jpg',
+            type: 'toolNode',
+            position: { x: 200, y: 0 },
+            data: {
+                toolId: 'jpg-to-pdf',
+                label: 'JPG to PDF',
+                icon: 'image-up',
+                category: 'convert-to-pdf',
+                acceptedFormats: ['.jpg', '.jpeg'],
+                outputFormat: 'pdf',
+                status: 'idle',
+                progress: 0,
+            },
+        };
+
+        it('routes each file to the matching input node only', () => {
+            const png = new File([new Blob(['p'])], 'a.png', { type: 'image/png' });
+            const jpg = new File([new Blob(['j'])], 'b.jpg', { type: 'image/jpeg' });
+            const map = distributeFilesToInputNodes([png, jpg], [pngNode, jpgNode]);
+
+            expect(map.get('png')).toEqual([png]);
+            expect(map.get('jpg')).toEqual([jpg]);
+        });
+
+        it('gives all files to a single input node', () => {
+            const png = new File([new Blob(['p'])], 'a.png', { type: 'image/png' });
+            const jpg = new File([new Blob(['j'])], 'b.jpg', { type: 'image/jpeg' });
+            const map = distributeFilesToInputNodes([png, jpg], [pngNode]);
+
+            expect(map.get('png')).toEqual([png, jpg]);
         });
     });
 });

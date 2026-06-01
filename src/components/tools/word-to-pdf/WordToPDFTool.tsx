@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { BatchProcessingPanel } from '@/components/common/BatchProcessingPanel';
 import { wordToPDF } from '@/lib/pdf/processors/word-to-pdf';
+import { isCrossOriginIsolated } from '@/lib/utils/cross-origin-isolated';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
 /**
@@ -47,11 +48,21 @@ export function WordToPDFTool({ className = '' }: WordToPDFToolProps) {
     // Ref for cancellation
     const cancelledRef = useRef(false);
 
-    // Preload LibreOffice WASM when the component mounts
+    // Preload conversion engine when the component mounts
     useEffect(() => {
         let cancelled = false;
         (async () => {
             try {
+                if (!isCrossOriginIsolated()) {
+                    if (cancelled) return;
+                    setPreloadStatus('complete');
+                    setPreloadProgress(100);
+                    setPreloadMessage(
+                        'Compatibility mode: .docx converts without server isolation headers. .doc/.odt/.rtf need COOP/COEP on your host.'
+                    );
+                    return;
+                }
+
                 const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
                 if (cancelled) return;
                 const converter = getLibreOfficeConverter();

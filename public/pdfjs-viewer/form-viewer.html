@@ -167,10 +167,10 @@
   </div>
 
   <script type="module">
-    import * as pdfjsLib from './pdf.mjs';
-    import { EventBus, PDFViewer, PDFLinkService, PDFScriptingManager } from './pdf_viewer.mjs';
+    import * as pdfjsLib from './pdf.js';
+    import { EventBus, PDFViewer, PDFLinkService, PDFScriptingManager } from './pdf_viewer.js';
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.mjs';
+    pdfjsLib.GlobalWorkerOptions.workerSrc = './pdf.worker.js';
 
     const eventBus = new EventBus();
     const linkService = new PDFLinkService({ eventBus });
@@ -179,7 +179,7 @@
     const scriptingManager = new PDFScriptingManager({
       eventBus,
       // Use the packaged sandbox for PDF.js JavaScript (required for XFA)
-      sandboxBundleSrc: './pdf.sandbox.mjs',
+      sandboxBundleSrc: './pdf.sandbox.js',
       docProperties: async (pdfDocument) => {
         // Minimal doc properties are fine; XFA scripts mostly need field objects
         return {

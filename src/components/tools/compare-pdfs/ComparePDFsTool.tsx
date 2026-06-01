@@ -1,435 +1,377 @@
 'use client';
 
-import React, { useState, useCallback, useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useState, useCallback, useRef, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
-
-// Use useLayoutEffect on client, useEffect on server (for SSR compatibility)
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+import { 
+  FileText, 
+  HelpCircle, 
+  Check, 
+  AlertCircle, 
+  ChevronLeft, 
+  ChevronRight, 
+  Shuffle, 
+  Eye, 
+  Settings, 
+  Filter, 
+  Download, 
+  Minimize, 
+  Maximize2 
+} from 'lucide-react';
 
 export interface ComparePDFsToolProps {
-  /** Custom class name */
   className?: string;
 }
 
+interface TextWordInfo {
+  text: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  fontName: string;
+  itemIdx: number;
+}
+
+interface PageTextContent {
+  rawText: string;
+  words: TextWordInfo[];
+  originalItems: any[];
+}
+
 interface PDFFile {
-  id: string;
   file: File;
   pageCount: number;
-  pages: ImageData[];
+  pageTextContents: PageTextContent[];
+  // Image buffers for rendering canvases
+  pagesImages: string[]; // DataURLs of rendered pages
+  pageDimensions: Array<{ width: number; height: number; scale: number }>;
 }
 
-interface DifferenceResult {
-  pageIndex: number;
+interface DiffHighlight {
+  type: 'added' | 'deleted' | 'modified' | 'moved';
+  text: string;
+  // Bounding rect relative to the viewport/canvas
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  category: 'text' | 'header-footer' | 'formatting';
+  movedToPageIndex?: number;
+  movedToCoords?: { x: number; y: number };
+}
+
+interface PageComparisonResult {
+  pageIndex1: number; // 0-based index of original file, -1 if inserted page
+  pageIndex2: number; // 0-based index of modified file, -1 if deleted page
   hasDifference: boolean;
-  differencePercentage: number;
-  diffImageUrl?: string;
+  highlights1: DiffHighlight[]; // deleted / modified / moved source
+  highlights2: DiffHighlight[]; // added / modified / moved dest
+  diffPercentage: number;
 }
 
-/**
- * Generate a unique ID for files
- */
-function generateId(): string {
-  return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
-}
-
-/**
- * ComparePDFsTool Component
- * Requirements: 5.1
- * 
- * Provides side-by-side PDF comparison with difference highlighting.
- */
 export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
 
-  // State
+  // Files state
   const [file1, setFile1] = useState<PDFFile | null>(null);
   const [file2, setFile2] = useState<PDFFile | null>(null);
+
+  // Configuration options (Categories)
+  const [filterPills, setFilterPills] = useState({
+    text: true,
+    formatting: true,
+    headerFooter: false, // Default ignore header/footer for clean diff
+    moved: true
+  });
+
+  // Processing & result states
   const [status, setStatus] = useState<ProcessingStatus>('idle');
   const [progress, setProgress] = useState(0);
   const [progressMessage, setProgressMessage] = useState('');
   const [error, setError] = useState<string | null>(null);
-  const [differences, setDifferences] = useState<DifferenceResult[]>([]);
-  const [currentPage, setCurrentPage] = useState(0);
-  const [viewMode, setViewMode] = useState<'side-by-side' | 'overlay' | 'diff'>('side-by-side');
-  const [overlayOpacity, setOverlayOpacity] = useState(50);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-  
-  // Canvas refs for rendering
-  const canvas1Ref = useRef<HTMLCanvasElement>(null);
-  const canvas2Ref = useRef<HTMLCanvasElement>(null);
-  const diffCanvasRef = useRef<HTMLCanvasElement>(null);
-  
-  // Scroll container refs for synchronized scrolling
-  const scrollContainer1Ref = useRef<HTMLDivElement>(null);
-  const scrollContainer2Ref = useRef<HTMLDivElement>(null);
-  const isScrollingSyncRef = useRef(false);
-  
-  // Ref for fullscreen container
-  const comparisonContainerRef = useRef<HTMLDivElement>(null);
-  
-  // Ref for cancellation
-  const cancelledRef = useRef(false);
 
-  /**
-   * Load PDF and render pages to images
-   */
-  const loadPDF = useCallback(async (file: File, slot: 1 | 2): Promise<PDFFile | null> => {
-    try {
-      const pdfjsLib = await import('pdfjs-dist');
-      configurePdfjsWorker(pdfjsLib);
-      
-      const arrayBuffer = await file.arrayBuffer();
-      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-      
-      const pages: ImageData[] = [];
-      const scale = 1.5; // Render at 1.5x for better comparison
-      
-      for (let i = 1; i <= pdf.numPages; i++) {
-        if (cancelledRef.current) return null;
-        
-        const page = await pdf.getPage(i);
-        const viewport = page.getViewport({ scale });
-        
-        const canvas = document.createElement('canvas');
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        const ctx = canvas.getContext('2d')!;
-        
-        await page.render({ canvasContext: ctx, viewport }).promise;
-        
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        pages.push(imageData);
-        
-        setProgress(Math.round((i / pdf.numPages) * 50 * (slot === 1 ? 1 : 0.5) + (slot === 2 ? 25 : 0)));
-      }
-      
-      return {
-        id: generateId(),
-        file,
-        pageCount: pdf.numPages,
-        pages,
-      };
-    } catch (err) {
-      console.error('Failed to load PDF:', err);
-      throw err;
-    }
-  }, []);
-
-  /**
-   * Compare two images and generate difference data
-   */
-  const compareImages = useCallback((img1: ImageData, img2: ImageData): DifferenceResult & { diffImageData: ImageData } => {
-    // Use the smaller dimensions to avoid counting size differences as content differences
-    const width = Math.min(img1.width, img2.width);
-    const height = Math.min(img1.height, img2.height);
-    
-    // For diff image, use the larger dimensions
-    const maxWidth = Math.max(img1.width, img2.width);
-    const maxHeight = Math.max(img1.height, img2.height);
-    
-    const diffCanvas = document.createElement('canvas');
-    diffCanvas.width = maxWidth;
-    diffCanvas.height = maxHeight;
-    const diffCtx = diffCanvas.getContext('2d')!;
-    const diffImageData = diffCtx.createImageData(maxWidth, maxHeight);
-    
-    let differentPixels = 0;
-    const totalPixels = width * height; // Only count overlapping area
-    
-    // Compare overlapping region
-    for (let y = 0; y < height; y++) {
-      for (let x = 0; x < width; x++) {
-        const idx = (y * maxWidth + x) * 4;
-        const idx1 = (y * img1.width + x) * 4;
-        const idx2 = (y * img2.width + x) * 4;
-        
-        const r1 = img1.data[idx1];
-        const g1 = img1.data[idx1 + 1];
-        const b1 = img1.data[idx1 + 2];
-        
-        const r2 = img2.data[idx2];
-        const g2 = img2.data[idx2 + 1];
-        const b2 = img2.data[idx2 + 2];
-        
-        // Calculate color difference using a perceptual approach
-        // Weight RGB channels differently based on human perception
-        const rDiff = Math.abs(r1 - r2);
-        const gDiff = Math.abs(g1 - g2);
-        const bDiff = Math.abs(b1 - b2);
-        
-        // Use weighted difference (green is more perceptible to human eye)
-        const weightedDiff = rDiff * 0.3 + gDiff * 0.59 + bDiff * 0.11;
-        
-        // Higher threshold to ignore minor rendering differences (anti-aliasing, compression artifacts)
-        const threshold = 15;
-        
-        if (weightedDiff > threshold) {
-          differentPixels++;
-          // Highlight difference in red with intensity based on difference magnitude
-          const intensity = Math.min(255, Math.round(weightedDiff * 2));
-          diffImageData.data[idx] = 255;
-          diffImageData.data[idx + 1] = 0;
-          diffImageData.data[idx + 2] = 0;
-          diffImageData.data[idx + 3] = Math.max(150, intensity);
-        } else {
-          // Show original content faded
-          diffImageData.data[idx] = Math.round((r1 + r2) / 2);
-          diffImageData.data[idx + 1] = Math.round((g1 + g2) / 2);
-          diffImageData.data[idx + 2] = Math.round((b1 + b2) / 2);
-          diffImageData.data[idx + 3] = 80;
-        }
-      }
-    }
-    
-    // Fill areas outside the overlapping region (size differences)
-    // Mark them in blue to indicate size difference
-    for (let y = 0; y < maxHeight; y++) {
-      for (let x = 0; x < maxWidth; x++) {
-        if (x >= width || y >= height) {
-          const idx = (y * maxWidth + x) * 4;
-          // Blue for size difference areas
-          diffImageData.data[idx] = 0;
-          diffImageData.data[idx + 1] = 100;
-          diffImageData.data[idx + 2] = 255;
-          diffImageData.data[idx + 3] = 150;
-        }
-      }
-    }
-    
-    // Calculate percentage based on overlapping area only
-    const differencePercentage = totalPixels > 0 ? (differentPixels / totalPixels) * 100 : 0;
-    
-    // Consider size difference as well
-    const sizeDifferent = img1.width !== img2.width || img1.height !== img2.height;
-    
-    return {
-      pageIndex: 0,
-      hasDifference: differentPixels > 0 || sizeDifferent,
-      differencePercentage,
-      diffImageData,
-    };
-  }, []);
-
-  /**
-   * Handle file selected for slot 1
-   */
-  const handleFile1Selected = useCallback(async (files: File[]) => {
-    if (files.length === 0) return;
-    
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(0);
-    setProgressMessage('Loading first PDF...');
-    setError(null);
-    setDifferences([]);
-    
-    try {
-      const loadedFile = await loadPDF(files[0], 1);
-      if (loadedFile) {
-        setFile1(loadedFile);
-      }
-      setStatus('idle');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load first PDF');
-      setStatus('error');
-    }
-  }, [loadPDF]);
-
-  /**
-   * Handle file selected for slot 2
-   */
-  const handleFile2Selected = useCallback(async (files: File[]) => {
-    if (files.length === 0) return;
-    
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(25);
-    setProgressMessage('Loading second PDF...');
-    setError(null);
-    setDifferences([]);
-    
-    try {
-      const loadedFile = await loadPDF(files[0], 2);
-      if (loadedFile) {
-        setFile2(loadedFile);
-      }
-      setStatus('idle');
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to load second PDF');
-      setStatus('error');
-    }
-  }, [loadPDF]);
-
-  /**
-   * Handle file upload error
-   */
-  const handleUploadError = useCallback((errorMessage: string) => {
-    setError(errorMessage);
-  }, []);
-
-  /**
-   * Compare the two PDFs
-   */
-  const handleCompare = useCallback(async () => {
-    if (!file1 || !file2) {
-      setError('Please upload both PDF files to compare.');
-      return;
-    }
-
-    cancelledRef.current = false;
-    setStatus('processing');
-    setProgress(50);
-    setProgressMessage('Comparing pages...');
-    setError(null);
-
-    try {
-      const maxPages = Math.max(file1.pageCount, file2.pageCount);
-      const results: DifferenceResult[] = [];
-      
-      for (let i = 0; i < maxPages; i++) {
-        if (cancelledRef.current) {
-          setStatus('idle');
-          return;
-        }
-        
-        const img1 = file1.pages[i];
-        const img2 = file2.pages[i];
-        
-        if (!img1 || !img2) {
-          // One PDF has fewer pages
-          results.push({
-            pageIndex: i,
-            hasDifference: true,
-            differencePercentage: 100,
-          });
-        } else {
-          const comparison = compareImages(img1, img2);
-          
-          // Create blob URL for diff image
-          const diffCanvas = document.createElement('canvas');
-          diffCanvas.width = comparison.diffImageData.width;
-          diffCanvas.height = comparison.diffImageData.height;
-          const ctx = diffCanvas.getContext('2d')!;
-          ctx.putImageData(comparison.diffImageData, 0, 0);
-          
-          results.push({
-            pageIndex: i,
-            hasDifference: comparison.hasDifference,
-            differencePercentage: comparison.differencePercentage,
-            diffImageUrl: diffCanvas.toDataURL(),
-          });
-        }
-        
-        setProgress(50 + Math.round((i / maxPages) * 50));
-      }
-      
-      setDifferences(results);
-      setCurrentPage(0);
-      setStatus('complete');
-    } catch (err) {
-      if (!cancelledRef.current) {
-        setError(err instanceof Error ? err.message : 'An unexpected error occurred.');
-        setStatus('error');
-      }
-    }
-  }, [file1, file2, compareImages]);
-
-  /**
-   * Handle cancel operation
-   */
+  const isProcessing = status === 'processing';
   const handleCancel = useCallback(() => {
     cancelledRef.current = true;
     setStatus('idle');
     setProgress(0);
   }, []);
 
-  /**
-   * Clear file 1
-   */
-  const handleClearFile1 = useCallback(() => {
-    setFile1(null);
-    setDifferences([]);
-  }, []);
+  // Pagination & pairing outcomes
+  const [pairedPages, setPairedPages] = useState<PageComparisonResult[]>([]);
+  const [currentPairIdx, setCurrentPairIdx] = useState(0);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Synced scroll refs
+  const scrollContainer1Ref = useRef<HTMLDivElement>(null);
+  const scrollContainer2Ref = useRef<HTMLDivElement>(null);
+  const isScrollingSyncRef = useRef(false);
+  const comparisonContainerRef = useRef<HTMLDivElement>(null);
+  const cancelledRef = useRef(false);
 
   /**
-   * Clear file 2
+   * Load PDF, render pages to DataURL, and extract all words with Bounding Box coordinates
    */
-  const handleClearFile2 = useCallback(() => {
-    setFile2(null);
-    setDifferences([]);
+  const loadPDF = useCallback(async (file: File, slotNum: 1 | 2): Promise<PDFFile | null> => {
+    try {
+      const pdfjsLib = await import('pdfjs-dist');
+      configurePdfjsWorker(pdfjsLib);
+
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+      const pageCount = pdf.numPages;
+
+      const pageTextContents: PageTextContent[] = [];
+      const pagesImages: string[] = [];
+      const pageDimensions: Array<{ width: number; height: number; scale: number }> = [];
+
+      const renderScale = 1.5; // Render at high clarity
+
+      for (let i = 1; i <= pageCount; i++) {
+        if (cancelledRef.current) return null;
+
+        // Progress breakdown: slot 1 occupies 0-50%, slot 2 occupies 50-100%
+        const baseProg = slotNum === 1 ? 0 : 50;
+        setProgress(baseProg + Math.round((i / pageCount) * 45));
+
+        const page = await pdf.getPage(i);
+        const viewport = page.getViewport({ scale: renderScale });
+        pageDimensions.push({ width: viewport.width, height: viewport.height, scale: renderScale });
+
+        // 1. Render page to DataURL
+        const canvas = document.createElement('canvas');
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+        const ctx = canvas.getContext('2d')!;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        await page.render({ canvasContext: ctx, viewport }).promise;
+        pagesImages.push(canvas.toDataURL('image/jpeg', 0.85));
+
+        // 2. Extract Bounding Box coordinates for text items
+        const textContent = await page.getTextContent();
+        const words: TextWordInfo[] = [];
+        let rawText = '';
+
+        textContent.items.forEach((item: any, itemIdx: number) => {
+          if (!item.str || item.str.trim() === '') return;
+
+          const strVal = item.str;
+          const tx = item.transform[4];
+          const ty = item.transform[5];
+          const itemWidth = item.width || 0;
+          const itemHeight = item.height || parseInt(item.transform[3], 10) || 12;
+          const fontName = item.fontName || '';
+
+          // High accuracy coordinates conversion
+          const ptTopLeft = viewport.convertToViewportPoint(tx, ty + itemHeight);
+          const ptBottomRight = viewport.convertToViewportPoint(tx + itemWidth, ty);
+
+          const canvasX = ptTopLeft[0];
+          const canvasY = ptTopLeft[1];
+          const canvasW = Math.max(2, ptBottomRight[0] - ptTopLeft[0]);
+          const canvasH = Math.max(2, ptBottomRight[1] - ptTopLeft[1]);
+
+          // CJK character splitting or English word splitting
+          const isChinese = /[\u4e00-\u9fa5]/.test(strVal);
+          
+          if (isChinese) {
+            // For CJK languages, map per character coordinates proportionally
+            const chars = strVal.split('');
+            const charW = canvasW / chars.length;
+            chars.forEach((char: string, charIdx: number) => {
+              words.push({
+                text: char,
+                x: canvasX + (charIdx * charW),
+                y: canvasY,
+                w: charW,
+                h: canvasH,
+                fontName,
+                itemIdx
+              });
+            });
+            rawText += strVal;
+          } else {
+            // For space-separated English/Latin words
+            const tokens = strVal.split(/(\s+)/);
+            let currentTokenX = canvasX;
+            const totalChars = strVal.length || 1;
+            const pxPerChar = canvasW / totalChars;
+
+            tokens.forEach((token: string) => {
+              const tokenW = token.length * pxPerChar;
+              if (token.trim() !== '') {
+                words.push({
+                  text: token,
+                  x: currentTokenX,
+                  y: canvasY,
+                  w: tokenW,
+                  h: canvasH,
+                  fontName,
+                  itemIdx
+                });
+              }
+              currentTokenX += tokenW;
+            });
+            rawText += strVal + ' ';
+          }
+        });
+
+        pageTextContents.push({
+          rawText,
+          words,
+          originalItems: textContent.items
+        });
+      }
+
+      return {
+        file,
+        pageCount,
+        pageTextContents,
+        pagesImages,
+        pageDimensions
+      };
+    } catch (err) {
+      console.error('PDF parsing error:', err);
+      throw err;
+    }
   }, []);
 
+  const handleFile1Selected = useCallback(async (files: File[]) => {
+    if (files.length === 0) return;
+    cancelledRef.current = false;
+    setStatus('processing');
+    setProgress(0);
+    setProgressMessage(t('comparePdfs.progressExtractingOriginal'));
+    setError(null);
+    setPairedPages([]);
+
+    try {
+      const loaded = await loadPDF(files[0], 1);
+      if (loaded) setFile1(loaded);
+      setStatus('idle');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t('comparePdfs.errorExtractingOriginal'));
+      setStatus('error');
+    }
+  }, [loadPDF, t]);
+
+  const handleFile2Selected = useCallback(async (files: File[]) => {
+    if (files.length === 0) return;
+    cancelledRef.current = false;
+    setStatus('processing');
+    setProgress(50);
+    setProgressMessage(t('comparePdfs.progressExtractingModified'));
+    setError(null);
+    setPairedPages([]);
+
+    try {
+      const loaded = await loadPDF(files[0], 2);
+      if (loaded) setFile2(loaded);
+      setStatus('idle');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t('comparePdfs.errorExtractingModified'));
+      setStatus('error');
+    }
+  }, [loadPDF, t]);
+
   /**
-   * Clear all and reset
+   * World-class Semantic Diff & smart pairing orchestrator
    */
-  const handleClearAll = useCallback(() => {
+  const handleCompare = useCallback(() => {
+    if (!file1 || !file2) return;
+
+    cancelledRef.current = false;
+    setStatus('processing');
+    setProgress(95);
+    setProgressMessage(t('comparePdfs.progressRunningDiff'));
+
+    try {
+      // 1. LCS Page Alignment to avoid multi-page shifts
+      const pairedList = smartPagePairing(file1, file2);
+
+      // 2. Perform detailed word diff on each aligned page pair
+      pairedList.forEach(pair => {
+        if (pair.pageIndex1 !== -1 && pair.pageIndex2 !== -1) {
+          const page1 = file1.pageTextContents[pair.pageIndex1];
+          const page2 = file2.pageTextContents[pair.pageIndex2];
+          
+          const dim1 = file1.pageDimensions[pair.pageIndex1];
+          const dim2 = file2.pageDimensions[pair.pageIndex2];
+
+          const diffResult = diffSinglePageWords(
+            page1.words,
+            page2.words,
+            dim1.height,
+            dim2.height
+          );
+
+          pair.highlights1 = diffResult.highlights1;
+          pair.highlights2 = diffResult.highlights2;
+          pair.hasDifference = diffResult.hasDifference;
+          pair.diffPercentage = diffResult.diffPercentage;
+        } else {
+          // One-sided page (entire page inserted or deleted)
+          pair.hasDifference = true;
+          pair.diffPercentage = 100;
+          pair.highlights1 = [];
+          pair.highlights2 = [];
+        }
+      });
+
+      // 3. Moved-Text (段落位移) Cross-correlation analysis
+      findMovedTextSegments(pairedList);
+
+      setPairedPages(pairedList);
+      setCurrentPairIdx(0);
+      setStatus('complete');
+    } catch (err) {
+      console.error(err);
+      setError(t('comparePdfs.errorDiffFailed'));
+      setStatus('error');
+    }
+  }, [file1, file2, t]);
+
+  const handleClearAll = () => {
     setFile1(null);
     setFile2(null);
-    setDifferences([]);
+    setPairedPages([]);
     setError(null);
     setStatus('idle');
     setProgress(0);
-    setCurrentPage(0);
-  }, []);
+    setCurrentPairIdx(0);
+  };
 
   /**
-   * Navigate to previous page
-   */
-  const handlePrevPage = useCallback(() => {
-    setCurrentPage(prev => Math.max(0, prev - 1));
-  }, []);
-
-  /**
-   * Navigate to next page
-   */
-  const handleNextPage = useCallback(() => {
-    const maxPages = Math.max(file1?.pageCount || 0, file2?.pageCount || 0);
-    setCurrentPage(prev => Math.min(maxPages - 1, prev + 1));
-  }, [file1, file2]);
-
-  /**
-   * Handle synchronized scrolling between the two panels
+   * Synced scrolling controllers
    */
   const handleScroll1 = useCallback(() => {
     if (isScrollingSyncRef.current) return;
     if (!scrollContainer1Ref.current || !scrollContainer2Ref.current) return;
-    
     isScrollingSyncRef.current = true;
     scrollContainer2Ref.current.scrollTop = scrollContainer1Ref.current.scrollTop;
     scrollContainer2Ref.current.scrollLeft = scrollContainer1Ref.current.scrollLeft;
-    
-    // Reset the flag after a short delay to allow the scroll event to complete
-    requestAnimationFrame(() => {
-      isScrollingSyncRef.current = false;
-    });
+    requestAnimationFrame(() => { isScrollingSyncRef.current = false; });
   }, []);
 
   const handleScroll2 = useCallback(() => {
     if (isScrollingSyncRef.current) return;
     if (!scrollContainer1Ref.current || !scrollContainer2Ref.current) return;
-    
     isScrollingSyncRef.current = true;
     scrollContainer1Ref.current.scrollTop = scrollContainer2Ref.current.scrollTop;
     scrollContainer1Ref.current.scrollLeft = scrollContainer2Ref.current.scrollLeft;
-    
-    // Reset the flag after a short delay to allow the scroll event to complete
-    requestAnimationFrame(() => {
-      isScrollingSyncRef.current = false;
-    });
+    requestAnimationFrame(() => { isScrollingSyncRef.current = false; });
   }, []);
 
-  /**
-   * Toggle fullscreen mode
-   */
   const toggleFullscreen = useCallback(async () => {
     if (!comparisonContainerRef.current) return;
-    
     try {
       if (!document.fullscreenElement) {
         await comparisonContainerRef.current.requestFullscreen();
@@ -439,189 +381,112 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
         setIsFullscreen(false);
       }
     } catch (err) {
-      console.error('Fullscreen error:', err);
+      console.error(err);
     }
   }, []);
 
-  /**
-   * Listen for fullscreen changes (e.g., user presses Escape)
-   */
   useEffect(() => {
-    const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
-    };
-    
-    document.addEventListener('fullscreenchange', handleFullscreenChange);
-    return () => {
-      document.removeEventListener('fullscreenchange', handleFullscreenChange);
-    };
+    const handleFsChange = () => { setIsFullscreen(!!document.fullscreenElement); };
+    document.addEventListener('fullscreenchange', handleFsChange);
+    return () => document.removeEventListener('fullscreenchange', handleFsChange);
   }, []);
 
-  // Store differences length for stable dependency
-  const differencesLength = differences.length;
-
-  /**
-   * Render current page to canvas - use layout effect for synchronous DOM updates
-   */
-  useIsomorphicLayoutEffect(() => {
-    if (!file1 || !file2 || differencesLength === 0) return;
-    
-    const img1 = file1.pages[currentPage];
-    const img2 = file2.pages[currentPage];
-    const currentDiffData = differences[currentPage];
-    
-    // Render file 1 (for side-by-side and overlay modes)
-    if (canvas1Ref.current && img1 && (viewMode === 'side-by-side' || viewMode === 'overlay')) {
-      const ctx = canvas1Ref.current.getContext('2d');
-      if (ctx) {
-        canvas1Ref.current.width = img1.width;
-        canvas1Ref.current.height = img1.height;
-        ctx.putImageData(img1, 0, 0);
-      }
-    }
-    
-    // Render file 2 (for side-by-side and overlay modes)
-    if (canvas2Ref.current && img2 && (viewMode === 'side-by-side' || viewMode === 'overlay')) {
-      const ctx = canvas2Ref.current.getContext('2d');
-      if (ctx) {
-        canvas2Ref.current.width = img2.width;
-        canvas2Ref.current.height = img2.height;
-        ctx.putImageData(img2, 0, 0);
-      }
-    }
-    
-    // Render diff (for diff mode when no diffImageUrl)
-    if (diffCanvasRef.current && currentDiffData?.diffImageUrl && viewMode === 'diff') {
-      const ctx = diffCanvasRef.current.getContext('2d');
-      if (ctx) {
-        const img = new Image();
-        img.onload = () => {
-          if (diffCanvasRef.current) {
-            diffCanvasRef.current.width = img.width;
-            diffCanvasRef.current.height = img.height;
-            ctx.drawImage(img, 0, 0);
-          }
-        };
-        img.src = currentDiffData.diffImageUrl;
-      }
-    }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [file1, file2, differencesLength, currentPage, viewMode]);
-
-  /**
-   * Format file size
-   */
-  const formatSize = (bytes: number): string => {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(2)} MB`;
+  // Filter highlights based on user-toggled filter pills
+  const getFilteredHighlights = (highlights: DiffHighlight[]) => {
+    return highlights.filter(hl => {
+      if (hl.type === 'moved' && !filterPills.moved) return false;
+      if (hl.category === 'header-footer' && !filterPills.headerFooter) return false;
+      if (hl.category === 'formatting' && !filterPills.formatting) return false;
+      if (hl.category === 'text' && !filterPills.text) return false;
+      return true;
+    });
   };
 
-  const isProcessing = status === 'processing' || status === 'uploading';
-  const canCompare = file1 && file2 && !isProcessing;
-  const maxPages = Math.max(file1?.pageCount || 0, file2?.pageCount || 0);
-  const currentDiff = differences[currentPage];
+  const currentPair = pairedPages[currentPairIdx];
 
   return (
-    <div className={`space-y-6 ${className}`.trim()}>
-      {/* File Upload Areas - Side by Side */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* File 1 Upload */}
-        <div>
-          <h3 className="text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
-            {tTools('comparePdfs.file1Label') || 'First PDF (Original)'}
-          </h3>
-          {!file1 ? (
-            <FileUploader
-              accept={['application/pdf', '.pdf']}
-              multiple={false}
-              maxFiles={1}
-              onFilesSelected={handleFile1Selected}
-              onError={handleUploadError}
-              disabled={isProcessing}
-              label={tTools('comparePdfs.uploadFile1') || 'Upload First PDF'}
-              description={tTools('comparePdfs.uploadDescription') || 'Drag and drop or click to browse'}
-            />
-          ) : (
-            <Card variant="outlined">
-              <div className="flex items-center justify-between">
+    <div className={`space-y-6 ${className}`}>
+      {/* File Upload zones */}
+      {pairedPages.length === 0 && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* File 1 */}
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-[hsl(var(--color-foreground))] block">
+              {t('comparePdfs.originalPdfTitle')}
+            </label>
+            {file1 ? (
+              <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-[hsl(var(--color-primary)/0.35)] bg-[hsl(var(--color-muted)/0.15)] rounded-2xl">
                 <div className="flex items-center gap-3">
-                  <svg className="w-8 h-8 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                    <path d="M14 2v6h6" fill="white" />
-                    <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-                  </svg>
+                  <FileText className="w-10 h-10 text-[hsl(var(--color-primary))]" />
                   <div>
-                    <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate max-w-[200px]">
-                      {file1.file.name}
-                    </p>
-                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
-                      {formatSize(file1.file.size)} • {file1.pageCount} pages
-                    </p>
+                    <p className="font-semibold text-sm truncate max-w-[200px]" title={file1.file.name}>{file1.file.name}</p>
+                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">{file1.pageCount} {t('pdfToCbz.pagesLabel') || 'pages'} • {(file1.file.size / (1024 * 1024)).toFixed(2)} MB</p>
                   </div>
                 </div>
-                <Button variant="ghost" size="sm" onClick={handleClearFile1} disabled={isProcessing}>
-                  {t('buttons.remove') || 'Remove'}
-                </Button>
-              </div>
-            </Card>
-          )}
-        </div>
+                <Button variant="ghost" size="sm" onClick={() => setFile1(null)}>{t('comparePdfs.removeButton')}</Button>
+              </Card>
+            ) : (
+              <FileUploader
+                accept={['application/pdf']}
+                multiple={false}
+                onFilesSelected={handleFile1Selected}
+                onError={setError}
+                disabled={isProcessing}
+                label={t('comparePdfs.originalPdfLabel')}
+                description={t('comparePdfs.originalPdfDesc')}
+                className="min-h-[160px] p-6 rounded-2xl"
+              />
+            )}
+          </div>
 
-        {/* File 2 Upload */}
-        <div>
-          <h3 className="text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
-            {tTools('comparePdfs.file2Label') || 'Second PDF (Modified)'}
-          </h3>
-          {!file2 ? (
-            <FileUploader
-              accept={['application/pdf', '.pdf']}
-              multiple={false}
-              maxFiles={1}
-              onFilesSelected={handleFile2Selected}
-              onError={handleUploadError}
-              disabled={isProcessing}
-              label={tTools('comparePdfs.uploadFile2') || 'Upload Second PDF'}
-              description={tTools('comparePdfs.uploadDescription') || 'Drag and drop or click to browse'}
-            />
-          ) : (
-            <Card variant="outlined">
-              <div className="flex items-center justify-between">
+          {/* File 2 */}
+          <div className="space-y-3">
+            <label className="text-sm font-bold text-[hsl(var(--color-foreground))] block">
+              {t('comparePdfs.modifiedPdfTitle')}
+            </label>
+            {file2 ? (
+              <Card variant="outlined" className="p-4 flex items-center justify-between border-2 border-emerald-500/35 bg-emerald-500/5 rounded-2xl">
                 <div className="flex items-center gap-3">
-                  <svg className="w-8 h-8 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" />
-                    <path d="M14 2v6h6" fill="white" />
-                    <text x="7" y="17" fontSize="6" fill="white" fontWeight="bold">PDF</text>
-                  </svg>
+                  <FileText className="w-10 h-10 text-emerald-500" />
                   <div>
-                    <p className="text-sm font-medium text-[hsl(var(--color-foreground))] truncate max-w-[200px]">
-                      {file2.file.name}
-                    </p>
-                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
-                      {formatSize(file2.file.size)} • {file2.pageCount} pages
-                    </p>
+                    <p className="font-semibold text-sm truncate max-w-[200px]" title={file2.file.name}>{file2.file.name}</p>
+                    <p className="text-xs text-[hsl(var(--color-muted-foreground))]">{file2.pageCount} {t('pdfToCbz.pagesLabel') || 'pages'} • {(file2.file.size / (1024 * 1024)).toFixed(2)} MB</p>
                   </div>
                 </div>
-                <Button variant="ghost" size="sm" onClick={handleClearFile2} disabled={isProcessing}>
-                  {t('buttons.remove') || 'Remove'}
-                </Button>
-              </div>
-            </Card>
-          )}
-        </div>
-      </div>
-
-      {/* Error Message */}
-      {error && (
-        <div 
-          className="p-4 rounded-[var(--radius-md)] bg-red-50 border border-red-200 text-red-700"
-          role="alert"
-        >
-          <p className="text-sm">{error}</p>
+                <Button variant="ghost" size="sm" onClick={() => setFile2(null)}>{t('comparePdfs.removeButton')}</Button>
+              </Card>
+            ) : (
+              <FileUploader
+                accept={['application/pdf']}
+                multiple={false}
+                onFilesSelected={handleFile2Selected}
+                onError={setError}
+                disabled={isProcessing}
+                label={t('comparePdfs.modifiedPdfLabel')}
+                description={t('comparePdfs.modifiedPdfDesc')}
+                className="min-h-[160px] p-6 rounded-2xl border-emerald-500/20 hover:border-emerald-500"
+              />
+            )}
+          </div>
         </div>
       )}
 
-      {/* Processing Progress */}
+      {/* Start trigger */}
+      {file1 && file2 && pairedPages.length === 0 && !isProcessing && (
+        <div className="flex justify-center pt-3">
+          <Button
+            variant="primary"
+            size="lg"
+            onClick={handleCompare}
+            className="px-12 py-4 font-bold shadow-lg shadow-[hsl(var(--color-primary)/0.15)] flex items-center gap-2"
+          >
+            <Shuffle className="w-5 h-5 animate-pulse" />
+            {t('comparePdfs.startCompare')}
+          </Button>
+        </div>
+      )}
+
+      {/* Processing */}
       {isProcessing && (
         <ProcessingProgress
           progress={progress}
@@ -632,308 +497,620 @@ export function ComparePDFsTool({ className = '' }: ComparePDFsToolProps) {
         />
       )}
 
-      {/* Compare Button */}
-      {file1 && file2 && differences.length === 0 && !isProcessing && (
-        <div className="flex justify-center">
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={handleCompare}
-            disabled={!canCompare}
+      {/* Results Workspace */}
+      {pairedPages.length > 0 && (
+        <div className="space-y-4">
+          
+          {/* Header Panel */}
+          <Card 
+            variant="default" 
+            className="p-5 rounded-2xl flex flex-wrap items-center justify-between gap-4 backdrop-blur-md bg-white/40 dark:bg-black/35 border border-white/20 dark:border-zinc-800/40"
           >
-            {tTools('comparePdfs.compareButton') || 'Compare PDFs'}
-          </Button>
-        </div>
-      )}
-
-      {/* Comparison Results */}
-      {differences.length > 0 && (
-        <>
-          {/* Summary */}
-          <Card variant="outlined">
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <h3 className="text-lg font-medium text-[hsl(var(--color-foreground))]">
-                  {tTools('comparePdfs.resultsTitle') || 'Comparison Results'}
-                </h3>
-                <p className="text-sm text-[hsl(var(--color-muted-foreground))]">
-                  {differences.filter(d => d.hasDifference).length} of {differences.length} pages have differences
-                </p>
-              </div>
-              <Button variant="ghost" size="sm" onClick={handleClearAll}>
-                {tTools('comparePdfs.newComparison') || 'New Comparison'}
-              </Button>
-            </div>
-          </Card>
-
-          {/* View Mode Selector */}
-          <Card variant="outlined">
-            <div className="flex flex-wrap items-center gap-4">
-              <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">
-                {tTools('comparePdfs.viewMode') || 'View Mode:'}
-              </span>
-              <div className="flex gap-2">
-                <Button
-                  variant={viewMode === 'side-by-side' ? 'primary' : 'outline'}
-                  size="sm"
-                  onClick={() => setViewMode('side-by-side')}
-                >
-                  {tTools('comparePdfs.sideBySide') || 'Side by Side'}
-                </Button>
-                <Button
-                  variant={viewMode === 'overlay' ? 'primary' : 'outline'}
-                  size="sm"
-                  onClick={() => setViewMode('overlay')}
-                >
-                  {tTools('comparePdfs.overlay') || 'Overlay'}
-                </Button>
-                <Button
-                  variant={viewMode === 'diff' ? 'primary' : 'outline'}
-                  size="sm"
-                  onClick={() => setViewMode('diff')}
-                >
-                  {tTools('comparePdfs.differences') || 'Differences'}
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={toggleFullscreen}
-                  title={isFullscreen ? (tTools('comparePdfs.exitFullscreen') || 'Exit Fullscreen') : (tTools('comparePdfs.fullscreen') || 'Fullscreen')}
-                >
-                  {isFullscreen ? (
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
-                    </svg>
-                  ) : (
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3" />
-                    </svg>
-                  )}
-                </Button>
-              </div>
+            <div>
+              <h3 className="text-md font-bold text-[hsl(var(--color-foreground))]">
+                {t('comparePdfs.successTitle')}
+              </h3>
+              <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
+                {t('comparePdfs.totalAligned', { count: pairedPages.length })} • 
+                {t.rich('comparePdfs.diffSummary', { count: pairedPages.filter(p => p.hasDifference).length, red: (chunks) => <span className="font-bold text-red-500 mx-1">{chunks}</span> })}
+              </p>
             </div>
             
-            {viewMode === 'overlay' && (
-              <div className="mt-4 flex items-center gap-4">
-                <span className="text-sm text-[hsl(var(--color-muted-foreground))]">
-                  {tTools('comparePdfs.opacity') || 'Opacity:'}
-                </span>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={overlayOpacity}
-                  onChange={(e) => setOverlayOpacity(Number(e.target.value))}
-                  className="flex-1 max-w-xs"
-                />
-                <span className="text-sm text-[hsl(var(--color-muted-foreground))]">{overlayOpacity}%</span>
-              </div>
-            )}
-          </Card>
+            {/* Filter pills bar */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="text-[10px] font-black text-zinc-400 flex items-center gap-1 uppercase tracking-wider mr-2">
+                <Filter className="w-3.5 h-3.5" />
+                {t('comparePdfs.filterLabel')}
+              </span>
+              
+              <button
+                onClick={() => setFilterPills(p => ({ ...p, text: !p.text }))}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+                  filterPills.text 
+                    ? 'bg-amber-500/10 text-amber-500 border border-amber-500/35 shadow-sm shadow-amber-500/5' 
+                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
+                }`}
+              >
+                {t('comparePdfs.filterText')}
+              </button>
 
-          {/* Page Navigation */}
-          <Card variant="outlined">
-            <div className="flex items-center justify-between">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handlePrevPage}
-                disabled={currentPage === 0}
+              <button
+                onClick={() => setFilterPills(p => ({ ...p, formatting: !p.formatting }))}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+                  filterPills.formatting 
+                    ? 'bg-emerald-500/10 text-emerald-500 border border-emerald-500/35 shadow-sm shadow-emerald-500/5' 
+                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
+                }`}
               >
-                ← {t('buttons.previous') || 'Previous'}
-              </Button>
-              
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-[hsl(var(--color-foreground))]">
-                  Page {currentPage + 1} of {maxPages}
-                </span>
-                {currentDiff && (
-                  <span className={`text-xs px-2 py-1 rounded ${
-                    currentDiff.hasDifference 
-                      ? 'bg-red-100 text-red-700' 
-                      : 'bg-green-100 text-green-700'
-                  }`}>
-                    {currentDiff.hasDifference 
-                      ? `${currentDiff.differencePercentage.toFixed(1)}% different`
-                      : 'Identical'
-                    }
-                  </span>
-                )}
-              </div>
-              
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleNextPage}
-                disabled={currentPage >= maxPages - 1}
+                {t('comparePdfs.filterFont')}
+              </button>
+
+              <button
+                onClick={() => setFilterPills(p => ({ ...p, headerFooter: !p.headerFooter }))}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+                  filterPills.headerFooter 
+                    ? 'bg-blue-500/10 text-blue-500 border border-blue-500/35 shadow-sm shadow-blue-500/5' 
+                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
+                }`}
               >
-                {t('buttons.next') || 'Next'} →
+                {t('comparePdfs.filterHeaderFooter')}
+              </button>
+
+              <button
+                onClick={() => setFilterPills(p => ({ ...p, moved: !p.moved }))}
+                className={`px-3 py-1.5 rounded-full text-xs font-bold transition-all ${
+                  filterPills.moved 
+                    ? 'bg-purple-500/10 text-purple-500 border border-purple-500/35 shadow-sm shadow-purple-500/5' 
+                    : 'bg-zinc-100 dark:bg-zinc-800/50 text-zinc-400 border border-transparent'
+                }`}
+              >
+                {t('comparePdfs.filterMoved')}
+              </button>
+
+              <Button variant="outline" size="sm" onClick={handleClearAll} className="ml-4 py-2 text-xs">
+                {t('comparePdfs.resetButton')}
               </Button>
             </div>
           </Card>
 
-          {/* Comparison View */}
+          {/* Navigation Controls */}
+          <div className="flex items-center justify-between px-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setCurrentPairIdx(prev => Math.max(0, prev - 1))}
+              disabled={currentPairIdx === 0}
+              className="flex items-center gap-1 py-2"
+            >
+              <ChevronLeft className="w-4 h-4" />
+              {t('comparePdfs.prevPair')}
+            </Button>
+
+            <div className="flex items-center gap-2">
+              <span className="text-xs font-bold text-[hsl(var(--color-foreground))]">
+                {t('comparePdfs.alignSequence', { current: currentPairIdx + 1, total: pairedPages.length })}
+              </span>
+              {currentPair && (
+                <span className={`text-[10px] font-black px-2.5 py-1 rounded-lg ${
+                  currentPair.hasDifference
+                    ? 'bg-red-500/15 text-red-500 border border-red-500/25'
+                    : 'bg-green-500/15 text-green-500 border border-green-500/25'
+                }`}>
+                  {currentPair.pageIndex1 === -1 && t('comparePdfs.insertedPage')}
+                  {currentPair.pageIndex2 === -1 && t('comparePdfs.deletedPage')}
+                  {currentPair.pageIndex1 !== -1 && currentPair.pageIndex2 !== -1 && (
+                    currentPair.hasDifference 
+                      ? t('comparePdfs.diffPercentage', { percent: currentPair.diffPercentage.toFixed(1) })
+                      : t('comparePdfs.noDiff')
+                  )}
+                </span>
+              )}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={toggleFullscreen}
+                className="p-2"
+                title={t('comparePdfs.fullscreenTooltip')}
+              >
+                {isFullscreen ? <Minimize className="w-4 h-4" /> : <Maximize2 className="w-4 h-4" />}
+              </Button>
+
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setCurrentPairIdx(prev => Math.min(pairedPages.length - 1, prev + 1))}
+                disabled={currentPairIdx >= pairedPages.length - 1}
+                className="flex items-center gap-1 py-2"
+              >
+                {t('comparePdfs.nextPair')}
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Double View Panels Workspace */}
           <div 
             ref={comparisonContainerRef}
-            className={`border border-[hsl(var(--color-border))] rounded-[var(--radius-md)] overflow-hidden bg-[hsl(var(--color-muted)/0.2)] ${
-              isFullscreen ? 'fixed inset-0 z-50 rounded-none border-none flex flex-col' : ''
+            className={`grid grid-cols-1 md:grid-cols-2 gap-4 ${
+              isFullscreen ? 'fixed inset-0 z-50 p-4 bg-zinc-900 overflow-y-auto' : ''
             }`}
           >
-            {/* Fullscreen header with controls */}
-            {isFullscreen && (
-              <div className="flex items-center justify-between p-4 bg-[hsl(var(--color-background))] border-b border-[hsl(var(--color-border))]">
-                <div className="flex items-center gap-4">
-                  <span className="text-sm font-medium text-[hsl(var(--color-foreground))]">
-                    Page {currentPage + 1} of {maxPages}
-                  </span>
-                  {currentDiff && (
-                    <span className={`text-xs px-2 py-1 rounded ${
-                      currentDiff.hasDifference 
-                        ? 'bg-red-100 text-red-700' 
-                        : 'bg-green-100 text-green-700'
-                    }`}>
-                      {currentDiff.hasDifference 
-                        ? `${currentDiff.differencePercentage.toFixed(1)}% different`
-                        : 'Identical'
-                      }
-                    </span>
-                  )}
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button variant="outline" size="sm" onClick={handlePrevPage} disabled={currentPage === 0}>
-                    ← {t('buttons.previous') || 'Previous'}
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={handleNextPage} disabled={currentPage >= maxPages - 1}>
-                    {t('buttons.next') || 'Next'} →
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={toggleFullscreen}>
-                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3" />
-                    </svg>
-                  </Button>
-                </div>
+            {/* LEFT Version (Original / Deleted Page) */}
+            <div className="flex flex-col space-y-2">
+              <div className="flex justify-between items-center px-1">
+                <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                  {t('comparePdfs.originalVersion')}
+                </span>
+                <span className="text-[10px] font-bold text-zinc-500">
+                  {currentPair?.pageIndex1 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex1 + 1 }) : '---'}
+                </span>
               </div>
-            )}
-            
-            {viewMode === 'side-by-side' && (
-              <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 p-4 ${isFullscreen ? 'flex-1 min-h-0' : ''}`}>
-                <div className={`text-center ${isFullscreen ? 'flex flex-col min-h-0' : ''}`}>
-                  <p className="text-sm font-medium text-[hsl(var(--color-foreground))] mb-2 flex-shrink-0">
-                    {file1?.file.name}
-                  </p>
-                  <div 
-                    ref={scrollContainer1Ref}
-                    onScroll={handleScroll1}
-                    className={`overflow-auto border border-[hsl(var(--color-border))] rounded bg-white ${
-                      isFullscreen ? 'flex-1 min-h-0' : 'max-h-[600px]'
-                    }`}
-                  >
-                    <canvas ref={canvas1Ref} className="max-w-full h-auto" />
+              
+              <div 
+                ref={scrollContainer1Ref}
+                onScroll={handleScroll1}
+                className="border border-[hsl(var(--color-border))] rounded-2xl bg-zinc-950 overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
+              >
+                {currentPair?.pageIndex1 !== -1 ? (
+                  <div className="relative transform-gpu">
+                    {/* Rendered PDF base canvas image */}
+                    <img 
+                      src={file1?.pagesImages[currentPair.pageIndex1]} 
+                      alt="Original Page" 
+                      className="max-w-none shadow-md rounded-lg"
+                      style={{
+                        width: `${file1?.pageDimensions[currentPair.pageIndex1].width}px`,
+                        height: `${file1?.pageDimensions[currentPair.pageIndex1].height}px`,
+                      }}
+                    />
+                    
+                    {/* Diff highlights Overlay Layer */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      {getFilteredHighlights(currentPair.highlights1).map((hl, idx) => (
+                        <div
+                          key={idx}
+                          className="absolute rounded-sm transition-all duration-300 pointer-events-auto cursor-help group"
+                          style={{
+                            left: `${hl.x}px`,
+                            top: `${hl.y}px`,
+                            width: `${hl.w}px`,
+                            height: `${hl.h}px`,
+                            background: hl.type === 'deleted' 
+                              ? 'rgba(239, 68, 68, 0.18)' 
+                              : hl.type === 'modified'
+                                ? 'rgba(245, 158, 11, 0.18)'
+                                : 'rgba(168, 85, 247, 0.18)', // Moved source
+                            border: hl.type === 'deleted'
+                              ? '1px solid rgba(239, 68, 68, 0.4)'
+                              : hl.type === 'modified'
+                                ? '1px solid rgba(245, 158, 11, 0.4)'
+                                : '1px dashed rgba(168, 85, 247, 0.6)',
+                            boxShadow: hl.type === 'deleted'
+                              ? '0 0 4px rgba(239, 68, 68, 0.15)'
+                              : hl.type === 'modified'
+                                ? '0 0 4px rgba(245, 158, 11, 0.15)'
+                                : '0 0 4px rgba(168, 85, 247, 0.15)',
+                          }}
+                        >
+                          {/* Tooltip widget */}
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-zinc-950 text-white text-[9px] font-bold py-1 px-2.5 rounded-lg border border-zinc-800 shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
+                            {hl.type === 'deleted' 
+                              ? t('comparePdfs.removedText') 
+                              : hl.type === 'modified' 
+                                ? t('comparePdfs.modifiedText') 
+                                : t('comparePdfs.paragraphMovedRight')}
+                            <span className="text-zinc-400 block mt-1">"{hl.text}"</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-                <div className={`text-center ${isFullscreen ? 'flex flex-col min-h-0' : ''}`}>
-                  <p className="text-sm font-medium text-[hsl(var(--color-foreground))] mb-2 flex-shrink-0">
-                    {file2?.file.name}
-                  </p>
-                  <div 
-                    ref={scrollContainer2Ref}
-                    onScroll={handleScroll2}
-                    className={`overflow-auto border border-[hsl(var(--color-border))] rounded bg-white ${
-                      isFullscreen ? 'flex-1 min-h-0' : 'max-h-[600px]'
-                    }`}
-                  >
-                    <canvas ref={canvas2Ref} className="max-w-full h-auto" />
+                ) : (
+                  /* Deleted Page placeholder blank board */
+                  <div className="flex flex-col items-center justify-center p-8 text-center text-zinc-500 w-full min-h-[500px] border border-dashed border-zinc-800 rounded-xl bg-zinc-950/60 backdrop-blur-md">
+                    <AlertCircle className="w-10 h-10 text-emerald-500/70 mb-4 animate-bounce" />
+                    {t('comparePdfs.insertedPageTitle')}
+                    <p className="text-[10px] text-zinc-600 mt-1 max-w-xs">
+                      {t('comparePdfs.insertedPageDesc')}
+                    </p>
                   </div>
-                </div>
+                )}
               </div>
-            )}
-            
-            {viewMode === 'overlay' && (
-              <div className={`p-4 text-center ${isFullscreen ? 'flex-1 flex flex-col min-h-0' : ''}`}>
-                <p className="text-sm font-medium text-[hsl(var(--color-foreground))] mb-2 flex-shrink-0">
-                  Overlay View (Red: First PDF, Blue: Second PDF)
-                </p>
-                <div className={`relative overflow-auto border border-[hsl(var(--color-border))] rounded bg-white ${
-                  isFullscreen ? 'flex-1 min-h-0 w-full' : 'max-h-[600px] inline-block'
-                }`}>
-                  <canvas ref={canvas1Ref} className="max-w-full h-auto" />
-                  <canvas 
-                    ref={canvas2Ref} 
-                    className="absolute top-0 left-0 max-w-full h-auto mix-blend-difference"
-                    style={{ opacity: overlayOpacity / 100 }}
-                  />
-                </div>
-              </div>
-            )}
-            
-            {viewMode === 'diff' && (
-              <div className={`p-4 text-center ${isFullscreen ? 'flex-1 flex flex-col min-h-0' : ''}`}>
-                <p className="text-sm font-medium text-[hsl(var(--color-foreground))] mb-2 flex-shrink-0">
-                  {tTools('comparePdfs.diffView') || 'Difference View (Red areas show changes)'}
-                </p>
-                <div className={`overflow-auto border border-[hsl(var(--color-border))] rounded bg-white ${
-                  isFullscreen ? 'flex-1 min-h-0 w-full' : 'max-h-[600px] inline-block'
-                }`}>
-                  {currentDiff?.diffImageUrl ? (
-                    <img src={currentDiff.diffImageUrl} alt="Difference view" className="max-w-full h-auto" />
-                  ) : (
-                    <canvas ref={diffCanvasRef} className="max-w-full h-auto" />
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Page Thumbnails with Difference Indicators */}
-          <Card variant="outlined" size="lg">
-            <h3 className="text-sm font-medium text-[hsl(var(--color-foreground))] mb-3">
-              {tTools('comparePdfs.pageOverview') || 'Page Overview'}
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {differences.map((diff, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentPage(index)}
-                  className={`
-                    w-10 h-10 rounded flex items-center justify-center text-sm font-medium
-                    transition-all duration-200
-                    ${currentPage === index 
-                      ? 'ring-2 ring-[hsl(var(--color-primary))] ring-offset-2' 
-                      : ''
-                    }
-                    ${diff.hasDifference 
-                      ? 'bg-red-100 text-red-700 hover:bg-red-200' 
-                      : 'bg-green-100 text-green-700 hover:bg-green-200'
-                    }
-                  `}
-                  title={diff.hasDifference 
-                    ? `Page ${index + 1}: ${diff.differencePercentage.toFixed(1)}% different`
-                    : `Page ${index + 1}: Identical`
-                  }
-                >
-                  {index + 1}
-                </button>
-              ))}
             </div>
-            <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-2">
-              <span className="inline-block w-3 h-3 bg-green-100 rounded mr-1"></span> Identical
-              <span className="inline-block w-3 h-3 bg-red-100 rounded ml-3 mr-1"></span> Has differences
-            </p>
-          </Card>
 
-          {/* Success Message */}
-          <div 
-            className="p-4 rounded-[var(--radius-md)] bg-green-50 border border-green-200 text-green-700"
-            role="status"
-          >
-            <p className="text-sm font-medium">
-              {tTools('comparePdfs.successMessage') || 'Comparison complete! Use the view modes and page navigation to explore differences.'}
-            </p>
+            {/* RIGHT Version (Modified / Inserted Page) */}
+            <div className="flex flex-col space-y-2">
+              <div className="flex justify-between items-center px-1">
+                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">
+                  {t('comparePdfs.modifiedVersion')}
+                </span>
+                <span className="text-[10px] font-bold text-zinc-500">
+                  {currentPair?.pageIndex2 !== -1 ? t('comparePdfs.pageNumber', { page: currentPair.pageIndex2 + 1 }) : '---'}
+                </span>
+              </div>
+              
+              <div 
+                ref={scrollContainer2Ref}
+                onScroll={handleScroll2}
+                className="border border-[hsl(var(--color-border))] rounded-2xl bg-zinc-950 overflow-auto relative flex items-center justify-center p-4 min-h-[500px] max-h-[720px] shadow-inner custom-scrollbar"
+              >
+                {currentPair?.pageIndex2 !== -1 ? (
+                  <div className="relative transform-gpu">
+                    {/* Rendered PDF base canvas image */}
+                    <img 
+                      src={file2?.pagesImages[currentPair.pageIndex2]} 
+                      alt="Modified Page" 
+                      className="max-w-none shadow-md rounded-lg"
+                      style={{
+                        width: `${file2?.pageDimensions[currentPair.pageIndex2].width}px`,
+                        height: `${file2?.pageDimensions[currentPair.pageIndex2].height}px`,
+                      }}
+                    />
+                    
+                    {/* Diff highlights Overlay Layer */}
+                    <div className="absolute inset-0 pointer-events-none">
+                      {getFilteredHighlights(currentPair.highlights2).map((hl, idx) => (
+                        <div
+                          key={idx}
+                          className="absolute rounded-sm transition-all duration-300 pointer-events-auto cursor-help group"
+                          style={{
+                            left: `${hl.x}px`,
+                            top: `${hl.y}px`,
+                            width: `${hl.w}px`,
+                            height: `${hl.h}px`,
+                            background: hl.type === 'added' 
+                              ? 'rgba(16, 185, 129, 0.18)' 
+                              : hl.type === 'modified'
+                                ? 'rgba(245, 158, 11, 0.18)'
+                                : 'rgba(168, 85, 247, 0.18)', // Moved dest
+                            border: hl.type === 'added'
+                              ? '1px solid rgba(16, 185, 129, 0.4)'
+                              : hl.type === 'modified'
+                                ? '1px solid rgba(245, 158, 11, 0.4)'
+                                : '1px dashed rgba(168, 85, 247, 0.6)',
+                            boxShadow: hl.type === 'added'
+                              ? '0 0 4px rgba(16, 185, 129, 0.15)'
+                              : hl.type === 'modified'
+                                ? '0 0 4px rgba(245, 158, 11, 0.15)'
+                                : '0 0 4px rgba(168, 85, 247, 0.15)',
+                          }}
+                        >
+                          {/* Tooltip widget */}
+                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1.5 hidden group-hover:block bg-zinc-950 text-white text-[9px] font-bold py-1 px-2.5 rounded-lg border border-zinc-800 shadow-xl z-30 whitespace-nowrap leading-none pointer-events-none">
+                            {hl.type === 'added' 
+                              ? t('comparePdfs.addedText') 
+                              : hl.type === 'modified' 
+                                ? t('comparePdfs.modifiedText') 
+                                : t('comparePdfs.paragraphMovedLeft')}
+                            <span className="text-zinc-400 block mt-1">"{hl.text}"</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  /* Inserted Page placeholder blank board */
+                  <div className="flex flex-col items-center justify-center p-8 text-center text-zinc-500 w-full min-h-[500px] border border-dashed border-zinc-800 rounded-xl bg-zinc-950/60 backdrop-blur-md">
+                    <AlertCircle className="w-10 h-10 text-red-500/70 mb-4 animate-bounce" />
+                    {t('comparePdfs.deletedPageTitle')}
+                    <p className="text-[10px] text-zinc-600 mt-1 max-w-xs">
+                      {t('comparePdfs.deletedPageDesc')}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
-        </>
+          
+        </div>
       )}
     </div>
   );
+}
+
+/**
+ * 1. Smart LCS Page Pairing dynamic programming algorithm
+ */
+function smartPagePairing(file1: PDFFile, file2: PDFFile): PageComparisonResult[] {
+  const N = file1.pageCount;
+  const M = file2.pageCount;
+
+  // Pre-calculate page text likeness matrix
+  const similarityMatrix = Array.from({ length: N }, () => new Array(M).fill(0));
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < M; j++) {
+      similarityMatrix[i][j] = computeTextSimilarity(
+        file1.pageTextContents[i].rawText,
+        file2.pageTextContents[j].rawText
+      );
+    }
+  }
+
+  // DP table for alignment
+  const dp = Array.from({ length: N + 1 }, () => new Array(M + 1).fill(0));
+  for (let i = 1; i <= N; i++) {
+    for (let j = 1; j <= M; j++) {
+      // Threshold 0.25 to consider pages "matching" at all
+      if (similarityMatrix[i - 1][j - 1] >= 0.25) {
+        dp[i][j] = dp[i - 1][j - 1] + similarityMatrix[i - 1][j - 1];
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  // Backtrack to find paired matches
+  const paired: PageComparisonResult[] = [];
+  let i = N;
+  let j = M;
+
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && similarityMatrix[i - 1][j - 1] >= 0.25) {
+      paired.unshift({
+        pageIndex1: i - 1,
+        pageIndex2: j - 1,
+        hasDifference: similarityMatrix[i - 1][j - 1] < 0.999,
+        highlights1: [],
+        highlights2: [],
+        diffPercentage: (1 - similarityMatrix[i - 1][j - 1]) * 100
+      });
+      i--;
+      j--;
+    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+      // Insertion in file 2 (no match in file 1)
+      paired.unshift({
+        pageIndex1: -1,
+        pageIndex2: j - 1,
+        hasDifference: true,
+        highlights1: [],
+        highlights2: [],
+        diffPercentage: 100
+      });
+      j--;
+    } else {
+      // Deletion in file 2 (no match in file 1)
+      paired.unshift({
+        pageIndex1: i - 1,
+        pageIndex2: -1,
+        hasDifference: true,
+        highlights1: [],
+        highlights2: [],
+        diffPercentage: 100
+      });
+      i--;
+    }
+  }
+
+  return paired;
+}
+
+/**
+ * Text Similarity Index based on common characters proportion
+ */
+function computeTextSimilarity(txt1: string, txt2: string): number {
+  const clean1 = txt1.replace(/\s+/g, '');
+  const clean2 = txt2.replace(/\s+/g, '');
+  if (!clean1 && !clean2) return 1.0;
+  if (!clean1 || !clean2) return 0.0;
+
+  const set1 = new Set(clean1.split(''));
+  let match = 0;
+  clean2.split('').forEach(c => {
+    if (set1.has(c)) match++;
+  });
+  
+  return (match * 2) / (clean1.length + clean2.length);
+}
+
+/**
+ * Word LCS Diff backtrack algorithm
+ */
+function diffWordsLCS(A: string[], B: string[]) {
+  const N = A.length;
+  const M = B.length;
+  const dp: number[][] = Array.from({ length: N + 1 }, () => new Array(M + 1).fill(0));
+
+  for (let i = 1; i <= N; i++) {
+    for (let j = 1; j <= M; j++) {
+      if (A[i - 1] === B[j - 1]) {
+        dp[i][j] = dp[i - 1][j - 1] + 1;
+      } else {
+        dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+      }
+    }
+  }
+
+  const result: Array<{ type: 'equal' | 'added' | 'deleted'; word: string; indexA: number; indexB: number }> = [];
+  let i = N;
+  let j = M;
+
+  while (i > 0 || j > 0) {
+    if (i > 0 && j > 0 && A[i - 1] === B[j - 1]) {
+      result.unshift({ type: 'equal', word: A[i - 1], indexA: i - 1, indexB: j - 1 });
+      i--;
+      j--;
+    } else if (j > 0 && (i === 0 || dp[i][j - 1] >= dp[i - 1][j])) {
+      result.unshift({ type: 'added', word: B[j - 1], indexA: -1, indexB: j - 1 });
+      j--;
+    } else {
+      result.unshift({ type: 'deleted', word: A[i - 1], indexA: i - 1, indexB: -1 });
+      i--;
+    }
+  }
+
+  return result;
+}
+
+/**
+ * 2. Word-level Diff on single page with Bounding Box coordinates
+ */
+function diffSinglePageWords(
+  words1: TextWordInfo[],
+  words2: TextWordInfo[],
+  pageHeight1: number,
+  pageHeight2: number
+): { highlights1: DiffHighlight[]; highlights2: DiffHighlight[]; hasDifference: boolean; diffPercentage: number } {
+  const A = words1.map(w => w.text);
+  const B = words2.map(w => w.text);
+
+  const rawDiff = diffWordsLCS(A, B);
+
+  // Group diff structures and detect "modified" segments (contiguous delete + add)
+  // Re-map word indices back to physical bounding box coordinates
+  const highlights1: DiffHighlight[] = [];
+  const highlights2: DiffHighlight[] = [];
+
+  let wordCountDiff = 0;
+
+  rawDiff.forEach(item => {
+    // Determine category based on spatial coordinate analysis
+    // Header/Footer: within top/bottom 12% vertical coordinate bounds of canvas
+    let category: 'text' | 'header-footer' | 'formatting' = 'text';
+
+    if (item.type === 'deleted') {
+      wordCountDiff++;
+      const wInfo = words1[item.indexA];
+      if (wInfo.y <= pageHeight1 * 0.12 || wInfo.y >= pageHeight1 * 0.88) {
+        category = 'header-footer';
+      }
+
+      highlights1.push({
+        type: 'deleted',
+        text: item.word,
+        x: wInfo.x - 1,
+        y: wInfo.y - 1,
+        w: wInfo.w + 2,
+        h: wInfo.h + 2,
+        category
+      });
+    } else if (item.type === 'added') {
+      wordCountDiff++;
+      const wInfo = words2[item.indexB];
+      if (wInfo.y <= pageHeight2 * 0.12 || wInfo.y >= pageHeight2 * 0.88) {
+        category = 'header-footer';
+      }
+
+      highlights2.push({
+        type: 'added',
+        text: item.word,
+        x: wInfo.x - 1,
+        y: wInfo.y - 1,
+        w: wInfo.w + 2,
+        h: wInfo.h + 2,
+        category
+      });
+    } else {
+      // Check for Formatting discrepancies (Fonts diff)
+      const wInfo1 = words1[item.indexA];
+      const wInfo2 = words2[item.indexB];
+      
+      if (wInfo1.fontName !== wInfo2.fontName) {
+        category = 'formatting';
+        
+        highlights1.push({
+          type: 'modified',
+          text: item.word,
+          x: wInfo1.x - 1,
+          y: wInfo1.y - 1,
+          w: wInfo1.w + 2,
+          h: wInfo1.h + 2,
+          category
+        });
+        
+        highlights2.push({
+          type: 'modified',
+          text: item.word,
+          x: wInfo2.x - 1,
+          y: wInfo2.y - 1,
+          w: wInfo2.w + 2,
+          h: wInfo2.h + 2,
+          category
+        });
+      }
+    }
+  });
+
+  // Consolidate adjacent highlights to reduce bounding box DOM nodes
+  const compact1 = compactAdjacentHighlights(highlights1, 'deleted');
+  const compact2 = compactAdjacentHighlights(highlights2, 'added');
+
+  const totalWords = Math.max(words1.length, words2.length, 1);
+  const diffPercentage = (wordCountDiff / totalWords) * 100;
+
+  return {
+    highlights1: compact1,
+    highlights2: compact2,
+    hasDifference: compact1.length > 0 || compact2.length > 0,
+    diffPercentage
+  };
+}
+
+/**
+ * Compact contiguous text highlights into single bounding boxes to save DOM render overhead
+ */
+function compactAdjacentHighlights(highlights: DiffHighlight[], type: 'added' | 'deleted' | 'modified'): DiffHighlight[] {
+  if (highlights.length === 0) return [];
+
+  const result: DiffHighlight[] = [];
+  let current = { ...highlights[0] };
+
+  for (let i = 1; i < highlights.length; i++) {
+    const next = highlights[i];
+    
+    // Check if next highlight is on the same line, contiguous coordinate, and same properties
+    const sameLine = Math.abs(next.y - current.y) < 5;
+    const contiguous = Math.abs(next.x - (current.x + current.w)) < 15;
+    
+    if (sameLine && contiguous && next.category === current.category && next.type === current.type) {
+      current.w = (next.x + next.w) - current.x;
+      current.text += next.text;
+    } else {
+      result.push(current);
+      current = { ...next };
+    }
+  }
+  result.push(current);
+  return result;
+}
+
+/**
+ * 3. Cross-correlation Moved-Text Segment detector
+ */
+function findMovedTextSegments(pairedList: PageComparisonResult[]) {
+  // Collect all deletes and adds segments across aligned pages
+  pairedList.forEach(pair1 => {
+    if (pair1.highlights1.length === 0) return;
+
+    pair1.highlights1.forEach(hl1 => {
+      if (hl1.type !== 'deleted' || hl1.text.trim().length < 5) return;
+
+      // Scan other pages to find corresponding add segments
+      pairedList.forEach(pair2 => {
+        if (pair2.highlights2.length === 0) return;
+
+        pair2.highlights2.forEach(hl2 => {
+          if (hl2.type !== 'added' || hl2.text.trim().length < 5) return;
+
+          // Cross-correlation threshold 85% textual likeness
+          const matchSim = computeTextSimilarity(hl1.text, hl2.text);
+          
+          if (matchSim >= 0.85) {
+            // Relabel as moved
+            hl1.type = 'moved';
+            hl2.type = 'moved';
+            hl1.movedToPageIndex = pair2.pageIndex2;
+            hl1.movedToCoords = { x: hl2.x, y: hl2.y };
+            
+            hl2.movedToPageIndex = pair1.pageIndex1;
+            hl2.movedToCoords = { x: hl1.x, y: hl1.y };
+          }
+        });
+      });
+    });
+  });
 }
 
 export default ComparePDFsTool;

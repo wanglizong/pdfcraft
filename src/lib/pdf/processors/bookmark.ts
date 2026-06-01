@@ -24,6 +24,8 @@ export interface BookmarkItem {
   pageNumber: number;
   children?: BookmarkItem[];
   expanded?: boolean;
+  color?: string; // Hex color string like #RRGGBB
+  style?: 'bold' | 'italic' | 'bold-italic';
 }
 
 /**
@@ -210,6 +212,27 @@ export class BookmarkProcessor extends BasePDFProcessor {
         Parent: parentRef,
         Dest: destArray,
       });
+
+      // Set Color (C) if present
+      if (bookmark.color) {
+        const hex = bookmark.color.replace('#', '');
+        const r = parseInt(hex.substring(0, 2), 16) / 255;
+        const g = parseInt(hex.substring(2, 4), 16) / 255;
+        const b = parseInt(hex.substring(4, 6), 16) / 255;
+        itemDict.set(pdfLib.PDFName.of('C'), context.obj([r, g, b]));
+      }
+
+      // Set Flags (F) for style if present
+      if (bookmark.style) {
+        let flags = 0;
+        if (bookmark.style === 'italic') flags = 1;
+        else if (bookmark.style === 'bold') flags = 2;
+        else if (bookmark.style === 'bold-italic') flags = 3;
+        
+        if (flags > 0) {
+          itemDict.set(pdfLib.PDFName.of('F'), pdfLib.PDFNumber.of(flags));
+        }
+      }
 
       const itemRef = context.register(itemDict);
 

@@ -65,6 +65,14 @@ describe('Workflow Executor', () => {
             expect(inputs).toHaveLength(0);
         });
 
+        it('should prefer inputAssignments over stale node.data.inputFiles', () => {
+            const assigned = new File([new Blob(['png'])], 'only.png', { type: 'image/png' });
+            const assignments = new Map<string, File[]>([['node1', [assigned]]]);
+            const inputs = collectInputFiles('node1', nodes, [], new Map(), assignments);
+            expect(inputs).toHaveLength(1);
+            expect((inputs[0] as File).name).toBe('only.png');
+        });
+
         it('should collect outputs from parent nodes', () => {
             const nodeOutputs = new Map<string, (Blob | WorkflowOutputFile)[]>();
             const output1: WorkflowOutputFile = {

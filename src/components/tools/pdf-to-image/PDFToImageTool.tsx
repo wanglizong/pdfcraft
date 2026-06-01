@@ -8,6 +8,7 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { pdfToImages, type ImageFormat, type PDFToImageOptions, type PageLayoutPreset, type PageLayoutOptions } from '@/lib/pdf/processors/pdf-to-image';
+import { Select } from '@/components/ui/FormField';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
 
@@ -309,18 +310,17 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
                   {tTools('pdfToImage.format') || 'Output Format'}
                 </label>
-                <select
+                <Select
                   value={format}
                   onChange={(e) => setFormat(e.target.value as ImageFormat)}
                   disabled={isProcessing}
-                  className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
                 >
                   <option value="png">PNG</option>
                   <option value="jpg">JPG</option>
                   <option value="webp">WebP</option>
                   <option value="bmp">BMP</option>
                   <option value="tiff">TIFF</option>
-                </select>
+                </Select>
               </div>
             )}
 
@@ -348,17 +348,16 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
               <label className="block text-sm font-medium text-[hsl(var(--color-foreground))] mb-2">
                 {tTools('pdfToImage.resolution') || 'Resolution'}
               </label>
-              <select
+              <Select
                 value={scale}
                 onChange={(e) => setScale(parseFloat(e.target.value))}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
               >
                 <option value="1">72 DPI (Low)</option>
                 <option value="2">144 DPI (Medium)</option>
                 <option value="3">216 DPI (High)</option>
                 <option value="4">288 DPI (Very High)</option>
-              </select>
+              </Select>
             </div>
 
             {/* Page Range */}
@@ -372,7 +371,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                 onChange={(e) => setPageRange(e.target.value)}
                 placeholder={tTools('pdfToImage.pageRangePlaceholder') || 'e.g., 1-3, 5, 7'}
                 disabled={isProcessing}
-                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
               />
               <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
                 {tTools('pdfToImage.pageRangeHint') || 'Leave empty for all pages'}
@@ -454,7 +453,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                     value={customColumns}
                     onChange={(e) => setCustomColumns(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
                   />
                 </div>
                 <div className="flex-1">
@@ -468,7 +467,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
                     value={customRows}
                     onChange={(e) => setCustomRows(Math.max(1, Math.min(10, parseInt(e.target.value) || 1)))}
                     disabled={isProcessing}
-                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-white text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
+                    className="w-full px-3 py-2 rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] bg-[hsl(var(--color-background))] text-[hsl(var(--color-foreground))] text-sm focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))]"
                   />
                 </div>
               </div>

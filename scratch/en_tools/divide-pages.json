@@ -1,0 +1,59 @@
+{
+  "title": "Divide Pages",
+  "metaDescription": "Split PDF pages into multiple sections. Divide pages horizontally or vertically.",
+  "keywords": [
+    "divide pdf pages",
+    "split page",
+    "cut pdf page",
+    "page sections"
+  ],
+  "description": "\n      <p>Divide Pages splits individual PDF pages into multiple sections. Cut pages horizontally, vertically, or into a grid to create multiple pages from one.</p>\n      <p>Perfect for splitting scanned documents with multiple items per page, or dividing large format pages into standard sizes.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Set Division",
+      "description": "Choose horizontal, vertical, or grid division and set the number of sections."
+    },
+    {
+      "step": 3,
+      "title": "Divide and Download",
+      "description": "Click Divide to split pages and download."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Split Scans",
+      "description": "Divide scanned pages containing multiple documents.",
+      "icon": "scissors"
+    },
+    {
+      "title": "Resize Pages",
+      "description": "Split large pages into standard paper sizes.",
+      "icon": "maximize-2"
+    },
+    {
+      "title": "Create Cards",
+      "description": "Divide pages into card-sized sections for printing.",
+      "icon": "grid"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Can I divide into unequal sections?",
+      "answer": "Currently, divisions are equal. Use Crop PDF for custom sections."
+    },
+    {
+      "question": "What happens to content at division lines?",
+      "answer": "Content is split at the division line; ensure important content is not at boundaries."
+    },
+    {
+      "question": "Can I divide specific pages only?",
+      "answer": "Yes, you can select which pages to divide."
+    }
+  ]
+}

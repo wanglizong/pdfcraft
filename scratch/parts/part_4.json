@@ -1,0 +1,322 @@
+{
+  "tools.compressPdf.saved": {
+    "en": "Saved:",
+    "zh": "节省："
+  },
+  "tools.signPdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to sign.",
+    "zh": "拖放PDF文件到此处进行签名。"
+  },
+  "tools.signPdf.instructionsTitle": {
+    "en": "How to Sign",
+    "zh": "如何签名"
+  },
+  "tools.signPdf.instruction1": {
+    "en": "Click the Signature tool (pen icon) in the toolbar",
+    "zh": "点击工具栏中的签名工具（钢笔图标）"
+  },
+  "tools.signPdf.instruction2": {
+    "en": "Draw, type, or upload your signature",
+    "zh": "绘制、输入或上传您的签名"
+  },
+  "tools.signPdf.instruction3": {
+    "en": "Click where you want to place the signature",
+    "zh": "点击要放置签名的位置"
+  },
+  "tools.signPdf.instruction4": {
+    "en": "Click \"Save Signed PDF\" below when done",
+    "zh": "完成后点击下方的「保存签名PDF」"
+  },
+  "tools.signPdf.flattenOption": {
+    "en": "Flatten signature (recommended - makes signature permanent)",
+    "zh": "扁平化签名（推荐 - 使签名永久）"
+  },
+  "tools.signPdf.saveButton": {
+    "en": "Save Signed PDF",
+    "zh": "保存签名PDF"
+  },
+  "tools.signPdf.successMessage": {
+    "en": "PDF signed successfully!",
+    "zh": "PDF签名成功！"
+  },
+  "tools.cropPdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to crop.",
+    "zh": "拖放PDF文件到此处进行裁剪。"
+  },
+  "tools.cropPdf.applyToAll": {
+    "en": "Apply to all pages",
+    "zh": "应用到所有页面"
+  },
+  "tools.cropPdf.cropButton": {
+    "en": "Crop PDF",
+    "zh": "裁剪PDF"
+  },
+  "tools.cropPdf.successMessage": {
+    "en": "PDF cropped successfully!",
+    "zh": "PDF裁剪成功！"
+  },
+  "tools.cropPdf.zoomIn": {
+    "en": "Zoom In",
+    "zh": "放大"
+  },
+  "tools.cropPdf.zoomOut": {
+    "en": "Zoom Out",
+    "zh": "缩小"
+  },
+  "tools.cropPdf.resetZoom": {
+    "en": "Reset Zoom",
+    "zh": "重置缩放"
+  },
+  "tools.cropPdf.fullscreen": {
+    "en": "Fullscreen",
+    "zh": "全屏"
+  },
+  "tools.cropPdf.exitFullscreen": {
+    "en": "Exit Fullscreen",
+    "zh": "退出全屏"
+  },
+  "tools.cropPdf.marginTop": {
+    "en": "Margin Top",
+    "zh": "上边距"
+  },
+  "tools.cropPdf.marginBottom": {
+    "en": "Margin Bottom",
+    "zh": "下边距"
+  },
+  "tools.cropPdf.marginLeft": {
+    "en": "Margin Left",
+    "zh": "左边距"
+  },
+  "tools.cropPdf.marginRight": {
+    "en": "Margin Right",
+    "zh": "右边距"
+  },
+  "tools.cropPdf.optionsTitle": {
+    "en": "Crop Options",
+    "zh": "裁剪选项"
+  },
+  "tools.repairPdf.uploadDescription": {
+    "en": "Drag and drop PDF files to repair.",
+    "zh": "拖放PDF文件到此处进行修复。"
+  },
+  "tools.repairPdf.filesTitle": {
+    "en": "Files to Repair",
+    "zh": "要修复的文件"
+  },
+  "tools.repairPdf.repairButton": {
+    "en": "Repair PDFs",
+    "zh": "修复PDF"
+  },
+  "tools.repairPdf.successMessage": {
+    "en": "PDF repaired successfully!",
+    "zh": "PDF修复成功！"
+  },
+  "tools.dividePages.optionsTitle": {
+    "en": "Division Options",
+    "zh": "分割选项"
+  },
+  "tools.dividePages.divisionType": {
+    "en": "Division Type",
+    "zh": "分割类型"
+  },
+  "tools.dividePages.vertical": {
+    "en": "Vertical",
+    "zh": "垂直"
+  },
+  "tools.dividePages.horizontal": {
+    "en": "Horizontal",
+    "zh": "水平"
+  },
+  "tools.dividePages.grid2x2": {
+    "en": "2×2 Grid",
+    "zh": "2×2网格"
+  },
+  "tools.dividePages.grid3x3": {
+    "en": "3×3 Grid",
+    "zh": "3×3网格"
+  },
+  "tools.dividePages.previewInfo": {
+    "en": "Each page will be divided based on the selected option.",
+    "zh": "每页将根据所选选项进行分割。"
+  },
+  "tools.dividePages.divideButton": {
+    "en": "Divide Pages",
+    "zh": "分割页面"
+  },
+  "tools.dividePages.successMessage": {
+    "en": "Pages divided successfully!",
+    "zh": "页面分割成功！"
+  },
+  "tools.encryptPdf.passwordTitle": {
+    "en": "Password Settings",
+    "zh": "密码设置"
+  },
+  "tools.encryptPdf.privacyNotice": {
+    "en": "🔒 Your passwords are processed locally and never sent to any server.",
+    "zh": "🔒 您的密码在本地处理，永远不会发送到任何服务器。"
+  },
+  "tools.encryptPdf.userPasswordLabel": {
+    "en": "User Password (to open document)",
+    "zh": "用户密码（打开文档）"
+  },
+  "tools.encryptPdf.userPasswordPlaceholder": {
+    "en": "Enter password to open PDF",
+    "zh": "输入打开PDF的密码"
+  },
+  "tools.encryptPdf.userPasswordHint": {
+    "en": "Required to open and view the PDF.",
+    "zh": "打开和查看PDF时需要此密码。"
+  },
+  "tools.encryptPdf.ownerPasswordLabel": {
+    "en": "Owner Password (to change permissions)",
+    "zh": "所有者密码（更改权限）"
+  },
+  "tools.encryptPdf.ownerPasswordPlaceholder": {
+    "en": "Enter owner password",
+    "zh": "输入所有者密码"
+  },
+  "tools.encryptPdf.ownerPasswordHint": {
+    "en": "Required to modify permissions or remove encryption.",
+    "zh": "修改权限或移除加密时需要此密码。"
+  },
+  "tools.encryptPdf.permissionsTitle": {
+    "en": "Document Permissions",
+    "zh": "文档权限"
+  },
+  "tools.encryptPdf.permPrinting": {
+    "en": "Allow Printing",
+    "zh": "允许打印"
+  },
+  "tools.encryptPdf.permModifying": {
+    "en": "Allow Modifying",
+    "zh": "允许修改"
+  },
+  "tools.encryptPdf.permCopying": {
+    "en": "Allow Copying",
+    "zh": "允许复制"
+  },
+  "tools.encryptPdf.permAnnotating": {
+    "en": "Allow Annotating",
+    "zh": "允许注释"
+  },
+  "tools.encryptPdf.permFillingForms": {
+    "en": "Allow Filling Forms",
+    "zh": "允许填写表单"
+  },
+  "tools.encryptPdf.permAccessibility": {
+    "en": "Allow Accessibility",
+    "zh": "允许辅助功能"
+  },
+  "tools.encryptPdf.permAssembly": {
+    "en": "Allow Assembly",
+    "zh": "允许组装"
+  },
+  "tools.encryptPdf.encryptButton": {
+    "en": "Encrypt PDF",
+    "zh": "加密PDF"
+  },
+  "tools.encryptPdf.successMessage": {
+    "en": "PDF encrypted successfully!",
+    "zh": "PDF加密成功！"
+  },
+  "tools.encryptPdf.successHint": {
+    "en": "Remember to save your passwords securely.",
+    "zh": "请妥善保存您的密码。"
+  },
+  "tools.decryptPdf.uploadDescription": {
+    "en": "Drag and drop an encrypted PDF file.",
+    "zh": "拖放加密的PDF文件到此处。"
+  },
+  "tools.decryptPdf.passwordTitle": {
+    "en": "Enter Password",
+    "zh": "输入密码"
+  },
+  "tools.decryptPdf.privacyNotice": {
+    "en": "🔒 Your password is processed locally and never sent to any server.",
+    "zh": "🔒 您的密码在本地处理，永远不会发送到任何服务器。"
+  },
+  "tools.decryptPdf.passwordLabel": {
+    "en": "PDF Password",
+    "zh": "PDF密码"
+  },
+  "tools.decryptPdf.passwordPlaceholder": {
+    "en": "Enter the PDF password",
+    "zh": "输入PDF密码"
+  },
+  "tools.decryptPdf.passwordHint": {
+    "en": "Leave empty if the PDF only has owner password restrictions.",
+    "zh": "如果PDF仅有所有者密码限制，可留空。"
+  },
+  "tools.decryptPdf.decryptButton": {
+    "en": "Decrypt PDF",
+    "zh": "解密PDF"
+  },
+  "tools.decryptPdf.successMessage": {
+    "en": "PDF decrypted successfully!",
+    "zh": "PDF解密成功！"
+  },
+  "tools.decryptPdf.successHint": {
+    "en": "The PDF is now unlocked and can be opened without a password.",
+    "zh": "PDF现已解锁，无需密码即可打开。"
+  },
+  "tools.decryptPdf.invalidPassword": {
+    "en": "The password you entered is incorrect. Please check and try again.",
+    "zh": "您输入的密码不正确，请检查后重试。"
+  },
+  "tools.rotatePdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to rotate pages.",
+    "zh": "拖放PDF文件到此处以旋转页面。"
+  },
+  "tools.rotatePdf.optionsTitle": {
+    "en": "Rotation Options",
+    "zh": "旋转选项"
+  },
+  "tools.rotatePdf.rotateTitle": {
+    "en": "Rotate Pages",
+    "zh": "旋转页面"
+  },
+  "tools.rotatePdf.hint": {
+    "en": "Click the rotation buttons on each page to rotate individually, or use the buttons above to rotate all pages.",
+    "zh": "点击每页上的旋转按钮单独旋转，或使用上方按钮旋转所有页面。"
+  },
+  "tools.rotatePdf.rotateAll": {
+    "en": "Rotate All Pages",
+    "zh": "旋转所有页面"
+  },
+  "tools.rotatePdf.rotateButton": {
+    "en": "Rotate PDF",
+    "zh": "旋转PDF"
+  },
+  "tools.rotatePdf.rotateRight": {
+    "en": "Rotate Right 90°",
+    "zh": "向右旋转 90°"
+  },
+  "tools.rotatePdf.rotateLeft": {
+    "en": "Rotate Left 90°",
+    "zh": "向左旋转 90°"
+  },
+  "tools.rotatePdf.applyTo": {
+    "en": "Apply to",
+    "zh": "应用于"
+  },
+  "tools.rotatePdf.oddPages": {
+    "en": "Odd Pages",
+    "zh": "奇数页"
+  },
+  "tools.rotatePdf.evenPages": {
+    "en": "Even Pages",
+    "zh": "偶数页"
+  },
+  "tools.rotateCustom.title": {
+    "en": "Custom Rotation",
+    "zh": "自定义旋转"
+  },
+  "tools.rotateCustom.setAllLabel": {
+    "en": "Set all pages to:",
+    "zh": "将所有页面设置为："
+  },
+  "tools.rotateCustom.applyToAll": {
+    "en": "Apply to All",
+    "zh": "全部应用"
+  }
+}

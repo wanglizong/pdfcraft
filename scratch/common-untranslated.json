@@ -1,0 +1,2350 @@
+[
+  {
+    "en": "Upload PDF File",
+    "zh": "上传PDF文件",
+    "keys": [
+      "tools.deletePages.uploadLabel",
+      "tools.extractPages.uploadLabel",
+      "tools.posterizePdf.uploadLabel",
+      "tools.viewMetadata.uploadLabel",
+      "tools.editMetadata.uploadLabel",
+      "tools.signPdf.uploadLabel",
+      "tools.cropPdf.uploadLabel",
+      "tools.organizePdf.uploadLabel",
+      "tools.dividePages.uploadLabel",
+      "tools.encryptPdf.uploadLabel",
+      "tools.decryptPdf.uploadLabel",
+      "tools.rotatePdf.uploadLabel",
+      "tools.addBlankPage.uploadLabel",
+      "tools.reversePages.uploadLabel",
+      "tools.combineSinglePage.uploadLabel",
+      "tools.addAttachments.pdfUploadLabel",
+      "tools.editAttachments.uploadLabel",
+      "tools.pdfToImage.uploadLabel",
+      "tools.pdfToSvg.uploadLabel",
+      "tools.pdfToGreyscale.uploadLabel",
+      "tools.pdfToJson.uploadLabel",
+      "tools.ocrPdf.uploadLabel",
+      "tools.pageDimensions.uploadLabel",
+      "tools.removeRestrictions.uploadLabel",
+      "tools.sanitizePdf.uploadLabel",
+      "tools.flattenPdf.uploadLabel",
+      "tools.removeMetadata.uploadLabel",
+      "tools.changePermissions.uploadLabel",
+      "tools.fixPageSize.uploadLabel",
+      "tools.pageNumbers.uploadLabel",
+      "tools.watermark.uploadLabel",
+      "tools.headerFooter.uploadLabel",
+      "tools.invertColors.uploadLabel",
+      "tools.backgroundColor.uploadLabel",
+      "tools.textColor.uploadLabel",
+      "tools.stamps.uploadLabel",
+      "tools.formFiller.uploadLabel",
+      "tools.formCreator.uploadLabel",
+      "tools.removeBlankPages.uploadLabel",
+      "tools.tableOfContents.uploadLabel",
+      "tools.pdfToDocx.uploadLabel",
+      "tools.pdfToMarkdown.uploadLabel",
+      "tools.pdfBooklet.uploadLabel",
+      "tools.rasterizePdf.uploadLabel",
+      "tools.extractTables.uploadLabel",
+      "tools.ocgManager.uploadLabel",
+      "tools.findAndRedact.uploadLabel",
+      "tools.bookletFoldingSimulator.uploadLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi",
+      "it",
+      "pt",
+      "ro",
+      "ar"
+    ]
+  },
+  {
+    "en": "Clear",
+    "zh": "清空",
+    "keys": [
+      "common.pdfDeskewAligner.clearButton",
+      "common.pdfTwoColumnReflower.clearButton",
+      "common.pdfPageResizerUniform.clearButton",
+      "common.handwritingInkContrastBooster.clearButton",
+      "common.pdfSignatureAnchorHelper.clearButton",
+      "common.pdfLosslessSlicer.clearButton",
+      "common.photoTilingPrepress.clearButton",
+      "common.globalInvoiceParser.clearButton",
+      "common.passportIdComposer.clearButton",
+      "common.annotationExporter.clearButton",
+      "common.batchWatermarkRemover.clearButton",
+      "common.smartDataRedactor.clearButton",
+      "common.bookmarksAutoGenerator.clearButton",
+      "common.batchBarcodeInjector.clearButton",
+      "common.signatureInkOptimizer.clearButton",
+      "common.deadLinkDebugger.clearButton",
+      "common.interactiveTocGenerator.clearButton"
+    ],
+    "langs": [
+      "de",
+      "id",
+      "ro",
+      "ar",
+      "ja",
+      "ko",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi"
+    ]
+  },
+  {
+    "en": "Drag and drop a PDF file here, or click to browse.",
+    "zh": "拖放PDF文件到此处，或点击浏览。",
+    "keys": [
+      "tools.deletePages.uploadDescription",
+      "tools.extractPages.uploadDescription",
+      "tools.posterizePdf.uploadDescription",
+      "tools.editPdf.uploadDescription",
+      "tools.compressPdf.uploadDescription",
+      "tools.dividePages.uploadDescription",
+      "tools.encryptPdf.uploadDescription",
+      "tools.combineSinglePage.uploadDescription",
+      "tools.pdfToJson.uploadDescription",
+      "tools.pageDimensions.uploadDescription",
+      "tools.removeMetadata.uploadDescription",
+      "tools.changePermissions.uploadDescription",
+      "tools.fixPageSize.uploadDescription",
+      "tools.pdfToDocx.uploadDescription",
+      "tools.pdfToMarkdown.uploadDescription"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Convert to PDF",
+    "zh": "转换为PDF",
+    "keys": [
+      "tools.imageToPdf.convertButton",
+      "tools.textToPdf.convertButton",
+      "tools.txtToPdf.convertButton",
+      "tools.jsonToPdf.convertButton",
+      "tools.wordToPdf.convertButton",
+      "tools.excelToPdf.convertButton",
+      "tools.pptxToPdf.convertButton",
+      "tools.xpsToPdf.convertButton",
+      "tools.rtfToPdf.convertButton",
+      "tools.epubToPdf.convertButton",
+      "tools.mobiToPdf.convertButton",
+      "tools.fb2ToPdf.convertButton",
+      "tools.djvuToPdf.convertButton",
+      "tools.emailToPdf.convertButton",
+      "tools.cbzToPdf.convertButton"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Upload PDF Files",
+    "zh": "上传PDF文件",
+    "keys": [
+      "tools.mergePdf.uploadLabel",
+      "tools.pdfMultiTool.uploadLabel",
+      "tools.compressPdf.uploadLabel",
+      "tools.repairPdf.uploadLabel",
+      "tools.extractAttachments.uploadLabel",
+      "tools.extractImages.uploadLabel",
+      "tools.alternateMerge.uploadLabel",
+      "tools.pdfToZip.uploadLabel",
+      "tools.linearizePdf.uploadLabel",
+      "tools.pdfToPdfa.uploadLabel",
+      "tools.fontToOutline.uploadLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Orientation",
+    "zh": "方向",
+    "keys": [
+      "tools.gridCombine.orientation",
+      "tools.nUpPdf.orientation",
+      "tools.posterizePdf.orientation",
+      "tools.imageToPdf.orientation",
+      "tools.combineSinglePage.orientation",
+      "tools.txtToPdf.orientation",
+      "tools.pageDimensions.orientation",
+      "tools.pdfBooklet.orientationLabel"
+    ],
+    "langs": [
+      "fr",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Page Range",
+    "zh": "页面范围",
+    "keys": [
+      "tools.addAttachments.pageRange",
+      "tools.pdfToImage.pageRange",
+      "tools.pdfToSvg.pageRange",
+      "tools.pdfToGreyscale.pageRange",
+      "tools.pdfToJson.pageRange",
+      "tools.ocrPdf.pageRange",
+      "tools.watermark.rangeTitle",
+      "tools.pdfToMarkdown.pageRange"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Preview",
+    "zh": "预览",
+    "keys": [
+      "tools.textToPdf.preview",
+      "tools.txtToPdf.preview",
+      "tools.pageNumbers.preview",
+      "tools.watermark.previewTitle",
+      "tools.headerFooter.preview",
+      "tools.markdownToPdf.previewLabel",
+      "tools.pdfToMarkdown.previewTab",
+      "tools.findAndRedact.previewTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "vi",
+      "pt",
+      "ar"
+    ]
+  },
+  {
+    "en": "Conversion Options",
+    "zh": "转换选项",
+    "keys": [
+      "tools.pdfToImage.optionsTitle",
+      "tools.pdfToSvg.optionsTitle",
+      "tools.markdownToPdf.optionsTitle",
+      "tools.pdfToMarkdown.optionsTitle",
+      "tools.pdfToPptx.optionsTitle",
+      "tools.djvuToPdf.optionsTitle",
+      "tools.emailToPdf.optionsTitle",
+      "tools.cbzToPdf.optionsTitle"
+    ],
+    "langs": [
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Page Size",
+    "zh": "页面大小",
+    "keys": [
+      "tools.imageToPdf.pageSize",
+      "tools.addBlankPage.pageSize",
+      "tools.textToPdf.pageSize",
+      "tools.txtToPdf.pageSize",
+      "tools.markdownToPdf.pageSizeLabel",
+      "tools.emailToPdf.pageSizeLabel",
+      "tools.cbzToPdf.pageSizeLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "vi"
+    ]
+  },
+  {
+    "en": "Drag and drop a PDF file.",
+    "zh": "拖放PDF文件到此处。",
+    "keys": [
+      "tools.pageNumbers.uploadDescription",
+      "tools.watermark.uploadDescription",
+      "tools.invertColors.uploadDescription",
+      "tools.backgroundColor.uploadDescription",
+      "tools.textColor.uploadDescription",
+      "tools.removeBlankPages.uploadDescription",
+      "tools.tableOfContents.uploadDescription"
+    ],
+    "langs": [
+      "vi",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr"
+    ]
+  },
+  {
+    "en": "Download All as ZIP",
+    "zh": "全部下载为ZIP",
+    "keys": [
+      "tools.compressPdf.downloadAllZip",
+      "tools.pdfToImage.downloadZip",
+      "tools.pdfToSvg.downloadZip",
+      "tools.deskewPdf.downloadAllZip",
+      "tools.pdfToPdfa.downloadAllZip",
+      "tools.fontToOutline.downloadAllZip"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "e.g., 1-3, 5, 7",
+    "zh": "例如：1-3, 5, 7",
+    "keys": [
+      "tools.pdfToImage.pageRangePlaceholder",
+      "tools.pdfToSvg.pageRangePlaceholder",
+      "tools.pdfToGreyscale.pageRangePlaceholder",
+      "tools.pdfToJson.pageRangePlaceholder",
+      "tools.ocrPdf.pageRangePlaceholder",
+      "tools.pdfToMarkdown.pageRangePlaceholder"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Leave empty for all pages",
+    "zh": "留空表示所有页面",
+    "keys": [
+      "tools.pdfToImage.pageRangeHint",
+      "tools.pdfToSvg.pageRangeHint",
+      "tools.pdfToGreyscale.pageRangeHint",
+      "tools.pdfToJson.pageRangeHint",
+      "tools.ocrPdf.pageRangeHint",
+      "tools.pdfToMarkdown.pageRangeHint"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "{count} page(s) • {size} MB",
+    "zh": "{count} 页 • {size} MB",
+    "keys": [
+      "common.overlayPdf.uploadBaseSuccess",
+      "common.overlayPdf.uploadLayerSuccess",
+      "common.pageLabels.uploadSuccess",
+      "common.pdfToCbz.uploadSuccess",
+      "common.pdfToTiff.uploadSuccess"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Upload PDF File",
+    "zh": "上传 PDF 文件",
+    "keys": [
+      "tools.rotateCustom.uploadLabel",
+      "tools.bookmark.uploadLabel",
+      "tools.removeAnnotations.uploadLabel",
+      "tools.pdfToExcel.uploadLabel",
+      "tools.pdfToPptx.uploadLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Page {page}",
+    "zh": "第 {page} 页",
+    "keys": [
+      "common.deadLinkDebugger.pageNumberLabel",
+      "common.comparePdfs.pageIndex",
+      "tools.findAndRedact.pageNumber",
+      "tools.findAndRedact.pageInfo"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Landscape",
+    "zh": "横向",
+    "keys": [
+      "common.nUpPdf.orientationLandscape",
+      "tools.imageToPdf.orientationLandscape",
+      "tools.txtToPdf.landscape",
+      "tools.fixPageSize.orientLandscape"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Portrait",
+    "zh": "纵向",
+    "keys": [
+      "common.nUpPdf.orientationPortrait",
+      "tools.imageToPdf.orientationPortrait",
+      "tools.txtToPdf.portrait",
+      "tools.fixPageSize.orientPortrait"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Conversion Successful!",
+    "zh": "转换成功！",
+    "keys": [
+      "tools.successTitle",
+      "tools.pdfToExcel.successTitle",
+      "tools.pdfToPptx.successTitle",
+      "tools.djvuToPdf.successTitle"
+    ],
+    "langs": [
+      "vi"
+    ]
+  },
+  {
+    "en": "pages",
+    "zh": "页",
+    "keys": [
+      "tools.gridCombine.pages",
+      "tools.nUpPdf.pagesLabel",
+      "tools.cropPdf.pages",
+      "tools.formCreator.pages"
+    ],
+    "langs": [
+      "fr",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Subject",
+    "zh": "主题",
+    "keys": [
+      "tools.digitalSign.subject",
+      "tools.viewMetadata.subject",
+      "tools.editMetadata.subject",
+      "tools.removeMetadata.subject"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar",
+      "id"
+    ]
+  },
+  {
+    "en": "Page",
+    "zh": "页面",
+    "keys": [
+      "tools.digitalSign.pageLabel",
+      "tools.extractImages.page",
+      "tools.pdfToSvg.previewPage",
+      "tools.pageDimensions.page"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar",
+      "id"
+    ]
+  },
+  {
+    "en": "All Pages",
+    "zh": "所有页面",
+    "keys": [
+      "tools.digitalSign.allPages",
+      "tools.rotatePdf.allPages",
+      "tools.watermark.rangeAll",
+      "tools.findAndRedact.allPages"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar",
+      "id"
+    ]
+  },
+  {
+    "en": "Text Color",
+    "zh": "文本颜色",
+    "keys": [
+      "tools.digitalSign.textColorLabel",
+      "tools.editPdf.options.textColor",
+      "tools.txtToPdf.textColor",
+      "tools.textColor.colorLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar",
+      "id"
+    ]
+  },
+  {
+    "en": "Delete",
+    "zh": "删除",
+    "keys": [
+      "tools.pdfMultiTool.delete",
+      "tools.organizePdf.deletePage",
+      "tools.formCreator.deleteTool",
+      "tools.formCreator.deleteProject"
+    ],
+    "langs": [
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Title",
+    "zh": "标题",
+    "keys": [
+      "tools.viewMetadata.title",
+      "tools.editMetadata.title",
+      "tools.removeMetadata.title",
+      "tools.bookmark.title"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi",
+      "it",
+      "pt",
+      "ar"
+    ]
+  },
+  {
+    "en": "Output Format",
+    "zh": "输出格式",
+    "keys": [
+      "tools.extractImages.format",
+      "tools.ocrPdf.outputFormat",
+      "tools.rasterizePdf.formatLabel",
+      "tools.extractTables.formatLabel"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Position",
+    "zh": "位置",
+    "keys": [
+      "tools.addBlankPage.position",
+      "tools.pageNumbers.positionTitle",
+      "tools.watermark.position",
+      "tools.formCreator.labelPosition"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Quality",
+    "zh": "质量",
+    "keys": [
+      "tools.pdfToImage.quality",
+      "tools.pdfToGreyscale.quality",
+      "tools.ocrPdf.quality",
+      "tools.rasterizePdf.qualityLabel"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Style",
+    "zh": "样式",
+    "keys": [
+      "tools.bookmark.style",
+      "tools.pageNumbers.styleTitle",
+      "tools.pageNumbers.style",
+      "tools.headerFooter.styleTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Font Size",
+    "zh": "字体大小",
+    "keys": [
+      "tools.pageNumbers.fontSize",
+      "tools.watermark.fontSize",
+      "tools.headerFooter.fontSize",
+      "tools.tableOfContents.fontSize"
+    ],
+    "langs": [
+      "vi",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr"
+    ]
+  },
+  {
+    "en": "Page Range (optional)",
+    "zh": "页面范围（可选）",
+    "keys": [
+      "tools.posterizePdf.pageRange",
+      "tools.rasterizePdf.pageRangeLabel",
+      "tools.extractTables.pageRangeLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Width",
+    "zh": "宽度",
+    "keys": [
+      "tools.digitalSign.width",
+      "tools.pageDimensions.width",
+      "tools.formCreator.fieldWidth"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar",
+      "id"
+    ]
+  },
+  {
+    "en": "Height",
+    "zh": "高度",
+    "keys": [
+      "tools.digitalSign.height",
+      "tools.pageDimensions.height",
+      "tools.formCreator.fieldHeight"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar",
+      "id"
+    ]
+  },
+  {
+    "en": "Reset",
+    "zh": "重置",
+    "keys": [
+      "tools.pdfMultiTool.reset",
+      "tools.editMetadata.resetButton",
+      "tools.cropPdf.reset"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr"
+    ]
+  },
+  {
+    "en": "Select All",
+    "zh": "全选",
+    "keys": [
+      "tools.pdfMultiTool.selectAll",
+      "tools.editAttachments.selectAll",
+      "tools.removeMetadata.selectAll"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Author",
+    "zh": "作者",
+    "keys": [
+      "tools.viewMetadata.author",
+      "tools.editMetadata.author",
+      "tools.removeMetadata.author"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Keywords",
+    "zh": "关键词",
+    "keys": [
+      "tools.viewMetadata.keywords",
+      "tools.editMetadata.keywords",
+      "tools.removeMetadata.keywords"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Font Size",
+    "zh": "字号",
+    "keys": [
+      "tools.editPdf.options.fontSize",
+      "tools.textToPdf.fontSize",
+      "tools.txtToPdf.fontSize"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it"
+    ]
+  },
+  {
+    "en": "PDF Options",
+    "zh": "PDF选项",
+    "keys": [
+      "tools.imageToPdf.optionsTitle",
+      "tools.textToPdf.optionsTitle",
+      "tools.txtToPdf.optionsTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it"
+    ]
+  },
+  {
+    "en": "Selected Files",
+    "zh": "已选文件",
+    "keys": [
+      "tools.extractAttachments.filesTitle",
+      "tools.extractImages.filesTitle",
+      "tools.linearizePdf.selectedFiles"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Background Color",
+    "zh": "背景颜色",
+    "keys": [
+      "tools.combineSinglePage.backgroundColor",
+      "tools.backgroundColor.colorLabel",
+      "tools.rasterizePdf.bgColorLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Preserve line breaks",
+    "zh": "保留换行符",
+    "keys": [
+      "tools.textToPdf.preserveLineBreaks",
+      "tools.txtToPdf.preserveLineBreaks",
+      "tools.pdfToMarkdown.preserveLineBreaks"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Custom",
+    "zh": "自定义",
+    "keys": [
+      "tools.txtToPdf.custom",
+      "tools.pdfToImage.customLayout",
+      "tools.fixPageSize.custom"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Options",
+    "zh": "选项",
+    "keys": [
+      "tools.removeRestrictions.optionsTitle",
+      "tools.formCreator.optionsTab",
+      "tools.fontToOutline.optionsTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Color",
+    "zh": "颜色",
+    "keys": [
+      "tools.bookmark.color",
+      "tools.pageNumbers.color",
+      "tools.watermark.color"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Drag and drop a PDF file here.",
+    "zh": "拖放PDF文件到此处。",
+    "keys": [
+      "tools.headerFooter.uploadDescription",
+      "tools.stamps.uploadDescription",
+      "tools.formCreator.uploadDescription"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Clear All",
+    "zh": "清空全部",
+    "keys": [
+      "common.compress.clearAll",
+      "tools.pdfMultiTool.clearAll"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Save",
+    "zh": "保存",
+    "keys": [
+      "common.editPdf.saveBtn",
+      "tools.formCreator.saveButton"
+    ],
+    "langs": [
+      "de",
+      "id",
+      "ro",
+      "ar",
+      "vi"
+    ]
+  },
+  {
+    "en": "Rectangle",
+    "zh": "矩形",
+    "keys": [
+      "common.editPdf.annRectangle",
+      "tools.editPdf.toolbar.rectangle"
+    ],
+    "langs": [
+      "fr",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "id"
+    ]
+  },
+  {
+    "en": "Signature",
+    "zh": "签名",
+    "keys": [
+      "common.editPdf.annSignature",
+      "tools.formCreator.signatureTool"
+    ],
+    "langs": [
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Undo",
+    "zh": "撤销",
+    "keys": [
+      "common.editPdf.undoBtn",
+      "tools.pdfMultiTool.undo"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Redo",
+    "zh": "重做",
+    "keys": [
+      "common.editPdf.redoBtn",
+      "tools.pdfMultiTool.redo"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Auto",
+    "zh": "自动",
+    "keys": [
+      "common.nUpPdf.orientationAuto",
+      "tools.fixPageSize.orientAuto"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "1. Upload Document (PDF)",
+    "zh": "1. 上传文档 (PDF)",
+    "keys": [
+      "common.pageLabels.uploadLabel",
+      "common.pdfToTiff.uploadLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Low",
+    "zh": "低",
+    "keys": [
+      "tools.quality.low",
+      "tools.compressPdf.qualityLow"
+    ],
+    "langs": [
+      "vi",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Medium",
+    "zh": "中",
+    "keys": [
+      "tools.quality.medium",
+      "tools.compressPdf.qualityMedium"
+    ],
+    "langs": [
+      "vi",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "High",
+    "zh": "高",
+    "keys": [
+      "tools.quality.high",
+      "tools.compressPdf.qualityHigh"
+    ],
+    "langs": [
+      "vi",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Warning",
+    "zh": "警告",
+    "keys": [
+      "tools.deletePages.warning",
+      "tools.findAndRedact.warningTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Rows",
+    "zh": "行数",
+    "keys": [
+      "tools.posterizePdf.rows",
+      "tools.pdfToImage.rows"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Columns",
+    "zh": "列数",
+    "keys": [
+      "tools.posterizePdf.cols",
+      "tools.pdfToImage.columns"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Drag and drop a PDF file here, or click to browse.",
+    "zh": "将 PDF 文件拖放到此处，或点击浏览。",
+    "keys": [
+      "tools.digitalSign.uploadDescription",
+      "tools.rotateCustom.uploadDescription"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar",
+      "id"
+    ]
+  },
+  {
+    "en": "Issuer",
+    "zh": "颁发者",
+    "keys": [
+      "tools.digitalSign.issuer",
+      "tools.validateSign.issuer"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Reason",
+    "zh": "原因",
+    "keys": [
+      "tools.digitalSign.reasonLabel",
+      "tools.validateSign.reason"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Location",
+    "zh": "地点",
+    "keys": [
+      "tools.digitalSign.locationLabel",
+      "tools.validateSign.location"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Duplicate",
+    "zh": "复制",
+    "keys": [
+      "tools.pdfMultiTool.duplicate",
+      "tools.organizePdf.duplicatePage"
+    ],
+    "langs": [
+      "id"
+    ]
+  },
+  {
+    "en": "Add Blank Pages",
+    "zh": "添加空白页",
+    "keys": [
+      "tools.pdfMultiTool.addBlankPageTitle",
+      "tools.addBlankPage.addButton"
+    ],
+    "langs": [
+      "id",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr"
+    ]
+  },
+  {
+    "en": "Apply Changes",
+    "zh": "应用更改",
+    "keys": [
+      "tools.pdfMultiTool.processButton",
+      "tools.organizePdf.applyButton"
+    ],
+    "langs": [
+      "id"
+    ]
+  },
+  {
+    "en": "Creator Application",
+    "zh": "创建程序",
+    "keys": [
+      "tools.viewMetadata.creator",
+      "tools.editMetadata.creator"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "PDF Producer",
+    "zh": "PDF生成器",
+    "keys": [
+      "tools.viewMetadata.producer",
+      "tools.editMetadata.producer"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Creation Date",
+    "zh": "创建日期",
+    "keys": [
+      "tools.viewMetadata.creationDate",
+      "tools.removeMetadata.creationDate"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Modification Date",
+    "zh": "修改日期",
+    "keys": [
+      "tools.viewMetadata.modificationDate",
+      "tools.removeMetadata.modificationDate"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Select",
+    "zh": "选择",
+    "keys": [
+      "tools.editPdf.toolbar.select",
+      "tools.formCreator.selectTool"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Margin",
+    "zh": "边距",
+    "keys": [
+      "tools.imageToPdf.margin",
+      "tools.pageNumbers.margin"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Image Quality",
+    "zh": "图片质量",
+    "keys": [
+      "tools.imageToPdf.imageQuality",
+      "tools.cbzToPdf.qualityLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Original:",
+    "zh": "原始：",
+    "keys": [
+      "tools.compressPdf.originalSize",
+      "tools.linearizePdf.originalSize"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "pt",
+      "ro",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Zoom In",
+    "zh": "放大",
+    "keys": [
+      "tools.cropPdf.zoomIn",
+      "tools.pageNumbers.zoomIn"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Zoom Out",
+    "zh": "缩小",
+    "keys": [
+      "tools.cropPdf.zoomOut",
+      "tools.pageNumbers.zoomOut"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Reset Zoom",
+    "zh": "重置缩放",
+    "keys": [
+      "tools.cropPdf.resetZoom",
+      "tools.pageNumbers.zoomReset"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Fullscreen",
+    "zh": "全屏",
+    "keys": [
+      "tools.cropPdf.fullscreen",
+      "tools.comparePdfs.fullscreen"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Exit Fullscreen",
+    "zh": "退出全屏",
+    "keys": [
+      "tools.cropPdf.exitFullscreen",
+      "tools.comparePdfs.exitFullscreen"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Download All",
+    "zh": "全部下载",
+    "keys": [
+      "tools.extractAttachments.downloadAll",
+      "tools.extractImages.downloadAll"
+    ],
+    "langs": [
+      "id"
+    ]
+  },
+  {
+    "en": "Password Settings",
+    "zh": "密码设置",
+    "keys": [
+      "tools.encryptPdf.passwordTitle",
+      "tools.changePermissions.passwordTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "🔒 Your passwords are processed locally and never sent to any server.",
+    "zh": "🔒 您的密码在本地处理，永远不会发送到任何服务器。",
+    "keys": [
+      "tools.encryptPdf.privacyNotice",
+      "tools.changePermissions.privacyNotice"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Enter owner password",
+    "zh": "输入所有者密码",
+    "keys": [
+      "tools.encryptPdf.ownerPasswordPlaceholder",
+      "tools.changePermissions.newOwnerPasswordPlaceholder"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Document Permissions",
+    "zh": "文档权限",
+    "keys": [
+      "tools.encryptPdf.permissionsTitle",
+      "tools.changePermissions.optionsTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Allow Printing",
+    "zh": "允许打印",
+    "keys": [
+      "tools.encryptPdf.permPrinting",
+      "tools.changePermissions.allowPrinting"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Allow Modifying",
+    "zh": "允许修改",
+    "keys": [
+      "tools.encryptPdf.permModifying",
+      "tools.changePermissions.allowModifying"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Allow Copying",
+    "zh": "允许复制",
+    "keys": [
+      "tools.encryptPdf.permCopying",
+      "tools.changePermissions.allowCopying"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Allow Annotating",
+    "zh": "允许注释",
+    "keys": [
+      "tools.encryptPdf.permAnnotating",
+      "tools.changePermissions.allowAnnotating"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Allow Filling Forms",
+    "zh": "允许填写表单",
+    "keys": [
+      "tools.encryptPdf.permFillingForms",
+      "tools.changePermissions.allowFillingForms"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Allow Accessibility",
+    "zh": "允许辅助功能",
+    "keys": [
+      "tools.encryptPdf.permAccessibility",
+      "tools.changePermissions.allowAccessibility"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Allow Assembly",
+    "zh": "允许组装",
+    "keys": [
+      "tools.encryptPdf.permAssembly",
+      "tools.changePermissions.allowAssembly"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "The password you entered is incorrect. Please check and try again.",
+    "zh": "您输入的密码不正确，请检查后重试。",
+    "keys": [
+      "tools.decryptPdf.invalidPassword",
+      "tools.removeRestrictions.invalidPassword"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Odd Pages",
+    "zh": "奇数页",
+    "keys": [
+      "tools.rotatePdf.oddPages",
+      "tools.watermark.rangeOdd"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Even Pages",
+    "zh": "偶数页",
+    "keys": [
+      "tools.rotatePdf.evenPages",
+      "tools.watermark.rangeEven"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Deselect All",
+    "zh": "取消全选",
+    "keys": [
+      "tools.editAttachments.deselectAll",
+      "tools.removeMetadata.deselectAll"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Upload Text Files",
+    "zh": "上传文本文件",
+    "keys": [
+      "tools.textToPdf.uploadLabel",
+      "tools.txtToPdf.uploadLabel"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Drag and drop text files here, or click to browse.",
+    "zh": "拖放文本文件到此处，或点击浏览。",
+    "keys": [
+      "tools.textToPdf.uploadDescription",
+      "tools.txtToPdf.uploadDescription"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Text Files",
+    "zh": "文本文件",
+    "keys": [
+      "tools.textToPdf.filesTitle",
+      "tools.txtToPdf.filesTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Line Spacing",
+    "zh": "行距",
+    "keys": [
+      "tools.textToPdf.lineHeight",
+      "tools.txtToPdf.lineHeight"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Wrap long lines",
+    "zh": "自动换行",
+    "keys": [
+      "tools.textToPdf.wrapLines",
+      "tools.txtToPdf.wrapLines"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Text converted to PDF successfully! Click the download button to save your file.",
+    "zh": "文本已成功转换为PDF！点击下载按钮保存文件。",
+    "keys": [
+      "tools.textToPdf.successMessage",
+      "tools.txtToPdf.successMessage"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Font Family",
+    "zh": "字体",
+    "keys": [
+      "tools.txtToPdf.fontFamily",
+      "tools.tableOfContents.fontFamily"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Enter Text",
+    "zh": "输入文本",
+    "keys": [
+      "tools.txtToPdf.modeText",
+      "tools.txtToPdf.enterText"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Resolution",
+    "zh": "分辨率",
+    "keys": [
+      "tools.pdfToImage.resolution",
+      "tools.pdfToSvg.resolution"
+    ],
+    "langs": [
+      "id"
+    ]
+  },
+  {
+    "en": "Layout Preview",
+    "zh": "布局预览",
+    "keys": [
+      "tools.pdfToImage.layoutPreview",
+      "tools.pdfBooklet.previewLabel"
+    ],
+    "langs": [
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Low (Faster)",
+    "zh": "低（更快）",
+    "keys": [
+      "tools.pdfToGreyscale.qualityLow",
+      "tools.ocrPdf.qualityLow"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Medium (Recommended)",
+    "zh": "中（推荐）",
+    "keys": [
+      "tools.pdfToGreyscale.qualityMedium",
+      "tools.ocrPdf.qualityMedium"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "High (Slower)",
+    "zh": "高（较慢）",
+    "keys": [
+      "tools.pdfToGreyscale.qualityHigh",
+      "tools.ocrPdf.qualityHigh"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id"
+    ]
+  },
+  {
+    "en": "Extraction Options",
+    "zh": "提取选项",
+    "keys": [
+      "tools.pdfToJson.optionsTitle",
+      "tools.extractTables.optionsTitle"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Remove Metadata",
+    "zh": "移除元数据",
+    "keys": [
+      "tools.sanitizePdf.removeMetadata",
+      "tools.removeMetadata.removeButton"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Removed:",
+    "zh": "已移除：",
+    "keys": [
+      "tools.sanitizePdf.removedItems",
+      "tools.removeMetadata.removedFields"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Center",
+    "zh": "居中",
+    "keys": [
+      "tools.fixPageSize.scaleCenter",
+      "tools.watermark.posCenter"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Bottom Left",
+    "zh": "左下角",
+    "keys": [
+      "tools.pageNumbers.posBottomLeft",
+      "tools.watermark.posBottomLeft"
+    ],
+    "langs": [
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Bottom Right",
+    "zh": "右下角",
+    "keys": [
+      "tools.pageNumbers.posBottomRight",
+      "tools.watermark.posBottomRight"
+    ],
+    "langs": [
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Top Left",
+    "zh": "左上角",
+    "keys": [
+      "tools.pageNumbers.posTopLeft",
+      "tools.watermark.posTopLeft"
+    ],
+    "langs": [
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Top Right",
+    "zh": "右上角",
+    "keys": [
+      "tools.pageNumbers.posTopRight",
+      "tools.watermark.posTopRight"
+    ],
+    "langs": [
+      "id",
+      "vi"
+    ]
+  },
+  {
+    "en": "Type",
+    "zh": "类型",
+    "keys": [
+      "tools.watermark.type",
+      "tools.formCreator.fieldType"
+    ],
+    "langs": [
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Page {number}",
+    "zh": "第 {number} 页",
+    "keys": [
+      "tools.formCreator.page",
+      "tools.removeBlankPages.page"
+    ],
+    "langs": [
+      "fr",
+      "vi",
+      "zh-TW",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "id",
+      "it",
+      "pt",
+      "ro",
+      "ar"
+    ]
+  },
+  {
+    "en": "Save Project",
+    "zh": "保存项目",
+    "keys": [
+      "tools.formCreator.saveProject",
+      "tools.formCreator.saveProjectTitle"
+    ],
+    "langs": [
+      "vi"
+    ]
+  },
+  {
+    "en": "Create Blank PDF",
+    "zh": "创建空白PDF",
+    "keys": [
+      "tools.formCreator.createBlankPdf",
+      "tools.formCreator.createBlankPdfTitle"
+    ],
+    "langs": [
+      "vi"
+    ]
+  },
+  {
+    "en": "TOC Options",
+    "zh": "目录选项",
+    "keys": [
+      "tools.tableOfContents.optionsTitle",
+      "tools.tableOfContents.options"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Table of contents generated successfully!",
+    "zh": "目录生成成功！",
+    "keys": [
+      "tools.tableOfContents.successMessage",
+      "tools.tableOfContents.success"
+    ],
+    "langs": [
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "vi"
+    ]
+  },
+  {
+    "en": "Convert to PDF",
+    "zh": "转换为 PDF",
+    "keys": [
+      "tools.markdownToPdf.convertButton",
+      "tools.psdToPdf.convertButton"
+    ],
+    "langs": [
+      "vi"
+    ]
+  },
+  {
+    "en": "Conversion Options",
+    "zh": "Conversion Options",
+    "keys": [
+      "tools.pdfToDocx.optionsTitle",
+      "tools.pdfToExcel.optionsTitle"
+    ],
+    "langs": [
+      "zh-TW",
+      "ja",
+      "ko",
+      "de",
+      "es",
+      "fr",
+      "it",
+      "pt",
+      "vi",
+      "ar"
+    ]
+  },
+  {
+    "en": "Drag and drop a PDF file here, or click to browse.",
+    "zh": "拖放 PDF 文件到这里，或点击浏览选择文件。",
+    "keys": [
+      "tools.pdfToExcel.uploadDescription",
+      "tools.pdfToPptx.uploadDescription"
+    ],
+    "langs": [
+      "vi"
+    ]
+  }
+]

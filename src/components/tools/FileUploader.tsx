@@ -2,7 +2,7 @@
 
 import React, { useCallback, useRef, useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { UploadCloud, File, Plus, X } from 'lucide-react';
+import { UploadCloud, File, Plus, X, Lock, Loader2 } from 'lucide-react';
 
 export interface FileUploaderProps {
   /** Accepted file types (MIME types or extensions) */
@@ -49,10 +49,51 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   const t = useTranslations('common');
   const tErrors = useTranslations('errors');
 
+  // Encryption & Decryption states
+  const [encryptPendingFiles, setEncryptPendingFiles] = useState<File[]>([]);
+  const [encryptCurrentIndex, setEncryptCurrentIndex] = useState<number>(-1);
+  const [password, setPassword] = useState<string>('');
+  const [decryptError, setDecryptError] = useState<string | null>(null);
+  const [isDecrypting, setIsDecrypting] = useState<boolean>(false);
+  const [shouldShake, setShouldShake] = useState<boolean>(false);
+  const [decryptedFilesAccumulator, setDecryptedFilesAccumulator] = useState<File[]>([]);
+
   const [isDragging, setIsDragging] = useState(false);
   const [dragCounter, setDragCounter] = useState(0);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const dropZoneRef = useRef<HTMLDivElement>(null);
+
+  // Helper to check if a PDF file is encrypted
+  const checkIsEncrypted = async (file: File): Promise<boolean> => {
+    if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
+      return false;
+    }
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const { PDFDocument } = await import('pdf-lib');
+      await PDFDocument.load(arrayBuffer);
+      return false;
+    } catch (err: any) {
+      const msg = err.message || '';
+      if (msg.includes('encrypt') || msg.includes('password') || msg.includes('decrypt')) {
+        return true;
+      }
+      return false;
+    }
+  };
+
+  const resetDecryptStates = () => {
+    setEncryptPendingFiles([]);
+    setEncryptCurrentIndex(-1);
+    setPassword('');
+    setDecryptError(null);
+    setIsDecrypting(false);
+    setDecryptedFilesAccumulator([]);
+  };
+
+  const handleDecryptCancel = () => {
+    resetDecryptStates();
+  };
 
   // Generate accept string for input element
   const acceptString = accept.join(',');
@@ -118,9 +159,58 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   }, [accept, maxSize, maxFiles, multiple, tErrors]);
 
   /**
+   * Handle decryption submit action
+   */
+  const handleDecryptSubmit = async (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (isDecrypting || encryptCurrentIndex === -1) return;
+
+    const fileToDecrypt = encryptPendingFiles[encryptCurrentIndex];
+    setIsDecrypting(true);
+    setDecryptError(null);
+
+    try {
+      const arrayBuffer = await fileToDecrypt.arrayBuffer();
+      const { PDFDocument } = await import('pdf-lib');
+
+      // Attempt to load with the user-provided password (cast to any for compiler compatibility)
+      const pdfDoc = await PDFDocument.load(arrayBuffer, { password } as any);
+
+      // Save as completely decrypted (without any password protection)
+      const decryptedBytes = await pdfDoc.save();
+      const decryptedBlob = new Blob([decryptedBytes as any], { type: 'application/pdf' });
+
+      // Create a fresh unlocked virtual File object, fallback to window.File to avoid Node/Browser File type clashes
+      const unlockedFile = new (window as any).File([decryptedBlob], fileToDecrypt.name.replace('.pdf', '_unlocked.pdf'), {
+        type: 'application/pdf',
+      }) as File;
+
+      const updatedAccumulator = [...decryptedFilesAccumulator, unlockedFile];
+      setDecryptedFilesAccumulator(updatedAccumulator);
+      setPassword('');
+
+      const nextIndex = encryptCurrentIndex + 1;
+      if (nextIndex < encryptPendingFiles.length) {
+        setEncryptCurrentIndex(nextIndex);
+      } else {
+        // Complete! Notify tool components of the unlocked files alongside native plain files
+        onFilesSelected(updatedAccumulator);
+        resetDecryptStates();
+      }
+    } catch (err: any) {
+      console.error('PDF Decryption failed:', err);
+      setShouldShake(true);
+      setTimeout(() => setShouldShake(false), 500);
+      setDecryptError(tErrors('incorrectPassword') || 'Incorrect password. Please try again.');
+    } finally {
+      setIsDecrypting(false);
+    }
+  };
+
+  /**
    * Handle file selection
    */
-  const handleFiles = useCallback((files: FileList | File[]) => {
+  const handleFiles = useCallback(async (files: FileList | File[]) => {
     if (disabled) return;
 
     const fileArray = Array.from(files);
@@ -133,7 +223,30 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     }
 
     if (valid.length > 0) {
-      onFilesSelected(valid);
+      // Async scan for encrypted PDF files
+      const encryptedList: File[] = [];
+      const unencryptedList: File[] = [];
+
+      for (const file of valid) {
+        const isEncrypted = await checkIsEncrypted(file);
+        if (isEncrypted) {
+          encryptedList.push(file);
+        } else {
+          unencryptedList.push(file);
+        }
+      }
+
+      if (encryptedList.length > 0) {
+        // Initialize the decryption state machine queue
+        setEncryptPendingFiles(encryptedList);
+        setDecryptedFilesAccumulator(unencryptedList);
+        setEncryptCurrentIndex(0);
+        setPassword('');
+        setDecryptError(null);
+      } else {
+        // All files are already plain/unencrypted, transmit natively
+        onFilesSelected(valid);
+      }
     }
   }, [disabled, validateFiles, onError, onFilesSelected]);
 
@@ -332,7 +445,12 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
             <p className="mb-2">{t('fileUploader.dragDrop')}</p>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[hsl(var(--color-muted)/0.5)] text-xs font-medium">
               <span className="opacity-70">{t('fileUploader.support')}:</span>
-              <span>{t('fileUploader.paste')}</span>
+              <span>{accept && accept.length > 0 ? accept.join(', ') : t('fileUploader.paste')}</span>
+              {maxSize && maxSize !== Infinity && (
+                <span className="ml-1 opacity-70">
+                  ({Math.round(maxSize / (1024 * 1024))}MB)
+                </span>
+              )}
             </div>
           </>
         )}
@@ -342,7 +460,7 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       {multiple && (
         <div className="mt-6 flex flex-wrap gap-2 justify-center">
           <span className="text-xs px-2 py-1 rounded-md bg-[hsl(var(--color-muted))] text-[hsl(var(--color-muted-foreground))]">
-            Files: {maxFiles}
+            Max files: {maxFiles}
           </span>
         </div>
       )}
@@ -356,6 +474,106 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
           <p className="text-xl font-bold text-[hsl(var(--color-primary))]">
             {t('fileUploader.dropToUpload')}
           </p>
+        </div>
+      )}
+
+      {/* Decryption Password Prompt Modal */}
+      {encryptCurrentIndex !== -1 && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md animate-in fade-in duration-300 cursor-default"
+          onClick={(e) => {
+            e.stopPropagation();
+            e.preventDefault();
+          }}
+        >
+          {/* Custom shake keyframe injection */}
+          <style>{`
+            @keyframes shake {
+              0%, 100% { transform: translateX(0); }
+              10%, 30%, 50%, 70%, 90% { transform: translateX(-6px); }
+              20%, 40%, 60%, 80% { transform: translateX(6px); }
+            }
+            .modal-shake {
+              animation: shake 0.5s ease-in-out;
+            }
+          `}</style>
+          
+          <div 
+            className={`bg-[hsl(var(--color-card))] border border-white/10 dark:border-zinc-800/40 p-6 rounded-[2rem] max-w-sm w-full shadow-2xl mx-4 transition-all duration-300 transform scale-100 ${
+              shouldShake ? 'modal-shake' : ''
+            }`}
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+            }}
+          >
+            <div className="flex flex-col items-center text-center">
+              {/* Lock Circle Icon */}
+              <div className="p-4 rounded-full bg-red-500/10 text-red-500 mb-4 animate-pulse">
+                <Lock className="w-8 h-8" />
+              </div>
+              
+              <h3 className="text-lg font-bold text-[hsl(var(--color-foreground))] mb-1">
+                {t('fileUploader.encryptedTitle')}
+              </h3>
+              
+              <p className="text-xs text-[hsl(var(--color-muted-foreground))] mb-4 max-w-[280px] break-all leading-relaxed">
+                {t('fileUploader.enterPasswordHelp')}
+                <span className="font-semibold text-[hsl(var(--color-foreground))]">{encryptPendingFiles[encryptCurrentIndex]?.name}</span>
+              </p>
+              
+              {/* Form */}
+              <form 
+                onSubmit={handleDecryptSubmit} 
+                className="w-full space-y-4"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="relative flex items-center">
+                  <input
+                    type="password"
+                    placeholder={t('fileUploader.passwordPlaceholder')}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    autoFocus
+                    disabled={isDecrypting}
+                    className="w-full px-4 py-2.5 rounded-[var(--radius-md)] bg-[hsl(var(--color-muted)/0.4)] border border-[hsl(var(--color-input))] text-sm text-[hsl(var(--color-foreground))] placeholder:text-zinc-400 focus:outline-none focus:ring-2 focus:ring-[hsl(var(--color-primary))] focus:border-transparent transition-all"
+                  />
+                </div>
+                
+                {decryptError && (
+                  <p className="text-xs text-red-500 font-semibold animate-in fade-in">
+                    {decryptError}
+                  </p>
+                )}
+                
+                {/* Actions */}
+                <div className="flex gap-2 pt-2">
+                  <button
+                    type="button"
+                    onClick={handleDecryptCancel}
+                    disabled={isDecrypting}
+                    className="flex-1 px-4 py-2 text-xs font-semibold rounded-[var(--radius-md)] border border-[hsl(var(--color-border))] hover:bg-[hsl(var(--color-muted))] text-[hsl(var(--color-foreground))] transition-colors disabled:opacity-50"
+                  >
+                    {t('fileUploader.cancelButton')}
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isDecrypting || !password}
+                    className="flex-1 px-4 py-2 text-xs font-semibold rounded-[var(--radius-md)] bg-[hsl(var(--color-primary))] hover:bg-[hsl(var(--color-primary-hover))] text-[hsl(var(--color-primary-foreground))] transition-colors flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isDecrypting ? (
+                      <>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                        {t('fileUploader.decrypting')}
+                      </>
+                    ) : (
+                      t('fileUploader.decryptAndContinue')
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       )}
     </div>

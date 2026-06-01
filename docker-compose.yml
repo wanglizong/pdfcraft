@@ -19,6 +19,8 @@ services:
     image: node:22-alpine
     working_dir: /app
     command: sh -c "npm ci && npm run build && rm -rf /out/* && cp -r out/* /out/"
+    environment:
+      - BASE_PATH=${BASE_PATH:-}
     volumes:
       - ./:/app
       - static_out:/out

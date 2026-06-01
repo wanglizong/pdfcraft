@@ -1,0 +1,242 @@
+{
+  "common.ocr.accuracyHd": {
+    "en": "High Quality (Recommended, standard scans)",
+    "zh": "高清 (推荐，识别更稳)"
+  },
+  "common.ocr.accuracyUd": {
+    "en": "Ultra Resolution (Deep scanning, faint ink)",
+    "zh": "超清 (慢，适合模糊件)"
+  },
+  "common.ocr.specifyPages": {
+    "en": "Target Recognition Pages",
+    "zh": "指定识别页码"
+  },
+  "common.ocr.pagesPlaceholder": {
+    "en": "e.g. 1-3, 5",
+    "zh": "如: 1-3, 5"
+  },
+  "common.ocr.startOcr": {
+    "en": "Start Character Recognition",
+    "zh": "开始文字识别"
+  },
+  "common.ocr.advantageTitle": {
+    "en": "Double-Layer PDF Advantages:",
+    "zh": "双层 PDF 核心优势:"
+  },
+  "common.ocr.advantageDesc": {
+    "en": "The reconstructed searchable PDF embeds an invisible, perfectly aligned text layer above the scanned pixels. Keeps the original appearance while enabling full text highlighting, searching, and copying.",
+    "zh": "重构后的可搜索 PDF 功能，会在后台计算 OCR 文字排版物理 Bounding Box，在原始 PDF 图层上层精确注入完全透明的文字图层 (Invisible Text Layer)。这不仅保持了原始扫描文件的图纸外观，还让文本完美支持划词复制、检索和选定。"
+  },
+  "common.ocr.successTitle": {
+    "en": "OCR Recognition Complete!",
+    "zh": "文字识别提取完成！"
+  },
+  "common.ocr.successSearchablePdf": {
+    "en": "Searchable PDF generated! The scanned sheets are overlaid with interactive text. Highlight and search freely.",
+    "zh": "双层可搜索 PDF 编译完成。原始扫描图片已被文字遮罩覆盖，您可以使用任意 PDF 查看器打开文件并进行划词搜索与复制。"
+  },
+  "common.ocr.successText": {
+    "en": "Plain text structures extracted successfully. Text preview displayed below.",
+    "zh": "纯文本文件结构提取成功，已在下方显示文本流预览。"
+  },
+  "common.ocr.previewTitle": {
+    "en": "Extracted Text Stream Preview",
+    "zh": "提取出来的文本流预览"
+  },
+  "common.overlayPdf.uploadBaseLabel": {
+    "en": "1. Upload Base Document (Base PDF)",
+    "zh": "1. 上传主文档 (Base PDF)"
+  },
+  "common.overlayPdf.uploadBaseButton": {
+    "en": "Upload Base PDF",
+    "zh": "点击上传主 PDF"
+  },
+  "common.overlayPdf.uploadBaseDesc": {
+    "en": "Serves as the structural background frame",
+    "zh": "该文档的内容会作为合并的基本骨架"
+  },
+  "common.overlayPdf.uploadLayerLabel": {
+    "en": "2. Upload Layer Document (Layer PDF)",
+    "zh": "2. 上传覆叠层文档 (Layer PDF)"
+  },
+  "common.overlayPdf.uploadLayerButton": {
+    "en": "Upload Overlay PDF",
+    "zh": "点击上传图层 PDF"
+  },
+  "common.overlayPdf.uploadLayerDesc": {
+    "en": "Stamp seals, structural trust margins, grids, or headers",
+    "zh": "如公章、带有设计背景的信托网格、信笺等"
+  },
+  "common.overlayPdf.previewTitle": {
+    "en": "3D Layer Imposition Preview",
+    "zh": "3D 层叠层级动态预览"
+  },
+  "common.overlayPdf.basePageLabel": {
+    "en": "Base Page",
+    "zh": "主页面"
+  },
+  "common.overlayPdf.layerPageLabel": {
+    "en": "Layer Page",
+    "zh": "图层面"
+  },
+  "common.overlayPdf.placementModeOverlay": {
+    "en": "Foreground (Overlay): Overlay layer is rendered on top of the base contents.",
+    "zh": "前景层模式 (Overlay)：图层文档渲染在主文档的页面内容之上。"
+  },
+  "common.overlayPdf.placementModeUnderlay": {
+    "en": "Background (Underlay): Overlay layer is rendered beneath all base contents.",
+    "zh": "背景层模式 (Underlay)：图层文档垫在主文档所有页面内容的最底层。"
+  },
+  "common.overlayPdf.optionsTitle": {
+    "en": "Overlay Merging Parameters",
+    "zh": "覆叠拼接配置"
+  },
+  "common.overlayPdf.placementModeLabel": {
+    "en": "A. Layer Imposition Mode (Placement Mode)",
+    "zh": "A. 覆叠层级模式 (Placement Mode)"
+  },
+  "common.overlayPdf.placementOverlayBtn": {
+    "en": "Foreground Overlay",
+    "zh": "前景覆叠 (Overlay)"
+  },
+  "common.overlayPdf.placementUnderlayBtn": {
+    "en": "Background Underlay",
+    "zh": "背景垫底 (Underlay)"
+  },
+  "common.overlayPdf.targetRangeLabel": {
+    "en": "B. Target Page Range (Target Page Range)",
+    "zh": "B. 目标作用页面范围 (Target Page Range)"
+  },
+  "common.overlayPdf.targetRangeHelp": {
+    "en": "Leave blank to apply to all base pages",
+    "zh": "空表示应用至全部主页面"
+  },
+  "common.overlayPdf.targetRangePlaceholder": {
+    "en": "e.g. 1-5, 8, odd, even",
+    "zh": "例如：1-5, 8, odd, even"
+  },
+  "common.overlayPdf.loopOverlayLabel": {
+    "en": "C. Loop Repeating (Loop Shorter Overlay Document)",
+    "zh": "C. 循环重复图层文档 (Loop Shorter Overlay Document)"
+  },
+  "common.overlayPdf.loopOverlayDesc": {
+    "en": "Loop-repeats the overlay document if it is shorter than the base document. If unchecked, remaining pages are left blank.",
+    "zh": "当图层文件总页数短于主 PDF 时，自动循环重复套用该图层（例如信笺背景）。若关闭，则超出页数的页面不再应用覆叠。"
+  },
+  "common.overlayPdf.processButton": {
+    "en": "Execute Layer Overlay",
+    "zh": "开始应用覆叠生成 PDF"
+  },
+  "common.overlayPdf.successMessage": {
+    "en": "🎉 PDF layers overlaid successfully! Click download above to save.",
+    "zh": "🎉 PDF 覆叠拼版处理成功！点击上方按钮进行下载。"
+  },
+  "common.pageLabels.errorMetadata": {
+    "en": "Failed to parse PDF metadata. File might be corrupted.",
+    "zh": "无法解析主 PDF 的元数据，该文件可能已损坏。"
+  },
+  "common.pageLabels.errorUpload": {
+    "en": "Please upload a target PDF first.",
+    "zh": "请上传待添加页面标签 of PDF。"
+  },
+  "common.pageLabels.progressInjecting": {
+    "en": "Injecting page label catalog records...",
+    "zh": "正在批量注入页面标签..."
+  },
+  "common.pageLabels.errorInjecting": {
+    "en": "Failed to inject page labels.",
+    "zh": "注入页面标签失败。"
+  },
+  "common.pageLabels.errorUnknown": {
+    "en": "An unknown error occurred.",
+    "zh": "发生未知错误。"
+  },
+  "common.pageLabels.uploadLabel": {
+    "en": "1. Upload Document (PDF)",
+    "zh": "1. 上传文档 (PDF)"
+  },
+  "common.pageLabels.uploadDesc": {
+    "en": "Injects standard PageLabels into the PDF Catalog. Fully compliant with Adobe Acrobat.",
+    "zh": "本工具将直接在 PDF Catalog 中注入标准的 PageLabels 字典，与 Adobe Acrobat 完全兼容。"
+  },
+  "common.pageLabels.rulesTitle": {
+    "en": "2. Configure Page Label Mapping Rules",
+    "zh": "2. 配置标签映射规则 (Page Label Rules)"
+  },
+  "common.pageLabels.addRuleBtn": {
+    "en": "Add New Label Rule",
+    "zh": "添加新规则"
+  },
+  "common.pageLabels.ruleTitle": {
+    "en": "Rule #{index}",
+    "zh": "规则 #{index}"
+  },
+  "common.pageLabels.deleteRuleTooltip": {
+    "en": "Remove this rule",
+    "zh": "删除此规则"
+  },
+  "common.pageLabels.pageRangeLabel": {
+    "en": "Page Range Scope",
+    "zh": "页码作用范围"
+  },
+  "common.pageLabels.pageRangeHelp": {
+    "en": "Leave blank to apply to all pages",
+    "zh": "留空应用到所有页"
+  },
+  "common.pageLabels.pageRangePlaceholder": {
+    "en": "e.g. 1-9, odd, even",
+    "zh": "例如: 1-9, odd, even"
+  },
+  "common.pageLabels.styleLabel": {
+    "en": "Label Numbering Style",
+    "zh": "标签编码样式"
+  },
+  "common.pageLabels.styleD": {
+    "en": "1, 2, 3... (Arabic Numbers)",
+    "zh": "1, 2, 3... (阿拉伯数字)"
+  },
+  "common.pageLabels.styleR": {
+    "en": "I, II, III... (Uppercase Roman)",
+    "zh": "I, II, III... (大写罗马)"
+  },
+  "common.pageLabels.style_r": {
+    "en": "i, ii, iii... (Lowercase Roman)",
+    "zh": "i, ii, iii... (小写罗马)"
+  },
+  "common.pageLabels.styleA": {
+    "en": "A, B, C... (Uppercase Alphabets)",
+    "zh": "A, B, C... (大写字母)"
+  },
+  "common.pageLabels.style_a": {
+    "en": "a, b, c... (Lowercase Alphabets)",
+    "zh": "a, b, c... (小写字母)"
+  },
+  "common.pageLabels.styleNone": {
+    "en": "No numbers (Prefix only)",
+    "zh": "无数字样式 (仅前缀)"
+  },
+  "common.pageLabels.prefixLabel": {
+    "en": "Custom Label Prefix",
+    "zh": "自定义前缀 (Prefix)"
+  },
+  "common.pageLabels.prefixPlaceholder": {
+    "en": "e.g. Appendix-, A-",
+    "zh": "例如: Appendix-, A-"
+  },
+  "common.pageLabels.startValueLabel": {
+    "en": "Start Value",
+    "zh": "起始数值 (Start Value)"
+  },
+  "common.pageLabels.processButton": {
+    "en": "Inject PageLabels",
+    "zh": "开始注入 PageLabels"
+  },
+  "common.pageLabels.successMessage": {
+    "en": "🎉 PageLabels injected successfully! Open in a professional viewer to inspect the sidebar.",
+    "zh": "🎉 页面标签注入成功！请下载已签名的 PDF 并在专业阅读器中查看侧栏导航。"
+  },
+  "common.pageLabels.previewTitle": {
+    "en": "Real-time Page Label Sequence Preview",
+    "zh": "页面标签序列实时流预览"
+  }
+}

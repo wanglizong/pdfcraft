@@ -21,28 +21,7 @@ export interface RTFToPDFOptions {
     /** Reserved for future options */
 }
 
-let converterPromise: Promise<any> | null = null;
-let converterInstance: any = null;
-
-async function getConverter(onProgress?: (percent: number, message: string) => void): Promise<any> {
-    if (converterInstance?.isReady()) return converterInstance;
-
-    if (converterPromise) {
-        await converterPromise;
-        return converterInstance;
-    }
-
-    converterPromise = (async () => {
-        const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
-        converterInstance = getLibreOfficeConverter();
-        await converterInstance.initialize((progress: any) => {
-            onProgress?.(progress.percent, progress.message);
-        });
-    })();
-
-    await converterPromise;
-    return converterInstance;
-}
+import { getSharedLibreOfficeConverter } from '@/lib/libreoffice/shared-converter';
 
 export class RTFToPDFProcessor extends BasePDFProcessor {
     private conversionProgressTimer: ReturnType<typeof setInterval> | null = null;
@@ -109,7 +88,7 @@ export class RTFToPDFProcessor extends BasePDFProcessor {
         try {
             this.updateProgress(5, 'Loading conversion engine (first time may take 1-2 minutes)...');
 
-            const converter = await getConverter((percent, message) => {
+            const converter = await getSharedLibreOfficeConverter((percent, message) => {
                 this.updateProgress(Math.min(percent * 0.8, 80), message);
             });
 

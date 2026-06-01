@@ -67,6 +67,9 @@ import { PDFToDocxTool } from '@/components/tools/pdf-to-docx';
 import { PDFToPptxTool } from '@/components/tools/pdf-to-pptx';
 import { PDFToExcelTool } from '@/components/tools/pdf-to-excel';
 import { RotateCustomTool } from '@/components/tools/rotate-custom/RotateCustomTool';
+import { OverlayPDFTool } from '@/components/tools/overlay/OverlayPDFTool';
+import { TimestampPDFTool } from '@/components/tools/timestamp/TimestampPDFTool';
+import { AddPageLabelsTool } from '@/components/tools/page-labels/AddPageLabelsTool';
 import { WordToPDFTool } from '@/components/tools/word-to-pdf';
 import { ExcelToPDFTool } from '@/components/tools/excel-to-pdf';
 import { PPTXToPDFTool } from '@/components/tools/pptx-to-pdf';
@@ -84,6 +87,8 @@ import { RasterizePDFTool } from '@/components/tools/rasterize';
 import { MarkdownToPDFTool } from '@/components/tools/markdown-to-pdf';
 import { EmailToPDFTool } from '@/components/tools/email-to-pdf';
 import { CBZToPDFTool } from '@/components/tools/cbz-to-pdf';
+import { PDFToCBZTool } from '@/components/tools/pdf-to-cbz/PDFToCBZTool';
+import { PDFToTIFFTool } from '@/components/tools/pdf-to-tiff/PDFToTIFFTool';
 import { PDFToPDFATool } from '@/components/tools/pdf-to-pdfa';
 import { FontToOutlineTool } from '@/components/tools/font-to-outline';
 import { ExtractTablesTool } from '@/components/tools/extract-tables';
@@ -91,6 +96,34 @@ import { OCGManagerTool } from '@/components/tools/ocg-manager';
 import { PDFReaderTool } from '@/components/tools/pdf-reader';
 import { DigitalSignPDFTool } from '@/components/tools/digital-sign';
 import { ValidateSignatureTool } from '@/components/tools/validate-signature';
+import { AIPDFReflowerTool } from '@/components/tools/ai-pdf-reflower/AIPDFReflowerTool';
+import { CitationLinkerTool } from '@/components/tools/citation-linker/CitationLinkerTool';
+import { PDFVectorExtractorTool } from '@/components/tools/vector-extractor/PDFVectorExtractorTool';
+import { DeepSanitizeTool } from '@/components/tools/deep-sanitize/DeepSanitizeTool';
+import { BookletFoldingSimulatorTool } from '@/components/tools/booklet-folding-simulator/BookletFoldingSimulatorTool';
+import { PDFToSlideTool } from '@/components/tools/pdf-to-slide/PDFToSlideTool';
+import { FormLogicDesignerTool } from '@/components/tools/form-logic-designer/FormLogicDesignerTool';
+import { EinkOptimizerTool } from '@/components/tools/eink-optimizer/EinkOptimizerTool';
+import { CertCryptorTool } from '@/components/tools/cert-cryptor/CertCryptorTool';
+import { PassportIdComposerTool } from '@/components/tools/passport-id-composer/PassportIdComposerTool';
+import { AnnotationExporterTool } from '@/components/tools/annotation-exporter/AnnotationExporterTool';
+import { BatchWatermarkRemoverTool } from '@/components/tools/batch-watermark-remover/BatchWatermarkRemoverTool';
+import { SmartDataRedactorTool } from '@/components/tools/smart-data-redactor/SmartDataRedactorTool';
+import { BookmarksAutoGeneratorTool } from '@/components/tools/bookmarks-auto-generator/BookmarksAutoGeneratorTool';
+import { BatchBarcodeInjectorTool } from '@/components/tools/batch-barcode-injector/BatchBarcodeInjectorTool';
+import { SignatureInkOptimizerTool } from '@/components/tools/signature-ink-optimizer/SignatureInkOptimizerTool';
+import { DeadLinkDebuggerTool } from '@/components/tools/dead-link-debugger/DeadLinkDebuggerTool';
+import { InteractiveTocGeneratorTool } from '@/components/tools/interactive-toc-generator/InteractiveTocGeneratorTool';
+import { GlobalInvoiceParserTool } from '@/components/tools/global-invoice-parser/GlobalInvoiceParserTool';
+import { PdfDeskewAlignerTool } from '@/components/tools/pdf-deskew-aligner/PdfDeskewAlignerTool';
+import { PdfTwoColumnReflowerTool } from '@/components/tools/pdf-two-column-reflower/PdfTwoColumnReflowerTool';
+import { PdfPageResizerUniformTool } from '@/components/tools/pdf-page-resizer-uniform/PdfPageResizerUniformTool';
+import { HandwritingInkContrastBoosterTool } from '@/components/tools/handwriting-ink-contrast-booster/HandwritingInkContrastBoosterTool';
+import { PdfSpineBookbinderTool } from '@/components/tools/pdf-spine-bookbinder/PdfSpineBookbinderTool';
+import { PdfSignatureAnchorHelperTool } from '@/components/tools/pdf-signature-anchor-helper/PdfSignatureAnchorHelperTool';
+import { PdfLosslessSlicerTool } from '@/components/tools/pdf-lossless-slicer/PdfLosslessSlicerTool';
+import { PdfScratchpadCanvasTool } from '@/components/tools/pdf-scratchpad-canvas/PdfScratchpadCanvasTool';
+import { PhotoTilingPrepressTool } from '@/components/tools/photo-tiling-prepress/PhotoTilingPrepressTool';
 import { generateToolMetadata } from '@/lib/seo/metadata';
 import { JsonLd } from '@/components/seo/JsonLd';
 import {
@@ -102,7 +135,7 @@ import {
 } from '@/lib/seo/structured-data';
 import type { Metadata } from 'next';
 
-  const SUPPORTED_LOCALES: Locale[] = ['en', 'ja', 'ko', 'es', 'fr', 'de', 'zh', 'zh-TW', 'pt', 'ar', 'it', 'vi'];
+  const SUPPORTED_LOCALES: Locale[] = ['en', 'ja', 'ko', 'es', 'fr', 'de', 'zh', 'zh-TW', 'pt', 'ar', 'it', 'id', 'vi', 'ro'];
 
 interface ToolPageParams {
   params: Promise<{
@@ -224,6 +257,12 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <RotatePDFTool />;
       case 'rotate-custom':
         return <RotateCustomTool />;
+      case 'overlay-pdf':
+        return <OverlayPDFTool />;
+      case 'add-page-labels':
+        return <AddPageLabelsTool />;
+      case 'timestamp-pdf':
+        return <TimestampPDFTool />;
       case 'add-blank-page':
         return <AddBlankPageTool />;
       case 'reverse-pages':
@@ -331,7 +370,7 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
       case 'pdf-to-bmp':
         return <PDFToImageTool outputFormat="bmp" />;
       case 'pdf-to-tiff':
-        return <PDFToImageTool outputFormat="tiff" />;
+        return <PDFToTIFFTool />;
       case 'pdf-to-svg':
         return <PDFToSVGTool />;
       case 'pdf-to-greyscale':
@@ -402,6 +441,8 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <EmailToPDFTool />;
       case 'cbz-to-pdf':
         return <CBZToPDFTool />;
+      case 'pdf-to-cbz':
+        return <PDFToCBZTool />;
       case 'pdf-to-pdfa':
         return <PDFToPDFATool />;
       case 'font-to-outline':
@@ -416,6 +457,62 @@ export default async function ToolPageRoute({ params }: ToolPageParams) {
         return <DigitalSignPDFTool />;
       case 'validate-signature':
         return <ValidateSignatureTool />;
+      case 'ai-pdf-reflower':
+        return <AIPDFReflowerTool />;
+      case 'citation-linker':
+        return <CitationLinkerTool />;
+      case 'vector-extractor':
+        return <PDFVectorExtractorTool />;
+      case 'deep-sanitize':
+        return <DeepSanitizeTool />;
+      case 'booklet-folding-simulator':
+        return <BookletFoldingSimulatorTool />;
+      case 'pdf-to-slide':
+        return <PDFToSlideTool />;
+      case 'form-logic-designer':
+        return <FormLogicDesignerTool />;
+      case 'eink-optimizer':
+        return <EinkOptimizerTool />;
+      case 'cert-cryptor':
+        return <CertCryptorTool />;
+      case 'passport-id-composer':
+        return <PassportIdComposerTool />;
+      case 'annotation-exporter':
+        return <AnnotationExporterTool />;
+      case 'batch-watermark-remover':
+        return <BatchWatermarkRemoverTool />;
+      case 'smart-data-redactor':
+        return <SmartDataRedactorTool />;
+      case 'bookmarks-auto-generator':
+        return <BookmarksAutoGeneratorTool />;
+      case 'batch-barcode-injector':
+        return <BatchBarcodeInjectorTool />;
+      case 'signature-ink-optimizer':
+        return <SignatureInkOptimizerTool />;
+      case 'dead-link-debugger':
+        return <DeadLinkDebuggerTool />;
+      case 'interactive-toc-generator':
+        return <InteractiveTocGeneratorTool />;
+      case 'global-invoice-parser':
+        return <GlobalInvoiceParserTool />;
+      case 'pdf-deskew-aligner':
+        return <PdfDeskewAlignerTool />;
+      case 'pdf-two-column-reflower':
+        return <PdfTwoColumnReflowerTool />;
+      case 'pdf-page-resizer-uniform':
+        return <PdfPageResizerUniformTool />;
+      case 'handwriting-ink-contrast-booster':
+        return <HandwritingInkContrastBoosterTool />;
+      case 'pdf-spine-bookbinder':
+        return <PdfSpineBookbinderTool />;
+      case 'pdf-signature-anchor-helper':
+        return <PdfSignatureAnchorHelperTool />;
+      case 'pdf-lossless-slicer':
+        return <PdfLosslessSlicerTool />;
+      case 'pdf-scratchpad-canvas':
+        return <PdfScratchpadCanvasTool />;
+      case 'photo-tiling-prepress':
+        return <PhotoTilingPrepressTool />;
       // Add more tool cases here as they are implemented
       default:
         return (

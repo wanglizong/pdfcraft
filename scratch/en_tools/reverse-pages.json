@@ -1,0 +1,59 @@
+{
+  "title": "Reverse Pages",
+  "metaDescription": "Reverse PDF page order. Flip document pages from last to first.",
+  "keywords": [
+    "reverse pdf",
+    "flip page order",
+    "invert pages",
+    "reverse document"
+  ],
+  "description": "\n      <p>Reverse Pages flips the order of pages in your PDF document, putting the last page first and the first page last. Useful for documents scanned in reverse order or for specific printing needs.</p>\n      <p>The tool processes the entire document or selected page ranges, maintaining all content and formatting.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload Your PDF",
+      "description": "Drag and drop your PDF file or click to select."
+    },
+    {
+      "step": 2,
+      "title": "Select Pages",
+      "description": "Choose to reverse all pages or a specific range."
+    },
+    {
+      "step": 3,
+      "title": "Reverse and Download",
+      "description": "Click Reverse to flip page order and download."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Fix Scan Order",
+      "description": "Correct documents scanned in reverse order.",
+      "icon": "refresh-cw"
+    },
+    {
+      "title": "Print Preparation",
+      "description": "Reverse pages for specific printing requirements.",
+      "icon": "printer"
+    },
+    {
+      "title": "Document Reordering",
+      "description": "Quickly flip document order for review.",
+      "icon": "arrow-up-down"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Are bookmarks updated?",
+      "answer": "Yes, bookmarks are updated to point to the correct reversed pages."
+    },
+    {
+      "question": "Can I reverse only some pages?",
+      "answer": "Yes, you can select a page range to reverse."
+    },
+    {
+      "question": "Is this the same as rotating?",
+      "answer": "No, reversing changes page order; rotating changes page orientation."
+    }
+  ]
+}

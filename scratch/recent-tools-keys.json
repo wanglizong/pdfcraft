@@ -1,0 +1,534 @@
+[
+  {
+    "key": "common.buttons.reset",
+    "value": "Reset"
+  },
+  {
+    "key": "common.einkOptimizer.otsueThresholdSuffix",
+    "value": " (Otsu Offset)"
+  },
+  {
+    "key": "common.einkOptimizer.keepStrokes",
+    "value": "Preserve Handwriting Stroking"
+  },
+  {
+    "key": "common.einkOptimizer.stripBackground",
+    "value": "Strip Paper Noise & Dusts"
+  },
+  {
+    "key": "common.einkOptimizer.dilationSuffix",
+    "value": " (Text Dilation)"
+  },
+  {
+    "key": "common.einkOptimizer.microDilation",
+    "value": "Micro-Bold (1px)"
+  },
+  {
+    "key": "common.einkOptimizer.strongDilation",
+    "value": "Strong-Bold (2px)"
+  },
+  {
+    "key": "common.einkOptimizer.afterLabel",
+    "value": "Optimized: Retina-grade High Contrast Text"
+  },
+  {
+    "key": "common.einkOptimizer.beforeSampleText",
+    "value": "The philosophy of education is the study of the purpose, nature, and effects of education. Broadly defined, education is the process by which society transmits its accumulated knowledge..."
+  },
+  {
+    "key": "common.einkOptimizer.beforeLabel",
+    "value": "Original Scan: Dusty background with faint fonts"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.uploadLabel",
+    "value": "Upload PDF Documents to Resize"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.uploadDescription",
+    "value": "Scale and center-align varied page sizes (like A3, Letter, custom invoices) to uniform target layout sheet dimensions."
+  },
+  {
+    "key": "common.pdfPageResizerUniform.magnifierTitle",
+    "value": "3D Uniform Multi-Size Page Tray"
+  },
+  {
+    "key": "common.pdfTwoColumnReflower.clearButton",
+    "value": "Clear"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.uniformHelp",
+    "value": "Various page shapes (A3, Letter, custom sheets) are scaled and aligned uniformly under the circular light beam."
+  },
+  {
+    "key": "common.pdfPageResizerUniform.optionsTitle",
+    "value": "Uniform Resize Settings"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.targetSpecLabel",
+    "value": "Target Uniform Paper Specification"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.specA4",
+    "value": "A4 Standard Sheet (595 x 842 pt)"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.specA3",
+    "value": "A3 Engineering Large (842 x 1191 pt)"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.specLetter",
+    "value": "US Letter Size (612 x 792 pt)"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.scaleModeLabel",
+    "value": "Scaling & Margin Padding Mode"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.modeFit",
+    "value": "Adaptive Fit (Aspect ratio kept, padded margins)"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.modeFill",
+    "value": "Aspect Fill (Aspect ratio kept, centered crop)"
+  },
+  {
+    "key": "common.pdfPageResizerUniform.processButton",
+    "value": "Unify Dimensions Layout"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.magnifierTitle",
+    "value": "3D Book Binding Crease Model (Drag mouse to rotate)"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.optionsTitle",
+    "value": "Bookbinder Spine Settings"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.spineTextLabel",
+    "value": "Spine Engraving Text"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.spineTextPlaceholder",
+    "value": "e.g., Thesis / Commercial Agreement"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.totalPagesLabel",
+    "value": "Total Binding Page Sides (Pages)"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.gsmLabel",
+    "value": "Inside Paper Density Weight (GSM)"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.gsm80",
+    "value": "80g Standard Office Paper (0.05mm/side)"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.gsm100",
+    "value": "100g Smooth Coated Paper (0.06mm/side)"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.gsm120",
+    "value": "120g Matte Art Paper (0.07mm/side)"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.gsm150",
+    "value": "150g Heavy Matte Cardboard (0.09mm/side)"
+  },
+  {
+    "key": "common.pdfSpineBookbinder.processButton",
+    "value": "Compile Binder Crease Cover"
+  },
+  {
+    "key": "common.pdfLosslessSlicer.uploadLabel",
+    "value": "Upload Ultra-Large CAD PDF Blueprint"
+  },
+  {
+    "key": "common.pdfLosslessSlicer.uploadDescription",
+    "value": "Rewrites MediaBox viewport matrix. Physically slices local regions without rendering to blurry images, retaining clear vectors."
+  },
+  {
+    "key": "common.pdfLosslessSlicer.magnifierTitle",
+    "value": "Laser Crop Matrix (Drag and scale visual crop borders)"
+  },
+  {
+    "key": "common.pdfLosslessSlicer.optionsTitle",
+    "value": "Lossless Laser Slicer Settings"
+  },
+  {
+    "key": "common.pdfLosslessSlicer.targetPageLabel",
+    "value": "Target Slice Page"
+  },
+  {
+    "key": "common.pdfLosslessSlicer.sliceWidth",
+    "value": "Slice Width: {percent}%"
+  },
+  {
+    "key": "common.pdfLosslessSlicer.sliceHeight",
+    "value": "Slice Height: {percent}%"
+  },
+  {
+    "key": "common.pdfLosslessSlicer.processButton",
+    "value": "Slice Lossless local Matrix"
+  },
+  {
+    "key": "common.compress.clearAll",
+    "value": "Clear All"
+  },
+  {
+    "key": "common.compress.sliderTooltip",
+    "value": "Drag the slider to compare original vs optimized quality (Page 1)"
+  },
+  {
+    "key": "common.compress.sizeShrink",
+    "value": "Volume Reduction (Light)"
+  },
+  {
+    "key": "common.compress.pixelSharpness",
+    "value": "Pixel Clarity (Heavy)"
+  },
+  {
+    "key": "common.compress.qualityTitle",
+    "value": "Optimization Quality Level"
+  },
+  {
+    "key": "common.compress.qualityLow",
+    "value": "Low Quality"
+  },
+  {
+    "key": "common.compress.qualityMedium",
+    "value": "Medium Balanced"
+  },
+  {
+    "key": "common.compress.qualityHigh",
+    "value": "High Quality"
+  },
+  {
+    "key": "common.compress.qualityMaximum",
+    "value": "Maximum Quality (Lossless)"
+  },
+  {
+    "key": "common.compress.descLow",
+    "value": "Highly compressed (60%-80% size reduction). Best for pure texts and receipts."
+  },
+  {
+    "key": "common.compress.descMedium",
+    "value": "Balanced (40% size reduction). Preserves crisp font shapes and layout edges."
+  },
+  {
+    "key": "common.compress.descHigh",
+    "value": "Preserves high color dynamics and photo resolutions with slight compression."
+  },
+  {
+    "key": "common.compress.descMaximum",
+    "value": "Near 1:1 lossless optimization. Cleans debris and unused object chunks."
+  },
+  {
+    "key": "common.compress.optimizeGraphics",
+    "value": "Optimize embedded graphical assets"
+  },
+  {
+    "key": "common.compress.clearMetadata",
+    "value": "Strip author and editor metadata fully"
+  },
+  {
+    "key": "common.compress.processingButton",
+    "value": "Optimizing layout streams..."
+  },
+  {
+    "key": "common.compress.successTitle",
+    "value": "Optimization Complete!"
+  },
+  {
+    "key": "common.compress.successDone",
+    "value": "PDF document optimized locally!"
+  },
+  {
+    "key": "common.buttons.remove",
+    "value": "Remove"
+  },
+  {
+    "key": "common.buttons.clearAll",
+    "value": "Clear All"
+  },
+  {
+    "key": "common.buttons.selectAll",
+    "value": "Select All"
+  },
+  {
+    "key": "common.buttons.deselectAll",
+    "value": "Deselect All"
+  },
+  {
+    "key": "common.status.processing",
+    "value": "Processing..."
+  },
+  {
+    "key": "tools.txtToPdf.custom",
+    "value": "Custom"
+  },
+  {
+    "key": "tools.fixPageSize.custom",
+    "value": "Custom"
+  },
+  {
+    "key": "common.options.auto",
+    "value": "Auto"
+  },
+  {
+    "key": "common.options.portrait",
+    "value": "Portrait"
+  },
+  {
+    "key": "common.options.landscape",
+    "value": "Landscape"
+  },
+  {
+    "key": "common.comparePdfs.progressExtractingOriginal",
+    "value": "Analyzing and extracting Original PDF layout..."
+  },
+  {
+    "key": "common.comparePdfs.errorExtractingOriginal",
+    "value": "Failed to extract Original PDF."
+  },
+  {
+    "key": "common.comparePdfs.progressExtractingModified",
+    "value": "Analyzing and extracting Modified PDF layout..."
+  },
+  {
+    "key": "common.comparePdfs.errorExtractingModified",
+    "value": "Failed to extract Modified PDF."
+  },
+  {
+    "key": "common.comparePdfs.progressRunningDiff",
+    "value": "Running CJK semantic alignment and paragraph diffing..."
+  },
+  {
+    "key": "common.comparePdfs.errorDiffFailed",
+    "value": "Algorithm exception occurred during semantic comparison."
+  },
+  {
+    "key": "common.comparePdfs.originalPdfTitle",
+    "value": "Original PDF (Left Version)"
+  },
+  {
+    "key": "common.comparePdfs.removeButton",
+    "value": "Remove"
+  },
+  {
+    "key": "common.comparePdfs.originalPdfLabel",
+    "value": "Upload Original PDF"
+  },
+  {
+    "key": "common.comparePdfs.originalPdfDesc",
+    "value": "Serves as the baseline/original layout"
+  },
+  {
+    "key": "common.comparePdfs.modifiedPdfTitle",
+    "value": "Modified PDF (Right Version)"
+  },
+  {
+    "key": "common.comparePdfs.modifiedPdfLabel",
+    "value": "Upload Modified PDF"
+  },
+  {
+    "key": "common.comparePdfs.modifiedPdfDesc",
+    "value": "Contains edits, additions, deletions, or structural shifts"
+  },
+  {
+    "key": "common.comparePdfs.startCompare",
+    "value": "Run Semantic Comparison"
+  },
+  {
+    "key": "common.comparePdfs.successTitle",
+    "value": "Semantic Comparison Complete (Acrobat-grade alignment)"
+  },
+  {
+    "key": "common.comparePdfs.filterLabel",
+    "value": "Highlight Filters"
+  },
+  {
+    "key": "common.comparePdfs.filterText",
+    "value": "Text Changes"
+  },
+  {
+    "key": "common.comparePdfs.filterFont",
+    "value": "Font & Format Changes"
+  },
+  {
+    "key": "common.comparePdfs.filterHeaderFooter",
+    "value": "Headers & Footers (Low Noise)"
+  },
+  {
+    "key": "common.comparePdfs.filterMoved",
+    "value": "Shifted Paragraphs"
+  },
+  {
+    "key": "common.comparePdfs.resetButton",
+    "value": "Reset Comparison"
+  },
+  {
+    "key": "common.comparePdfs.prevPair",
+    "value": "Prev Page Pair"
+  },
+  {
+    "key": "common.comparePdfs.insertedPage",
+    "value": "📂 Inserted Page"
+  },
+  {
+    "key": "common.comparePdfs.deletedPage",
+    "value": "❌ Deleted Page"
+  },
+  {
+    "key": "common.comparePdfs.noDiff",
+    "value": "✅ No Differences (Identical)"
+  },
+  {
+    "key": "common.comparePdfs.fullscreenTooltip",
+    "value": "Toggle Fullscreen Comparison"
+  },
+  {
+    "key": "common.comparePdfs.nextPair",
+    "value": "Next Page Pair"
+  },
+  {
+    "key": "common.comparePdfs.originalVersion",
+    "value": " (Original)"
+  },
+  {
+    "key": "common.comparePdfs.removedText",
+    "value": "❌ Removed text"
+  },
+  {
+    "key": "common.comparePdfs.modifiedText",
+    "value": "⚠️ Text modified"
+  },
+  {
+    "key": "common.comparePdfs.paragraphMovedRight",
+    "value": "➡️ Paragraph shifted downwards"
+  },
+  {
+    "key": "common.comparePdfs.insertedPageTitle",
+    "value": "📂 Inserted Page"
+  },
+  {
+    "key": "common.comparePdfs.insertedPageDesc",
+    "value": "This page was added in the modified document. The original version has no corresponding layout, automatically aligned."
+  },
+  {
+    "key": "common.comparePdfs.modifiedVersion",
+    "value": " (Modified)"
+  },
+  {
+    "key": "common.comparePdfs.addedText",
+    "value": "💚 Added text"
+  },
+  {
+    "key": "common.comparePdfs.paragraphMovedLeft",
+    "value": "⬅️ Paragraph shifted from preceding section"
+  },
+  {
+    "key": "common.comparePdfs.deletedPageTitle",
+    "value": "❌ Deleted Page"
+  },
+  {
+    "key": "common.comparePdfs.deletedPageDesc",
+    "value": "This page was completely deleted in the modified document. Aligned with a blank filler to preserve subsequent page flows."
+  },
+  {
+    "key": "common.editPdf.annCloud",
+    "value": "Cloud"
+  },
+  {
+    "key": "common.editPdf.annRectangle",
+    "value": "Rectangle"
+  },
+  {
+    "key": "common.editPdf.annCircle",
+    "value": "Circle"
+  },
+  {
+    "key": "common.editPdf.annArrow",
+    "value": "Arrow"
+  },
+  {
+    "key": "common.editPdf.annFreehand",
+    "value": "Draw"
+  },
+  {
+    "key": "common.editPdf.annFreeText",
+    "value": "Text"
+  },
+  {
+    "key": "common.editPdf.annFreeHighlight",
+    "value": "Highlight"
+  },
+  {
+    "key": "common.editPdf.annNote",
+    "value": "Note"
+  },
+  {
+    "key": "common.editPdf.annSignature",
+    "value": "Signature"
+  },
+  {
+    "key": "common.editPdf.annStamp",
+    "value": "Stamp"
+  },
+  {
+    "key": "common.editPdf.strokeColorLabel",
+    "value": "Border Color:"
+  },
+  {
+    "key": "contactPage.form.fields.name.label",
+    "value": "Name"
+  },
+  {
+    "key": "contactPage.form.fields.email.label",
+    "value": "Email"
+  },
+  {
+    "key": "contactPage.form.fields.subject.label",
+    "value": "Subject"
+  },
+  {
+    "key": "contactPage.form.fields.message.label",
+    "value": "Message"
+  },
+  {
+    "key": "common.editPdf.fillColorLabel",
+    "value": "Enable Fill Color:"
+  },
+  {
+    "key": "faqPage.cta.button",
+    "value": "Contact Us"
+  },
+  {
+    "key": "aboutPage.cta.button",
+    "value": "Browse All Tools"
+  },
+  {
+    "key": "contactPage.form.success.button",
+    "value": "Send Another Message"
+  },
+  {
+    "key": "contactPage.faq.button",
+    "value": "View FAQ"
+  },
+  {
+    "key": "common.buttons.clear",
+    "value": "Clear"
+  },
+  {
+    "key": "common.status.loading",
+    "value": "Loading..."
+  },
+  {
+    "key": "tools.rotatePdf.rotate180",
+    "value": "Rotate 180°"
+  },
+  {
+    "key": "tools.rotatePdf.successMessage",
+    "value": "PDF pages rotated successfully! Click the download button to save your file."
+  }
+]

@@ -1,0 +1,60 @@
+{
+  "title": "PowerPoint to PDF",
+  "metaDescription": "Convert PowerPoint presentations (PPTX) to PDF. Preserve slides and content for easy sharing.",
+  "keywords": [
+    "powerpoint to pdf",
+    "pptx to pdf",
+    "convert pptx",
+    "presentation to pdf",
+    "slides to pdf"
+  ],
+  "description": "\n      <p>PowerPoint to PDF converts Microsoft PowerPoint presentations into PDF format, preserving slide content and text for easy sharing and viewing.</p>\n      <p>Each slide becomes a page in the PDF, maintaining the presentation flow. Perfect for sharing presentations with people who don't have PowerPoint installed.</p>\n      <p>All conversion happens locally in your browser, ensuring your presentations remain private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload PowerPoint File",
+      "description": "Drag and drop your .pptx file or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Wait for Processing",
+      "description": "The tool will extract slide content and create the PDF."
+    },
+    {
+      "step": 3,
+      "title": "Download PDF",
+      "description": "Click Download to save your converted PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Presentation Sharing",
+      "description": "Share presentations with anyone without requiring PowerPoint.",
+      "icon": "share-2"
+    },
+    {
+      "title": "Handout Creation",
+      "description": "Create PDF handouts from your presentation slides.",
+      "icon": "file-text"
+    },
+    {
+      "title": "Archive Presentations",
+      "description": "Archive presentations in stable PDF format.",
+      "icon": "archive"
+    }
+  ],
+  "faq": [
+    {
+      "question": "Are animations preserved?",
+      "answer": "PDF is a static format, so animations and transitions are not preserved. Each slide becomes a static page."
+    },
+    {
+      "question": "Is .ppt format supported?",
+      "answer": "Currently only .pptx format is supported. Please convert .ppt files to .pptx first."
+    },
+    {
+      "question": "Are speaker notes included?",
+      "answer": "Currently, speaker notes are not included in the PDF output."
+    }
+  ]
+}

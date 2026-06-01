@@ -1,0 +1,2645 @@
+{
+  "psd-to-pdf": {
+    "en": {
+      "title": "PSD to PDF",
+      "metaDescription": "Convert Adobe Photoshop (PSD) files to PDF format. Supports multiple files and preserves image quality.",
+      "keywords": [
+        "psd to pdf",
+        "convert psd",
+        "photoshop to pdf",
+        "psd converter",
+        "adobe psd to pdf"
+      ],
+      "description": "\n      <p>PSD to PDF converts Adobe Photoshop (PSD) files into PDF documents. This tool allows you to view and share PSD designs without needing Photoshop installed.</p>\n      <p>You can convert multiple PSD files at once and combine them into a single PDF document. The tool processes each PSD file, rendering the visible layers into high-quality PDF pages.</p>\n      <p>All conversion happens locally in your browser, ensuring your designs remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload PSD Files",
+          "description": "Drag and drop your PSD or PSB files, or click to select them from your device."
+        },
+        {
+          "step": 2,
+          "title": "Arrange Order",
+          "description": "Drag and drop the file thumbnails to arrange them in the desired order."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Click Convert to render the PSDs and download your PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Share Designs",
+          "description": "Share Photoshop designs with clients or colleagues who don't have Photoshop.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Portfolio Creation",
+          "description": "Compile your design work into a professional PDF portfolio.",
+          "icon": "layout"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Convert designs to PDF for printing purposes.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Do I need Photoshop installed?",
+          "answer": "No, this tool works entirely in your browser without requiring Adobe Photoshop."
+        },
+        {
+          "question": "Are layers preserved?",
+          "answer": "The tool renders the visible state of the PSD (composite image). Individual layers are flattened in the PDF."
+        },
+        {
+          "question": "What is the maximum file size?",
+          "answer": "You can upload files up to 100MB each. Large PSD files may take a moment to process."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PSD转PDF",
+      "metaDescription": "将Adobe Photoshop (PSD)文件转换为PDF。保留图层和高质量。",
+      "keywords": [
+        "psd转pdf",
+        "转换psd",
+        "photoshop转pdf",
+        "adobe psd转pdf"
+      ],
+      "description": "\n      <p>直接在浏览器中将Adobe Photoshop (PSD)文件转换为PDF格式。此工具处理复杂的PSD文件，并在转换过程中保持高质量的视觉效果。</p>\n      <p>非常适合设计师和艺术家与没有安装Photoshop的客户或同事分享他们的作品。转换生成干净、可视化的PDF文档。</p>\n      <p>所有处理都在本地完成，确保您的设计和作品保留在设备上，保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PSD文件",
+          "description": "将PSD文件拖放到上传区域。支持大文件。"
+        },
+        {
+          "step": 2,
+          "title": "处理",
+          "description": "工具将读取PSD数据并将其转换为PDF格式。"
+        },
+        {
+          "step": 3,
+          "title": "下载",
+          "description": "立即下载转换后的PDF文件。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "客户预览",
+          "description": "以通用的PDF格式向客户发送设计稿。",
+          "icon": "image"
+        },
+        {
+          "title": "作品集创建",
+          "description": "将Photoshop作品编译成PDF作品集以供求职申请。",
+          "icon": "briefcase"
+        },
+        {
+          "title": "打印准备",
+          "description": "将PSD设计转换为PDF，以便打印服务更好地处理。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "需要安装Photoshop吗？",
+          "answer": "不需要，此工具完全在浏览器中运行，无需Adobe Photoshop。"
+        },
+        {
+          "question": "图层会保留吗？",
+          "answer": "生成的PDF是用于查看的PSD扁平化版本。"
+        },
+        {
+          "question": "有文件大小限制吗？",
+          "answer": "我们支持大文件，但非常大的高分辨率PSD可能需要更长的处理时间。"
+        }
+      ]
+    }
+  },
+  "word-to-pdf": {
+    "en": {
+      "title": "Word to PDF",
+      "metaDescription": "Convert Word documents (DOCX) to PDF. Preserve formatting and layout in your converted documents.",
+      "keywords": [
+        "word to pdf",
+        "docx to pdf",
+        "convert word",
+        "word converter",
+        "microsoft word to pdf"
+      ],
+      "description": "\n      <p>Word to PDF converts Microsoft Word documents into PDF format while preserving the original formatting, layout, and content structure.</p>\n      <p>Upload your DOCX files and get high-quality PDF output suitable for sharing, printing, or archiving. The conversion maintains text formatting, paragraph styles, and basic document structure.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Word Document",
+          "description": "Drag and drop your .docx file or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Wait for Processing",
+          "description": "The tool will load the document and prepare it for conversion."
+        },
+        {
+          "step": 3,
+          "title": "Download PDF",
+          "description": "Click Download to save your converted PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Document Sharing",
+          "description": "Convert Word documents to PDF for universal sharing and viewing.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Create print-ready PDFs from Word documents.",
+          "icon": "printer"
+        },
+        {
+          "title": "Document Archive",
+          "description": "Archive Word documents in stable PDF format for long-term storage.",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is .doc format supported?",
+          "answer": "Currently only .docx format is supported. Please convert .doc files to .docx first using Microsoft Word or LibreOffice."
+        },
+        {
+          "question": "Are images preserved?",
+          "answer": "Text content and basic formatting are preserved. Complex layouts with many images may have simplified rendering."
+        },
+        {
+          "question": "Is the conversion secure?",
+          "answer": "Yes, all processing happens in your browser. Your documents never leave your device."
+        }
+      ]
+    },
+    "zh": {
+      "title": "Word转PDF",
+      "metaDescription": "将Word文档（DOCX）转换为PDF。保留格式和布局。",
+      "keywords": [
+        "word转pdf",
+        "docx转pdf",
+        "转换word",
+        "word转换器",
+        "微软word转pdf"
+      ],
+      "description": "\n      <p>Word转PDF将Microsoft Word文档转换为PDF格式，同时保留原始格式、布局和内容结构。</p>\n      <p>上传您的DOCX文件，获得适合分享、打印或存档的高质量PDF输出。转换过程保持文本格式、段落样式和基本文档结构。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传Word文档",
+          "description": "拖放您的.docx文件或点击从设备中选择。"
+        },
+        {
+          "step": 2,
+          "title": "等待处理",
+          "description": "工具将加载文档并准备进行转换。"
+        },
+        {
+          "step": 3,
+          "title": "下载PDF",
+          "description": "点击下载保存转换后的PDF文档。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档分享",
+          "description": "将Word文档转换为PDF以便通用分享和查看。",
+          "icon": "share-2"
+        },
+        {
+          "title": "打印准备",
+          "description": "从Word文档创建可打印的PDF。",
+          "icon": "printer"
+        },
+        {
+          "title": "文档存档",
+          "description": "以稳定的PDF格式存档Word文档以供长期保存。",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "支持.doc格式吗？",
+          "answer": "目前仅支持.docx格式。请先使用Microsoft Word或LibreOffice将.doc文件转换为.docx。"
+        },
+        {
+          "question": "图像会保留吗？",
+          "answer": "文本内容和基本格式会保留。包含许多图像的复杂布局可能会简化渲染。"
+        },
+        {
+          "question": "转换安全吗？",
+          "answer": "是的，所有处理都在您的浏览器中进行。您的文档永远不会离开您的设备。"
+        }
+      ]
+    }
+  },
+  "excel-to-pdf": {
+    "en": {
+      "title": "Excel to PDF",
+      "metaDescription": "Convert Excel spreadsheets (XLSX) to PDF. Preserve tables and data in your converted documents.",
+      "keywords": [
+        "excel to pdf",
+        "xlsx to pdf",
+        "convert excel",
+        "spreadsheet to pdf",
+        "microsoft excel to pdf"
+      ],
+      "description": "\n      <p>Excel to PDF converts Microsoft Excel spreadsheets into PDF format while preserving table structure and data organization.</p>\n      <p>Upload your XLSX files and get clean PDF output with properly formatted tables. Each sheet in your workbook becomes a separate section in the PDF.</p>\n      <p>All conversion happens locally in your browser, ensuring your data remains private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Excel File",
+          "description": "Drag and drop your .xlsx file or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Wait for Processing",
+          "description": "The tool will load the spreadsheet and convert all sheets."
+        },
+        {
+          "step": 3,
+          "title": "Download PDF",
+          "description": "Click Download to save your converted PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Report Sharing",
+          "description": "Convert Excel reports to PDF for distribution to stakeholders.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Data Archiving",
+          "description": "Archive spreadsheet data in stable PDF format.",
+          "icon": "archive"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Create print-ready PDFs from Excel worksheets.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Are multiple sheets supported?",
+          "answer": "Yes, all sheets in the workbook are converted and included in the PDF."
+        },
+        {
+          "question": "Is .xls format supported?",
+          "answer": "Currently only .xlsx format is supported. Please save .xls files as .xlsx first."
+        },
+        {
+          "question": "Are formulas preserved?",
+          "answer": "The PDF shows calculated values. Formulas are not executable in PDF format."
+        }
+      ]
+    },
+    "zh": {
+      "title": "Excel转PDF",
+      "metaDescription": "将Excel电子表格（XLSX）转换为PDF。保留表格和数据。",
+      "keywords": [
+        "excel转pdf",
+        "xlsx转pdf",
+        "转换excel",
+        "电子表格转pdf",
+        "微软excel转pdf"
+      ],
+      "description": "\n      <p>Excel转PDF将Microsoft Excel电子表格转换为PDF格式，同时保留表格结构和数据组织。</p>\n      <p>上传您的XLSX文件，获得具有正确格式化表格的清晰PDF输出。工作簿中的每个工作表都会成为PDF中的单独部分。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的数据保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传Excel文件",
+          "description": "拖放您的.xlsx文件或点击从设备中选择。"
+        },
+        {
+          "step": 2,
+          "title": "等待处理",
+          "description": "工具将加载电子表格并转换所有工作表。"
+        },
+        {
+          "step": 3,
+          "title": "下载PDF",
+          "description": "点击下载保存转换后的PDF文档。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "报告分享",
+          "description": "将Excel报告转换为PDF以供利益相关者分发。",
+          "icon": "file-text"
+        },
+        {
+          "title": "数据存档",
+          "description": "以稳定的PDF格式存档电子表格数据。",
+          "icon": "archive"
+        },
+        {
+          "title": "打印准备",
+          "description": "从Excel工作表创建可打印的PDF。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "支持多个工作表吗？",
+          "answer": "是的，工作簿中的所有工作表都会被转换并包含在PDF中。"
+        },
+        {
+          "question": "支持.xls格式吗？",
+          "answer": "目前仅支持.xlsx格式。请先将.xls文件另存为.xlsx。"
+        },
+        {
+          "question": "公式会保留吗？",
+          "answer": "PDF显示计算值。公式在PDF格式中不可执行。"
+        }
+      ]
+    }
+  },
+  "pptx-to-pdf": {
+    "en": {
+      "title": "PowerPoint to PDF",
+      "metaDescription": "Convert PowerPoint presentations (PPTX) to PDF. Preserve slides and content for easy sharing.",
+      "keywords": [
+        "powerpoint to pdf",
+        "pptx to pdf",
+        "convert pptx",
+        "presentation to pdf",
+        "slides to pdf"
+      ],
+      "description": "\n      <p>PowerPoint to PDF converts Microsoft PowerPoint presentations into PDF format, preserving slide content and text for easy sharing and viewing.</p>\n      <p>Each slide becomes a page in the PDF, maintaining the presentation flow. Perfect for sharing presentations with people who don't have PowerPoint installed.</p>\n      <p>All conversion happens locally in your browser, ensuring your presentations remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload PowerPoint File",
+          "description": "Drag and drop your .pptx file or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Wait for Processing",
+          "description": "The tool will extract slide content and create the PDF."
+        },
+        {
+          "step": 3,
+          "title": "Download PDF",
+          "description": "Click Download to save your converted PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Presentation Sharing",
+          "description": "Share presentations with anyone without requiring PowerPoint.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Handout Creation",
+          "description": "Create PDF handouts from your presentation slides.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Archive Presentations",
+          "description": "Archive presentations in stable PDF format.",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Are animations preserved?",
+          "answer": "PDF is a static format, so animations and transitions are not preserved. Each slide becomes a static page."
+        },
+        {
+          "question": "Is .ppt format supported?",
+          "answer": "Currently only .pptx format is supported. Please convert .ppt files to .pptx first."
+        },
+        {
+          "question": "Are speaker notes included?",
+          "answer": "Currently, speaker notes are not included in the PDF output."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PowerPoint转PDF",
+      "metaDescription": "将PowerPoint演示文稿（PPTX）转换为PDF。保留幻灯片内容便于分享。",
+      "keywords": [
+        "powerpoint转pdf",
+        "pptx转pdf",
+        "转换pptx",
+        "演示文稿转pdf",
+        "幻灯片转pdf"
+      ],
+      "description": "\n      <p>PowerPoint转PDF将Microsoft PowerPoint演示文稿转换为PDF格式，保留幻灯片内容和文本以便轻松分享和查看。</p>\n      <p>每张幻灯片成为PDF中的一页，保持演示流。非常适合与没有安装PowerPoint的人分享演示文稿。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的演示文稿保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PowerPoint文件",
+          "description": "拖放您的.pptx文件或点击从设备中选择。"
+        },
+        {
+          "step": 2,
+          "title": "等待处理",
+          "description": "工具将提取幻灯片内容并创建PDF。"
+        },
+        {
+          "step": 3,
+          "title": "下载PDF",
+          "description": "点击下载保存转换后的PDF文档。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "演示文稿分享",
+          "description": "与任何人分享演示文稿，无需PowerPoint。",
+          "icon": "share-2"
+        },
+        {
+          "title": "讲义创建",
+          "description": "从演示幻灯片创建PDF讲义。",
+          "icon": "file-text"
+        },
+        {
+          "title": "存档演示文稿",
+          "description": "以稳定的PDF格式存档演示文稿。",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "动画会保留吗？",
+          "answer": "PDF是静态格式，因此动画和过渡不会保留。每张幻灯片变成静态页面。"
+        },
+        {
+          "question": "支持.ppt格式吗？",
+          "answer": "目前仅支持.pptx格式。请先将.ppt文件转换为.pptx。"
+        },
+        {
+          "question": "演讲者备注会包含吗？",
+          "answer": "目前演讲者备注不会包含在PDF输出中。"
+        }
+      ]
+    }
+  },
+  "xps-to-pdf": {
+    "en": {
+      "title": "XPS to PDF",
+      "metaDescription": "Convert XPS documents to PDF format. High-fidelity conversion preserving layout and graphics.",
+      "keywords": [
+        "xps to pdf",
+        "convert xps",
+        "xps converter",
+        "microsoft xps to pdf",
+        "oxps to pdf"
+      ],
+      "description": "\n      <p>XPS to PDF converts Microsoft XPS (XML Paper Specification) documents into PDF format while preserving the original layout, text, and vector graphics.</p>\n      <p>XPS is a fixed-document format similar to PDF. This tool provides high-fidelity conversion using native XPS parsing, ensuring accurate reproduction of your documents.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload XPS File",
+          "description": "Drag and drop your .xps file or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Wait for Processing",
+          "description": "The tool will parse and convert the XPS document."
+        },
+        {
+          "step": 3,
+          "title": "Download PDF",
+          "description": "Click Download to save your converted PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Format Conversion",
+          "description": "Convert XPS documents to more widely supported PDF format.",
+          "icon": "file"
+        },
+        {
+          "title": "Document Sharing",
+          "description": "Share XPS documents with users who don't have XPS viewers.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Archive Migration",
+          "description": "Migrate XPS archives to PDF format for better compatibility.",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What is XPS format?",
+          "answer": "XPS (XML Paper Specification) is Microsoft's fixed-document format, similar to PDF. It's commonly used for Windows printing."
+        },
+        {
+          "question": "Is the conversion lossless?",
+          "answer": "Yes, the conversion preserves text, graphics, and layout with high fidelity."
+        },
+        {
+          "question": "Are multi-page XPS files supported?",
+          "answer": "Yes, all pages in the XPS document are converted to the PDF."
+        }
+      ]
+    },
+    "zh": {
+      "title": "XPS转PDF",
+      "metaDescription": "将XPS文档转换为PDF格式。高保真转换，保留布局和图形。",
+      "keywords": [
+        "xps转pdf",
+        "转换xps",
+        "xps转换器",
+        "微软xps转pdf",
+        "oxps转pdf"
+      ],
+      "description": "\n      <p>XPS转PDF将Microsoft XPS（XML纸规范）文档转换为PDF格式，同时保留原始布局、文本和矢量图形。</p>\n      <p>XPS是一种类似于PDF的固定文档格式。此工具使用原生XPS解析提供高保真转换，确保文档的准确再现。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传XPS文件",
+          "description": "拖放您的.xps文件或点击从设备中选择。"
+        },
+        {
+          "step": 2,
+          "title": "等待处理",
+          "description": "工具将解析并转换XPS文档。"
+        },
+        {
+          "step": 3,
+          "title": "下载PDF",
+          "description": "点击下载保存转换后的PDF文档。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "格式转换",
+          "description": "将XPS文档转换为更广泛支持的PDF格式。",
+          "icon": "file"
+        },
+        {
+          "title": "文档分享",
+          "description": "与没有XPS查看器的用户分享XPS文档。",
+          "icon": "share-2"
+        },
+        {
+          "title": "存档迁移",
+          "description": "将XPS存档迁移到PDF格式以获得更好的兼容性。",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是XPS格式？",
+          "answer": "XPS（XML纸规范）是Microsoft的固定文档格式，类似于PDF。它常用于Windows打印。"
+        },
+        {
+          "question": "转换是无损的吗？",
+          "answer": "是的，转换以高保真度保留文本、图形和布局。"
+        },
+        {
+          "question": "支持多页XPS文件吗？",
+          "answer": "是的，XPS文档中的所有页面都会转换到PDF中。"
+        }
+      ]
+    }
+  },
+  "rtf-to-pdf": {
+    "en": {
+      "title": "RTF to PDF",
+      "metaDescription": "Convert RTF (Rich Text Format) files to PDF. Preserve text formatting in your documents.",
+      "keywords": [
+        "rtf to pdf",
+        "convert rtf",
+        "rich text to pdf",
+        "rtf converter"
+      ],
+      "description": "\n      <p>RTF to PDF converts Rich Text Format files into PDF documents. RTF is a widely supported text format that includes basic formatting like fonts, colors, and styles.</p>\n      <p>Upload your RTF files and get clean PDF output while preserving text content and basic formatting. Perfect for converting legacy documents to modern PDF format.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload RTF File",
+          "description": "Drag and drop your .rtf file or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Wait for Processing",
+          "description": "The tool will parse and convert the RTF content."
+        },
+        {
+          "step": 3,
+          "title": "Download PDF",
+          "description": "Click Download to save your converted PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Legacy Conversion",
+          "description": "Convert old RTF documents to modern PDF format.",
+          "icon": "history"
+        },
+        {
+          "title": "Document Sharing",
+          "description": "Share RTF documents in universally viewable PDF format.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Archive Documents",
+          "description": "Archive RTF files in stable PDF format for long-term storage.",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What formatting is preserved?",
+          "answer": "Basic text formatting including fonts, paragraphs, and styles are converted. Complex RTF features may be simplified."
+        },
+        {
+          "question": "Can I convert multiple RTF files?",
+          "answer": "Currently, one file is converted at a time. Use Merge PDF to combine multiple converted files."
+        },
+        {
+          "question": "Are embedded images supported?",
+          "answer": "Text content is the primary focus. Embedded objects may not be rendered."
+        }
+      ]
+    },
+    "zh": {
+      "title": "RTF转PDF",
+      "metaDescription": "将RTF（富文本格式）文件转换为PDF。保留文档中的文本格式。",
+      "keywords": [
+        "rtf转pdf",
+        "转换rtf",
+        "富文本转pdf",
+        "rtf转换器"
+      ],
+      "description": "\n      <p>RTF转PDF将富文本格式文件转换为PDF文档。RTF是一种广泛支持的文本格式，包含基本格式如字体、颜色和样式。</p>\n      <p>上传您的RTF文件，获得干净的PDF输出，同时保留文本内容和基本格式。非常适合将旧文档转换为现代PDF格式。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传RTF文件",
+          "description": "拖放您的.rtf文件或点击从设备中选择。"
+        },
+        {
+          "step": 2,
+          "title": "等待处理",
+          "description": "工具将解析并转换RTF内容。"
+        },
+        {
+          "step": 3,
+          "title": "下载PDF",
+          "description": "点击下载保存转换后的PDF文档。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "旧版转换",
+          "description": "将旧的RTF文档转换为现代PDF格式。",
+          "icon": "history"
+        },
+        {
+          "title": "文档分享",
+          "description": "以通用可查看的PDF格式分享RTF文档。",
+          "icon": "share-2"
+        },
+        {
+          "title": "存档文档",
+          "description": "以稳定的PDF格式存档RTF文件以供长期保存。",
+          "icon": "archive"
+        }
+      ],
+      "faq": [
+        {
+          "question": "保留哪些格式？",
+          "answer": "包括字体、段落和样式在内的基本文本格式会被转换。复杂的RTF功能可能会被简化。"
+        },
+        {
+          "question": "可以转换多个RTF文件吗？",
+          "answer": "目前一次只能转换一个文件。使用合并PDF来合并多个转换后的文件。"
+        },
+        {
+          "question": "支持嵌入图像吗？",
+          "answer": "文本内容是主要焦点。嵌入对象可能无法渲染。"
+        }
+      ]
+    }
+  },
+  "epub-to-pdf": {
+    "en": {
+      "title": "EPUB to PDF",
+      "metaDescription": "Convert EPUB e-books to PDF. Preserve formatting, images, and chapter structure.",
+      "keywords": [
+        "epub to pdf",
+        "convert epub",
+        "ebook to pdf",
+        "epub converter"
+      ],
+      "description": "\n      <p>EPUB to PDF converts electronic book files into high-quality PDF documents. EPUB is the most popular e-book format, used by most e-readers and digital libraries.</p>\n      <p>This tool preserves text formatting, images, and the chapter structure of your e-books. Perfect for printing, archiving, or sharing e-books in a universally viewable format.</p>\n      <p>All conversion happens locally in your browser using advanced rendering technology, ensuring your books remain private and the conversion is fast.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload EPUB File",
+          "description": "Drag and drop your .epub file or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Wait for Conversion",
+          "description": "The tool will render and convert all pages of your e-book."
+        },
+        {
+          "step": 3,
+          "title": "Download PDF",
+          "description": "Click Download to save your converted PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Print E-books",
+          "description": "Convert e-books to PDF for physical printing.",
+          "icon": "printer"
+        },
+        {
+          "title": "Archive Books",
+          "description": "Store e-books in long-term stable PDF format.",
+          "icon": "archive"
+        },
+        {
+          "title": "Share Documents",
+          "description": "Share e-books with anyone, even without an e-reader.",
+          "icon": "share-2"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is the formatting preserved?",
+          "answer": "Yes! This tool uses native EPUB rendering, preserving text formatting, images, and layout with high fidelity."
+        },
+        {
+          "question": "Are DRM-protected EPUBs supported?",
+          "answer": "No, DRM-protected e-books cannot be converted. Only DRM-free EPUB files are supported."
+        },
+        {
+          "question": "How is page size determined?",
+          "answer": "EPUB content is rendered to standard A4 page size for optimal readability."
+        }
+      ]
+    },
+    "zh": {
+      "title": "EPUB转PDF",
+      "metaDescription": "将EPUB电子书转换为PDF。保留格式、图片和章节结构。",
+      "keywords": [
+        "epub转pdf",
+        "转换epub",
+        "电子书转pdf",
+        "epub转换器"
+      ],
+      "description": "\n      <p>EPUB转PDF将电子书文件转换为高质量的PDF文档。EPUB是最流行的电子书格式，被大多数电子阅读器和数字图书馆使用。</p>\n      <p>此工具可保留电子书的文本格式、图片和章节结构。非常适合打印、存档或以通用格式分享电子书。</p>\n      <p>所有转换都在您的浏览器本地进行，使用先进的渲染技术，确保您的书籍保持私密，转换速度快。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传EPUB文件",
+          "description": "拖放您的.epub文件或点击从设备中选择。"
+        },
+        {
+          "step": 2,
+          "title": "等待转换",
+          "description": "工具将渲染并转换电子书的所有页面。"
+        },
+        {
+          "step": 3,
+          "title": "下载PDF",
+          "description": "点击下载保存转换后的PDF文档。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "打印电子书",
+          "description": "将电子书转换为PDF以便物理打印。",
+          "icon": "printer"
+        },
+        {
+          "title": "存档书籍",
+          "description": "以长期稳定的PDF格式存储电子书。",
+          "icon": "archive"
+        },
+        {
+          "title": "分享文档",
+          "description": "与任何人分享电子书，即使没有电子阅读器。",
+          "icon": "share-2"
+        }
+      ],
+      "faq": [
+        {
+          "question": "格式会保留吗？",
+          "answer": "是的！此工具使用原生EPUB渲染，以高保真度保留文本格式、图片和布局。"
+        },
+        {
+          "question": "支持受DRM保护的EPUB吗？",
+          "answer": "不支持，受DRM保护的电子书无法转换。仅支持无DRM的EPUB文件。"
+        },
+        {
+          "question": "页面大小是如何确定的？",
+          "answer": "EPUB内容被渲染为标准A4页面大小，以获得最佳可读性。"
+        }
+      ]
+    }
+  },
+  "mobi-to-pdf": {
+    "en": {
+      "title": "MOBI to PDF",
+      "metaDescription": "Convert MOBI e-books to PDF. Support for Kindle format with high-quality rendering.",
+      "keywords": [
+        "mobi to pdf",
+        "convert mobi",
+        "kindle to pdf",
+        "azw to pdf",
+        "mobi converter"
+      ],
+      "description": "\n      <p>MOBI to PDF converts Amazon Kindle e-book files into high-quality PDF documents. MOBI format (including AZW and AZW3) is Amazon's proprietary e-book format used on Kindle devices.</p>\n      <p>This tool preserves text formatting, images, and the structure of your Kindle books. Perfect for printing, archiving, or reading on devices that don't support MOBI format.</p>\n      <p>All conversion happens locally in your browser using advanced rendering technology, ensuring your books remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload MOBI File",
+          "description": "Drag and drop your .mobi, .azw, or .azw3 file or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Wait for Conversion",
+          "description": "The tool will render and convert all pages of your e-book."
+        },
+        {
+          "step": 3,
+          "title": "Download PDF",
+          "description": "Click Download to save your converted PDF document."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Print Kindle Books",
+          "description": "Convert Kindle e-books to PDF for physical printing.",
+          "icon": "printer"
+        },
+        {
+          "title": "Archive Books",
+          "description": "Store Kindle books in universal PDF format.",
+          "icon": "archive"
+        },
+        {
+          "title": "Cross-Device Reading",
+          "description": "Read Kindle books on devices that only support PDF.",
+          "icon": "tablet-smartphone"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What MOBI formats are supported?",
+          "answer": "This tool supports .mobi, .azw, and .azw3 files (non-DRM versions)."
+        },
+        {
+          "question": "Are DRM-protected Kindle books supported?",
+          "answer": "No, DRM-protected e-books cannot be converted. Only DRM-free files are supported."
+        },
+        {
+          "question": "Will my formatting be preserved?",
+          "answer": "Yes! The tool uses native MOBI rendering to preserve text, images, and layout."
+        }
+      ]
+    },
+    "zh": {
+      "title": "MOBI转PDF",
+      "metaDescription": "将MOBI电子书转换为PDF。支持Kindle格式的高质量渲染。",
+      "keywords": [
+        "mobi转pdf",
+        "转换mobi",
+        "kindle转pdf",
+        "azw转pdf",
+        "mobi转换器"
+      ],
+      "description": "\n      <p>MOBI转PDF将亚马逊Kindle电子书文件转换为高质量的PDF文档。MOBI格式（包括AZW和AZW3）是亚马逊专有的电子书格式，用于Kindle设备。</p>\n      <p>此工具可保留Kindle书籍的文本格式、图片和结构。非常适合打印、存档或在不支持MOBI格式的设备上阅读。</p>\n      <p>所有转换都在您的浏览器本地进行，使用先进的渲染技术，确保您的书籍保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传MOBI文件",
+          "description": "拖放您的.mobi、.azw或.azw3文件，或点击从设备中选择。"
+        },
+        {
+          "step": 2,
+          "title": "等待转换",
+          "description": "工具将渲染并转换电子书的所有页面。"
+        },
+        {
+          "step": 3,
+          "title": "下载PDF",
+          "description": "点击下载保存转换后的PDF文档。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "打印Kindle书籍",
+          "description": "将Kindle电子书转换为PDF以便物理打印。",
+          "icon": "printer"
+        },
+        {
+          "title": "存档书籍",
+          "description": "以通用PDF格式存储Kindle书籍。",
+          "icon": "archive"
+        },
+        {
+          "title": "跨设备阅读",
+          "description": "在只支持PDF的设备上阅读Kindle书籍。",
+          "icon": "tablet-smartphone"
+        }
+      ],
+      "faq": [
+        {
+          "question": "支持哪些MOBI格式？",
+          "answer": "此工具支持.mobi、.azw和.azw3文件（非DRM版本）。"
+        },
+        {
+          "question": "支持受DRM保护的Kindle书籍吗？",
+          "answer": "不支持，受DRM保护的电子书无法转换。仅支持无DRM的文件。"
+        },
+        {
+          "question": "格式会保留吗？",
+          "answer": "是的！该工具使用原生MOBI渲染来保留文本、图片和布局。"
+        }
+      ]
+    }
+  },
+  "pdf-to-svg": {
+    "en": {
+      "title": "PDF to SVG",
+      "metaDescription": "Convert PDF pages to SVG vector graphics. Perfect scalability at any size with individual page export.",
+      "keywords": [
+        "pdf to svg",
+        "convert pdf to svg",
+        "vector graphics",
+        "scalable pdf",
+        "svg converter"
+      ],
+      "description": "\n      <p>PDF to SVG converts each page of your PDF document into a scalable vector graphic (SVG). SVG is a vector format that maintains perfect quality at any zoom level or print size.</p>\n      <p>Unlike raster formats (JPG, PNG), SVG graphics never become pixelated when scaled. This makes them ideal for logos, diagrams, technical drawings, and any content that needs to be displayed at different sizes.</p>\n      <p>Preview each converted page and download them individually or as a ZIP file. All processing happens locally in your browser, ensuring complete privacy for your documents.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to browse and select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Options",
+          "description": "Set the resolution quality and optionally specify page ranges."
+        },
+        {
+          "step": 3,
+          "title": "Preview and Convert",
+          "description": "Click Convert to process. Preview each page by clicking on thumbnails."
+        },
+        {
+          "step": 4,
+          "title": "Download",
+          "description": "Download individual SVG files or all pages as a ZIP archive."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Logos and Graphics",
+          "description": "Extract logos and vector graphics from PDFs for use in design software.",
+          "icon": "pen-tool"
+        },
+        {
+          "title": "Technical Diagrams",
+          "description": "Convert technical drawings and diagrams to scalable SVG format.",
+          "icon": "ruler"
+        },
+        {
+          "title": "Web Development",
+          "description": "Create web-ready SVG files from PDF content for responsive websites.",
+          "icon": "globe"
+        },
+        {
+          "title": "Print at Any Size",
+          "description": "Generate vector graphics that print perfectly at any size.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What is SVG format?",
+          "answer": "SVG (Scalable Vector Graphics) is a vector image format that can be scaled to any size without losing quality. It is widely used for logos, icons, and web graphics."
+        },
+        {
+          "question": "Will the SVG be truly vector?",
+          "answer": "The SVG contains a high-resolution rendering of the PDF page. For PDFs with vector content, you get crisp output at any scale."
+        },
+        {
+          "question": "Can I preview before downloading?",
+          "answer": "Yes! Click on any thumbnail to see a full-size preview of the SVG. You can download individual pages or all at once."
+        },
+        {
+          "question": "What resolution should I choose?",
+          "answer": "Higher resolution (216 or 288 DPI) produces larger, more detailed SVGs. Use lower settings for faster processing and smaller files."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF转SVG",
+      "metaDescription": "将PDF页面转换为SVG矢量图形。任意尺寸完美缩放，支持单独导出每页。",
+      "keywords": [
+        "pdf转svg",
+        "转换pdf为svg",
+        "矢量图形",
+        "可缩放pdf",
+        "svg转换器"
+      ],
+      "description": "\n      <p>PDF转SVG将您的PDF文档的每一页转换为可缩放矢量图形（SVG）。SVG是一种矢量格式，在任何缩放级别或打印尺寸下都能保持完美质量。</p>\n      <p>与光栅格式（JPG、PNG）不同，SVG图形在缩放时永远不会变得模糊。这使其非常适合标志、图表、技术图纸以及任何需要以不同尺寸显示的内容。</p>\n      <p>预览每个转换后的页面，可以单独下载或作为ZIP文件下载。所有处理都在您的浏览器本地进行，确保您的文档完全隐私。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击浏览选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置选项",
+          "description": "设置分辨率质量，可选择指定页面范围。"
+        },
+        {
+          "step": 3,
+          "title": "预览和转换",
+          "description": "点击转换进行处理。点击缩略图预览每个页面。"
+        },
+        {
+          "step": 4,
+          "title": "下载",
+          "description": "下载单个SVG文件或将所有页面打包为ZIP压缩包。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "标志和图形",
+          "description": "从PDF中提取标志和矢量图形，用于设计软件。",
+          "icon": "pen-tool"
+        },
+        {
+          "title": "技术图纸",
+          "description": "将技术图纸和图表转换为可缩放的SVG格式。",
+          "icon": "ruler"
+        },
+        {
+          "title": "网页开发",
+          "description": "从PDF内容创建网页友好的SVG文件，用于响应式网站。",
+          "icon": "globe"
+        },
+        {
+          "title": "任意尺寸打印",
+          "description": "生成可以任意尺寸完美打印的矢量图形。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是SVG格式？",
+          "answer": "SVG（可缩放矢量图形）是一种可以缩放到任意尺寸而不损失质量的矢量图像格式。它广泛用于标志、图标和网页图形。"
+        },
+        {
+          "question": "SVG是真正的矢量吗？",
+          "answer": "SVG包含PDF页面的高分辨率渲染。对于具有矢量内容的PDF，您可以在任何缩放级别获得清晰的输出。"
+        },
+        {
+          "question": "可以在下载前预览吗？",
+          "answer": "可以！点击任何缩略图查看SVG的完整尺寸预览。您可以下载单个页面或全部下载。"
+        },
+        {
+          "question": "应该选择什么分辨率？",
+          "answer": "更高的分辨率（216或288 DPI）会产生更大、更详细的SVG。使用较低设置可以加快处理速度并获得更小的文件。"
+        }
+      ]
+    }
+  },
+  "pdf-to-excel": {
+    "en": {
+      "title": "PDF to Excel",
+      "metaDescription": "Convert PDF to Excel spreadsheet. Extract tables to XLSX format.",
+      "keywords": [
+        "pdf to excel",
+        "pdf to xlsx",
+        "convert pdf tables",
+        "extract tables"
+      ],
+      "description": "\n      <p>PDF to Excel converts your PDF documents into editable Microsoft Excel spreadsheets (XLSX). The tool automatically detects tables in your PDF and extracts them into separate sheets.</p>\n      <p>This tool is ideal for analyzing financial reports, invoices, or any data presented in tables. Each page's tables are organized into sheets for easy data manipulation.</p>\n      <p>All conversion happens locally in your browser, ensuring your data remains private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Process",
+          "description": "The tool will automatically identify and extract tables."
+        },
+        {
+          "step": 3,
+          "title": "Download Excel",
+          "description": "Download your Excel file with extracted tables."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Financial Analysis",
+          "description": "Convert bank statements or invoices to Excel for analysis.",
+          "icon": "trending-up"
+        },
+        {
+          "title": "Data Extraction",
+          "description": "Pull data tables from research papers or reports.",
+          "icon": "database"
+        },
+        {
+          "title": "Inventory Management",
+          "description": "Convert inventory lists from PDF to spreadsheet.",
+          "icon": "clipboard"
+        }
+      ],
+      "faq": [
+        {
+          "question": "How are tables handled?",
+          "answer": "Tables detected on each page are extracted to corresponding sheets in the Excel file."
+        },
+        {
+          "question": "What if there are no tables?",
+          "answer": "An info sheet will be created indicating no tables were found."
+        },
+        {
+          "question": "Is formatting preserved?",
+          "answer": "Data is preserved, but complex visual formatting may be simplified for spreadsheet use."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF转Excel",
+      "metaDescription": "将PDF转换为Excel表格。将表格提取为XLSX格式。",
+      "keywords": [
+        "pdf转excel",
+        "pdf转xlsx",
+        "提取表格",
+        "pdf数据提取"
+      ],
+      "description": "\n      <p>PDF转Excel将您的PDF文档转换为可编辑的Excel电子表格(XLSX)。工具自动检测并提取表格。</p>\n      <p>非常适合分析财务报告或数据表。每页的表格提取到单独的Sheet中。</p>\n      <p>所有转换都在您的浏览器中进行，确保您的数据隐私安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "处理",
+          "description": "工具将自动识别表格。"
+        },
+        {
+          "step": 3,
+          "title": "下载Excel",
+          "description": "下载包含提取表格的文件。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "财务分析",
+          "description": "转换银行账单或发票。",
+          "icon": "trending-up"
+        },
+        {
+          "title": "数据提取",
+          "description": "从报告中提取数据表。",
+          "icon": "database"
+        },
+        {
+          "title": "清单转换",
+          "description": "将PDF库存清单转换为表格。",
+          "icon": "clipboard"
+        }
+      ],
+      "faq": [
+        {
+          "question": "如何处理表格？",
+          "answer": "每页的表格提取到对应的Excel工作表中。"
+        },
+        {
+          "question": "如果没有表格？",
+          "answer": "将创建一个提示信息工作表。"
+        },
+        {
+          "question": "保留格式吗？",
+          "answer": "数据保留，视觉格式可能简化。"
+        }
+      ]
+    }
+  },
+  "extract-images": {
+    "en": {
+      "title": "Extract Images from PDF",
+      "metaDescription": "Extract all embedded images from PDF files. Download individually or as a ZIP archive. Filter small images automatically.",
+      "keywords": [
+        "extract pdf images",
+        "pdf image extraction",
+        "get images from pdf",
+        "download pdf images",
+        "pdf to images"
+      ],
+      "description": "\n      <p>Extract Images from PDF retrieves all embedded images from your PDF documents. Download high-quality images individually or as a convenient ZIP archive.</p>\n      <p>The tool automatically filters out small images like icons and decorations based on customizable size thresholds. Process multiple PDFs at once for efficient batch extraction.</p>\n      <p>All extraction happens in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDFs",
+          "description": "Drag and drop one or more PDF files or click to select from your device."
+        },
+        {
+          "step": 2,
+          "title": "Set Filter Options",
+          "description": "Adjust minimum width, height, and file size to filter out unwanted small images."
+        },
+        {
+          "step": 3,
+          "title": "Extract Images",
+          "description": "Click Extract to find all embedded images in your PDFs."
+        },
+        {
+          "step": 4,
+          "title": "Download",
+          "description": "Download individual images or all images as a ZIP archive."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Photo Recovery",
+          "description": "Extract photos and images embedded in PDF documents for reuse or archiving.",
+          "icon": "image"
+        },
+        {
+          "title": "Asset Collection",
+          "description": "Gather all graphics and images from PDF reports, presentations, or brochures.",
+          "icon": "folder"
+        },
+        {
+          "title": "Content Repurposing",
+          "description": "Extract images from PDFs to use in other documents, websites, or presentations.",
+          "icon": "refresh-cw"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What image formats are extracted?",
+          "answer": "Images are extracted in their native format (JPEG, PNG, etc.) when possible, or converted to PNG for raw image data."
+        },
+        {
+          "question": "Why are some images missing?",
+          "answer": "Small images below the size threshold are filtered out. Adjust the filter settings to extract smaller images."
+        },
+        {
+          "question": "Can I extract from scanned PDFs?",
+          "answer": "Scanned PDFs typically contain the scan as one large image per page. Use PDF to Image tool instead for page-by-page conversion."
+        }
+      ]
+    },
+    "zh": {
+      "title": "从PDF提取图片",
+      "metaDescription": "从PDF文件中提取所有嵌入的图片。支持单独下载或打包成ZIP下载。自动过滤小尺寸图片。",
+      "keywords": [
+        "提取pdf图片",
+        "pdf图片提取",
+        "从pdf获取图片",
+        "下载pdf图片",
+        "pdf转图片"
+      ],
+      "description": "\n      <p>从PDF提取图片工具可以从您的PDF文档中检索所有嵌入的图片。您可以单独下载高质量图片，也可以将所有图片打包成ZIP压缩包一次性下载。</p>\n      <p>该工具会根据可自定义的尺寸阈值自动过滤掉小图片（如图标和装饰图案）。支持批量处理多个PDF文件，高效便捷。</p>\n      <p>所有提取过程都在您的浏览器中进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放一个或多个PDF文件，或点击从设备中选择文件。"
+        },
+        {
+          "step": 2,
+          "title": "设置过滤选项",
+          "description": "调整最小宽度、高度和文件大小，过滤掉不需要的小图片。"
+        },
+        {
+          "step": 3,
+          "title": "提取图片",
+          "description": "点击提取按钮，查找PDF中所有嵌入的图片。"
+        },
+        {
+          "step": 4,
+          "title": "下载",
+          "description": "单独下载每张图片，或将所有图片打包成ZIP压缩包下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "图片恢复",
+          "description": "从PDF文档中提取照片和图片，用于重复使用或存档。",
+          "icon": "image"
+        },
+        {
+          "title": "素材收集",
+          "description": "收集PDF报告、演示文稿或宣传册中的所有图形和图片。",
+          "icon": "folder"
+        },
+        {
+          "title": "内容再利用",
+          "description": "从PDF中提取图片，用于其他文档、网站或演示文稿。",
+          "icon": "refresh-cw"
+        }
+      ],
+      "faq": [
+        {
+          "question": "提取的图片是什么格式？",
+          "answer": "图片会尽可能保持原始格式（JPEG、PNG等）提取，原始像素数据会转换为PNG格式。"
+        },
+        {
+          "question": "为什么有些图片没有提取出来？",
+          "answer": "小于设定尺寸阈值的图片会被过滤掉。调整过滤设置可以提取更小的图片。"
+        },
+        {
+          "question": "可以从扫描的PDF中提取图片吗？",
+          "answer": "扫描的PDF通常每页包含一张大图片。如需逐页转换，请使用\"PDF转图片\"工具。"
+        }
+      ]
+    }
+  },
+  "find-and-redact": {
+    "en": {
+      "title": "Find and Redact",
+      "metaDescription": "Search and redact text across all pages of a PDF. Batch redact sensitive information like account numbers, names, and more.",
+      "keywords": [
+        "redact pdf",
+        "find and redact",
+        "batch redact",
+        "remove text",
+        "pdf censorship",
+        "hide sensitive data"
+      ],
+      "description": "\n      <p>Find and Redact allows you to search for specific text, numbers, or patterns across all pages of your PDF and redact all matching occurrences at once. Perfect for removing sensitive information like account numbers, names, addresses, or any confidential data.</p>\n      <p>Preview all matches before applying redactions, and selectively choose which occurrences to redact. Supports case-sensitive search, whole word matching, and regular expressions for advanced pattern matching.</p>\n      <p>All processing happens in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Search for Text",
+          "description": "Enter the text, number, or regex pattern you want to find and redact."
+        },
+        {
+          "step": 3,
+          "title": "Review and Select",
+          "description": "Preview all matches and select which ones to redact."
+        },
+        {
+          "step": 4,
+          "title": "Apply Redaction",
+          "description": "Customize redaction appearance and apply to selected matches."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Privacy Compliance",
+          "description": "Redact personal information to comply with GDPR, HIPAA, or other regulations.",
+          "icon": "shield"
+        },
+        {
+          "title": "Legal Documents",
+          "description": "Remove confidential data from legal documents before sharing.",
+          "icon": "scale"
+        },
+        {
+          "title": "Financial Records",
+          "description": "Redact account numbers, SSNs, or financial data from statements.",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is redaction permanent?",
+          "answer": "Yes, redaction permanently removes the underlying text. The original content cannot be recovered. Always keep a backup of the original file."
+        },
+        {
+          "question": "Can I redact images or scanned text?",
+          "answer": "This tool works with text-based PDFs. For scanned documents, you would need to use manual area-based redaction."
+        },
+        {
+          "question": "Can I customize the redaction appearance?",
+          "answer": "Yes, you can set the redaction color, add borders, and optionally include replacement text like \"[REDACTED]\"."
+        },
+        {
+          "question": "How does regex search work?",
+          "answer": "Enable \"Use Regular Expression\" to search using regex patterns. For example, \\d{4}-\\d{4}-\\d{4}-\\d{4} to find credit card numbers."
+        }
+      ]
+    },
+    "zh": {
+      "title": "查找并遮盖",
+      "metaDescription": "搜索并批量遮盖PDF中的敏感文本。支持正则表达式匹配账号、姓名等敏感信息。",
+      "keywords": [
+        "遮盖pdf",
+        "查找并遮盖",
+        "批量遮盖",
+        "删除文本",
+        "pdf脱敏",
+        "隐藏敏感数据"
+      ],
+      "description": "\n      <p>查找并遮盖允许您在PDF的所有页面中搜索特定文本、数字或模式，并一次性遮盖所有匹配项。非常适合删除敏感信息，如账号、姓名、地址或任何机密数据。</p>\n      <p>在应用遮盖前预览所有匹配项，并选择性地选择要遮盖的出现次数。支持区分大小写搜索、全词匹配和正则表达式以进行高级模式匹配。</p>\n      <p>所有处理都在您的浏览器中进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "搜索文本",
+          "description": "输入要查找和遮盖的文本、数字或正则表达式模式。"
+        },
+        {
+          "step": 3,
+          "title": "审查并选择",
+          "description": "预览所有匹配项并选择要遮盖的项目。"
+        },
+        {
+          "step": 4,
+          "title": "应用遮盖",
+          "description": "自定义遮盖外观并应用于所选匹配项。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "隐私合规",
+          "description": "遮盖个人信息以符合GDPR、HIPAA或其他法规。",
+          "icon": "shield"
+        },
+        {
+          "title": "法律文档",
+          "description": "在共享前从法律文档中删除机密数据。",
+          "icon": "scale"
+        },
+        {
+          "title": "财务记录",
+          "description": "从报表中遮盖账号、社保号或财务数据。",
+          "icon": "credit-card"
+        }
+      ],
+      "faq": [
+        {
+          "question": "遮盖是永久的吗？",
+          "answer": "是的，遮盖会永久删除底层文本。原始内容无法恢复。请始终保留原始文件的备份。"
+        },
+        {
+          "question": "可以遮盖图像或扫描文本吗？",
+          "answer": "此工具适用于基于文本的PDF。对于扫描文档，您需要使用基于区域的手动遮盖。"
+        },
+        {
+          "question": "可以自定义遮盖外观吗？",
+          "answer": "是的，您可以设置遮盖颜色、添加边框，并可选择包含替换文本如\"[已遮盖]\"。"
+        },
+        {
+          "question": "正则表达式搜索如何工作？",
+          "answer": "启用\"使用正则表达式\"以使用正则模式搜索。例如，\\d{4}-\\d{4}-\\d{4}-\\d{4}可查找信用卡号。"
+        }
+      ]
+    }
+  },
+  "pdf-to-markdown": {
+    "en": {
+      "title": "PDF to Markdown",
+      "metaDescription": "Convert PDF to Markdown format. Extract text and preserve formatting like headings and lists.",
+      "keywords": [
+        "pdf to markdown",
+        "convert pdf to md",
+        "pdf text extraction",
+        "markdown converter",
+        "pdf to text"
+      ],
+      "description": "\n      <p>PDF to Markdown converts your PDF documents into clean, well-structured Markdown files. The tool intelligently extracts text content and attempts to preserve formatting like headings, lists, and paragraphs.</p>\n      <p>Perfect for converting PDF documents to editable formats for documentation, note-taking, or content management systems that support Markdown.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Options",
+          "description": "Set page range, choose to include page numbers, and adjust line break settings."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Click Convert to generate your Markdown file and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentation",
+          "description": "Convert PDF manuals and guides to Markdown for version-controlled documentation.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Note Taking",
+          "description": "Extract content from PDF articles and books for your note-taking system.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Content Migration",
+          "description": "Migrate PDF content to CMS platforms that support Markdown.",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is formatting preserved?",
+          "answer": "The tool attempts to detect headings based on font size and bullet points/numbered lists. Complex layouts may require manual adjustment."
+        },
+        {
+          "question": "Can I convert specific pages?",
+          "answer": "Yes, you can specify a page range like \"1-3, 5, 7\" to convert only those pages."
+        },
+        {
+          "question": "Does it work with scanned PDFs?",
+          "answer": "Scanned PDFs contain images, not text. Use our OCR tool first to extract text before converting to Markdown."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF转Markdown",
+      "metaDescription": "将PDF转换为Markdown格式。提取文本并保留标题和列表等格式。",
+      "keywords": [
+        "pdf转markdown",
+        "pdf转md",
+        "pdf文本提取",
+        "markdown转换器",
+        "pdf转文本"
+      ],
+      "description": "\n      <p>PDF转Markdown将您的PDF文档转换为干净、结构良好的Markdown文件。该工具智能提取文本内容，并尝试保留标题、列表和段落等格式。</p>\n      <p>非常适合将PDF文档转换为可编辑格式，用于文档编写、笔记记录或支持Markdown的内容管理系统。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的文档保持私密和安全。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置选项",
+          "description": "设置页面范围，选择是否包含页码，并调整换行设置。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "点击转换生成Markdown文件并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档编写",
+          "description": "将PDF手册和指南转换为Markdown，用于版本控制的文档。",
+          "icon": "file-text"
+        },
+        {
+          "title": "笔记记录",
+          "description": "从PDF文章和书籍中提取内容到您的笔记系统。",
+          "icon": "edit-3"
+        },
+        {
+          "title": "内容迁移",
+          "description": "将PDF内容迁移到支持Markdown的CMS平台。",
+          "icon": "copy"
+        }
+      ],
+      "faq": [
+        {
+          "question": "格式会保留吗？",
+          "answer": "该工具会根据字体大小检测标题，以及项目符号/编号列表。复杂布局可能需要手动调整。"
+        },
+        {
+          "question": "可以转换特定页面吗？",
+          "answer": "是的，您可以指定页面范围如\"1-3, 5, 7\"以仅转换这些页面。"
+        },
+        {
+          "question": "扫描的PDF能用吗？",
+          "answer": "扫描的PDF包含图像而非文本。请先使用我们的OCR工具提取文本，然后再转换为Markdown。"
+        }
+      ]
+    }
+  },
+  "pdf-booklet": {
+    "en": {
+      "title": "PDF Booklet Creator",
+      "metaDescription": "Create booklet layouts from PDF for printing. Arrange pages for saddle-stitch binding with multiple grid options.",
+      "keywords": [
+        "pdf booklet",
+        "booklet creator",
+        "print booklet",
+        "saddle stitch",
+        "imposition"
+      ],
+      "description": "\n      <p>PDF Booklet Creator arranges your PDF pages into booklet layouts ready for print-and-fold production. Perfect for creating brochures, zines, booklets, and saddle-stitched publications.</p>\n      <p>Choose from various grid modes (1x2, 2x2, 2x4, 4x4), paper sizes, and orientation options. The tool automatically handles page imposition for proper folding sequence.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload the PDF document you want to convert to a booklet."
+        },
+        {
+          "step": 2,
+          "title": "Choose Layout",
+          "description": "Select grid mode, paper size, orientation, and rotation options."
+        },
+        {
+          "step": 3,
+          "title": "Create and Download",
+          "description": "Generate the booklet layout and download for printing."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Brochures",
+          "description": "Create fold-ready brochures from standard PDF documents.",
+          "icon": "book-open"
+        },
+        {
+          "title": "Zines",
+          "description": "Produce self-published zines with proper page imposition.",
+          "icon": "book"
+        },
+        {
+          "title": "Event Programs",
+          "description": "Create professional program booklets for events.",
+          "icon": "calendar"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What is saddle-stitch binding?",
+          "answer": "Saddle-stitch is a binding method where folded sheets are nested and stapled through the fold."
+        },
+        {
+          "question": "Which grid mode should I use?",
+          "answer": "1x2 is standard for booklets. Use 2x2 or larger for multi-up printing to save paper."
+        },
+        {
+          "question": "Can I preview the layout?",
+          "answer": "Yes, the tool provides a visual preview before generating the final booklet."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF小册子制作",
+      "metaDescription": "从PDF创建小册子布局以供打印。为骑马钉装订排列页面，支持多种网格选项。",
+      "keywords": [
+        "pdf小册子",
+        "小册子制作",
+        "打印小册子",
+        "骑马钉",
+        "拼版"
+      ],
+      "description": "\n      <p>PDF小册子制作将您的PDF页面排列成适合打印和折叠制作的小册子布局。非常适合创建宣传册、杂志、小册子和骑马钉装订出版物。</p>\n      <p>从各种网格模式（1x2、2x2、2x4、4x4）、纸张尺寸和方向选项中选择。该工具自动处理页面拼版以实现正确的折叠顺序。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "上传您想要转换为小册子的PDF文档。"
+        },
+        {
+          "step": 2,
+          "title": "选择布局",
+          "description": "选择网格模式、纸张大小、方向和旋转选项。"
+        },
+        {
+          "step": 3,
+          "title": "创建并下载",
+          "description": "生成小册子布局并下载以供打印。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "宣传册",
+          "description": "从标准PDF文档创建可折叠的宣传册。",
+          "icon": "book-open"
+        },
+        {
+          "title": "杂志",
+          "description": "制作具有正确页面拼版的自出版杂志。",
+          "icon": "book"
+        },
+        {
+          "title": "活动手册",
+          "description": "为活动创建专业的手册小册子。",
+          "icon": "calendar"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是骑马钉装订？",
+          "answer": "骑马钉是一种装订方法，将折叠的纸张嵌套并通过折痕钉合。"
+        },
+        {
+          "question": "我应该使用哪种网格模式？",
+          "answer": "1x2是小册子的标准模式。使用2x2或更大的模式进行多页打印以节省纸张。"
+        },
+        {
+          "question": "可以预览布局吗？",
+          "answer": "是的，该工具在生成最终小册子之前提供可视预览。"
+        }
+      ]
+    }
+  },
+  "rasterize-pdf": {
+    "en": {
+      "title": "Rasterize PDF",
+      "metaDescription": "Convert PDF pages to high-quality images. Export as PNG, JPEG, or WebP with custom DPI settings.",
+      "keywords": [
+        "rasterize pdf",
+        "pdf to image",
+        "pdf to png",
+        "pdf to jpeg",
+        "convert pdf pages"
+      ],
+      "description": "\n      <p>Rasterize PDF converts your PDF pages into high-quality raster images. Choose from PNG, JPEG, or WebP output formats with full control over DPI and quality settings.</p>\n      <p>Perfect for creating thumbnails, social media graphics, or archiving PDF content as images. Supports page range selection and batch processing.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Drag and drop your PDF file or click to select."
+        },
+        {
+          "step": 2,
+          "title": "Configure Output",
+          "description": "Select DPI, output format (PNG/JPEG/WebP), quality, and page range."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Process pages and download images individually or as a ZIP archive."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Social Media",
+          "description": "Convert PDF slides to images for social media posting.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Thumbnails",
+          "description": "Generate preview thumbnails for PDF documents.",
+          "icon": "image"
+        },
+        {
+          "title": "Web Publishing",
+          "description": "Convert PDF content to web-friendly image formats.",
+          "icon": "globe"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What DPI should I use?",
+          "answer": "72 DPI for screen, 150 DPI for general use, 300 DPI for print quality."
+        },
+        {
+          "question": "Which format is best?",
+          "answer": "PNG for quality/transparency, JPEG for small size, WebP for modern web use."
+        },
+        {
+          "question": "Can I convert specific pages?",
+          "answer": "Yes, specify page ranges like \"1-5, 8, 10-15\" to convert only those pages."
+        }
+      ]
+    },
+    "zh": {
+      "title": "光栅化PDF",
+      "metaDescription": "将PDF页面转换为高质量图像。导出为PNG、JPEG或WebP，支持自定义DPI设置。",
+      "keywords": [
+        "光栅化pdf",
+        "pdf转图像",
+        "pdf转png",
+        "pdf转jpeg",
+        "转换pdf页面"
+      ],
+      "description": "\n      <p>光栅化PDF将您的PDF页面转换为高质量的光栅图像。从PNG、JPEG或WebP输出格式中选择，完全控制DPI和质量设置。</p>\n      <p>非常适合创建缩略图、社交媒体图形或将PDF内容归档为图像。支持页面范围选择和批量处理。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "拖放您的PDF文件或点击选择。"
+        },
+        {
+          "step": 2,
+          "title": "配置输出",
+          "description": "选择DPI、输出格式（PNG/JPEG/WebP）、质量和页面范围。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "处理页面并单独下载图像或作为ZIP归档下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "社交媒体",
+          "description": "将PDF幻灯片转换为图像以在社交媒体上发布。",
+          "icon": "share-2"
+        },
+        {
+          "title": "缩略图",
+          "description": "为PDF文档生成预览缩略图。",
+          "icon": "image"
+        },
+        {
+          "title": "网络发布",
+          "description": "将PDF内容转换为网络友好的图像格式。",
+          "icon": "globe"
+        }
+      ],
+      "faq": [
+        {
+          "question": "我应该使用什么DPI？",
+          "answer": "屏幕使用72 DPI，一般使用150 DPI，打印质量使用300 DPI。"
+        },
+        {
+          "question": "哪种格式最好？",
+          "answer": "PNG用于质量/透明度，JPEG用于小尺寸，WebP用于现代网络使用。"
+        },
+        {
+          "question": "可以转换特定页面吗？",
+          "answer": "是的，指定页面范围如\"1-5, 8, 10-15\"以仅转换这些页面。"
+        }
+      ]
+    }
+  },
+  "markdown-to-pdf": {
+    "en": {
+      "title": "Markdown to PDF",
+      "metaDescription": "Convert Markdown files to beautifully formatted PDF documents. Support for GitHub Flavored Markdown and syntax highlighting.",
+      "keywords": [
+        "markdown to pdf",
+        "md to pdf",
+        "convert markdown",
+        "gfm to pdf",
+        "markdown converter"
+      ],
+      "description": "\n      <p>Markdown to PDF converts your Markdown files into professionally styled PDF documents. Support for CommonMark and GitHub Flavored Markdown (GFM) including tables, task lists, and code blocks.</p>\n      <p>Choose from multiple themes (light, dark, GitHub) and customize page size and margins. Code blocks are syntax-highlighted for better readability.</p>\n      <p>All conversion happens locally in your browser, ensuring your content remains private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Markdown File",
+          "description": "Upload your .md or .markdown file."
+        },
+        {
+          "step": 2,
+          "title": "Choose Theme",
+          "description": "Select a visual theme and configure page settings."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Generate the styled PDF and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Documentation",
+          "description": "Convert README files and docs to shareable PDFs.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Notes Export",
+          "description": "Export Markdown notes to PDF for printing or sharing.",
+          "icon": "edit-3"
+        },
+        {
+          "title": "Reports",
+          "description": "Create reports from Markdown with professional styling.",
+          "icon": "bar-chart"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is GitHub Flavored Markdown supported?",
+          "answer": "Yes, tables, task lists, strikethrough, and other GFM features are supported."
+        },
+        {
+          "question": "Can I customize the styling?",
+          "answer": "Choose from preset themes or add custom CSS for full control."
+        },
+        {
+          "question": "Are code blocks highlighted?",
+          "answer": "Yes, code blocks include syntax highlighting for common languages."
+        }
+      ]
+    },
+    "zh": {
+      "title": "Markdown转PDF",
+      "metaDescription": "将Markdown文件转换为格式精美的PDF文档。支持GitHub风格Markdown和语法高亮。",
+      "keywords": [
+        "markdown转pdf",
+        "md转pdf",
+        "转换markdown",
+        "gfm转pdf",
+        "markdown转换器"
+      ],
+      "description": "\n      <p>Markdown转PDF将您的Markdown文件转换为专业样式的PDF文档。支持CommonMark和GitHub风格Markdown（GFM），包括表格、任务列表和代码块。</p>\n      <p>从多个主题（浅色、深色、GitHub）中选择，并自定义页面大小和边距。代码块具有语法高亮以提高可读性。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的内容保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传Markdown文件",
+          "description": "上传您的.md或.markdown文件。"
+        },
+        {
+          "step": 2,
+          "title": "选择主题",
+          "description": "选择视觉主题并配置页面设置。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "生成样式化的PDF并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档",
+          "description": "将README文件和文档转换为可共享的PDF。",
+          "icon": "file-text"
+        },
+        {
+          "title": "笔记导出",
+          "description": "将Markdown笔记导出为PDF以供打印或共享。",
+          "icon": "edit-3"
+        },
+        {
+          "title": "报告",
+          "description": "从Markdown创建具有专业样式的报告。",
+          "icon": "bar-chart"
+        }
+      ],
+      "faq": [
+        {
+          "question": "是否支持GitHub风格Markdown？",
+          "answer": "是的，支持表格、任务列表、删除线和其他GFM功能。"
+        },
+        {
+          "question": "可以自定义样式吗？",
+          "answer": "从预设主题中选择或添加自定义CSS以完全控制。"
+        },
+        {
+          "question": "代码块是否高亮？",
+          "answer": "是的，代码块包含常见语言的语法高亮。"
+        }
+      ]
+    }
+  },
+  "cbz-to-pdf": {
+    "en": {
+      "title": "CBZ to PDF",
+      "metaDescription": "Convert comic book archives (CBZ) to PDF. Preserve image order and quality for digital comics.",
+      "keywords": [
+        "cbz to pdf",
+        "comic to pdf",
+        "convert cbz",
+        "comic book converter",
+        "cbz converter"
+      ],
+      "description": "\n      <p>CBZ to PDF converts Comic Book Archive files into PDF documents. The tool extracts all images from the CBZ archive and compiles them into a PDF while maintaining the correct reading order.</p>\n      <p>Choose from various page size options including original image dimensions or standardized comic book sizes. Perfect for reading comics on devices that support PDF but not CBZ.</p>\n      <p>All conversion happens locally in your browser, ensuring your comics remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload CBZ File",
+          "description": "Upload your .cbz comic book archive file."
+        },
+        {
+          "step": 2,
+          "title": "Select Options",
+          "description": "Choose page size and image quality settings."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Convert to PDF and download your comic."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "E-Reader Compatibility",
+          "description": "Convert CBZ to PDF for e-readers that only support PDF.",
+          "icon": "book"
+        },
+        {
+          "title": "Comic Archives",
+          "description": "Create PDF archives of your digital comic collection.",
+          "icon": "archive"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Convert digital comics to PDF for printing.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What is CBZ format?",
+          "answer": "CBZ is a ZIP archive containing comic book pages as image files, renamed with .cbz extension."
+        },
+        {
+          "question": "Is image quality preserved?",
+          "answer": "Yes, images are embedded at their original quality in the PDF."
+        },
+        {
+          "question": "Are nested folders supported?",
+          "answer": "Yes, images from all folders within the archive are extracted and sorted."
+        }
+      ]
+    },
+    "zh": {
+      "title": "CBZ转PDF",
+      "metaDescription": "将漫画书归档文件（CBZ）转换为PDF。保留图像顺序和质量，适用于数字漫画。",
+      "keywords": [
+        "cbz转pdf",
+        "漫画转pdf",
+        "转换cbz",
+        "漫画书转换器",
+        "cbz转换器"
+      ],
+      "description": "\n      <p>CBZ转PDF将漫画书归档文件转换为PDF文档。该工具从CBZ归档中提取所有图像，并将它们编译成PDF，同时保持正确的阅读顺序。</p>\n      <p>从各种页面大小选项中选择，包括原始图像尺寸或标准化的漫画书尺寸。非常适合在支持PDF但不支持CBZ的设备上阅读漫画。</p>\n      <p>所有转换都在您的浏览器本地进行，确保您的漫画保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传CBZ文件",
+          "description": "上传您的.cbz漫画书归档文件。"
+        },
+        {
+          "step": 2,
+          "title": "选择选项",
+          "description": "选择页面大小和图像质量设置。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "转换为PDF并下载您的漫画。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "电子阅读器兼容性",
+          "description": "将CBZ转换为PDF，适用于仅支持PDF的电子阅读器。",
+          "icon": "book"
+        },
+        {
+          "title": "漫画归档",
+          "description": "为您的数字漫画收藏创建PDF归档。",
+          "icon": "archive"
+        },
+        {
+          "title": "打印准备",
+          "description": "将数字漫画转换为PDF以供打印。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是CBZ格式？",
+          "answer": "CBZ是一个包含漫画书页面图像文件的ZIP归档，重命名为.cbz扩展名。"
+        },
+        {
+          "question": "图像质量是否保留？",
+          "answer": "是的，图像以原始质量嵌入到PDF中。"
+        },
+        {
+          "question": "是否支持嵌套文件夹？",
+          "answer": "是的，归档中所有文件夹的图像都会被提取和排序。"
+        }
+      ]
+    }
+  },
+  "font-to-outline": {
+    "en": {
+      "title": "Font to Outline",
+      "metaDescription": "Remove font dependencies from PDF documents by converting pages to high-quality images. Ensures compatibility across all systems.",
+      "keywords": [
+        "font to outline",
+        "outline fonts",
+        "remove fonts",
+        "font compatibility",
+        "flatten pdf fonts",
+        "pdf font removal"
+      ],
+      "description": "\n      <p>Font to Outline removes all font dependencies from your PDF by converting each page into high-quality rasterized content. This ensures your document looks exactly the same on any system, even if the original fonts are not installed.</p>\n      <p>The tool renders each page at your chosen DPI (150-600), removing embedded fonts while preserving the exact visual appearance. Optionally, you can add an invisible text layer to maintain searchability.</p>\n      <p>This is essential for print preparation, cross-platform compatibility, and avoiding font licensing issues when sharing documents. All processing happens locally in your browser.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload the PDF containing fonts you want to remove."
+        },
+        {
+          "step": 2,
+          "title": "Configure Quality",
+          "description": "Choose DPI (300 recommended for print, 150 for screen). Enable searchable text if needed."
+        },
+        {
+          "step": 3,
+          "title": "Convert and Download",
+          "description": "Process the file and download the font-independent PDF."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Print Preparation",
+          "description": "Eliminate font issues at commercial printers by removing all font dependencies.",
+          "icon": "printer"
+        },
+        {
+          "title": "Cross-Platform Sharing",
+          "description": "Share documents that look identical on any device, regardless of installed fonts.",
+          "icon": "share-2"
+        },
+        {
+          "title": "Font Licensing",
+          "description": "Remove embedded fonts to avoid licensing concerns when distributing documents.",
+          "icon": "shield"
+        }
+      ],
+      "faq": [
+        {
+          "question": "How does this work?",
+          "answer": "The tool renders each page at high resolution (your chosen DPI) and recreates the PDF from these images, removing all font dependencies while preserving visual appearance."
+        },
+        {
+          "question": "Can I still select text after conversion?",
+          "answer": "By default, no. Text becomes part of the image. However, you can enable \"Preserve searchable text\" to add an invisible text layer for search and copy functionality."
+        },
+        {
+          "question": "What DPI should I use?",
+          "answer": "300 DPI is recommended for print-quality output. 150 DPI is sufficient for screen viewing and produces smaller files. 600 DPI is for highest quality but creates large files."
+        },
+        {
+          "question": "Will file size increase?",
+          "answer": "File size depends on DPI and content. 150 DPI usually produces smaller files, 300 DPI may increase size, 600 DPI significantly increases size. Compression is automatically applied."
+        },
+        {
+          "question": "Is this reversible?",
+          "answer": "No, font data is permanently removed. Keep a backup of the original if you need editable text with the original fonts."
+        },
+        {
+          "question": "What about vector graphics?",
+          "answer": "Vector graphics (shapes, lines) in the original PDF will be converted to raster along with text. The visual quality is preserved at your chosen DPI."
+        }
+      ]
+    },
+    "zh": {
+      "title": "字体转轮廓",
+      "metaDescription": "通过将页面转换为高质量图像来删除PDF文档的字体依赖。确保在所有系统上的兼容性。",
+      "keywords": [
+        "字体转轮廓",
+        "轮廓字体",
+        "删除字体",
+        "字体兼容性",
+        "扁平化pdf字体",
+        "pdf字体删除"
+      ],
+      "description": "\n      <p>字体转轮廓通过将每个页面转换为高质量的光栅化内容来删除PDF中的所有字体依赖。这确保您的文档在任何系统上看起来完全相同，即使未安装原始字体。</p>\n      <p>该工具以您选择的DPI（150-600）渲染每个页面，删除嵌入的字体同时保留确切的视觉外观。可选地，您可以添加不可见的文本层以保持可搜索性。</p>\n      <p>这对于打印准备、跨平台兼容性以及在共享文档时避免字体许可问题至关重要。所有处理都在您的浏览器本地进行。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "上传包含要删除字体的PDF。"
+        },
+        {
+          "step": 2,
+          "title": "配置质量",
+          "description": "选择DPI（打印推荐300，屏幕推荐150）。如需要，启用可搜索文本。"
+        },
+        {
+          "step": 3,
+          "title": "转换并下载",
+          "description": "处理文件并下载独立于字体的PDF。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "打印准备",
+          "description": "通过删除所有字体依赖来消除商业打印机的字体问题。",
+          "icon": "printer"
+        },
+        {
+          "title": "跨平台共享",
+          "description": "共享在任何设备上看起来相同的文档，无论安装了什么字体。",
+          "icon": "share-2"
+        },
+        {
+          "title": "字体许可",
+          "description": "删除嵌入的字体以避免分发文档时的许可问题。",
+          "icon": "shield"
+        }
+      ],
+      "faq": [
+        {
+          "question": "这是如何工作的？",
+          "answer": "该工具以高分辨率（您选择的DPI）渲染每个页面，并从这些图像重新创建PDF，删除所有字体依赖同时保留视觉外观。"
+        },
+        {
+          "question": "转换后还能选择文本吗？",
+          "answer": "默认情况下不能。文本成为图像的一部分。但是，您可以启用\"保留可搜索文本\"以添加不可见的文本层用于搜索和复制功能。"
+        },
+        {
+          "question": "我应该使用什么DPI？",
+          "answer": "打印质量输出推荐300 DPI。屏幕查看150 DPI就足够了，并产生较小的文件。600 DPI用于最高质量但会创建大文件。"
+        },
+        {
+          "question": "文件大小会增加吗？",
+          "answer": "文件大小取决于DPI和内容。150 DPI通常产生较小的文件，300 DPI可能增加大小，600 DPI显著增加大小。会自动应用压缩。"
+        },
+        {
+          "question": "这是可逆的吗？",
+          "answer": "不，字体数据被永久删除。如果需要使用原始字体的可编辑文本，请保留原始文件的备份。"
+        },
+        {
+          "question": "矢量图形怎么办？",
+          "answer": "原始PDF中的矢量图形（形状、线条）将与文本一起转换为光栅。视觉质量在您选择的DPI下得以保留。"
+        }
+      ]
+    }
+  },
+  "extract-tables": {
+    "en": {
+      "title": "Extract Tables from PDF",
+      "metaDescription": "Detect and extract tables from PDF documents. Export to JSON, Markdown, or CSV formats.",
+      "keywords": [
+        "extract tables",
+        "pdf table extraction",
+        "pdf to csv",
+        "pdf to excel",
+        "table detection"
+      ],
+      "description": "\n      <p>Extract Tables from PDF detects tabular data within your PDF documents and exports it in structured formats. Choose JSON for data integration, Markdown for documentation, or CSV for spreadsheets.</p>\n      <p>The tool uses intelligent detection algorithms to identify table structures even in complex documents. Specify page ranges and adjust detection parameters for optimal results.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload the PDF containing tables you want to extract."
+        },
+        {
+          "step": 2,
+          "title": "Configure Detection",
+          "description": "Set page range and minimum column/row thresholds."
+        },
+        {
+          "step": 3,
+          "title": "Export and Download",
+          "description": "Choose output format (JSON/Markdown/CSV) and download."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Data Analysis",
+          "description": "Extract table data for analysis in spreadsheets or databases.",
+          "icon": "bar-chart"
+        },
+        {
+          "title": "Report Processing",
+          "description": "Pull tables from PDF reports for further processing.",
+          "icon": "file-text"
+        },
+        {
+          "title": "Documentation",
+          "description": "Convert PDF tables to Markdown for technical documentation.",
+          "icon": "book"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Can it detect complex tables?",
+          "answer": "The tool works best with simple grid tables. Complex merged cells may require manual adjustment."
+        },
+        {
+          "question": "What if no tables are found?",
+          "answer": "Try adjusting the minimum columns/rows threshold or check if the PDF contains actual table structures."
+        },
+        {
+          "question": "Can I extract from specific pages?",
+          "answer": "Yes, specify a page range to limit extraction to certain pages."
+        }
+      ]
+    },
+    "zh": {
+      "title": "从PDF提取表格",
+      "metaDescription": "检测并从PDF文档中提取表格。导出为JSON、Markdown或CSV格式。",
+      "keywords": [
+        "提取表格",
+        "pdf表格提取",
+        "pdf转csv",
+        "pdf转excel",
+        "表格检测"
+      ],
+      "description": "\n      <p>从PDF提取表格检测PDF文档中的表格数据并以结构化格式导出。选择JSON用于数据集成，Markdown用于文档，或CSV用于电子表格。</p>\n      <p>该工具使用智能检测算法来识别表格结构，即使在复杂文档中也是如此。指定页面范围并调整检测参数以获得最佳结果。</p>\n      <p>所有处理都在您的浏览器本地进行，确保您的文档保持私密。</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF文件",
+          "description": "上传包含要提取表格的PDF。"
+        },
+        {
+          "step": 2,
+          "title": "配置检测",
+          "description": "设置页面范围和最小列/行阈值。"
+        },
+        {
+          "step": 3,
+          "title": "导出并下载",
+          "description": "选择输出格式（JSON/Markdown/CSV）并下载。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "数据分析",
+          "description": "提取表格数据以在电子表格或数据库中进行分析。",
+          "icon": "bar-chart"
+        },
+        {
+          "title": "报告处理",
+          "description": "从PDF报告中提取表格以进行进一步处理。",
+          "icon": "file-text"
+        },
+        {
+          "title": "文档",
+          "description": "将PDF表格转换为Markdown用于技术文档。",
+          "icon": "book"
+        }
+      ],
+      "faq": [
+        {
+          "question": "可以检测复杂表格吗？",
+          "answer": "该工具最适合简单的网格表格。复杂的合并单元格可能需要手动调整。"
+        },
+        {
+          "question": "如果找不到表格怎么办？",
+          "answer": "尝试调整最小列/行阈值或检查PDF是否包含实际的表格结构。"
+        },
+        {
+          "question": "可以从特定页面提取吗？",
+          "answer": "是的，指定页面范围以将提取限制在某些页面。"
+        }
+      ]
+    }
+  },
+  "ocg-manager": {
+    "en": {
+      "title": "PDF Layer Manager (OCG)",
+      "metaDescription": "Manage PDF layers (Optional Content Groups). View, toggle, add, delete, and rename layers in your PDF documents.",
+      "keywords": [
+        "pdf layers",
+        "ocg manager",
+        "optional content groups",
+        "pdf layer visibility",
+        "manage pdf layers"
+      ],
+      "description": "\n      <p>PDF Layer Manager allows you to view and manage Optional Content Groups (OCG) in your PDF documents. OCG layers are used in technical drawings, maps, and complex documents to organize content into toggleable layers.</p>\n      <p>View all layers in your PDF, toggle their visibility, add new layers, delete unwanted ones, or rename existing layers. This tool is essential for working with layered PDFs like architectural plans, CAD exports, and print-ready documents.</p>\n      <p>All processing happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Upload Your PDF",
+          "description": "Upload a PDF file that contains layers (OCG) or one you want to add layers to."
+        },
+        {
+          "step": 2,
+          "title": "View Layers",
+          "description": "The tool automatically lists all layers found in the document with their visibility status."
+        },
+        {
+          "step": 3,
+          "title": "Manage Layers",
+          "description": "Toggle layer visibility, rename layers, add new ones, or delete unwanted layers."
+        },
+        {
+          "step": 4,
+          "title": "Save and Download",
+          "description": "Download your modified PDF with the layer changes applied."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Technical Drawings",
+          "description": "Manage layers in CAD exports to show/hide dimensions, annotations, or different views.",
+          "icon": "ruler"
+        },
+        {
+          "title": "Map Editing",
+          "description": "Toggle different map layers like topography, roads, and labels for custom map prints.",
+          "icon": "map"
+        },
+        {
+          "title": "Print Preparation",
+          "description": "Prepare layered PDFs for printing by toggling appropriate layers for different versions.",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "What are PDF layers (OCG)?",
+          "answer": "Optional Content Groups (OCG) are layers in a PDF that can be shown or hidden. They are commonly used in CAD drawings, maps, and complex documents."
+        },
+        {
+          "question": "Why does my PDF show no layers?",
+          "answer": "Not all PDFs contain layers. Layers are typically added during PDF creation from design software or CAD applications."
+        },
+        {
+          "question": "Will layer changes affect the original content?",
+          "answer": "Layer visibility changes only affect what is displayed or printed. The actual content remains in the document."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF图层管理器",
+      "metaDescription": "管理PDF图层。查看、切换、添加、删除和重命名图层。",
+      "keywords": [
+        "pdf图层",
+        "ocg管理器"
+      ],
+      "description": "<p>管理PDF文档中的可选内容组（OCG）。</p>",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "上传PDF",
+          "description": "上传包含图层的PDF文件。"
+        },
+        {
+          "step": 2,
+          "title": "查看图层",
+          "description": "工具自动列出所有图层。"
+        },
+        {
+          "step": 3,
+          "title": "管理图层",
+          "description": "切换、添加或删除图层。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "技术图纸",
+          "description": "管理CAD导出中的图层。",
+          "icon": "ruler"
+        },
+        {
+          "title": "地图编辑",
+          "description": "切换地图图层。",
+          "icon": "map"
+        },
+        {
+          "title": "印刷准备",
+          "description": "准备分层PDF进行打印。",
+          "icon": "printer"
+        }
+      ],
+      "faq": [
+        {
+          "question": "什么是PDF图层？",
+          "answer": "OCG是PDF中可以显示或隐藏的图层。"
+        },
+        {
+          "question": "为什么没有图层？",
+          "answer": "并非所有PDF都包含图层。"
+        },
+        {
+          "question": "会影响原始内容吗？",
+          "answer": "图层可见性更改仅影响显示。"
+        }
+      ]
+    }
+  },
+  "pdf-reader": {
+    "en": {
+      "title": "PDF Reader",
+      "metaDescription": "Free online PDF reader. View, navigate, zoom, rotate, and print PDF documents directly in your browser.",
+      "keywords": [
+        "pdf reader",
+        "pdf viewer",
+        "view pdf online",
+        "read pdf",
+        "pdf browser viewer"
+      ],
+      "description": "\n      <p>PDF Reader is a full-featured PDF viewer that lets you read and navigate PDF documents directly in your browser. No software installation required - just upload your PDF and start reading.</p>\n      <p>Navigate between pages, zoom in and out, rotate the view, and use fullscreen mode for distraction-free reading. You can also print documents or download them for offline access.</p>\n      <p>All viewing happens locally in your browser. Your documents are never uploaded to any server, ensuring complete privacy.</p>\n    ",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "Open Your PDF",
+          "description": "Click to upload or drag and drop a PDF file to open it in the reader."
+        },
+        {
+          "step": 2,
+          "title": "Navigate Pages",
+          "description": "Use the page controls to go to the previous or next page, or jump to a specific page number."
+        },
+        {
+          "step": 3,
+          "title": "Adjust View",
+          "description": "Zoom in or out, rotate the view, or enter fullscreen mode for comfortable reading."
+        },
+        {
+          "step": 4,
+          "title": "Print or Download",
+          "description": "Print the document or download it for offline access when needed."
+        }
+      ],
+      "useCases": [
+        {
+          "title": "Document Review",
+          "description": "Quickly review PDF documents without installing any software.",
+          "icon": "book-open"
+        },
+        {
+          "title": "Mobile Reading",
+          "description": "Read PDF documents on any device with a web browser.",
+          "icon": "smartphone"
+        },
+        {
+          "title": "Quick Preview",
+          "description": "Preview PDFs before deciding to download or print them.",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "Is my document secure?",
+          "answer": "Yes, your document is processed entirely in your browser and is never uploaded to any server."
+        },
+        {
+          "question": "Can I annotate or edit the PDF?",
+          "answer": "This tool is for viewing only. Use our Sign PDF or Annotate PDF tools for editing."
+        },
+        {
+          "question": "Does it work on mobile devices?",
+          "answer": "Yes, the PDF Reader works on all devices with a modern web browser."
+        }
+      ]
+    },
+    "zh": {
+      "title": "PDF阅读器",
+      "metaDescription": "免费在线PDF阅读器。在浏览器中查看PDF。",
+      "keywords": [
+        "pdf阅读器",
+        "pdf查看器"
+      ],
+      "description": "<p>在浏览器中查看PDF文档。</p>",
+      "howToUse": [
+        {
+          "step": 1,
+          "title": "打开PDF",
+          "description": "上传PDF文件。"
+        },
+        {
+          "step": 2,
+          "title": "导航页面",
+          "description": "使用页面控制导航。"
+        },
+        {
+          "step": 3,
+          "title": "调整视图",
+          "description": "放大、缩小或旋转。"
+        }
+      ],
+      "useCases": [
+        {
+          "title": "文档审阅",
+          "description": "快速审阅PDF文档。",
+          "icon": "book-open"
+        },
+        {
+          "title": "移动阅读",
+          "description": "在任何设备上阅读PDF。",
+          "icon": "smartphone"
+        },
+        {
+          "title": "快速预览",
+          "description": "预览PDF。",
+          "icon": "eye"
+        }
+      ],
+      "faq": [
+        {
+          "question": "文档安全吗？",
+          "answer": "是的，完全在浏览器中处理。"
+        },
+        {
+          "question": "可以编辑吗？",
+          "answer": "此工具仅用于查看。"
+        },
+        {
+          "question": "支持移动设备吗？",
+          "answer": "是的。"
+        }
+      ]
+    }
+  }
+}

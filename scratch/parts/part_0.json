@@ -1,0 +1,242 @@
+{
+  "common.buttons.insertAtBeginning": {
+    "en": "Insert at Beginning",
+    "zh": "在开头插入"
+  },
+  "common.buttons.insertAtEnd": {
+    "en": "Insert at End",
+    "zh": "在末尾插入"
+  },
+  "common.buttons.rotateAllLeft": {
+    "en": "Rotate All Left",
+    "zh": "全部左旋"
+  },
+  "common.buttons.rotateAllRight": {
+    "en": "Rotate All Right",
+    "zh": "全部右旋"
+  },
+  "common.footer.footer": {
+    "en": "© 2025 PDFCraft. All rights reserved.",
+    "zh": "© 2025 PDFCraft. 保留所有权利。"
+  },
+  "common.footer.copyright": {
+    "en": "© {year} PDFCraft. All rights reserved.",
+    "zh": "© {year} PDFCraft. 保留所有权利。"
+  },
+  "common.footer.madeWith": {
+    "en": "Made with <Heart /> and <Nextjs />",
+    "zh": "Made with <Heart /> and <Nextjs />"
+  },
+  "common.fileUploader.dragDrop": {
+    "en": "Drag and drop files here, or click to browse",
+    "zh": "Drag and drop files here, or click to browse"
+  },
+  "common.fileUploader.dropToUpload": {
+    "en": "Drop files to upload",
+    "zh": "Drop files to upload"
+  },
+  "common.fileUploader.support": {
+    "en": "Support",
+    "zh": "Support"
+  },
+  "common.fileUploader.paste": {
+    "en": "Paste (Ctrl+V)",
+    "zh": "Paste (Ctrl+V)"
+  },
+  "common.fileUploader.encryptedTitle": {
+    "en": "This Document is Encrypted",
+    "zh": "此文档已加密"
+  },
+  "common.fileUploader.enterPasswordHelp": {
+    "en": "Please enter the password to unlock and load:<br/>",
+    "zh": "请输入密码以解锁并载入：<br/>"
+  },
+  "common.fileUploader.passwordPlaceholder": {
+    "en": "Enter document password...",
+    "zh": "请输入文档密码"
+  },
+  "common.fileUploader.decrypting": {
+    "en": "Decrypting...",
+    "zh": "解密中..."
+  },
+  "common.fileUploader.decryptAndContinue": {
+    "en": "Decrypt & Continue",
+    "zh": "解密并继续"
+  },
+  "common.accessibility.skipToContent": {
+    "en": "Skip to main content",
+    "zh": "跳转到主要内容"
+  },
+  "common.accessibility.skipToNavigation": {
+    "en": "Skip to navigation",
+    "zh": "跳转到导航"
+  },
+  "common.accessibility.loading": {
+    "en": "Loading, please wait",
+    "zh": "加载中，请稍候"
+  },
+  "common.accessibility.menuExpanded": {
+    "en": "Menu expanded",
+    "zh": "菜单已展开"
+  },
+  "common.accessibility.menuCollapsed": {
+    "en": "Menu collapsed",
+    "zh": "菜单已折叠"
+  },
+  "common.accessibility.newWindow": {
+    "en": "Opens in new window",
+    "zh": "在新窗口中打开"
+  },
+  "common.accessibility.externalLink": {
+    "en": "External link",
+    "zh": "外部链接"
+  },
+  "common.accessibility.required": {
+    "en": "Required field",
+    "zh": "必填字段"
+  },
+  "common.accessibility.optional": {
+    "en": "Optional",
+    "zh": "可选"
+  },
+  "common.accessibility.selected": {
+    "en": "Selected",
+    "zh": "已选择"
+  },
+  "common.accessibility.notSelected": {
+    "en": "Not selected",
+    "zh": "未选择"
+  },
+  "common.accessibility.pageOf": {
+    "en": "Page {current} of {total}",
+    "zh": "第 {current} 页，共 {total} 页"
+  },
+  "common.accessibility.sortAscending": {
+    "en": "Sort ascending",
+    "zh": "升序排列"
+  },
+  "common.accessibility.sortDescending": {
+    "en": "Sort descending",
+    "zh": "降序排列"
+  },
+  "common.accessibility.closeDialog": {
+    "en": "Close dialog",
+    "zh": "关闭对话框"
+  },
+  "common.accessibility.expandSection": {
+    "en": "Expand section",
+    "zh": "展开部分"
+  },
+  "common.accessibility.collapseSection": {
+    "en": "Collapse section",
+    "zh": "折叠部分"
+  },
+  "common.pdfDeskewAligner.uploadLabel": {
+    "en": "Upload Skewed Scanned PDF",
+    "zh": "上传歪斜的 PDF 扫描文档"
+  },
+  "common.pdfDeskewAligner.uploadDescription": {
+    "en": "Utilizes Hough transform edge fitting to probe grid axis and losslessly deskew pages to perfect horizontal alignment.",
+    "zh": "系统基于霍夫变换直线拟合模型，毫秒级分析文档网格轴心，重绘歪斜扫描页面以完美实现物理水平对齐。"
+  },
+  "common.pdfDeskewAligner.optionsTitle": {
+    "en": "Deskew Aligner Settings",
+    "zh": "倾斜对齐参数"
+  },
+  "common.pdfDeskewAligner.processButton": {
+    "en": "Execute Physical Deskew Aligner",
+    "zh": "执行物理纠偏对齐"
+  },
+  "common.pdfDeskewAligner.successMessage": {
+    "en": "Document scanned axes horizontally aligned successfully!",
+    "zh": "文档扫描轴线水平纠偏成功！"
+  },
+  "common.pdfDeskewAligner.compassTitle": {
+    "en": "Gyroscope Edge Aligner",
+    "zh": "发光陀螺仪对齐罗盘"
+  },
+  "common.pdfDeskewAligner.gyroHelp": {
+    "en": "Set detection options on the right. Gyroscope probes are aligning pages horizontally.",
+    "zh": "右侧设置检测灵敏度。陀螺仪探针正在纠偏物理轴线。"
+  },
+  "common.pdfDeskewAligner.dpiLabel": {
+    "en": "Detection Precision Resolution",
+    "zh": "检测分辨率 (DPI)"
+  },
+  "common.pdfDeskewAligner.dpi72": {
+    "en": "72 DPI (Fastest Probing)",
+    "zh": "72 DPI (极速检测)"
+  },
+  "common.pdfDeskewAligner.dpi150": {
+    "en": "150 DPI (Balanced Standard)",
+    "zh": "150 DPI (标准平衡)"
+  },
+  "common.pdfDeskewAligner.dpi300": {
+    "en": "300 DPI (High Precision)",
+    "zh": "300 DPI (高清拟合)"
+  },
+  "common.pdfDeskewAligner.thresholdLabel": {
+    "en": "Aligner Edge Angle Threshold",
+    "zh": "歪斜检测阈值"
+  },
+  "common.pdfTwoColumnReflower.uploadLabel": {
+    "en": "Upload Academic Paper / 2-Column PDF",
+    "zh": "上传学术论文或双栏排版 PDF"
+  },
+  "common.pdfTwoColumnReflower.uploadDescription": {
+    "en": "Intelligently split the middle gutter and vertically flow left and right columns to comfortable single-column readable layouts.",
+    "zh": "中缝智能矢量对齐切分。无损提取页面左右子栏并自动垂直串联，一键输出单栏排版适合移动端直接畅读。"
+  },
+  "common.pdfTwoColumnReflower.optionsTitle": {
+    "en": "Reflower Layout Settings",
+    "zh": "论文单栏重排设置"
+  },
+  "common.pdfTwoColumnReflower.processButton": {
+    "en": "Execute Lossless Reflow",
+    "zh": "智能单栏矢量重排"
+  },
+  "common.pdfTwoColumnReflower.successMessage": {
+    "en": "Academic paper double-column flow successfully reflowed to single-column!",
+    "zh": "学术论文双栏排版无损单栏重排成功！"
+  },
+  "common.pdfTwoColumnReflower.previewTitle": {
+    "en": "3D Folded Page Simulation View",
+    "zh": "3D 微折叠透视渲染预览页"
+  },
+  "common.pdfTwoColumnReflower.splitRatio": {
+    "en": "Middle Gutter Offset Ratio",
+    "zh": "中缝定位分栏比例"
+  },
+  "common.pdfTwoColumnReflower.readingFlowLabel": {
+    "en": "Reading Flow Direction",
+    "zh": "阅读流平铺方向"
+  },
+  "common.pdfTwoColumnReflower.flowVertical": {
+    "en": "Vertical Waterfall Layout (Recommended)",
+    "zh": "纵向瀑布流平铺 (推荐)"
+  },
+  "common.pdfTwoColumnReflower.flowHorizontal": {
+    "en": "Horizontal Book Scheme",
+    "zh": "横向折页式流"
+  },
+  "common.pdfPageResizerUniform.successMessage": {
+    "en": "Varied PDF sheets successfully unified to standard size!",
+    "zh": "多规格页面尺寸完美归一成功！"
+  },
+  "common.pdfPageResizerUniform.loadedFiles": {
+    "en": "{count} multi-size documents loaded",
+    "zh": "已加载 {count} 个多规格文档"
+  },
+  "common.handwritingInkContrastBooster.uploadLabel": {
+    "en": "Upload Signature/Seal Contract Photo",
+    "zh": "上传手写签名、盖章或合同拍摄照片"
+  },
+  "common.handwritingInkContrastBooster.uploadDescription": {
+    "en": "Applies local CLAHE histogram enhancement to bleach moldy shadows and sharply boost blue/black signatures and red stamp ink.",
+    "zh": "采用高级局部对比度直方图增强(CLAHE)算法。将手机拍摄照片中发黄、霉斑阴影背景强效漂白，加粗加浓蓝/黑色签字笔锋和红色印章。"
+  },
+  "common.handwritingInkContrastBooster.optionsTitle": {
+    "en": "Ink Contrast Booster Settings",
+    "zh": "去噪增强设置"
+  }
+}

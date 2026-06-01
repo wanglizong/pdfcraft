@@ -1,0 +1,60 @@
+{
+  "title": "XPS to PDF",
+  "metaDescription": "Convert XPS documents to PDF format. High-fidelity conversion preserving layout and graphics.",
+  "keywords": [
+    "xps to pdf",
+    "convert xps",
+    "xps converter",
+    "microsoft xps to pdf",
+    "oxps to pdf"
+  ],
+  "description": "\n      <p>XPS to PDF converts Microsoft XPS (XML Paper Specification) documents into PDF format while preserving the original layout, text, and vector graphics.</p>\n      <p>XPS is a fixed-document format similar to PDF. This tool provides high-fidelity conversion using native XPS parsing, ensuring accurate reproduction of your documents.</p>\n      <p>All conversion happens locally in your browser, ensuring your documents remain private and secure.</p>\n    ",
+  "howToUse": [
+    {
+      "step": 1,
+      "title": "Upload XPS File",
+      "description": "Drag and drop your .xps file or click to select from your device."
+    },
+    {
+      "step": 2,
+      "title": "Wait for Processing",
+      "description": "The tool will parse and convert the XPS document."
+    },
+    {
+      "step": 3,
+      "title": "Download PDF",
+      "description": "Click Download to save your converted PDF document."
+    }
+  ],
+  "useCases": [
+    {
+      "title": "Format Conversion",
+      "description": "Convert XPS documents to more widely supported PDF format.",
+      "icon": "file"
+    },
+    {
+      "title": "Document Sharing",
+      "description": "Share XPS documents with users who don't have XPS viewers.",
+      "icon": "share-2"
+    },
+    {
+      "title": "Archive Migration",
+      "description": "Migrate XPS archives to PDF format for better compatibility.",
+      "icon": "archive"
+    }
+  ],
+  "faq": [
+    {
+      "question": "What is XPS format?",
+      "answer": "XPS (XML Paper Specification) is Microsoft's fixed-document format, similar to PDF. It's commonly used for Windows printing."
+    },
+    {
+      "question": "Is the conversion lossless?",
+      "answer": "Yes, the conversion preserves text, graphics, and layout with high fidelity."
+    },
+    {
+      "question": "Are multi-page XPS files supported?",
+      "answer": "Yes, all pages in the XPS document are converted to the PDF."
+    }
+  ]
+}

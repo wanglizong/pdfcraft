@@ -319,9 +319,9 @@ describe('Tool Configuration Property Tests', () => {
       );
     });
 
-    it('getAllTools returns all 67 tools', () => {
+    it('getAllTools returns all 131 tools', () => {
       const allTools = getAllTools();
-      expect(allTools.length).toBe(67);
+      expect(allTools.length).toBe(131);
     });
 
     it('all tools have required properties', () => {

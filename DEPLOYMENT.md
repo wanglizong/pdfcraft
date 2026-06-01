@@ -89,6 +89,8 @@ The `.github/workflows/deploy.yml` workflow handles automatic deployment.
 
 ### 4. Cloudflare Pages
 
+PDFCraft uses a custom asset chunking mechanism to bypass the 25 MiB file size limit on Cloudflare Pages. Large LibreOffice WASM files are automatically split into ~20MB chunks during the build process and reassembled on the client side.
+
 **Automatic Deployment:**
 1. Connect repository in [Cloudflare Pages](https://pages.cloudflare.com)
 2. Build settings:
@@ -394,9 +396,46 @@ The following environment variables can be set before building:
 # No required environment variables for static export
 # All processing happens client-side
 
+# Optional: For subpath deployment (e.g. /pdfcraft)
+BASE_PATH=/pdfcraft
+
 # Optional: For analytics or custom features
 NEXT_PUBLIC_SITE_URL=https://your-domain.com
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+```
+
+---
+
+## 🌐 Subpath Deployment
+
+PDFCraft supports deployment under a subpath (e.g., `https://your-domain.com/pdfcraft/`). This is useful for hosting the app as a part of a larger website.
+
+### Configuration
+
+The subpath must be specified at **build time** because Next.js needs to bake the paths into the static HTML.
+
+1.  **Environment Variable**: Set `BASE_PATH` (or `NEXT_PUBLIC_BASE_PATH`) to your desired subpath (e.g., `/pdfcraft`).
+2.  **Build**: Run `npm run build` with the variable set.
+
+### Examples
+
+#### Command Line
+```bash
+BASE_PATH=/pdfcraft npm run build
+```
+
+#### Docker
+```bash
+docker build --build-arg BASE_PATH=/pdfcraft -t pdfcraft .
+```
+
+#### GitHub Actions
+Update your workflow to include the environment variable in the build step:
+```yaml
+- name: Build with Next.js
+  run: npx next build
+  env:
+    BASE_PATH: /pdfcraft
 ```
 
 ---

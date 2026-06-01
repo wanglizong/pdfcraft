@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
-import { PDFDocument } from 'pdf-lib';
+import { withBasePath } from '@/lib/utils/path';
 
 export interface SignPDFToolProps {
   className?: string;
@@ -13,14 +13,40 @@ export interface SignPDFToolProps {
 
 interface SignState {
   file: File | null;
-  blobUrl: string | null;
   viewerReady: boolean;
 }
+
+type PdfViewerWindow = Window & {
+  PDFViewerApplication?: {
+    initializedPromise: Promise<void>;
+    open: (args: { data: Uint8Array }) => Promise<void>;
+    pdfDocument?: {
+      annotationStorage: { size: number };
+      saveDocument: () => Promise<Uint8Array | ArrayBuffer>;
+    };
+    pdfViewer?: {
+      annotationEditorUIManager?: { commitOrRemove: () => void };
+      annotationEditorMode: { mode: number };
+    };
+    eventBus?: {
+      _on: (
+        event: string,
+        listener: () => void,
+        options?: { once?: boolean }
+      ) => void;
+    };
+  };
+  pdfjsLib?: {
+    AnnotationEditorType?: { NONE: number };
+  };
+};
+
+const VIEWER_HTML = withBasePath('/pdfjs-viewer/viewer.html');
 
 /**
  * SignPDFTool Component
  * Uses PDF.js viewer with native signature editor for comprehensive signing support.
- * Supports: draw (handwritten), type (text), and image signatures.
+ * Supports: draw (handwritten), type, and image signatures.
  */
 export function SignPDFTool({ className = '' }: SignPDFToolProps) {
   const t = useTranslations('common');
@@ -28,23 +54,13 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
 
   const [signState, setSignState] = useState<SignState>({
     file: null,
-    blobUrl: null,
     viewerReady: false,
   });
   const [error, setError] = useState<string | null>(null);
   const [isProcessing, setIsProcessing] = useState(false);
-  const [flattenSignature, setFlattenSignature] = useState(true);
 
   const iframeRef = useRef<HTMLIFrameElement>(null);
-
-  // Cleanup blob URL on unmount or file change
-  useEffect(() => {
-    return () => {
-      if (signState.blobUrl) {
-        URL.revokeObjectURL(signState.blobUrl);
-      }
-    };
-  }, [signState.blobUrl]);
+  const fileRef = useRef<File | null>(null);
 
   /**
    * Handle file selected
@@ -52,14 +68,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
   const handleFilesSelected = useCallback((files: File[]) => {
     if (files.length > 0) {
       const file = files[0];
-
-      // Cleanup previous blob URL
-      if (signState.blobUrl) {
-        URL.revokeObjectURL(signState.blobUrl);
-      }
-
-      // Create new blob URL
-      const blobUrl = URL.createObjectURL(file);
+      fileRef.current = file;
 
       // Configure PDF.js preferences for signature editor
       try {
@@ -78,12 +87,11 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
 
       setSignState({
         file,
-        blobUrl,
         viewerReady: false,
       });
       setError(null);
     }
-  }, [signState.blobUrl]);
+  }, []);
 
   /**
    * Handle file upload error
@@ -93,51 +101,79 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
   }, []);
 
   /**
-   * Handle iframe load
+   * Enable signature tools in the viewer UI
    */
-  const handleIframeLoad = useCallback(() => {
-    setSignState(prev => ({ ...prev, viewerReady: true }));
+  const enableSignatureTools = useCallback((viewerWindow: PdfViewerWindow) => {
+    const app = viewerWindow.PDFViewerApplication;
+    if (!app?.eventBus) return;
 
-    // Try to enable signature tools
-    try {
-      const iframe = iframeRef.current;
-      if (!iframe?.contentWindow) return;
+    const doc = viewerWindow.document;
+    const { eventBus } = app;
 
-      const viewerWindow = iframe.contentWindow as any;
-      if (viewerWindow?.PDFViewerApplication) {
-        const app = viewerWindow.PDFViewerApplication;
-        const doc = viewerWindow.document;
-        const eventBus = app.eventBus;
+    const enable = () => {
+      const editorModeButtons = doc.getElementById('editorModeButtons');
+      editorModeButtons?.classList.remove('hidden');
 
-        eventBus?._on('annotationeditoruimanager', () => {
-          // Show signature editor buttons
-          const editorModeButtons = doc.getElementById('editorModeButtons');
-          editorModeButtons?.classList.remove('hidden');
+      const editorSignature = doc.getElementById('editorSignature');
+      editorSignature?.removeAttribute('hidden');
 
-          const editorSignature = doc.getElementById('editorSignature');
-          editorSignature?.removeAttribute('hidden');
-
-          const editorSignatureButton = doc.getElementById('editorSignatureButton') as HTMLButtonElement | null;
-          if (editorSignatureButton) {
-            editorSignatureButton.disabled = false;
-          }
-
-          const editorStamp = doc.getElementById('editorStamp');
-          editorStamp?.removeAttribute('hidden');
-
-          const editorStampButton = doc.getElementById('editorStampButton') as HTMLButtonElement | null;
-          if (editorStampButton) {
-            editorStampButton.disabled = false;
-          }
-        });
+      const editorSignatureButton = doc.getElementById('editorSignatureButton') as HTMLButtonElement | null;
+      if (editorSignatureButton) {
+        editorSignatureButton.disabled = false;
       }
-    } catch (e) {
-      console.error('Could not initialize PDF.js viewer:', e);
-    }
+
+      const editorStamp = doc.getElementById('editorStamp');
+      editorStamp?.removeAttribute('hidden');
+
+      const editorStampButton = doc.getElementById('editorStampButton') as HTMLButtonElement | null;
+      if (editorStampButton) {
+        editorStampButton.disabled = false;
+      }
+    };
+
+    eventBus._on('annotationeditoruimanager', enable);
+    enable();
   }, []);
 
   /**
-   * Save signed PDF
+   * Load PDF into viewer via ArrayBuffer (avoids blob: URL issues on HTTP)
+   */
+  const handleIframeLoad = useCallback(async () => {
+    const file = fileRef.current;
+    const iframe = iframeRef.current;
+    if (!file || !iframe?.contentWindow) return;
+
+    try {
+      const viewerWindow = iframe.contentWindow as PdfViewerWindow;
+      const app = viewerWindow.PDFViewerApplication;
+      if (!app) return;
+
+      await app.initializedPromise;
+
+      let documentLoaded = false;
+      const onDocumentLoaded = () => {
+        if (documentLoaded) return;
+        documentLoaded = true;
+        setSignState(prev => ({ ...prev, viewerReady: true }));
+        enableSignatureTools(viewerWindow);
+      };
+
+      app.eventBus?._on('documentloaded', onDocumentLoaded, { once: true });
+
+      const pdfData = new Uint8Array(await file.arrayBuffer());
+      await app.open({ data: pdfData });
+
+      if (!documentLoaded && app.pdfDocument) {
+        onDocumentLoaded();
+      }
+    } catch (e) {
+      console.error('Could not load PDF in viewer:', e);
+      setError('Failed to load PDF in the viewer. Please try again.');
+    }
+  }, [enableSignatureTools]);
+
+  /**
+   * Save signed PDF using PDF.js native save (embeds signatures into the file)
    */
   const handleSave = useCallback(async () => {
     if (!signState.viewerReady || !iframeRef.current) {
@@ -147,71 +183,71 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
 
     try {
       setIsProcessing(true);
-      const viewerWindow = iframeRef.current.contentWindow as any;
+      setError(null);
 
-      if (!viewerWindow?.PDFViewerApplication) {
+      const viewerWindow = iframeRef.current.contentWindow as PdfViewerWindow;
+      const app = viewerWindow.PDFViewerApplication;
+
+      if (!app?.pdfDocument) {
         setError('PDF viewer not initialized.');
         setIsProcessing(false);
         return;
       }
 
-      const app = viewerWindow.PDFViewerApplication;
+      const { pdfDocument, pdfViewer } = app;
 
-      if (flattenSignature) {
-        // Flatten and save
-        const rawPdfBytes = await app.pdfDocument.saveDocument(app.pdfDocument.annotationStorage);
-        const pdfBytes = new Uint8Array(rawPdfBytes);
-        const pdfDoc = await PDFDocument.load(pdfBytes);
-
-        try {
-          pdfDoc.getForm().flatten();
-        } catch (e) {
-          // Form might not exist, continue
-        }
-
-        const flattenedPdfBytes = await pdfDoc.save();
-        const blob = new Blob([new Uint8Array(flattenedPdfBytes).buffer as ArrayBuffer], { type: 'application/pdf' });
-
-        // Download
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `signed_${signState.file?.name || 'document.pdf'}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      } else {
-        // Use PDF.js native download
-        app.eventBus?.dispatch('download', { source: app });
+      // Commit any signature still being placed/edited
+      pdfViewer?.annotationEditorUIManager?.commitOrRemove();
+      // Exit editor mode (PDF.js expects { mode }, not a raw number; DISABLE is invalid here)
+      if (pdfViewer) {
+        const editorNone =
+          viewerWindow.pdfjsLib?.AnnotationEditorType?.NONE ?? 0;
+        pdfViewer.annotationEditorMode = { mode: editorNone };
       }
 
+      if (pdfDocument.annotationStorage.size === 0) {
+        setError(
+          'No signature found. Add a signature using the pen tool in the toolbar, then try again.'
+        );
+        setIsProcessing(false);
+        return;
+      }
+
+      const rawPdfBytes = await pdfDocument.saveDocument();
+      const pdfBytes = Uint8Array.from(
+        rawPdfBytes instanceof Uint8Array ? rawPdfBytes : new Uint8Array(rawPdfBytes)
+      );
+
+      const blob = new Blob([pdfBytes.buffer], { type: 'application/pdf' });
+
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `signed_${signState.file?.name || 'document.pdf'}`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
       setIsProcessing(false);
-    } catch (error) {
-      console.error('Failed to save signed PDF:', error);
+    } catch (err) {
+      console.error('Failed to save signed PDF:', err);
       setError('Failed to save signed PDF. Please try again.');
       setIsProcessing(false);
     }
-  }, [signState.viewerReady, signState.file, flattenSignature]);
+  }, [signState.viewerReady, signState.file]);
 
   /**
    * Clear and start over
    */
   const handleClear = useCallback(() => {
-    if (signState.blobUrl) {
-      URL.revokeObjectURL(signState.blobUrl);
-    }
+    fileRef.current = null;
     setSignState({
       file: null,
-      blobUrl: null,
       viewerReady: false,
     });
     setError(null);
-  }, [signState.blobUrl]);
-
-  const viewerUrl = signState.blobUrl
-    ? `/pdfjs-viewer/viewer.html?file=${encodeURIComponent(signState.blobUrl)}`
-    : null;
+  }, []);
 
   return (
     <div className={`space-y-6 ${className}`.trim()}>
@@ -240,7 +276,7 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
       )}
 
       {/* PDF Viewer */}
-      {signState.file && viewerUrl && (
+      {signState.file && (
         <>
           {/* File Info & Clear Button */}
           <Card variant="outlined">
@@ -291,8 +327,9 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
           {/* PDF.js Viewer Iframe */}
           <div className="border border-[hsl(var(--color-border))] rounded-[var(--radius-lg)] overflow-hidden">
             <iframe
+              key={signState.file.name + signState.file.lastModified}
               ref={iframeRef}
-              src={viewerUrl}
+              src={VIEWER_HTML}
               onLoad={handleIframeLoad}
               className="w-full bg-gray-100"
               style={{ height: '600px', border: 'none' }}
@@ -300,36 +337,21 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
             />
           </div>
 
-          {/* Options and Save Button */}
+          {/* Save Button */}
           <Card variant="outlined">
-            <div className="space-y-4">
-              <label className="flex items-center gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={flattenSignature}
-                  onChange={(e) => setFlattenSignature(e.target.checked)}
-                  disabled={isProcessing}
-                  className="w-4 h-4 rounded border-[hsl(var(--color-border))] text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
-                />
-                <span className="text-sm text-[hsl(var(--color-foreground))]">
-                  {tTools('signPdf.flattenOption') || 'Flatten signature (recommended - makes signature permanent)'}
-                </span>
-              </label>
-
-              <div className="flex gap-4">
-                <Button
-                  variant="primary"
-                  size="lg"
-                  onClick={handleSave}
-                  disabled={!signState.viewerReady || isProcessing}
-                  loading={isProcessing}
-                >
-                  {isProcessing
-                    ? (t('status.processing') || 'Processing...')
-                    : (tTools('signPdf.saveButton') || 'Save Signed PDF')
-                  }
-                </Button>
-              </div>
+            <div className="flex gap-4">
+              <Button
+                variant="primary"
+                size="lg"
+                onClick={handleSave}
+                disabled={!signState.viewerReady || isProcessing}
+                loading={isProcessing}
+              >
+                {isProcessing
+                  ? (t('status.processing') || 'Processing...')
+                  : (tTools('signPdf.saveButton') || 'Save Signed PDF')
+                }
+              </Button>
             </div>
           </Card>
         </>

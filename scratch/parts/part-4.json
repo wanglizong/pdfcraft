@@ -1,0 +1,450 @@
+{
+  "tools.epubToPdf.uploadDescription": {
+    "en": "Drag and drop an EPUB e-book file here, or click to browse.",
+    "zh": "拖放EPUB电子书文件到此处，或点击浏览。"
+  },
+  "tools.epubToPdf.successMessage": {
+    "en": "Your EPUB file has been successfully converted to PDF!",
+    "zh": "您的EPUB文件已成功转换为PDF！"
+  },
+  "tools.mobiToPdf.uploadLabel": {
+    "en": "Upload MOBI File",
+    "zh": "上传MOBI文件"
+  },
+  "tools.mobiToPdf.uploadDescription": {
+    "en": "Drag and drop a MOBI/AZW e-book file here, or click to browse.",
+    "zh": "拖放MOBI/AZW电子书文件到此处，或点击浏览。"
+  },
+  "tools.mobiToPdf.successMessage": {
+    "en": "Your MOBI file has been successfully converted to PDF!",
+    "zh": "您的MOBI文件已成功转换为PDF！"
+  },
+  "tools.fb2ToPdf.uploadLabel": {
+    "en": "Upload FB2 Files",
+    "zh": "上传FB2文件"
+  },
+  "tools.fb2ToPdf.uploadDescription": {
+    "en": "Drag and drop FB2 e-book files here, or click to browse. Supports multiple files.",
+    "zh": "拖放FB2电子书文件到此处，或点击浏览。支持多个文件。"
+  },
+  "tools.fb2ToPdf.successMessage": {
+    "en": "Your FB2 file(s) have been successfully converted to PDF!",
+    "zh": "您的FB2文件已成功转换为PDF！"
+  },
+  "tools.djvuToPdf.uploadLabel": {
+    "en": "Upload DJVU File",
+    "zh": "上传DJVU文件"
+  },
+  "tools.djvuToPdf.uploadDescription": {
+    "en": "Drag and drop a DJVU file here, or click to browse.",
+    "zh": "拖放DJVU文件到此处，或点击浏览。"
+  },
+  "tools.djvuToPdf.dpiLabel": {
+    "en": "Output DPI",
+    "zh": "输出DPI"
+  },
+  "tools.djvuToPdf.dpiHint": {
+    "en": "Higher DPI = larger file size, better quality",
+    "zh": "DPI越高，文件越大，质量越好"
+  },
+  "tools.djvuToPdf.qualityHint": {
+    "en": "JPEG compression quality for pages",
+    "zh": "页面的JPEG压缩质量"
+  },
+  "tools.djvuToPdf.successTitle": {
+    "en": "Conversion Successful!",
+    "zh": "转换成功！"
+  },
+  "tools.djvuToPdf.successMessage": {
+    "en": "Your DJVU file has been successfully converted to PDF!",
+    "zh": "您的DJVU文件已成功转换为PDF！"
+  },
+  "tools.deskewPdf.uploadLabel": {
+    "en": "Upload Scanned PDF Files",
+    "zh": "上传扫描的PDF文件"
+  },
+  "tools.deskewPdf.uploadDescription": {
+    "en": "Drag and drop PDF files here. You can process up to 10 files at once.",
+    "zh": "拖放PDF文件到此处，最多可同时处理10个文件。"
+  },
+  "tools.deskewPdf.filesTitle": {
+    "en": "Files to Deskew",
+    "zh": "待校正的文件"
+  },
+  "tools.deskewPdf.optionsTitle": {
+    "en": "Deskew Options",
+    "zh": "校正选项"
+  },
+  "tools.deskewPdf.thresholdLabel": {
+    "en": "Detection Threshold",
+    "zh": "检测阈值"
+  },
+  "tools.deskewPdf.thresholdDesc": {
+    "en": "Higher values detect more subtle skew angles. Default: 10",
+    "zh": "值越高越能检测到细微的倾斜。默认值：10"
+  },
+  "tools.deskewPdf.dpiLabel": {
+    "en": "Analysis DPI",
+    "zh": "分析DPI"
+  },
+  "tools.deskewPdf.dpiDesc": {
+    "en": "Higher DPI provides more accurate detection but takes longer.",
+    "zh": "DPI越高检测越准确，但处理时间更长。"
+  },
+  "tools.deskewPdf.processButton": {
+    "en": "Deskew PDFs",
+    "zh": "校正PDF"
+  },
+  "tools.deskewPdf.successMessage": {
+    "en": "Successfully deskewed PDF file(s)!",
+    "zh": "PDF文件校正成功！"
+  },
+  "tools.pdfBooklet.uploadDescription": {
+    "en": "Drag and drop a PDF file to create a booklet layout.",
+    "zh": "拖放PDF文件以创建小册子布局。"
+  },
+  "tools.pdfBooklet.optionsTitle": {
+    "en": "Booklet Options",
+    "zh": "小册子选项"
+  },
+  "tools.pdfBooklet.gridModeLabel": {
+    "en": "Grid Mode",
+    "zh": "网格模式"
+  },
+  "tools.pdfBooklet.gridModeDesc": {
+    "en": "1x2 is standard for booklets. Use larger grids to save paper.",
+    "zh": "1x2是标准小册子格式，使用更大网格可节省纸张。"
+  },
+  "tools.pdfBooklet.paperSizeLabel": {
+    "en": "Paper Size",
+    "zh": "纸张大小"
+  },
+  "tools.pdfBooklet.rotationLabel": {
+    "en": "Page Rotation",
+    "zh": "页面旋转"
+  },
+  "tools.pdfBooklet.previewLabel": {
+    "en": "Layout Preview",
+    "zh": "布局预览"
+  },
+  "tools.pdfBooklet.previewDesc": {
+    "en": "This preview shows how pages will be arranged on each sheet.",
+    "zh": "此预览显示页面在每张纸上的排列方式。"
+  },
+  "tools.pdfBooklet.createButton": {
+    "en": "Create Booklet",
+    "zh": "创建小册子"
+  },
+  "tools.pdfBooklet.successMessage": {
+    "en": "Booklet created successfully! Click download to save.",
+    "zh": "小册子创建成功！点击下载保存。"
+  },
+  "tools.rasterizePdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to rasterize into images or a new PDF.",
+    "zh": "拖放PDF文件以栅格化为图片或新的PDF。"
+  },
+  "tools.rasterizePdf.optionsTitle": {
+    "en": "Output Options",
+    "zh": "输出选项"
+  },
+  "tools.rasterizePdf.dpiLabel": {
+    "en": "Resolution (DPI)",
+    "zh": "分辨率 (DPI)"
+  },
+  "tools.rasterizePdf.pageRangeLabel": {
+    "en": "Page Range (optional)",
+    "zh": "页面范围（可选）"
+  },
+  "tools.rasterizePdf.pageRangeDesc": {
+    "en": "Leave empty to convert all pages.",
+    "zh": "留空转换所有页面。"
+  },
+  "tools.rasterizePdf.convertButton": {
+    "en": "Rasterize",
+    "zh": "栅格化"
+  },
+  "tools.rasterizePdf.successMessage": {
+    "en": "Rasterization complete! Click download to save your file.",
+    "zh": "栅格化完成！点击下载保存文件。"
+  },
+  "tools.emailToPdf.uploadLabel": {
+    "en": "Upload Email File",
+    "zh": "上传邮件文件"
+  },
+  "tools.emailToPdf.uploadDescription": {
+    "en": "Drag and drop an email file (.eml) to convert to PDF.",
+    "zh": "拖放邮件文件（.eml）以转换为PDF。"
+  },
+  "tools.emailToPdf.includeCcBccLabel": {
+    "en": "Include CC/BCC fields",
+    "zh": "包含抄送/密送字段"
+  },
+  "tools.emailToPdf.includeAttachmentsLabel": {
+    "en": "Include attachment list",
+    "zh": "包含附件列表"
+  },
+  "tools.emailToPdf.timezoneLabel": {
+    "en": "Timezone",
+    "zh": "时区"
+  },
+  "tools.emailToPdf.successMessage": {
+    "en": "Email converted successfully!",
+    "zh": "邮件转换成功！"
+  },
+  "tools.cbzToPdf.uploadLabel": {
+    "en": "Upload CBZ File",
+    "zh": "上传CBZ文件"
+  },
+  "tools.cbzToPdf.uploadDescription": {
+    "en": "Drag and drop a comic book archive (.cbz) to convert to PDF.",
+    "zh": "拖放漫画归档文件（.cbz）以转换为PDF。"
+  },
+  "tools.cbzToPdf.preserveAspectLabel": {
+    "en": "Preserve aspect ratio",
+    "zh": "保持宽高比"
+  },
+  "tools.cbzToPdf.successMessage": {
+    "en": "Comic converted successfully!",
+    "zh": "漫画转换成功！"
+  },
+  "tools.pdfToPdfa.uploadDescription": {
+    "en": "Drag and drop PDF files to convert to PDF/A format.",
+    "zh": "拖放PDF文件以转换为PDF/A归档格式。"
+  },
+  "tools.pdfToPdfa.filesTitle": {
+    "en": "Files to Convert",
+    "zh": "待转换的文件"
+  },
+  "tools.pdfToPdfa.optionsTitle": {
+    "en": "PDF/A Options",
+    "zh": "PDF/A选项"
+  },
+  "tools.pdfToPdfa.levelLabel": {
+    "en": "PDF/A Level",
+    "zh": "PDF/A级别"
+  },
+  "tools.pdfToPdfa.embedFontsLabel": {
+    "en": "Embed all fonts",
+    "zh": "嵌入所有字体"
+  },
+  "tools.pdfToPdfa.flattenTransparencyLabel": {
+    "en": "Flatten transparency (required for PDF/A-1b)",
+    "zh": "扁平化透明度（PDF/A-1b必需）"
+  },
+  "tools.pdfToPdfa.convertButton": {
+    "en": "Convert to PDF/A",
+    "zh": "转换为PDF/A"
+  },
+  "tools.pdfToPdfa.successMessage": {
+    "en": "Successfully converted file(s) to PDF/A!",
+    "zh": "PDF/A转换成功！"
+  },
+  "tools.fontToOutline.uploadDescription": {
+    "en": "Drag and drop PDF files to convert fonts to outlines.",
+    "zh": "拖放PDF文件以将字体转换为轮廓。"
+  },
+  "tools.fontToOutline.filesTitle": {
+    "en": "Files",
+    "zh": "文件"
+  },
+  "tools.fontToOutline.dpiLabel": {
+    "en": "Rasterization DPI",
+    "zh": "光栅化DPI"
+  },
+  "tools.fontToOutline.convertButton": {
+    "en": "Convert Fonts to Outlines",
+    "zh": "将字体转换为轮廓"
+  },
+  "tools.fontToOutline.successMessage": {
+    "en": "Successfully converted file(s)!",
+    "zh": "转换成功！"
+  },
+  "tools.extractTables.uploadDescription": {
+    "en": "Drag and drop a PDF file to extract tables from.",
+    "zh": "拖放PDF文件以提取表格。"
+  },
+  "tools.extractTables.optionsTitle": {
+    "en": "Extraction Options",
+    "zh": "提取选项"
+  },
+  "tools.extractTables.pageRangeLabel": {
+    "en": "Page Range (optional)",
+    "zh": "页面范围（可选）"
+  },
+  "tools.extractTables.minColumnsLabel": {
+    "en": "Min Columns",
+    "zh": "最少列数"
+  },
+  "tools.extractTables.minRowsLabel": {
+    "en": "Min Rows",
+    "zh": "最少行数"
+  },
+  "tools.extractTables.includePageNumbersLabel": {
+    "en": "Include page numbers in output",
+    "zh": "在输出中包含页码"
+  },
+  "tools.extractTables.extractButton": {
+    "en": "Extract Tables",
+    "zh": "提取表格"
+  },
+  "tools.extractTables.successMessage": {
+    "en": "Tables extracted successfully! Click download to save.",
+    "zh": "表格提取成功！点击下载保存。"
+  },
+  "tools.ocgManager.uploadDescription": {
+    "en": "Drag and drop a PDF to manage its layers (OCG).",
+    "zh": "拖放PDF文件以管理其图层（OCG）。"
+  },
+  "tools.ocgManager.layersTitle": {
+    "en": "PDF Layers",
+    "zh": "PDF图层"
+  },
+  "tools.ocgManager.noLayers": {
+    "en": "This PDF has no layers (OCG).",
+    "zh": "此PDF没有图层（OCG）。"
+  },
+  "tools.ocgManager.addLayerLabel": {
+    "en": "Add New Layer",
+    "zh": "添加新图层"
+  },
+  "tools.ocgManager.successMessage": {
+    "en": "Layer changes saved successfully!",
+    "zh": "图层更改保存成功！"
+  },
+  "tools.pdfReader.uploadLabel": {
+    "en": "Open PDF File",
+    "zh": "打开PDF文件"
+  },
+  "tools.pdfReader.uploadDescription": {
+    "en": "Open a PDF file to read and view.",
+    "zh": "打开PDF文件进行阅读和查看。"
+  },
+  "tools.findAndRedact.uploadDescription": {
+    "en": "Drag and drop a PDF file to search and redact text.",
+    "zh": "拖放PDF文件到此处以搜索并遮盖文本。"
+  },
+  "tools.findAndRedact.searchTitle": {
+    "en": "Search for Text",
+    "zh": "搜索文本"
+  },
+  "tools.findAndRedact.searchTermLabel": {
+    "en": "Search Terms",
+    "zh": "搜索词"
+  },
+  "tools.findAndRedact.searchTermPlaceholder": {
+    "en": "Enter text to search (e.g., account number, name)...",
+    "zh": "输入要搜索的文本（如账号、姓名等）..."
+  },
+  "tools.findAndRedact.searchInputPlaceholder": {
+    "en": "Enter search terms, separated by commas...",
+    "zh": "输入搜索词，用逗号分隔多个词..."
+  },
+  "tools.findAndRedact.searchInputHelp": {
+    "en": "Tip: Separate multiple terms with commas (,)",
+    "zh": "提示：用逗号分隔多个搜索词（支持中英文逗号）"
+  },
+  "tools.findAndRedact.multipleTermsPlaceholder": {
+    "en": "Enter search terms (one per line or comma-separated)...\nExample:\nJohn Doe\naccount123\n555-1234",
+    "zh": "输入搜索词（每行一个或用逗号分隔）...\n示例：\n张三\naccount123\n555-1234"
+  },
+  "tools.findAndRedact.termsCount": {
+    "en": "{count} search term(s)",
+    "zh": "{count} 个搜索词"
+  },
+  "tools.findAndRedact.searching": {
+    "en": "Searching...",
+    "zh": "搜索中..."
+  },
+  "tools.findAndRedact.caseSensitive": {
+    "en": "Case Sensitive",
+    "zh": "区分大小写"
+  },
+  "tools.findAndRedact.wholeWord": {
+    "en": "Whole Words Only",
+    "zh": "全词匹配"
+  },
+  "tools.findAndRedact.useRegex": {
+    "en": "Use Regular Expression",
+    "zh": "使用正则表达式"
+  },
+  "tools.findAndRedact.enterSearchTerm": {
+    "en": "Please enter at least one search term.",
+    "zh": "请输入至少一个搜索词。"
+  },
+  "tools.findAndRedact.noMatchesFound": {
+    "en": "No matches found for the search terms.",
+    "zh": "未找到匹配的内容。"
+  },
+  "tools.findAndRedact.searchFailed": {
+    "en": "Failed to search the PDF.",
+    "zh": "PDF搜索失败。"
+  },
+  "tools.findAndRedact.matchesFound": {
+    "en": "{count} matches found",
+    "zh": "找到 {count} 处匹配"
+  },
+  "tools.findAndRedact.filterByPage": {
+    "en": "Filter by Page",
+    "zh": "按页面筛选"
+  },
+  "tools.findAndRedact.selectedCount": {
+    "en": "{selected} of {total} selected",
+    "zh": "已选择 {selected} / {total}"
+  },
+  "tools.findAndRedact.selectMatchesToRedact": {
+    "en": "Please select at least one match to redact.",
+    "zh": "请至少选择一处匹配进行遮盖。"
+  },
+  "tools.findAndRedact.redactionOptions": {
+    "en": "Redaction Options",
+    "zh": "遮盖选项"
+  },
+  "tools.findAndRedact.redactionColor": {
+    "en": "Redaction Color",
+    "zh": "遮盖颜色"
+  },
+  "tools.findAndRedact.replacementText": {
+    "en": "Replacement Text (optional)",
+    "zh": "替换文本（可选）"
+  },
+  "tools.findAndRedact.replacementTextPlaceholder": {
+    "en": "e.g., [REDACTED]",
+    "zh": "例如：[已遮盖]"
+  },
+  "tools.findAndRedact.addBorder": {
+    "en": "Add border around redacted areas",
+    "zh": "在遮盖区域添加边框"
+  },
+  "tools.findAndRedact.warningTitle": {
+    "en": "Warning",
+    "zh": "警告"
+  },
+  "tools.findAndRedact.warningText": {
+    "en": "Redaction is permanent. Once applied, the original content cannot be recovered.",
+    "zh": "遮盖是永久性的。一旦应用，原始内容将无法恢复。"
+  },
+  "tools.findAndRedact.redactButton": {
+    "en": "Redact {count} Selected",
+    "zh": "遮盖 {count} 处选中内容"
+  },
+  "tools.findAndRedact.redactFailed": {
+    "en": "Failed to apply redactions.",
+    "zh": "遮盖应用失败。"
+  },
+  "tools.findAndRedact.successMessage": {
+    "en": "Successfully redacted the selected text! Click download to save.",
+    "zh": "选中的文本已成功遮盖！点击下载保存。"
+  },
+  "tools.findAndRedact.pagesWithMatches": {
+    "en": "Pages with matches:",
+    "zh": "包含匹配的页面："
+  },
+  "tools.findAndRedact.selectedMatch": {
+    "en": "Selected",
+    "zh": "已选中"
+  },
+  "tools.findAndRedact.unselectedMatch": {
+    "en": "Not selected",
+    "zh": "未选中"
+  }
+}

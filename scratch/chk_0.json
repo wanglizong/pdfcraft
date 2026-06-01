@@ -1,0 +1,242 @@
+{
+  "tools.ocrPdf.infoText": {
+    "en": "OCR (Optical Character Recognition) extracts text from scanned documents and images. For best results, use high-quality scans and select the correct language(s).",
+    "zh": "OCR（光学字符识别）从扫描文档和图像中提取文本。为获得最佳效果，请使用高质量扫描件并选择正确的语言。"
+  },
+  "tools.linearizePdf.uploadDescription": {
+    "en": "Drag and drop PDF files here, or click to browse. You can select multiple files.",
+    "zh": "拖放PDF文件到此处，或点击浏览。可以选择多个文件。"
+  },
+  "tools.linearizePdf.optionsTitle": {
+    "en": "Linearization Options",
+    "zh": "线性化选项"
+  },
+  "tools.linearizePdf.info": {
+    "en": "Linearization optimizes PDFs for fast web viewing. The first page will display before the entire file is downloaded, improving user experience for web-hosted documents.",
+    "zh": "线性化优化PDF以实现快速网页浏览。第一页会在整个文件下载完成前显示，改善网页托管文档的用户体验。"
+  },
+  "tools.linearizePdf.useObjectStreams": {
+    "en": "Use object streams for better compression",
+    "zh": "使用对象流以获得更好的压缩"
+  },
+  "tools.linearizePdf.useObjectStreamsDesc": {
+    "en": "Recommended for smaller file sizes. Disable for maximum compatibility with older PDF readers.",
+    "zh": "推荐使用以获得更小的文件大小。如需与旧版PDF阅读器兼容，请禁用此选项。"
+  },
+  "tools.linearizePdf.linearizeButton": {
+    "en": "Linearize PDF",
+    "zh": "线性化PDF"
+  },
+  "tools.linearizePdf.successMessage": {
+    "en": "PDF linearized successfully!",
+    "zh": "PDF线性化成功！"
+  },
+  "tools.linearizePdf.filesProcessed": {
+    "en": "Files:",
+    "zh": "文件："
+  },
+  "tools.linearizePdf.pages": {
+    "en": "Pages:",
+    "zh": "页数："
+  },
+  "tools.linearizePdf.optimizedSize": {
+    "en": "Optimized:",
+    "zh": "优化后："
+  },
+  "tools.pageDimensions.displayOptions": {
+    "en": "Display Options",
+    "zh": "显示选项"
+  },
+  "tools.pageDimensions.unitLabel": {
+    "en": "Measurement Unit",
+    "zh": "测量单位"
+  },
+  "tools.pageDimensions.unitPoints": {
+    "en": "Points",
+    "zh": "点"
+  },
+  "tools.pageDimensions.unitInches": {
+    "en": "Inches",
+    "zh": "英寸"
+  },
+  "tools.pageDimensions.unitMm": {
+    "en": "Millimeters",
+    "zh": "毫米"
+  },
+  "tools.pageDimensions.analyzeButton": {
+    "en": "Analyze Dimensions",
+    "zh": "分析尺寸"
+  },
+  "tools.pageDimensions.summary": {
+    "en": "Summary",
+    "zh": "摘要"
+  },
+  "tools.pageDimensions.totalPages": {
+    "en": "Total Pages",
+    "zh": "总页数"
+  },
+  "tools.pageDimensions.uniqueSizes": {
+    "en": "Unique Sizes",
+    "zh": "不同尺寸数"
+  },
+  "tools.pageDimensions.uniformSize": {
+    "en": "Uniform Size",
+    "zh": "统一尺寸"
+  },
+  "tools.pageDimensions.yes": {
+    "en": "Yes",
+    "zh": "是"
+  },
+  "tools.pageDimensions.no": {
+    "en": "No",
+    "zh": "否"
+  },
+  "tools.pageDimensions.sizeDistribution": {
+    "en": "Size Distribution",
+    "zh": "尺寸分布"
+  },
+  "tools.pageDimensions.pageDetails": {
+    "en": "Page Details",
+    "zh": "页面详情"
+  },
+  "tools.pageDimensions.standardSize": {
+    "en": "Standard Size",
+    "zh": "标准尺寸"
+  },
+  "tools.pageDimensions.showingFirst50": {
+    "en": "Showing first 50 pages. Download JSON for complete data.",
+    "zh": "显示前50页。下载JSON获取完整数据。"
+  },
+  "tools.pageDimensions.successMessage": {
+    "en": "Dimensions analyzed successfully!",
+    "zh": "尺寸分析成功！"
+  },
+  "tools.removeRestrictions.uploadDescription": {
+    "en": "Drag and drop a restricted PDF file.",
+    "zh": "拖放受限制的PDF文件到此处。"
+  },
+  "tools.removeRestrictions.ownerPasswordLabel": {
+    "en": "Owner Password (optional)",
+    "zh": "所有者密码（可选）"
+  },
+  "tools.removeRestrictions.ownerPasswordPlaceholder": {
+    "en": "Enter owner password if known",
+    "zh": "如果知道所有者密码请输入"
+  },
+  "tools.removeRestrictions.ownerPasswordHint": {
+    "en": "If the PDF has an owner password, enter it here for better results.",
+    "zh": "如果PDF有所有者密码，在此输入可获得更好的结果。"
+  },
+  "tools.removeRestrictions.info": {
+    "en": "This tool removes owner password restrictions that prevent printing, copying, and editing. It works on PDFs with permission restrictions but cannot remove user passwords required to open the document.",
+    "zh": "此工具可移除阻止打印、复制和编辑的所有者密码限制。它适用于有权限限制的PDF，但无法移除打开文档所需的用户密码。"
+  },
+  "tools.removeRestrictions.warning": {
+    "en": "Only use this tool on PDFs you own or have permission to modify. Removing restrictions from copyrighted material without authorization may violate copyright laws.",
+    "zh": "请仅对您拥有或有权修改的PDF使用此工具。未经授权移除受版权保护材料的限制可能违反版权法。"
+  },
+  "tools.removeRestrictions.removeButton": {
+    "en": "Remove Restrictions",
+    "zh": "移除限制"
+  },
+  "tools.removeRestrictions.successMessage": {
+    "en": "Restrictions removed successfully!",
+    "zh": "PDF限制已成功移除！"
+  },
+  "tools.removeRestrictions.newSize": {
+    "en": "New Size:",
+    "zh": "新大小："
+  },
+  "tools.removeRestrictions.successHint": {
+    "en": "The PDF can now be printed, copied, and edited without restrictions.",
+    "zh": "PDF现在可以无限制地打印、复制和编辑。"
+  },
+  "tools.removeRestrictions.invalidPassword": {
+    "en": "The password you entered is incorrect. Please check and try again.",
+    "zh": "您输入的密码不正确，请检查后重试。"
+  },
+  "tools.sanitizePdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to sanitize.",
+    "zh": "拖放PDF文件到此处进行清理。"
+  },
+  "tools.sanitizePdf.optionsTitle": {
+    "en": "Sanitization Options",
+    "zh": "清理选项"
+  },
+  "tools.sanitizePdf.info": {
+    "en": "Sanitization removes potentially harmful content from PDFs, making them safer to open and share.",
+    "zh": "清理功能会移除PDF中潜在的有害内容，使其更安全地打开和分享。"
+  },
+  "tools.sanitizePdf.removeJavaScript": {
+    "en": "Remove JavaScript",
+    "zh": "移除JavaScript"
+  },
+  "tools.sanitizePdf.removeAttachments": {
+    "en": "Remove Attachments",
+    "zh": "移除附件"
+  },
+  "tools.sanitizePdf.removeLinks": {
+    "en": "Remove External Links",
+    "zh": "移除外部链接"
+  },
+  "tools.sanitizePdf.removeFormActions": {
+    "en": "Remove Form Actions",
+    "zh": "移除表单操作"
+  },
+  "tools.sanitizePdf.removeMetadata": {
+    "en": "Remove Metadata",
+    "zh": "移除元数据"
+  },
+  "tools.sanitizePdf.removeAnnotations": {
+    "en": "Remove Annotations",
+    "zh": "移除注释"
+  },
+  "tools.sanitizePdf.sanitizeButton": {
+    "en": "Sanitize PDF",
+    "zh": "清理PDF"
+  },
+  "tools.sanitizePdf.successMessage": {
+    "en": "PDF sanitized successfully!",
+    "zh": "PDF清理成功！"
+  },
+  "tools.sanitizePdf.removedItems": {
+    "en": "Removed:",
+    "zh": "已移除："
+  },
+  "tools.flattenPdf.uploadDescription": {
+    "en": "Drag and drop a PDF file to flatten.",
+    "zh": "拖放PDF文件到此处进行扁平化。"
+  },
+  "tools.flattenPdf.flattenButton": {
+    "en": "Flatten PDF",
+    "zh": "扁平化PDF"
+  },
+  "tools.flattenPdf.successMessage": {
+    "en": "PDF flattened successfully!",
+    "zh": "PDF扁平化成功！"
+  },
+  "tools.removeMetadata.optionsTitle": {
+    "en": "Select Metadata to Remove",
+    "zh": "选择要移除的元数据"
+  },
+  "tools.removeMetadata.info": {
+    "en": "Removing metadata helps protect your privacy by stripping identifying information from the PDF.",
+    "zh": "移除元数据有助于保护您的隐私，从PDF中删除识别信息。"
+  },
+  "tools.removeMetadata.creator": {
+    "en": "Creator",
+    "zh": "创建程序"
+  },
+  "tools.removeMetadata.producer": {
+    "en": "Producer",
+    "zh": "PDF生成器"
+  },
+  "tools.removeMetadata.creationDate": {
+    "en": "Creation Date",
+    "zh": "创建日期"
+  },
+  "tools.removeMetadata.modificationDate": {
+    "en": "Modification Date",
+    "zh": "修改日期"
+  }
+}
