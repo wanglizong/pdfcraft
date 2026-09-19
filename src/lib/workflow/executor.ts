@@ -13,6 +13,7 @@ import { fileMatchesAcceptedFormats } from '@/lib/workflow/engine';
 import type { ProcessOutput, ProgressCallback, ProcessInput } from '@/types/pdf';
 import { PDFErrorCode, ErrorCategory } from '@/types/pdf';
 import { logger } from '@/lib/utils/logger';
+import { evaluateCondition, Condition, ConditionType, ComparisonOperator } from '@/types/workflow-conditional';
 
 // Import Processor classes
 import { MergePDFProcessor } from '@/lib/pdf/processors/merge';
@@ -147,12 +148,111 @@ function convertToFile(
 }
 
 /**
+ * Helper to interpolate dynamic template tokens in filenames or text options
+ * Supported tokens: {filename}, {basename}, {ext}, {date}, {time}, {timestamp}, {index}, {total}, {tool}
+ */
+export function interpolateTokens(
+    template: string,
+    context: {
+        filename?: string;
+        index?: number;
+        total?: number;
+        toolId?: string;
+        outputExt?: string;
+    }
+): string {
+    if (!template) return '';
+
+    const now = new Date();
+    const pad = (n: number) => String(n).padStart(2, '0');
+    const dateStr = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+    const timeStr = `${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+    const timestampStr = `${dateStr}_${timeStr}`;
+
+    const rawFilename = context.filename || 'document';
+    const basename = rawFilename.replace(/\.[^/.]+$/, '');
+    const extMatch = rawFilename.match(/\.([^/.]+)$/);
+    const originalExt = extMatch ? extMatch[1] : (context.outputExt || 'pdf');
+
+    const index = (context.index ?? 0) + 1; // 1-based index
+    const total = context.total ?? 1;
+    const tool = context.toolId ? context.toolId.replace(/-(pdf|to-pdf|from-pdf)$/, '') : '';
+
+    return template
+        .replace(/\{filename\}/gi, basename)
+        .replace(/\{basename\}/gi, basename)
+        .replace(/\{date\}/gi, dateStr)
+        .replace(/\{time\}/gi, timeStr)
+        .replace(/\{timestamp\}/gi, timestampStr)
+        .replace(/\{index\}/gi, String(index))
+        .replace(/\{total\}/gi, String(total))
+        .replace(/\{tool\}/gi, tool)
+        .replace(/\{ext\}/gi, context.outputExt || originalExt);
+}
+
+/**
  * Create ProcessInput from files and settings
  */
 function createProcessInput(files: File[], settings: Record<string, unknown>): ProcessInput {
     return {
         files,
         options: settings,
+    };
+}
+
+/**
+ * Helper to execute a processor either on a single file, or in batch mode if multiple files are provided
+ * for a processor that operates on 1 file at a time (inspired by BentoPDF processBatch).
+ */
+async function executeBatchOrSingle(
+    files: File[],
+    processorFactory: () => { process: (input: ProcessInput, onProgress?: ProgressCallback) => Promise<ProcessOutput> },
+    options: Record<string, unknown>,
+    onProgress?: ProgressCallback
+): Promise<ProcessOutput> {
+    if (files.length === 0) throw new Error('No input file');
+    if (files.length === 1) {
+        const processor = processorFactory();
+        return await processor.process(createProcessInput(files, options), onProgress);
+    }
+
+    // Multiple files passed to a single-file processor -> Automatic Batch Processing
+    const results: Blob[] = [];
+    const outputFilenames: string[] = [];
+    const total = files.length;
+
+    for (let i = 0; i < total; i++) {
+        const file = files[i];
+        const processor = processorFactory();
+        const singleProgress: ProgressCallback = (percent, msg) => {
+            const overall = Math.round(((i + (percent / 100)) / total) * 100);
+            onProgress?.(overall, `[${i + 1}/${total}] ${msg || file.name}`);
+        };
+
+        const output = await processor.process(createProcessInput([file], options), singleProgress);
+        if (!output.success || !output.result) {
+            throw new Error(output.error?.message || `Failed to process ${file.name}`);
+        }
+
+        if (Array.isArray(output.result)) {
+            for (let j = 0; j < output.result.length; j++) {
+                results.push(output.result[j]);
+                outputFilenames.push(output.filename || `${file.name.replace(/\.[^.]+$/, '')}_out_${j + 1}.pdf`);
+            }
+        } else {
+            results.push(output.result as Blob);
+            outputFilenames.push(output.filename || file.name);
+        }
+    }
+
+    return {
+        success: true,
+        result: results,
+        filename: outputFilenames.join(', '),
+        metadata: {
+            outputFiles: outputFilenames,
+            batchCount: total,
+        },
     };
 }
 
@@ -179,6 +279,71 @@ export async function executeNode(
 
     try {
         switch (toolId) {
+            // ==================== Dedicated Inputs (inspired by BentoPDF) ====================
+            case 'pdf-input':
+            case 'image-input':
+            case 'file-input': {
+                const sourceFiles = (node.data.inputFiles && node.data.inputFiles.length > 0)
+                    ? node.data.inputFiles
+                    : files;
+
+                if (sourceFiles.length === 0) {
+                    throw new Error(`请先在【${node.data.label || '输入节点'}】中上传或拖入文件`);
+                }
+
+                onProgress?.(100);
+                return {
+                    success: true,
+                    result: sourceFiles.length === 1 ? sourceFiles[0] : sourceFiles,
+                    filename: sourceFiles.length === 1 ? sourceFiles[0].name : `${sourceFiles.length} files`,
+                    metadata: {
+                        outputFiles: sourceFiles.map(f => f.name),
+                    },
+                };
+            }
+
+            // ==================== Flow Control ====================
+            case 'condition-gateway': {
+                const conditionType = (settings.conditionType as ConditionType) || 'file-count';
+                const operator = (settings.operator as ComparisonOperator) || 'greater-than';
+                let rawValue = settings.value ?? 1;
+
+                // Handle file-size unit conversion if specified (e.g. MB/KB to Bytes)
+                if (conditionType === 'file-size') {
+                    const unit = (settings.sizeUnit as string) || 'MB';
+                    const num = Number(rawValue) || 0;
+                    if (unit === 'MB') rawValue = num * 1024 * 1024;
+                    else if (unit === 'KB') rawValue = num * 1024;
+                    else rawValue = num;
+                }
+
+                const condition: Condition = {
+                    type: conditionType,
+                    operator: operator,
+                    value: rawValue as string | number | boolean,
+                };
+
+                const isMet = evaluateCondition(condition, files);
+                const activeBranch: 'true' | 'false' = isMet ? 'true' : 'false';
+
+                logger.log(
+                    `[Workflow] Condition Gateway (${node.id}) evaluation: ${conditionType} ${operator} ${settings.value} -> ${isMet} (Active: ${activeBranch})`
+                );
+
+                onProgress?.(100);
+
+                return {
+                    success: true,
+                    result: files.length === 1 ? files[0] : (files.length > 1 ? files : undefined),
+                    filename: files.length === 1 ? files[0].name : undefined,
+                    metadata: {
+                        activeBranch,
+                        conditionMet: isMet,
+                        outputFiles: files.map(f => f.name),
+                    },
+                };
+            }
+
             // ==================== Organize & Manage ====================
             case 'merge-pdf': {
                 const processor = new MergePDFProcessor();
@@ -202,7 +367,7 @@ export async function executeNode(
                 const totalPages = pdf.numPages;
 
                 let ranges: { start: number; end: number }[] = [];
-                if (mode === 'every') {
+                if (mode === 'every' || mode === 'every-n-pages') {
                     for (let i = 0; i < totalPages; i += pagesPerSplit) {
                         ranges.push({ start: i + 1, end: Math.min(i + pagesPerSplit, totalPages) });
                     }
@@ -236,10 +401,8 @@ export async function executeNode(
             }
 
             case 'rotate-pdf': {
-                if (files.length === 0) throw new Error('No input file');
                 const angle = Number(settings.angle) || 90;
-                const processor = new RotatePDFProcessor();
-                return await processor.process(createProcessInput(files, { angle }), onProgress);
+                return await executeBatchOrSingle(files, () => new RotatePDFProcessor(), { angle }, onProgress);
             }
 
             case 'alternate-merge': {
@@ -400,8 +563,6 @@ export async function executeNode(
             }
 
             case 'add-watermark': {
-                if (files.length === 0) throw new Error('No input file');
-                const processor = new WatermarkProcessor();
                 // Parse hex color to RGB object (values 0-1)
                 const hexColor = String(settings.color || '#888888');
                 const hexMatch = hexColor.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
@@ -416,8 +577,16 @@ export async function executeNode(
                     rotation: Number(settings.rotation) || -45,
                     color,
                     position: String(settings.position || 'center') as 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center' | 'diagonal',
+                    x: settings.x !== undefined ? Number(settings.x) : undefined,
+                    y: settings.y !== undefined ? Number(settings.y) : undefined,
+                    imageScale: settings.imageScale !== undefined ? Number(settings.imageScale) : undefined,
+                    flatten: settings.flatten !== undefined ? Boolean(settings.flatten) : false,
+                    repeat: settings.repeat !== undefined ? Boolean(settings.repeat) : false,
+                    stagger: settings.stagger !== undefined ? Boolean(settings.stagger) : true,
+                    repeatSpacingX: settings.repeatSpacingX !== undefined ? Number(settings.repeatSpacingX) : 200,
+                    repeatSpacingY: settings.repeatSpacingY !== undefined ? Number(settings.repeatSpacingY) : 150,
                 };
-                return await processor.process(createProcessInput(files, options), onProgress);
+                return await executeBatchOrSingle(files, () => new WatermarkProcessor(), options, onProgress);
             }
 
             case 'header-footer': {
@@ -672,30 +841,26 @@ export async function executeNode(
 
             // ==================== Optimize & Repair ====================
             case 'compress-pdf': {
-                if (files.length === 0) throw new Error('No input file');
-                const processor = new CompressPDFProcessor();
                 const quality = String(settings.quality || 'medium') as 'low' | 'medium' | 'high' | 'maximum';
                 const algorithm = String(settings.algorithm || 'standard') as 'standard' | 'condense' | 'photon';
-                const optimizeImages = settings.optimizeImages !== undefined ? Boolean(settings.optimizeImages) : false;
+                const optimizeImages = settings.optimizeImages !== undefined ? Boolean(settings.optimizeImages) : true;
                 const removeMetadata = settings.removeMetadata !== undefined ? Boolean(settings.removeMetadata) : false;
                 const photonDpi = Number(settings.photonDpi) || 150;
-                return await processor.process(createProcessInput(files, { 
+                return await executeBatchOrSingle(files, () => new CompressPDFProcessor(), { 
                     quality,
                     algorithm,
                     optimizeImages,
                     removeMetadata,
                     photonDpi,
-                }), onProgress);
+                }, onProgress);
             }
 
             case 'flatten-pdf': {
-                if (files.length === 0) throw new Error('No input file');
-                const processor = new FlattenPDFProcessor();
                 const options = {
                     flattenForms: settings.flattenForms !== undefined ? Boolean(settings.flattenForms) : true,
                     flattenAnnotations: settings.flattenAnnotations !== undefined ? Boolean(settings.flattenAnnotations) : true,
                 };
-                return await processor.process(createProcessInput(files, options), onProgress);
+                return await executeBatchOrSingle(files, () => new FlattenPDFProcessor(), options, onProgress);
             }
 
             case 'fix-page-size': {
@@ -729,10 +894,17 @@ export async function executeNode(
             }
 
             case 'ocr-pdf': {
-                if (files.length === 0) throw new Error('No input file');
+                if (files.length === 0) throw new Error('No input file provided for OCR');
                 const processor = new OCRProcessor();
+                const rawLangs = settings.languages || settings.language || 'eng';
+                const languages = Array.isArray(rawLangs)
+                    ? (rawLangs as any)
+                    : String(rawLangs).split('+').map((s: string) => s.trim());
                 const options = {
-                    language: String(settings.language || 'eng'),
+                    languages,
+                    language: Array.isArray(rawLangs) ? rawLangs.join('+') : String(rawLangs),
+                    outputFormat: (['text', 'markdown', 'json'].includes(settings.outputFormat as string) ? settings.outputFormat : 'searchable-pdf') as any,
+                    scale: Number(settings.scale) || 2,
                 };
                 return await processor.process(createProcessInput(files, options), onProgress);
             }
@@ -741,9 +913,13 @@ export async function executeNode(
             case 'encrypt-pdf': {
                 if (files.length === 0) throw new Error('No input file');
                 const processor = new EncryptPDFProcessor();
+                const rawUserPassword = String(settings.userPassword || '');
+                const rawOwnerPassword = String(settings.ownerPassword || '');
+                // Fallback to default password if neither user nor owner password was configured in workflow
+                const userPassword = (rawUserPassword || rawOwnerPassword) ? rawUserPassword : '123456';
                 const options = {
-                    userPassword: String(settings.userPassword || ''),
-                    ownerPassword: String(settings.ownerPassword || ''),
+                    userPassword,
+                    ownerPassword: rawOwnerPassword,
                     permissions: {
                         printing: settings.allowPrinting !== undefined ? Boolean(settings.allowPrinting) : true,
                         copying: settings.allowCopying !== undefined ? Boolean(settings.allowCopying) : false,
@@ -941,7 +1117,11 @@ export async function executeNode(
             case 'djvu-to-pdf': {
                 if (files.length === 0) throw new Error('No input file');
                 const processor = new DJVUToPDFProcessor();
-                return await processor.process(createProcessInput(files, {}), onProgress);
+                const options = {
+                    dpi: Number(settings.dpi || 150),
+                    quality: Number(settings.quality || 0.92),
+                };
+                return await processor.process(createProcessInput(files, options), onProgress);
             }
 
             case 'cbz-to-pdf': {
@@ -1027,6 +1207,83 @@ export async function executeNode(
                 return await processor.process(createProcessInput(files, options), onProgress);
             }
 
+            // ==================== Output Nodes ====================
+            case 'download-pdf': {
+                if (files.length === 0) throw new Error('No input file');
+                const rawCustomName = String(settings.filename || '').trim();
+                const template = rawCustomName || '{filename}.pdf';
+
+                onProgress?.(100);
+                if (files.length === 1) {
+                    let filename = interpolateTokens(template, {
+                        filename: files[0].name,
+                        index: 0,
+                        total: 1,
+                        toolId,
+                        outputExt: 'pdf',
+                    });
+                    if (!filename.toLowerCase().endsWith('.pdf')) filename += '.pdf';
+                    return {
+                        success: true,
+                        result: files[0],
+                        filename,
+                    };
+                }
+
+                // Multiple files
+                const outputFilenames = files.map((f, i) => {
+                    let name = interpolateTokens(
+                        template.includes('{index}') || template.includes('{filename}') 
+                            ? template 
+                            : template.replace(/\.pdf$/i, '_{index}.pdf'),
+                        {
+                            filename: f.name,
+                            index: i,
+                            total: files.length,
+                            toolId,
+                            outputExt: 'pdf',
+                        }
+                    );
+                    if (!name.toLowerCase().endsWith('.pdf')) name += '.pdf';
+                    return name;
+                });
+
+                return {
+                    success: true,
+                    result: files,
+                    filename: outputFilenames.join(', '),
+                    metadata: {
+                        outputFiles: outputFilenames,
+                    },
+                };
+            }
+
+            case 'download-zip': {
+                if (files.length === 0) throw new Error('No input file');
+                const { createZip } = await import('@/lib/zip');
+                const rawCustomName = String(settings.filename || '').trim();
+                const template = rawCustomName || 'archive_{date}.zip';
+                let zipFilename = interpolateTokens(template, {
+                    filename: files[0].name,
+                    index: 0,
+                    total: files.length,
+                    toolId,
+                    outputExt: 'zip',
+                });
+                if (!zipFilename.toLowerCase().endsWith('.zip')) zipFilename += '.zip';
+
+                const zipBlob = await createZip(files);
+                onProgress?.(100);
+                return {
+                    success: true,
+                    result: zipBlob,
+                    filename: zipFilename,
+                    metadata: {
+                        fileCount: files.length,
+                    },
+                };
+            }
+
             // ==================== Passthrough (tools without processors or interactive tools) ====================
             default: {
                 logger.warn(`[Workflow Executor] Tool "${toolId}" does not have a workflow processor implementation.`);
@@ -1063,23 +1320,25 @@ export async function executeNode(
 }
 
 /**
- * Get input files for a node from parent nodes
+ * Get input files for a node from parent nodes.
+ * Automatically filters out edges coming from inactive conditional branches.
  */
 export function collectInputFiles(
     nodeId: string,
     nodes: WorkflowNode[],
     edges: WorkflowEdge[],
     nodeOutputs: Map<string, (Blob | WorkflowOutputFile)[]>,
-    inputAssignments?: Map<string, File[]>
+    inputAssignments?: Map<string, File[]>,
+    activeBranches?: Map<string, 'true' | 'false'>
 ): (Blob | WorkflowOutputFile)[] {
     const parentEdges = edges.filter(e => e.target === nodeId);
 
     if (parentEdges.length === 0) {
-        if (inputAssignments?.has(nodeId)) {
+        if (inputAssignments && inputAssignments.has(nodeId)) {
             return inputAssignments.get(nodeId)!;
         }
         const node = nodes.find(n => n.id === nodeId);
-        if (node?.data.inputFiles) {
+        if (node?.data.inputFiles && node.data.inputFiles.length > 0) {
             return node.data.inputFiles;
         }
         return [];
@@ -1087,6 +1346,21 @@ export function collectInputFiles(
 
     const inputFiles: (Blob | WorkflowOutputFile)[] = [];
     for (const edge of parentEdges) {
+        const sourceNode = nodes.find(n => n.id === edge.source);
+        const activeBranch = activeBranches?.get(edge.source) ?? sourceNode?.data.activeBranch;
+
+        // If edge emanates from a condition gateway or specific true/false branch
+        if (sourceNode?.data.toolId === 'condition-gateway' || edge.sourceHandle === 'true' || edge.sourceHandle === 'false') {
+            if (edge.sourceHandle === 'true' && activeBranch && activeBranch !== 'true') {
+                // True branch was not taken
+                continue;
+            }
+            if (edge.sourceHandle === 'false' && activeBranch && activeBranch !== 'false') {
+                // False branch was not taken
+                continue;
+            }
+        }
+
         const parentOutputs = nodeOutputs.get(edge.source);
         if (parentOutputs) {
             inputFiles.push(...parentOutputs);

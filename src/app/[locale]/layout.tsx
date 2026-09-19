@@ -1,9 +1,8 @@
-import type { Metadata, Viewport } from 'next';
+import type { Viewport } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale, getTranslations } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { localeConfig, type Locale, locales } from '@/lib/i18n/config';
-import { generateHomeMetadata } from '@/lib/seo';
 import { fontVariables } from '@/lib/fonts';
 import { SkipLink } from '@/components/common/SkipLink';
 import '@/app/globals.css';
@@ -25,25 +24,6 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: dark)', color: '#0f172a' },
   ],
 };
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  // Validate locale
-  const validLocale = locales.includes(locale as Locale) ? (locale as Locale) : 'en';
-
-  // Get localized SEO translations
-  const t = await getTranslations({ locale: validLocale, namespace: 'metadata' });
-
-  // Generate metadata using the SEO module with translations
-  return generateHomeMetadata(validLocale, {
-    title: t('home.title'),
-    description: t('home.description'),
-  });
-}
 
 export default async function LocaleLayout({
   children,

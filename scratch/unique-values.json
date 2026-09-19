@@ -1924,7 +1924,7 @@
     ]
   },
   {
-    "en": "PDFCraft",
+    "en": "Hello PDF",
     "langs": [
       "zh",
       "zh-TW",
@@ -2054,7 +2054,7 @@
     ]
   },
   {
-    "en": "contact@pdfcraft.app",
+    "en": "contact@Hello PDF.app",
     "langs": [
       "zh",
       "zh-TW",
@@ -2090,7 +2090,7 @@
     ]
   },
   {
-    "en": "@pdfcraft",
+    "en": "@Hello PDF",
     "langs": [
       "zh",
       "zh-TW",
@@ -3413,7 +3413,7 @@
     ]
   },
   {
-    "en": "© 2025 PDFCraft. All rights reserved.",
+    "en": "© 2025 Hello PDF. All rights reserved.",
     "langs": [
       "ja",
       "ko",
@@ -3423,7 +3423,7 @@
     ]
   },
   {
-    "en": "© {year} PDFCraft. All rights reserved.",
+    "en": "© {year} Hello PDF. All rights reserved.",
     "langs": [
       "ja",
       "ko"
@@ -7868,7 +7868,7 @@
     ]
   },
   {
-    "en": "Default password: pdfcraft",
+    "en": "Default password: Hello PDF",
     "langs": [
       "ja",
       "ko",
@@ -19644,21 +19644,21 @@
     ]
   },
   {
-    "en": "What is PDFCraft?",
+    "en": "What is Hello PDF?",
     "langs": [
       "de",
       "es"
     ]
   },
   {
-    "en": "Is PDFCraft really free?",
+    "en": "Is Hello PDF really free?",
     "langs": [
       "de",
       "es"
     ]
   },
   {
-    "en": "Yes, PDFCraft is completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone.",
+    "en": "Yes, Hello PDF is completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone.",
     "langs": [
       "de",
       "es"
@@ -19672,7 +19672,7 @@
     ]
   },
   {
-    "en": "No, you don't need to create an account or register to use PDFCraft. Simply visit the website and start using any tool immediately.",
+    "en": "No, you don't need to create an account or register to use Hello PDF. Simply visit the website and start using any tool immediately.",
     "langs": [
       "de",
       "es"
@@ -19693,14 +19693,14 @@
     ]
   },
   {
-    "en": "Is it safe to use PDFCraft with sensitive documents?",
+    "en": "Is it safe to use Hello PDF with sensitive documents?",
     "langs": [
       "de",
       "es"
     ]
   },
   {
-    "en": "Yes, PDFCraft is designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet.",
+    "en": "Yes, Hello PDF is designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet.",
     "langs": [
       "de",
       "es"
@@ -19728,7 +19728,7 @@
     ]
   },
   {
-    "en": "PDFCraft offers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more.",
+    "en": "Hello PDF offers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more.",
     "langs": [
       "de",
       "es"
@@ -19756,7 +19756,7 @@
     ]
   },
   {
-    "en": "Yes, PDFCraft supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once.",
+    "en": "Yes, Hello PDF supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once.",
     "langs": [
       "de",
       "es"
@@ -19770,7 +19770,7 @@
     ]
   },
   {
-    "en": "PDFCraft provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities.",
+    "en": "Hello PDF provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities.",
     "langs": [
       "de",
       "es"
@@ -19784,7 +19784,7 @@
     ]
   },
   {
-    "en": "PDFCraft works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience.",
+    "en": "Hello PDF works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience.",
     "langs": [
       "de",
       "es"
@@ -19819,14 +19819,14 @@
     ]
   },
   {
-    "en": "Does PDFCraft work offline?",
+    "en": "Does Hello PDF work offline?",
     "langs": [
       "de",
       "es"
     ]
   },
   {
-    "en": "Currently, PDFCraft requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection.",
+    "en": "Currently, Hello PDF requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection.",
     "langs": [
       "de",
       "es"
@@ -19841,7 +19841,7 @@
     ]
   },
   {
-    "en": "PDFCraft is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support).",
+    "en": "Hello PDF is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support).",
     "langs": [
       "de",
       "es",
@@ -19959,7 +19959,7 @@
     ]
   },
   {
-    "en": "Powered by modern web technologies, PDFCraft delivers lightning-fast PDF processing without the need for uploads or downloads.",
+    "en": "Powered by modern web technologies, Hello PDF delivers lightning-fast PDF processing without the need for uploads or downloads.",
     "langs": [
       "de",
       "es"
@@ -19987,7 +19987,7 @@
     ]
   },
   {
-    "en": "PDFCraft is completely free to use with no hidden costs, no registration required, and no limits on usage.",
+    "en": "Hello PDF is completely free to use with no hidden costs, no registration required, and no limits on usage.",
     "langs": [
       "de",
       "es"
@@ -20775,7 +20775,7 @@
     ]
   },
   {
-    "en": "PDF Workflow Builder - PDFCraft",
+    "en": "PDF Workflow Builder - Hello PDF",
     "langs": [
       "it"
     ]

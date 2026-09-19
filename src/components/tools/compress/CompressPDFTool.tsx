@@ -182,8 +182,15 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
       return;
     }
     setError(null);
+    
+    // For single file mode, clear preview during processing
+    if (singleFile && pdfPageImage) {
+      setPdfPageImage('');
+      setCompressedImage('');
+    }
+    
     await startProcessing(compressProcessor);
-  }, [files.length, startProcessing, compressProcessor]);
+  }, [files.length, singleFile, pdfPageImage, startProcessing, compressProcessor]);
 
   /**
    * Handle download as ZIP
@@ -257,7 +264,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
         <Card variant="outlined">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-bold text-[hsl(var(--color-foreground))]">
-              {t('compress.waitingList', { count: files.length })}
+              {t('compress.waitingFiles', { count: files.length })}
             </h3>
             <Button variant="ghost" size="sm" onClick={handleClearFile} disabled={isProcessing}>
               {t('compress.clearAll')}
@@ -278,6 +285,94 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
               </div>
             ))}
           </div>
+
+          {/* Batch Processing Options & Start Button */}
+          <div className="mt-4 space-y-4">
+            {/* Quality Options */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-[hsl(var(--color-muted-foreground))] uppercase tracking-wider">
+                {t('compress.qualityTitle')}
+              </label>
+              <div className="grid grid-cols-4 gap-2">
+                {(['low', 'medium', 'high', 'maximum'] as CompressionQuality[]).map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => setQuality(q)}
+                    disabled={isProcessing}
+                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all border ${
+                      quality === q
+                        ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.08)] text-[hsl(var(--color-foreground))]'
+                        : 'border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/20 text-zinc-500'
+                    }`}
+                  >
+                    {q === 'low' && t('compress.qualityLow')}
+                    {q === 'medium' && t('compress.qualityMedium')}
+                    {q === 'high' && t('compress.qualityHigh')}
+                    {q === 'maximum' && t('compress.qualityMaximum')}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Algorithm Options */}
+            <div className="space-y-2">
+              <label className="text-xs font-bold text-[hsl(var(--color-muted-foreground))] uppercase tracking-wider">
+                Compression Algorithm
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {(['standard', 'condense', 'photon'] as CompressionAlgorithm[]).map((alg) => (
+                  <button
+                    key={alg}
+                    onClick={() => setAlgorithm(alg)}
+                    disabled={isProcessing}
+                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all border ${
+                      algorithm === alg
+                        ? 'border-[hsl(var(--color-primary))] bg-[hsl(var(--color-primary)/0.08)] text-[hsl(var(--color-foreground))]'
+                        : 'border-zinc-200 dark:border-zinc-800 bg-white/50 dark:bg-black/20 text-zinc-500'
+                    }`}
+                  >
+                    {alg.charAt(0).toUpperCase() + alg.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Extra Options */}
+            <div className="space-y-2">
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={optimizeImages}
+                  onChange={(e) => setOptimizeImages(e.target.checked)}
+                  disabled={isProcessing}
+                  className="w-4 h-4 rounded border-zinc-300 text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                />
+                <span className="text-sm">{t('compress.optimizeGraphics')}</span>
+              </label>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={removeMetadata}
+                  onChange={(e) => setRemoveMetadata(e.target.checked)}
+                  disabled={isProcessing}
+                  className="w-4 h-4 rounded border-zinc-300 text-[hsl(var(--color-primary))] focus:ring-[hsl(var(--color-primary))]"
+                />
+                <span className="text-sm">{t('compress.clearMetadata')}</span>
+              </label>
+            </div>
+
+            {/* Start Compression Button */}
+            <Button
+              variant="primary"
+              size="lg"
+              className="w-full font-bold shadow-lg"
+              onClick={handleCompress}
+              disabled={!canCompress}
+              loading={isProcessing}
+            >
+              {isProcessing ? t('compress.processingButton') : (tTools('compressPdf.compressButton') || 'Compress PDF')}
+            </Button>
+          </div>
         </Card>
       )}
 
@@ -295,7 +390,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                   {t('compress.sliderTooltip')}
                 </span>
                 <span className="text-[10px] text-zinc-400">
-                  {t('compress.comparisonLabel', { quality: quality.toUpperCase() })}
+                  {t('compress.qualityCompare', { quality: quality.toUpperCase() })}
                 </span>
               </div>
 
@@ -518,7 +613,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
                     disabled={!canCompress}
                     loading={isProcessing}
                   >
-                    {t('compress.processingButton')}
+                    {isProcessing ? t('compress.processingButton') : (tTools('compressPdf.compressButton') || 'Compress PDF')}
                   </Button>
                 </div>
               </div>
@@ -547,7 +642,7 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
           <div className="flex gap-2 justify-center">
             <Button variant="secondary" onClick={handleDownloadZip}>
               <FileArchive className="w-4 h-4 mr-2" />
-              {t('compress.downloadZip', { count: completedCount })}
+              {t('compress.zipDownload', { count: completedCount })}
             </Button>
           </div>
         </Card>
@@ -565,11 +660,19 @@ export function CompressPDFTool({ className = '' }: CompressPDFToolProps) {
           <div className="space-y-2 max-w-sm mx-auto">
             {t('compress.successDone')}
             <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
-              {t('compress.successSummary', { size: (singleFile.size / (1024 * 1024)).toFixed(2) })}
+              {t('compress.sizeInfo', { size: (singleFile.size / (1024 * 1024)).toFixed(2) })}
             </p>
           </div>
 
-          <div className="flex gap-2 justify-center max-w-xs mx-auto">
+          <div className="flex gap-2 justify-center max-w-sm mx-auto">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="font-bold"
+              onClick={handleClearSingleFile}
+            >
+              {t('buttons.clear') || 'Clear'}
+            </Button>
             <DownloadButton
               file={files[0].result!}
               filename={`${singleFile.name.replace('.pdf', '')}_compressed.pdf`}

@@ -427,7 +427,7 @@ export const toolContentEs: Record<string, ToolContent> = {
     "faq": [
       {
         "question": "¿Puedo editar texto original?",
-        "answer": "Esta herramienta añade anotaciones. Para editar texto existente, usa el documento fuente."
+        "answer": "Sí. Selecciona Editar texto en la barra del PDF, pulsa un bloque existente, introduce el reemplazo y aplícalo. El texto se sustituye permanentemente en el PDF exportado."
       },
       {
         "question": "¿Las ediciones son permanentes?",

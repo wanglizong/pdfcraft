@@ -21,6 +21,7 @@ vi.mock('next-intl', () => ({
     };
     return translations[namespace]?.[key] || key;
   },
+  useLocale: () => 'en',
 }));
 
 // Mock the FileUploader component
@@ -188,6 +189,41 @@ describe('EditPDFTool', () => {
       await waitFor(() => {
         const iframe = screen.getByTitle('PDF Editor');
         expect(iframe).toHaveAttribute('sandbox', 'allow-scripts allow-same-origin allow-forms allow-popups allow-downloads');
+      });
+    });
+  });
+
+  describe('Mode Switching', () => {
+    it('preserves the uploaded file and does not show file uploader when switching between direct and annotator modes', async () => {
+      render(<EditPDFTool />);
+      
+      // Upload file initially
+      const uploadButton = screen.getByTestId('mock-upload-button');
+      fireEvent.click(uploadButton);
+      
+      await waitFor(() => {
+        expect(screen.getByText('test.pdf')).toBeInTheDocument();
+        expect(screen.queryByTestId('file-uploader')).not.toBeInTheDocument();
+      });
+
+      // Switch to Classic Annotator
+      const annotatorBtn = screen.getByText('Classic Annotator');
+      fireEvent.click(annotatorBtn);
+
+      // Verify file is still present and file uploader is NOT shown
+      await waitFor(() => {
+        expect(screen.getByText('test.pdf')).toBeInTheDocument();
+        expect(screen.queryByTestId('file-uploader')).not.toBeInTheDocument();
+      });
+
+      // Switch back to Direct Content Edit
+      const directBtn = screen.getByText('Direct Content Edit');
+      fireEvent.click(directBtn);
+
+      // Verify file is still present and file uploader is NOT shown
+      await waitFor(() => {
+        expect(screen.getByText('test.pdf')).toBeInTheDocument();
+        expect(screen.queryByTestId('file-uploader')).not.toBeInTheDocument();
       });
     });
   });

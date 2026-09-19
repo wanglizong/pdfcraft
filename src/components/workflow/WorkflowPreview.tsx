@@ -53,7 +53,10 @@ export function WorkflowPreview({ nodes, edges, inputFiles, isVisible, onToggle 
 
             // Generate previews for input PDF files
             for (const file of inputFiles) {
-                if (file.type === 'application/pdf') {
+                const isPdf = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+                const isImage = file.type.startsWith('image/') || /\.(jpg|jpeg|png|webp|bmp|svg)$/i.test(file.name);
+
+                if (isPdf) {
                     const pdfjsLib = await import('pdfjs-dist');
                     const { configurePdfjsWorker } = await import('@/lib/pdf/loader');
                     configurePdfjsWorker(pdfjsLib);
@@ -90,7 +93,7 @@ export function WorkflowPreview({ nodes, edges, inputFiles, isVisible, onToggle 
                             });
                         }
                     }
-                } else if (file.type.startsWith('image/')) {
+                } else if (isImage) {
                     // For image inputs, create a preview
                     const url = URL.createObjectURL(file);
                     newPreviews.push({
@@ -211,15 +214,7 @@ export function WorkflowPreview({ nodes, edges, inputFiles, isVisible, onToggle 
     };
 
     if (!isVisible) {
-        return (
-            <button
-                onClick={onToggle}
-                className="fixed bottom-4 right-4 z-40 flex items-center gap-2 px-4 py-2 bg-[hsl(var(--color-primary))] text-white rounded-lg shadow-lg hover:bg-[hsl(var(--color-primary)/0.9)] transition-colors"
-            >
-                <Eye className="w-4 h-4" />
-                {tWorkflow('showPreview') || 'Show Preview'}
-            </button>
-        );
+        return null;
     }
 
     return (

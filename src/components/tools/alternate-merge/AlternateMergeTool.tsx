@@ -93,8 +93,12 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
   /**
    * Handle drag start
    */
-  const handleDragStart = useCallback((index: number) => {
+  const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
     setDraggedIndex(index);
+    if (e.dataTransfer) {
+      e.dataTransfer.setData('text/plain', String(index));
+      e.dataTransfer.effectAllowed = 'move';
+    }
   }, []);
 
   /**
@@ -102,26 +106,39 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
    */
   const handleDragOver = useCallback((e: React.DragEvent, index: number) => {
     e.preventDefault();
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = 'move';
+    }
     if (draggedIndex !== null && draggedIndex !== index) {
       setDragOverIndex(index);
     }
   }, [draggedIndex]);
 
   /**
-   * Handle drag end
+   * Handle drop
    */
-  const handleDragEnd = useCallback(() => {
-    if (draggedIndex !== null && dragOverIndex !== null && draggedIndex !== dragOverIndex) {
+  const handleDrop = useCallback((e: React.DragEvent, targetIndex: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (draggedIndex !== null && draggedIndex !== targetIndex) {
       setFiles(prev => {
         const newFiles = [...prev];
         const [draggedFile] = newFiles.splice(draggedIndex, 1);
-        newFiles.splice(dragOverIndex, 0, draggedFile);
+        newFiles.splice(targetIndex, 0, draggedFile);
         return newFiles;
       });
     }
     setDraggedIndex(null);
     setDragOverIndex(null);
-  }, [draggedIndex, dragOverIndex]);
+  }, [draggedIndex]);
+
+  /**
+   * Handle drag end
+   */
+  const handleDragEnd = useCallback(() => {
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+  }, []);
 
   /**
    * Move file up in the list
@@ -270,8 +287,9 @@ export function AlternateMergeTool({ className = '' }: AlternateMergeToolProps) 
               <li
                 key={file.id}
                 draggable={!isProcessing}
-                onDragStart={() => handleDragStart(index)}
+                onDragStart={(e) => handleDragStart(e, index)}
                 onDragOver={(e) => handleDragOver(e, index)}
+                onDrop={(e) => handleDrop(e, index)}
                 onDragEnd={handleDragEnd}
                 className={`
                   flex items-center gap-3 p-3 rounded-[var(--radius-md)] border

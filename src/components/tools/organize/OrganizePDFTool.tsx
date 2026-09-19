@@ -150,8 +150,12 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
   /**
    * Handle drag start
    */
-  const handleDragStart = useCallback((index: number) => {
+  const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
     setDraggedIndex(index);
+    if (e.dataTransfer) {
+      e.dataTransfer.setData('text/plain', String(index));
+      e.dataTransfer.effectAllowed = 'move';
+    }
   }, []);
 
   /**
@@ -159,26 +163,39 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
    */
   const handleDragOver = useCallback((e: React.DragEvent, index: number) => {
     e.preventDefault();
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = 'move';
+    }
     if (draggedIndex !== null && draggedIndex !== index) {
       setDragOverIndex(index);
     }
   }, [draggedIndex]);
 
   /**
-   * Handle drag end
+   * Handle drop
    */
-  const handleDragEnd = useCallback(() => {
-    if (draggedIndex !== null && dragOverIndex !== null && draggedIndex !== dragOverIndex) {
+  const handleDrop = useCallback((e: React.DragEvent, targetIndex: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (draggedIndex !== null && draggedIndex !== targetIndex) {
       setPageOrder(prev => {
         const newOrder = [...prev];
         const [draggedPage] = newOrder.splice(draggedIndex, 1);
-        newOrder.splice(dragOverIndex, 0, draggedPage);
+        newOrder.splice(targetIndex, 0, draggedPage);
         return newOrder;
       });
     }
     setDraggedIndex(null);
     setDragOverIndex(null);
-  }, [draggedIndex, dragOverIndex]);
+  }, [draggedIndex]);
+
+  /**
+   * Handle drag end
+   */
+  const handleDragEnd = useCallback(() => {
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+  }, []);
 
   /**
    * Move page to a new position
@@ -426,8 +443,9 @@ export function OrganizePDFTool({ className = '' }: OrganizePDFToolProps) {
                   <div
                     key={`${pageNum}-${index}`}
                     draggable={!isProcessing}
-                    onDragStart={() => handleDragStart(index)}
+                    onDragStart={(e) => handleDragStart(e, index)}
                     onDragOver={(e) => handleDragOver(e, index)}
+                    onDrop={(e) => handleDrop(e, index)}
                     onDragEnd={handleDragEnd}
                     className={`
                       relative aspect-[3/4] rounded-[var(--radius-md)] border-2 overflow-hidden transition-all

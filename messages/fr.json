@@ -631,7 +631,11 @@
       "fillColorLabel": "Activer la couleur de remplissage :",
       "defaultAuthor": "Annotation (Utilisateur invité)",
       "undoBtn": "Annuler",
-      "redoBtn": "Rétablir"
+      "redoBtn": "Rétablir",
+      "unnamedUser": "Utilisateur invité",
+      "undo": "Annuler",
+      "redo": "Rétablir",
+      "annDefault": "Annotation"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Décalage d'Otsu)",
@@ -914,6 +918,39 @@
       "codeCopied": "Code SVG copié dans le presse-papiers",
       "copyCode": "Copier le code SVG",
       "downloadSvg": "Télécharger l'actif SVG"
+    },
+    "updater": {
+      "title": "Mise à jour du logiciel",
+      "checkBtn": "Vérifier les mises à jour",
+      "checking": "Vérification des mises à jour...",
+      "errorTitle": "Impossible de vérifier les mises à jour",
+      "retry": "Réessayer",
+      "latest": "Vous êtes à jour !",
+      "latestDesc": "Hello PDF est actuellement à la dernière version ({version}).",
+      "available": "Nouvelle version disponible",
+      "currentVersion": "Version actuelle",
+      "released": "Publié le",
+      "releaseNotes": "Notes de version",
+      "downloadPortable": "Télécharger la version portable Windows (ZIP)",
+      "downloadInstaller": "Télécharger l'installateur Windows (.exe / .msi)",
+      "downloadMac": "Télécharger pour macOS (.dmg)",
+      "downloadAppImage": "Télécharger Linux AppImage (Portable)",
+      "downloadDeb": "Télécharger Linux Debian (.deb)",
+      "allDownloads": "Voir tous les téléchargements par plateforme",
+      "viewOnGithub": "Voir sur GitHub",
+      "skipVersion": "Ignorer cette version",
+      "remindLater": "Me le rappeler plus tard",
+      "close": "Fermer",
+      "newVersionBadge": "Nouvelle version",
+      "toastPrompt": "Une nouvelle version est disponible avec une stabilité et des performances améliorées. Mettez à jour maintenant pour profiter de la meilleure expérience.",
+      "viewDetails": "Mettre à jour maintenant / Voir les détails",
+      "mirrorDownload": "⚡ Téléchargement miroir rapide",
+      "copyLink": "Copier le lien",
+      "copyMirrorLink": "Copier le lien miroir",
+      "openingBrowser": "Ouverture du navigateur...",
+      "downloadStartedNotice": "Téléchargement lancé dans le navigateur ! Sinon, copiez le lien et collez-le dans votre navigateur.",
+      "downloadFailedNotice": "Impossible d'ouvrir le navigateur. Veuillez copier le lien et le coller manuellement.",
+      "linkCopied": "Lien de téléchargement copié dans le presse-papiers !"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Options invalides fournies.",
     "unknown": "Une erreur inattendue s'est produite. Veuillez réessayer.",
     "toolNotFound": "Outil introuvable",
-    "invalidPassword": "Le mot de passe saisi est incorrect. Veuillez vérifier et réessayer."
+    "invalidPassword": "Le mot de passe saisi est incorrect. Veuillez vérifier et réessayer.",
+    "incorrectPassword": "Mot de passe incorrect. Veuillez réessayer."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Rogner et redimensionner les pages",
         "description": "Rogner les pages PDF et ajuster les dimensions des pages"
       }
-    }
+    },
+    "autoLayout": "Mise en page automatique",
+    "duplicateNode": "Dupliquer le nœud",
+    "downloadZip": "Télécharger au format ZIP",
+    "downloadIndividually": "Télécharger les fichiers individuellement",
+    "flowControl": "Contrôle de flux",
+    "conditionGateway": "Passerelle de condition",
+    "downloadPdf": "Télécharger le PDF",
+    "outputCategory": "Sortie et Exportation",
+    "filenameLabel": "Nom du fichier de sortie"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "par exemple, 1, 3, 5-10",
       "previewTitle": "Aperçu",
       "previewNote": "Afficher la première page uniquement pour de meilleures performances",
-      "previewGenerating": "Génération d'un aperçu..."
+      "previewGenerating": "Génération d'un aperçu...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "Téléverser le fichier PDF",

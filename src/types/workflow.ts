@@ -30,7 +30,9 @@ export interface ToolNodeData {
     /** Output format */
     outputFormat: string;
     /** Current processing status */
-    status: 'idle' | 'processing' | 'complete' | 'error';
+    status: 'idle' | 'processing' | 'complete' | 'error' | 'skipped';
+    /** Active branch for conditional gateway nodes */
+    activeBranch?: 'true' | 'false';
     /** Processing progress (0-100) */
     progress: number;
     /** Error message if any */
@@ -41,6 +43,12 @@ export interface ToolNodeData {
     outputFiles?: (Blob | WorkflowOutputFile)[];
     /** Tool-specific settings */
     settings?: Record<string, unknown>;
+    /** Node role kind: input, process, output, gateway */
+    nodeKind?: 'input' | 'process' | 'output' | 'gateway';
+    /** Custom title or override label */
+    customTitle?: string;
+    /** Output file name or pattern for download nodes */
+    downloadFilename?: string;
     /** Conditional branching configuration (optional, for future use) */
     conditional?: {
         enabled: boolean;

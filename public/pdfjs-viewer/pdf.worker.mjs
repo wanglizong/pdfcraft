@@ -53290,7 +53290,7 @@ class StampAnnotation extends MarkupAnnotation {
       lines,
       thickness
     } = annotation;
-    if (!color) {
+    if (!color || !lines || !Array.isArray(lines) || lines.length === 0) {
       return null;
     }
     const appearanceBuffer = [`${thickness} w 1 J 1 j`, `${getPdfColor(color, areContours)}`];
@@ -53326,6 +53326,10 @@ class StampAnnotation extends MarkupAnnotation {
     }
     if (annotation.isSignature) {
       return this.#createNewAppearanceStreamForDrawing(annotation, xref);
+    }
+    if (!params?.image?.imageRef) {
+      warn("StampAnnotation: params.image or imageRef is missing, skipping appearance stream.");
+      return null;
     }
     const {
       rotation

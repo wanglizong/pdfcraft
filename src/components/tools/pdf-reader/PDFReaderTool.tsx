@@ -6,6 +6,7 @@ import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Download, X } from 'lucide-react';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface PDFReaderToolProps {
     className?: string;
@@ -57,15 +58,10 @@ export function PDFReaderTool({ className = '' }: PDFReaderToolProps) {
     }, [pdfUrl]);
 
     const handleDownload = useCallback(() => {
-        if (pdfUrl && file) {
-            const a = document.createElement('a');
-            a.href = pdfUrl;
-            a.download = file.name;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+        if (file) {
+            saveBlobFile(file, file.name);
         }
-    }, [pdfUrl, file]);
+    }, [file]);
 
     const handleReset = useCallback(() => {
         if (pdfUrl) {

@@ -5,6 +5,7 @@
 
 import { SavedWorkflow, WorkflowNode, WorkflowEdge } from '@/types/workflow';
 import { logger } from '@/lib/utils/logger';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 const STORAGE_KEY = 'pdfcraft_workflows';
 const MAX_WORKFLOWS = 50;
@@ -151,15 +152,8 @@ export function duplicateWorkflow(id: string): SavedWorkflow | null {
 export function exportWorkflow(workflow: SavedWorkflow): void {
     const dataStr = JSON.stringify(workflow, null, 2);
     const blob = new Blob([dataStr], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${workflow.name.replace(/[^a-z0-9]/gi, '_')}.workflow.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    const filename = `${workflow.name.replace(/[^a-z0-9]/gi, '_')}.workflow.json`;
+    saveBlobFile(blob, filename);
 }
 
 /**

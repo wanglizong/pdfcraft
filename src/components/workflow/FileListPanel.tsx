@@ -149,12 +149,19 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
     /**
      * Drag and drop handlers
      */
-    const handleDragStart = useCallback((index: number) => {
+    const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
         setDragIndex(index);
+        if (e.dataTransfer) {
+            e.dataTransfer.setData('text/plain', String(index));
+            e.dataTransfer.effectAllowed = 'move';
+        }
     }, []);
 
     const handleDragOver = useCallback((e: React.DragEvent, index: number) => {
         e.preventDefault();
+        if (e.dataTransfer) {
+            e.dataTransfer.dropEffect = 'move';
+        }
         if (dragIndex === null || dragIndex === index) return;
 
         const newFiles = [...files];
@@ -164,6 +171,12 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
         onFilesChange(newFiles);
         setDragIndex(index);
     }, [dragIndex, files, onFilesChange]);
+
+    const handleDrop = useCallback((e: React.DragEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragIndex(null);
+    }, []);
 
     const handleDragEnd = useCallback(() => {
         setDragIndex(null);
@@ -204,8 +217,9 @@ export function FileListPanel({ files, onFilesChange, onClose }: FileListPanelPr
                                 <div
                                     key={`${file.name}-${index}`}
                                     draggable
-                                    onDragStart={() => handleDragStart(index)}
+                                    onDragStart={(e) => handleDragStart(e, index)}
                                     onDragOver={(e) => handleDragOver(e, index)}
+                                    onDrop={handleDrop}
                                     onDragEnd={handleDragEnd}
                                     className={`
                                         flex items-center gap-3 p-3 rounded-lg border

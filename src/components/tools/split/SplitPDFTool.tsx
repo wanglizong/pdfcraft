@@ -18,6 +18,7 @@ import {
   type BookmarkInfo,
 } from '@/lib/pdf';
 import { createZip } from '@/lib/zip';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
 import type { SplitOptions, PageRange, ProcessOutput } from '@/types/pdf';
 
@@ -1014,12 +1015,8 @@ export function SplitPDFTool({ className = '' }: SplitPDFToolProps) {
                 onClick={async () => {
                   try {
                     const zipBlob = await createZip(results);
-                    const link = document.createElement('a');
-                    link.href = URL.createObjectURL(zipBlob);
-                    link.download = `${file?.name.replace('.pdf', '') || 'split'}-files.zip`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                    const zipName = `${file?.name.replace('.pdf', '') || 'split'}-files.zip`;
+                    await saveBlobFile(zipBlob, zipName);
                   } catch (err) {
                     console.error('Failed to create ZIP:', err);
                     setError('Failed to create ZIP file.');

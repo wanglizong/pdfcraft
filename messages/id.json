@@ -631,7 +631,11 @@
       "fillColorLabel": "Aktifkan Warna Isian:",
       "defaultAuthor": "Anotasi (Pengguna Tamu)",
       "undoBtn": "Batal",
-      "redoBtn": "Ulangi"
+      "redoBtn": "Ulangi",
+      "unnamedUser": "Pengguna tamu",
+      "undo": "Batal",
+      "redo": "Ulangi",
+      "annDefault": "Anotasi"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",
@@ -914,6 +918,39 @@
       "codeCopied": "Kode SVG disalin ke papan klip",
       "copyCode": "Salin Kode SVG",
       "downloadSvg": "Unduh Aset SVG"
+    },
+    "updater": {
+      "title": "Pembaruan Perangkat Lunak",
+      "checkBtn": "Periksa Pembaruan",
+      "checking": "Memeriksa pembaruan...",
+      "errorTitle": "Tidak dapat memeriksa pembaruan",
+      "retry": "Coba lagi",
+      "latest": "Anda sudah menggunakan versi terbaru!",
+      "latestDesc": "Hello PDF saat ini berada pada versi terbaru ({version}).",
+      "available": "Versi Baru Tersedia",
+      "currentVersion": "Versi Saat Ini",
+      "released": "Dirilis pada",
+      "releaseNotes": "Catatan Rilis",
+      "downloadPortable": "Unduh Windows Portable (ZIP)",
+      "downloadInstaller": "Unduh Pemasang Windows (.exe / .msi)",
+      "downloadMac": "Unduh untuk macOS (.dmg)",
+      "downloadAppImage": "Unduh Linux AppImage (Portabel)",
+      "downloadDeb": "Unduh Linux Debian (.deb)",
+      "allDownloads": "Lihat unduhan semua platform",
+      "viewOnGithub": "Lihat di GitHub",
+      "skipVersion": "Lewati versi ini",
+      "remindLater": "Ingatkan nanti",
+      "close": "Tutup",
+      "newVersionBadge": "Versi Baru",
+      "toastPrompt": "Versi baru telah tersedia dengan peningkatan stabilitas dan fitur inti. Perbarui sekarang untuk pengalaman terbaik.",
+      "viewDetails": "Perbarui Sekarang / Lihat Detail",
+      "mirrorDownload": "⚡ Unduhan Mirror Cepat",
+      "copyLink": "Salin tautan",
+      "copyMirrorLink": "Salin tautan mirror",
+      "openingBrowser": "Membuka peramban...",
+      "downloadStartedNotice": "Unduhan dimulai di browser! Jika belum mulai, salin tautan dan tempel di peramban Anda.",
+      "downloadFailedNotice": "Tidak dapat membuka browser secara otomatis. Silakan salin tautan dan unduh secara manual.",
+      "linkCopied": "Tautan unduhan berhasil disalin!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Opsi yang diberikan tidak valid.",
     "unknown": "Terjadi kesalahan yang tidak terduga. Silakan coba lagi.",
     "toolNotFound": "Alat Tidak Ditemukan",
-    "invalidPassword": "Kata sandi yang Anda masukkan salah. Silakan periksa dan coba lagi."
+    "invalidPassword": "Kata sandi yang Anda masukkan salah. Silakan periksa dan coba lagi.",
+    "incorrectPassword": "Kata sandi salah. Silakan coba lagi."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Pangkas & Ubah Ukuran Halaman",
         "description": "Pangkas halaman PDF dan sesuaikan dimensi halaman"
       }
-    }
+    },
+    "autoLayout": "Tata Letak Otomatis",
+    "duplicateNode": "Duplikat Node",
+    "downloadZip": "Unduh sebagai ZIP",
+    "downloadIndividually": "Unduh file satu per satu",
+    "flowControl": "Kontrol Alur",
+    "conditionGateway": "Gerbang Kondisi",
+    "downloadPdf": "Unduh PDF",
+    "outputCategory": "Keluaran & Ekspor",
+    "filenameLabel": "Nama file keluaran"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "misalnya, 1, 3, 5-10",
       "previewTitle": "Pratinjau",
       "previewNote": "Menampilkan halaman pertama saja untuk kinerja yang lebih baik",
-      "previewGenerating": "Membuat pratinjau..."
+      "previewGenerating": "Membuat pratinjau...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "Unggah File PDF",

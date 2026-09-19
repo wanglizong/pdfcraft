@@ -44,8 +44,8 @@
     "zh": "快速高效"
   },
   "aboutPage.values.fast.description": {
-    "en": "Powered by modern web technologies, PDFCraft delivers lightning-fast PDF processing without the need for uploads or downloads.",
-    "zh": "由现代 Web 技术驱动，PDFCraft 提供闪电般的 PDF 处理速度，无需上传或下载。"
+    "en": "Powered by modern web technologies, Hello PDF delivers lightning-fast PDF processing without the need for uploads or downloads.",
+    "zh": "由现代 Web 技术驱动，Hello PDF 提供闪电般的 PDF 处理速度，无需上传或下载。"
   },
   "aboutPage.values.accessible.title": {
     "en": "Accessible Everywhere",
@@ -60,8 +60,8 @@
     "zh": "永久免费"
   },
   "aboutPage.values.free.description": {
-    "en": "PDFCraft is completely free to use with no hidden costs, no registration required, and no limits on usage.",
-    "zh": "PDFCraft 完全免费使用，没有隐藏费用，无需注册，也不限制使用次数。"
+    "en": "Hello PDF is completely free to use with no hidden costs, no registration required, and no limits on usage.",
+    "zh": "Hello PDF 完全免费使用，没有隐藏费用，无需注册，也不限制使用次数。"
   },
   "aboutPage.values.openSource.title": {
     "en": "Open Source",

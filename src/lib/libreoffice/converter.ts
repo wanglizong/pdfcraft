@@ -29,6 +29,7 @@
 import { WorkerBrowserConverter } from '@matbee/libreoffice-converter/browser';
 import { fetchAssembledBlob } from '../utils/asset-loader';
 import { withBasePath } from '../utils/path';
+import { isTauri } from '../tauri-bridge';
 
 const LIBREOFFICE_PATH = withBasePath('/libreoffice-wasm/');
 const ASSET_VERSION = '20240212-4';
@@ -117,24 +118,64 @@ export class LibreOfficeConverter {
                 : '';
             this.progressCallback?.({ phase: 'loading', percent: 5, message: `Loading conversion engine${totalInfo}...` });
 
-            const filesToFetch = [
-                { name: 'soffice.wasm.bin', url: `${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`, estSize: 147 * 1024 * 1024 },
-                { name: 'soffice.data.bin', url: `${this.basePath}${SOFFICE_DATA_FILE}?v=${ASSET_VERSION}`, estSize: 99 * 1024 * 1024 },
-                { name: 'NotoSansSC-Regular.ttf', url: withBasePath(`/fonts/NotoSansSC-Regular.ttf?v=${ASSET_VERSION}`), estSize: 16.4 * 1024 * 1024 }
-            ];
+            let sofficeWasmUrl: string;
+            let sofficeDataUrl: string;
+            let fontArrayBuffer: ArrayBuffer;
 
-            // Fetch and reassemble assets (handles chunking on Cloudflare Pages)
-            const [sofficeWasmBlob, sofficeDataBlob, fontBlob] = await Promise.all(
-                filesToFetch.map(f => fetchAssembledBlob(f.url))
-            );
+            let useDirectStreaming = false;
+            if (isTauri()) {
+                try {
+                    const testRes = await fetch(`${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`, { method: 'HEAD' });
+                    useDirectStreaming = testRes.ok;
+                } catch {
+                    useDirectStreaming = false;
+                }
+            }
 
-            const sofficeWasmUrl = URL.createObjectURL(sofficeWasmBlob);
-            const sofficeDataUrl = URL.createObjectURL(sofficeDataBlob);
+            if (useDirectStreaming) {
+                console.log('[LibreOffice] Running in Tauri environment with unchunked assets: using direct asset URLs for zero-copy streaming');
+                sofficeWasmUrl = `${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`;
+                sofficeDataUrl = `${this.basePath}${SOFFICE_DATA_FILE}?v=${ASSET_VERSION}`;
 
-            this.blobUrls = [sofficeWasmUrl, sofficeDataUrl];
+                this.progressCallback?.({ phase: 'loading', percent: 15, message: 'Loading fonts...' });
+                const fontRes = await fetch(withBasePath(`/fonts/NotoSansSC-Regular.ttf?v=${ASSET_VERSION}`));
+                if (!fontRes.ok) {
+                    throw new Error(`Failed to load font: ${fontRes.statusText}`);
+                }
+                fontArrayBuffer = await fontRes.arrayBuffer();
+            } else {
+                const filesToFetch = [
+                    { name: 'soffice.wasm.bin', url: `${this.basePath}${SOFFICE_WASM_FILE}?v=${ASSET_VERSION}`, estSize: 147 * 1024 * 1024 },
+                    { name: 'soffice.data.bin', url: `${this.basePath}${SOFFICE_DATA_FILE}?v=${ASSET_VERSION}`, estSize: 99 * 1024 * 1024 },
+                    { name: 'NotoSansSC-Regular.ttf', url: withBasePath(`/fonts/NotoSansSC-Regular.ttf?v=${ASSET_VERSION}`), estSize: 16.4 * 1024 * 1024 }
+                ];
 
-            // Load CJK font into ArrayBuffer for the converter
-            const fontArrayBuffer = await fontBlob.arrayBuffer();
+                const totalBytesEst = filesToFetch.reduce((sum, f) => sum + f.estSize, 0);
+                const loadedBytesMap: { [key: string]: number } = {};
+
+                const reportProgress = () => {
+                    const currentLoaded = Object.values(loadedBytesMap).reduce((a, b) => a + b, 0);
+                    const pct = Math.min(90, Math.round((currentLoaded / totalBytesEst) * 90));
+                    this.progressCallback?.({
+                        phase: 'loading',
+                        percent: pct,
+                        message: this.buildProgressMessage({ percent: pct }),
+                    });
+                };
+
+                // Fetch and reassemble assets (handles chunking on Cloudflare Pages)
+                const [sofficeWasmBlob, sofficeDataBlob, fontBlob] = await Promise.all(
+                    filesToFetch.map(f => fetchAssembledBlob(f.url, (p) => {
+                        loadedBytesMap[f.name] = p.loadedBytes;
+                        reportProgress();
+                    }))
+                );
+
+                sofficeWasmUrl = URL.createObjectURL(sofficeWasmBlob);
+                sofficeDataUrl = URL.createObjectURL(sofficeDataBlob);
+                this.blobUrls = [sofficeWasmUrl, sofficeDataUrl];
+                fontArrayBuffer = await fontBlob.arrayBuffer();
+            }
 
             this.converter = new WorkerBrowserConverter({
                 sofficeJs: `${this.basePath}soffice.js?v=${ASSET_VERSION}`,
@@ -143,6 +184,9 @@ export class LibreOfficeConverter {
                 sofficeWorkerJs: `${this.basePath}soffice.worker.js?v=${ASSET_VERSION}`,
                 browserWorkerJs: `${this.basePath}browser.worker.global.js?v=${ASSET_VERSION}`,
                 verbose: false,
+                fonts: [
+                    { filename: 'NotoSansSC-Regular.ttf', data: fontArrayBuffer }
+                ],
                 onProgress: (info: { phase: string; percent: number; message: string }) => {
                     // Use this.progressCallback so a late-arriving callback from the UI gets picked up
                     if (this.progressCallback && !this.initialized) {
@@ -188,22 +232,30 @@ export class LibreOfficeConverter {
     private async checkEnvironment(): Promise<void> {
         console.warn('[LibreOffice] === Environment Check ===');
 
-        // Unregister any active service workers to prevent them from intercepting 
-        // LibreOffice WASM assets and causing ERR_FAILED / 500 OOM crashes.
+        // In Tauri desktop app, headers are provided natively by Tauri (app.security.headers).
+        // Any registered ServiceWorker should be removed to prevent it from intercepting
+        // or corrupting local asset loading.
+        // In browser environments, preserve coi-serviceworker for cross-origin isolation.
         if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
             try {
+                const inTauri = isTauri();
                 const registrations = await navigator.serviceWorker.getRegistrations();
                 for (const reg of registrations) {
+                    const scriptUrl = reg.active?.scriptURL || reg.waiting?.scriptURL || reg.installing?.scriptURL || '';
+                    if (!inTauri && scriptUrl.includes('coi-serviceworker')) {
+                        console.log(`[LibreOffice] Preserving coi-serviceworker for cross-origin isolation: ${scriptUrl}`);
+                        continue;
+                    }
                     await reg.unregister();
-                    console.warn(`[LibreOffice] Unregistered active Service Worker to prevent interference: ${reg.scope}`);
+                    console.warn(`[LibreOffice] Unregistered conflicting Service Worker: ${reg.scope}`);
                 }
             } catch (e) {
-                console.warn('[LibreOffice] Failed to unregister Service Worker:', e);
+                console.warn('[LibreOffice] Failed to check Service Worker:', e);
             }
         }
 
         // 1. Check COOP/COEP — this is the #1 cause of WASM timeout
-        const isIsolated = window.crossOriginIsolated;
+        const isIsolated = typeof window !== 'undefined' ? window.crossOriginIsolated : false;
         console.warn(`[LibreOffice] Cross-Origin Isolated: ${isIsolated ? 'YES ✅' : 'NO ❌'}`);
 
         // 2. Check SharedArrayBuffer directly
@@ -211,22 +263,34 @@ export class LibreOfficeConverter {
         console.warn(`[LibreOffice] SharedArrayBuffer: ${hasSAB ? 'Available ✅' : 'NOT available ❌'}`);
 
         if (!isIsolated || !hasSAB) {
+            if (!isTauri() && typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+                try {
+                    const basePath = window.location.pathname.startsWith('/pdfcraft') ? '/pdfcraft/' : '/';
+                    navigator.serviceWorker.register(`${basePath}coi-serviceworker.js`).then((reg) => {
+                        if (reg.active && !navigator.serviceWorker.controller) {
+                            window.location.reload();
+                        }
+                    }).catch(() => {});
+                } catch (_) {}
+            }
+
             const errorMsg = [
                 'LibreOffice WASM requires SharedArrayBuffer for multi-threading.',
                 '',
                 'SharedArrayBuffer is only available in Cross-Origin Isolated contexts.',
-                'Your server MUST return these headers on ALL responses:',
+                'If self-hosting (Nginx/Docker), ensure your server returns:',
                 '  Cross-Origin-Opener-Policy: same-origin',
                 '  Cross-Origin-Embedder-Policy: require-corp',
                 '  Cross-Origin-Resource-Policy: cross-origin',
                 '',
                 `Current state: crossOriginIsolated=${isIsolated}, SharedArrayBuffer=${hasSAB}`,
+                'A cross-origin isolation service worker has been initialized. Please reload the page if this error persists.',
             ].join('\n');
             console.error(`[LibreOffice] ${errorMsg}`);
             throw new Error(
                 `SharedArrayBuffer is not available (crossOriginIsolated=${isIsolated}). ` +
                 'Your server must set Cross-Origin-Opener-Policy and Cross-Origin-Embedder-Policy headers. ' +
-                'See browser console for details.'
+                'If using static hosting, reload the page to allow the isolation worker to take effect.'
             );
         }
 

@@ -24,6 +24,50 @@ export interface SignOptions {
   signatures: SignatureItem[];
 }
 
+async function ensurePngOrJpgBytes(dataUrlOrRaw: string): Promise<{ bytes: Uint8Array; format: 'png' | 'jpg' }> {
+  const isPng = dataUrlOrRaw.startsWith('data:image/png') || dataUrlOrRaw.includes('image/png');
+  const base64Clean = dataUrlOrRaw.replace(/^data:image\/[a-zA-Z0-9+.-]+;base64,/, '');
+  const rawBytes = Uint8Array.from(atob(base64Clean), c => c.charCodeAt(0));
+
+  // Magic bytes check
+  if (rawBytes.length >= 4 && rawBytes[0] === 0x89 && rawBytes[1] === 0x50 && rawBytes[2] === 0x4E && rawBytes[3] === 0x47) {
+    return { bytes: rawBytes, format: 'png' };
+  }
+  if (rawBytes.length >= 3 && rawBytes[0] === 0xFF && rawBytes[1] === 0xD8 && rawBytes[2] === 0xFF) {
+    return { bytes: rawBytes, format: 'jpg' };
+  }
+
+  // If in browser and format is webp/svg/gif/etc., transcode to PNG via canvas
+  if (typeof document !== 'undefined') {
+    try {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      const imgSrc = dataUrlOrRaw.startsWith('data:') ? dataUrlOrRaw : `data:image/png;base64,${base64Clean}`;
+      await new Promise<void>((resolve, reject) => {
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error('Failed to load image for transcoding'));
+        img.src = imgSrc;
+      });
+
+      const canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth || img.width || 300;
+      canvas.height = img.naturalHeight || img.height || 150;
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.drawImage(img, 0, 0);
+        const pngDataUrl = canvas.toDataURL('image/png');
+        const pngBase64 = pngDataUrl.replace(/^data:image\/png;base64,/, '');
+        const pngBytes = Uint8Array.from(atob(pngBase64), c => c.charCodeAt(0));
+        return { bytes: pngBytes, format: 'png' };
+      }
+    } catch (e) {
+      console.warn('Canvas transcoding fallback failed, proceeding with raw bytes:', e);
+    }
+  }
+
+  return { bytes: rawBytes, format: isPng ? 'png' : 'jpg' };
+}
+
 export class SignProcessor extends BasePDFProcessor {
   async process(input: ProcessInput, onProgress?: ProgressCallback): Promise<ProcessOutput> {
     this.reset();
@@ -78,14 +122,16 @@ export class SignProcessor extends BasePDFProcessor {
         } else if (sig.type === 'draw' || sig.type === 'image') {
           // Embed image signature
           try {
-            const imageData = sig.data.replace(/^data:image\/\w+;base64,/, '');
-            const imageBytes = Uint8Array.from(atob(imageData), c => c.charCodeAt(0));
-
+            const { bytes, format } = await ensurePngOrJpgBytes(sig.data);
             let image;
-            if (sig.data.includes('image/png')) {
-              image = await pdf.embedPng(imageBytes);
+            if (format === 'png') {
+              image = await pdf.embedPng(bytes);
             } else {
-              image = await pdf.embedJpg(imageBytes);
+              try {
+                image = await pdf.embedJpg(bytes);
+              } catch {
+                image = await pdf.embedPng(bytes);
+              }
             }
 
             const width = sig.width || 150;

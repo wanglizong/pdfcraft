@@ -16,12 +16,12 @@
     "zh": "全部右旋"
   },
   "common.footer.footer": {
-    "en": "© 2025 PDFCraft. All rights reserved.",
-    "zh": "© 2025 PDFCraft. 保留所有权利。"
+    "en": "© 2025 Hello PDF. All rights reserved.",
+    "zh": "© 2025 Hello PDF. 保留所有权利。"
   },
   "common.footer.copyright": {
-    "en": "© {year} PDFCraft. All rights reserved.",
-    "zh": "© {year} PDFCraft. 保留所有权利。"
+    "en": "© {year} Hello PDF. All rights reserved.",
+    "zh": "© {year} Hello PDF. 保留所有权利。"
   },
   "common.footer.madeWith": {
     "en": "Made with <Heart /> and <Nextjs />",
@@ -1012,8 +1012,8 @@
     "zh": "设置解密所持密码 (PFX 解密密钥)"
   },
   "common.certCryptor.passwordPlaceholder": {
-    "en": "Default password: pdfcraft",
-    "zh": "默认密码: pdfcraft"
+    "en": "Default password: Hello PDF",
+    "zh": "默认密码: Hello PDF"
   },
   "common.certCryptor.sealCoordinates": {
     "en": "Seal Coordinates: X: {x}px, Y: {y}px",

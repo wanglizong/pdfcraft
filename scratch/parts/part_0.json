@@ -16,12 +16,12 @@
     "zh": "全部右旋"
   },
   "common.footer.footer": {
-    "en": "© 2025 PDFCraft. All rights reserved.",
-    "zh": "© 2025 PDFCraft. 保留所有权利。"
+    "en": "© 2025 Hello PDF. All rights reserved.",
+    "zh": "© 2025 Hello PDF. 保留所有权利。"
   },
   "common.footer.copyright": {
-    "en": "© {year} PDFCraft. All rights reserved.",
-    "zh": "© {year} PDFCraft. 保留所有权利。"
+    "en": "© {year} Hello PDF. All rights reserved.",
+    "zh": "© {year} Hello PDF. 保留所有权利。"
   },
   "common.footer.madeWith": {
     "en": "Made with <Heart /> and <Nextjs />",

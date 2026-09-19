@@ -631,7 +631,11 @@
       "fillColorLabel": "Abilita colore di riempimento:",
       "defaultAuthor": "Annotazione (Utente ospite)",
       "undoBtn": "Annulla",
-      "redoBtn": "Ripristina"
+      "redoBtn": "Ripristina",
+      "unnamedUser": "Utente ospite",
+      "undo": "Annulla",
+      "redo": "Ripristina",
+      "annDefault": "Annotazione"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",
@@ -914,6 +918,39 @@
       "codeCopied": "Codice SVG copiato negli appunti",
       "copyCode": "Copia il codice SVG",
       "downloadSvg": "Scarica risorsa SVG"
+    },
+    "updater": {
+      "title": "Aggiornamento software",
+      "checkBtn": "Verifica aggiornamenti",
+      "checking": "Controllo aggiornamenti in corso...",
+      "errorTitle": "Impossibile verificare gli aggiornamenti",
+      "retry": "Riprova",
+      "latest": "Sei aggiornato!",
+      "latestDesc": "Hello PDF è attualmente alla versione più recente ({version}).",
+      "available": "Nuova versione disponibile",
+      "currentVersion": "Versione corrente",
+      "released": "Rilasciato il",
+      "releaseNotes": "Note di rilascio",
+      "downloadPortable": "Scarica versione portatile per Windows (ZIP)",
+      "downloadInstaller": "Scarica programma di installazione per Windows (.exe / .msi)",
+      "downloadMac": "Scarica per macOS (.dmg)",
+      "downloadAppImage": "Scarica Linux AppImage (portatile)",
+      "downloadDeb": "Scarica pacchetto Linux Debian (.deb)",
+      "allDownloads": "Visualizza tutti i download per piattaforma",
+      "viewOnGithub": "Visualizza su GitHub",
+      "skipVersion": "Salta questa versione",
+      "remindLater": "Ricordamelo più tardi",
+      "close": "Chiudi",
+      "newVersionBadge": "Nuova versione",
+      "toastPrompt": "È disponibile una nuova versione con stabilità e prestazioni migliorate. Aggiorna ora per un'esperienza ottimale.",
+      "viewDetails": "Aggiorna ora / Visualizza dettagli",
+      "mirrorDownload": "⚡ Download mirror veloce",
+      "copyLink": "Copia link",
+      "copyMirrorLink": "Copia link mirror",
+      "openingBrowser": "Apertura del browser in corso...",
+      "downloadStartedNotice": "Download avviato nel browser! Se non si avvia, copia il link e incollalo nel tuo browser.",
+      "downloadFailedNotice": "Impossibile aprire il browser. Copia il link e incollalo manualmente nel browser.",
+      "linkCopied": "Link di download copiato negli appunti!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Opzioni non valide fornite.",
     "unknown": "Si è verificato un errore imprevisto. Riprova.",
     "toolNotFound": "Strumento non trovato",
-    "invalidPassword": "La password inserita non è corretta. Controlla e riprova."
+    "invalidPassword": "La password inserita non è corretta. Controlla e riprova.",
+    "incorrectPassword": "Password errata. Riprova."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Ritaglia e ridimensiona pagine",
         "description": "Ritaglia le pagine del PDF e regola le dimensioni della pagina"
       }
-    }
+    },
+    "autoLayout": "Layout automatico",
+    "duplicateNode": "Duplica nodo",
+    "downloadZip": "Scarica come ZIP",
+    "downloadIndividually": "Scarica file singolarmente",
+    "flowControl": "Controllo di flusso",
+    "conditionGateway": "Gateway condizionale",
+    "downloadPdf": "Scarica PDF",
+    "outputCategory": "Uscita ed Esportazione",
+    "filenameLabel": "Nome file di output"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "ad esempio, 1, 3, 5-10",
       "previewTitle": "Anteprima",
       "previewNote": "Mostra solo la prima pagina per prestazioni migliori",
-      "previewGenerating": "Generazione dell'anteprima in corso..."
+      "previewGenerating": "Generazione dell'anteprima in corso...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "Carica file PDF",

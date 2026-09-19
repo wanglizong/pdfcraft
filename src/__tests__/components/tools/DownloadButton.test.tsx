@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent, waitFor, cleanup } from '@testing-library/react';
 import { DownloadButton } from '@/components/tools/DownloadButton';
+import * as tauriBridge from '@/lib/tauri-bridge';
 
 // Mock next-intl
 vi.mock('next-intl', () => ({
@@ -172,6 +173,59 @@ describe('DownloadButton', () => {
       expect(mockOnDownloadComplete).toHaveBeenCalled();
       
       vi.useRealTimers();
+    });
+  });
+
+  describe('Desktop (Tauri) Environment', () => {
+    it('calls saveBlobFile with file and safe filename when running in Tauri', async () => {
+      vi.spyOn(tauriBridge, 'isTauri').mockReturnValue(true);
+      const saveBlobSpy = vi.spyOn(tauriBridge, 'saveBlobFile').mockResolvedValue(true);
+      const mockOnDownloadStart = vi.fn();
+      const mockOnDownloadComplete = vi.fn();
+
+      const mockBlob = createMockBlob('test content');
+      render(
+        <DownloadButton
+          file={mockBlob}
+          filename="excel_export.pdf"
+          onDownloadStart={mockOnDownloadStart}
+          onDownloadComplete={mockOnDownloadComplete}
+        />
+      );
+
+      const button = screen.getByRole('button');
+      fireEvent.click(button);
+
+      expect(mockOnDownloadStart).toHaveBeenCalled();
+      await waitFor(() => {
+        expect(saveBlobSpy).toHaveBeenCalledWith(mockBlob, 'excel_export.pdf');
+      });
+      await waitFor(() => {
+        expect(mockOnDownloadComplete).toHaveBeenCalled();
+      });
+    });
+
+    it('handles user cancellation in Tauri save dialog without triggering onDownloadComplete', async () => {
+      vi.spyOn(tauriBridge, 'isTauri').mockReturnValue(true);
+      const saveBlobSpy = vi.spyOn(tauriBridge, 'saveBlobFile').mockResolvedValue(false);
+      const mockOnDownloadComplete = vi.fn();
+
+      const mockBlob = createMockBlob('test content');
+      render(
+        <DownloadButton
+          file={mockBlob}
+          filename="excel_export.pdf"
+          onDownloadComplete={mockOnDownloadComplete}
+        />
+      );
+
+      const button = screen.getByRole('button');
+      fireEvent.click(button);
+
+      await waitFor(() => {
+        expect(saveBlobSpy).toHaveBeenCalledWith(mockBlob, 'excel_export.pdf');
+      });
+      expect(mockOnDownloadComplete).not.toHaveBeenCalled();
     });
   });
 

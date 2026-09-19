@@ -174,28 +174,28 @@ export const toolContentEn: Record<string, ToolContent> = {
 
   'edit-pdf': {
     title: 'Edit PDF',
-    metaDescription: 'Edit PDF files online. Add text, images, annotations, highlights, and shapes to your documents.',
-    keywords: ['edit pdf', 'pdf editor', 'annotate pdf', 'add text to pdf', 'pdf markup'],
+    metaDescription: 'Directly edit PDF text and images online. Click paragraphs to edit in-place with live reflow, replace images, and find & replace across documents.',
+    keywords: ['edit pdf', 'pdf editor', 'edit pdf text', 'direct pdf editing', 'in-place pdf editor', 'modify pdf text'],
     description: `
-      <p>Edit PDF provides a comprehensive set of tools for modifying and annotating your PDF documents. Add text, images, shapes, highlights, comments, and more without needing expensive desktop software.</p>
-      <p>The intuitive editor interface makes it easy to mark up documents for review, add notes for collaboration, redact sensitive information, or enhance documents with additional content.</p>
-      <p>All editing happens locally in your browser, ensuring complete privacy for your sensitive documents.</p>
+      <p>Edit PDF provides high-fidelity in-place text and image editing powered by WebAssembly PDFium engine. Click directly into existing paragraphs to edit text just like a word processor, with automatic line re-wrapping and reflow.</p>
+      <p>Fine-tune your layout using the property inspector dock (font size, color, line height, alignment), replace or flip images, or batch find and replace text across the entire document. Switch to Classic Annotation mode anytime if you need freehand drawing, stamps, or form signatures.</p>
+      <p>All edits run strictly client-side inside your browser, guaranteeing 100% privacy and security for your files.</p>
     `,
     howToUse: [
       { step: 1, title: 'Upload Your PDF', description: 'Drag and drop your PDF file or click to select the document you want to edit.' },
-      { step: 2, title: 'Select Editing Tool', description: 'Choose from the toolbar: text, highlight, shapes, images, comments, or redaction tools.' },
-      { step: 3, title: 'Make Your Edits', description: 'Click on the document to add annotations, drag to position elements, and use the properties panel to customize.' },
-      { step: 4, title: 'Save and Download', description: 'Click Save to apply your changes and download the edited PDF.' },
+      { step: 2, title: 'Click to Edit Text Directly', description: 'Click or double-click any paragraph or heading to start editing with live reflow.' },
+      { step: 3, title: 'Format & Modify Images', description: 'Adjust typography via the inspector dock, or right-click images to replace or flip them.' },
+      { step: 4, title: 'Save & Download', description: 'Click Save Changes in the top right toolbar to export the updated PDF.' },
     ],
     useCases: [
-      { title: 'Document Review', description: 'Add comments, highlights, and markup to documents for collaborative review processes.', icon: 'message-square' },
-      { title: 'Form Completion', description: 'Fill in text fields, add signatures, and complete PDF forms without printing.', icon: 'edit-3' },
-      { title: 'Content Redaction', description: 'Permanently remove sensitive information from documents before sharing.', icon: 'eye-off' },
+      { title: 'Fix Typographical Errors', description: 'Correct typos, names, dates, or prices directly on the original document without opening source files.', icon: 'edit-3' },
+      { title: 'Global Find & Replace', description: 'Search keywords across all pages and replace them seamlessly in-place.', icon: 'search' },
+      { title: 'Update Graphics & Logos', description: 'Swap out outdated logos, diagrams, or signatures with newly uploaded images.', icon: 'image' },
     ],
     faq: [
-      { question: 'Can I edit the original text in the PDF?', answer: 'This tool focuses on adding annotations and new content. For editing existing text, you may need to use the original source document.' },
-      { question: 'Are my edits permanent?', answer: 'Annotations can be flattened to make them permanent, or kept as editable layers depending on your preference.' },
-      { question: 'Can I undo my changes?', answer: 'Yes, the editor supports undo/redo functionality. You can also reset to the original document at any time before saving.' },
+      { question: 'Can I directly edit existing text in the PDF?', answer: 'Yes! The editor features direct content editing. Simply click any existing text block or paragraph to type, delete, and reformat with live reflow.' },
+      { question: 'Can I still add annotations, stamps, and signatures?', answer: 'Yes! Use the mode switch toggle in the header anytime to switch to Classic Annotation mode for stamps, freehand drawing, and forms.' },
+      { question: 'Are my files kept private and secure?', answer: 'Absolutely. All PDF decoding, text clustering, re-wrapping, and stream splicing run entirely in your local browser through WebAssembly.' },
     ],
   },
 
@@ -2218,6 +2218,33 @@ export const toolContentEn: Record<string, ToolContent> = {
     ],
   },
 
+  'redact-pdf': {
+    title: 'Redact PDF',
+    metaDescription: 'Visually blackout, mosaic, or blur sensitive information in PDF files. Irreversible physical rasterization and deep metadata sanitization for privacy protection.',
+    keywords: ['redact pdf', 'blackout pdf', 'mosaic pdf', 'blur pdf', 'pdf privacy', 'remove sensitive data', 'secure pdf editor'],
+    description: `
+      <p>Redact PDF provides a visual, interactive editor to permanently conceal and protect sensitive data in your PDF documents. Drag to mark any confidential area—such as names, addresses, ID numbers, signatures, official seals, financial figures, or portraits—and apply blackout, whiteout, mosaic, or blur effects.</p>
+      <p>Unlike standard PDF editors that simply superimpose superficial black rectangles over existing text, this tool performs <strong>irreversible physical pixel rasterization</strong>. The underlying text layers, vector graphics, and OCR streams are completely destroyed and cannot be recovered by copy-pasting or reverse-engineering.</p>
+      <p>Additionally, the tool performs deep metadata wiping, eliminating author information, creation history, and XMP streams. All processing runs 100% locally in your browser with zero server uploads.</p>
+    `,
+    howToUse: [
+      { step: 1, title: 'Upload PDF Document', description: 'Select or drag-and-drop the PDF file you wish to redact.' },
+      { step: 2, title: 'Mark Sensitive Areas', description: 'Click and drag on any page to draw redaction boxes around confidential content.' },
+      { step: 3, title: 'Choose Redaction Style', description: 'Select blackout, whiteout, mosaic (adjustable pixel size), or blur. Toggle real-time preview to inspect the result.' },
+      { step: 4, title: 'Export Secured PDF', description: 'Click "Generate Secured PDF" to execute irreversible flattening, metadata wiping, and download your secured document.' },
+    ],
+    useCases: [
+      { title: 'Privacy & Regulatory Compliance', description: 'Safely mask Personally Identifiable Information (PII) to comply with GDPR, HIPAA, or CCPA requirements.', icon: 'shield' },
+      { title: 'Confidential Legal & Business Sharing', description: 'Obscure trade secrets, settlement terms, signatures, and stamps prior to public disclosure or external distribution.', icon: 'file-text' },
+      { title: 'Financial & Identity Protection', description: 'Conceal bank account numbers, tax IDs, credit card details, and ID card numbers from statements and invoices.', icon: 'lock' },
+    ],
+    faq: [
+      { question: 'Can anyone recover redacted information by copying text or inspecting layers?', answer: 'No. The redacted areas undergo physical pixel burn-in flattening. Underlying text, vectors, and objects are completely removed from the file structure, making recovery impossible.' },
+      { question: 'What is the difference between blackout, mosaic, and blur?', answer: 'Blackout creates a solid black mask (standard for legal documents); whiteout provides a clean white mask; mosaic creates a pixelated grid; and blur produces a soft frosted glass effect.' },
+      { question: 'Are files uploaded to your servers?', answer: 'No. All rendering, redaction, flattening, and PDF generation occur entirely within your browser memory. Your documents never leave your device.' },
+      { question: 'What metadata is removed?', answer: 'Document Title, Author, Subject, Keywords, Creator, Producer, CreationDate, ModDate, and extended XMP metadata streams are thoroughly erased.' },
+    ],
+  },
 
   'decrypt-pdf': {
     title: 'Decrypt PDF',

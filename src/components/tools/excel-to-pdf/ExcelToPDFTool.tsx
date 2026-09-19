@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { BatchProcessingPanel } from '@/components/common/BatchProcessingPanel';
 import { excelToPDF } from '@/lib/pdf/processors/excel-to-pdf';
+import { isCrossOriginIsolated } from '@/lib/utils/cross-origin-isolated';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 
 function generateId(): string {
@@ -35,38 +36,38 @@ export function ExcelToPDFTool({ className = '' }: ExcelToPDFToolProps) {
     const [error, setError] = useState<string | null>(null);
     const cancelledRef = useRef(false);
 
-    // Preload LibreOffice WASM when the component mounts
+    // Preload conversion engine when the component mounts
     useEffect(() => {
         let cancelled = false;
         (async () => {
             try {
-                const { getLibreOfficeConverter } = await import('@/lib/libreoffice');
-                if (cancelled) return;
-                const converter = getLibreOfficeConverter();
+                const { preloadExcelPyodide, isExcelPyodideReady } = await import('@/lib/pdf/processors/excel-to-pdf-pyodide');
+                if (isExcelPyodideReady()) {
+                    if (cancelled) return;
+                    setPreloadStatus('complete');
+                    setPreloadProgress(100);
+                    setPreloadMessage('Conversion engine ready.');
+                    return;
+                }
 
                 setPreloadStatus('processing');
                 setPreloadProgress(0);
-                setPreloadMessage('Checking environment...');
+                setPreloadMessage('Loading conversion engine...');
 
-                await converter.initialize((loadProgress: { percent: number; message: string; phase?: string }) => {
+                await preloadExcelPyodide((message) => {
                     if (cancelled) return;
-                    setPreloadStatus('processing');
-                    setPreloadProgress(loadProgress.percent);
-                    setPreloadMessage(loadProgress.message || 'Loading conversion engine...');
-
-                    if (loadProgress.phase === 'ready' || loadProgress.percent >= 100) {
-                        setPreloadStatus('complete');
-                    }
+                    setPreloadMessage(message || 'Loading conversion engine...');
                 });
 
                 if (cancelled) return;
                 setPreloadStatus('complete');
                 setPreloadProgress(100);
-                setPreloadMessage('Conversion engine ready!');
+                setPreloadMessage('Conversion engine ready.');
             } catch (err) {
                 if (cancelled) return;
-                setPreloadStatus('error');
-                setPreloadMessage(err instanceof Error ? err.message : 'Failed to preload conversion engine.');
+                console.warn('[ExcelToPDF] Engine preload warning:', err);
+                setPreloadStatus('complete');
+                setPreloadProgress(100);
             }
         })();
         return () => { cancelled = true; };
@@ -107,7 +108,8 @@ export function ExcelToPDFTool({ className = '' }: ExcelToPDFToolProps) {
 
         cancelledRef.current = false;
         setStatus('processing');
-        setProgress(0);
+        setProgress(20);
+        setProgressMessage('Converting Excel to PDF...');
         setError(null);
         setResult(null);
 
@@ -221,7 +223,7 @@ export function ExcelToPDFTool({ className = '' }: ExcelToPDFToolProps) {
                 <ProcessingProgress progress={progress} status={status} message={progressMessage} onCancel={handleCancel} showPercentage />
             )}
 
-            {!isProcessing && preloadStatus !== 'idle' && (
+            {!isProcessing && preloadStatus === 'processing' && (
                 <ProcessingProgress
                     progress={preloadProgress}
                     status={preloadStatus}

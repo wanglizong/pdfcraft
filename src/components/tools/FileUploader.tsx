@@ -3,6 +3,7 @@
 import React, { useCallback, useRef, useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { UploadCloud, File, Plus, X, Lock, Loader2 } from 'lucide-react';
+import { isTauri } from '@/lib/tauri-bridge';
 
 export interface FileUploaderProps {
   /** Accepted file types (MIME types or extensions) */
@@ -170,15 +171,17 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     setDecryptError(null);
 
     try {
-      const arrayBuffer = await fileToDecrypt.arrayBuffer();
-      const { PDFDocument } = await import('pdf-lib');
+      // Decrypt with qpdf-wasm (same engine as the dedicated Decrypt PDF tool).
+      // NOTE: pdf-lib cannot decrypt password-protected PDFs at all, so we must
+      // not use PDFDocument.load here — it throws for every encrypted input.
+      const { decryptPDF } = await import('@/lib/pdf/processors/decrypt');
+      const output = await decryptPDF(fileToDecrypt, { password });
 
-      // Attempt to load with the user-provided password (cast to any for compiler compatibility)
-      const pdfDoc = await PDFDocument.load(arrayBuffer, { password } as any);
+      if (!output.success || !output.result) {
+        throw new Error(output.error?.message || 'INVALID_PASSWORD');
+      }
 
-      // Save as completely decrypted (without any password protection)
-      const decryptedBytes = await pdfDoc.save();
-      const decryptedBlob = new Blob([decryptedBytes as any], { type: 'application/pdf' });
+      const decryptedBlob = output.result as Blob;
 
       // Create a fresh unlocked virtual File object, fallback to window.File to avoid Node/Browser File type clashes
       const unlockedFile = new (window as any).File([decryptedBlob], fileToDecrypt.name.replace('.pdf', '_unlocked.pdf'), {
@@ -250,17 +253,19 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
     }
   }, [disabled, validateFiles, onError, onFilesSelected]);
 
-  /**
-   * Handle drag enter
-   */
   const handleDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
     if (disabled) return;
 
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = 'copy';
+    }
+
     setDragCounter(prev => prev + 1);
-    if (e.dataTransfer.items && e.dataTransfer.items.length > 0) {
+    const hasFiles = e.dataTransfer.types && Array.from(e.dataTransfer.types).includes('Files');
+    if (hasFiles || (e.dataTransfer.items && e.dataTransfer.items.length > 0)) {
       setIsDragging(true);
     }
   }, [disabled]);
@@ -287,6 +292,9 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = 'copy';
+    }
   }, []);
 
   /**
@@ -337,6 +345,82 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
   }, [disabled]);
 
   /**
+   * Handle Tauri native drag-and-drop events
+   */
+  useEffect(() => {
+    if (!isTauri() || disabled) return;
+
+    let active = true;
+    const unlisteners: (() => void)[] = [];
+
+    const setupTauriDragDrop = async () => {
+      try {
+        const { getCurrentWebviewWindow } = await import('@tauri-apps/api/webviewWindow');
+        const { readFile } = await import('@tauri-apps/plugin-fs');
+        const appWindow = getCurrentWebviewWindow();
+
+        if (!active) return;
+
+        const uOver = await appWindow.listen<{ paths: string[] }>('tauri://drag-over', () => {
+          setIsDragging(true);
+        });
+        unlisteners.push(uOver);
+
+        const uLeave = await appWindow.listen('tauri://drag-leave', () => {
+          setIsDragging(false);
+        });
+        unlisteners.push(uLeave);
+
+        const uDrop = await appWindow.listen<{ paths: string[] }>('tauri://drag-drop', async (event) => {
+          setIsDragging(false);
+          const paths = event.payload.paths;
+          if (!paths || paths.length === 0) return;
+
+          const fileObjects: File[] = [];
+          for (const filePath of paths) {
+            try {
+              const bytes = await readFile(filePath);
+              const name = filePath.split(/[/\\]/).pop() || 'file.pdf';
+              
+              let mimeType = 'application/octet-stream';
+              if (name.toLowerCase().endsWith('.pdf')) {
+                mimeType = 'application/pdf';
+              } else if (name.toLowerCase().endsWith('.png')) {
+                mimeType = 'image/png';
+              } else if (name.toLowerCase().endsWith('.jpg') || name.toLowerCase().endsWith('.jpeg')) {
+                mimeType = 'image/jpeg';
+              }
+
+              const file = new (window as any).File([bytes], name, { type: mimeType }) as File;
+              fileObjects.push(file);
+            } catch (err) {
+              console.error(`Tauri failed to read dragged file: ${filePath}`, err);
+            }
+          }
+
+          if (fileObjects.length > 0) {
+            handleFiles(fileObjects);
+          }
+        });
+        unlisteners.push(uDrop);
+
+        if (!active) {
+          unlisteners.forEach(u => u());
+        }
+      } catch (err) {
+        console.error('Failed to set up Tauri drag and drop listeners:', err);
+      }
+    };
+
+    setupTauriDragDrop();
+
+    return () => {
+      active = false;
+      unlisteners.forEach(u => u());
+    };
+  }, [disabled, handleFiles]);
+
+  /**
    * Handle paste from clipboard
    */
   useEffect(() => {
@@ -368,6 +452,32 @@ export const FileUploader: React.FC<FileUploaderProps> = ({
       document.removeEventListener('paste', handlePaste);
     };
   }, [disabled, handleFiles]);
+
+  /**
+   * Prevent default browser drag/drop behavior to avoid file navigation (only for file drags)
+   */
+  useEffect(() => {
+    const handleGlobalDragOver = (e: DragEvent) => {
+      const hasFiles = e.dataTransfer && e.dataTransfer.types && Array.from(e.dataTransfer.types).includes('Files');
+      if (hasFiles) {
+        e.preventDefault();
+      }
+    };
+    
+    const handleGlobalDrop = (e: DragEvent) => {
+      const hasFiles = e.dataTransfer && e.dataTransfer.types && Array.from(e.dataTransfer.types).includes('Files');
+      if (hasFiles) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener('dragover', handleGlobalDragOver);
+    window.addEventListener('drop', handleGlobalDrop);
+    return () => {
+      window.removeEventListener('dragover', handleGlobalDragOver);
+      window.removeEventListener('drop', handleGlobalDrop);
+    };
+  }, []);
 
   const baseStyles = `
     relative flex flex-col items-center justify-center

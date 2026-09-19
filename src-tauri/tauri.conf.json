@@ -1,7 +1,7 @@
 {
-  "productName": "PDFCraft",
+  "productName": "Hello PDF",
   "version": "0.1.0",
-  "identifier": "com.pdfcraft.app",
+  "identifier": "com.Hello PDF.app",
   "build": {
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": "npm run build",
@@ -9,15 +9,27 @@
     "frontendDist": "../out"
   },
   "app": {
+    "withGlobalTauri": true,
     "windows": [
       {
-        "title": "PDFCraft",
+        "label": "main",
+        "title": "Hello PDF",
         "width": 1200,
-        "height": 800
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 600,
+        "resizable": true,
+        "dragDropEnabled": false
       }
     ],
     "security": {
-      "csp": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; object-src 'none'; script-src 'self' 'unsafe-eval'; worker-src blob: 'self'; wasm-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; media-src 'self' blob:; connect-src 'self' data: blob:;"
+      "csp": "default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; frame-src 'self' blob: data:; object-src 'none'; script-src 'self' 'unsafe-eval' 'wasm-unsafe-eval'; worker-src blob: 'self'; wasm-src 'self' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https:; font-src 'self' data:; media-src 'self' blob:; connect-src 'self' data: blob: https:;",
+      "dangerousDisableAssetCspModification": ["style-src"],
+      "headers": {
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Cross-Origin-Embedder-Policy": "require-corp",
+        "Cross-Origin-Resource-Policy": "cross-origin"
+      }
     }
   },
   "bundle": {

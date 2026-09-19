@@ -631,7 +631,11 @@
       "fillColorLabel": "Activare culoare umplere:",
       "defaultAuthor": "Adnotare (Utilizator invitat)",
       "undoBtn": "Anulează",
-      "redoBtn": "Refă"
+      "redoBtn": "Refă",
+      "unnamedUser": "Utilizator invitat",
+      "undo": "Anulează",
+      "redo": "Refă",
+      "annDefault": "Adnotare"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Offset Otsu)",
@@ -914,6 +918,39 @@
       "codeCopied": "Codul SVG a fost copiat în clipboard",
       "copyCode": "Copiați codul SVG",
       "downloadSvg": "Descărcați resursa SVG"
+    },
+    "updater": {
+      "title": "Actualizare software",
+      "checkBtn": "Verifică actualizări",
+      "checking": "Se caută actualizări...",
+      "errorTitle": "Nu s-au putut căuta actualizări",
+      "retry": "Reîncearcă",
+      "latest": "Aplicația este la zi!",
+      "latestDesc": "Hello PDF este în prezent la cea mai recentă versiune ({version}).",
+      "available": "Versiune nouă disponibilă",
+      "currentVersion": "Versiunea curentă",
+      "released": "Lansat la",
+      "releaseNotes": "Note de lansare",
+      "downloadPortable": "Descărcați versiunea portabilă Windows (ZIP)",
+      "downloadInstaller": "Descărcați programul de instalare Windows (.exe / .msi)",
+      "downloadMac": "Descărcați pentru macOS (.dmg)",
+      "downloadAppImage": "Descărcați Linux AppImage (Portabil)",
+      "downloadDeb": "Descărcați pachetul Linux Debian (.deb)",
+      "allDownloads": "Vizualizați descărcările pentru toate platformele",
+      "viewOnGithub": "Vizualizați pe GitHub",
+      "skipVersion": "Omiteți această versiune",
+      "remindLater": "Amintește-mi mai târziu",
+      "close": "Închide",
+      "newVersionBadge": "Versiune nouă",
+      "toastPrompt": "O nouă versiune este disponibilă cu stabilitate și performanță îmbunătățite. Actualizați acum pentru o experiență optimă.",
+      "viewDetails": "Actualizează acum / Vezi detalii",
+      "mirrorDownload": "⚡ Descărcare rapidă mirror",
+      "copyLink": "Copiază linkul",
+      "copyMirrorLink": "Copiază linkul mirror",
+      "openingBrowser": "Se deschide browserul...",
+      "downloadStartedNotice": "Descărcarea a început în browser! Dacă nu începe, copiați linkul și inserați-l în browser.",
+      "downloadFailedNotice": "Nu s-a putut deschide browserul. Copiați linkul și descărcați manual.",
+      "linkCopied": "Linkul de descărcare a fost copiat în clipboard!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Opțiuni nevalide furnizate.",
     "unknown": "A apărut o eroare neașteptată. Te rugăm să încerci din nou.",
     "toolNotFound": "Instrumentul nu a fost găsit",
-    "invalidPassword": "Parola introdusă este incorectă. Verificați și încercați din nou."
+    "invalidPassword": "Parola introdusă este incorectă. Verificați și încercați din nou.",
+    "incorrectPassword": "Parolă incorectă. Vă rugăm să încercați din nou."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Decupați și redimensionați paginile",
         "description": "Decupați paginile PDF și ajustați dimensiunile paginii"
       }
-    }
+    },
+    "autoLayout": "Aranjare automată",
+    "duplicateNode": "Duplicare nod",
+    "downloadZip": "Descărcare ca ZIP",
+    "downloadIndividually": "Descărcați fișierele individual",
+    "flowControl": "Control flux",
+    "conditionGateway": "Ramură condițională",
+    "downloadPdf": "Descărcare PDF",
+    "outputCategory": "Ieșire și Export",
+    "filenameLabel": "Nume fișier de ieșire"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "de ex., 1, 3, 5-10",
       "previewTitle": "Previzualizare",
       "previewNote": "Se afișează doar prima pagină pentru o performanță mai bună",
-      "previewGenerating": "Se generează previzualizarea..."
+      "previewGenerating": "Se generează previzualizarea...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "Încărcați fișierul PDF",

@@ -9,6 +9,7 @@ import { Card } from '@/components/ui/Card';
 import { extractImages, type ExtractedImage, type ExtractImagesOptions } from '@/lib/pdf/processors/extract-images';
 import type { ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 /**
  * Generate a unique ID for files
@@ -161,14 +162,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
      */
     const handleDownloadImage = useCallback((image: ExtractedImage) => {
         const blob = new Blob([new Uint8Array(image.data)]);
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = image.name;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        saveBlobFile(blob, image.name);
     }, []);
 
     /**
@@ -206,14 +200,7 @@ export function ExtractImagesTool({ className = '' }: ExtractImagesToolProps) {
                 compressionOptions: { level: 6 }
             });
 
-            const url = URL.createObjectURL(zipBlob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'extracted-images.zip';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
+            await saveBlobFile(zipBlob, 'extracted-images.zip');
 
             setStatus('complete');
             setProgress(100);

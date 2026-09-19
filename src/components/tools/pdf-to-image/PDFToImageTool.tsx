@@ -11,6 +11,7 @@ import { pdfToImages, type ImageFormat, type PDFToImageOptions, type PageLayoutP
 import { Select } from '@/components/ui/FormField';
 import type { UploadedFile, ProcessOutput } from '@/types/pdf';
 import JSZip from 'jszip';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 /**
  * Generate a unique ID for files
@@ -222,12 +223,7 @@ export function PDFToImageTool({ className = '', outputFormat }: PDFToImageToolP
     });
 
     const zipBlob = await zip.generateAsync({ type: 'blob' });
-    const url = URL.createObjectURL(zipBlob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${baseName}_images.zip`;
-    a.click();
-    URL.revokeObjectURL(url);
+    await saveBlobFile(zipBlob, `${baseName}_images.zip`);
   }, [result, file, format]);
 
   /**

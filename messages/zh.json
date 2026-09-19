@@ -631,7 +631,11 @@
       "fillColorLabel": "启用填充色:",
       "defaultAuthor": "标注 (不具名用户)",
       "undoBtn": "撤销",
-      "redoBtn": "重做"
+      "redoBtn": "重做",
+      "unnamedUser": "不具名用户",
+      "undo": "撤销",
+      "redo": "重做",
+      "annDefault": "注释"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (大津偏置)",
@@ -669,6 +673,20 @@
       "outputFormat": "输出文件格式",
       "formatSearchablePdf": "双层可搜索 PDF",
       "formatText": "提取纯文本文件 (.txt)",
+      "formatMarkdown": "结构化 Markdown (.md)",
+      "formatJson": "结构化 JSON (.json)",
+      "enhanceContrast": "智能画质增强 (对比度与边缘锐化)",
+      "enhanceContrastDesc": "自动校正暗部、发黄扫描件与浅色发票印记，大幅提升识别率",
+      "copyText": "复制识别文本",
+      "copied": "已复制到剪贴板！",
+      "openInEditor": "在直接编辑器中编辑",
+      "openInEditorDesc": "无需下载，立即对生成的 PDF 进行正文修改与排版",
+      "statsPages": "处理页数",
+      "statsWords": "识别词数",
+      "statsChars": "总字符数",
+      "statsConfidence": "平均置信度",
+      "tabText": "文本预览",
+      "tabJson": "JSON 结构",
       "accuracyTitle": "渲染识别精度",
       "accuracySd": "标清 (适合清晰原件)",
       "accuracyHd": "高清 (推荐，识别更稳)",
@@ -914,6 +932,39 @@
       "codeCopied": "代码已复制",
       "copyCode": "复制 SVG 源代码",
       "downloadSvg": "下载选中矢量图"
+    },
+    "updater": {
+      "title": "软件更新",
+      "checkBtn": "检查更新",
+      "checking": "正在检查更新...",
+      "errorTitle": "无法检查更新",
+      "retry": "重试",
+      "latest": "已是最新版本！",
+      "latestDesc": "您当前使用的是最新版本的 Hello PDF ({version})。",
+      "available": "发现新版本",
+      "currentVersion": "当前版本",
+      "released": "发布于",
+      "releaseNotes": "更新日志",
+      "downloadPortable": "下载 Windows 便携版 (ZIP)",
+      "downloadInstaller": "下载 Windows 安装包 (.exe / .msi)",
+      "downloadMac": "下载 macOS 安装包 (.dmg)",
+      "downloadAppImage": "下载 Linux AppImage (便携版)",
+      "downloadDeb": "下载 Linux Debian 安装包 (.deb)",
+      "allDownloads": "查看所有平台下载",
+      "viewOnGithub": "前往 GitHub 查看",
+      "skipVersion": "跳过此版本",
+      "remindLater": "稍后提醒",
+      "close": "关闭",
+      "newVersionBadge": "新版本",
+      "toastPrompt": "新版本已发布，已优化应用稳定性与多项核心功能，推荐立即更新体验。",
+      "viewDetails": "立即更新 / 查看详情",
+      "mirrorDownload": "⚡ 国内高速镜像通道下载",
+      "copyLink": "复制链接",
+      "copyMirrorLink": "复制镜像直链",
+      "openingBrowser": "正在打开系统浏览器...",
+      "downloadStartedNotice": "已唤起浏览器开始下载！若未自动弹出，可点击右侧按钮复制直链并在浏览器中粘贴。",
+      "downloadFailedNotice": "无法自动打开浏览器，请点击复制按钮手动在浏览器中粘贴下载。",
+      "linkCopied": "下载链接已复制到剪贴板！"
     }
   },
   "toolsPage": {
@@ -1170,7 +1221,8 @@
     "invalidOptions": "提供的选项无效。",
     "unknown": "发生意外错误。请重试。",
     "toolNotFound": "工具未找到",
-    "invalidPassword": "您输入的密码不正确。请检查后重试。"
+    "invalidPassword": "您输入的密码不正确。请检查后重试。",
+    "incorrectPassword": "密码错误，请重试。"
   },
   "home": {
     "hero": {
@@ -1233,7 +1285,8 @@
     "metaTitle": "PDF 工作流编辑器 - Hello PDF",
     "metaDescription": "通过可视化连接工具创建自定义 PDF 处理管道。构建、保存和重用您的工作流。",
     "toolbox": "工具箱",
-    "dragToAdd": "拖拽工具添加到工作流",
+    "dragToAdd": "拖拽或双击工具以添加到工作流",
+    "addToWorkflowHint": "拖拽或双击添加到工作流",
     "searchTools": "搜索工具...",
     "toolsAvailable": "个可用工具",
     "templates": "模板",
@@ -1244,6 +1297,13 @@
     "conversion": "转换",
     "optimization": "优化",
     "security": "安全",
+    "inputCategory": "输入源 (Input Sources)",
+    "pdfInput": "PDF 输入源",
+    "imageInput": "图片输入源",
+    "fileInput": "通用文件输入源",
+    "downloadPdf": "下载 PDF",
+    "downloadZip": "打包 ZIP 下载",
+    "outputCategory": "输出与导出 (Output & Export)",
     "noSavedWorkflows": "暂无已保存的工作流",
     "saveWorkflowHint": "创建并保存您的第一个工作流",
     "noFavorites": "暂无收藏的工作流",
@@ -1410,7 +1470,16 @@
         "name": "裁剪并调整大小",
         "description": "裁剪PDF页面并调整页面尺寸"
       }
-    }
+    },
+    "autoLayout": "一键整理布局",
+    "duplicateNode": "复制节点",
+    "downloadZip": "打包为 ZIP 下载",
+    "downloadIndividually": "分别下载各文件",
+    "flowControl": "流程控制",
+    "conditionGateway": "条件分支",
+    "downloadPdf": "下载 PDF",
+    "outputCategory": "输出与导出",
+    "filenameLabel": "输出文件名"
   },
   "tools": {
     "search": {
@@ -2559,7 +2628,18 @@
       "rangePlaceholder": "例如: 1, 3, 5-10",
       "previewTitle": "预览",
       "previewNote": "仅展示首页预览以优化性能",
-      "previewGenerating": "正在生成预览..."
+      "previewGenerating": "正在生成预览...",
+      "flattenTitle": "防篡改压平水印",
+      "flattenDescription": "将页面栅格化为图片，使水印无法被编辑、分离或擦除",
+      "dragHint": "可直接在预览画面中拖动水印位置，或拉拽四角控制点调整尺寸",
+      "posTop": "顶部居中",
+      "posBottom": "底部居中",
+      "posLeft": "左侧居中",
+      "posRight": "右侧居中",
+      "scale": "图片缩放",
+      "page": "第",
+      "of": "页，共",
+      "pages": "页"
     },
     "headerFooter": {
       "uploadLabel": "上传PDF文件",

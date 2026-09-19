@@ -631,7 +631,11 @@
       "fillColorLabel": "Habilitar color de relleno:",
       "defaultAuthor": "Anotación (Usuario invitado)",
       "undoBtn": "Deshacer",
-      "redoBtn": "Rehacer"
+      "redoBtn": "Rehacer",
+      "unnamedUser": "Usuario invitado",
+      "undo": "Deshacer",
+      "redo": "Rehacer",
+      "annDefault": "Anotación"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Desviación Otsu)",
@@ -914,6 +918,39 @@
       "codeCopied": "Código SVG copiado al portapapeles",
       "copyCode": "Copiar código SVG",
       "downloadSvg": "Descargar recurso SVG"
+    },
+    "updater": {
+      "title": "Actualización de software",
+      "checkBtn": "Buscar actualizaciones",
+      "checking": "Buscando actualizaciones...",
+      "errorTitle": "No se pudieron buscar actualizaciones",
+      "retry": "Reintentar",
+      "latest": "¡Estás actualizado!",
+      "latestDesc": "Hello PDF está actualmente en la versión más reciente ({version}).",
+      "available": "Nueva versión disponible",
+      "currentVersion": "Versión actual",
+      "released": "Publicado el",
+      "releaseNotes": "Notas de la versión",
+      "downloadPortable": "Descargar versión portátil para Windows (ZIP)",
+      "downloadInstaller": "Descargar instalador para Windows (.exe / .msi)",
+      "downloadMac": "Descargar para macOS (.dmg)",
+      "downloadAppImage": "Descargar Linux AppImage (portátil)",
+      "downloadDeb": "Descargar paquete Linux Debian (.deb)",
+      "allDownloads": "Ver descargas para todas las plataformas",
+      "viewOnGithub": "Ver en GitHub",
+      "skipVersion": "Omitir esta versión",
+      "remindLater": "Recordármelo más tarde",
+      "close": "Cerrar",
+      "newVersionBadge": "Nueva versión",
+      "toastPrompt": "Hay una nueva versión disponible con mejoras de estabilidad y rendimiento. Actualice ahora para obtener la mejor experiencia.",
+      "viewDetails": "Actualizar ahora / Ver detalles",
+      "mirrorDownload": "⚡ Descarga espejo rápida",
+      "copyLink": "Copiar enlace",
+      "copyMirrorLink": "Copiar enlace espejo",
+      "openingBrowser": "Abriendo el navegador...",
+      "downloadStartedNotice": "¡Descarga iniciada en el navegador! Si no empieza, copie el enlace y péguelo en su navegador.",
+      "downloadFailedNotice": "No se pudo abrir el navegador. Copie el enlace y péguelo manualmente.",
+      "linkCopied": "¡Enlace de descarga copiado al portapapeles!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Opciones inválidas proporcionadas.",
     "unknown": "Ocurrió un error inesperado. Por favor intenta de nuevo.",
     "toolNotFound": "Herramienta no encontrada",
-    "invalidPassword": "La contraseña ingresada es incorrecta. Verifique e intente de nuevo."
+    "invalidPassword": "La contraseña ingresada es incorrecta. Verifique e intente de nuevo.",
+    "incorrectPassword": "Contraseña incorrecta. Inténtalo de nuevo."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Recortar y cambiar tamaño de páginas",
         "description": "Recortar páginas PDF y ajustar las dimensiones de la página"
       }
-    }
+    },
+    "autoLayout": "Diseño automático",
+    "duplicateNode": "Duplicar nodo",
+    "downloadZip": "Descargar como ZIP",
+    "downloadIndividually": "Descargar archivos individualmente",
+    "flowControl": "Control de flujo",
+    "conditionGateway": "Puerta de condición",
+    "downloadPdf": "Descargar PDF",
+    "outputCategory": "Salida y Exportación",
+    "filenameLabel": "Nombre del archivo de salida"
   },
   "tools": {
     "search": {
@@ -1751,6 +1798,14 @@
       "saveError": "No se pudo guardar el PDF. Utilice el botón exportar en la barra de herramientas.",
       "savingMessage": "Guardando PDF con anotaciones...",
       "successMessage": "¡PDF guardado exitosamente! Haga clic en el botón de descarga para guardar su archivo editado.",
+      "textHistory": "Historial de cambios de texto",
+      "textUndo": "Deshacer texto",
+      "textRedo": "Rehacer texto",
+      "textUndoApplied": "Se ha deshecho el último cambio de texto.",
+      "textRedoApplied": "Se ha rehecho el cambio de texto.",
+      "overflowAppliedWarning": "El texto sustituido excede el área original. Revise visualmente el resultado antes de exportar.",
+      "fallbackFontWarning": "La fuente original no pudo reutilizarse y se empleó una alternativa. Revise los caracteres y el espaciado.",
+      "signatureInvalidatedWarning": "Este PDF contenía firmas digitales. La edición del contenido invalida sus firmas existentes.",
       "redactWarningTitle": "Modo de redacción activo",
       "redactWarningDescription": "Seleccione áreas para eliminar contenido permanentemente. El contenido redactado no se puede recuperar después de guardarlo.",
       "toolbar": {
@@ -2559,7 +2614,18 @@
       "rangePlaceholder": "por ejemplo, 1, 3, 5-10",
       "previewTitle": "Vista previa",
       "previewNote": "Mostrar la primera página solo para un mejor rendimiento",
-      "previewGenerating": "Generando vista previa..."
+      "previewGenerating": "Generando vista previa...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "Subir archivo PDF",

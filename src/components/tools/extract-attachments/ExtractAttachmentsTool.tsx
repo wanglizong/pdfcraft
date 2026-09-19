@@ -7,6 +7,7 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { extractAttachments, type AttachmentInfo } from '@/lib/pdf/processors/attachments';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
 
 /**
@@ -146,14 +147,7 @@ export function ExtractAttachmentsTool({ className = '' }: ExtractAttachmentsToo
    */
   const handleDownloadAttachment = useCallback((attachment: AttachmentInfo) => {
     const blob = new Blob([new Uint8Array(attachment.data)]);
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = attachment.name;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    saveBlobFile(blob, attachment.name);
   }, []);
 
   /**

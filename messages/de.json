@@ -631,7 +631,11 @@
       "fillColorLabel": "Füllfarbe aktivieren:",
       "defaultAuthor": "Kommentar (Gastbenutzer)",
       "undoBtn": "Rückgängig",
-      "redoBtn": "Wiederholen"
+      "redoBtn": "Wiederholen",
+      "unnamedUser": "Gastbenutzer",
+      "undo": "Rückgängig",
+      "redo": "Wiederholen",
+      "annDefault": "Anmerkung"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu-Offset)",
@@ -914,6 +918,39 @@
       "codeCopied": "SVG-Code in die Zwischenablage kopiert",
       "copyCode": "SVG-Code kopieren",
       "downloadSvg": "Laden Sie SVG Asset herunter"
+    },
+    "updater": {
+      "title": "Software-Aktualisierung",
+      "checkBtn": "Nach Updates suchen",
+      "checking": "Suche nach Updates...",
+      "errorTitle": "Updates konnten nicht gesucht werden",
+      "retry": "Wiederholen",
+      "latest": "Sie sind auf dem neuesten Stand!",
+      "latestDesc": "Hello PDF ist aktuell auf der neuesten Version ({version}).",
+      "available": "Neue Version verfügbar",
+      "currentVersion": "Aktuelle Version",
+      "released": "Veröffentlicht am",
+      "releaseNotes": "Versionshinweise",
+      "downloadPortable": "Windows Portable herunterladen (ZIP)",
+      "downloadInstaller": "Windows-Installationsprogramm herunterladen (.exe / .msi)",
+      "downloadMac": "macOS herunterladen (.dmg)",
+      "downloadAppImage": "Linux AppImage herunterladen (Portable)",
+      "downloadDeb": "Linux Debian herunterladen (.deb)",
+      "allDownloads": "Alle Plattform-Downloads anzeigen",
+      "viewOnGithub": "Auf GitHub ansehen",
+      "skipVersion": "Diese Version überspringen",
+      "remindLater": "Später erinnern",
+      "close": "Schließen",
+      "newVersionBadge": "Neue Version",
+      "toastPrompt": "Eine neue Version ist verfügbar mit verbesserter Stabilität und Leistung. Aktualisieren Sie jetzt für das beste Erlebnis.",
+      "viewDetails": "Jetzt aktualisieren / Details anzeigen",
+      "mirrorDownload": "⚡ Schneller Mirror-Download",
+      "copyLink": "Link kopieren",
+      "copyMirrorLink": "Mirror-Link kopieren",
+      "openingBrowser": "Browser wird geöffnet...",
+      "downloadStartedNotice": "Download im Browser gestartet! Falls nicht, kopieren Sie den Link und fügen Sie ihn in Ihren Browser ein.",
+      "downloadFailedNotice": "Browser konnte nicht geöffnet werden. Bitte Link kopieren und manuell im Browser öffnen.",
+      "linkCopied": "Download-Link in die Zwischenablage kopiert!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Ungültige Optionen angegeben.",
     "unknown": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "toolNotFound": "Werkzeug nicht gefunden",
-    "invalidPassword": "Das eingegebene Passwort ist falsch. Bitte überprüfen und erneut versuchen."
+    "invalidPassword": "Das eingegebene Passwort ist falsch. Bitte überprüfen und erneut versuchen.",
+    "incorrectPassword": "Falsches Passwort. Bitte versuchen Sie es erneut."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Seiten zuschneiden und in der Größe ändern",
         "description": "PDF-Seiten zuschneiden und Seitenabmessungen anpassen"
       }
-    }
+    },
+    "autoLayout": "Automatisches Layout",
+    "duplicateNode": "Knoten duplizieren",
+    "downloadZip": "Als ZIP herunterladen",
+    "downloadIndividually": "Dateien einzeln herunterladen",
+    "flowControl": "Ablaufsteuerung",
+    "conditionGateway": "Bedingtes Gateway",
+    "downloadPdf": "PDF herunterladen",
+    "outputCategory": "Ausgabe & Export",
+    "filenameLabel": "Ausgabedateiname"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "z. B. 1, 3, 5-10",
       "previewTitle": "Vorschau",
       "previewNote": "Aus Leistungsgründen wird nur die erste Seite als Vorschau geladen",
-      "previewGenerating": "Vorschau wird generiert..."
+      "previewGenerating": "Vorschau wird generiert...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "PDF-Datei hochladen",

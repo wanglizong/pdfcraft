@@ -631,7 +631,11 @@
       "fillColorLabel": "تمكين لون التعبئة:",
       "defaultAuthor": "تعليق توضيحي (مستخدم زائر)",
       "undoBtn": "تراجع",
-      "redoBtn": "إعادة"
+      "redoBtn": "إعادة",
+      "unnamedUser": "مستخدم ضيف",
+      "undo": "تراجع",
+      "redo": "إعادة",
+      "annDefault": "تعليق توضيحي"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (إزاحة أوتسو)",
@@ -914,6 +918,39 @@
       "codeCopied": "تم نسخ كود SVG إلى الحافظة",
       "copyCode": "نسخ كود SVG",
       "downloadSvg": "تنزيل أصل SVG"
+    },
+    "updater": {
+      "title": "تحديث البرنامج",
+      "checkBtn": "التحقق من وجود تحديثات",
+      "checking": "جارٍ التحقق من وجود تحديثات...",
+      "errorTitle": "تعذر التحقق من وجود تحديثات",
+      "retry": "إعادة المحاولة",
+      "latest": "أنت تستخدم أحدث إصدار!",
+      "latestDesc": "Hello PDF يعمل حاليًا بأحدث إصدار ({version}).",
+      "available": "يتوفر إصدار جديد",
+      "currentVersion": "الإصدار الحالي",
+      "released": "تاريخ الإصدار",
+      "releaseNotes": "ملاحظات الإصدار",
+      "downloadPortable": "تنزيل نسخة Windows المحمولة (ZIP)",
+      "downloadInstaller": "تنزيل مثبت Windows (.exe / .msi)",
+      "downloadMac": "تنزيل لنظام macOS (.dmg)",
+      "downloadAppImage": "تنزيل Linux AppImage (محمول)",
+      "downloadDeb": "تنزيل حزمة Linux Debian (.deb)",
+      "allDownloads": "عرض تنزيلات جميع المنصات",
+      "viewOnGithub": "عرض على GitHub",
+      "skipVersion": "تخطي هذا الإصدار",
+      "remindLater": "تذكيري لاحقًا",
+      "close": "إغلاق",
+      "newVersionBadge": "إصدار جديد",
+      "toastPrompt": "يتوفر إصدار جديد مع تحسينات في الاستقرار والأداء. قم بالتحديث الآن للحصول على أفضل تجربة.",
+      "viewDetails": "تحديث الآن / عرض التفاصيل",
+      "mirrorDownload": "⚡ تنزيل عبر خادم مرآة سريع",
+      "copyLink": "نسخ الرابط",
+      "copyMirrorLink": "نسخ رابط المرآة",
+      "openingBrowser": "جارٍ فتح المتصفح...",
+      "downloadStartedNotice": "بدأ التنزيل في المتصفح! إذا لم يبدأ، انسخ الرابط والصقه في متصفحك.",
+      "downloadFailedNotice": "تعذر فتح المتصفح تلقائيًا. يرجى نسخ الرابط والتنزيل يدويًا.",
+      "linkCopied": "تم نسخ رابط التنزيل إلى الحافظة!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "تم تقديم خيارات غير صالحة.",
     "unknown": "حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى.",
     "toolNotFound": "الأداة غير موجودة",
-    "invalidPassword": "كلمة المرور التي أدخلتها غير صحيحة. يرجى التحقق والمحاولة مرة أخرى."
+    "invalidPassword": "كلمة المرور التي أدخلتها غير صحيحة. يرجى التحقق والمحاولة مرة أخرى.",
+    "incorrectPassword": "كلمة المرور غير صحيحة. يرجى المحاولة مرة أخرى."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "قص الصفحات وتغيير حجمها",
         "description": "قص صفحات PDF وضبط أبعاد الصفحة"
       }
-    }
+    },
+    "autoLayout": "تخطيط تلقائي",
+    "duplicateNode": "تكرار العقدة",
+    "downloadZip": "تنزيل كملف مضغوط ZIP",
+    "downloadIndividually": "تنزيل الملفات بشكل فردي",
+    "flowControl": "التحكم في التدفق",
+    "conditionGateway": "بوابة الشروط",
+    "downloadPdf": "تنزيل PDF",
+    "outputCategory": "الإخراج والتصدير",
+    "filenameLabel": "اسم ملف الإخراج"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "على سبيل المثال، 1، 3، 5-10",
       "previewTitle": "معاينة",
       "previewNote": "عرض الصفحة الأولى فقط للحصول على أداء أفضل",
-      "previewGenerating": "جاري إنشاء المعاينة..."
+      "previewGenerating": "جاري إنشاء المعاينة...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "تحميل ملف PDF",

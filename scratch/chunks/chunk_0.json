@@ -152,8 +152,8 @@
     "zh": "未找到工具"
   },
   "contactPage.methods.email.action": {
-    "en": "contact@pdfcraft.app",
-    "zh": "contact@pdfcraft.app"
+    "en": "contact@Hello PDF.app",
+    "zh": "contact@Hello PDF.app"
   },
   "contactPage.methods.github.title": {
     "en": "GitHub",
@@ -164,8 +164,8 @@
     "zh": "推特"
   },
   "contactPage.methods.twitter.action": {
-    "en": "@pdfcraft",
-    "zh": "@pdfcraft"
+    "en": "@Hello PDF",
+    "zh": "@Hello PDF"
   },
   "contactPage.form.fields.email.placeholder": {
     "en": "your@email.com",

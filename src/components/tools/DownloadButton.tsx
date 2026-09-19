@@ -6,6 +6,7 @@ import { Button, type ButtonProps } from '../ui/Button';
 import { addRecentFile } from '@/lib/storage/recent-files';
 import { useToolContext } from '@/lib/contexts/ToolContext';
 import { sanitizeFilename } from '@/lib/utils/sanitize';
+import { isTauri, saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface DownloadButtonProps extends Omit<ButtonProps, 'onClick' | 'children'> {
   /** Blob data to download */
@@ -91,14 +92,37 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({
   /**
    * Handle download click
    */
-  const handleDownload = useCallback(() => {
-    if (!file || !blobUrl || isDownloading) return;
+  const handleDownload = useCallback(async () => {
+    if (!file || isDownloading) return;
 
     setIsDownloading(true);
     onDownloadStart?.();
 
     // Sanitize filename to prevent path traversal
     const safeFilename = sanitizeFilename(filename, 'download.pdf');
+
+    // Desktop (Tauri) environment: prompt native Save File dialog and write directly to disk
+    if (isTauri()) {
+      try {
+        const saved = await saveBlobFile(file, safeFilename);
+        if (saved) {
+          onDownloadComplete?.();
+          if (toolSlug) {
+            addRecentFile(safeFilename, file.size, toolSlug, toolName);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to save file in desktop app:', error);
+      } finally {
+        setIsDownloading(false);
+      }
+      return;
+    }
+
+    if (!blobUrl) {
+      setIsDownloading(false);
+      return;
+    }
 
     // Create a temporary anchor element
     const link = document.createElement('a');
@@ -132,7 +156,7 @@ export const DownloadButton: React.FC<DownloadButtonProps> = ({
       
       // Record to recent files if tool info is provided
       if (toolSlug && file) {
-        addRecentFile(filename, file.size, toolSlug, toolName);
+        addRecentFile(safeFilename, file.size, toolSlug, toolName);
       }
     }, 500);
   }, [file, blobUrl, filename, isDownloading, autoRevoke, onDownloadStart, onDownloadComplete, toolSlug, toolName]);

@@ -6,6 +6,7 @@ import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { withBasePath } from '@/lib/utils/path';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface SignPDFToolProps {
   className?: string;
@@ -214,25 +215,20 @@ export function SignPDFTool({ className = '' }: SignPDFToolProps) {
       }
 
       const rawPdfBytes = await pdfDocument.saveDocument();
-      const pdfBytes = Uint8Array.from(
-        rawPdfBytes instanceof Uint8Array ? rawPdfBytes : new Uint8Array(rawPdfBytes)
-      );
+      const pdfBytes =
+        rawPdfBytes instanceof Uint8Array
+          ? rawPdfBytes
+          : new Uint8Array(rawPdfBytes);
 
-      const blob = new Blob([pdfBytes.buffer], { type: 'application/pdf' });
-
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `signed_${signState.file?.name || 'document.pdf'}`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+      const blob = new Blob([pdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+      const downloadName = `signed_${signState.file?.name || 'document.pdf'}`;
+      await saveBlobFile(blob, downloadName);
 
       setIsProcessing(false);
     } catch (err) {
       console.error('Failed to save signed PDF:', err);
-      setError('Failed to save signed PDF. Please try again.');
+      const msg = err instanceof Error ? err.message : 'Please try again.';
+      setError(`Failed to save signed PDF: ${msg}`);
       setIsProcessing(false);
     }
   }, [signState.viewerReady, signState.file]);

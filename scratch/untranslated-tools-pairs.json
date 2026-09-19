@@ -6595,8 +6595,8 @@
     ]
   },
   {
-    "en": "Default password: pdfcraft",
-    "zh": "默认密码: pdfcraft",
+    "en": "Default password: Hello PDF",
+    "zh": "默认密码: Hello PDF",
     "keys": [
       "common.certCryptor.passwordPlaceholder"
     ],

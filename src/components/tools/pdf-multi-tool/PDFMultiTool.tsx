@@ -8,6 +8,7 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface PDFMultiToolProps {
   className?: string;
@@ -204,27 +205,50 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
   }, [history]);
 
   // Drag handlers
-  const handleDragStart = useCallback((index: number) => {
+  const handleDragStart = useCallback((e: React.DragEvent, index: number) => {
     setDraggedIndex(index);
+    if (e.dataTransfer) {
+      e.dataTransfer.setData('text/plain', String(index));
+      e.dataTransfer.effectAllowed = 'move';
+    }
   }, []);
 
   const handleDragOver = useCallback((e: React.DragEvent, index: number) => {
     e.preventDefault();
+    if (e.dataTransfer) {
+      e.dataTransfer.dropEffect = 'move';
+    }
     if (draggedIndex !== null && draggedIndex !== index) {
       setDragOverIndex(index);
     }
   }, [draggedIndex]);
 
-  const handleDragEnd = useCallback(() => {
-    if (draggedIndex !== null && dragOverIndex !== null && draggedIndex !== dragOverIndex) {
+  const handleDrop = useCallback((e: React.DragEvent, targetIndex: number) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (draggedIndex !== null && draggedIndex !== targetIndex) {
       const newPreviews = [...pagePreviews];
       const [draggedPage] = newPreviews.splice(draggedIndex, 1);
-      newPreviews.splice(dragOverIndex, 0, draggedPage);
+      newPreviews.splice(targetIndex, 0, draggedPage);
       updatePages(newPreviews);
     }
     setDraggedIndex(null);
     setDragOverIndex(null);
-  }, [draggedIndex, dragOverIndex, pagePreviews, updatePages]);
+  }, [draggedIndex, pagePreviews, updatePages]);
+
+  const handleDragEnd = useCallback(() => {
+    setDraggedIndex(null);
+    setDragOverIndex(null);
+  }, []);
+
+  // Move page position
+  const handleMovePage = useCallback((fromIndex: number, toIndex: number) => {
+    if (toIndex < 0 || toIndex >= pagePreviews.length) return;
+    const newPreviews = [...pagePreviews];
+    const [movedPage] = newPreviews.splice(fromIndex, 1);
+    newPreviews.splice(toIndex, 0, movedPage);
+    updatePages(newPreviews);
+  }, [pagePreviews, updatePages]);
 
   // Selection
   const handleToggleSelect = useCallback((index: number) => {
@@ -354,13 +378,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
 
       const pdfBytes = await newPdf.save();
       const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
-
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'selected_pages.pdf';
-      a.click();
-      URL.revokeObjectURL(url);
+      await saveBlobFile(blob, 'selected_pages.pdf');
 
       setStatus('idle');
     } catch (err) {
@@ -643,8 +661,9 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                 <div
                   key={`page-${index}`}
                   draggable={!isProcessing}
-                  onDragStart={() => handleDragStart(index)}
+                  onDragStart={(e) => handleDragStart(e, index)}
                   onDragOver={(e) => handleDragOver(e, index)}
+                  onDrop={(e) => handleDrop(e, index)}
                   onDragEnd={handleDragEnd}
                   className={`
                     group relative rounded-lg cursor-grab transition-all duration-200
@@ -656,7 +675,7 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                   <div
                     onClick={() => handleToggleSelect(index)}
                     className={`
-                      aspect-[3/4] rounded-lg border-2 overflow-hidden transition-all cursor-pointer
+                      relative aspect-[3/4] rounded-lg border-2 overflow-hidden transition-all cursor-pointer
                       ${page.selected
                         ? 'border-[hsl(var(--color-primary))] ring-2 ring-[hsl(var(--color-primary)/0.3)]'
                         : 'border-[hsl(var(--color-border))] hover:border-[hsl(var(--color-primary)/0.5)]'
@@ -687,6 +706,34 @@ export function PDFMultiTool({ className = '' }: PDFMultiToolProps) {
                         </svg>
                       </div>
                     )}
+
+                    {/* Move buttons */}
+                    <div className="absolute bottom-1 left-1 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); handleMovePage(index, index - 1); }}
+                        disabled={index === 0 || isProcessing}
+                        className="w-5 h-5 bg-white/90 dark:bg-slate-800/90 rounded shadow flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
+                        aria-label="Move left"
+                        title="Move left"
+                      >
+                        <svg className="w-3 h-3 text-slate-700 dark:text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                        </svg>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => { e.stopPropagation(); handleMovePage(index, index + 1); }}
+                        disabled={index === pagePreviews.length - 1 || isProcessing}
+                        className="w-5 h-5 bg-white/90 dark:bg-slate-800/90 rounded shadow flex items-center justify-center hover:bg-white dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed"
+                        aria-label="Move right"
+                        title="Move right"
+                      >
+                        <svg className="w-3 h-3 text-slate-700 dark:text-slate-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
 
                   {/* Page Info */}

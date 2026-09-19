@@ -7,6 +7,7 @@ import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { configurePdfjsWorker } from '@/lib/pdf/loader';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 /**
  * PDF Metadata interface
@@ -253,14 +254,8 @@ export function ViewMetadataTool({ className = '' }: ViewMetadataToolProps) {
     };
     
     const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = file.name.replace('.pdf', '_metadata.json');
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    const filename = file.name.replace('.pdf', '_metadata.json');
+    saveBlobFile(blob, filename);
   }, [metadata, file]);
 
   /**

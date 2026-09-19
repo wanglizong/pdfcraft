@@ -64,8 +64,15 @@ function walkDir(dir, callback) {
 }
 
 async function main() {
-    if (process.env.DOCKER_BUILD === 'true') {
-        console.log('[chunking] DOCKER_BUILD detected, skipping chunking.');
+    const isDesktopOrDocker =
+        process.env.DOCKER_BUILD === 'true' ||
+        process.env.TAURI_ENV === 'true' ||
+        process.env.BUILDING_TAURI === 'true' ||
+        process.env.SKIP_CHUNKING === 'true' ||
+        Boolean(process.env.TAURI_ENV_PLATFORM || process.env.TAURI_PLATFORM);
+
+    if (isDesktopOrDocker) {
+        console.log('[chunking] Desktop/Tauri or Docker environment detected, skipping chunking.');
         return;
     }
 

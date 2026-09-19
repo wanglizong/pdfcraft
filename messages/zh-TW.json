@@ -631,7 +631,11 @@
       "fillColorLabel": "啟用填充顏色:",
       "defaultAuthor": "標注 (不具名用户)",
       "undoBtn": "撤銷",
-      "redoBtn": "重做"
+      "redoBtn": "重做",
+      "unnamedUser": "不具名使用者",
+      "undo": "撤銷",
+      "redo": "重做",
+      "annDefault": "註釋"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Otsu 閾值偏移)",
@@ -914,6 +918,39 @@
       "codeCopied": "代码已複製",
       "copyCode": "複製 SVG 源代码",
       "downloadSvg": "下载選中矢量图"
+    },
+    "updater": {
+      "title": "軟體更新",
+      "checkBtn": "檢查更新",
+      "checking": "正在檢查更新...",
+      "errorTitle": "無法檢查更新",
+      "retry": "重試",
+      "latest": "已是最新版本！",
+      "latestDesc": "您目前使用的是最新版本的 Hello PDF ({version})。",
+      "available": "發現新版本",
+      "currentVersion": "目前版本",
+      "released": "發佈於",
+      "releaseNotes": "更新日誌",
+      "downloadPortable": "下載 Windows 免安裝版 (ZIP)",
+      "downloadInstaller": "下載 Windows 安裝包 (.exe / .msi)",
+      "downloadMac": "下載 macOS 安裝包 (.dmg)",
+      "downloadAppImage": "下載 Linux AppImage (免安裝版)",
+      "downloadDeb": "下載 Linux Debian 安裝包 (.deb)",
+      "allDownloads": "查看所有平台下載",
+      "viewOnGithub": "前往 GitHub 查看",
+      "skipVersion": "略過此版本",
+      "remindLater": "稍後提醒",
+      "close": "關閉",
+      "newVersionBadge": "新版本",
+      "toastPrompt": "新版本已發布，已優化應用穩定性與多項核心功能，建議立即更新體驗。",
+      "viewDetails": "立即更新 / 查看詳情",
+      "mirrorDownload": "⚡ 高速鏡像通道下載",
+      "copyLink": "複製鏈接",
+      "copyMirrorLink": "複製鏡像直鏈",
+      "openingBrowser": "正在開啟系統瀏覽器...",
+      "downloadStartedNotice": "已喚起瀏覽器開始下載！若未自動彈出，可點擊右側按鈕複製直鏈並在瀏覽器中貼上。",
+      "downloadFailedNotice": "無法自動開啟瀏覽器，請點擊複製按鈕手動在瀏覽器中貼上下載。",
+      "linkCopied": "下載鏈接已複製到剪貼板！"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "提供的選項無效。",
     "unknown": "發生意外錯誤。請重試。",
     "toolNotFound": "工具未找到",
-    "invalidPassword": "您輸入的密碼不正確。請檢查後重試。"
+    "invalidPassword": "您輸入的密碼不正確。請檢查後重試。",
+    "incorrectPassword": "密碼錯誤，請重試。"
   },
   "home": {
     "hero": {
@@ -1233,7 +1271,8 @@
     "metaTitle": "PDF 工作流程編輯器 - Hello PDF",
     "metaDescription": "透過視覺化連接工具建立自訂 PDF 處理管道。建構、儲存和重複使用您的工作流程。",
     "toolbox": "工具箱",
-    "dragToAdd": "拖曳工具新增到工作流程",
+    "dragToAdd": "拖曳或雙擊工具以新增到工作流程",
+    "addToWorkflowHint": "拖曳或雙擊新增到工作流程",
     "searchTools": "搜尋工具...",
     "toolsAvailable": "個可用工具",
     "templates": "範本",
@@ -1410,7 +1449,16 @@
         "name": "裁剪並調整大小",
         "description": "裁剪 PDF 頁面並調整頁面尺寸"
       }
-    }
+    },
+    "autoLayout": "一鍵整理版面",
+    "duplicateNode": "複製節點",
+    "downloadZip": "打包為 ZIP 下載",
+    "downloadIndividually": "分別下載各檔案",
+    "flowControl": "流程控制",
+    "conditionGateway": "條件分支",
+    "downloadPdf": "下載 PDF",
+    "outputCategory": "輸出與導出",
+    "filenameLabel": "輸出檔案名稱"
   },
   "tools": {
     "search": {
@@ -2559,7 +2607,18 @@
       "rangePlaceholder": "例如: 1, 3, 5-10",
       "previewTitle": "預覽",
       "previewNote": "僅展示首頁預覽以優化性能",
-      "previewGenerating": "正在生成預覽..."
+      "previewGenerating": "正在生成預覽...",
+      "flattenTitle": "防篡改壓平浮水印",
+      "flattenDescription": "將頁面柵格化為圖片，使浮水印無法被編輯、分離或擦除",
+      "dragHint": "可直接在預覽畫面中拖動浮水印位置，或拉拽四角控制點調整尺寸",
+      "posTop": "頂部居中",
+      "posBottom": "底部居中",
+      "posLeft": "左側居中",
+      "posRight": "右側居中",
+      "scale": "圖片縮放",
+      "page": "第",
+      "of": "頁，共",
+      "pages": "頁"
     },
     "headerFooter": {
       "uploadLabel": "上傳 PDF 文件",

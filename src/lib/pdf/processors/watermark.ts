@@ -18,6 +18,14 @@ export interface WatermarkOptions {
   imageData?: ArrayBuffer;
   imageType?: 'png' | 'jpg';
   position?: 'center' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'diagonal';
+  /** Relative x position in page (0 to 1, default 0.5) */
+  x?: number;
+  /** Relative y position in page from top (0 to 1, default 0.5) */
+  y?: number;
+  /** Scale factor for image watermark (default 0.5) */
+  imageScale?: number;
+  /** If true, flatten pages with watermarks to tamper-resistant images */
+  flatten?: boolean;
   opacity?: number;
   rotation?: number;
   fontSize?: number;
@@ -135,7 +143,12 @@ export class WatermarkProcessor extends BasePDFProcessor {
       type: inputOptions.type ?? 'text',
       text: inputOptions.text,
       imageData: inputOptions.imageData,
+      imageType: inputOptions.imageType,
       position: inputOptions.position ?? 'center',
+      x: inputOptions.x,
+      y: inputOptions.y,
+      imageScale: inputOptions.imageScale ?? 0.5,
+      flatten: inputOptions.flatten ?? false,
       opacity: inputOptions.opacity ?? 0.3,
       rotation: inputOptions.rotation ?? -45,
       fontSize: inputOptions.fontSize ?? 48,
@@ -220,27 +233,35 @@ export class WatermarkProcessor extends BasePDFProcessor {
           } else {
             let x = 0, y = 0;
 
-            switch (wmOptions.position) {
-              case 'top-left':
-                x = 50; y = height - 50;
-                break;
-              case 'top-right':
-                x = width - textWidth - 50; y = height - 50;
-                break;
-              case 'bottom-left':
-                x = 50; y = 50;
-                break;
-              case 'bottom-right':
-                x = width - textWidth - 50; y = 50;
-                break;
-              case 'center':
-                const position = computeTextWatermarkPosition(width, height, textWidth, textHeight, rotation);
-                x = position.x;
-                y = position.y;
-                break;
-              case 'diagonal':
-              default:
-                x = width / 2; y = height / 2;
+            if (wmOptions.x !== undefined && wmOptions.y !== undefined) {
+              const targetCenterX = wmOptions.x * width;
+              const targetCenterY = (1 - wmOptions.y) * height;
+              const position = computeTextWatermarkPosition(width, height, textWidth, textHeight, rotation, targetCenterX, targetCenterY);
+              x = position.x;
+              y = position.y;
+            } else {
+              switch (wmOptions.position) {
+                case 'top-left':
+                  x = 50; y = height - 50;
+                  break;
+                case 'top-right':
+                  x = width - textWidth - 50; y = height - 50;
+                  break;
+                case 'bottom-left':
+                  x = 50; y = 50;
+                  break;
+                case 'bottom-right':
+                  x = width - textWidth - 50; y = 50;
+                  break;
+                case 'center':
+                  const position = computeTextWatermarkPosition(width, height, textWidth, textHeight, rotation);
+                  x = position.x;
+                  y = position.y;
+                  break;
+                case 'diagonal':
+                default:
+                  x = width / 2; y = height / 2;
+              }
             }
 
             page.drawText(text, {
@@ -254,7 +275,7 @@ export class WatermarkProcessor extends BasePDFProcessor {
             });
           }
         } else if (wmOptions.type === 'image' && embeddedImage) {
-          const scale = 0.5;
+          const scale = wmOptions.imageScale ?? 0.5;
           const imgWidth = embeddedImage.width * scale;
           const imgHeight = embeddedImage.height * scale;
 
@@ -262,8 +283,19 @@ export class WatermarkProcessor extends BasePDFProcessor {
             // Tile the image watermark across the entire page
             tileImageWatermark(page, pdfLib, embeddedImage, imgWidth, imgHeight, wmOptions, width, height);
           } else {
-            const x = (width - imgWidth) / 2;
-            const y = (height - imgHeight) / 2;
+            const rad = ((wmOptions.rotation || 0) * Math.PI) / 180;
+            const halfW = imgWidth / 2;
+            const halfH = imgHeight / 2;
+            let targetCenterX = width / 2;
+            let targetCenterY = height / 2;
+
+            if (wmOptions.x !== undefined && wmOptions.y !== undefined) {
+              targetCenterX = wmOptions.x * width;
+              targetCenterY = (1 - wmOptions.y) * height;
+            }
+
+            const x = targetCenterX - (halfW * Math.cos(rad) - halfH * Math.sin(rad));
+            const y = targetCenterY - (halfW * Math.sin(rad) + halfH * Math.cos(rad));
 
             page.drawImage(embeddedImage, {
               x,
@@ -276,13 +308,81 @@ export class WatermarkProcessor extends BasePDFProcessor {
           }
         }
 
-        this.updateProgress(30 + (60 * (i + 1) / pagesToProcess.length), `Processing page ${pageIndex + 1}...`);
+        this.updateProgress(30 + (55 * (i + 1) / pagesToProcess.length), `Processing page ${pageIndex + 1}...`);
       }
 
-      this.updateProgress(95, 'Saving PDF...');
+      this.updateProgress(90, 'Saving PDF...');
       const pdfBytes = await pdf.save({ useObjectStreams: true });
-      const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
 
+      // Flatten watermark: rasterize pages to tamper-resistant images
+      if (wmOptions.flatten && typeof document !== 'undefined' && typeof window !== 'undefined') {
+        try {
+          this.updateProgress(92, 'Flattening PDF pages (rasterizing)...');
+          const { loadPdfjs } = await import('../loader');
+          const pdfjs = await loadPdfjs();
+          const watermarkedPdf = await pdfjs.getDocument({ data: pdfBytes.slice() }).promise;
+          const flattenedDoc = await pdfLib.PDFDocument.create();
+          const numPages = watermarkedPdf.numPages;
+          const renderScale = 2.0;
+
+          let canvasAvailable = true;
+          for (let i = 1; i <= numPages; i++) {
+            if (this.checkCancelled()) {
+              return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
+            }
+            this.updateProgress(92 + Math.floor((7 * i) / numPages), `Flattening page ${i} of ${numPages}...`);
+            const page = await watermarkedPdf.getPage(i);
+            const unscaledVP = page.getViewport({ scale: 1 });
+            const viewport = page.getViewport({ scale: renderScale });
+
+            const canvas = document.createElement('canvas');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) {
+              canvasAvailable = false;
+              break;
+            }
+
+            await page.render({ canvasContext: ctx, viewport }).promise;
+            const jpegBytes = await new Promise<ArrayBuffer | null>((resolve) => {
+              canvas.toBlob(
+                (blob) => {
+                  if (blob) {
+                    blob.arrayBuffer().then(resolve).catch(() => resolve(null));
+                  } else {
+                    resolve(null);
+                  }
+                },
+                'image/jpeg',
+                0.92
+              );
+            });
+
+            if (jpegBytes) {
+              const image = await flattenedDoc.embedJpg(jpegBytes);
+              const newPage = flattenedDoc.addPage([unscaledVP.width, unscaledVP.height]);
+              newPage.drawImage(image, {
+                x: 0,
+                y: 0,
+                width: unscaledVP.width,
+                height: unscaledVP.height,
+              });
+            }
+          }
+
+          if (canvasAvailable && flattenedDoc.getPageCount() > 0) {
+            const flattenedBytes = await flattenedDoc.save({ useObjectStreams: true });
+            const blob = new Blob([new Uint8Array(flattenedBytes)], { type: 'application/pdf' });
+            this.updateProgress(100, 'Complete!');
+            return this.createSuccessOutput(blob, file.name.replace('.pdf', '_watermarked.pdf'), { pageCount: numPages });
+          }
+        } catch (flattenError) {
+          console.warn('Flattening failed, falling back to standard PDF:', flattenError);
+        }
+      }
+
+      const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       this.updateProgress(100, 'Complete!');
       return this.createSuccessOutput(blob, file.name.replace('.pdf', '_watermarked.pdf'), { pageCount: totalPages });
 
@@ -315,12 +415,10 @@ function computeTextWatermarkPosition(
   pageHeight: number,
   textWidth: number,
   textHeight: number,
-  rotation: number
+  rotation: number,
+  centerX: number = pageWidth / 2,
+  centerY: number = pageHeight / 2
 ): { x: number; y: number } {
-
-  // Calculate the center coordinates of the PDF page
-  const centerX = pageWidth / 2;
-  const centerY = pageHeight / 2;
 
   // Half of text width/height, baseline offset for text drawing
   const textWidthHalf = textWidth / 2;

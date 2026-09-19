@@ -631,7 +631,11 @@
       "fillColorLabel": "Habilitar cor de preenchimento:",
       "defaultAuthor": "Anotação (Usuário convidado)",
       "undoBtn": "Desfazer",
-      "redoBtn": "Refazer"
+      "redoBtn": "Refazer",
+      "unnamedUser": "Usuário convidado",
+      "undo": "Desfazer",
+      "redo": "Refazer",
+      "annDefault": "Anotação"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Desvio Otsu)",
@@ -914,6 +918,39 @@
       "codeCopied": "Código SVG copiado para a área de transferência",
       "copyCode": "Copiar código SVG",
       "downloadSvg": "Baixar recurso SVG"
+    },
+    "updater": {
+      "title": "Atualização de software",
+      "checkBtn": "Verificar atualizações",
+      "checking": "Verificando atualizações...",
+      "errorTitle": "Não foi possível verificar atualizações",
+      "retry": "Tentar novamente",
+      "latest": "Você está atualizado!",
+      "latestDesc": "O Hello PDF está atualmente na versão mais recente ({version}).",
+      "available": "Nova versão disponível",
+      "currentVersion": "Versão atual",
+      "released": "Lançado em",
+      "releaseNotes": "Notas de lançamento",
+      "downloadPortable": "Baixar versão portátil para Windows (ZIP)",
+      "downloadInstaller": "Baixar instalador para Windows (.exe / .msi)",
+      "downloadMac": "Baixar para macOS (.dmg)",
+      "downloadAppImage": "Baixar Linux AppImage (portátil)",
+      "downloadDeb": "Baixar pacote Linux Debian (.deb)",
+      "allDownloads": "Ver downloads para todas as plataformas",
+      "viewOnGithub": "Ver no GitHub",
+      "skipVersion": "Ignorar esta versão",
+      "remindLater": "Lembrar mais tarde",
+      "close": "Fechar",
+      "newVersionBadge": "Nova versão",
+      "toastPrompt": "Uma nova versão está disponível com estabilidade e desempenho aprimorados. Atualize agora para a melhor experiência.",
+      "viewDetails": "Atualizar agora / Ver detalhes",
+      "mirrorDownload": "⚡ Download espelho rápido",
+      "copyLink": "Copiar link",
+      "copyMirrorLink": "Copiar link espelho",
+      "openingBrowser": "Abrindo o navegador...",
+      "downloadStartedNotice": "Download iniciado no navegador! Se não começar, copie o link e cole-o no seu navegador.",
+      "downloadFailedNotice": "Não foi possível abrir o navegador. Copie o link e cole-o manualmente.",
+      "linkCopied": "Link de download copiado para a área de transferência!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Opções inválidas fornecidas.",
     "unknown": "Ocorreu um erro inesperado. Por favor, tente novamente.",
     "toolNotFound": "Ferramenta não encontrada",
-    "invalidPassword": "A senha inserida está incorreta. Verifique e tente novamente."
+    "invalidPassword": "A senha inserida está incorreta. Verifique e tente novamente.",
+    "incorrectPassword": "Senha incorreta. Tente novamente."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Cortar e redimensionar páginas",
         "description": "Cortar páginas PDF e ajustar as dimensões da página"
       }
-    }
+    },
+    "autoLayout": "Layout automático",
+    "duplicateNode": "Duplicar nó",
+    "downloadZip": "Baixar como ZIP",
+    "downloadIndividually": "Baixar arquivos individualmente",
+    "flowControl": "Controle de fluxo",
+    "conditionGateway": "Gateway condicional",
+    "downloadPdf": "Baixar PDF",
+    "outputCategory": "Saída e Exportação",
+    "filenameLabel": "Nome do arquivo de saída"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "por exemplo, 1, 3, 5-10",
       "previewTitle": "Visualizar",
       "previewNote": "Mostrando apenas a primeira página para melhor desempenho",
-      "previewGenerating": "Gerando visualização..."
+      "previewGenerating": "Gerando visualização...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "Carregar arquivo PDF",

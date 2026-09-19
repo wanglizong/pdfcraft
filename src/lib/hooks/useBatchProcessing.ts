@@ -8,6 +8,7 @@
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface BatchFile {
   id: string;
@@ -54,6 +55,7 @@ export function useBatchProcessing(options: BatchProcessingOptions = {}): UseBat
   const [files, setFiles] = useState<BatchFile[]>([]);
   const [isProcessing, setIsProcessing] = useState(false);
   const cancelledRef = useRef(false);
+  const processingRef = useRef(false); // Track processing state with ref
 
   const addFiles = useCallback((newFiles: File[]) => {
     const batchFiles: BatchFile[] = newFiles.map((file) => ({
@@ -84,12 +86,22 @@ export function useBatchProcessing(options: BatchProcessingOptions = {}): UseBat
     async (
       processor: (file: File, onProgress: (progress: number) => void) => Promise<Blob>
     ) => {
-      if (isProcessing) return;
+      // Check ref to avoid race condition
+      if (processingRef.current) return;
       
+      processingRef.current = true;
       setIsProcessing(true);
       cancelledRef.current = false;
 
-      const pendingFiles = files.filter((f) => f.status === 'pending');
+      // Capture current files snapshot
+      const currentFiles = await new Promise<BatchFile[]>((resolve) => {
+        setFiles((f) => {
+          resolve(f);
+          return f;
+        });
+      });
+
+      const pendingFiles = currentFiles.filter((f) => f.status === 'pending');
       const queue = [...pendingFiles];
       const processing: Promise<void>[] = [];
 
@@ -155,19 +167,22 @@ export function useBatchProcessing(options: BatchProcessingOptions = {}): UseBat
 
       await processQueue();
 
+      // Mark as complete
+      processingRef.current = false;
       setIsProcessing(false);
 
-      // Get final state
-      setFiles((currentFiles) => {
-        onAllComplete?.(currentFiles);
-        return currentFiles;
+      // Get final state and trigger callback
+      setFiles((finalFiles) => {
+        onAllComplete?.(finalFiles);
+        return finalFiles;
       });
     },
-    [files, isProcessing, maxConcurrent, updateFile, onFileComplete, onAllComplete, onError]
+    [maxConcurrent, updateFile, onFileComplete, onAllComplete, onError]
   );
 
   const cancelProcessing = useCallback(() => {
     cancelledRef.current = true;
+    processingRef.current = false;
     setIsProcessing(false);
   }, []);
 
@@ -210,14 +225,7 @@ export function useBatchProcessing(options: BatchProcessingOptions = {}): UseBat
     });
 
     const blob = await zip.generateAsync({ type: 'blob' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = zipFilename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    await saveBlobFile(blob, zipFilename);
   }, [files]);
 
   // Calculate derived state

@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import '@/app/globals.css';
 
+import { siteConfig } from '@/config/site';
+
 export const metadata: Metadata = {
-  title: 'PDFCraft - Professional PDF Tools',
-  description: 'Free online PDF tools for merging, splitting, compressing, and converting PDF files. All processing happens in your browser for maximum privacy.',
+  metadataBase: new URL(siteConfig.url),
   icons: {
     icon: '/favicon.svg',
     shortcut: '/favicon.svg',
@@ -35,6 +36,11 @@ export default function RootLayout({
               } catch (_) {}
             `,
           }}
+        />
+        <script
+          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/coi-serviceworker.js`}
+          data-coi="true"
+          async
         />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">

@@ -18,7 +18,17 @@ const MAX_FILE_SIZE = 50 * 1024 * 1024;
 /** Conversion timeout: 5 minutes */
 const CONVERT_TIMEOUT_MS = 5 * 60 * 1000;
 
-import { getSharedLibreOfficeConverter } from '@/lib/libreoffice/shared-converter';
+import {
+    getSharedLibreOfficeConverter,
+    isLibreOfficeFailed,
+    isLibreOfficeReady,
+} from '@/lib/libreoffice/shared-converter';
+import { isCrossOriginIsolated } from '@/lib/utils/cross-origin-isolated';
+import {
+    convertExcelToPdfPyodide,
+    isExcelPyodideReady,
+} from './excel-to-pdf-pyodide';
+
 export interface ExcelToPDFOptions {
     /** Reserved for future options */
 }
@@ -46,6 +56,44 @@ export class ExcelToPDFProcessor extends BasePDFProcessor {
     protected reset(): void {
         this.stopConversionProgress();
         super.reset();
+    }
+
+    private async convertWithLibreOffice(file: File): Promise<Blob> {
+        const converter = await getSharedLibreOfficeConverter((percent, message) => {
+            this.updateProgress(Math.min(percent * 0.8, 80), message);
+        });
+
+        if (this.checkCancelled()) {
+            throw new Error('Processing was cancelled.');
+        }
+
+        this.updateProgress(85, 'Converting Excel to PDF...');
+        this.startConversionProgress();
+
+        try {
+            return await Promise.race([
+                converter.convertToPdf(file),
+                new Promise<never>((_, reject) =>
+                    setTimeout(() => reject(new Error(
+                        `Conversion timed out after ${CONVERT_TIMEOUT_MS / 60000} minutes. The file may be too complex.`
+                    )), CONVERT_TIMEOUT_MS)
+                ),
+            ]);
+        } finally {
+            this.stopConversionProgress();
+        }
+    }
+
+    private async convertWithPyodideFallback(file: File): Promise<Blob> {
+        this.updateProgress(20, 'Converting Excel to PDF...');
+
+        return await convertExcelToPdfPyodide(file, (message) => {
+            const mappedMessage =
+                message === 'Converting...' || message === 'Analyzing...'
+                    ? 'Converting Excel to PDF...'
+                    : message;
+            this.updateProgress(Math.min(this.progress + 15, 92), mappedMessage);
+        });
     }
 
     async process(
@@ -86,30 +134,57 @@ export class ExcelToPDFProcessor extends BasePDFProcessor {
             );
         }
 
-        try {
-            this.updateProgress(5, 'Loading conversion engine (first time may take 1-2 minutes)...');
+        const canPyodideFallback = ext === 'xlsx' || ext === 'csv';
+        const isolated = isCrossOriginIsolated();
+        const isPyodideReady = isExcelPyodideReady();
+        const loReady = isLibreOfficeReady();
+        const loFailed = isLibreOfficeFailed();
 
-            const converter = await getSharedLibreOfficeConverter((percent, message) => {
-                this.updateProgress(Math.min(percent * 0.8, 80), message);
-            });
+        if (!isolated && !canPyodideFallback) {
+            return this.createErrorOutput(
+                PDFErrorCode.PROCESSING_FAILED,
+                `.${ext} files require LibreOffice, which needs Cross-Origin Isolation on your server.`,
+                'Your host must send Cross-Origin-Opener-Policy: same-origin and Cross-Origin-Embedder-Policy: require-corp on all HTML responses. Alternatively, convert the file to .xlsx or .csv first.'
+            );
+        }
 
-            if (this.checkCancelled()) {
-                return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
+        // Determine best engine to use without redundant reload:
+        // If file is .xlsx/.csv:
+        // - If Pyodide is already preloaded and ready, use it immediately
+        // - If LibreOffice failed or host is not isolated, use Pyodide
+        // - If LibreOffice is already ready, use it
+        // - Otherwise default to Pyodide for instant, reliable Excel processing
+        let preferPyodide = false;
+        if (canPyodideFallback) {
+            if (isPyodideReady || loFailed || !isolated) {
+                preferPyodide = true;
+            } else if (loReady) {
+                preferPyodide = false;
+            } else {
+                preferPyodide = true;
             }
+        }
 
-            this.updateProgress(85, 'Converting Excel to PDF...');
-            this.startConversionProgress();
+        try {
+            let pdfBlob: Blob;
+            let engine: 'libreoffice' | 'pyodide' = preferPyodide ? 'pyodide' : 'libreoffice';
 
-            // Convert with timeout protection
-            const pdfBlob = await Promise.race([
-                converter.convertToPdf(file),
-                new Promise<never>((_, reject) =>
-                    setTimeout(() => reject(new Error(
-                        `Conversion timed out after ${CONVERT_TIMEOUT_MS / 60000} minutes. The file may be too complex.`
-                    )), CONVERT_TIMEOUT_MS)
-                ),
-            ]);
-            this.stopConversionProgress();
+            if (preferPyodide) {
+                pdfBlob = await this.convertWithPyodideFallback(file);
+            } else {
+                try {
+                    pdfBlob = await this.convertWithLibreOffice(file);
+                } catch (loErr) {
+                    if (canPyodideFallback && !this.checkCancelled()) {
+                        console.warn('[ExcelToPDF] LibreOffice failed or timed out, falling back to Pyodide:', loErr);
+                        this.updateProgress(25, 'Converting Excel to PDF...');
+                        pdfBlob = await this.convertWithPyodideFallback(file);
+                        engine = 'pyodide';
+                    } else {
+                        throw loErr;
+                    }
+                }
+            }
 
             if (this.checkCancelled()) {
                 return this.createErrorOutput(PDFErrorCode.PROCESSING_CANCELLED, 'Processing was cancelled.');
@@ -118,15 +193,16 @@ export class ExcelToPDFProcessor extends BasePDFProcessor {
             this.updateProgress(100, 'Conversion complete!');
 
             const baseName = file.name.replace(/\.(xlsx?|ods|csv)$/i, '');
-            return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, { format: 'pdf' });
+            return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, { format: 'pdf', engine });
 
         } catch (error) {
             this.stopConversionProgress();
             console.error('Conversion error:', error);
+            const details = error instanceof Error ? error.message : 'Unknown error';
             return this.createErrorOutput(
                 PDFErrorCode.PROCESSING_FAILED,
-                'Failed to convert Excel to PDF.',
-                error instanceof Error ? error.message : 'Unknown error'
+                `Failed to convert Excel to PDF: ${details}`,
+                details
             );
         }
     }

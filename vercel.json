@@ -1,5 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/pdfjs-annotation-viewer/web/viewer.html",
+      "destination": "/pdfjs-annotation-viewer/web/viewer/"
+    },
+    {
+      "source": "/pdfjs-viewer/viewer.html",
+      "destination": "/pdfjs-viewer/viewer/"
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

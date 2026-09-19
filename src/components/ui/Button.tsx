@@ -95,6 +95,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       transition-all duration-[var(--transition-normal)]
       focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2
       disabled:opacity-50 disabled:cursor-not-allowed
+      whitespace-nowrap select-none shrink-0
     `;
 
     return (

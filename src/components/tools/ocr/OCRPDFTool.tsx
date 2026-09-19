@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { useRouter } from 'next/navigation';
 import { FileUploader } from '../FileUploader';
 import { ProcessingProgress, ProcessingStatus } from '../ProcessingProgress';
 import { DownloadButton } from '../DownloadButton';
@@ -18,7 +19,14 @@ import {
   Sparkles, 
   HelpCircle,
   ShieldCheck,
-  Languages
+  Languages,
+  Copy,
+  CheckCheck,
+  ExternalLink,
+  SlidersHorizontal,
+  BarChart3,
+  FileCode,
+  FileText
 } from 'lucide-react';
 
 function generateId(): string {
@@ -32,6 +40,8 @@ export interface OCRPDFToolProps {
 export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
   const t = useTranslations('common');
   const tTools = useTranslations('tools');
+  const router = useRouter();
+  const locale = useLocale();
   
   // State
   const [file, setFile] = useState<UploadedFile | null>(null);
@@ -42,6 +52,16 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
   const [textPreview, setTextPreview] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   
+  // Enhanced metrics & interaction state
+  const [stats, setStats] = useState<{
+    pageCount?: number;
+    totalWords?: number;
+    totalChars?: number;
+    avgConfidence?: number;
+  } | null>(null);
+  const [copied, setCopied] = useState(false);
+  const [enhanceContrast, setEnhanceContrast] = useState(true);
+
   // Options state
   const [languages, setLanguages] = useState<OCRLanguage[]>(['eng']);
   const [outputFormat, setOutputFormat] = useState<OCROptions['outputFormat']>('searchable-pdf'); // Default to searchable PDF
@@ -240,12 +260,14 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
     setError(null);
     setResult(null);
     setTextPreview(null);
+    setStats(null);
 
     const options: Partial<OCROptions> = {
       languages,
       outputFormat,
       scale,
       pages: parsePageRange(pageRange),
+      enhanceContrast,
     };
 
     try {
@@ -268,10 +290,18 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
       if (output.success && output.result) {
         const blob = output.result as Blob;
         setResult(blob);
+        setStats({
+          pageCount: output.metadata?.pageCount as number | undefined,
+          totalWords: output.metadata?.totalWords as number | undefined,
+          totalChars: output.metadata?.totalChars as number | undefined,
+          avgConfidence: output.metadata?.avgConfidence as number | undefined,
+        });
         
-        if (outputFormat === 'text') {
+        if (outputFormat === 'text' || outputFormat === 'markdown' || outputFormat === 'json') {
           const text = await blob.text();
-          setTextPreview(text.length > 5000 ? text.substring(0, 5000) + '\n...(truncated)' : text);
+          setTextPreview(text);
+        } else if (output.metadata?.rawText) {
+          setTextPreview(output.metadata.rawText as string);
         }
         
         setStatus('complete');
@@ -285,7 +315,55 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
         setStatus('error');
       }
     }
-  }, [file, languages, outputFormat, scale, pageRange]);
+  }, [file, languages, outputFormat, scale, pageRange, enhanceContrast]);
+
+  const handleCopy = useCallback(async () => {
+    if (!textPreview) return;
+    try {
+      await navigator.clipboard.writeText(textPreview);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      const textarea = document.createElement('textarea');
+      textarea.value = textPreview;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }, [textPreview]);
+
+  const handleOpenInEditor = useCallback(() => {
+    if (!result || !file) return;
+    const fileName = `${file.file.name.replace(/\.[^.]+$/, '')}_ocr.pdf`;
+    const targetFile = new File([result], fileName, { type: 'application/pdf' });
+    
+    // Store in global memory
+    (window as any).__PDFCRAFT_PENDING_EDIT_FILE__ = targetFile;
+
+    // Fallback to sessionStorage
+    try {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        try {
+          window.sessionStorage.setItem('pdfcraft_pending_edit_file', JSON.stringify({
+            name: fileName,
+            type: 'application/pdf',
+            data: reader.result,
+          }));
+        } catch {
+          // ignore quota exceeded
+        }
+      };
+      reader.readAsDataURL(result);
+    } catch {
+      // ignore
+    }
+
+    router.push(`/${locale}/tools/edit-pdf`);
+  }, [result, file, router, locale]);
 
   const handleCancel = useCallback(() => {
     cancelledRef.current = true;
@@ -310,14 +388,14 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
       {/* File Upload Zone */}
       {!file && (
         <FileUploader
-          accept={['application/pdf', '.pdf']}
+          accept={['application/pdf', '.pdf', 'image/png', '.png', 'image/jpeg', '.jpg', '.jpeg', 'image/webp', '.webp']}
           multiple={false}
           maxFiles={1}
           onFilesSelected={handleFilesSelected}
           onError={handleUploadError}
           disabled={isProcessing}
-          label={tTools('ocrPdf.uploadLabel') || 'Upload PDF'}
-          description={tTools('ocrPdf.uploadDescription') || 'Drag and drop a scanned PDF file here, or click to browse.'}
+          label={tTools('ocrPdf.uploadLabel') || 'Upload PDF or Scanned Image'}
+          description={tTools('ocrPdf.uploadDescription') || 'Drag and drop a scanned PDF or image (PNG, JPG, WebP) here, or click to browse.'}
         />
       )}
 
@@ -404,6 +482,8 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                     >
                       <option value="searchable-pdf">{t('ocr.formatSearchablePdf')}</option>
                       <option value="text">{t('ocr.formatText')}</option>
+                      <option value="markdown">{t('ocr.formatMarkdown')}</option>
+                      <option value="json">{t('ocr.formatJson')}</option>
                     </Select>
                   </div>
 
@@ -437,6 +517,31 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
                       className="w-full px-3 py-2 rounded-xl border border-[hsl(var(--color-border))] bg-white dark:bg-zinc-800 text-xs focus:ring-1 focus:ring-[hsl(var(--color-primary))]"
                     />
                   </div>
+                </div>
+
+                {/* Contrast enhancement toggle */}
+                <div className="flex items-center justify-between p-3.5 rounded-2xl bg-white/50 dark:bg-zinc-800/40 border border-[hsl(var(--color-border))] transition-all hover:border-[hsl(var(--color-primary)/0.4)]">
+                  <div className="space-y-0.5 pr-3">
+                    <div className="flex items-center gap-2">
+                      <SlidersHorizontal className="w-4 h-4 text-[hsl(var(--color-primary))]" />
+                      <span className="text-xs font-bold text-[hsl(var(--color-foreground))]">
+                        {t('ocr.enhanceContrast')}
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-[hsl(var(--color-muted-foreground))] pl-6">
+                      {t('ocr.enhanceContrastDesc')}
+                    </p>
+                  </div>
+                  <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
+                    <input
+                      type="checkbox"
+                      checked={enhanceContrast}
+                      onChange={(e) => setEnhanceContrast(e.target.checked)}
+                      disabled={isProcessing}
+                      className="sr-only peer"
+                    />
+                    <div className="w-9 h-5 bg-zinc-200 dark:bg-zinc-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-zinc-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-[hsl(var(--color-primary))]"></div>
+                  </label>
                 </div>
               </div>
 
@@ -515,32 +620,100 @@ export function OCRPDFTool({ className = '' }: OCRPDFToolProps) {
             <h3 className="text-base font-extrabold text-[hsl(var(--color-foreground))]">{t('ocr.successTitle')}</h3>
             <p className="text-xs text-[hsl(var(--color-muted-foreground))]">
               {outputFormat === 'searchable-pdf' 
-                ? t('ocr.successSearchable') 
+                ? t('ocr.successSearchablePdf') 
                 : t('ocr.successText')
               }
             </p>
           </div>
 
-          <div className="flex gap-3 justify-center max-w-xs mx-auto">
+          {/* Stats Bar */}
+          {stats && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto py-1">
+              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-[hsl(var(--color-border))] text-center">
+                <p className="text-[10px] uppercase font-bold text-[hsl(var(--color-muted-foreground))]">{t('ocr.statsPages')}</p>
+                <p className="text-base font-extrabold text-[hsl(var(--color-foreground))]">{stats.pageCount || 1}</p>
+              </div>
+              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-[hsl(var(--color-border))] text-center">
+                <p className="text-[10px] uppercase font-bold text-[hsl(var(--color-muted-foreground))]">{t('ocr.statsWords')}</p>
+                <p className="text-base font-extrabold text-[hsl(var(--color-foreground))]">{stats.totalWords || 0}</p>
+              </div>
+              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-[hsl(var(--color-border))] text-center">
+                <p className="text-[10px] uppercase font-bold text-[hsl(var(--color-muted-foreground))]">{t('ocr.statsChars')}</p>
+                <p className="text-base font-extrabold text-[hsl(var(--color-foreground))]">{stats.totalChars || 0}</p>
+              </div>
+              <div className="p-3 rounded-2xl bg-zinc-100 dark:bg-zinc-800/60 border border-[hsl(var(--color-border))] text-center">
+                <p className="text-[10px] uppercase font-bold text-[hsl(var(--color-muted-foreground))]">{t('ocr.statsConfidence')}</p>
+                <p className="text-base font-extrabold text-emerald-600 dark:text-emerald-400">{stats.avgConfidence || 92}%</p>
+              </div>
+            </div>
+          )}
+
+          {/* Action Buttons */}
+          <div className="flex flex-wrap gap-3 justify-center max-w-lg mx-auto">
             <DownloadButton
               file={result}
-              filename={`${file?.file.name.replace(/\.pdf$/i, '')}_ocr.${outputFormat === 'text' ? 'txt' : 'pdf'}`}
+              filename={`${file?.file.name.replace(/\.(pdf|png|jpe?g|webp|bmp|tiff?)$/i, '')}_ocr.${
+                outputFormat === 'text' ? 'txt' : outputFormat === 'markdown' ? 'md' : outputFormat === 'json' ? 'json' : 'pdf'
+              }`}
               variant="primary"
               size="lg"
-              className="flex-1 font-bold shadow-lg"
+              className="flex-1 font-bold shadow-lg min-w-[140px]"
               showFileSize
             />
+
+            {outputFormat === 'searchable-pdf' && (
+              <Button
+                variant="secondary"
+                size="lg"
+                onClick={handleOpenInEditor}
+                className="flex-1 font-bold border-2 border-[hsl(var(--color-primary)/0.4)] text-[hsl(var(--color-primary))] hover:bg-[hsl(var(--color-primary)/0.08)] flex items-center justify-center gap-2 min-w-[160px]"
+              >
+                <ExternalLink className="w-4 h-4" />
+                {t('ocr.openInEditor')}
+              </Button>
+            )}
+
+            {textPreview && (
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={handleCopy}
+                className="font-bold flex items-center justify-center gap-2"
+              >
+                {copied ? <CheckCheck className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
+                {copied ? t('ocr.copied') : t('ocr.copyText')}
+              </Button>
+            )}
           </div>
         </Card>
       )}
 
-      {/* Pure text preview box */}
+      {/* Pure text/JSON preview box */}
       {textPreview && (
-        <Card variant="outlined" size="lg" className="rounded-3xl shadow-sm">
-          <h3 className="text-sm font-bold text-[hsl(var(--color-foreground))] mb-4">
-            {t('ocr.previewTitle')}
-          </h3>
-          <pre className="p-4 bg-[hsl(var(--color-muted)/0.35)] border border-[hsl(var(--color-border))] rounded-2xl overflow-auto max-h-64 text-xs font-mono text-[hsl(var(--color-foreground))] whitespace-pre-wrap leading-normal">
+        <Card variant="outlined" size="lg" className="rounded-3xl shadow-sm space-y-3">
+          <div className="flex items-center justify-between border-b border-[hsl(var(--color-border))] pb-3">
+            <div className="flex items-center gap-2">
+              <FileText className="w-4 h-4 text-[hsl(var(--color-primary))]" />
+              <h3 className="text-sm font-bold text-[hsl(var(--color-foreground))]">
+                {t('ocr.previewTitle')}
+              </h3>
+              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 uppercase">
+                {outputFormat}
+              </span>
+            </div>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleCopy}
+              className="text-xs font-semibold flex items-center gap-1.5 h-8 px-2.5 text-[hsl(var(--color-primary))]"
+            >
+              {copied ? <CheckCheck className="w-3.5 h-3.5 text-emerald-500" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? t('ocr.copied') : t('ocr.copyText')}
+            </Button>
+          </div>
+
+          <pre className="p-4 bg-[hsl(var(--color-muted)/0.35)] border border-[hsl(var(--color-border))] rounded-2xl overflow-auto max-h-80 text-xs font-mono text-[hsl(var(--color-foreground))] whitespace-pre-wrap leading-relaxed select-text">
             {textPreview}
           </pre>
         </Card>

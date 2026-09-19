@@ -12,24 +12,24 @@
     "zh": "我可以将图像转换为 PDF 吗？"
   },
   "faqPage.sections.features.images.answer": {
-    "en": "Yes, PDFCraft supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once.",
-    "zh": "是的，PDFCraft 支持将各种图像格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）转换为 PDF。您可以一次转换单个或多个图像。"
+    "en": "Yes, Hello PDF supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once.",
+    "zh": "是的，Hello PDF 支持将各种图像格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）转换为 PDF。您可以一次转换单个或多个图像。"
   },
   "faqPage.sections.features.edit.question": {
     "en": "Can I edit text in a PDF?",
     "zh": "我可以编辑 PDF 中的文本吗？"
   },
   "faqPage.sections.features.edit.answer": {
-    "en": "PDFCraft provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities.",
-    "zh": "PDFCraft 提供注释和编辑工具，包括高亮、添加文本、形状、图像和签名。如需全文编辑，PDF 编辑器工具提供全面的注释功能。"
+    "en": "Hello PDF provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities.",
+    "zh": "Hello PDF 提供注释和编辑工具，包括高亮、添加文本、形状、图像和签名。如需全文编辑，PDF 编辑器工具提供全面的注释功能。"
   },
   "faqPage.sections.technical.browsers.question": {
     "en": "What browsers are supported?",
     "zh": "支持哪些浏览器？"
   },
   "faqPage.sections.technical.browsers.answer": {
-    "en": "PDFCraft works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience.",
-    "zh": "PDFCraft 适用于所有现代浏览器，包括 Chrome、Firefox、Safari 和 Edge。我们建议使用最新版本的浏览器以获得最佳体验。"
+    "en": "Hello PDF works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience.",
+    "zh": "Hello PDF 适用于所有现代浏览器，包括 Chrome、Firefox、Safari 和 Edge。我们建议使用最新版本的浏览器以获得最佳体验。"
   },
   "faqPage.sections.technical.sizeLimit.question": {
     "en": "Is there a file size limit?",
@@ -48,20 +48,20 @@
     "zh": "由于所有处理都在浏览器中进行，性能取决于您设备的能力。大文件需要更多的内存和处理能力。为了获得最佳结果，请关闭其他浏览器标签页和应用程序。"
   },
   "faqPage.sections.technical.offline.question": {
-    "en": "Does PDFCraft work offline?",
-    "zh": "PDFCraft 可以离线工作吗？"
+    "en": "Does Hello PDF work offline?",
+    "zh": "Hello PDF 可以离线工作吗？"
   },
   "faqPage.sections.technical.offline.answer": {
-    "en": "Currently, PDFCraft requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection.",
-    "zh": "目前，PDFCraft 需要互联网连接才能加载应用程序。但是，一旦加载，PDF 处理本身在本地进行，不需要连接。"
+    "en": "Currently, Hello PDF requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection.",
+    "zh": "目前，Hello PDF 需要互联网连接才能加载应用程序。但是，一旦加载，PDF 处理本身在本地进行，不需要连接。"
   },
   "faqPage.sections.languages.supported.question": {
     "en": "What languages are supported?",
     "zh": "支持哪些语言？"
   },
   "faqPage.sections.languages.supported.answer": {
-    "en": "PDFCraft is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support).",
-    "zh": "PDFCraft 提供 9 种语言版本：英语、日语、韩语、西班牙语、法语、德语、中文、葡萄牙语和阿拉伯语（支持从右到左）。"
+    "en": "Hello PDF is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support).",
+    "zh": "Hello PDF 提供 9 种语言版本：英语、日语、韩语、西班牙语、法语、德语、中文、葡萄牙语和阿拉伯语（支持从右到左）。"
   },
   "faqPage.sections.languages.change.question": {
     "en": "How do I change the language?",
@@ -124,8 +124,8 @@
     "zh": "快速高效"
   },
   "aboutPage.values.fast.description": {
-    "en": "Powered by modern web technologies, PDFCraft delivers lightning-fast PDF processing without the need for uploads or downloads.",
-    "zh": "由现代 Web 技术驱动，PDFCraft 提供闪电般的 PDF 处理速度，无需上传或下载。"
+    "en": "Powered by modern web technologies, Hello PDF delivers lightning-fast PDF processing without the need for uploads or downloads.",
+    "zh": "由现代 Web 技术驱动，Hello PDF 提供闪电般的 PDF 处理速度，无需上传或下载。"
   },
   "aboutPage.values.accessible.title": {
     "en": "Accessible Everywhere",
@@ -140,8 +140,8 @@
     "zh": "永久免费"
   },
   "aboutPage.values.free.description": {
-    "en": "PDFCraft is completely free to use with no hidden costs, no registration required, and no limits on usage.",
-    "zh": "PDFCraft 完全免费使用，没有隐藏费用，无需注册，也不限制使用次数。"
+    "en": "Hello PDF is completely free to use with no hidden costs, no registration required, and no limits on usage.",
+    "zh": "Hello PDF 完全免费使用，没有隐藏费用，无需注册，也不限制使用次数。"
   },
   "aboutPage.values.openSource.title": {
     "en": "Open Source",

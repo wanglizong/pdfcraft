@@ -631,7 +631,11 @@
       "fillColorLabel": "Bật màu tô:",
       "defaultAuthor": "Chú thích (Người dùng khách)",
       "undoBtn": "Hoàn tác",
-      "redoBtn": "Làm lại"
+      "redoBtn": "Làm lại",
+      "unnamedUser": "Người dùng khách",
+      "undo": "Hoàn tác",
+      "redo": "Làm lại",
+      "annDefault": "Chú thích"
     },
     "einkOptimizer": {
       "otsueThresholdSuffix": " (Độ lệch Otsu)",
@@ -914,6 +918,39 @@
       "codeCopied": "Đã sao chép mã SVG vào bộ nhớ tạm",
       "copyCode": "Sao chép mã SVG",
       "downloadSvg": "Tải xuống tài sản SVG"
+    },
+    "updater": {
+      "title": "Cập nhật phần mềm",
+      "checkBtn": "Kiểm tra cập nhật",
+      "checking": "Đang kiểm tra cập nhật...",
+      "errorTitle": "Không thể kiểm tra cập nhật",
+      "retry": "Thử lại",
+      "latest": "Bạn đang dùng phiên bản mới nhất!",
+      "latestDesc": "Hello PDF hiện đang ở phiên bản mới nhất ({version}).",
+      "available": "Đã có phiên bản mới",
+      "currentVersion": "Phiên bản hiện tại",
+      "released": "Phát hành ngày",
+      "releaseNotes": "Ghi chú phát hành",
+      "downloadPortable": "Tải bản Windows Portable (ZIP)",
+      "downloadInstaller": "Tải trình cài đặt Windows (.exe / .msi)",
+      "downloadMac": "Tải bản cho macOS (.dmg)",
+      "downloadAppImage": "Tải Linux AppImage (Portable)",
+      "downloadDeb": "Tải gói Linux Debian (.deb)",
+      "allDownloads": "Xem tệp tải xuống cho mọi nền tảng",
+      "viewOnGithub": "Xem trên GitHub",
+      "skipVersion": "Bỏ qua phiên bản này",
+      "remindLater": "Nhắc tôi sau",
+      "close": "Đóng",
+      "newVersionBadge": "Phiên bản mới",
+      "toastPrompt": "Phiên bản mới đã ra mắt, tối ưu hóa độ ổn định và các tính năng chính. Khuyến nghị cập nhật ngay để trải nghiệm.",
+      "viewDetails": "Cập nhật ngay / Xem chi tiết",
+      "mirrorDownload": "⚡ Tải xuống qua máy chủ phản chiếu nhanh",
+      "copyLink": "Sao chép liên kết",
+      "copyMirrorLink": "Sao chép link mirror",
+      "openingBrowser": "Đang mở trình duyệt...",
+      "downloadStartedNotice": "Đã mở tải xuống trong trình duyệt! Nếu không tự động tải, hãy sao chép link và dán vào trình duyệt.",
+      "downloadFailedNotice": "Không thể tự động mở trình duyệt. Vui lòng sao chép liên kết và tải thủ công.",
+      "linkCopied": "Đã sao chép liên kết tải xuống!"
     }
   },
   "toolsPage": {
@@ -1170,7 +1207,8 @@
     "invalidOptions": "Tùy chọn không hợp lệ.",
     "unknown": "Đã xảy ra lỗi không mong muốn. Vui lòng thử lại.",
     "toolNotFound": "Không tìm thấy công cụ",
-    "invalidPassword": "Mật khẩu bạn nhập không đúng. Vui lòng kiểm tra và thử lại."
+    "invalidPassword": "Mật khẩu bạn nhập không đúng. Vui lòng kiểm tra và thử lại.",
+    "incorrectPassword": "Mật khẩu không đúng. Vui lòng thử lại."
   },
   "home": {
     "hero": {
@@ -1410,7 +1448,16 @@
         "name": "Cắt & Thay đổi kích thước trang",
         "description": "Cắt trang PDF và điều chỉnh kích thước trang"
       }
-    }
+    },
+    "autoLayout": "Tự động sắp xếp bố cục",
+    "duplicateNode": "Nhân bản nút",
+    "downloadZip": "Tải xuống dưới dạng ZIP",
+    "downloadIndividually": "Tải xuống từng tệp riêng lẻ",
+    "flowControl": "Kiểm soát luồng",
+    "conditionGateway": "Cổng điều kiện",
+    "downloadPdf": "Tải xuống PDF",
+    "outputCategory": "Đầu ra & Xuất",
+    "filenameLabel": "Tên tệp đầu ra"
   },
   "tools": {
     "search": {
@@ -2559,7 +2606,18 @@
       "rangePlaceholder": "ví dụ: 1, 3, 5-10",
       "previewTitle": "Xem trước",
       "previewNote": "Chỉ hiển thị trang đầu tiên để có hiệu suất tốt hơn",
-      "previewGenerating": "Đang tạo bản xem trước..."
+      "previewGenerating": "Đang tạo bản xem trước...",
+      "flattenTitle": "Flatten Watermark",
+      "flattenDescription": "Rasterize pages into tamper-resistant images so watermarks cannot be removed or extracted",
+      "dragHint": "Drag watermark directly on preview or drag corners to resize",
+      "posTop": "Top",
+      "posBottom": "Bottom",
+      "posLeft": "Left",
+      "posRight": "Right",
+      "scale": "Image Scale",
+      "page": "Page",
+      "of": "of",
+      "pages": "pages"
     },
     "headerFooter": {
       "uploadLabel": "Tải lên tệp PDF",

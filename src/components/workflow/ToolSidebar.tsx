@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { tools } from '@/config/tools';
 import { getToolContent } from '@/config/tool-content';
@@ -8,9 +8,11 @@ import { ToolNodeData } from '@/types/workflow';
 import * as LucideIcons from 'lucide-react';
 import { Search, ChevronDown, ChevronRight, GripVertical, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
 import { Locale } from '@/lib/i18n/config';
+import { WORKFLOW_TOOL_DROP_EVENT } from './dragEvents';
 
 interface ToolSidebarProps {
     onDragStart: (event: React.DragEvent, nodeData: ToolNodeData) => void;
+    onDragEnd?: () => void;
     isCollapsed?: boolean;
     onToggleCollapse?: () => void;
 }
@@ -22,18 +24,34 @@ interface CategoryGroup {
     tools: typeof tools;
 }
 
+interface PointerDragState {
+    pointerId: number;
+    nodeData: ToolNodeData;
+    startX: number;
+    startY: number;
+    lastX: number;
+    lastY: number;
+    hasMoved: boolean;
+}
+
 /**
  * Tool Sidebar for the workflow editor
  * Displays available tools grouped by category
  */
-export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse }: ToolSidebarProps) {
+export function ToolSidebar({
+    onDragStart,
+    onDragEnd,
+    isCollapsed = false,
+    onToggleCollapse,
+}: ToolSidebarProps) {
     const tWorkflow = useTranslations('workflow');
     const locale = useLocale() as Locale;
 
     const [searchQuery, setSearchQuery] = useState('');
     const [expandedCategories, setExpandedCategories] = useState<Set<string>>(
-        new Set(['organize-manage', 'convert-to-pdf'])
+        new Set(['input', 'flow-control', 'organize-manage', 'convert-to-pdf', 'output'])
     );
+    const pointerDragRef = useRef<PointerDragState | null>(null);
 
     // Format tool ID to human readable name
     const formatToolId = (id: string): string => {
@@ -45,6 +63,24 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
 
     // Helper function to get tool name with fallback using getToolContent
     const getToolName = (toolId: string): string => {
+        if (toolId === 'pdf-input') {
+            return tWorkflow('pdfInput') || (locale === 'zh' ? 'PDF 输入源 (PDF Input)' : 'PDF Input');
+        }
+        if (toolId === 'image-input') {
+            return tWorkflow('imageInput') || (locale === 'zh' ? '图片输入源 (Image Input)' : 'Image Input');
+        }
+        if (toolId === 'file-input') {
+            return tWorkflow('fileInput') || (locale === 'zh' ? '通用文件输入 (File Input)' : 'File Input');
+        }
+        if (toolId === 'condition-gateway') {
+            return tWorkflow('conditionGateway') || (locale === 'zh' ? '条件分支 (Condition Gateway)' : 'Condition Gateway');
+        }
+        if (toolId === 'download-pdf') {
+            return tWorkflow('downloadPdf') || (locale === 'zh' ? '下载 PDF (Download PDF)' : 'Download PDF');
+        }
+        if (toolId === 'download-zip') {
+            return tWorkflow('downloadZip') || (locale === 'zh' ? '打包 ZIP 下载 (Download ZIP)' : 'Download ZIP');
+        }
         const content = getToolContent(locale, toolId);
         if (content && content.title) {
             return content.title;
@@ -55,6 +91,93 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
     // Group tools by category
     const categories: CategoryGroup[] = useMemo(() => {
         const categoryMap: Record<string, typeof tools> = {};
+
+        // Input source nodes (inspired by BentoPDF)
+        const inputTools: typeof tools = [
+            {
+                id: 'pdf-input',
+                slug: 'pdf-input',
+                icon: 'file-text',
+                category: 'input' as unknown as typeof tools[0]['category'],
+                acceptedFormats: ['.pdf'],
+                outputFormat: 'pdf',
+                maxFileSize: Infinity,
+                maxFiles: 100,
+                features: ['input', 'pdf-source'],
+                relatedTools: [],
+            },
+            {
+                id: 'image-input',
+                slug: 'image-input',
+                icon: 'images',
+                category: 'input' as unknown as typeof tools[0]['category'],
+                acceptedFormats: ['.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.tif', '.svg', '.heic'],
+                outputFormat: 'image',
+                maxFileSize: Infinity,
+                maxFiles: 100,
+                features: ['input', 'image-source'],
+                relatedTools: [],
+            },
+            {
+                id: 'file-input',
+                slug: 'file-input',
+                icon: 'folder-input',
+                category: 'input' as unknown as typeof tools[0]['category'],
+                acceptedFormats: ['*'],
+                outputFormat: '*',
+                maxFileSize: Infinity,
+                maxFiles: 100,
+                features: ['input', 'file-source'],
+                relatedTools: [],
+            },
+        ];
+        categoryMap['input'] = inputTools;
+
+        // Flow control gateway node
+        const flowControlTools: typeof tools = [
+            {
+                id: 'condition-gateway',
+                slug: 'condition-gateway',
+                icon: 'git-fork',
+                category: 'flow-control' as unknown as typeof tools[0]['category'],
+                acceptedFormats: ['*'],
+                outputFormat: '*',
+                maxFileSize: Infinity,
+                maxFiles: 100,
+                features: ['conditional-branching', 'file-count', 'file-size', 'file-format'],
+                relatedTools: [],
+            },
+        ];
+        categoryMap['flow-control'] = flowControlTools;
+
+        // Output and export terminal nodes
+        const outputTools: typeof tools = [
+            {
+                id: 'download-pdf',
+                slug: 'download-pdf',
+                icon: 'file-down',
+                category: 'output' as unknown as typeof tools[0]['category'],
+                acceptedFormats: ['.pdf'],
+                outputFormat: '.pdf',
+                maxFileSize: Infinity,
+                maxFiles: 100,
+                features: ['download', 'rename'],
+                relatedTools: [],
+            },
+            {
+                id: 'download-zip',
+                slug: 'download-zip',
+                icon: 'archive',
+                category: 'output' as unknown as typeof tools[0]['category'],
+                acceptedFormats: ['*'],
+                outputFormat: '.zip',
+                maxFileSize: Infinity,
+                maxFiles: 100,
+                features: ['zip', 'archive'],
+                relatedTools: [],
+            },
+        ];
+        categoryMap['output'] = outputTools;
 
         // Tools that require interactive UI and should be excluded from workflow
         const interactiveToolsBlacklist = new Set([
@@ -73,9 +196,6 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
             'edit-attachments',  // Attachment management interaction required
             'page-dimensions',   // Analysis only, no PDF output
             'validate-signature', // Read-only signature verification, no PDF output
-            'pdf-to-docx',       // Workflow executor not yet implemented
-            'pdf-to-pptx',       // Workflow executor not yet implemented
-            'pdf-to-excel',      // Workflow executor not yet implemented
         ]);
 
         tools
@@ -88,30 +208,39 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
             });
 
         const categoryOrder = [
+            'input',
+            'flow-control',
             'organize-manage',
             'edit-annotate',
             'convert-to-pdf',
             'convert-from-pdf',
             'optimize-repair',
             'secure-pdf',
+            'output',
         ];
 
         const categoryNames: Record<string, string> = {
-            'organize-manage': 'Organize & Manage',
-            'edit-annotate': 'Edit & Annotate',
-            'convert-to-pdf': 'Convert to PDF',
-            'convert-from-pdf': 'Convert from PDF',
-            'optimize-repair': 'Optimize & Repair',
-            'secure-pdf': 'Security & Privacy',
+            'input': tWorkflow('inputCategory') || (locale === 'zh' ? '输入源' : 'Input Sources'),
+            'flow-control': tWorkflow('flowControl') || (locale === 'zh' ? '流程控制' : 'Flow Control'),
+            'organize-manage': locale === 'zh' ? '文档组织' : 'Organize & Manage',
+            'edit-annotate': locale === 'zh' ? '编辑与标注' : 'Edit & Annotate',
+            'convert-to-pdf': locale === 'zh' ? '转换为 PDF' : 'Convert to PDF',
+            'convert-from-pdf': locale === 'zh' ? '从 PDF 导出' : 'Convert from PDF',
+            'optimize-repair': locale === 'zh' ? '压缩与优化' : 'Optimize & Repair',
+            'secure-pdf': locale === 'zh' ? '安全与隐私' : 'Security & Privacy',
+            'output': tWorkflow('outputCategory') || (locale === 'zh' ? '输出与交付' : 'Output & Export'),
         };
 
         const categoryIcons: Record<string, string> = {
+            'input': 'upload',
+            'flow-control': 'git-fork',
             'organize-manage': 'files',
             'edit-annotate': 'pencil',
             'convert-to-pdf': 'file-up',
             'convert-from-pdf': 'file-down',
             'optimize-repair': 'zap',
             'secure-pdf': 'shield',
+            'output': 'download',
         };
 
         return categoryOrder
@@ -122,7 +251,7 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
                 icon: categoryIcons[cat],
                 tools: categoryMap[cat],
             }));
-    }, []);
+    }, [locale]);
 
     // Filter tools based on search query
     const filteredCategories = useMemo(() => {
@@ -156,18 +285,133 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
     };
 
     const handleDragStart = (e: React.DragEvent, tool: typeof tools[0]) => {
-        const nodeData: ToolNodeData = {
-            toolId: tool.id,
-            label: getToolName(tool.id),
-            icon: tool.icon,
-            category: tool.category,
-            acceptedFormats: tool.acceptedFormats,
-            outputFormat: tool.outputFormat,
-            status: 'idle',
-            progress: 0,
-        };
-        onDragStart(e, nodeData);
+        // Cancel pointer fallback drag since native HTML5 drag-and-drop has taken over
+        pointerDragRef.current = null;
+        onDragStart(e, createNodeData(tool));
     };
+
+    const createNodeData = (tool: typeof tools[0]): ToolNodeData => ({
+        toolId: tool.id,
+        label: getToolName(tool.id),
+        icon: tool.icon,
+        category: tool.category,
+        acceptedFormats: tool.acceptedFormats,
+        outputFormat: tool.outputFormat,
+        status: 'idle',
+        progress: 0,
+        settings: tool.id === 'condition-gateway' ? {
+            conditionType: 'file-count',
+            operator: 'greater-than',
+            value: 1,
+            sizeUnit: 'MB',
+        } : tool.id === 'download-pdf' ? {
+            filename: 'output.pdf',
+        } : tool.id === 'download-zip' ? {
+            filename: 'output.zip',
+        } : {},
+    });
+
+    const handlePointerDown = (e: React.PointerEvent, tool: typeof tools[0]) => {
+        if (e.button !== 0) return;
+
+        pointerDragRef.current = {
+            pointerId: e.pointerId,
+            nodeData: createNodeData(tool),
+            startX: e.clientX,
+            startY: e.clientY,
+            lastX: e.clientX,
+            lastY: e.clientY,
+            hasMoved: false,
+        };
+    };
+
+    /**
+     * Double-click adds the tool to the canvas center.
+     * Dispatches the same event used by pointer-based fallback drops so that
+     * WorkflowEditor places the node at the resolved screen coordinates.
+     */
+    const handleDoubleClick = (tool: typeof tools[0]) => {
+        // Cancel any in-flight pointer drag intent so it does not race with the dblclick.
+        pointerDragRef.current = null;
+
+        const flowEl =
+            (typeof document !== 'undefined'
+                ? (document.querySelector('.react-flow') as HTMLElement | null)
+                : null);
+
+        let clientX: number;
+        let clientY: number;
+        if (flowEl) {
+            const rect = flowEl.getBoundingClientRect();
+            // Add a small random offset so consecutive double-clicks do not
+            // perfectly stack the new nodes on top of each other.
+            const jitter = () => (Math.random() - 0.5) * 80;
+            clientX = rect.left + rect.width / 2 + jitter();
+            clientY = rect.top + rect.height / 2 + jitter();
+        } else if (typeof window !== 'undefined') {
+            clientX = window.innerWidth / 2;
+            clientY = window.innerHeight / 2;
+        } else {
+            return;
+        }
+
+        window.dispatchEvent(new CustomEvent(WORKFLOW_TOOL_DROP_EVENT, {
+            detail: {
+                nodeData: createNodeData(tool),
+                clientX,
+                clientY,
+            },
+        }));
+    };
+
+    useEffect(() => {
+        const handlePointerMove = (event: PointerEvent) => {
+            const dragState = pointerDragRef.current;
+            if (!dragState || dragState.pointerId !== event.pointerId) return;
+
+            dragState.lastX = event.clientX;
+            dragState.lastY = event.clientY;
+            if (
+                Math.abs(event.clientX - dragState.startX) > 6 ||
+                Math.abs(event.clientY - dragState.startY) > 6
+            ) {
+                dragState.hasMoved = true;
+            }
+        };
+
+        const handlePointerUp = (event: PointerEvent) => {
+            const dragState = pointerDragRef.current;
+            if (!dragState || dragState.pointerId !== event.pointerId) return;
+
+            pointerDragRef.current = null;
+            if (!dragState.hasMoved) return;
+
+            window.dispatchEvent(new CustomEvent(WORKFLOW_TOOL_DROP_EVENT, {
+                detail: {
+                    nodeData: dragState.nodeData,
+                    clientX: event.clientX || dragState.lastX,
+                    clientY: event.clientY || dragState.lastY,
+                },
+            }));
+        };
+
+        const handlePointerCancel = (event: PointerEvent) => {
+            const dragState = pointerDragRef.current;
+            if (dragState && dragState.pointerId === event.pointerId) {
+                pointerDragRef.current = null;
+            }
+        };
+
+        window.addEventListener('pointermove', handlePointerMove);
+        window.addEventListener('pointerup', handlePointerUp);
+        window.addEventListener('pointercancel', handlePointerCancel);
+
+        return () => {
+            window.removeEventListener('pointermove', handlePointerMove);
+            window.removeEventListener('pointerup', handlePointerUp);
+            window.removeEventListener('pointercancel', handlePointerCancel);
+        };
+    }, []);
 
     // Get icon component dynamically
     const getIcon = (iconName: string) => {
@@ -218,7 +462,7 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
                         {tWorkflow('toolbox') || 'Tool Box'}
                     </h2>
                     <p className="text-xs text-[hsl(var(--color-muted-foreground))] mt-1">
-                        {tWorkflow('dragToAdd') || 'Drag tools to add to workflow'}
+                        {tWorkflow('dragToAdd') || 'Drag or double-click a tool to add it to the workflow'}
                     </p>
                 </div>
                 <button
@@ -277,17 +521,24 @@ export function ToolSidebar({ onDragStart, isCollapsed = false, onToggleCollapse
                                     {category.tools.map(tool => {
                                         const ToolIcon = getIcon(tool.icon);
 
+                                        const toolName = getToolName(tool.id);
+                                        const hint = tWorkflow('addToWorkflowHint')
+                                            || 'Drag or double-click to add to workflow';
                                         return (
                                             <div
                                                 key={tool.id}
                                                 draggable
                                                 onDragStart={(e) => handleDragStart(e, tool)}
-                                                className="flex items-center gap-2 px-4 py-2 mx-2 rounded-md cursor-grab hover:bg-[hsl(var(--color-muted))] active:cursor-grabbing transition-colors group"
+                                                onDragEnd={onDragEnd}
+                                                onPointerDown={(e) => handlePointerDown(e, tool)}
+                                                onDoubleClick={() => handleDoubleClick(tool)}
+                                                title={`${toolName} \u2014 ${hint}`}
+                                                className="flex items-center gap-2 px-4 py-2 mx-2 rounded-md cursor-grab hover:bg-[hsl(var(--color-muted))] active:cursor-grabbing transition-colors group select-none"
                                             >
                                                 <GripVertical className="w-3 h-3 text-[hsl(var(--color-muted-foreground))] opacity-0 group-hover:opacity-100 transition-opacity" />
                                                 <ToolIcon className="w-4 h-4 text-[hsl(var(--color-muted-foreground))]" />
                                                 <span className="text-sm text-[hsl(var(--color-foreground))] truncate flex-1">
-                                                    {getToolName(tool.id)}
+                                                    {toolName}
                                                 </span>
                                             </div>
                                         );

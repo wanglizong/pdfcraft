@@ -8,6 +8,7 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { reflowPDF, type AIPDFReflowerOptions } from '@/lib/pdf/processors/ai-pdf-reflower';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
 import { 
   Smartphone, 
@@ -191,10 +192,8 @@ export function AIPDFReflowerTool({ className = '' }: AIPDFReflowerToolProps) {
       }
 
       // Download trigger
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(exportBlob);
-      link.download = `${file.name.replace(/\.pdf$/i, '')}_reflowed${ext}`;
-      link.click();
+      const downloadName = `${file.name.replace(/\.pdf$/i, '')}_reflowed${ext}`;
+      saveBlobFile(exportBlob, downloadName);
     }, 600);
   };
 

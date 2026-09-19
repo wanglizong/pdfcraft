@@ -8,6 +8,7 @@ import { DownloadButton } from '../DownloadButton';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { extractVectors, type VectorExtractorOptions } from '@/lib/pdf/processors/vector-extractor';
+import { saveBlobFile } from '@/lib/tauri-bridge';
 import type { ProcessOutput } from '@/types/pdf';
 import { 
   Layers, 
@@ -215,17 +216,13 @@ export function PDFVectorExtractorTool({ className = '' }: PDFVectorExtractorToo
   /**
    * Action: Download single selected SVG element
    */
-  const handleDownloadSelected = () => {
+  const handleDownloadSelected = async () => {
     if (!selectedElementHtml) return;
     
     // Wrap in full standard SVG container
     const wrappedSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">${selectedElementHtml}</svg>`;
     const blob = new Blob([wrappedSvg], { type: 'image/svg+xml;charset=utf-8' });
-    
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = `extracted_vector_asset.svg`;
-    link.click();
+    await saveBlobFile(blob, 'extracted_vector_asset.svg');
   };
 
   const handleClearFile = () => {

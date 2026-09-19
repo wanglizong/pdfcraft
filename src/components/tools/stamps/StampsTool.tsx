@@ -1,10 +1,11 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { FileUploader } from '../FileUploader';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
+import { isTauri, saveBlobFile } from '@/lib/tauri-bridge';
 
 export interface StampsToolProps {
   className?: string;
@@ -59,22 +60,214 @@ export function StampsTool({ className = '' }: StampsToolProps) {
     try {
       setIsProcessing(true);
       const win = iframeRef.current.contentWindow as any;
-      const app = win?.PDFViewerApplication;
-      
-      if (app?.pdfDocument) {
-        // Use PDF.js native save with annotations
-        const data = await app.pdfDocument.saveDocument();
-        const blob = new Blob([data], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `stamped_${stampState.file?.name || 'document.pdf'}`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      } else {
-        setError(tTools('saveFailed') || 'PDF not loaded.');
+      const doc = win?.document;
+
+      if (!win || !doc) {
+        setError(tTools('saveFailed') || 'PDF viewer not accessible.');
+        setIsProcessing(false);
+        return;
+      }
+
+      // The stamps are managed by pdfjs-annotation-extension (not PDF.js core),
+      // and are stored in the extension's internal painter store — NOT in
+      // PDFViewerApplication.pdfDocument.annotationStorage. Calling
+      // pdfDocument.saveDocument() would only export the original PDF without
+      // any stamps. The extension exposes its own exportPdf() method which
+      // fetches the source PDF, embeds annotations via pdf-lib, and triggers
+      // a download via file-saver (which uses an <a download> anchor click).
+      //
+      // In an iframe context that anchor click may silently fail in some
+      // browsers (no save dialog). To make the download reliable we
+      // temporarily patch HTMLAnchorElement.prototype.click inside the iframe
+      // and forward any download-triggering click to the top-level window,
+      // which is always allowed to initiate a download.
+
+      const downloadFromParent = async (href: string, name: string) => {
+        try {
+          if (isTauri()) {
+            const res = await fetch(href);
+            const blob = await res.blob();
+            await saveBlobFile(blob, name || 'annotated.pdf');
+            return;
+          }
+          const a = document.createElement('a');
+          a.href = href;
+          a.download = name || 'annotated.pdf';
+          a.rel = 'noopener';
+          a.style.display = 'none';
+          document.body.appendChild(a);
+          a.click();
+          setTimeout(() => {
+            try {
+              document.body.removeChild(a);
+            } catch {
+              /* noop */
+            }
+          }, 0);
+        } catch (e) {
+          console.error('[stamps] parent-window download failed:', e);
+        }
+      };
+
+      let triggered = false;
+      const AnchorProto = (win as any).HTMLAnchorElement?.prototype;
+      const originalClick = AnchorProto ? AnchorProto.click : null;
+      if (AnchorProto && typeof originalClick === 'function') {
+        AnchorProto.click = function patchedClick(this: HTMLAnchorElement) {
+          try {
+            const href = this.getAttribute('href') || (this as any).href;
+            const dl = this.getAttribute('download');
+            if (href && (dl !== null || /^blob:/.test(String(href)))) {
+              triggered = true;
+              downloadFromParent(String(href), dl || 'annotated.pdf');
+              return;
+            }
+          } catch (e) {
+            console.warn('[stamps] anchor.click hook error:', e);
+          }
+          return originalClick.apply(this, arguments as any);
+        };
+      }
+
+      const restoreAnchor = () => {
+        if (AnchorProto && typeof originalClick === 'function') {
+          AnchorProto.click = originalClick;
+        }
+      };
+
+      // Strategy 1: Walk React fibers to locate either
+      //   (a) an object exposing exportPdf() directly (unlikely, since the
+      //       extension's main class is a plain JS class, not a React
+      //       component), or
+      //   (b) the CustomToolbar's memoizedProps.onExport (a closure that
+      //       forwards to the main class's exportPdf).
+      const findExportEntry = (): { call: () => any; kind: string } | null => {
+        const anchor = doc.querySelector('.CustomToolbar');
+        if (!anchor) return null;
+
+        const walkFromNode = (
+          node: any
+        ): { call: () => any; kind: string } | null => {
+          const keys = Object.keys(node);
+          for (const key of keys) {
+            if (
+              key.startsWith('__reactFiber$') ||
+              key.startsWith('__reactInternalInstance$') ||
+              key.startsWith('__reactProps$')
+            ) {
+              let fiber: any = (node as any)[key];
+              while (fiber) {
+                // (a) exportPdf on stateNode
+                const inst = fiber.stateNode;
+                if (inst && typeof inst.exportPdf === 'function') {
+                  return {
+                    kind: 'stateNode.exportPdf',
+                    call: () => inst.exportPdf(),
+                  };
+                }
+                // (b) onExport in props
+                const props = fiber.memoizedProps || fiber.pendingProps;
+                if (props && typeof props.onExport === 'function') {
+                  return {
+                    kind: 'props.onExport("pdf")',
+                    call: () => props.onExport('pdf'),
+                  };
+                }
+                fiber = fiber.return;
+              }
+            }
+          }
+          return null;
+        };
+
+        let el: HTMLElement | null = anchor as HTMLElement;
+        while (el) {
+          const found = walkFromNode(el);
+          if (found) return found;
+          el = el.parentElement;
+        }
+        return null;
+      };
+
+      const exportEntry = findExportEntry();
+      console.log(
+        '[stamps] export entry:',
+        exportEntry ? exportEntry.kind : 'not found'
+      );
+
+      if (exportEntry) {
+        try {
+          await Promise.resolve(exportEntry.call());
+        } catch (e) {
+          console.warn('[stamps] direct export entry threw:', e);
+          setError(tTools('saveFailed') || 'Failed to save.');
+        } finally {
+          // Give file-saver a tick to fire its anchor.click before we restore.
+          await new Promise((r) => setTimeout(r, 1500));
+          restoreAnchor();
+        }
+        // NOTE: we cannot reliably detect whether the download dialog was
+        // actually shown (browsers do not fire any observable event). The
+        // extension itself surfaces a success/failure Modal, so we trust its
+        // outcome and avoid a false-negative error toast here.
+        if (!triggered) {
+          console.info(
+            '[stamps] anchor.click hook did not fire; the extension likely triggered the download through its own path.'
+          );
+        }
+        setIsProcessing(false);
+        return;
+      }
+
+      // Strategy 2 (fallback): simulate clicking the extension's Export
+      // button, then the "PDF" option inside its popover.
+      const clickExportPdf = async (): Promise<boolean> => {
+        const toolbarItems = doc.querySelectorAll(
+          '.CustomToolbar .buttons li'
+        ) as NodeListOf<HTMLElement>;
+        let exportLi: HTMLElement | null = null;
+        for (const li of Array.from(toolbarItems)) {
+          const title = li.getAttribute('title') || '';
+          const name = li.querySelector('.name')?.textContent || '';
+          if (/export|导出|匯出|導出/i.test(title + ' ' + name)) {
+            exportLi = li;
+            break;
+          }
+        }
+        console.log('[stamps] export <li> found:', !!exportLi);
+        if (!exportLi) return false;
+        exportLi.click();
+        // Wait for the popover to render.
+        await new Promise((r) => setTimeout(r, 400));
+        const candidates = doc.querySelectorAll(
+          'button, .ant-btn'
+        ) as NodeListOf<HTMLElement>;
+        for (const b of Array.from(candidates)) {
+          const text = (b.textContent || '').trim();
+          if (text === 'PDF') {
+            b.click();
+            return true;
+          }
+        }
+        return false;
+      };
+
+      try {
+        const ok = await clickExportPdf();
+        // Wait for extension to finish and anchor.click to fire.
+        await new Promise((r) => setTimeout(r, 1500));
+        if (!ok) {
+          setError(
+            tTools('saveFailed') ||
+              'Failed to save. Please use the Export button in the toolbar.'
+          );
+        } else if (!triggered) {
+          console.info(
+            '[stamps] anchor.click hook did not fire; the extension likely triggered the download through its own path.'
+          );
+        }
+      } finally {
+        restoreAnchor();
       }
       setIsProcessing(false);
     } catch (err) {
@@ -82,7 +275,7 @@ export function StampsTool({ className = '' }: StampsToolProps) {
       setError(tTools('saveFailed') || 'Failed to save.');
       setIsProcessing(false);
     }
-  }, [stampState.viewerReady, stampState.file, tTools]);
+  }, [stampState.viewerReady, tTools]);
 
   const handleClear = useCallback(() => {
     if (stampState.blobUrl) URL.revokeObjectURL(stampState.blobUrl);

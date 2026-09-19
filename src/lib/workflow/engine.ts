@@ -70,6 +70,70 @@ export function topologicalSort(nodes: WorkflowNode[], edges: WorkflowEdge[]): s
 }
 
 /**
+ * Perform topological grouping to get parallel execution stages.
+ * Each stage contains independent nodes whose prerequisites have all completed in earlier stages.
+ * Returns null if the graph has a cycle.
+ */
+export function getExecutionStages(nodes: WorkflowNode[], edges: WorkflowEdge[]): string[][] | null {
+    if (nodes.length === 0) return [];
+
+    const { adjacencyList, inDegree } = buildGraph(nodes, edges);
+    const inDegMap = new Map<string, number>(inDegree);
+    const stages: string[][] = [];
+    let processedCount = 0;
+
+    // Current wave of ready nodes (in-degree 0)
+    let currentStage: string[] = [];
+    inDegMap.forEach((deg, nodeId) => {
+        if (deg === 0) {
+            currentStage.push(nodeId);
+        }
+    });
+
+    while (currentStage.length > 0) {
+        stages.push(currentStage);
+        processedCount += currentStage.length;
+
+        const nextStage: string[] = [];
+        for (const nodeId of currentStage) {
+            const neighbors = adjacencyList.get(nodeId) || [];
+            for (const neighbor of neighbors) {
+                const newDeg = (inDegMap.get(neighbor) || 0) - 1;
+                inDegMap.set(neighbor, newDeg);
+                if (newDeg === 0) {
+                    nextStage.push(neighbor);
+                }
+            }
+        }
+        currentStage = nextStage;
+    }
+
+    if (processedCount !== nodes.length) {
+        return null; // Graph has a cycle
+    }
+
+    return stages;
+}
+
+/**
+ * Get all downstream node IDs that depend directly or indirectly on a given starting node
+ */
+export function getDownstreamNodeIds(startNodeId: string, edges: WorkflowEdge[]): Set<string> {
+    const downstream = new Set<string>([startNodeId]);
+    const queue = [startNodeId];
+    while (queue.length > 0) {
+        const curr = queue.shift()!;
+        for (const edge of edges) {
+            if (edge.source === curr && !downstream.has(edge.target)) {
+                downstream.add(edge.target);
+                queue.push(edge.target);
+            }
+        }
+    }
+    return downstream;
+}
+
+/**
  * Find input nodes (nodes with no incoming edges)
  */
 export function findInputNodes(nodes: WorkflowNode[], edges: WorkflowEdge[]): WorkflowNode[] {
@@ -81,9 +145,17 @@ export function findInputNodes(nodes: WorkflowNode[], edges: WorkflowEdge[]): Wo
  * Check whether a filename matches one of the node's accepted format extensions.
  */
 export function fileMatchesAcceptedFormats(filename: string, acceptedFormats: string[]): boolean {
-    if (acceptedFormats.length === 0) return true;
+    if (acceptedFormats.length === 0 || acceptedFormats.includes('*') || acceptedFormats.includes('.*')) return true;
     const lower = filename.toLowerCase();
     return acceptedFormats.some((format) => {
+        if (format === '*' || format === '.*') return true;
+        if (format.includes('/')) {
+            if (format === 'application/pdf' && lower.endsWith('.pdf')) return true;
+            if (format.startsWith('image/') && /\.(png|jpe?g|webp|svg|gif|bmp|tiff?)$/i.test(lower)) return true;
+            if (format === 'application/zip' && lower.endsWith('.zip')) return true;
+            const sub = format.split('/')[1];
+            return lower.endsWith(`.${sub}`);
+        }
         const ext = format.startsWith('.') ? format.toLowerCase() : `.${format.toLowerCase()}`;
         return lower.endsWith(ext);
     });
@@ -168,8 +240,17 @@ export function validateConnection(
     sourceNode: WorkflowNode,
     targetNode: WorkflowNode
 ): { isValid: boolean; message?: string } {
+    // Condition gateway nodes dynamically forward inputs without altering file formats
+    if (sourceNode.data.toolId === 'condition-gateway' || targetNode.data.toolId === 'condition-gateway') {
+        return { isValid: true };
+    }
+
     const sourceOutput = sourceNode.data.outputFormat;
     const targetAccepted = targetNode.data.acceptedFormats;
+
+    if (sourceOutput === '*' || targetAccepted.includes('*')) {
+        return { isValid: true };
+    }
 
     // Check if output format matches accepted formats
     const outputWithDot = sourceOutput.startsWith('.') ? sourceOutput : `.${sourceOutput}`;

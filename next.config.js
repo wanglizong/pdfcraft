@@ -1,11 +1,33 @@
 import createNextIntlPlugin from 'next-intl/plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { execSync } from 'child_process';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+
+function resolveAppVersion() {
+  if (process.env.APP_VERSION) return process.env.APP_VERSION;
+  if (process.env.NEXT_PUBLIC_APP_VERSION) return process.env.NEXT_PUBLIC_APP_VERSION;
+
+  try {
+    const gitHash = execSync('git rev-parse --short HEAD', { stdio: ['ignore', 'pipe', 'ignore'] })
+      .toString()
+      .trim();
+    const commitDate = execSync('git log -1 --format=%cd --date=format:%Y.%m.%d', { stdio: ['ignore', 'pipe', 'ignore'] })
+      .toString()
+      .trim();
+    if (gitHash && commitDate) {
+      return `v${commitDate}-${gitHash}`;
+    }
+  } catch {
+    // Git not available or not a git repository
+  }
+
+  return process.env.npm_package_version || '0.1.0';
+}
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -17,6 +39,13 @@ const nextConfig = {
   basePath: process.env.BASE_PATH || process.env.NEXT_PUBLIC_BASE_PATH || '',
   
   assetPrefix: process.env.TAURI_ENV ? '/' : undefined,
+
+  env: {
+    NEXT_PUBLIC_APP_VERSION: resolveAppVersion(),
+    NEXT_PUBLIC_BUILD_DATE: new Date().toISOString(),
+    NEXT_PUBLIC_DISABLE_UPDATE_CHECK:
+      process.env.DISABLE_UPDATE_CHECK || process.env.NEXT_PUBLIC_DISABLE_UPDATE_CHECK || 'false',
+  },
 
   // Webpack configuration for WASM modules
   webpack: (config, { isServer, webpack }) => {
@@ -222,19 +251,13 @@ const nextConfig = {
         ],
       },
       {
-        // HTML pages - short cache with revalidation
+        // Global security & caching headers for all routes
         source: '/:path*',
         headers: [
           {
             key: 'Cache-Control',
             value: 'public, max-age=0, must-revalidate',
           },
-        ],
-      },
-      {
-        // Security headers for all routes
-        source: '/:path*',
-        headers: [
           {
             key: 'X-Content-Type-Options',
             value: 'nosniff',

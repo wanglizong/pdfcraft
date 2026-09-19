@@ -16,6 +16,8 @@ import {
     calculateProgress,
     distributeFilesToInputNodes,
     fileMatchesAcceptedFormats,
+    getExecutionStages,
+    getDownstreamNodeIds,
 } from '@/lib/workflow/engine';
 import type { WorkflowNode, WorkflowEdge } from '@/types/workflow';
 
@@ -357,6 +359,83 @@ describe('Workflow Engine', () => {
             const map = distributeFilesToInputNodes([png, jpg], [pngNode]);
 
             expect(map.get('png')).toEqual([png, jpg]);
+        });
+    });
+
+    describe('getExecutionStages (Parallel DAG Stages)', () => {
+        it('returns empty array when nodes array is empty', () => {
+            expect(getExecutionStages([], [])).toEqual([]);
+        });
+
+        it('groups linear pipeline nodes into consecutive single-node stages', () => {
+            const linearNodes: WorkflowNode[] = [
+                { id: '1', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'a', label: 'A', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+                { id: '2', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'b', label: 'B', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+                { id: '3', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'c', label: 'C', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+            ];
+            const linearEdges: WorkflowEdge[] = [
+                { id: 'e1', source: '1', target: '2' },
+                { id: 'e2', source: '2', target: '3' },
+            ];
+
+            const stages = getExecutionStages(linearNodes, linearEdges);
+            expect(stages).toEqual([['1'], ['2'], ['3']]);
+        });
+
+        it('groups parallel independent branches into the same stage for concurrent execution', () => {
+            const diamondNodes: WorkflowNode[] = [
+                { id: 'start', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'a', label: 'Start', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+                { id: 'b1', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'b', label: 'Branch 1', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+                { id: 'b2', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'c', label: 'Branch 2', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+                { id: 'end', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'd', label: 'End', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+            ];
+            const diamondEdges: WorkflowEdge[] = [
+                { id: 'e1', source: 'start', target: 'b1' },
+                { id: 'e2', source: 'start', target: 'b2' },
+                { id: 'e3', source: 'b1', target: 'end' },
+                { id: 'e4', source: 'b2', target: 'end' },
+            ];
+
+            const stages = getExecutionStages(diamondNodes, diamondEdges);
+            expect(stages).toHaveLength(3);
+            expect(stages![0]).toEqual(['start']);
+            expect(stages![1]).toEqual(expect.arrayContaining(['b1', 'b2']));
+            expect(stages![1]).toHaveLength(2);
+            expect(stages![2]).toEqual(['end']);
+        });
+
+        it('returns null if there is a cycle in the workflow graph', () => {
+            const cyclicNodes: WorkflowNode[] = [
+                { id: '1', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'a', label: 'A', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+                { id: '2', type: 'toolNode', position: { x: 0, y: 0 }, data: { toolId: 'b', label: 'B', icon: 'file', category: 'cat', acceptedFormats: [], outputFormat: '', status: 'idle', progress: 0 } },
+            ];
+            const cyclicEdges: WorkflowEdge[] = [
+                { id: 'e1', source: '1', target: '2' },
+                { id: 'e2', source: '2', target: '1' },
+            ];
+
+            expect(getExecutionStages(cyclicNodes, cyclicEdges)).toBeNull();
+        });
+    });
+
+    describe('getDownstreamNodeIds', () => {
+        it('returns only the start node if it has no children', () => {
+            const edges: WorkflowEdge[] = [
+                { id: 'e1', source: 'a', target: 'b' },
+            ];
+            const downstream = getDownstreamNodeIds('b', edges);
+            expect(Array.from(downstream)).toEqual(['b']);
+        });
+
+        it('returns all transitive downstream nodes', () => {
+            const edges: WorkflowEdge[] = [
+                { id: 'e1', source: 'a', target: 'b' },
+                { id: 'e2', source: 'b', target: 'c' },
+                { id: 'e3', source: 'c', target: 'd' },
+                { id: 'e4', source: 'a', target: 'e' },
+            ];
+            const downstream = getDownstreamNodeIds('b', edges);
+            expect(Array.from(downstream).sort()).toEqual(['b', 'c', 'd'].sort());
         });
     });
 });

@@ -2513,8 +2513,8 @@
     ]
   },
   {
-    "en": "PDFCraft",
-    "zh": "PDFCraft",
+    "en": "Hello PDF",
+    "zh": "Hello PDF",
     "keys": [
       "common.brand"
     ],
@@ -2684,8 +2684,8 @@
     ]
   },
   {
-    "en": "© 2025 PDFCraft. All rights reserved.",
-    "zh": "© 2025 PDFCraft. 保留所有权利。",
+    "en": "© 2025 Hello PDF. All rights reserved.",
+    "zh": "© 2025 Hello PDF. 保留所有权利。",
     "keys": [
       "common.footer.footer"
     ],
@@ -2698,8 +2698,8 @@
     ]
   },
   {
-    "en": "© {year} PDFCraft. All rights reserved.",
-    "zh": "© {year} PDFCraft. 保留所有权利。",
+    "en": "© {year} Hello PDF. All rights reserved.",
+    "zh": "© {year} Hello PDF. 保留所有权利。",
     "keys": [
       "common.footer.copyright"
     ],
@@ -7617,8 +7617,8 @@
     ]
   },
   {
-    "en": "Default password: pdfcraft",
-    "zh": "默认密码: pdfcraft",
+    "en": "Default password: Hello PDF",
+    "zh": "默认密码: Hello PDF",
     "keys": [
       "common.certCryptor.passwordPlaceholder"
     ],
@@ -13373,8 +13373,8 @@
     ]
   },
   {
-    "en": "What is PDFCraft?",
-    "zh": "PDFCraft 是什么？",
+    "en": "What is Hello PDF?",
+    "zh": "Hello PDF 是什么？",
     "keys": [
       "faqPage.sections.general.whatIs.question"
     ],
@@ -13384,8 +13384,8 @@
     ]
   },
   {
-    "en": "Is PDFCraft really free?",
-    "zh": "PDFCraft 真的免费吗？",
+    "en": "Is Hello PDF really free?",
+    "zh": "Hello PDF 真的免费吗？",
     "keys": [
       "faqPage.sections.general.isFree.question"
     ],
@@ -13395,8 +13395,8 @@
     ]
   },
   {
-    "en": "Yes, PDFCraft is completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone.",
-    "zh": "是的，PDFCraft 完全免费使用。没有隐藏费用，没有高级会员，也无需注册。所有功能对每个人开放。",
+    "en": "Yes, Hello PDF is completely free to use. There are no hidden costs, no premium tiers, and no registration required. All features are available to everyone.",
+    "zh": "是的，Hello PDF 完全免费使用。没有隐藏费用，没有高级会员，也无需注册。所有功能对每个人开放。",
     "keys": [
       "faqPage.sections.general.isFree.answer"
     ],
@@ -13417,8 +13417,8 @@
     ]
   },
   {
-    "en": "No, you don't need to create an account or register to use PDFCraft. Simply visit the website and start using any tool immediately.",
-    "zh": "不需要，您无需创建账户或注册即可使用 PDFCraft。只需访问网站即可立即开始使用任何工具。",
+    "en": "No, you don't need to create an account or register to use Hello PDF. Simply visit the website and start using any tool immediately.",
+    "zh": "不需要，您无需创建账户或注册即可使用 Hello PDF。只需访问网站即可立即开始使用任何工具。",
     "keys": [
       "faqPage.sections.general.account.answer"
     ],
@@ -13450,8 +13450,8 @@
     ]
   },
   {
-    "en": "Is it safe to use PDFCraft with sensitive documents?",
-    "zh": "使用 PDFCraft 处理敏感文档安全吗？",
+    "en": "Is it safe to use Hello PDF with sensitive documents?",
+    "zh": "使用 Hello PDF 处理敏感文档安全吗？",
     "keys": [
       "faqPage.sections.privacy.safe.question"
     ],
@@ -13461,8 +13461,8 @@
     ]
   },
   {
-    "en": "Yes, PDFCraft is designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet.",
-    "zh": "是的，PDFCraft 的设计以隐私为重。由于所有处理都在浏览器本地进行，您的敏感文档保留在您的设备上，从未通过互联网传输。",
+    "en": "Yes, Hello PDF is designed with privacy in mind. Since all processing happens locally in your browser, your sensitive documents remain on your device and are never transmitted over the internet.",
+    "zh": "是的，Hello PDF 的设计以隐私为重。由于所有处理都在浏览器本地进行，您的敏感文档保留在您的设备上，从未通过互联网传输。",
     "keys": [
       "faqPage.sections.privacy.safe.answer"
     ],
@@ -13505,8 +13505,8 @@
     ]
   },
   {
-    "en": "PDFCraft offers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more.",
-    "zh": "PDFCraft 提供 67+ 个工具，包括：合并、分割、压缩、转换（转为/来自图像、文本、JSON）、编辑、注释、签名、添加水印、加密/解密、OCR 等等。",
+    "en": "Hello PDF offers 67+ tools including: merge, split, compress, convert (to/from images, text, JSON), edit, annotate, sign, add watermarks, encrypt/decrypt, OCR, and many more.",
+    "zh": "Hello PDF 提供 67+ 个工具，包括：合并、分割、压缩、转换（转为/来自图像、文本、JSON）、编辑、注释、签名、添加水印、加密/解密、OCR 等等。",
     "keys": [
       "faqPage.sections.features.operations.answer"
     ],
@@ -13549,8 +13549,8 @@
     ]
   },
   {
-    "en": "Yes, PDFCraft supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once.",
-    "zh": "是的，PDFCraft 支持将各种图像格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）转换为 PDF。您可以一次转换单个或多个图像。",
+    "en": "Yes, Hello PDF supports converting various image formats (JPG, PNG, WebP, BMP, TIFF, SVG, HEIC) to PDF. You can convert single or multiple images at once.",
+    "zh": "是的，Hello PDF 支持将各种图像格式（JPG、PNG、WebP、BMP、TIFF、SVG、HEIC）转换为 PDF。您可以一次转换单个或多个图像。",
     "keys": [
       "faqPage.sections.features.images.answer"
     ],
@@ -13571,8 +13571,8 @@
     ]
   },
   {
-    "en": "PDFCraft provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities.",
-    "zh": "PDFCraft 提供注释和编辑工具，包括高亮、添加文本、形状、图像和签名。如需全文编辑，PDF 编辑器工具提供全面的注释功能。",
+    "en": "Hello PDF provides annotation and editing tools including highlighting, adding text, shapes, images, and signatures. For full text editing, the PDF Editor tool offers comprehensive annotation capabilities.",
+    "zh": "Hello PDF 提供注释和编辑工具，包括高亮、添加文本、形状、图像和签名。如需全文编辑，PDF 编辑器工具提供全面的注释功能。",
     "keys": [
       "faqPage.sections.features.edit.answer"
     ],
@@ -13593,8 +13593,8 @@
     ]
   },
   {
-    "en": "PDFCraft works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience.",
-    "zh": "PDFCraft 适用于所有现代浏览器，包括 Chrome、Firefox、Safari 和 Edge。我们建议使用最新版本的浏览器以获得最佳体验。",
+    "en": "Hello PDF works on all modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your browser for the best experience.",
+    "zh": "Hello PDF 适用于所有现代浏览器，包括 Chrome、Firefox、Safari 和 Edge。我们建议使用最新版本的浏览器以获得最佳体验。",
     "keys": [
       "faqPage.sections.technical.browsers.answer"
     ],
@@ -13648,8 +13648,8 @@
     ]
   },
   {
-    "en": "Does PDFCraft work offline?",
-    "zh": "PDFCraft 可以离线工作吗？",
+    "en": "Does Hello PDF work offline?",
+    "zh": "Hello PDF 可以离线工作吗？",
     "keys": [
       "faqPage.sections.technical.offline.question"
     ],
@@ -13659,8 +13659,8 @@
     ]
   },
   {
-    "en": "Currently, PDFCraft requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection.",
-    "zh": "目前，PDFCraft 需要互联网连接才能加载应用程序。但是，一旦加载，PDF 处理本身在本地进行，不需要连接。",
+    "en": "Currently, Hello PDF requires an internet connection to load the application. However, once loaded, the PDF processing itself happens locally and doesn't require a connection.",
+    "zh": "目前，Hello PDF 需要互联网连接才能加载应用程序。但是，一旦加载，PDF 处理本身在本地进行，不需要连接。",
     "keys": [
       "faqPage.sections.technical.offline.answer"
     ],
@@ -13682,8 +13682,8 @@
     ]
   },
   {
-    "en": "PDFCraft is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support).",
-    "zh": "PDFCraft 提供 9 种语言版本：英语、日语、韩语、西班牙语、法语、德语、中文、葡萄牙语和阿拉伯语（支持从右到左）。",
+    "en": "Hello PDF is available in 9 languages: English, Japanese, Korean, Spanish, French, German, Chinese, Portuguese, and Arabic (with RTL support).",
+    "zh": "Hello PDF 提供 9 种语言版本：英语、日语、韩语、西班牙语、法语、德语、中文、葡萄牙语和阿拉伯语（支持从右到左）。",
     "keys": [
       "faqPage.sections.languages.supported.answer"
     ],
@@ -13864,8 +13864,8 @@
     ]
   },
   {
-    "en": "Powered by modern web technologies, PDFCraft delivers lightning-fast PDF processing without the need for uploads or downloads.",
-    "zh": "由现代 Web 技术驱动，PDFCraft 提供闪电般的 PDF 处理速度，无需上传或下载。",
+    "en": "Powered by modern web technologies, Hello PDF delivers lightning-fast PDF processing without the need for uploads or downloads.",
+    "zh": "由现代 Web 技术驱动，Hello PDF 提供闪电般的 PDF 处理速度，无需上传或下载。",
     "keys": [
       "aboutPage.values.fast.description"
     ],
@@ -13908,8 +13908,8 @@
     ]
   },
   {
-    "en": "PDFCraft is completely free to use with no hidden costs, no registration required, and no limits on usage.",
-    "zh": "PDFCraft 完全免费使用，没有隐藏费用，无需注册，也不限制使用次数。",
+    "en": "Hello PDF is completely free to use with no hidden costs, no registration required, and no limits on usage.",
+    "zh": "Hello PDF 完全免费使用，没有隐藏费用，无需注册，也不限制使用次数。",
     "keys": [
       "aboutPage.values.free.description"
     ],
@@ -14086,8 +14086,8 @@
     ]
   },
   {
-    "en": "contact@pdfcraft.app",
-    "zh": "contact@pdfcraft.app",
+    "en": "contact@Hello PDF.app",
+    "zh": "contact@Hello PDF.app",
     "keys": [
       "contactPage.methods.email.action"
     ],
@@ -14148,8 +14148,8 @@
     ]
   },
   {
-    "en": "@pdfcraft",
-    "zh": "@pdfcraft",
+    "en": "@Hello PDF",
+    "zh": "@Hello PDF",
     "keys": [
       "contactPage.methods.twitter.action"
     ],
@@ -14305,8 +14305,8 @@
     ]
   },
   {
-    "en": "PDF Workflow Builder - PDFCraft",
-    "zh": "PDF 工作流编辑器 - PDFCraft",
+    "en": "PDF Workflow Builder - Hello PDF",
+    "zh": "PDF 工作流编辑器 - Hello PDF",
     "keys": [
       "workflow.metaTitle"
     ],

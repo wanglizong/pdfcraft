@@ -141,9 +141,26 @@ export class WordToPDFProcessor extends BasePDFProcessor {
         }
 
         try {
-            const pdfBlob = useLibreOffice
-                ? await this.convertWithLibreOffice(file)
-                : await this.convertWithPyodideFallback(file);
+            let pdfBlob: Blob;
+            let engine: 'libreoffice' | 'pyodide' = 'libreoffice';
+
+            if (useLibreOffice) {
+                try {
+                    pdfBlob = await this.convertWithLibreOffice(file);
+                } catch (loErr) {
+                    if (ext === 'docx' && !this.checkCancelled()) {
+                        console.warn('[WordToPDF] LibreOffice failed or timed out, falling back to Pyodide:', loErr);
+                        this.updateProgress(20, 'LibreOffice engine unavailable, falling back to Python converter...');
+                        pdfBlob = await this.convertWithPyodideFallback(file);
+                        engine = 'pyodide';
+                    } else {
+                        throw loErr;
+                    }
+                }
+            } else {
+                pdfBlob = await this.convertWithPyodideFallback(file);
+                engine = 'pyodide';
+            }
 
             if (this.checkCancelled()) {
                 return this.createErrorOutput(
@@ -157,7 +174,7 @@ export class WordToPDFProcessor extends BasePDFProcessor {
             const baseName = file.name.replace(/\.(docx?|odt|rtf)$/i, '');
             return this.createSuccessOutput(pdfBlob, `${baseName}.pdf`, {
                 format: 'pdf',
-                engine: useLibreOffice ? 'libreoffice' : 'pyodide',
+                engine,
             });
         } catch (error) {
             this.stopConversionProgress();
