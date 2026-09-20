@@ -321,16 +321,6 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
             <UpdateCheckButton />
 
             {/* GitHub Repository Link */}
-            <a
-              href="https://github.com/PDFCraftTool/pdfcraft"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:flex items-center justify-center h-9 w-9 rounded-lg text-[hsl(var(--color-muted-foreground))] hover:text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))/0.5] transition-all"
-              aria-label="GitHub Repository"
-            >
-              <Github className="h-5 w-5" aria-hidden="true" />
-            </a>
-
             {/* Theme Toggle */}
             <ThemeToggle />
 
@@ -376,6 +366,7 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
                   </Link>
                 </li>
               ))}
+              {/* GitHub Link in Mobile Menu */}
             </ul>
           </nav>
         )}
