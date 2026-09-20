@@ -376,19 +376,6 @@ export const Header: React.FC<HeaderProps> = ({ locale, showSearch = true }) => 
                   </Link>
                 </li>
               ))}
-              {/* GitHub Link in Mobile Menu */}
-              <li>
-                <a
-                  href="https://github.com/PDFCraftTool/pdfcraft"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 px-4 py-3 text-base font-medium text-[hsl(var(--color-foreground))] hover:bg-[hsl(var(--color-muted))] rounded-lg transition-colors"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  <Github className="h-5 w-5" aria-hidden="true" />
-                  GitHub
-                </a>
-              </li>
             </ul>
           </nav>
         )}
